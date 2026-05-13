@@ -1,0 +1,66 @@
+const themes = {
+  light: {
+    name: "أبيض",
+    bg: "#f5f5f5",
+    surface: "#ffffff",
+    surface2: "#f0fdf4",
+    border: "#e2e8f0",
+    text: "#1a1a2e",
+    muted: "#64748b",
+    primary: "#16a34a",
+    secondary: "#15803d",
+    accent: "#22c55e",
+    navBg: "#ffffff",
+    headerBg: "#16a34a",
+    headerText: "#ffffff",
+    cardShadow: "0 2px 12px rgba(0,0,0,0.08)",
+  },
+  blue: {
+    name: "أزرق ليلي",
+    bg: "#0f172a",
+    surface: "#1e293b",
+    surface2: "#162032",
+    border: "#334155",
+    text: "#f1f5f9",
+    muted: "#94a3b8",
+    primary: "#38bdf8",
+    secondary: "#0284c7",
+    accent: "#7dd3fc",
+    navBg: "#1e293b",
+    headerBg: "#0284c7",
+    headerText: "#ffffff",
+    cardShadow: "0 2px 12px rgba(0,0,0,0.4)",
+  },
+  dark: {
+    name: "أسود",
+    bg: "#000000",
+    surface: "#111111",
+    surface2: "#1a1a1a",
+    border: "#2a2a2a",
+    text: "#ffffff",
+    muted: "#888888",
+    primary: "#22c55e",
+    secondary: "#16a34a",
+    accent: "#4ade80",
+    navBg: "#111111",
+    headerBg: "#111111",
+    headerText: "#22c55e",
+    cardShadow: "0 2px 12px rgba(0,0,0,0.6)",
+  },
+};
+
+const common = {
+  radius: {
+    small: "12px",
+    medium: "16px",
+    large: "24px",
+    full: "50px",
+  },
+  shadow: {
+    card: "0 4px 16px rgba(0,0,0,0.12)",
+    hero: "0 8px 32px rgba(0,0,0,0.18)",
+    button: "0 4px 12px rgba(22,163,74,0.35)",
+  },
+};
+
+export { themes, common };
