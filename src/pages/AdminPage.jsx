@@ -29,14 +29,14 @@ function AdminPage({ theme, setThemeName }) {
       support: "دعم",
       stats: "إحصائيات",
       addLesson: "إضافة درس",
-      lessonTitle: "{at.lessonTitle}",
-      subject: "{at.subject}",
-      grade: "{at.grade}",
-      lessonContent: "{at.lessonContent}",
+      lessonTitle: "عنوان الدرس",
+      subject: "المادة",
+      grade: "السنة",
+      lessonContent: "محتوى الدرس",
       saveLesson: "حفظ الدرس",
       addExercise: "إضافة تمرين",
-      exerciseTitle: "{at.exerciseTitle}",
-      question: "{at.question}",
+      exerciseTitle: "عنوان التمرين",
+      question: "السؤال",
       saveExercise: "حفظ التمرين",
       addQuiz: "إضافة اختبار",
       saveQuiz: "حفظ الاختبار"
@@ -354,11 +354,11 @@ function AdminPage({ theme, setThemeName }) {
 
               <label style={labelStyle(theme)}>{at.grade}</label>
               <select value={lessonGrade} onChange={(e) => setLessonGrade(e.target.value)} style={inputStyle(theme)}>
-                <option value="1">{at.grade} الأولى</option>
-                <option value="2">{at.grade} الثانية</option>
-                <option value="3">{at.grade} الثالثة</option>
-                <option value="4">{at.grade} الرابعة</option>
-                <option value="5">{at.grade} الخامسة</option>
+                <option value="1">{gt[1]}</option>
+                <option value="2">{gt[2]}</option>
+                <option value="3">{gt[3]}</option>
+                <option value="4">{gt[4]}</option>
+                <option value="5">{gt[5]}</option>
               </select>
 
               <label style={labelStyle(theme)}>{at.lessonContent}</label>
@@ -386,11 +386,11 @@ function AdminPage({ theme, setThemeName }) {
 
               <label style={labelStyle(theme)}>{at.grade}</label>
               <select value={exerciseGrade} onChange={(e) => setExerciseGrade(e.target.value)} style={inputStyle(theme)}>
-                <option value="1">{at.grade} الأولى</option>
-                <option value="2">{at.grade} الثانية</option>
-                <option value="3">{at.grade} الثالثة</option>
-                <option value="4">{at.grade} الرابعة</option>
-                <option value="5">{at.grade} الخامسة</option>
+                <option value="1">{gt[1]}</option>
+                <option value="2">{gt[2]}</option>
+                <option value="3">{gt[3]}</option>
+                <option value="4">{gt[4]}</option>
+                <option value="5">{gt[5]}</option>
               </select>
 
               <label style={labelStyle(theme)}>{at.question}</label>
@@ -431,29 +431,29 @@ function AdminPage({ theme, setThemeName }) {
 
               <label style={labelStyle(theme)}>{at.grade}</label>
               <select value={quizGrade} onChange={(e) => setQuizGrade(e.target.value)} style={inputStyle(theme)}>
-                <option value="1">{at.grade} الأولى</option>
-                <option value="2">{at.grade} الثانية</option>
-                <option value="3">{at.grade} الثالثة</option>
-                <option value="4">{at.grade} الرابعة</option>
-                <option value="5">{at.grade} الخامسة</option>
+                <option value="1">{gt[1]}</option>
+                <option value="2">{gt[2]}</option>
+                <option value="3">{gt[3]}</option>
+                <option value="4">{gt[4]}</option>
+                <option value="5">{gt[5]}</option>
               </select>
 
               <h3 style={{ color: theme.text }}>{at.question} 1</h3>
-              <input required placeholder="{at.question}" value={q1} onChange={(e) => setQ1(e.target.value)} style={inputStyle(theme)} />
+              <input required placeholder={at.question} value={q1} onChange={(e) => setQ1(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 1" value={q1a} onChange={(e) => setQ1a(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 2" value={q1b} onChange={(e) => setQ1b(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 3" value={q1c} onChange={(e) => setQ1c(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="الإجابة الصحيحة" value={q1correct} onChange={(e) => setQ1correct(e.target.value)} style={inputStyle(theme)} />
 
               <h3 style={{ color: theme.text }}>{at.question} 2</h3>
-              <input required placeholder="{at.question}" value={q2} onChange={(e) => setQ2(e.target.value)} style={inputStyle(theme)} />
+              <input required placeholder={at.question} value={q2} onChange={(e) => setQ2(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 1" value={q2a} onChange={(e) => setQ2a(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 2" value={q2b} onChange={(e) => setQ2b(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 3" value={q2c} onChange={(e) => setQ2c(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="الإجابة الصحيحة" value={q2correct} onChange={(e) => setQ2correct(e.target.value)} style={inputStyle(theme)} />
 
               <h3 style={{ color: theme.text }}>{at.question} 3</h3>
-              <input required placeholder="{at.question}" value={q3} onChange={(e) => setQ3(e.target.value)} style={inputStyle(theme)} />
+              <input required placeholder={at.question} value={q3} onChange={(e) => setQ3(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 1" value={q3a} onChange={(e) => setQ3a(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 2" value={q3b} onChange={(e) => setQ3b(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 3" value={q3c} onChange={(e) => setQ3c(e.target.value)} style={inputStyle(theme)} />
