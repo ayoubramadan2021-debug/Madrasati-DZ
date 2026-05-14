@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 import { common } from "../theme";
 
-import { getCurrentUser } from "../services/authService";
 import { getFavorites } from "../services/favoriteService";
 
 import { supabase } from "../lib/supabaseClient";
+import { useAuth } from "../context/AuthContext";
 
 function ProgressPage({ theme, setThemeName }) {
+  const { user, loadingAuth } = useAuth();
   const [loading, setLoading] = useState(true);
 
-  const [user, setUser] = useState(null);
   const [progress, setProgress] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
@@ -24,28 +24,32 @@ function ProgressPage({ theme, setThemeName }) {
   });
 
   useEffect(() => {
-    loadDashboard();
-  }, []);
+    if (!loadingAuth) loadDashboard();
+  }, [loadingAuth, user]);
 
   async function loadDashboard() {
     setLoading(true);
 
-    const currentUser = await getCurrentUser();
-
-    if (!currentUser) {
+    if (!user) {
+      setProgress([]);
+      setFavorites([]);
+      setStats({
+        totalPoints: 0,
+        lessons: 0,
+        exercises: 0,
+        quizzes: 0,
+      });
       setLoading(false);
       return;
     }
 
-    setUser(currentUser);
-
-    const favs = await getFavorites(currentUser.id);
+    const favs = await getFavorites(user.id);
     setFavorites(favs);
 
     const { data } = await supabase
       .from("progress")
       .select("*")
-      .eq("profile_id", currentUser.id);
+      .eq("profile_id", user.id);
 
     const progressData = data || [];
 
@@ -94,7 +98,7 @@ function ProgressPage({ theme, setThemeName }) {
         </p>
       </section>
 
-      {loading ? (
+      {loadingAuth || loading ? (
         <div style={cardStyle(theme)}>
           جاري تحميل لوحة التقدم...
         </div>

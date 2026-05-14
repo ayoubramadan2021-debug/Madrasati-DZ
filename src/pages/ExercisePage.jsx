@@ -4,8 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import { common } from "../theme";
 
-import { getCurrentUser } from "../services/sessionService";
 import { saveProgress } from "../services/progressService";
+import { useAuth } from "../context/AuthContext";
 import { getExerciseById } from "../services/exerciseService";
 import { createNotification } from "../services/notificationService";
 import { addFavorite } from "../services/favoriteService";
@@ -18,6 +18,7 @@ function cleanAnswer(value) {
 }
 
 function ExercisePage({ theme, setThemeName }) {
+  const { user } = useAuth();
   const { gradeId, subject, exerciseId } = useParams();
 
   const [exercise, setExercise] = useState(null);
@@ -49,8 +50,6 @@ function ExercisePage({ theme, setThemeName }) {
     setChecked(true);
 
     if (cleanAnswer(selected) === cleanAnswer(exercise.correct_answer)) {
-      const user = await getCurrentUser();
-
       if (!user) {
         setSaveMessage("ℹ️ سجّل الدخول لحفظ النقاط والتقدم أونلاين");
         return;
@@ -79,8 +78,6 @@ function ExercisePage({ theme, setThemeName }) {
   }
 
   async function handleAddFavorite() {
-    const user = await getCurrentUser();
-
     if (!user) {
       setFavoriteMessage("🔐 سجّل الدخول أولًا لحفظ التمرين في المفضلة");
       return;

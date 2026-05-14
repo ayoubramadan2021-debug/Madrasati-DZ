@@ -19,7 +19,7 @@ function LeaderboardPage({ theme, setThemeName }) {
     const { data, error } = await supabase
       .from("profiles")
       .select("*")
-      .order("total_points", {
+      .order("points", {
         ascending: false,
       });
 
@@ -116,7 +116,7 @@ function LeaderboardPage({ theme, setThemeName }) {
                     color: theme.text,
                   }}
                 >
-                  {profile.total_points || profile.points || 0}
+                  {profile.points || 0}
                 </strong>
 
                 <div

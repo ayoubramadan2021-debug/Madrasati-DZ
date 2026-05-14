@@ -4,7 +4,7 @@ export async function hasCompletedProgress(userId, lessonId) {
   const { data, error } = await supabase
     .from("progress")
     .select("*")
-    .eq("user_id", userId)
+    .eq("profile_id", userId)
     .eq("lesson_id", lessonId)
     .limit(1);
 
@@ -38,7 +38,7 @@ export async function saveProgress({
     .from("progress")
     .insert([
       {
-        user_id: userId,
+        profile_id: userId,
         lesson_id: lessonId,
         completed: true,
         points,
@@ -97,7 +97,7 @@ export async function getUserProgress(userId) {
   const { data, error } = await supabase
     .from("progress")
     .select("*")
-    .eq("user_id", userId)
+    .eq("profile_id", userId)
     .order("created_at", {
       ascending: false,
     });
