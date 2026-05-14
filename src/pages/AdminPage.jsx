@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import Layout from "../components/Layout";
 import { common } from "../theme";
+import { useLanguage } from "../i18n/LanguageContext";
 
 import { getCurrentUser } from "../services/sessionService";
 import { isAdmin } from "../services/adminService";
@@ -12,6 +13,87 @@ import { createQuiz, getQuizzes, deleteQuiz } from "../services/quizService";
 import { getAllSupportMessages, replyToSupportMessage } from "../services/supportService";
 
 function AdminPage({ theme, setThemeName }) {
+  const { language } = useLanguage();
+
+  const adminText = {
+    ar: {
+      title: "{at.title}",
+      subtitle: "{at.subtitle}",
+      checking: "{at.checking}",
+      denied: "{at.denied}",
+      deniedText: "{at.deniedText}",
+      lesson: "درس",
+      exercise: "تمرين",
+      quiz: "اختبار",
+      content: "المحتوى",
+      support: "دعم",
+      stats: "إحصائيات",
+      addLesson: "إضافة درس",
+      lessonTitle: "{at.lessonTitle}",
+      subject: "{at.subject}",
+      grade: "{at.grade}",
+      lessonContent: "{at.lessonContent}",
+      saveLesson: "حفظ الدرس",
+      addExercise: "إضافة تمرين",
+      exerciseTitle: "{at.exerciseTitle}",
+      question: "{at.question}",
+      saveExercise: "حفظ التمرين",
+      addQuiz: "إضافة اختبار",
+      saveQuiz: "حفظ الاختبار"
+    },
+    fr: {
+      title: "Panneau d’administration",
+      subtitle: "Gérer les leçons, exercices et quiz",
+      checking: "Vérification des permissions...",
+      denied: "Accès refusé",
+      deniedText: "Cette page est réservée à l’administrateur.",
+      lesson: "Leçon",
+      exercise: "Exercice",
+      quiz: "Quiz",
+      content: "Contenu",
+      support: "Support",
+      stats: "Statistiques",
+      addLesson: "Ajouter une leçon",
+      lessonTitle: "Titre de la leçon",
+      subject: "Matière",
+      grade: "Année",
+      lessonContent: "Contenu de la leçon",
+      saveLesson: "Enregistrer la leçon",
+      addExercise: "Ajouter un exercice",
+      exerciseTitle: "Titre de l’exercice",
+      question: "Question",
+      saveExercise: "Enregistrer l’exercice",
+      addQuiz: "Ajouter un quiz",
+      saveQuiz: "Enregistrer le quiz"
+    },
+    en: {
+      title: "Admin Panel",
+      subtitle: "Manage lessons, exercises and quizzes",
+      checking: "Checking permissions...",
+      denied: "Access denied",
+      deniedText: "This page is for admins only.",
+      lesson: "Lesson",
+      exercise: "Exercise",
+      quiz: "Quiz",
+      content: "Content",
+      support: "Support",
+      stats: "Stats",
+      addLesson: "Add Lesson",
+      lessonTitle: "Lesson Title",
+      subject: "Subject",
+      grade: "Grade",
+      lessonContent: "Lesson Content",
+      saveLesson: "Save Lesson",
+      addExercise: "Add Exercise",
+      exerciseTitle: "Exercise Title",
+      question: "Question",
+      saveExercise: "Save Exercise",
+      addQuiz: "Add Quiz",
+      saveQuiz: "Save Quiz"
+    }
+  };
+
+  const at = adminText[language] || adminText.ar;
   const [loading, setLoading] = useState(true);
   const [allowed, setAllowed] = useState(false);
   const [activeTab, setActiveTab] = useState("lesson");
@@ -177,35 +259,35 @@ function AdminPage({ theme, setThemeName }) {
     <Layout theme={theme} setThemeName={setThemeName}>
       <section style={heroStyle(theme)}>
         <div style={{ fontSize: "56px" }}>🧑‍🏫</div>
-        <h1 style={{ color: theme.text }}>لوحة الإدارة</h1>
-        <p style={{ color: theme.muted }}>إدارة الدروس والتمارين والاختبارات</p>
+        <h1 style={{ color: theme.text }}>{at.title}</h1>
+        <p style={{ color: theme.muted }}>{at.subtitle}</p>
       </section>
 
       {loading ? (
-        <div style={cardStyle(theme)}>جاري التحقق من الصلاحيات...</div>
+        <div style={cardStyle(theme)}>{at.checking}</div>
       ) : !allowed ? (
         <div style={cardStyle(theme)}>
-          <h2>🚫 الوصول مرفوض</h2>
-          <p style={{ color: theme.muted }}>هذه الصفحة خاصة بالمدير فقط.</p>
+          <h2>🚫 {at.denied}</h2>
+          <p style={{ color: theme.muted }}>{at.deniedText}</p>
         </div>
       ) : (
         <>
           <div style={tabsStyle}>
-            <button onClick={() => setActiveTab("lesson")} style={tabButton(theme, activeTab === "lesson")}>📖 درس</button>
-            <button onClick={() => setActiveTab("exercise")} style={tabButton(theme, activeTab === "exercise")}>✍️ تمرين</button>
-            <button onClick={() => setActiveTab("quiz")} style={tabButton(theme, activeTab === "quiz")}>📝 اختبار</button>
-            <button onClick={() => setActiveTab("content")} style={tabButton(theme, activeTab === "content")}>📚 المحتوى</button>
-            <button onClick={() => setActiveTab("support")} style={tabButton(theme, activeTab === "support")}>💬 دعم</button>
-            <button onClick={() => setActiveTab("stats")} style={tabButton(theme, activeTab === "stats")}>📊 إحصائيات</button>
+            <button onClick={() => setActiveTab("lesson")} style={tabButton(theme, activeTab === "lesson")}>📖 {at.lesson}</button>
+            <button onClick={() => setActiveTab("exercise")} style={tabButton(theme, activeTab === "exercise")}>✍️ {at.exercise}</button>
+            <button onClick={() => setActiveTab("quiz")} style={tabButton(theme, activeTab === "quiz")}>📝 {at.quiz}</button>
+            <button onClick={() => setActiveTab("content")} style={tabButton(theme, activeTab === "content")}>📚 {at.content}</button>
+            <button onClick={() => setActiveTab("support")} style={tabButton(theme, activeTab === "support")}>💬 {at.support}</button>
+            <button onClick={() => setActiveTab("stats")} style={tabButton(theme, activeTab === "stats")}>📊 {at.stats}</button>
           </div>
 
           {activeTab === "lesson" && (
             <form onSubmit={handleLessonSubmit} style={cardStyle(theme)}>
-              <h2 style={{ color: theme.text }}>📖 إضافة درس</h2>
-              <label style={labelStyle(theme)}>عنوان الدرس</label>
+              <h2 style={{ color: theme.text }}>📖 {at.addLesson}</h2>
+              <label style={labelStyle(theme)}>{at.lessonTitle}</label>
               <input required value={lessonTitle} onChange={(e) => setLessonTitle(e.target.value)} style={inputStyle(theme)} />
 
-              <label style={labelStyle(theme)}>المادة</label>
+              <label style={labelStyle(theme)}>{at.subject}</label>
               <select value={lessonSubject} onChange={(e) => setLessonSubject(e.target.value)} style={inputStyle(theme)}>
                 <option value="math">الرياضيات</option>
                 <option value="arabic">اللغة العربية</option>
@@ -215,29 +297,29 @@ function AdminPage({ theme, setThemeName }) {
                 <option value="science">التربية العلمية</option>
               </select>
 
-              <label style={labelStyle(theme)}>السنة</label>
+              <label style={labelStyle(theme)}>{at.grade}</label>
               <select value={lessonGrade} onChange={(e) => setLessonGrade(e.target.value)} style={inputStyle(theme)}>
-                <option value="1">السنة الأولى</option>
-                <option value="2">السنة الثانية</option>
-                <option value="3">السنة الثالثة</option>
-                <option value="4">السنة الرابعة</option>
-                <option value="5">السنة الخامسة</option>
+                <option value="1">{at.grade} الأولى</option>
+                <option value="2">{at.grade} الثانية</option>
+                <option value="3">{at.grade} الثالثة</option>
+                <option value="4">{at.grade} الرابعة</option>
+                <option value="5">{at.grade} الخامسة</option>
               </select>
 
-              <label style={labelStyle(theme)}>محتوى الدرس</label>
+              <label style={labelStyle(theme)}>{at.lessonContent}</label>
               <textarea required rows="7" value={lessonContent} onChange={(e) => setLessonContent(e.target.value)} style={{ ...inputStyle(theme), lineHeight: "1.8" }} />
 
-              <button style={buttonStyle(theme)}>💾 حفظ الدرس</button>
+              <button style={buttonStyle(theme)}>💾 {at.saveLesson}</button>
             </form>
           )}
 
           {activeTab === "exercise" && (
             <form onSubmit={handleExerciseSubmit} style={cardStyle(theme)}>
-              <h2 style={{ color: theme.text }}>✍️ إضافة تمرين</h2>
-              <label style={labelStyle(theme)}>عنوان التمرين</label>
+              <h2 style={{ color: theme.text }}>✍️ {at.addExercise}</h2>
+              <label style={labelStyle(theme)}>{at.exerciseTitle}</label>
               <input required value={exerciseTitle} onChange={(e) => setExerciseTitle(e.target.value)} style={inputStyle(theme)} />
 
-              <label style={labelStyle(theme)}>المادة</label>
+              <label style={labelStyle(theme)}>{at.subject}</label>
               <select value={exerciseSubject} onChange={(e) => setExerciseSubject(e.target.value)} style={inputStyle(theme)}>
                 <option value="math">الرياضيات</option>
                 <option value="arabic">اللغة العربية</option>
@@ -247,16 +329,16 @@ function AdminPage({ theme, setThemeName }) {
                 <option value="science">التربية العلمية</option>
               </select>
 
-              <label style={labelStyle(theme)}>السنة</label>
+              <label style={labelStyle(theme)}>{at.grade}</label>
               <select value={exerciseGrade} onChange={(e) => setExerciseGrade(e.target.value)} style={inputStyle(theme)}>
-                <option value="1">السنة الأولى</option>
-                <option value="2">السنة الثانية</option>
-                <option value="3">السنة الثالثة</option>
-                <option value="4">السنة الرابعة</option>
-                <option value="5">السنة الخامسة</option>
+                <option value="1">{at.grade} الأولى</option>
+                <option value="2">{at.grade} الثانية</option>
+                <option value="3">{at.grade} الثالثة</option>
+                <option value="4">{at.grade} الرابعة</option>
+                <option value="5">{at.grade} الخامسة</option>
               </select>
 
-              <label style={labelStyle(theme)}>السؤال</label>
+              <label style={labelStyle(theme)}>{at.question}</label>
               <input required value={question} onChange={(e) => setQuestion(e.target.value)} style={inputStyle(theme)} />
 
               <label style={labelStyle(theme)}>الاختيار 1</label>
@@ -271,18 +353,18 @@ function AdminPage({ theme, setThemeName }) {
               <label style={labelStyle(theme)}>الإجابة الصحيحة</label>
               <input required value={correctAnswer} onChange={(e) => setCorrectAnswer(e.target.value)} style={inputStyle(theme)} />
 
-              <button style={buttonStyle(theme)}>💾 حفظ التمرين</button>
+              <button style={buttonStyle(theme)}>💾 {at.saveExercise}</button>
             </form>
           )}
 
           {activeTab === "quiz" && (
             <form onSubmit={handleQuizSubmit} style={cardStyle(theme)}>
-              <h2 style={{ color: theme.text }}>📝 إضافة اختبار</h2>
+              <h2 style={{ color: theme.text }}>📝 {at.addQuiz}</h2>
 
               <label style={labelStyle(theme)}>عنوان الاختبار</label>
               <input required value={quizTitle} onChange={(e) => setQuizTitle(e.target.value)} style={inputStyle(theme)} />
 
-              <label style={labelStyle(theme)}>المادة</label>
+              <label style={labelStyle(theme)}>{at.subject}</label>
               <select value={quizSubject} onChange={(e) => setQuizSubject(e.target.value)} style={inputStyle(theme)}>
                 <option value="math">الرياضيات</option>
                 <option value="arabic">اللغة العربية</option>
@@ -292,43 +374,43 @@ function AdminPage({ theme, setThemeName }) {
                 <option value="science">التربية العلمية</option>
               </select>
 
-              <label style={labelStyle(theme)}>السنة</label>
+              <label style={labelStyle(theme)}>{at.grade}</label>
               <select value={quizGrade} onChange={(e) => setQuizGrade(e.target.value)} style={inputStyle(theme)}>
-                <option value="1">السنة الأولى</option>
-                <option value="2">السنة الثانية</option>
-                <option value="3">السنة الثالثة</option>
-                <option value="4">السنة الرابعة</option>
-                <option value="5">السنة الخامسة</option>
+                <option value="1">{at.grade} الأولى</option>
+                <option value="2">{at.grade} الثانية</option>
+                <option value="3">{at.grade} الثالثة</option>
+                <option value="4">{at.grade} الرابعة</option>
+                <option value="5">{at.grade} الخامسة</option>
               </select>
 
-              <h3 style={{ color: theme.text }}>السؤال 1</h3>
-              <input required placeholder="السؤال" value={q1} onChange={(e) => setQ1(e.target.value)} style={inputStyle(theme)} />
+              <h3 style={{ color: theme.text }}>{at.question} 1</h3>
+              <input required placeholder="{at.question}" value={q1} onChange={(e) => setQ1(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 1" value={q1a} onChange={(e) => setQ1a(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 2" value={q1b} onChange={(e) => setQ1b(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 3" value={q1c} onChange={(e) => setQ1c(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="الإجابة الصحيحة" value={q1correct} onChange={(e) => setQ1correct(e.target.value)} style={inputStyle(theme)} />
 
-              <h3 style={{ color: theme.text }}>السؤال 2</h3>
-              <input required placeholder="السؤال" value={q2} onChange={(e) => setQ2(e.target.value)} style={inputStyle(theme)} />
+              <h3 style={{ color: theme.text }}>{at.question} 2</h3>
+              <input required placeholder="{at.question}" value={q2} onChange={(e) => setQ2(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 1" value={q2a} onChange={(e) => setQ2a(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 2" value={q2b} onChange={(e) => setQ2b(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 3" value={q2c} onChange={(e) => setQ2c(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="الإجابة الصحيحة" value={q2correct} onChange={(e) => setQ2correct(e.target.value)} style={inputStyle(theme)} />
 
-              <h3 style={{ color: theme.text }}>السؤال 3</h3>
-              <input required placeholder="السؤال" value={q3} onChange={(e) => setQ3(e.target.value)} style={inputStyle(theme)} />
+              <h3 style={{ color: theme.text }}>{at.question} 3</h3>
+              <input required placeholder="{at.question}" value={q3} onChange={(e) => setQ3(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 1" value={q3a} onChange={(e) => setQ3a(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 2" value={q3b} onChange={(e) => setQ3b(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="اختيار 3" value={q3c} onChange={(e) => setQ3c(e.target.value)} style={inputStyle(theme)} />
               <input required placeholder="الإجابة الصحيحة" value={q3correct} onChange={(e) => setQ3correct(e.target.value)} style={inputStyle(theme)} />
 
-              <button style={buttonStyle(theme)}>💾 حفظ الاختبار</button>
+              <button style={buttonStyle(theme)}>💾 {at.saveQuiz}</button>
             </form>
           )}
 
           {activeTab === "content" && (
             <div style={cardStyle(theme)}>
-              <h2 style={{ color: theme.text }}>📚 المحتوى الحالي</h2>
+              <h2 style={{ color: theme.text }}>📚 {at.content} الحالي</h2>
               <div style={statBox(theme)}>📚 الدروس: {lessons.length}</div>
               <div style={statBox(theme)}>✍️ التمارين: {exercises.length}</div>
               <div style={statBox(theme)}>📝 الاختبارات: {quizzes.length}</div>
@@ -396,7 +478,7 @@ function AdminPage({ theme, setThemeName }) {
 
           {activeTab === "stats" && (
             <div style={cardStyle(theme)}>
-              <h2 style={{ color: theme.text }}>📊 إحصائيات الإدارة</h2>
+              <h2 style={{ color: theme.text }}>📊 {at.stats} الإدارة</h2>
               <div style={statBox(theme)}>📚 عدد الدروس: {lessons.length}</div>
               <div style={statBox(theme)}>✍️ عدد التمارين: {exercises.length}</div>
               <div style={statBox(theme)}>📝 عدد الاختبارات: {quizzes.length}</div>
