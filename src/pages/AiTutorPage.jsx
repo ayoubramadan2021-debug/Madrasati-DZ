@@ -102,10 +102,26 @@ export default function AiTutorPage() {
     }
   };
 
-  const checkExerciseAnswer = () => {
-    if (!selectedChoice || !aiExercise) return;
+  const normalizeAnswer = (value) => {
+    return String(value || "")
+      .replace(/[أإآ]/g, "ا")
+      .replace(/[()]/g, "")
+      .replace(/[أبجabcABC][\)\-\.]/g, "")
+      .trim();
+  };
 
-    if (selectedChoice === aiExercise.correctAnswer) {
+  const checkExerciseAnswer = () => {
+    if (!aiExercise) return;
+
+    if (!selectedChoice) {
+      setExerciseResult("⚠️ اختر إجابة أولًا.");
+      return;
+    }
+
+    const selected = normalizeAnswer(selectedChoice);
+    const correct = normalizeAnswer(aiExercise.correctAnswer);
+
+    if (selected === correct || selectedChoice.includes(aiExercise.correctAnswer) || aiExercise.correctAnswer.includes(selectedChoice)) {
       setExerciseResult("✅ إجابة صحيحة! أحسنت.");
     } else {
       setExerciseResult(`❌ إجابة غير صحيحة. الجواب الصحيح هو: ${aiExercise.correctAnswer}`);
