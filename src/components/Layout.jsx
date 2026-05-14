@@ -161,7 +161,7 @@ function Layout({ children, theme, setThemeName, toast }) {
               </div>
 
               <div style={{ padding: "12px 20px", color: theme.muted, fontSize: "12px", textAlign: "center" }}>
-                {t.versionLabel} 1.0.0
+                {t.version} 1.0.0
               </div>
             </div>
           </div>
