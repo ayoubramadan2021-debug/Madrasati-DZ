@@ -17,11 +17,11 @@ function AdminPage({ theme, setThemeName }) {
 
   const adminText = {
     ar: {
-      title: "{at.title}",
-      subtitle: "{at.subtitle}",
-      checking: "{at.checking}",
-      denied: "{at.denied}",
-      deniedText: "{at.deniedText}",
+      title: "لوحة الإدارة",
+      subtitle: "إدارة الدروس والتمارين والاختبارات",
+      checking: "جاري التحقق من الصلاحيات...",
+      denied: "الوصول مرفوض",
+      deniedText: "هذه الصفحة خاصة بالمدير فقط.",
       lesson: "درس",
       exercise: "تمرين",
       quiz: "اختبار",
