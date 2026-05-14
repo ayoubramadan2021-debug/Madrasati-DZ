@@ -6,37 +6,46 @@ export default function AiTutorPage() {
   const [loading, setLoading] = useState(false);
   const [grade, setGrade] = useState(1);
   const [subject, setSubject] = useState("رياضيات");
+  const [aiExercise, setAiExercise] = useState(null);
+  const [selectedChoice, setSelectedChoice] = useState("");
+  const [exerciseResult, setExerciseResult] = useState("");
+
+  const askBackend = async (finalQuestion) => {
+    const response = await fetch("https://madrasati-ai-api.onrender.com/api/ai-tutor", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        grade,
+        subject,
+        messages: [
+          {
+            role: "user",
+            content: finalQuestion
+          }
+        ]
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(JSON.stringify(data));
+    }
+
+    return data.choices?.[0]?.message?.content || data.reply || "";
+  };
 
   const sendToAI = async (finalQuestion) => {
     setLoading(true);
     setAnswer("");
+    setAiExercise(null);
+    setExerciseResult("");
 
     try {
-      const response = await fetch("https://madrasati-ai-api.onrender.com/api/ai-tutor", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          grade,
-          subject,
-          messages: [
-            {
-              role: "user",
-              content: finalQuestion
-            }
-          ]
-        })
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setAnswer("❌ خطأ: " + JSON.stringify(data));
-        return;
-      }
-
-      setAnswer(data.choices?.[0]?.message?.content || data.reply || "لم يصل رد من الذكاء الاصطناعي");
+      const text = await askBackend(finalQuestion);
+      setAnswer(text || "لم يصل رد من الذكاء الاصطناعي");
     } catch (error) {
       setAnswer("❌ خطأ في الاتصال: " + error.message);
     } finally {
@@ -59,25 +68,48 @@ export default function AiTutorPage() {
 - الشكل التالي
 - الرسم
 
-يجب أن يكون السؤال مفهومًا من النص وحده.
+أرجع JSON فقط بدون أي شرح خارجه وبدون markdown.
+استعمل هذا الشكل بالضبط:
 
-اكتب النتيجة بهذا الشكل فقط:
-
-📘 التمرين:
-اكتب سؤالًا واضحًا نصيًا فقط.
-
-✅ الاختيارات:
-أ) ...
-ب) ...
-ج) ...
-
-🎯 الجواب الصحيح:
-اكتب الجواب الصحيح.
-
-🧠 الشرح:
-اشرح الحل خطوة بخطوة بطريقة بسيطة.
+{
+  "question": "سؤال نصي واضح",
+  "choices": ["اختيار 1", "اختيار 2", "اختيار 3"],
+  "correctAnswer": "نفس نص الاختيار الصحيح",
+  "explanation": "شرح بسيط خطوة بخطوة"
+}
 `;
-    await sendToAI(prompt);
+
+    setLoading(true);
+    setAnswer("");
+    setAiExercise(null);
+    setSelectedChoice("");
+    setExerciseResult("");
+
+    try {
+      const text = await askBackend(prompt);
+      const clean = text.replace(/```json|```/g, "").trim();
+      const parsed = JSON.parse(clean);
+
+      if (!parsed.question || !parsed.choices || !parsed.correctAnswer) {
+        throw new Error("صيغة التمرين غير مكتملة");
+      }
+
+      setAiExercise(parsed);
+    } catch (error) {
+      setAnswer("❌ تعذر إنشاء تمرين تفاعلي. جرّب مرة أخرى.\n\n" + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const checkExerciseAnswer = () => {
+    if (!selectedChoice || !aiExercise) return;
+
+    if (selectedChoice === aiExercise.correctAnswer) {
+      setExerciseResult("✅ إجابة صحيحة! أحسنت.");
+    } else {
+      setExerciseResult(`❌ إجابة غير صحيحة. الجواب الصحيح هو: ${aiExercise.correctAnswer}`);
+    }
   };
 
   return (
@@ -116,12 +148,48 @@ export default function AiTutorPage() {
       </button>
 
       <button onClick={generateExercise} disabled={loading} style={exerciseButtonStyle(loading)}>
-        🎲 ولّد تمرينًا تلقائيًا
+        🎲 ولّد تمرينًا تفاعليًا
       </button>
 
-      <div style={answerStyle}>
-        {answer || "سيظهر جواب المعلّم الذكي هنا..."}
-      </div>
+      {aiExercise ? (
+        <div style={exerciseCardStyle}>
+          <h2>📘 تمرين تفاعلي</h2>
+          <p style={{ fontSize: "20px", lineHeight: "1.8" }}>{aiExercise.question}</p>
+
+          {aiExercise.choices.map((choice, index) => (
+            <button
+              key={index}
+              onClick={() => setSelectedChoice(choice)}
+              style={{
+                ...choiceButtonStyle,
+                background: selectedChoice === choice ? "#2563eb" : "#13203a"
+              }}
+            >
+              {choice}
+            </button>
+          ))}
+
+          <button onClick={checkExerciseAnswer} style={mainButtonStyle(false)}>
+            تحقق من الإجابة
+          </button>
+
+          {exerciseResult && (
+            <div style={answerStyle}>
+              {exerciseResult}
+
+              <hr style={{ borderColor: "#334155", margin: "15px 0" }} />
+
+              🧠 الشرح:
+              {"\n"}
+              {aiExercise.explanation}
+            </div>
+          )}
+        </div>
+      ) : (
+        <div style={answerStyle}>
+          {answer || "سيظهر جواب المعلّم الذكي هنا..."}
+        </div>
+      )}
     </div>
   );
 }
@@ -180,4 +248,23 @@ const answerStyle = {
   borderRadius: "15px",
   whiteSpace: "pre-wrap",
   lineHeight: "1.8"
+};
+
+const exerciseCardStyle = {
+  marginTop: "25px",
+  background: "#13203a",
+  padding: "20px",
+  borderRadius: "15px",
+  lineHeight: "1.8"
+};
+
+const choiceButtonStyle = {
+  width: "100%",
+  padding: "13px",
+  marginTop: "10px",
+  borderRadius: "12px",
+  border: "1px solid #334155",
+  color: "white",
+  fontSize: "16px",
+  textAlign: "right"
 };
