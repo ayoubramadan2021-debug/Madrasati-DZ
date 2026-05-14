@@ -54,3 +54,19 @@ export async function deleteLesson(id) {
 
   return { error };
 }
+
+
+export async function updateLesson(id, { title, subject, grade, content }) {
+  const { data, error } = await supabase
+    .from("lessons")
+    .update({
+      title,
+      subject,
+      grade: Number(grade),
+      content
+    })
+    .eq("id", id)
+    .select();
+
+  return { data, error };
+}

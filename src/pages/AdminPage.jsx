@@ -7,7 +7,7 @@ import { useLanguage } from "../i18n/LanguageContext";
 import { getCurrentUser } from "../services/sessionService";
 import { isAdmin } from "../services/adminService";
 
-import { createLesson, getLessons, deleteLesson } from "../services/lessonService";
+import { createLesson, getLessons, deleteLesson, updateLesson } from "../services/lessonService";
 import { createExercise, getExercises, deleteExercise } from "../services/exerciseService";
 import { createQuiz, getQuizzes, deleteQuiz } from "../services/quizService";
 import { getAllSupportMessages, replyToSupportMessage } from "../services/supportService";
@@ -164,6 +164,7 @@ function AdminPage({ theme, setThemeName }) {
   const [lessonSubject, setLessonSubject] = useState("math");
   const [lessonGrade, setLessonGrade] = useState(1);
   const [lessonContent, setLessonContent] = useState("");
+  const [editingLessonId, setEditingLessonId] = useState(null);
 
   const [exerciseTitle, setExerciseTitle] = useState("");
   const [exerciseSubject, setExerciseSubject] = useState("math");
@@ -233,21 +234,26 @@ function AdminPage({ theme, setThemeName }) {
     e.preventDefault();
     setMessage("");
 
-    const result = await createLesson({
+    const lessonPayload = {
       title: lessonTitle,
       subject: lessonSubject,
       grade: lessonGrade,
       content: lessonContent,
-    });
+    };
+
+    const result = editingLessonId
+      ? await updateLesson(editingLessonId, lessonPayload)
+      : await createLesson(lessonPayload);
 
     if (result.error) {
       setMessage("❌ حدث خطأ أثناء حفظ الدرس");
       return;
     }
 
-    setMessage("✅ تم حفظ الدرس بنجاح");
+    setMessage(editingLessonId ? "✅ تم تعديل الدرس بنجاح" : "✅ تم حفظ الدرس بنجاح");
     setLessonTitle("");
     setLessonContent("");
+    setEditingLessonId(null);
     await loadData();
   }
 
@@ -338,7 +344,7 @@ function AdminPage({ theme, setThemeName }) {
 
           {activeTab === "lesson" && (
             <form onSubmit={handleLessonSubmit} style={cardStyle(theme)}>
-              <h2 style={{ color: theme.text }}>📖 {at.addLesson}</h2>
+              <h2 style={{ color: theme.text }}>{editingLessonId ? "✏️ تعديل الدرس" : "📖 " + at.addLesson}</h2>
               <label style={labelStyle(theme)}>{at.lessonTitle}</label>
               <input required value={lessonTitle} onChange={(e) => setLessonTitle(e.target.value)} style={inputStyle(theme)} />
 
@@ -466,9 +472,60 @@ function AdminPage({ theme, setThemeName }) {
           {activeTab === "content" && (
             <div style={cardStyle(theme)}>
               <h2 style={{ color: theme.text }}>📚 {at.content} الحالي</h2>
+
               <div style={statBox(theme)}>📚 الدروس: {lessons.length}</div>
               <div style={statBox(theme)}>✍️ التمارين: {exercises.length}</div>
               <div style={statBox(theme)}>📝 الاختبارات: {quizzes.length}</div>
+
+              <h3 style={{ color: theme.text, marginTop: "22px" }}>📖 الدروس</h3>
+
+              {lessons.length === 0 ? (
+                <p style={{ color: theme.muted }}>لا توجد دروس بعد.</p>
+              ) : (
+                lessons.map((lesson) => (
+                  <div key={lesson.id} style={contentItem(theme)}>
+                    <div style={{ width: "100%" }}>
+                      <strong>{lesson.title}</strong>
+                      <p style={{ color: theme.muted }}>
+                        {lesson.subject} - السنة {lesson.grade}
+                      </p>
+
+                      <p style={{ color: theme.muted, lineHeight: "1.8" }}>
+                        {String(lesson.content || "").slice(0, 120)}...
+                      </p>
+
+                      <button
+                        onClick={() => {
+                          setActiveTab("lesson");
+                          setEditingLessonId(lesson.id);
+                          setLessonTitle(lesson.title || "");
+                          setLessonSubject(lesson.subject || "math");
+                          setLessonGrade(lesson.grade || 1);
+                          setLessonContent(lesson.content || "");
+                          setMessage("✏️ يمكنك الآن تعديل الدرس ثم الضغط على حفظ التعديل");
+                        }}
+                        style={smallButton(theme)}
+                      >
+                        ✏️ تعديل
+                      </button>
+
+                      <button
+                        onClick={async () => {
+                          const ok = confirm("هل تريد حذف هذا الدرس؟");
+                          if (!ok) return;
+
+                          await deleteLesson(lesson.id);
+                          setMessage("🗑️ تم حذف الدرس");
+                          await loadData();
+                        }}
+                        style={dangerButton(theme)}
+                      >
+                        🗑️ حذف
+                      </button>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           )}
 
@@ -646,3 +703,25 @@ const messageStyle = (theme) => ({
 });
 
 export default AdminPage;
+
+
+const smallButton = (theme) => ({
+  marginTop: "10px",
+  marginLeft: "8px",
+  padding: "10px 14px",
+  borderRadius: common.radius.medium,
+  border: "none",
+  background: theme.primary,
+  color: "white",
+  fontWeight: "bold"
+});
+
+const dangerButton = (theme) => ({
+  marginTop: "10px",
+  padding: "10px 14px",
+  borderRadius: common.radius.medium,
+  border: "none",
+  background: "#dc2626",
+  color: "white",
+  fontWeight: "bold"
+});
