@@ -4,6 +4,8 @@ export default function AiTutorPage() {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
+  const [grade, setGrade] = useState(1);
+  const [subject, setSubject] = useState("رياضيات");
 
   const askAI = async () => {
     if (!question.trim()) return;
@@ -18,6 +20,8 @@ export default function AiTutorPage() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
+          grade,
+          subject,
           messages: [
             {
               role: "user",
@@ -46,6 +50,26 @@ export default function AiTutorPage() {
     <div style={{ padding: "20px", color: "white", minHeight: "100vh", background: "#0f172a" }}>
       <h1>🤖 المعلّم الذكي</h1>
 
+      <label>السنة الدراسية</label>
+      <select value={grade} onChange={(e) => setGrade(Number(e.target.value))} style={selectStyle}>
+        <option value={1}>السنة الأولى</option>
+        <option value={2}>السنة الثانية</option>
+        <option value={3}>السنة الثالثة</option>
+        <option value={4}>السنة الرابعة</option>
+        <option value={5}>السنة الخامسة</option>
+      </select>
+
+      <label>المادة</label>
+      <select value={subject} onChange={(e) => setSubject(e.target.value)} style={selectStyle}>
+        <option value="رياضيات">رياضيات</option>
+        <option value="لغة عربية">لغة عربية</option>
+        <option value="تربية إسلامية">تربية إسلامية</option>
+        <option value="تربية علمية">تربية علمية</option>
+        <option value="تاريخ وجغرافيا">تاريخ وجغرافيا</option>
+        <option value="فرنسية">فرنسية</option>
+        <option value="عام">عام</option>
+      </select>
+
       <textarea
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
@@ -58,7 +82,8 @@ export default function AiTutorPage() {
           fontSize: "16px",
           background: "#13203a",
           color: "white",
-          border: "1px solid #334155"
+          border: "1px solid #334155",
+          marginTop: "10px"
         }}
       />
 
@@ -95,3 +120,14 @@ export default function AiTutorPage() {
     </div>
   );
 }
+
+const selectStyle = {
+  width: "100%",
+  padding: "13px",
+  margin: "8px 0 15px",
+  borderRadius: "12px",
+  background: "#13203a",
+  color: "white",
+  border: "1px solid #334155",
+  fontSize: "16px"
+};
