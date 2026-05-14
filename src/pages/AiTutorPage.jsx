@@ -7,9 +7,7 @@ export default function AiTutorPage() {
   const [grade, setGrade] = useState(1);
   const [subject, setSubject] = useState("رياضيات");
 
-  const askAI = async () => {
-    if (!question.trim()) return;
-
+  const sendToAI = async (finalQuestion) => {
     setLoading(true);
     setAnswer("");
 
@@ -25,7 +23,7 @@ export default function AiTutorPage() {
           messages: [
             {
               role: "user",
-              content: question
+              content: finalQuestion
             }
           ]
         })
@@ -44,6 +42,34 @@ export default function AiTutorPage() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const askAI = async () => {
+    if (!question.trim()) return;
+    await sendToAI(question);
+  };
+
+  const generateExercise = async () => {
+    const prompt = `
+ولّد تمرينًا تعليميًا مناسبًا لتلميذ في السنة ${grade} ابتدائي في مادة ${subject}.
+
+اكتب النتيجة بهذا الشكل فقط:
+
+📘 التمرين:
+اكتب سؤالًا واضحًا ومناسبًا.
+
+✅ الاختيارات:
+أ) ...
+ب) ...
+ج) ...
+
+🎯 الجواب الصحيح:
+اكتب الجواب الصحيح.
+
+🧠 الشرح:
+اشرح الحل خطوة بخطوة بطريقة بسيطة.
+`;
+    await sendToAI(prompt);
   };
 
   return (
@@ -74,48 +100,19 @@ export default function AiTutorPage() {
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
         placeholder="اكتب سؤالك هنا..."
-        style={{
-          width: "100%",
-          minHeight: "120px",
-          borderRadius: "15px",
-          padding: "15px",
-          fontSize: "16px",
-          background: "#13203a",
-          color: "white",
-          border: "1px solid #334155",
-          marginTop: "10px"
-        }}
+        style={textareaStyle}
       />
 
-      <button
-        onClick={askAI}
-        disabled={loading}
-        style={{
-          marginTop: "15px",
-          width: "100%",
-          padding: "14px",
-          borderRadius: "14px",
-          border: "none",
-          background: loading ? "#64748b" : "#2563eb",
-          color: "white",
-          fontSize: "18px",
-          fontWeight: "bold"
-        }}
-      >
+      <button onClick={askAI} disabled={loading} style={mainButtonStyle(loading)}>
         {loading ? "جاري التفكير..." : "اسأل الذكاء الاصطناعي"}
       </button>
 
-      <div
-        style={{
-          marginTop: "25px",
-          background: "#13203a",
-          padding: "20px",
-          borderRadius: "15px",
-          whiteSpace: "pre-wrap",
-          lineHeight: "1.8"
-        }}
-      >
-        {answer}
+      <button onClick={generateExercise} disabled={loading} style={exerciseButtonStyle(loading)}>
+        🎲 ولّد تمرينًا تلقائيًا
+      </button>
+
+      <div style={answerStyle}>
+        {answer || "سيظهر جواب المعلّم الذكي هنا..."}
       </div>
     </div>
   );
@@ -130,4 +127,49 @@ const selectStyle = {
   color: "white",
   border: "1px solid #334155",
   fontSize: "16px"
+};
+
+const textareaStyle = {
+  width: "100%",
+  minHeight: "120px",
+  borderRadius: "15px",
+  padding: "15px",
+  fontSize: "16px",
+  background: "#13203a",
+  color: "white",
+  border: "1px solid #334155",
+  marginTop: "10px"
+};
+
+const mainButtonStyle = (loading) => ({
+  marginTop: "15px",
+  width: "100%",
+  padding: "14px",
+  borderRadius: "14px",
+  border: "none",
+  background: loading ? "#64748b" : "#2563eb",
+  color: "white",
+  fontSize: "18px",
+  fontWeight: "bold"
+});
+
+const exerciseButtonStyle = (loading) => ({
+  marginTop: "12px",
+  width: "100%",
+  padding: "14px",
+  borderRadius: "14px",
+  border: "none",
+  background: loading ? "#64748b" : "#16a34a",
+  color: "white",
+  fontSize: "18px",
+  fontWeight: "bold"
+});
+
+const answerStyle = {
+  marginTop: "25px",
+  background: "#13203a",
+  padding: "20px",
+  borderRadius: "15px",
+  whiteSpace: "pre-wrap",
+  lineHeight: "1.8"
 };
