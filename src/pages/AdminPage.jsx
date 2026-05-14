@@ -94,6 +94,61 @@ function AdminPage({ theme, setThemeName }) {
   };
 
   const at = adminText[language] || adminText.ar;
+
+  const subjectLabels = {
+    ar: {
+      math: "الرياضيات",
+      arabic: "اللغة العربية",
+      french: "اللغة الفرنسية",
+      islamic: "التربية الإسلامية",
+      civic: "التربية المدنية",
+      science: "التربية العلمية"
+    },
+    fr: {
+      math: "Mathématiques",
+      arabic: "Arabe",
+      french: "Français",
+      islamic: "Éducation islamique",
+      civic: "Éducation civique",
+      science: "Sciences"
+    },
+    en: {
+      math: "Mathematics",
+      arabic: "Arabic",
+      french: "French",
+      islamic: "Islamic Education",
+      civic: "Civic Education",
+      science: "Science"
+    }
+  };
+
+  const gradeLabels = {
+    ar: {
+      1: "السنة الأولى",
+      2: "السنة الثانية",
+      3: "السنة الثالثة",
+      4: "السنة الرابعة",
+      5: "السنة الخامسة"
+    },
+    fr: {
+      1: "1ère année",
+      2: "2ème année",
+      3: "3ème année",
+      4: "4ème année",
+      5: "5ème année"
+    },
+    en: {
+      1: "Grade 1",
+      2: "Grade 2",
+      3: "Grade 3",
+      4: "Grade 4",
+      5: "Grade 5"
+    }
+  };
+
+  const st = subjectLabels[language] || subjectLabels.ar;
+  const gt = gradeLabels[language] || gradeLabels.ar;
+
   const [loading, setLoading] = useState(true);
   const [allowed, setAllowed] = useState(false);
   const [activeTab, setActiveTab] = useState("lesson");
@@ -289,12 +344,12 @@ function AdminPage({ theme, setThemeName }) {
 
               <label style={labelStyle(theme)}>{at.subject}</label>
               <select value={lessonSubject} onChange={(e) => setLessonSubject(e.target.value)} style={inputStyle(theme)}>
-                <option value="math">الرياضيات</option>
-                <option value="arabic">اللغة العربية</option>
-                <option value="french">اللغة الفرنسية</option>
-                <option value="islamic">التربية الإسلامية</option>
-                <option value="civic">التربية المدنية</option>
-                <option value="science">التربية العلمية</option>
+                <option value="math">{st.math}</option>
+                <option value="arabic">{st.arabic}</option>
+                <option value="french">{st.french}</option>
+                <option value="islamic">{st.islamic}</option>
+                <option value="civic">{st.civic}</option>
+                <option value="science">{st.science}</option>
               </select>
 
               <label style={labelStyle(theme)}>{at.grade}</label>
@@ -321,12 +376,12 @@ function AdminPage({ theme, setThemeName }) {
 
               <label style={labelStyle(theme)}>{at.subject}</label>
               <select value={exerciseSubject} onChange={(e) => setExerciseSubject(e.target.value)} style={inputStyle(theme)}>
-                <option value="math">الرياضيات</option>
-                <option value="arabic">اللغة العربية</option>
-                <option value="french">اللغة الفرنسية</option>
-                <option value="islamic">التربية الإسلامية</option>
-                <option value="civic">التربية المدنية</option>
-                <option value="science">التربية العلمية</option>
+                <option value="math">{st.math}</option>
+                <option value="arabic">{st.arabic}</option>
+                <option value="french">{st.french}</option>
+                <option value="islamic">{st.islamic}</option>
+                <option value="civic">{st.civic}</option>
+                <option value="science">{st.science}</option>
               </select>
 
               <label style={labelStyle(theme)}>{at.grade}</label>
@@ -366,12 +421,12 @@ function AdminPage({ theme, setThemeName }) {
 
               <label style={labelStyle(theme)}>{at.subject}</label>
               <select value={quizSubject} onChange={(e) => setQuizSubject(e.target.value)} style={inputStyle(theme)}>
-                <option value="math">الرياضيات</option>
-                <option value="arabic">اللغة العربية</option>
-                <option value="french">اللغة الفرنسية</option>
-                <option value="islamic">التربية الإسلامية</option>
-                <option value="civic">التربية المدنية</option>
-                <option value="science">التربية العلمية</option>
+                <option value="math">{st.math}</option>
+                <option value="arabic">{st.arabic}</option>
+                <option value="french">{st.french}</option>
+                <option value="islamic">{st.islamic}</option>
+                <option value="civic">{st.civic}</option>
+                <option value="science">{st.science}</option>
               </select>
 
               <label style={labelStyle(theme)}>{at.grade}</label>
