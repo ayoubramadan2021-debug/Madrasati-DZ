@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { supabase } from "../lib/supabaseClient";
 
 export default function AiTutorPage() {
   const [question, setQuestion] = useState("");
@@ -13,42 +12,44 @@ export default function AiTutorPage() {
     setAnswer("");
 
     try {
-      const { data, error } = await supabase.functions.invoke(
-        "hyper-processor",
-        {
-          body: { message: question },
-        }
-      );
+      const response = await fetch("https://madrasati-ai-api.onrender.com/api/ai-tutor", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          messages: [
+            {
+              role: "user",
+              content: question
+            }
+          ]
+        })
+      });
 
-      if (error) {
-        setAnswer("❌ Error: " + error.message);
-      } else {
-        setAnswer(data.reply || "No response");
+      const data = await response.json();
+
+      if (!response.ok) {
+        setAnswer("❌ خطأ: " + JSON.stringify(data));
+        return;
       }
-    } catch (err) {
-      setAnswer("❌ " + err.message);
-    }
 
-    setLoading(false);
+      setAnswer(data.choices?.[0]?.message?.content || data.reply || "لم يصل رد من الذكاء الاصطناعي");
+    } catch (error) {
+      setAnswer("❌ خطأ في الاتصال: " + error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#081229",
-        padding: "20px",
-        color: "white",
-      }}
-    >
-      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
-        🤖 AI Tutor
-      </h1>
+    <div style={{ padding: "20px", color: "white", minHeight: "100vh", background: "#0f172a" }}>
+      <h1>🤖 المعلّم الذكي</h1>
 
       <textarea
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
-        placeholder="Ask anything..."
+        placeholder="اكتب سؤالك هنا..."
         style={{
           width: "100%",
           minHeight: "120px",
@@ -57,7 +58,7 @@ export default function AiTutorPage() {
           fontSize: "16px",
           background: "#13203a",
           color: "white",
-          border: "none",
+          border: "1px solid #334155"
         }}
       />
 
@@ -70,13 +71,13 @@ export default function AiTutorPage() {
           padding: "14px",
           borderRadius: "14px",
           border: "none",
-          background: "#2563eb",
+          background: loading ? "#64748b" : "#2563eb",
           color: "white",
           fontSize: "18px",
-          fontWeight: "bold",
+          fontWeight: "bold"
         }}
       >
-        {loading ? "Thinking..." : "Ask AI"}
+        {loading ? "جاري التفكير..." : "اسأل الذكاء الاصطناعي"}
       </button>
 
       <div
@@ -86,6 +87,7 @@ export default function AiTutorPage() {
           padding: "20px",
           borderRadius: "15px",
           whiteSpace: "pre-wrap",
+          lineHeight: "1.8"
         }}
       >
         {answer}
