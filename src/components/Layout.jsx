@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { common } from "../theme";
 import Toast from "./Toast";
 import { getCurrentUser } from "../services/sessionService";
 import { isAdmin } from "../services/adminService";
@@ -13,231 +12,177 @@ function Layout({ children, theme, setThemeName, toast }) {
   const [showAdmin, setShowAdmin] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => { checkAdmin(); }, []);
+  useEffect(() => {
+    checkAdmin();
+  }, []);
 
   async function checkAdmin() {
     const user = await getCurrentUser();
-    if (!user) { setShowAdmin(false); return; }
+    if (!user) {
+      setShowAdmin(false);
+      return;
+    }
     const admin = await isAdmin(user.id);
     setShowAdmin(admin);
   }
 
-  const navLinks = [
-    { to: "/", icon: "🏠", label: t.home },
-    { to: "/ai-tutor", icon: "🤖", label: t.aiTutor },
-    { to: "/progress", icon: "📈", label: t.progress },
-    { to: "/leaderboard", icon: "🏆", label: t.leaderboard },
-    { to: "/favorites", icon: "💚", label: t.favorites },
-    { to: "/auth", icon: "👤", label: t.account },
+  const mainItems = [
+    { to: "/", icon: "🏠", label: t.home || "الرئيسية" },
+    { to: "/grade/1", icon: "📚", label: "الدروس" },
+    { to: "/ai-tutor", icon: "🤖", label: t.aiTutor || "المعلم الذكي" },
+    { to: "/progress", icon: "📊", label: t.progress || "التقدم" },
+    { to: "/leaderboard", icon: "🏆", label: t.leaderboard || "الترتيب" },
+    { to: "/favorites", icon: "⭐", label: t.favorites || "المفضلة" },
+    { to: "/notifications", icon: "🔔", label: "الإشعارات" },
+    { to: "/auth", icon: "👤", label: t.account || "الحساب" },
+    { to: "/support", icon: "💬", label: t.support || "الدعم" },
   ];
 
-  if (showAdmin) navLinks.push({ to: "/admin", icon: "🧑‍🏫", label: "الإدارة" });
-
-  const menuItems = [
-    { to: "/", icon: "🏠", label: t.home },
-    { to: "/ai-tutor", icon: "🤖", label: t.aiTutor },
-    { to: "/progress", icon: "📈", label: t.progress },
-    { to: "/leaderboard", icon: "🏆", label: t.leaderboard },
-    { to: "/favorites", icon: "💚", label: t.favorites },
-    { to: "/auth", icon: "👤", label: t.account },
-    { to: "/support", icon: "💬", label: t.support },
-  ];
+  if (showAdmin) {
+    mainItems.push({ to: "/admin", icon: "🧑‍🏫", label: "الإدارة" });
+  }
 
   const themeOptions = [
-    { key: "light", icon: "☀️", label: "أبيض" },
-    { key: "blue", icon: "🌙", label: "أزرق ليلي" },
-    { key: "dark", icon: "⚫", label: "أسود" },
+    { key: "light", label: "أبيض" },
+    { key: "blue", label: "أزرق ليلي" },
+    { key: "dark", label: "أسود" },
   ];
 
   const languageOptions = [
-    { key: "ar", icon: "🇩🇿", label: "العربية" },
-    { key: "fr", icon: "🇫🇷", label: "Français" },
-    { key: "en", icon: "🇺🇸", label: "English" },
+    { key: "ar", label: "العربية" },
+    { key: "fr", label: "Français" },
+    { key: "en", label: "English" },
   ];
 
   return (
-    <div style={{ minHeight: "100vh", background: theme.bg, color: theme.text, direction: "rtl", paddingBottom: showBottomNav ? "85px" : "20px" }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: theme.bg,
+        color: theme.text,
+        direction: language === "ar" ? "rtl" : "ltr",
+        paddingBottom: showBottomNav ? "86px" : "20px",
+      }}
+    >
       <Toast message={toast} theme={theme} />
 
-      {/* Sidebar Menu */}
       {menuOpen && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 100, display: "flex" }}>
-          <div style={{
-            width: "75%", maxWidth: "300px",
-            background: theme.surface,
-            height: "100%", overflowY: "auto",
-            boxShadow: "4px 0 24px rgba(0,0,0,0.3)",
-            display: "flex", flexDirection: "column",
-          }}>
-            {/* Menu Header */}
-            <div style={{
-              background: theme.primary,
-              padding: "30px 20px 20px",
-              textAlign: "center",
-            }}>
-              <div style={{
-                width: "80px", height: "80px", borderRadius: "50%",
-                background: "rgba(255,255,255,0.3)",
-                margin: "0 auto 12px",
-                display: "grid", placeItems: "center", fontSize: "40px",
-              }}>🏫</div>
-              <div style={{ color: "white", fontWeight: "bold", fontSize: "18px" }}>{t.appName}</div>
-              <div style={{ color: "rgba(255,255,255,0.8)", fontSize: "13px" }}>{t.subtitle}</div>
+        <div style={overlayStyle}>
+          <div style={{ ...sideMenuStyle, background: theme.surface }}>
+            <div style={{ padding: "24px 20px", borderBottom: `1px solid ${theme.border}` }}>
+              <div style={{ fontSize: "34px" }}>🏫</div>
+              <h2 style={{ margin: "8px 0 4px", color: theme.text }}>{t.appName || "Madrasati DZ"}</h2>
+              <p style={{ margin: 0, color: theme.muted, fontSize: "14px" }}>
+                كل يومك الدراسي في جيبك
+              </p>
             </div>
 
-            {/* Menu Items */}
-            <div style={{ padding: "12px 0", flex: 1 }}>
-              <div style={{ padding: "8px 16px", color: theme.muted, fontSize: "12px", fontWeight: "bold" }}>القائمة الرئيسية</div>
-              {menuItems.map((item) => (
-                <Link key={item.to} to={item.to}
-                  onClick={() => setMenuOpen(false)}
-                  style={{
-                    display: "flex", alignItems: "center", gap: "14px",
-                    padding: "14px 20px", textDecoration: "none",
-                    color: location.pathname === item.to ? theme.primary : theme.text,
-                    background: location.pathname === item.to ? `${theme.primary}15` : "transparent",
-                    borderRight: location.pathname === item.to ? `4px solid ${theme.primary}` : "4px solid transparent",
-                    fontSize: "16px",
-                  }}>
-                  <div style={{
-                    width: "40px", height: "40px", borderRadius: "12px",
-                    background: `${theme.primary}20`,
-                    display: "grid", placeItems: "center", fontSize: "20px",
-                  }}>{item.icon}</div>
-                  <span style={{ fontWeight: location.pathname === item.to ? "bold" : "normal" }}>{item.label}</span>
-                  <span style={{ marginRight: "auto", color: theme.muted }}>‹</span>
-                </Link>
-              ))}
-
-              
-              {/* Language Selector */}
-              <div style={{ padding: "16px 20px", borderTop: `1px solid ${theme.border}`, marginTop: "8px" }}>
-                <div style={{ color: theme.muted, fontSize: "12px", fontWeight: "bold", marginBottom: "12px" }}>
-                  {t.chooseLanguage}
-                </div>
-                <div style={{ display: "flex", gap: "8px" }}>
-                  {languageOptions.map((lang) => (
-                    <button
-                      key={lang.key}
-                      onClick={() => setLanguage(lang.key)}
+            <div style={{ padding: "14px" }}>
+              {mainItems.map((item) => {
+                const active = location.pathname === item.to;
+                return (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    onClick={() => setMenuOpen(false)}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <div
                       style={{
-                        flex: 1,
-                        padding: "10px 4px",
-                        borderRadius: "12px",
-                        border: language === lang.key ? `2px solid ${theme.primary}` : `1px solid ${theme.border}`,
-                        background: language === lang.key ? `${theme.primary}25` : theme.surface2,
-                        color: theme.text,
-                        cursor: "pointer",
-                        fontSize: "11px",
-                        textAlign: "center",
+                        ...menuRowStyle,
+                        background: active ? theme.accent : theme.surface,
+                        border: `1px solid ${theme.border}`,
                       }}
                     >
-                      <div style={{ fontSize: "20px" }}>{lang.icon}</div>
-                      {lang.label}
-                    </button>
-                  ))}
-                </div>
+                      <div style={{ ...menuIconStyle, color: theme.icon || theme.primary }}>
+                        {item.icon}
+                      </div>
+
+                      <strong style={{ color: theme.text, flex: 1 }}>{item.label}</strong>
+
+                      <div style={{ ...roundArrowStyle(theme), width: 32, height: 32, fontSize: 20 }}>
+                        ›
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+
+            <div style={{ padding: "14px", borderTop: `1px solid ${theme.border}` }}>
+              <small style={{ color: theme.muted }}>اللغة</small>
+              <div style={smallGridStyle}>
+                {languageOptions.map((item) => (
+                  <button
+                    key={item.key}
+                    onClick={() => setLanguage(item.key)}
+                    style={{
+                      ...smallButtonStyle(theme),
+                      background: language === item.key ? theme.primary : theme.surface2,
+                      color: language === item.key ? theme.buttonText : theme.text,
+                    }}
+                  >
+                    {item.label}
+                  </button>
+                ))}
               </div>
 
-              {/* Theme Selector */}
-              <div style={{ padding: "16px 20px", borderTop: `1px solid ${theme.border}`, marginTop: "8px" }}>
-                <div style={{ color: theme.muted, fontSize: "12px", fontWeight: "bold", marginBottom: "12px" }}>الثيم</div>
-                <div style={{ display: "flex", gap: "8px" }}>
-                  {themeOptions.map((t) => (
-                    <button key={t.key} onClick={() => setThemeName(t.key)}
-                      style={{
-                        flex: 1, padding: "10px 4px",
-                        borderRadius: "12px",
-                        border: `2px solid ${theme.primary}`,
-                        background: theme.surface2,
-                        color: theme.text, cursor: "pointer",
-                        fontSize: "11px", textAlign: "center",
-                      }}>
-                      <div style={{ fontSize: "20px" }}>{t.icon}</div>
-                      {t.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div style={{ padding: "12px 20px", color: theme.muted, fontSize: "12px", textAlign: "center" }}>
-                {t.version} 1.0.0
+              <small style={{ color: theme.muted }}>الثيم</small>
+              <div style={smallGridStyle}>
+                {themeOptions.map((item) => (
+                  <button
+                    key={item.key}
+                    onClick={() => setThemeName(item.key)}
+                    style={smallButtonStyle(theme)}
+                  >
+                    {item.label}
+                  </button>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Overlay */}
-          <div style={{ flex: 1, background: "rgba(0,0,0,0.5)" }} onClick={() => setMenuOpen(false)} />
+          <div style={overlayCloseStyle} onClick={() => setMenuOpen(false)} />
         </div>
       )}
 
-      {/* Header */}
-      <header style={{
-        position: "sticky", top: 0, zIndex: 10,
-        background: theme.headerBg,
-        padding: "14px 16px",
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
-      }}>
-        <button onClick={() => setMenuOpen(true)} style={{
-          background: "rgba(255,255,255,0.2)", border: "none",
-          borderRadius: "10px", width: "40px", height: "40px",
-          color: theme.headerText, fontSize: "20px", cursor: "pointer",
-          display: "grid", placeItems: "center",
-        }}>☰</button>
-
-        <Link to="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "8px" }}>
-          <div style={{
-            width: "40px", height: "40px", borderRadius: "12px",
-            background: "rgba(255,255,255,0.2)",
-            display: "grid", placeItems: "center", fontSize: "22px",
-          }}>🏫</div>
-          <strong style={{ color: theme.headerText, fontSize: "18px" }}>{t.appName}</strong>
+      <header
+        style={{
+          ...headerStyle,
+          background: theme.headerBg,
+          borderBottom: `1px solid ${theme.border}`,
+        }}
+      >
+        <Link to="/notifications" style={headerIconButton(theme)}>
+          🔔
         </Link>
 
-        <Link to="/notifications" style={{
-          background: "rgba(255,255,255,0.2)", border: "none",
-          borderRadius: "10px", width: "40px", height: "40px",
-          color: theme.headerText, fontSize: "20px",
-          display: "grid", placeItems: "center", textDecoration: "none",
-        }}>🔔</Link>
+        <Link to="/" style={logoStyle(theme)}>
+          <strong>{t.appName || "Madrasati DZ"}</strong>
+          <span style={{ fontSize: "24px" }}>🏫</span>
+        </Link>
+
+        <button onClick={() => setMenuOpen(true)} style={headerIconButton(theme)}>
+          ☰
+        </button>
       </header>
 
-      <main style={{ padding: "16px", maxWidth: "980px", margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
-        {children}
-      </main>
+      <main style={mainStyle}>{children}</main>
 
-      {/* Bottom Nav */}
       {showBottomNav && (
-        <nav style={{
-          position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 20,
-          background: theme.navBg,
-          borderTop: `1px solid ${theme.border}`,
-          display: "grid",
-          gridTemplateColumns: `repeat(${navLinks.length}, 1fr)`,
-          padding: "8px 0 12px",
-          boxShadow: "0 -4px 20px rgba(0,0,0,0.1)",
-        }}>
-          {navLinks.map((nav) => {
-            const active = location.pathname === nav.to;
+        <nav
+          style={{
+            ...bottomNavStyle,
+            background: theme.navBg,
+            borderTop: `1px solid ${theme.border}`,
+          }}
+        >
+          {mainItems.slice(0, 5).map((item) => {
+            const active = location.pathname === item.to;
             return (
-              <Link key={nav.to} to={nav.to} style={{
-                textDecoration: "none",
-                display: "flex", flexDirection: "column",
-                alignItems: "center", gap: "3px",
-              }}>
-                <div style={{
-                  width: "42px", height: "42px", borderRadius: "14px",
-                  background: active ? theme.primary : "transparent",
-                  display: "grid", placeItems: "center",
-                  fontSize: "22px",
-                  transition: "all 0.2s",
-                }}>{nav.icon}</div>
-                <span style={{
-                  fontSize: "0px",
-                  color: active ? theme.primary : theme.muted,
-                  fontWeight: active ? "bold" : "normal",
-                }}>{nav.label}</span>
+              <Link key={item.to} to={item.to} style={bottomNavItem(theme, active)}>
+                <div style={{ fontSize: "21px" }}>{item.icon}</div>
+                <span style={{ fontSize: "11px" }}>{item.label}</span>
               </Link>
             );
           })}
@@ -246,5 +191,136 @@ function Layout({ children, theme, setThemeName, toast }) {
     </div>
   );
 }
+
+const headerStyle = {
+  position: "sticky",
+  top: 0,
+  zIndex: 50,
+  height: "70px",
+  padding: "0 18px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  boxShadow: "0 4px 18px rgba(0,0,0,0.08)",
+};
+
+const headerIconButton = (theme) => ({
+  width: "46px",
+  height: "46px",
+  borderRadius: "15px",
+  border: `1px solid ${theme.border}`,
+  background: theme.surface,
+  color: theme.icon || theme.primary,
+  display: "grid",
+  placeItems: "center",
+  fontSize: "22px",
+  textDecoration: "none",
+});
+
+const logoStyle = (theme) => ({
+  color: theme.headerText,
+  textDecoration: "none",
+  display: "flex",
+  alignItems: "center",
+  gap: "10px",
+  fontSize: "22px",
+});
+
+const mainStyle = {
+  padding: "18px",
+  maxWidth: "980px",
+  margin: "0 auto",
+  boxSizing: "border-box",
+};
+
+const overlayStyle = {
+  position: "fixed",
+  inset: 0,
+  zIndex: 200,
+  display: "flex",
+};
+
+const sideMenuStyle = {
+  width: "82%",
+  maxWidth: "340px",
+  height: "100%",
+  overflowY: "auto",
+  boxShadow: "6px 0 30px rgba(0,0,0,0.25)",
+};
+
+const overlayCloseStyle = {
+  flex: 1,
+  background: "rgba(0,0,0,0.45)",
+};
+
+const menuRowStyle = {
+  minHeight: "62px",
+  borderRadius: "18px",
+  marginBottom: "11px",
+  padding: "10px 12px",
+  display: "flex",
+  alignItems: "center",
+  gap: "13px",
+};
+
+const menuIconStyle = {
+  width: "46px",
+  height: "46px",
+  borderRadius: "15px",
+  background: "rgba(255,255,255,0.10)",
+  display: "grid",
+  placeItems: "center",
+  fontSize: "23px",
+};
+
+const roundArrowStyle = (theme) => ({
+  width: "38px",
+  height: "38px",
+  borderRadius: "50%",
+  background: theme.primary,
+  color: theme.buttonText || "#fff",
+  display: "grid",
+  placeItems: "center",
+  fontWeight: "bold",
+  fontSize: "25px",
+});
+
+const smallGridStyle = {
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  gap: "8px",
+  margin: "8px 0 14px",
+};
+
+const smallButtonStyle = (theme) => ({
+  border: `1px solid ${theme.border}`,
+  borderRadius: "12px",
+  padding: "10px 4px",
+  background: theme.surface2,
+  color: theme.text,
+  fontWeight: "bold",
+});
+
+const bottomNavStyle = {
+  position: "fixed",
+  left: 0,
+  right: 0,
+  bottom: 0,
+  zIndex: 80,
+  display: "grid",
+  gridTemplateColumns: "repeat(5, 1fr)",
+  padding: "8px 6px 10px",
+  boxShadow: "0 -6px 24px rgba(0,0,0,0.12)",
+};
+
+const bottomNavItem = (theme, active) => ({
+  color: active ? theme.primary : theme.muted,
+  textDecoration: "none",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "3px",
+  fontWeight: active ? "bold" : "normal",
+});
 
 export default Layout;
