@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function AiTutorPage() {
   const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("");
+  const [chatMessages, setChatMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [grade, setGrade] = useState(1);
   const [subject, setSubject] = useState("رياضيات");
@@ -10,22 +10,11 @@ export default function AiTutorPage() {
   const [selectedChoice, setSelectedChoice] = useState("");
   const [exerciseResult, setExerciseResult] = useState("");
 
-  const askBackend = async (finalQuestion) => {
+  const askBackend = async (messages) => {
     const response = await fetch("https://madrasati-ai-api.onrender.com/api/ai-tutor", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        grade,
-        subject,
-        messages: [
-          {
-            role: "user",
-            content: finalQuestion
-          }
-        ]
-      })
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ grade, subject, messages })
     });
 
     const data = await response.json();
@@ -37,25 +26,50 @@ export default function AiTutorPage() {
     return data.choices?.[0]?.message?.content || data.reply || "";
   };
 
-  const sendToAI = async (finalQuestion) => {
+  const askAI = async () => {
+    if (!question.trim()) return;
+
+    const userMessage = {
+      role: "user",
+      content: question
+    };
+
+    const newMessages = [...chatMessages, userMessage];
+
+    setChatMessages(newMessages);
+    setQuestion("");
     setLoading(true);
-    setAnswer("");
     setAiExercise(null);
     setExerciseResult("");
 
     try {
-      const text = await askBackend(finalQuestion);
-      setAnswer(text || "لم يصل رد من الذكاء الاصطناعي");
+      const text = await askBackend(newMessages);
+
+      setChatMessages([
+        ...newMessages,
+        {
+          role: "assistant",
+          content: text || "لم يصل رد من الذكاء الاصطناعي"
+        }
+      ]);
     } catch (error) {
-      setAnswer("❌ خطأ في الاتصال: " + error.message);
+      setChatMessages([
+        ...newMessages,
+        {
+          role: "assistant",
+          content: "❌ خطأ في الاتصال: " + error.message
+        }
+      ]);
     } finally {
       setLoading(false);
     }
   };
 
-  const askAI = async () => {
-    if (!question.trim()) return;
-    await sendToAI(question);
+  const clearChat = () => {
+    setChatMessages([]);
+    setAiExercise(null);
+    setSelectedChoice("");
+    setExerciseResult("");
   };
 
   const generateExercise = async () => {
@@ -80,13 +94,12 @@ export default function AiTutorPage() {
 `;
 
     setLoading(true);
-    setAnswer("");
     setAiExercise(null);
     setSelectedChoice("");
     setExerciseResult("");
 
     try {
-      const text = await askBackend(prompt);
+      const text = await askBackend([{ role: "user", content: prompt }]);
       const clean = text.replace(/```json|```/g, "").trim();
       const parsed = JSON.parse(clean);
 
@@ -95,8 +108,17 @@ export default function AiTutorPage() {
       }
 
       setAiExercise(parsed);
+
+      setChatMessages((prev) => [
+        ...prev,
+        { role: "user", content: "🎲 ولّد تمرينًا تفاعليًا" },
+        { role: "assistant", content: "تم إنشاء تمرين تفاعلي جديد في الأسفل." }
+      ]);
     } catch (error) {
-      setAnswer("❌ تعذر إنشاء تمرين تفاعلي. جرّب مرة أخرى.\n\n" + error.message);
+      setChatMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: "❌ تعذر إنشاء تمرين تفاعلي. جرّب مرة أخرى.\n" + error.message }
+      ]);
     } finally {
       setLoading(false);
     }
@@ -121,7 +143,11 @@ export default function AiTutorPage() {
     const selected = normalizeAnswer(selectedChoice);
     const correct = normalizeAnswer(aiExercise.correctAnswer);
 
-    if (selected === correct || selectedChoice.includes(aiExercise.correctAnswer) || aiExercise.correctAnswer.includes(selectedChoice)) {
+    if (
+      selected === correct ||
+      selectedChoice.includes(aiExercise.correctAnswer) ||
+      aiExercise.correctAnswer.includes(selectedChoice)
+    ) {
       setExerciseResult("✅ إجابة صحيحة! أحسنت.");
     } else {
       setExerciseResult(`❌ إجابة غير صحيحة. الجواب الصحيح هو: ${aiExercise.correctAnswer}`);
@@ -152,6 +178,31 @@ export default function AiTutorPage() {
         <option value="عام">عام</option>
       </select>
 
+      <div style={chatBoxStyle}>
+        {chatMessages.length === 0 ? (
+          <p style={{ color: "#94a3b8" }}>ابدأ بطرح سؤال، وسيظهر سجل المحادثة هنا.</p>
+        ) : (
+          chatMessages.map((msg, index) => (
+            <div
+              key={index}
+              style={{
+                ...messageBubbleStyle,
+                background: msg.role === "user" ? "#2563eb" : "#13203a",
+                marginRight: msg.role === "user" ? "auto" : "0",
+                marginLeft: msg.role === "user" ? "0" : "auto"
+              }}
+            >
+              <strong>{msg.role === "user" ? "أنت" : "المعلّم الذكي"}</strong>
+              <div style={{ marginTop: "8px", whiteSpace: "pre-wrap", lineHeight: "1.8" }}>
+                {msg.content}
+              </div>
+            </div>
+          ))
+        )}
+
+        {loading && <p style={{ color: "#93c5fd" }}>جاري التفكير...</p>}
+      </div>
+
       <textarea
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
@@ -160,14 +211,18 @@ export default function AiTutorPage() {
       />
 
       <button onClick={askAI} disabled={loading} style={mainButtonStyle(loading)}>
-        {loading ? "جاري التفكير..." : "اسأل الذكاء الاصطناعي"}
+        {loading ? "جاري التفكير..." : "إرسال السؤال"}
       </button>
 
       <button onClick={generateExercise} disabled={loading} style={exerciseButtonStyle(loading)}>
         🎲 ولّد تمرينًا تفاعليًا
       </button>
 
-      {aiExercise ? (
+      <button onClick={clearChat} disabled={loading} style={clearButtonStyle}>
+        🗑️ مسح المحادثة
+      </button>
+
+      {aiExercise && (
         <div style={exerciseCardStyle}>
           <h2>📘 تمرين تفاعلي</h2>
           <p style={{ fontSize: "20px", lineHeight: "1.8" }}>{aiExercise.question}</p>
@@ -201,10 +256,6 @@ export default function AiTutorPage() {
             </div>
           )}
         </div>
-      ) : (
-        <div style={answerStyle}>
-          {answer || "سيظهر جواب المعلّم الذكي هنا..."}
-        </div>
       )}
     </div>
   );
@@ -223,14 +274,14 @@ const selectStyle = {
 
 const textareaStyle = {
   width: "100%",
-  minHeight: "120px",
+  minHeight: "100px",
   borderRadius: "15px",
   padding: "15px",
   fontSize: "16px",
   background: "#13203a",
   color: "white",
   border: "1px solid #334155",
-  marginTop: "10px"
+  marginTop: "15px"
 };
 
 const mainButtonStyle = (loading) => ({
@@ -256,6 +307,34 @@ const exerciseButtonStyle = (loading) => ({
   fontSize: "18px",
   fontWeight: "bold"
 });
+
+const clearButtonStyle = {
+  marginTop: "12px",
+  width: "100%",
+  padding: "14px",
+  borderRadius: "14px",
+  border: "none",
+  background: "#475569",
+  color: "white",
+  fontSize: "18px",
+  fontWeight: "bold"
+};
+
+const chatBoxStyle = {
+  marginTop: "20px",
+  background: "#020617",
+  border: "1px solid #334155",
+  borderRadius: "18px",
+  padding: "15px",
+  minHeight: "220px"
+};
+
+const messageBubbleStyle = {
+  maxWidth: "92%",
+  padding: "14px",
+  borderRadius: "16px",
+  marginBottom: "12px"
+};
 
 const answerStyle = {
   marginTop: "25px",
