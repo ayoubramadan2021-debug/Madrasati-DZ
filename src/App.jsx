@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import { themes } from "./theme";
 
@@ -12,6 +12,7 @@ import ExercisePage from "./pages/ExercisePage";
 import AuthPage from "./pages/AuthPage";
 import AdminPage from "./pages/AdminPage";
 import ProgressPage from "./pages/ProgressPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 import LeaderboardPage from "./pages/LeaderboardPage";
 import SearchPage from "./pages/SearchPage";
 import FavoritesPage from "./pages/FavoritesPage";
@@ -35,7 +36,7 @@ function App() {
   const theme = themes[themeName] || themes.dark;
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home theme={theme} setThemeName={setThemeName} />} />
         <Route path="/search" element={<SearchPage theme={theme} setThemeName={setThemeName} />} />
@@ -50,7 +51,7 @@ function App() {
         <Route path="/ai-tutor" element={<AiTutorPage theme={theme} setThemeName={setThemeName} />} />
         <Route path="/auth" element={<AuthPage theme={theme} setThemeName={setThemeName} />} />
         <Route path="/admin" element={<AdminPage theme={theme} setThemeName={setThemeName} />} />
-        <Route path="/progress" element={<ProgressPage theme={theme} setThemeName={setThemeName} />} />
+        <Route path="/progress" element={<ProtectedRoute><ProgressPage theme={theme} setThemeName={setThemeName} /></ProtectedRoute>} />
         <Route path="/leaderboard" element={<LeaderboardPage theme={theme} setThemeName={setThemeName} />} />
         <Route path="/grade/:id" element={<GradePage theme={theme} setThemeName={setThemeName} />} />
         <Route path="/grade/:gradeId/subject/:subject" element={<SubjectPage theme={theme} setThemeName={setThemeName} />} />
@@ -58,7 +59,7 @@ function App() {
         <Route path="/grade/:gradeId/subject/:subject/lesson/:lessonId" element={<LessonPage theme={theme} setThemeName={setThemeName} />} />
         <Route path="/grade/:gradeId/subject/:subject/exercise/:exerciseId" element={<ExercisePage theme={theme} setThemeName={setThemeName} />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
