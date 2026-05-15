@@ -10,7 +10,6 @@ import { useLanguage } from "../i18n/LanguageContext";
 
 function Home({ theme, setThemeName }) {
   const { t } = useLanguage();
-  const [search, setSearch] = useState("");
   const [user, setUser] = useState(null);
   const [fullName, setFullName] = useState("");
   const [onlineProgress, setOnlineProgress] = useState([]);
@@ -37,275 +36,264 @@ function Home({ theme, setThemeName }) {
     }
   }
 
-  const onlinePoints = onlineProgress.reduce((sum, i) => sum + Number(i.points || 0), 0);
-  const completedOnline = onlineProgress.filter((i) => i.completed).length;
-  const displayName = fullName || (user ? user.email.split("@")[0] : "");
+  const displayName = fullName || (user ? user.email.split("@")[0] : "MAX");
+  const points = onlineProgress.reduce((sum, item) => sum + Number(item.points || 0), 0);
+  const completed = onlineProgress.filter((item) => item.completed).length;
 
-  const menuItems = [
-    { to: "/grade/1", label: t.schoolYears || "الدروس", icon: "📚" },
-    { to: "/ai-tutor", label: t.aiTutor || "المعلم الذكي", icon: "🤖" },
-    { to: "/progress", label: t.progress || "التقدم", icon: "📊" },
-    { to: "/leaderboard", label: t.leaderboard || "الترتيب", icon: "🏆" },
-    { to: "/favorites", label: t.favorites || "المفضلة", icon: "⭐" },
-    { to: "/notifications", label: "الإشعارات", icon: "🔔" },
-    { to: "/parent-dashboard", label: "متابعة الأولياء", icon: "👨‍👩‍👧" },
-    { to: "/support", label: t.support || "الدعم", icon: "💬" },
+  const quickMenu = [
+    { to: "/grade/1", icon: "📚", label: "الدروس", color: theme.blue },
+    { to: "/ai-tutor", icon: "🎥", label: "المعلّم الذكي", color: theme.purple },
+    { to: "/progress", icon: "❤️", label: "التقدم", color: theme.pink },
+    { to: "/leaderboard", icon: "🏆", label: "الترتيب", color: theme.yellow },
+    { to: "/favorites", icon: "⭐", label: "المفضلة", color: theme.red },
+    { to: "/support", icon: "💬", label: "الدعم", color: theme.blue },
   ];
-
-  const filteredGrades = appData.grades.filter((g) => g.name.includes(search));
-  const filteredSubjects = appData.subjects.filter((s) => s.name.includes(search));
-  const filteredLessons = appData.subjects.flatMap((s) =>
-    s.lessons
-      .filter((l) => l.title.includes(search))
-      .map((l) => ({ ...l, subjectName: s.name, subjectSlug: s.slug }))
-  );
 
   return (
     <Layout theme={theme} setThemeName={setThemeName}>
-      <section style={heroStyle(theme)}>
-        <div>
+      <section style={heroCard(theme)}>
+        <div style={heroLeft(theme)}>
+          <div style={{ fontSize: "42px" }}>🧒</div>
+        </div>
+
+        <div style={{ flex: 1 }}>
           <div style={{ color: theme.muted, fontWeight: "bold" }}>
-            {user ? "مرحبًا بك 👋" : "مرحبًا في مدرستي DZ"}
+            مرحبًا
           </div>
 
-          <h1 style={{ margin: "8px 0", color: theme.text, fontSize: "28px" }}>
-            {user ? displayName : "كل يومك الدراسي في جيبك"}
+          <h1 style={{ margin: "4px 0", color: theme.text, fontSize: "28px" }}>
+            {displayName}
           </h1>
 
-          <p style={{ color: theme.muted, margin: 0, lineHeight: "1.7" }}>
-            دروس، تمارين، ذكاء اصطناعي، تقدم، وإشعارات في مكان واحد.
+          <p style={{ margin: 0, color: theme.muted, lineHeight: "1.6" }}>
+            كل يومك الدراسي في جيبك
           </p>
         </div>
-
-        {!user && (
-          <Link to="/auth" style={loginButton(theme)}>
-            تسجيل الدخول
-          </Link>
-        )}
       </section>
 
-      <div style={miniStatsStyle}>
-        <div style={miniStatCard(theme)}>
-          <strong>{onlinePoints}</strong>
-          <span>النقاط</span>
+      <section style={unitCard(theme)}>
+        <div style={unitIcon(theme)}>📋</div>
+
+        <div style={{ flex: 1 }}>
+          <strong style={{ fontSize: "14px", opacity: 0.8 }}>
+            UNIT 1
+          </strong>
+
+          <h2 style={{ margin: "6px 0 0", fontSize: "22px" }}>
+            ابدأ رحلتك التعليمية
+          </h2>
+        </div>
+      </section>
+
+      <section style={statsRow}>
+        <div style={statCard(theme, theme.blue)}>
+          <strong>{points}</strong>
+          <span>💎 نقاط</span>
         </div>
 
-        <div style={miniStatCard(theme)}>
-          <strong>{completedOnline}</strong>
-          <span>المكتملة</span>
+        <div style={statCard(theme, theme.green)}>
+          <strong>{completed}</strong>
+          <span>✅ مكتمل</span>
         </div>
+
+        <div style={statCard(theme, theme.red)}>
+          <strong>0</strong>
+          <span>🔥 سلسلة</span>
+        </div>
+      </section>
+
+      <h2 style={sectionTitle(theme)}>القائمة</h2>
+
+      <div style={menuList}>
+        {quickMenu.map((item) => (
+          <Link key={item.to} to={item.to} style={{ textDecoration: "none" }}>
+            <div style={menuItem(theme)}>
+              <div style={iconBox(item.color)}>
+                {item.icon}
+              </div>
+
+              <strong style={{ color: theme.text, fontSize: "18px" }}>
+                {item.label}
+              </strong>
+
+              <div style={arrowCircle(theme)}>
+                →
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
 
-      <input
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        placeholder="ابحث عن درس أو مادة..."
-        style={searchStyle(theme)}
-      />
+      <h2 style={sectionTitle(theme)}>السنوات الدراسية</h2>
 
-      {!search ? (
-        <>
-          <h2 style={sectionTitle(theme)}>القائمة</h2>
-
-          <div style={menuListStyle}>
-            {menuItems.map((item) => (
-              <Link key={item.to} to={item.to} style={{ textDecoration: "none" }}>
-                <div style={menuItemStyle(theme)}>
-                  <div style={iconBoxStyle(theme)}>{item.icon}</div>
-
-                  <span style={{ color: theme.text, fontWeight: "bold", fontSize: "17px" }}>
-                    {item.label}
-                  </span>
-
-                  <div style={arrowButtonStyle(theme)}>›</div>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <h2 style={sectionTitle(theme)}>السنوات الدراسية</h2>
-
-          <div style={menuListStyle}>
-            {appData.grades.map((grade) => (
-              <Link key={grade.id} to={"/grade/" + grade.id} style={{ textDecoration: "none" }}>
-                <div style={menuItemStyle(theme)}>
-                  <div style={iconBoxStyle(theme)}>🎒</div>
-                  <span style={{ color: theme.text, fontWeight: "bold", fontSize: "17px" }}>
-                    {grade.name}
-                  </span>
-                  <div style={arrowButtonStyle(theme)}>›</div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </>
-      ) : (
-        <div>
-          <h2 style={sectionTitle(theme)}>نتائج البحث</h2>
-
-          {filteredGrades.length === 0 &&
-            filteredSubjects.length === 0 &&
-            filteredLessons.length === 0 && (
-              <div style={emptyStyle(theme)}>لا توجد نتائج مطابقة.</div>
-            )}
-
-          {filteredGrades.map((grade) => (
-            <Link key={grade.id} to={"/grade/" + grade.id} style={{ textDecoration: "none" }}>
-              <div style={menuItemStyle(theme)}>
-                <div style={iconBoxStyle(theme)}>🎒</div>
-                <span style={{ color: theme.text, fontWeight: "bold" }}>{grade.name}</span>
-                <div style={arrowButtonStyle(theme)}>›</div>
+      <div style={lessonPath}>
+        {appData.grades.map((grade, index) => (
+          <Link key={grade.id} to={"/grade/" + grade.id} style={{ textDecoration: "none" }}>
+            <div style={pathNode(theme, index)}>
+              <div style={nodeCircle(theme, index)}>
+                {index + 1}
               </div>
-            </Link>
-          ))}
 
-          {filteredSubjects.map((subject) => (
-            <Link
-              key={subject.slug}
-              to={"/grade/1/subject/" + subject.slug}
-              style={{ textDecoration: "none" }}
-            >
-              <div style={menuItemStyle(theme)}>
-                <div style={iconBoxStyle(theme)}>{subject.icon}</div>
-                <span style={{ color: theme.text, fontWeight: "bold" }}>{subject.name}</span>
-                <div style={arrowButtonStyle(theme)}>›</div>
-              </div>
-            </Link>
-          ))}
+              <div>
+                <strong style={{ color: theme.text, fontSize: "18px" }}>
+                  {grade.name}
+                </strong>
 
-          {filteredLessons.map((lesson) => (
-            <Link
-              key={lesson.subjectSlug + "-" + lesson.id}
-              to={"/grade/1/subject/" + lesson.subjectSlug + "/lesson/" + lesson.id}
-              style={{ textDecoration: "none" }}
-            >
-              <div style={menuItemStyle(theme)}>
-                <div style={iconBoxStyle(theme)}>📖</div>
-                <div style={{ flex: 1 }}>
-                  <strong style={{ color: theme.text }}>{lesson.title}</strong>
-                  <div style={{ color: theme.muted, fontSize: "13px", marginTop: "4px" }}>
-                    {lesson.subjectName}
-                  </div>
-                </div>
-                <div style={arrowButtonStyle(theme)}>›</div>
+                <p style={{ margin: "4px 0 0", color: theme.muted }}>
+                  دروس وتمارين هذه السنة
+                </p>
               </div>
-            </Link>
-          ))}
-        </div>
-      )}
+            </div>
+          </Link>
+        ))}
+      </div>
     </Layout>
   );
 }
 
-const heroStyle = (theme) => ({
+const heroCard = (theme) => ({
   background: theme.surface,
-  border: `1px solid ${theme.border}`,
+  border: `2px solid ${theme.border}`,
   borderRadius: common.radius.large,
-  padding: "24px",
-  marginBottom: "18px",
+  padding: "18px",
+  display: "flex",
+  gap: "16px",
+  alignItems: "center",
   boxShadow: theme.cardShadow,
-});
-
-const loginButton = (theme) => ({
-  display: "block",
-  marginTop: "18px",
-  background: theme.primary,
-  color: theme.buttonText || "white",
-  padding: "13px 18px",
-  borderRadius: common.radius.full,
-  textDecoration: "none",
-  textAlign: "center",
-  fontWeight: "bold",
-});
-
-const miniStatsStyle = {
-  display: "grid",
-  gridTemplateColumns: "repeat(2, 1fr)",
-  gap: "12px",
   marginBottom: "18px",
+});
+
+const heroLeft = (theme) => ({
+  width: "76px",
+  height: "76px",
+  borderRadius: "50%",
+  background: theme.accent,
+  display: "grid",
+  placeItems: "center",
+});
+
+const unitCard = (theme) => ({
+  background: theme.pink || "#ff86d0",
+  color: "white",
+  borderRadius: "22px",
+  padding: "20px",
+  display: "flex",
+  alignItems: "center",
+  gap: "16px",
+  boxShadow: "0 6px 0 rgba(0,0,0,0.18)",
+  marginBottom: "18px",
+});
+
+const unitIcon = () => ({
+  width: "58px",
+  height: "58px",
+  borderRadius: "18px",
+  background: "rgba(255,255,255,0.22)",
+  display: "grid",
+  placeItems: "center",
+  fontSize: "28px",
+});
+
+const statsRow = {
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  gap: "10px",
+  marginBottom: "22px",
 };
 
-const miniStatCard = (theme) => ({
+const statCard = (theme, color) => ({
   background: theme.surface,
-  border: `1px solid ${theme.border}`,
+  border: `2px solid ${theme.border}`,
   borderRadius: common.radius.medium,
-  padding: "16px",
+  padding: "14px 8px",
+  textAlign: "center",
   boxShadow: theme.cardShadow,
+  color,
   display: "flex",
   flexDirection: "column",
-  gap: "4px",
-  textAlign: "center",
-  color: theme.text,
-});
-
-const searchStyle = (theme) => ({
-  width: "100%",
-  padding: "15px 18px",
-  borderRadius: common.radius.full,
-  border: `1px solid ${theme.border}`,
-  background: theme.surface,
-  color: theme.text,
-  fontSize: "16px",
-  outline: "none",
-  boxSizing: "border-box",
-  marginBottom: "22px",
+  gap: "5px",
 });
 
 const sectionTitle = (theme) => ({
   color: theme.text,
-  margin: "20px 0 12px",
-  fontSize: "22px",
+  fontSize: "23px",
+  margin: "22px 0 12px",
 });
 
-const menuListStyle = {
+const menuList = {
   display: "flex",
   flexDirection: "column",
   gap: "12px",
 };
 
-const menuItemStyle = (theme) => ({
+const menuItem = (theme) => ({
   background: theme.surface,
-  border: `1px solid ${theme.border}`,
-  borderRadius: common.radius.large,
-  padding: "14px",
-  minHeight: "62px",
+  border: `2px solid ${theme.border}`,
+  borderRadius: "22px",
+  minHeight: "68px",
+  padding: "12px 14px",
   display: "flex",
   alignItems: "center",
   gap: "14px",
   boxShadow: theme.cardShadow,
 });
 
-const iconBoxStyle = (theme) => ({
-  width: "52px",
-  height: "52px",
-  borderRadius: common.radius.medium,
-  background: theme.accent,
-  color: theme.icon || theme.primary,
+const iconBox = (color) => ({
+  width: "54px",
+  height: "54px",
+  borderRadius: "16px",
+  background: `${color}22`,
   display: "grid",
   placeItems: "center",
-  fontSize: "24px",
-  flexShrink: 0,
+  fontSize: "27px",
 });
 
-const arrowButtonStyle = (theme) => ({
+const arrowCircle = (theme) => ({
   marginInlineStart: "auto",
   width: "38px",
   height: "38px",
   borderRadius: "50%",
-  background: theme.primary,
-  color: theme.buttonText || "#fff",
+  background: theme.text,
+  color: theme.bg,
   display: "grid",
   placeItems: "center",
-  fontSize: "26px",
   fontWeight: "bold",
 });
 
-const emptyStyle = (theme) => ({
+const lessonPath = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "16px",
+  paddingBottom: "20px",
+};
+
+const pathNode = (theme, index) => ({
   background: theme.surface,
-  color: theme.muted,
-  border: `1px solid ${theme.border}`,
-  borderRadius: common.radius.medium,
-  padding: "18px",
+  border: `2px solid ${theme.border}`,
+  borderRadius: "24px",
+  padding: "16px",
+  display: "flex",
+  alignItems: "center",
+  gap: "16px",
+  boxShadow: theme.cardShadow,
+  transform: index % 2 === 0 ? "translateX(0)" : "translateX(18px)",
 });
+
+const nodeCircle = (theme, index) => {
+  const colors = [theme.green, theme.blue, theme.pink, theme.yellow, theme.purple];
+
+  return {
+    width: "62px",
+    height: "62px",
+    borderRadius: "50%",
+    background: colors[index % colors.length],
+    color: "white",
+    display: "grid",
+    placeItems: "center",
+    fontSize: "24px",
+    fontWeight: "bold",
+    boxShadow: "0 5px 0 rgba(0,0,0,0.18)",
+  };
+};
 
 export default Home;
