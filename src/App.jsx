@@ -51,7 +51,7 @@ function App() {
         <Route path="/ai-tutor" element={<AiTutorPage theme={theme} setThemeName={setThemeName} />} />
         <Route path="/auth" element={<AuthPage theme={theme} setThemeName={setThemeName} />} />
         <Route path="/admin" element={<AdminPage theme={theme} setThemeName={setThemeName} />} />
-        <Route path="/progress" element={<ProtectedRoute><ProgressPage theme={theme} setThemeName={setThemeName} /></ProtectedRoute>} />
+        <Route path="/progress" element={<ProgressPage theme={theme} setThemeName={setThemeName} />} />
         <Route path="/leaderboard" element={<LeaderboardPage theme={theme} setThemeName={setThemeName} />} />
         <Route path="/grade/:id" element={<GradePage theme={theme} setThemeName={setThemeName} />} />
         <Route path="/grade/:gradeId/subject/:subject" element={<SubjectPage theme={theme} setThemeName={setThemeName} />} />
