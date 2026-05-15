@@ -36,29 +36,27 @@ function Home({ theme, setThemeName }) {
     }
   }
 
-  const displayName = fullName || (user ? user.email.split("@")[0] : "MAX");
+  const displayName = fullName || (user ? user.email.split("@")[0] : "تلميذ");
   const points = onlineProgress.reduce((sum, item) => sum + Number(item.points || 0), 0);
   const completed = onlineProgress.filter((item) => item.completed).length;
 
   const quickMenu = [
-    { to: "/grade/1", icon: "📚", label: "الدروس", color: theme.blue },
-    { to: "/ai-tutor", icon: "🎥", label: "المعلّم الذكي", color: theme.purple },
-    { to: "/progress", icon: "❤️", label: "التقدم", color: theme.pink },
-    { to: "/leaderboard", icon: "🏆", label: "الترتيب", color: theme.yellow },
-    { to: "/favorites", icon: "⭐", label: "المفضلة", color: theme.red },
-    { to: "/support", icon: "💬", label: "الدعم", color: theme.blue },
+    { to: "/grade/1", icon: "📘", label: t.lessons || "الدروس" },
+    { to: "/ai-tutor", icon: "🤖", label: t.aiTutor || "المعلّم الذكي" },
+    { to: "/progress", icon: "📊", label: t.progress || "التقدم" },
+    { to: "/leaderboard", icon: "🏆", label: t.leaderboard || "الترتيب" },
+    { to: "/favorites", icon: "⭐", label: t.favorites || "المفضلة" },
+    { to: "/support", icon: "💬", label: t.support || "الدعم" },
   ];
 
   return (
     <Layout theme={theme} setThemeName={setThemeName}>
       <section style={heroCard(theme)}>
-        <div style={heroLeft(theme)}>
-          <div style={{ fontSize: "42px" }}>🧒</div>
-        </div>
+        <div style={avatarBox(theme)}>👦</div>
 
         <div style={{ flex: 1 }}>
           <div style={{ color: theme.muted, fontWeight: "bold" }}>
-            مرحبًا
+            {t.welcome || "مرحبًا"}
           </div>
 
           <h1 style={{ margin: "4px 0", color: theme.text, fontSize: "28px" }}>
@@ -66,7 +64,7 @@ function Home({ theme, setThemeName }) {
           </h1>
 
           <p style={{ margin: 0, color: theme.muted, lineHeight: "1.6" }}>
-            كل يومك الدراسي في جيبك
+            {t.pocketSchool || "كل يومك الدراسي في جيبك"}
           </p>
         </div>
       </section>
@@ -75,64 +73,53 @@ function Home({ theme, setThemeName }) {
         <div style={unitIcon(theme)}>📋</div>
 
         <div style={{ flex: 1 }}>
-          <strong style={{ fontSize: "14px", opacity: 0.8 }}>
-            UNIT 1
+          <strong style={{ fontSize: "14px", opacity: 0.85 }}>
+            {t.unit1 || "الوحدة 1"}
           </strong>
 
           <h2 style={{ margin: "6px 0 0", fontSize: "22px" }}>
-            ابدأ رحلتك التعليمية
+            {t.startLearning || "ابدأ رحلتك التعليمية"}
           </h2>
         </div>
       </section>
 
       <section style={statsRow}>
-        <div style={statCard(theme, theme.blue)}>
+        <div style={statCard(theme)}>
           <strong>{points}</strong>
-          <span>💎 نقاط</span>
+          <span>{t.points || "النقاط"}</span>
         </div>
 
-        <div style={statCard(theme, theme.green)}>
+        <div style={statCard(theme)}>
           <strong>{completed}</strong>
-          <span>✅ مكتمل</span>
-        </div>
-
-        <div style={statCard(theme, theme.red)}>
-          <strong>0</strong>
-          <span>🔥 سلسلة</span>
+          <span>{t.completed || "مكتمل"}</span>
         </div>
       </section>
 
-      <h2 style={sectionTitle(theme)}>القائمة</h2>
+      <h2 style={sectionTitle(theme)}>{t.quickMenu || "القائمة"}</h2>
 
       <div style={menuList}>
         {quickMenu.map((item) => (
           <Link key={item.to} to={item.to} style={{ textDecoration: "none" }}>
             <div style={menuItem(theme)}>
-              <div style={iconBox(item.color)}>
-                {item.icon}
-              </div>
+              <div style={iconBox(theme)}>{item.icon}</div>
 
               <strong style={{ color: theme.text, fontSize: "18px" }}>
                 {item.label}
               </strong>
 
-              <div style={arrowCircle(theme)}>
-                →
-              </div>
+              <div style={arrowCircle(theme)}>→</div>
             </div>
           </Link>
         ))}
       </div>
 
-      <h2 style={sectionTitle(theme)}>السنوات الدراسية</h2>
+      <h2 style={sectionTitle(theme)}>{t.schoolYears || "السنوات الدراسية"}</h2>
 
       <div style={lessonPath}>
         {appData.grades.map((grade, index) => (
           <Link key={grade.id} to={"/grade/" + grade.id} style={{ textDecoration: "none" }}>
-            <div style={pathNode(theme, index)}>
-              <div style={nodeCircle(theme, index)}>
-                {index + 1}
-              </div>
+            <div style={pathNode(theme)}>
+              <div style={nodeCircle(theme)}>{index + 1}</div>
 
               <div>
                 <strong style={{ color: theme.text, fontSize: "18px" }}>
@@ -140,7 +127,7 @@ function Home({ theme, setThemeName }) {
                 </strong>
 
                 <p style={{ margin: "4px 0 0", color: theme.muted }}>
-                  دروس وتمارين هذه السنة
+                  {t.gradeDescription || "دروس وتمارين هذه السنة"}
                 </p>
               </div>
             </div>
@@ -153,7 +140,7 @@ function Home({ theme, setThemeName }) {
 
 const heroCard = (theme) => ({
   background: theme.surface,
-  border: `2px solid ${theme.border}`,
+  border: `1px solid ${theme.border}`,
   borderRadius: common.radius.large,
   padding: "18px",
   display: "flex",
@@ -163,24 +150,25 @@ const heroCard = (theme) => ({
   marginBottom: "18px",
 });
 
-const heroLeft = (theme) => ({
+const avatarBox = (theme) => ({
   width: "76px",
   height: "76px",
   borderRadius: "50%",
-  background: theme.accent,
+  background: theme.surface2,
   display: "grid",
   placeItems: "center",
+  fontSize: "42px",
 });
 
 const unitCard = (theme) => ({
-  background: theme.pink || "#ff86d0",
+  background: theme.primary,
   color: "white",
   borderRadius: "22px",
   padding: "20px",
   display: "flex",
   alignItems: "center",
   gap: "16px",
-  boxShadow: "0 6px 0 rgba(0,0,0,0.18)",
+  boxShadow: theme.cardShadow,
   marginBottom: "18px",
 });
 
@@ -196,19 +184,19 @@ const unitIcon = () => ({
 
 const statsRow = {
   display: "grid",
-  gridTemplateColumns: "repeat(3, 1fr)",
+  gridTemplateColumns: "repeat(2, 1fr)",
   gap: "10px",
   marginBottom: "22px",
 };
 
-const statCard = (theme, color) => ({
+const statCard = (theme) => ({
   background: theme.surface,
-  border: `2px solid ${theme.border}`,
+  border: `1px solid ${theme.border}`,
   borderRadius: common.radius.medium,
-  padding: "14px 8px",
+  padding: "16px 8px",
   textAlign: "center",
   boxShadow: theme.cardShadow,
-  color,
+  color: theme.text,
   display: "flex",
   flexDirection: "column",
   gap: "5px",
@@ -228,7 +216,7 @@ const menuList = {
 
 const menuItem = (theme) => ({
   background: theme.surface,
-  border: `2px solid ${theme.border}`,
+  border: `1px solid ${theme.border}`,
   borderRadius: "22px",
   minHeight: "68px",
   padding: "12px 14px",
@@ -238,14 +226,14 @@ const menuItem = (theme) => ({
   boxShadow: theme.cardShadow,
 });
 
-const iconBox = (color) => ({
+const iconBox = (theme) => ({
   width: "54px",
   height: "54px",
   borderRadius: "16px",
-  background: `${color}22`,
+  background: theme.surface2,
   display: "grid",
   placeItems: "center",
-  fontSize: "27px",
+  fontSize: "25px",
 });
 
 const arrowCircle = (theme) => ({
@@ -253,8 +241,8 @@ const arrowCircle = (theme) => ({
   width: "38px",
   height: "38px",
   borderRadius: "50%",
-  background: theme.text,
-  color: theme.bg,
+  background: theme.primary,
+  color: "white",
   display: "grid",
   placeItems: "center",
   fontWeight: "bold",
@@ -263,37 +251,31 @@ const arrowCircle = (theme) => ({
 const lessonPath = {
   display: "flex",
   flexDirection: "column",
-  gap: "16px",
+  gap: "14px",
   paddingBottom: "20px",
 };
 
-const pathNode = (theme, index) => ({
+const pathNode = (theme) => ({
   background: theme.surface,
-  border: `2px solid ${theme.border}`,
-  borderRadius: "24px",
+  border: `1px solid ${theme.border}`,
+  borderRadius: "22px",
   padding: "16px",
   display: "flex",
   alignItems: "center",
   gap: "16px",
   boxShadow: theme.cardShadow,
-  transform: index % 2 === 0 ? "translateX(0)" : "translateX(18px)",
 });
 
-const nodeCircle = (theme, index) => {
-  const colors = [theme.green, theme.blue, theme.pink, theme.yellow, theme.purple];
-
-  return {
-    width: "62px",
-    height: "62px",
-    borderRadius: "50%",
-    background: colors[index % colors.length],
-    color: "white",
-    display: "grid",
-    placeItems: "center",
-    fontSize: "24px",
-    fontWeight: "bold",
-    boxShadow: "0 5px 0 rgba(0,0,0,0.18)",
-  };
-};
+const nodeCircle = (theme) => ({
+  width: "56px",
+  height: "56px",
+  borderRadius: "50%",
+  background: theme.primary,
+  color: "white",
+  display: "grid",
+  placeItems: "center",
+  fontSize: "22px",
+  fontWeight: "bold",
+});
 
 export default Home;
