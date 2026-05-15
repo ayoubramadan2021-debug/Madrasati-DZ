@@ -1,272 +1,158 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
 import Layout from "../components/Layout";
-import { common } from "../theme";
+import { getCurrentUser } from "../services/sessionService";
+import { getUserProgress } from "../services/progressService";
 
-import { getFavorites } from "../services/favoriteService";
-
-import { supabase } from "../lib/supabaseClient";
-import { useAuth } from "../context/AuthContext";
-
-function ProgressPage({ theme, setThemeName }) {
-  const { user, loadingAuth } = useAuth();
+export default function ProgressPage({ theme, setThemeName }) {
+  const [user, setUser] = useState(null);
+  const [progress, setProgress] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const [progress, setProgress] = useState([]);
-  const [favorites, setFavorites] = useState([]);
-
-  const [stats, setStats] = useState({
-    totalPoints: 0,
-    lessons: 0,
-    exercises: 0,
-    quizzes: 0,
-  });
-
   useEffect(() => {
-    if (!loadingAuth) loadDashboard();
-  }, [loadingAuth, user]);
+    loadProgress();
+  }, []);
 
-  async function loadDashboard() {
-    setLoading(true);
+  async function loadProgress() {
+    const currentUser = await getCurrentUser();
 
-    if (!user) {
-      setProgress([]);
-      setFavorites([]);
-      setStats({
-        totalPoints: 0,
-        lessons: 0,
-        exercises: 0,
-        quizzes: 0,
-      });
+    // لا ترسل المستخدم لصفحة Auth
+    // فقط اعرض رسالة بسيطة
+    if (!currentUser) {
       setLoading(false);
       return;
     }
 
-    const favs = await getFavorites(user.id);
-    setFavorites(favs);
+    setUser(currentUser);
 
-    const { data } = await supabase
-      .from("progress")
-      .select("*")
-      .eq("profile_id", user.id);
-
-    const progressData = data || [];
-
-    setProgress(progressData);
-
-    const lessons = progressData.filter((p) =>
-      String(p.lesson_id || "").includes("lesson")
-    ).length;
-
-    const exercises = progressData.filter((p) =>
-      String(p.lesson_id || "").includes("exercise")
-    ).length;
-
-    const quizzes = progressData.filter((p) =>
-      String(p.lesson_id || "").includes("quiz")
-    ).length;
-
-    const totalPoints = progressData.reduce(
-      (sum, item) => sum + Number(item.points || 0),
-      0
-    );
-
-    setStats({
-      totalPoints,
-      lessons,
-      exercises,
-      quizzes,
-    });
+    const data = await getUserProgress(currentUser.id);
+    setProgress(data || []);
 
     setLoading(false);
   }
 
-  const progressPercent = Math.min(100, stats.totalPoints);
+  const totalPoints = progress.reduce(
+    (sum, item) => sum + Number(item.points || 0),
+    0
+  );
+
+  const completedLessons = progress.filter(
+    (item) => item.completed
+  ).length;
 
   return (
     <Layout theme={theme} setThemeName={setThemeName}>
-      <section style={heroStyle(theme)}>
-        <div style={{ fontSize: "60px" }}>📊</div>
-
-        <h1 style={{ color: theme.text }}>
-          لوحة تقدم التلميذ
+      <div
+        style={{
+          minHeight: "100vh",
+          color: theme.text,
+        }}
+      >
+        <h1
+          style={{
+            fontSize: "34px",
+            marginBottom: "20px",
+            fontWeight: "bold",
+          }}
+        >
+          📊 التقدم
         </h1>
 
-        <p style={{ color: theme.muted }}>
-          تتبع تقدمك داخل المنصة
-        </p>
-      </section>
+        {!user && (
+          <div
+            style={{
+              background: theme.surface,
+              borderRadius: "24px",
+              padding: "30px",
+              textAlign: "center",
+              border: `1px solid ${theme.border}`,
+            }}
+          >
+            <h2>قم بتسجيل الدخول لمتابعة تقدمك</h2>
+          </div>
+        )}
 
-      {loadingAuth || loading ? (
-        <div style={cardStyle(theme)}>
-          جاري تحميل لوحة التقدم...
-        </div>
-      ) : !user ? (
-        <div style={cardStyle(theme)}>
-          🔐 سجّل الدخول لعرض لوحة التقدم.
-        </div>
-      ) : (
-        <>
-          <div style={cardStyle(theme)}>
-            <h2 style={{ color: theme.text }}>
-              👋 مرحبًا
-            </h2>
-
-            <p style={{ color: theme.muted }}>
-              {user.email}
-            </p>
-
-            <div style={progressContainer(theme)}>
-              <div
-                style={{
-                  ...progressBar(theme),
-                  width: `${progressPercent}%`,
-                }}
-              />
-            </div>
-
-            <p
+        {user && (
+          <>
+            <div
               style={{
-                textAlign: "center",
-                marginTop: "10px",
-                color: theme.text,
-                fontWeight: "bold",
+                display: "grid",
+                gridTemplateColumns: "repeat(2,1fr)",
+                gap: "15px",
+                marginBottom: "25px",
               }}
             >
-              مستوى التقدم: {progressPercent}%
-            </p>
-          </div>
+              <div
+                style={{
+                  background: theme.surface,
+                  padding: "25px",
+                  borderRadius: "24px",
+                  textAlign: "center",
+                  border: `1px solid ${theme.border}`,
+                }}
+              >
+                <div style={{ fontSize: "40px" }}>💎</div>
 
-          <div style={gridStyle}>
-            <div style={statCard(theme)}>
-              <div style={{ fontSize: "42px" }}>⭐</div>
-              <strong>{stats.totalPoints}</strong>
-              <p>النقاط</p>
+                <h2>{totalPoints}</h2>
+
+                <p>النقاط</p>
+              </div>
+
+              <div
+                style={{
+                  background: theme.surface,
+                  padding: "25px",
+                  borderRadius: "24px",
+                  textAlign: "center",
+                  border: `1px solid ${theme.border}`,
+                }}
+              >
+                <div style={{ fontSize: "40px" }}>✅</div>
+
+                <h2>{completedLessons}</h2>
+
+                <p>المكتمل</p>
+              </div>
             </div>
 
-            <div style={statCard(theme)}>
-              <div style={{ fontSize: "42px" }}>📖</div>
-              <strong>{stats.lessons}</strong>
-              <p>الدروس</p>
-            </div>
+            <div
+              style={{
+                background: theme.surface,
+                borderRadius: "24px",
+                padding: "20px",
+                border: `1px solid ${theme.border}`,
+              }}
+            >
+              <h2 style={{ marginBottom: "15px" }}>
+                نشاطك الأخير
+              </h2>
 
-            <div style={statCard(theme)}>
-              <div style={{ fontSize: "42px" }}>✍️</div>
-              <strong>{stats.exercises}</strong>
-              <p>التمارين</p>
-            </div>
+              {loading && <p>جاري التحميل...</p>}
 
-            <div style={statCard(theme)}>
-              <div style={{ fontSize: "42px" }}>📝</div>
-              <strong>{stats.quizzes}</strong>
-              <p>الاختبارات</p>
-            </div>
-          </div>
+              {!loading && progress.length === 0 && (
+                <p>لا يوجد تقدم بعد.</p>
+              )}
 
-          <div style={cardStyle(theme)}>
-            <h2 style={{ color: theme.text }}>
-              ⭐ المفضلة الأخيرة
-            </h2>
-
-            {favorites.length === 0 ? (
-              <p style={{ color: theme.muted }}>
-                لا توجد عناصر محفوظة.
-              </p>
-            ) : (
-              favorites.slice(0, 5).map((item) => (
-                <div key={item.id} style={favoriteItem(theme)}>
+              {progress.map((item, index) => (
+                <div
+                  key={index}
+                  style={{
+                    padding: "15px",
+                    borderBottom: `1px solid ${theme.border}`,
+                  }}
+                >
                   <strong>
-                    {item.title}
+                    {item.lesson_title || "درس"}
                   </strong>
 
-                  <p style={{ color: theme.muted }}>
-                    {item.subject} - السنة {item.grade}
+                  <p>
+                    النقاط: {item.points || 0}
                   </p>
                 </div>
-              ))
-            )}
-
-            <Link to="/favorites">
-              <button style={buttonStyle(theme)}>
-                عرض كل المفضلة
-              </button>
-            </Link>
-          </div>
-        </>
-      )}
+              ))}
+            </div>
+          </>
+        )}
+      </div>
     </Layout>
   );
 }
-
-const heroStyle = (theme) => ({
-  background: theme.surface,
-  border: `1px solid ${theme.border}`,
-  borderRadius: common.radius.large,
-  padding: "28px",
-  textAlign: "center",
-  boxShadow: common.shadow.hero,
-});
-
-const cardStyle = (theme) => ({
-  marginTop: "22px",
-  background: theme.surface,
-  border: `1px solid ${theme.border}`,
-  padding: "22px",
-  borderRadius: common.radius.large,
-  boxShadow: common.shadow.card,
-  color: theme.text,
-});
-
-const gridStyle = {
-  display: "grid",
-  gridTemplateColumns: "repeat(2, 1fr)",
-  gap: "14px",
-  marginTop: "22px",
-};
-
-const statCard = (theme) => ({
-  background: theme.surface,
-  border: `1px solid ${theme.border}`,
-  borderRadius: common.radius.large,
-  padding: "20px",
-  textAlign: "center",
-  boxShadow: common.shadow.card,
-  color: theme.text,
-});
-
-const progressContainer = (theme) => ({
-  width: "100%",
-  height: "18px",
-  borderRadius: "999px",
-  background: theme.surface2,
-  overflow: "hidden",
-  marginTop: "20px",
-});
-
-const progressBar = (theme) => ({
-  height: "100%",
-  background: `linear-gradient(135deg, ${theme.primary}, ${theme.secondary})`,
-});
-
-const favoriteItem = (theme) => ({
-  marginTop: "14px",
-  background: theme.surface2,
-  border: `1px solid ${theme.border}`,
-  padding: "14px",
-  borderRadius: common.radius.medium,
-});
-
-const buttonStyle = (theme) => ({
-  width: "100%",
-  marginTop: "18px",
-  padding: "15px",
-  border: "none",
-  borderRadius: common.radius.medium,
-  background: `linear-gradient(135deg, ${theme.primary}, ${theme.secondary})`,
-  color: "white",
-  fontSize: "18px",
-  fontWeight: "bold",
-});
-
-export default ProgressPage;
