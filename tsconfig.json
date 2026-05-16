@@ -21,7 +21,11 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "noImplicitAny": false,
-    "ignoreDeprecations": "6.0"
+    "ignoreDeprecations": "6.0",
+    "types": [
+      "vitest/globals",
+      "vite/client"
+    ]
   },
   "include": [
     "src"
