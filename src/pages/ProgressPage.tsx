@@ -1,113 +1,53 @@
-import Layout from "../components/Layout";
-import { useAuth } from "../context/AuthContext";
-import { useProgress } from "../features/progress/hooks/useProgress";
-import { AppCard, EmptyState, LoadingState } from "../shared/components/ui";
+import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabaseClient";
+import AppCard from "../shared/components/AppCard";
 
-type ProgressPageProps = {
-  theme: any;
-  setThemeName: (themeName: string) => void;
-};
+export default function ProgressPage() {
+  const [profile, setProfile] = useState<any>(null);
+  const [progress, setProgress] = useState<any[]>([]);
 
-type ProgressItem = {
-  id?: string;
-  lesson_title?: string;
-  points?: number;
-  completed?: boolean;
-};
+  useEffect(() => {
+    async function load() {
+      const { data } = await supabase.auth.getSession();
+      const user = data.session?.user;
 
-export default function ProgressPage({ theme, setThemeName }: ProgressPageProps) {
-  const { user } = useAuth();
+      if (!user) return;
 
-  const {
-    data: progress = [],
-    isLoading,
-  } = useProgress(user?.id);
+      const { data: prof } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", user.id)
+        .single();
 
-  const progressItems = progress as ProgressItem[];
+      setProfile(prof);
 
-  const totalPoints = progressItems.reduce(
-    (sum, item) => sum + Number(item.points || 0),
-    0
-  );
+      const { data: prog } = await supabase
+        .from("progress")
+        .select("*")
+        .eq("profile_id", user.id);
 
-  const completedLessons = progressItems.filter((item) => item.completed).length;
+      setProgress(prog || []);
+    }
+
+    load();
+  }, []);
 
   return (
-    <Layout theme={theme} setThemeName={setThemeName}>
-      <div
-        style={{
-          minHeight: "100vh",
-          color: theme.text,
-        }}
-      >
-        <h1
-          style={{
-            fontSize: "34px",
-            marginBottom: "20px",
-            fontWeight: "bold",
-          }}
-        >
-          📊 التقدم
-        </h1>
+    <div>
+      <h2>Progress</h2>
 
-        {!user ? (
-          <EmptyState
-            theme={theme}
-            title="تسجيل الدخول مطلوب"
-            message="قم بتسجيل الدخول لمتابعة تقدمك."
-          />
-        ) : (
-          <>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(2,1fr)",
-                gap: "15px",
-                marginBottom: "25px",
-              }}
-            >
-              <AppCard theme={theme} style={{ textAlign: "center", padding: "25px" }}>
-                <div style={{ fontSize: "40px" }}>💎</div>
-                <h2>{totalPoints}</h2>
-                <p>النقاط</p>
-              </AppCard>
+      <AppCard>
+        <p>Name: {profile?.name}</p>
+        <p>Points: {profile?.points}</p>
+      </AppCard>
 
-              <AppCard theme={theme} style={{ textAlign: "center", padding: "25px" }}>
-                <div style={{ fontSize: "40px" }}>✅</div>
-                <h2>{completedLessons}</h2>
-                <p>المكتمل</p>
-              </AppCard>
-            </div>
-
-            <AppCard theme={theme}>
-              <h2 style={{ marginBottom: "15px" }}>نشاطك الأخير</h2>
-
-              {isLoading ? (
-                <LoadingState theme={theme} message="جاري تحميل التقدم..." />
-              ) : progressItems.length === 0 ? (
-                <EmptyState
-                  theme={theme}
-                  title="لا يوجد تقدم بعد"
-                  message="ابدأ بحل التمارين حتى يظهر تقدمك هنا."
-                />
-              ) : (
-                progressItems.map((item, index) => (
-                  <div
-                    key={item.id || index}
-                    style={{
-                      padding: "15px",
-                      borderBottom: `1px solid ${theme.border}`,
-                    }}
-                  >
-                    <strong>{item.lesson_title || "درس"}</strong>
-                    <p>النقاط: {item.points || 0}</p>
-                  </div>
-                ))
-              )}
-            </AppCard>
-          </>
-        )}
-      </div>
-    </Layout>
+      {progress.map((p) => (
+        <AppCard key={p.id}>
+          <p>Lesson: {p.lesson_id}</p>
+          <p>Points: {p.points}</p>
+          <p>Status: {p.completed ? "Done" : "Pending"}</p>
+        </AppCard>
+      ))}
+    </div>
   );
 }

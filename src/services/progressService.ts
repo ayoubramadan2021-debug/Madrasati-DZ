@@ -1,111 +1,36 @@
 import { supabase } from "../lib/supabaseClient";
 
-export async function hasCompletedProgress(userId, lessonId) {
-  const { data, error } = await supabase
-    .from("progress")
-    .select("*")
-    .eq("profile_id", userId)
-    .eq("lesson_id", lessonId)
-    .limit(1);
-
-  if (error) {
-    console.log("CHECK PROGRESS ERROR:", error);
-    return false;
-  }
-
-  return data && data.length > 0;
-}
-
-export async function saveProgress({
-  userId,
-  lessonId,
-  points,
-}) {
-  const alreadyDone = await hasCompletedProgress(
-    userId,
-    lessonId
-  );
-
-  if (alreadyDone) {
-    return {
-      data: null,
-      error: null,
-      alreadyDone: true,
-    };
-  }
-
+export async function saveProgress(
+  profile_id: string,
+  lesson_id: string,
+  exercise_id: string,
+  points: number,
+  completed: boolean
+) {
   const { data, error } = await supabase
     .from("progress")
     .insert([
       {
-        profile_id: userId,
-        lesson_id: lessonId,
-        completed: true,
+        profile_id,
+        lesson_id,
+        exercise_id,
         points,
+        completed,
       },
-    ])
-    .select();
+    ]);
 
-  if (error) {
-    console.log("SAVE PROGRESS ERROR:", error);
-    return { data: null, error };
-  }
-
-  await addPointsToProfile(userId, points);
-
-  return {
-    data,
-    error: null,
-    alreadyDone: false,
-  };
-}
-
-export async function addPointsToProfile(userId, points) {
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("total_points")
-    .eq("id", userId)
-    .single();
-
-  const currentPoints = Number(
-    profile?.total_points || 0
-  );
-
-  const newPoints =
-    currentPoints + Number(points || 0);
-
-  const { data, error } = await supabase
-    .from("profiles")
-    .update({
-      total_points: newPoints,
-      points: newPoints,
-    })
-    .eq("id", userId)
-    .select();
-
-  if (error) {
-    console.log(
-      "UPDATE PROFILE POINTS ERROR:",
-      error
-    );
-  }
+  if (error) throw error;
 
   return data;
 }
 
-export async function getUserProgress(userId) {
+export async function getProgress(profile_id: string) {
   const { data, error } = await supabase
     .from("progress")
     .select("*")
-    .eq("profile_id", userId)
-    .order("created_at", {
-      ascending: false,
-    });
+    .eq("profile_id", profile_id);
 
-  if (error) {
-    console.log("GET PROGRESS ERROR:", error);
-    return [];
-  }
+  if (error) throw error;
 
   return data;
 }

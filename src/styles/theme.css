@@ -1,0 +1,51 @@
+:root {
+  --primary: #1B3A6B;
+  --primary-light: #2D5BA3;
+  --accent: #E8A020;
+
+  --bg: #F7F9FC;
+  --surface: #FFFFFF;
+
+  --text: #1A2540;
+  --muted: #8A97AA;
+
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+
+  --success: #2E7D5E;
+  --error: #C0392B;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin: 10px 0;
+}
+
+.btn {
+  background: var(--primary);
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: var(--radius);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.input {
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1px solid #ddd;
+  width: 100%;
+}

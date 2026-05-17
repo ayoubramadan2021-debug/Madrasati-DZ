@@ -1,24 +1,30 @@
-import { HashRouter } from "react-router-dom";
-
-import AppRoutes from "./router/AppRoutes";
-import { ThemeProvider, useAppTheme } from "./context/ThemeContext";
-
-function AppContent() {
-  const { theme, setThemeName } = useAppTheme();
-
+export default function App() {
   return (
-    <HashRouter>
-      <AppRoutes theme={theme} setThemeName={setThemeName} />
-    </HashRouter>
+    <div
+      style={{
+        background: "var(--bg)",
+        minHeight: "100vh",
+        padding: "20px",
+      }}
+    >
+      <div className="card">
+        <h1
+          style={{
+            color: "var(--primary)",
+            marginBottom: "10px",
+          }}
+        >
+          تعليم DZ
+        </h1>
+
+        <p style={{ color: "var(--muted)" }}>
+          اختبار الهوية البصرية الجديدة
+        </p>
+
+        <button className="btn">
+          ابدأ التعلم
+        </button>
+      </div>
+    </div>
   );
 }
-
-function App() {
-  return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
-  );
-}
-
-export default App;

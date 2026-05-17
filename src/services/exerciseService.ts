@@ -1,73 +1,34 @@
 import { supabase } from "../lib/supabaseClient";
-import type { Exercise, CreateExerciseInput } from "../types/entities";
+import { saveProgress } from "./progressService";
 
-export async function createExercise({
-  title,
-  subject,
-  grade,
-  question,
-  options,
-  correctAnswer,
-}: CreateExerciseInput) {
-  const { data, error } = await supabase
-    .from("exercises")
-    .insert([
-      {
-        title,
-        subject,
-        grade: Number(grade),
-        question,
-        options,
-        correct_answer: correctAnswer,
-      },
-    ])
-    .select();
-
-  return { data, error };
-}
-
-export async function getExercises(): Promise<Exercise[]> {
+export async function getExercises(lesson_id: string) {
   const { data, error } = await supabase
     .from("exercises")
     .select("*")
-    .order("created_at", { ascending: false });
+    .eq("lesson_id", lesson_id);
 
-  if (error) {
-    console.log("GET EXERCISES ERROR:", error);
-    return [];
-  }
+  if (error) throw error;
 
   return data;
 }
 
-export async function getExercisesByGradeAndSubject(grade: number | string, subject: string): Promise<Exercise[]> {
-  const { data, error } = await supabase
-    .from("exercises")
-    .select("*")
-    .eq("grade", Number(grade))
-    .eq("subject", subject)
-    .order("created_at", { ascending: false });
+export async function submitExercise(
+  profile_id: string,
+  lesson_id: string,
+  exercise_id: string,
+  userAnswer: string,
+  correctAnswer: string
+) {
+  const correct = userAnswer.trim() === correctAnswer.trim();
+  const points = correct ? 10 : 0;
 
-  if (error) return [];
-  return data;
-}
+  await saveProgress(
+    profile_id,
+    lesson_id,
+    exercise_id,
+    points,
+    correct
+  );
 
-export async function getExerciseById(id: string): Promise<Exercise | null> {
-  const { data, error } = await supabase
-    .from("exercises")
-    .select("*")
-    .eq("id", id)
-    .single();
-
-  if (error) return null;
-  return data;
-}
-
-export async function deleteExercise(id: string) {
-  const { error } = await supabase
-    .from("exercises")
-    .delete()
-    .eq("id", id);
-
-  return { error };
+  return { correct, points };
 }

@@ -1,76 +1,33 @@
 import { supabase } from "../lib/supabaseClient";
+import { saveProgress } from "./progressService";
 
-export async function createQuiz({
-  title,
-  subject,
-  grade,
-  questions,
-}) {
-  const { data, error } = await supabase
-    .from("quizzes")
-    .insert([
-      {
-        title,
-        subject,
-        grade: Number(grade),
-        questions,
-      },
-    ])
-    .select();
-
-  return { data, error };
-}
-
-export async function getQuizzes() {
+export async function getQuizzes(lesson_id: string) {
   const { data, error } = await supabase
     .from("quizzes")
     .select("*")
-    .order("created_at", { ascending: false });
+    .eq("lesson_id", lesson_id);
 
-  if (error) {
-    console.log("GET QUIZZES ERROR:", error);
-    return [];
-  }
-
+  if (error) throw error;
   return data;
 }
 
-export async function getQuizzesByGradeAndSubject(grade, subject) {
-  const { data, error } = await supabase
-    .from("quizzes")
-    .select("*")
-    .eq("grade", Number(grade))
-    .eq("subject", subject)
-    .order("created_at", { ascending: false });
+export async function submitQuiz(
+  profile_id: string,
+  lesson_id: string,
+  quiz_id: string,
+  answer: string,
+  correct_answer: string
+) {
+  const correct = answer === correct_answer;
+  const points = correct ? 15 : 0;
 
-  if (error) {
-    console.log("GET FILTERED QUIZZES ERROR:", error);
-    return [];
-  }
+  await saveProgress(
+    profile_id,
+    lesson_id,
+    quiz_id,
+    points,
+    correct
+  );
 
-  return data;
-}
-
-export async function getQuizById(id) {
-  const { data, error } = await supabase
-    .from("quizzes")
-    .select("*")
-    .eq("id", id)
-    .single();
-
-  if (error) {
-    console.log("GET QUIZ ERROR:", error);
-    return null;
-  }
-
-  return data;
-}
-
-export async function deleteQuiz(id) {
-  const { error } = await supabase
-    .from("quizzes")
-    .delete()
-    .eq("id", id);
-
-  return { error };
+  return { correct, points };
 }
