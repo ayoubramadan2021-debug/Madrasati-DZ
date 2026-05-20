@@ -1,4 +1,28 @@
 import { supabase } from "../lib/supabaseClient";
+import type { ProgressItem } from "../types/global";
+
+export async function getUserProgress(userId: string): Promise<ProgressItem[]> {
+  try {
+    const { data, error } = await supabase
+      .from("progress")
+      .select("*")
+      .eq("user_id", userId);
+
+    if (error) return [];
+
+    return (data as ProgressItem[]) || [];
+  } catch {
+    return [];
+  }
+}
+
+export function calculatePoints(progress: ProgressItem[]) {
+  return progress.reduce((sum, item) => sum + Number(item.points || 0), 0);
+}
+
+export function calculateCompleted(progress: ProgressItem[]) {
+  return progress.filter(p => p.completed).length;
+}
 
 export async function saveProgress(
   profile_id: string,
@@ -9,28 +33,7 @@ export async function saveProgress(
 ) {
   const { data, error } = await supabase
     .from("progress")
-    .insert([
-      {
-        profile_id,
-        lesson_id,
-        exercise_id,
-        points,
-        completed,
-      },
-    ]);
-
+    .upsert([{ profile_id, lesson_id, exercise_id, points, completed }]);
   if (error) throw error;
-
-  return data;
-}
-
-export async function getProgress(profile_id: string) {
-  const { data, error } = await supabase
-    .from("progress")
-    .select("*")
-    .eq("profile_id", profile_id);
-
-  if (error) throw error;
-
   return data;
 }

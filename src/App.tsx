@@ -1,30 +1,11 @@
+import AppRoutes from "./router/AppRoutes";
+import BottomNav from "./shared/components/BottomNav";
+
 export default function App() {
   return (
-    <div
-      style={{
-        background: "var(--bg)",
-        minHeight: "100vh",
-        padding: "20px",
-      }}
-    >
-      <div className="card">
-        <h1
-          style={{
-            color: "var(--primary)",
-            marginBottom: "10px",
-          }}
-        >
-          تعليم DZ
-        </h1>
-
-        <p style={{ color: "var(--muted)" }}>
-          اختبار الهوية البصرية الجديدة
-        </p>
-
-        <button className="btn">
-          ابدأ التعلم
-        </button>
-      </div>
+    <div style={{ paddingBottom: 72 }}>
+      <AppRoutes />
+      <BottomNav />
     </div>
   );
 }

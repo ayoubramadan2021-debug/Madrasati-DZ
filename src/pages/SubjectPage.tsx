@@ -1,113 +1,68 @@
-import { Link, useParams } from "react-router-dom";
-import Layout from "../components/Layout";
-import { common } from "../theme";
+import { useNavigate, useParams } from "react-router-dom";
 import appData from "../data/appData";
-import { useLanguage } from "../i18n/LanguageContext";
 
-const sectionColors = ["#3b82f6","#16a34a","#f97316","#8b5cf6"];
+const C = {
+  primary: "#1B3A6B", primaryLight: "#2D5BA3",
+  surface: "#FFFFFF", surface2: "#F7F9FC",
+  text: "#1A2540", textMuted: "#8A97AA",
+  border: "#D8E2F0", shadow: "0 2px 12px rgba(27,58,107,0.09)",
+};
 
-function SubjectPage({ theme, setThemeName }) {
-  const { t } = useLanguage();
+const SUBJECT_COLORS: Record<string, string> = {
+  math: "#2E7D5E", arabic: "#C0392B", french: "#1565C0",
+  islamic: "#6A1B9A", civic: "#E65100", science: "#00838F",
+};
 
-  function translateSubject(slug, name) {
-    const map = {
-      math: t.subject_math,
-      arabic: t.subject_arabic,
-      french: t.subject_french,
-      islamic: t.subject_islamic,
-      civic: t.subject_civic,
-      science: t.subject_science,
-    };
-    return map[slug] || name;
-  }
+const SECTIONS = [
+  { slug:"lessons",   icon:"📖", name:"الدروس",          desc:"شروحات مبسطة حسب المستوى",     color:"#2D5BA3" },
+  { slug:"exercises", icon:"✏️", name:"التمارين",        desc:"تمارين تفاعلية مع تصحيح فوري", color:"#2E7D5E" },
+  { slug:"quizzes",   icon:"📝", name:"الاختبارات",      desc:"اختبارات قصيرة لقياس الفهم",   color:"#E8A020" },
+  { slug:"progress",  icon:"⭐", name:"النقاط والتقدم", desc:"متابعة مستوى التلميذ",          color:"#E65100" },
+];
 
-  function translateSection(slug, title) {
-    const map = {
-      lessons: t.section_lessons,
-      exercises: t.section_exercises,
-      quizzes: t.section_quizzes,
-      progress: t.section_progress,
-    };
-    return map[slug] || title;
-  }
-
-  function translateSectionDesc(slug, desc) {
-    const map = {
-      lessons: t.section_lessons_desc,
-      exercises: t.section_exercises_desc,
-      quizzes: t.section_quizzes_desc,
-      progress: t.section_progress_desc,
-    };
-    return map[slug] || desc;
-  }
+export default function SubjectPage() {
   const { gradeId, subject } = useParams();
-  const currentSubject = appData.subjects.find((item) => item.slug === subject);
+  const navigate = useNavigate();
+  const currentSubject = (appData.subjects || []).find((s: any) => s.slug === subject);
+  const subjectColor = SUBJECT_COLORS[subject || ""] || C.primary;
 
   return (
-    <Layout theme={theme} setThemeName={setThemeName}>
+    <div style={{ fontFamily:"'Cairo',sans-serif", minHeight:"100vh", background:C.surface2, paddingBottom:32 }}>
 
-      {/* Header */}
-      <div style={{
-        background: `linear-gradient(135deg, ${currentSubject?.color || theme.primary}, ${theme.secondary})`,
-        borderRadius: common.radius.large,
-        padding: "24px 20px",
-        marginBottom: "20px",
-        color: "white",
-        textAlign: "center",
-      }}>
-        <div style={{ fontSize: "56px", marginBottom: "8px" }}>{currentSubject?.icon || "📘"}</div>
-        <h1 style={{ fontSize: "26px", margin: "0 0 6px", color: "white" }}>
-          {currentSubject?.name || subject}
-        </h1>
-        <div style={{
-          display: "inline-block",
-          background: "rgba(255,255,255,0.25)",
-          padding: "4px 14px", borderRadius: "20px",
-          fontSize: "14px", color: "white",
-        }}>السنة {gradeId} ابتدائي</div>
+      <div style={{ background:`linear-gradient(135deg,${subjectColor},${subjectColor}bb)`, padding:"20px 16px 28px", borderRadius:"0 0 28px 28px", marginBottom:16, position:"relative" }}>
+        <button
+          onClick={() => navigate(`/grade/${gradeId}`)}
+          style={{ color:"white", background:"rgba(255,255,255,0.15)", border:"none", borderRadius:10, padding:"6px 12px", fontSize:13, fontWeight:600, cursor:"pointer", marginBottom:12, fontFamily:"'Cairo',sans-serif" }}
+        >
+          ← رجوع
+        </button>
+        <div style={{ textAlign:"center" }}>
+          <div style={{ fontSize:52, marginBottom:8 }}>{currentSubject?.icon || "📘"}</div>
+          <h1 style={{ margin:"0 0 8px", color:"white", fontSize:24, fontWeight:800 }}>
+            {currentSubject?.name || subject}
+          </h1>
+          <div style={{ display:"inline-block", background:"rgba(255,255,255,0.2)", padding:"4px 14px", borderRadius:20, fontSize:13, color:"white" }}>
+            السنة {gradeId} ابتدائي
+          </div>
+        </div>
       </div>
 
-      <Link to={`/grade/${gradeId}`} style={{
-        color: theme.primary, textDecoration: "none",
-        display: "inline-flex", alignItems: "center", gap: "6px",
-        fontSize: "15px", marginBottom: "16px",
-        background: theme.surface, padding: "8px 14px",
-        borderRadius: common.radius.full,
-        border: `1px solid ${theme.border}`,
-      }}>⬅️ {t.backSubjects}</Link>
-
-      {/* Sections */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "12px" }}>
-        {appData.sections.map((section, i) => (
-          <Link
+      <div style={{ padding:"0 16px", display:"grid", gridTemplateColumns:"1fr 1fr", gap:12 }}>
+        {SECTIONS.map((section) => (
+          <div
             key={section.slug}
-            to={`/grade/${gradeId}/subject/${subject}/section/${section.slug}`}
-            style={{ textDecoration: "none" }}
+            onClick={() => navigate(`/grade/${gradeId}/subject/${subject}/section/${section.slug}`)}
+            style={{ background:section.color, borderRadius:18, padding:"20px 14px", textAlign:"center", boxShadow:`0 4px 16px ${section.color}44`, color:"white", minHeight:130, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:10, cursor:"pointer" }}
           >
-            <div style={{
-              background: sectionColors[i % sectionColors.length],
-              borderRadius: common.radius.medium,
-              padding: "20px 16px",
-              textAlign: "center",
-              boxShadow: `0 4px 16px ${sectionColors[i % sectionColors.length]}55`,
-              color: "white",
-              minHeight: "120px",
-              display: "flex", flexDirection: "column",
-              alignItems: "center", justifyContent: "center", gap: "10px",
-            }}>
-              <div style={{
-                width: "54px", height: "54px", borderRadius: "50%",
-                background: "rgba(255,255,255,0.25)",
-                display: "grid", placeItems: "center", fontSize: "28px",
-              }}>{section.icon}</div>
-              <div style={{ fontSize: "17px", fontWeight: "bold" }}>{translateSection(section.slug, section.title)}</div>
-              <div style={{ fontSize: "12px", opacity: 0.85 }}>{translateSectionDesc(section.slug, section.desc)}</div>
+            <div style={{ width:54, height:54, borderRadius:"50%", background:"rgba(255,255,255,0.2)", display:"grid", placeItems:"center", fontSize:26 }}>
+              {section.icon}
             </div>
-          </Link>
+            <div style={{ fontSize:16, fontWeight:700 }}>{section.name}</div>
+            <div style={{ fontSize:11, opacity:0.85 }}>{section.desc}</div>
+          </div>
         ))}
       </div>
-    </Layout>
+
+    </div>
   );
 }
-
-export default SubjectPage;

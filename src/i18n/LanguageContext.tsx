@@ -1,23 +1,14 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { getTranslation } from "./translations";
+import { createContext, useContext, useState } from "react";
 
-const LanguageContext = createContext();
+const LanguageContext = createContext(null);
 
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState(
-    localStorage.getItem("app_language") || "ar"
-  );
+  const [language, setLanguage] = useState("ar");
 
-  useEffect(() => {
-    localStorage.setItem("app_language", language);
-
-    document.documentElement.dir =
-      language === "ar" ? "rtl" : "ltr";
-
-    document.documentElement.lang = language;
-  }, [language]);
-
-  const t = getTranslation(language);
+  const t = {
+    appName: "تعليم ديزاد",
+    menu: "القائمة"
+  };
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>
@@ -27,5 +18,13 @@ export function LanguageProvider({ children }) {
 }
 
 export function useLanguage() {
-  return useContext(LanguageContext);
+  const ctx = useContext(LanguageContext);
+  if (!ctx) {
+    return {
+      language: "ar",
+      setLanguage: () => {},
+      t: {}
+    };
+  }
+  return ctx;
 }

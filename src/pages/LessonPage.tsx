@@ -1,154 +1,86 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import appData from "../data/appData";
 
-import Layout from "../components/Layout";
-import { common } from "../theme";
-import { getCurrentUser } from "../services/sessionService";
-import { addFavorite } from "../services/favoriteService";
-import { useLessonById } from "../features/lessons";
-import { AppButton, AppCard, LoadingState, ErrorState, EmptyState } from "../shared/components/ui";
-import { useAppTheme } from "../context/ThemeContext";
+const C = {
+  primary: "#1B3A6B", primaryLight: "#2D5BA3",
+  accent: "#E8A020", success: "#2E7D5E",
+  surface: "#FFFFFF", surface2: "#F7F9FC",
+  text: "#1A2540", textMuted: "#8A97AA",
+  border: "#D8E2F0", shadow: "0 2px 12px rgba(27,58,107,0.09)",
+};
 
-function LessonPage() {
-  const { theme, setThemeName } = useAppTheme();
+const SUBJECT_COLORS: Record<string, string> = {
+  math: "#2E7D5E", arabic: "#C0392B", french: "#1565C0",
+  islamic: "#6A1B9A", civic: "#E65100", science: "#00838F",
+};
+
+export default function LessonPage() {
   const { gradeId, subject, lessonId } = useParams();
+  const navigate = useNavigate();
+  const subjectColor = SUBJECT_COLORS[subject || ""] || C.primary;
 
-  const {
-    data: lesson,
-    isLoading,
-    isError,
-    error,
-  } = useLessonById(lessonId);
-
-  async function handleAddFavorite() {
-    const user = await getCurrentUser();
-
-    if (!user) {
-      alert("🔐 سجّل الدخول أولًا لحفظ الدرس في المفضلة");
-      return;
-    }
-
-    await addFavorite({
-      userId: user.id,
-      itemId: lesson.id,
-      itemType: "lesson",
-      title: lesson.title,
-      subject: lesson.subject,
-      grade: lesson.grade,
-    });
-
-    alert("⭐ تم حفظ الدرس في المفضلة");
-  }
+  // جلب الدرس من appData
+  const currentSubject = (appData.subjects || []).find((s: any) => s.slug === subject);
+  const lesson = (currentSubject?.lessons || []).find((l: any) => String(l.id) === String(lessonId));
 
   return (
-    <Layout theme={theme} setThemeName={setThemeName}>
-      <Link
-        to={`/grade/${gradeId}/subject/${subject}/section/lessons`}
-        style={backStyle(theme)}
-      >
-        ⬅️ رجوع للدروس
-      </Link>
+    <div style={{ fontFamily:"'Cairo',sans-serif", minHeight:"100vh", background:C.surface2, paddingBottom:32 }}>
 
-      {isLoading ? (
-        <LoadingState theme={theme} message="جاري تحميل الدرس..." />
-      ) : isError ? (
-        <ErrorState
-          theme={theme}
-          title="حدث خطأ أثناء تحميل الدرس"
-          message={error?.message}
-        />
-      ) : lesson ? (
-        <>
-          <section style={heroStyle(theme)}>
-            <div style={{ fontSize: "54px" }}>📖</div>
+      {/* Header */}
+      <div style={{ background:`linear-gradient(135deg,${subjectColor},${subjectColor}bb)`, padding:"20px 16px 24px", borderRadius:"0 0 28px 28px", marginBottom:16 }}>
+        <button
+          onClick={() => navigate(`/grade/${gradeId}/subject/${subject}/section/lessons`)}
+          style={{ color:"white", background:"rgba(255,255,255,0.15)", border:"none", borderRadius:10, padding:"6px 12px", fontSize:13, fontWeight:600, cursor:"pointer", marginBottom:12, fontFamily:"'Cairo',sans-serif" }}
+        >
+          ← رجوع للدروس
+        </button>
+        <div style={{ textAlign:"center" }}>
+          <div style={{ fontSize:48, marginBottom:8 }}>📖</div>
+          <h1 style={{ margin:"0 0 6px", color:"white", fontSize:22, fontWeight:800 }}>
+            {lesson?.title || "الدرس"}
+          </h1>
+          <div style={{ color:"rgba(255,255,255,0.75)", fontSize:13 }}>
+            {currentSubject?.name} — السنة {gradeId} ابتدائي
+          </div>
+        </div>
+      </div>
 
-            <h1 style={{ fontSize: "34px", margin: "8px 0", color: theme.text }}>
-              {lesson.title}
-            </h1>
+      <div style={{ padding:"0 16px" }}>
 
-            <p style={{ color: theme.muted, fontSize: "18px" }}>
-              المادة: {lesson.subject} - السنة {lesson.grade}
-            </p>
-          </section>
+        {!lesson ? (
+          <div style={{ textAlign:"center", padding:40, color:C.textMuted }}>
+            <div style={{ fontSize:48 }}>📭</div>
+            <div style={{ marginTop:8, fontSize:16 }}>الدرس غير موجود</div>
+          </div>
+        ) : (
+          <>
+            {/* محتوى الدرس */}
+            <div style={{ background:C.surface, border:`1px solid ${C.border}`, borderRadius:18, padding:20, boxShadow:C.shadow, marginBottom:14 }}>
+              <h2 style={{ margin:"0 0 14px", color:C.primary, fontSize:18, fontWeight:700 }}>
+                🧠 محتوى الدرس
+              </h2>
+              <p style={{ color:C.text, lineHeight:2, fontSize:16, margin:0 }}>
+                {lesson.desc}
+              </p>
+            </div>
 
-          <AppButton theme={theme} onClick={handleAddFavorite}>
-            ⭐ حفظ في المفضلة
-          </AppButton>
-
-          <AppCard theme={theme}>
-            <h2>🧠 محتوى الدرس</h2>
-
-            <p
-              style={{
-                color: theme.muted,
-                lineHeight: "2",
-                fontSize: "18px",
-                whiteSpace: "pre-line",
-              }}
+            {/* زر المفضلة */}
+            <button
+              style={{ width:"100%", padding:"14px", border:"none", borderRadius:16, background:C.accent, color:"white", fontSize:16, fontWeight:700, marginBottom:14, cursor:"pointer", fontFamily:"'Cairo',sans-serif", boxShadow:`0 4px 14px ${C.accent}44` }}
             >
-              {lesson.content}
-            </p>
-          </AppCard>
+              ⭐ حفظ في المفضلة
+            </button>
 
-          <Link
-            to={`/grade/${gradeId}/subject/${subject}/section/exercises`}
-            style={{ textDecoration: "none" }}
-          >
-            <AppButton theme={theme}>
+            {/* زر التمارين */}
+            <button
+              onClick={() => navigate(`/grade/${gradeId}/subject/${subject}/section/exercises`)}
+              style={{ width:"100%", padding:"14px", border:"none", borderRadius:16, background:`linear-gradient(135deg,${C.primary},${C.primaryLight})`, color:"white", fontSize:16, fontWeight:700, cursor:"pointer", fontFamily:"'Cairo',sans-serif", boxShadow:`0 4px 14px ${C.primary}44` }}
+            >
               ✍️ اذهب إلى التمارين
-            </AppButton>
-          </Link>
-        </>
-      ) : (
-        <EmptyState
-          theme={theme}
-          title="الدرس غير موجود"
-          message="لم يتم العثور على هذا الدرس"
-        />
-      )}
-    </Layout>
+            </button>
+          </>
+        )}
+      </div>
+    </div>
   );
 }
-
-const backStyle = (theme) => ({
-  color: theme.text,
-  textDecoration: "none",
-  display: "inline-block",
-  marginBottom: "18px",
-  fontSize: "18px",
-  background: theme.surface,
-  padding: "10px 14px",
-  borderRadius: common.radius.small,
-  border: `1px solid ${theme.border}`,
-});
-
-const heroStyle = (theme) => ({
-  background: theme.surface,
-  border: `1px solid ${theme.border}`,
-  borderRadius: common.radius.large,
-  padding: "26px",
-  textAlign: "center",
-  boxShadow: common.shadow.hero,
-});
-
-const cardStyle = (theme) => ({
-  marginTop: "18px",
-  background: theme.surface,
-  border: `1px solid ${theme.border}`,
-  padding: "22px",
-  borderRadius: common.radius.medium,
-  boxShadow: common.shadow.card,
-});
-
-const buttonStyle = (theme) => ({
-  width: "100%",
-  marginTop: "20px",
-  padding: "16px",
-  border: "none",
-  borderRadius: common.radius.medium,
-  background: `linear-gradient(135deg, ${theme.primary}, ${theme.secondary})`,
-  color: "white",
-  fontSize: "20px",
-  fontWeight: "bold",
-});
-
-export default LessonPage;

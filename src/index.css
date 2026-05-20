@@ -15,3 +15,6 @@ a {
 button {
   font-family: inherit;
 }
+
+/* تعليم — الخطوط */
+body { font-family: 'Cairo', sans-serif; direction: rtl; }
