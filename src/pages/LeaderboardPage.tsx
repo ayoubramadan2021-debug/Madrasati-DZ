@@ -2,22 +2,60 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
 
-const C = {
-  primary: "#1B3A6B", primaryLight: "#2D5BA3",
-  accent: "#E8A020", success: "#2E7D5E",
-  surface: "#FFFFFF", surface2: "#F7F9FC",
-  text: "#1A2540", textMuted: "#8A97AA",
-  border: "#D8E2F0", shadow: "0 2px 12px rgba(27,58,107,0.09)",
-};
-
-const MEDALS = ["🥇","🥈","🥉"];
-const MEDAL_COLORS = [C.accent, "#9E9E9E", "#CD7F32"];
+const CSS = [
+"@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');",
+".lb-root *,.lb-root *::before,.lb-root *::after{box-sizing:border-box;margin:0;padding:0}",
+".lb-root{min-height:100dvh;background:var(--bg);font-family:'Tajawal',sans-serif;direction:rtl;overflow-x:hidden;position:relative;padding-bottom:100px}",
+".lb-orb{position:fixed;pointer-events:none;border-radius:50%;z-index:0}",
+".lb-ob{width:480px;height:480px;top:-180px;left:-120px;background:radial-gradient(circle,rgba(27,58,107,.6) 0%,transparent 70%);animation:lb-d1 14s ease-in-out infinite alternate}",
+".lb-og{width:360px;height:360px;bottom:-100px;right:-80px;background:radial-gradient(circle,rgba(232,160,32,.14) 0%,transparent 70%);animation:lb-d2 11s ease-in-out infinite alternate}",
+"@keyframes lb-d1{from{transform:translate(0,0)}to{transform:translate(6%,5%)}}",
+"@keyframes lb-d2{from{transform:translate(0,0)}to{transform:translate(-5%,-7%)}}",
+".lb-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px}",
+".lb-content{position:relative;z-index:2}",
+".lb-hero{position:relative;padding:24px 20px 28px;text-align:center}",
+".lb-back{position:absolute;top:20px;right:16px;display:inline-flex;align-items:center;gap:6px;background:var(--border-faint);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.8);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .2s}",
+".lb-back:active{background:rgba(255,255,255,.12)}",
+".lb-logo{position:relative;display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;margin:12px 0 14px;opacity:0;transform:scale(.7);transition:opacity .7s cubic-bezier(.34,1.56,.64,1),transform .7s cubic-bezier(.34,1.56,.64,1)}",
+".lb-logo.in{opacity:1;transform:scale(1)}",
+".lb-logo-bg{position:absolute;inset:0;border-radius:26px;background:linear-gradient(145deg,#1a3d73,#0c1e3a);border:1px solid rgba(232,160,32,.4);box-shadow:var(--shadow-strong),inset 0 1px 0 var(--border-soft)}",
+".lb-logo-em{position:relative;font-size:44px;filter:drop-shadow(0 0 16px rgba(232,160,32,.7));animation:lb-bob 4s ease-in-out infinite}",
+"@keyframes lb-bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-5px) rotate(-4deg)}}",
+".lb-title{font-size:28px;font-weight:900;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,#fff 25%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:0;transform:translateY(14px);transition:opacity .6s ease .2s,transform .6s ease .2s}",
+".lb-title.in{opacity:1;transform:translateY(0)}",
+".lb-sub{font-size:13px;color:var(--text-faint);opacity:0;transition:opacity .6s ease .35s}",
+".lb-sub.in{opacity:1}",
+".lb-body{padding:0 16px}",
+".lb-state{text-align:center;padding:50px 20px;color:var(--text-muted);font-size:15px}",
+".lb-podium{display:flex;align-items:flex-end;justify-content:center;gap:10px;margin-bottom:22px}",
+".lb-pcol{text-align:center;opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s cubic-bezier(.34,1.4,.64,1)}",
+".lb-pcol.in{opacity:1;transform:translateY(0)}",
+".lb-medal{font-size:34px;margin-bottom:4px;filter:drop-shadow(0 0 10px rgba(0,0,0,.4))}",
+".lb-pcard{position:relative;border-radius:18px;padding:14px 10px;overflow:hidden;background:var(--surface-2)}",
+".lb-pcard-glow{position:absolute;inset:0;opacity:.5}",
+".lb-pav{position:relative;font-size:26px}",
+".lb-pname{position:relative;font-weight:800;color:var(--text);font-size:13px;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}",
+".lb-ppts{position:relative;font-weight:900;font-size:17px;margin-top:2px}",
+".lb-list{display:flex;flex-direction:column;gap:10px}",
+".lb-item{position:relative;border-radius:16px;padding:13px 16px;display:flex;align-items:center;gap:14px;overflow:hidden;animation:lb-slide .5s ease backwards}",
+"@keyframes lb-slide{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}",
+".lb-rank{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:15px;flex-shrink:0}",
+".lb-av{font-size:26px}",
+".lb-ibody{flex:1;min-width:0}",
+".lb-iname{font-weight:700;color:var(--text);font-size:14px}",
+".lb-igrade{color:var(--text-faint);font-size:12px;margin-top:2px}",
+".lb-ipts{font-weight:900;color:var(--gold);font-size:15px;flex-shrink:0}",
+".lb-me-badge{display:inline-block;font-size:10px;font-weight:800;color:#000;background:var(--gold);border-radius:6px;padding:1px 7px;margin-right:6px}",
+".lb-empty{text-align:center;padding:40px;color:var(--text-faint)}",
+".lb-empty-em{font-size:42px;margin-bottom:8px}",
+].join("\n");
 
 export default function LeaderboardPage() {
   const navigate = useNavigate();
   const [leaders, setLeaders] = useState<any[]>([]);
-  const [loading, setLoading]   = useState(true);
-  const [myId, setMyId]         = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [myId, setMyId] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     async function load() {
@@ -34,75 +72,104 @@ export default function LeaderboardPage() {
     load();
   }, []);
 
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(t);
+  }, []);
+
+  const cx = (...a: (string | false)[]) => a.filter(Boolean).join(" ");
+
+  const podium = [
+    { idx: 1, medal: "🥈", color: "#C0C7D0", flex: 1,   delay: "0.35s", pt: 18 },
+    { idx: 0, medal: "🥇", color: "var(--gold)", flex: 1.25, delay: "0.25s", pt: 26 },
+    { idx: 2, medal: "🥉", color: "#CD7F32", flex: 1,   delay: "0.45s", pt: 18 },
+  ];
+
   return (
-    <div style={{ fontFamily:"'Cairo',sans-serif", minHeight:"100vh", background:C.surface2, paddingBottom:32 }}>
-      <div style={{ background:`linear-gradient(135deg,${C.primary},${C.primaryLight})`, padding:"20px 16px 28px", borderRadius:"0 0 28px 28px", marginBottom:16 }}>
-        <button onClick={() => navigate("/")} style={{ color:"white", background:"rgba(255,255,255,0.15)", border:"none", borderRadius:10, padding:"6px 12px", fontSize:13, fontWeight:600, cursor:"pointer", marginBottom:12, fontFamily:"'Cairo',sans-serif" }}>← رجوع</button>
-        <div style={{ textAlign:"center" }}>
-          <div style={{ fontSize:48, marginBottom:8 }}>🏆</div>
-          <h1 style={{ margin:"0 0 4px", color:"white", fontSize:22, fontWeight:800 }}>لوحة الترتيب</h1>
-          <div style={{ color:"rgba(255,255,255,0.75)", fontSize:13 }}>أفضل 20 تلميذ</div>
+    <>
+      <style>{CSS}</style>
+      <div className="lb-root">
+        <div className="lb-orb lb-ob" />
+        <div className="lb-orb lb-og" />
+        <div className="lb-grid" />
+
+        <div className="lb-content">
+          <div className="lb-hero">
+            <button className="lb-back" onClick={() => navigate("/")}>← رجوع</button>
+            <div className={cx("lb-logo", mounted && "in")}>
+              <div className="lb-logo-bg" />
+              <span className="lb-logo-em">🏆</span>
+            </div>
+            <h1 className={cx("lb-title", mounted && "in")}>لوحة الترتيب</h1>
+            <div className={cx("lb-sub", mounted && "in")}>أفضل 20 تلميذ</div>
+          </div>
+
+          <div className="lb-body">
+            {loading && <div className="lb-state">⏳ جاري التحميل...</div>}
+
+            {/* المنصة - أول 3 */}
+            {!loading && leaders.length >= 3 && (
+              <div className="lb-podium">
+                {podium.map((p) => {
+                  const l = leaders[p.idx];
+                  return (
+                    <div
+                      key={p.idx}
+                      className={cx("lb-pcol", mounted && "in")}
+                      style={{ flex: p.flex, transitionDelay: p.delay }}
+                    >
+                      <div className="lb-medal">{p.medal}</div>
+                      <div className="lb-pcard" style={{ border: "2px solid " + p.color, boxShadow: "0 6px 24px " + p.color + "30", paddingTop: p.pt }}>
+                        <div className="lb-pcard-glow" style={{ background: "radial-gradient(circle at 50% 0%," + p.color + "22,transparent 70%)" }} />
+                        <div className="lb-pav">{l?.id === myId ? "🧑‍🚀" : "👦"}</div>
+                        <div className="lb-pname">{l?.full_name || "تلميذ"}</div>
+                        <div className="lb-ppts" style={{ color: p.color }}>{l?.points || 0}</div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* باقي القائمة */}
+            <div className="lb-list">
+              {leaders.slice(3).map((l, i) => {
+                const isMe = l.id === myId;
+                return (
+                  <div
+                    key={l.id}
+                    className="lb-item"
+                    style={{
+                      animationDelay: (0.5 + i * 0.05) + "s",
+                      background: isMe ? "linear-gradient(135deg,rgba(232,160,32,.16),rgba(201,125,10,.08))" : "var(--surface-2)",
+                      border: isMe ? "1.5px solid rgba(232,160,32,.5)" : "1px solid rgba(255,255,255,.07)",
+                      boxShadow: isMe ? "0 0 20px rgba(232,160,32,.2)" : "0 4px 18px rgba(0,0,0,.3)",
+                    }}
+                  >
+                    <div className="lb-rank" style={{ background: "var(--border-faint)", color: "rgba(255,255,255,.6)" }}>{i + 4}</div>
+                    <div className="lb-av">{isMe ? "🧑‍🚀" : "👦"}</div>
+                    <div className="lb-ibody">
+                      <div className="lb-iname">
+                        {isMe && <span className="lb-me-badge">أنت</span>}
+                        {l.full_name || "تلميذ"}
+                      </div>
+                      <div className="lb-igrade">السنة {l.grade}</div>
+                    </div>
+                    <div className="lb-ipts">{l.points || 0} نقطة</div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {!loading && leaders.length === 0 && (
+              <div className="lb-empty">
+                <div className="lb-empty-em">📭</div>
+                <div>لا يوجد بيانات بعد</div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-
-      <div style={{ padding:"0 16px" }}>
-        {loading && <div style={{ textAlign:"center", padding:40, color:C.textMuted }}>⏳ جاري التحميل...</div>}
-
-        {/* أول 3 */}
-        {!loading && leaders.length >= 3 && (
-          <div style={{ display:"flex", alignItems:"flex-end", justifyContent:"center", gap:12, marginBottom:20 }}>
-            {/* المركز 2 */}
-            <div style={{ textAlign:"center", flex:1 }}>
-              <div style={{ fontSize:32 }}>🥈</div>
-              <div style={{ background:C.surface, borderRadius:16, padding:"12px 8px", boxShadow:C.shadow, border:`2px solid #9E9E9E` }}>
-                <div style={{ fontSize:24 }}>👦</div>
-                <div style={{ fontWeight:700, color:C.text, fontSize:13, marginTop:4 }}>{leaders[1]?.full_name || "تلميذ"}</div>
-                <div style={{ color:"#9E9E9E", fontWeight:900, fontSize:16 }}>{leaders[1]?.points || 0}</div>
-              </div>
-            </div>
-            {/* المركز 1 */}
-            <div style={{ textAlign:"center", flex:1.2 }}>
-              <div style={{ fontSize:40 }}>🥇</div>
-              <div style={{ background:C.surface, borderRadius:18, padding:"16px 8px", boxShadow:`0 4px 20px ${C.accent}33`, border:`2px solid ${C.accent}` }}>
-                <div style={{ fontSize:30 }}>👦</div>
-                <div style={{ fontWeight:800, color:C.text, fontSize:14, marginTop:4 }}>{leaders[0]?.full_name || "تلميذ"}</div>
-                <div style={{ color:C.accent, fontWeight:900, fontSize:20 }}>{leaders[0]?.points || 0}</div>
-              </div>
-            </div>
-            {/* المركز 3 */}
-            <div style={{ textAlign:"center", flex:1 }}>
-              <div style={{ fontSize:32 }}>🥉</div>
-              <div style={{ background:C.surface, borderRadius:16, padding:"12px 8px", boxShadow:C.shadow, border:`2px solid #CD7F32` }}>
-                <div style={{ fontSize:24 }}>👦</div>
-                <div style={{ fontWeight:700, color:C.text, fontSize:13, marginTop:4 }}>{leaders[2]?.full_name || "تلميذ"}</div>
-                <div style={{ color:"#CD7F32", fontWeight:900, fontSize:16 }}>{leaders[2]?.points || 0}</div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* باقي القائمة */}
-        <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
-          {leaders.slice(3).map((l, i) => (
-            <div key={l.id} style={{ background: l.id === myId ? "#EBF1FA" : C.surface, border:`1.5px solid ${l.id === myId ? C.primary : C.border}`, borderRadius:16, padding:"14px 16px", display:"flex", alignItems:"center", gap:14, boxShadow:C.shadow }}>
-              <div style={{ width:36, height:36, borderRadius:"50%", background:C.surface2, display:"grid", placeItems:"center", fontWeight:800, color:C.textMuted, fontSize:16, flexShrink:0 }}>{i+4}</div>
-              <div style={{ fontSize:28 }}>👦</div>
-              <div style={{ flex:1 }}>
-                <div style={{ fontWeight:700, color:C.text, fontSize:14 }}>{l.full_name || "تلميذ"}</div>
-                <div style={{ color:C.textMuted, fontSize:12 }}>السنة {l.grade}</div>
-              </div>
-              <div style={{ fontWeight:900, color:C.accent, fontSize:16 }}>{l.points || 0} نقطة</div>
-            </div>
-          ))}
-        </div>
-
-        {!loading && leaders.length === 0 && (
-          <div style={{ textAlign:"center", padding:40, color:C.textMuted }}>
-            <div style={{ fontSize:40 }}>📭</div>
-            <div style={{ marginTop:8 }}>لا يوجد بيانات بعد</div>
-          </div>
-        )}
-      </div>
-    </div>
+    </>
   );
 }

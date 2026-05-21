@@ -1,39 +1,61 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import Layout from "../components/Layout";
-import { common } from "../theme";
-
 import { getCurrentUser } from "../services/authService";
 import { getProfile, upsertProfile } from "../services/profileService";
 
-function EditProfilePage({ theme, setThemeName }) {
-  const navigate = useNavigate();
+const CSS = [
+"@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');",
+".ep-root *,.ep-root *::before,.ep-root *::after{box-sizing:border-box;margin:0;padding:0}",
+".ep-root{min-height:100dvh;background:var(--bg);font-family:'Tajawal',sans-serif;direction:rtl;overflow-x:hidden;position:relative;padding-bottom:100px}",
+".ep-orb{position:fixed;pointer-events:none;border-radius:50%;z-index:0}",
+".ep-ob{width:480px;height:480px;top:-180px;left:-120px;background:radial-gradient(circle,rgba(27,58,107,.6) 0%,transparent 70%);animation:ep-d1 14s ease-in-out infinite alternate}",
+".ep-og{width:360px;height:360px;bottom:-100px;right:-80px;background:radial-gradient(circle,rgba(232,160,32,.13) 0%,transparent 70%);animation:ep-d2 11s ease-in-out infinite alternate}",
+"@keyframes ep-d1{from{transform:translate(0,0)}to{transform:translate(6%,5%)}}",
+"@keyframes ep-d2{from{transform:translate(0,0)}to{transform:translate(-5%,-7%)}}",
+".ep-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px}",
+".ep-content{position:relative;z-index:2}",
+".ep-hero{position:relative;padding:24px 20px 24px;text-align:center}",
+".ep-back{position:absolute;top:20px;right:16px;background:var(--border-faint);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.8);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .2s}",
+".ep-back:active{background:rgba(255,255,255,.12)}",
+".ep-logo{position:relative;display:inline-flex;align-items:center;justify-content:center;width:78px;height:78px;margin:8px 0 10px}",
+".ep-logo-bg{position:absolute;inset:0;border-radius:22px;background:linear-gradient(145deg,#1a3d73,#0c1e3a);border:1px solid rgba(232,160,32,.4);box-shadow:var(--shadow-strong)}",
+".ep-logo-em{position:relative;font-size:38px;filter:drop-shadow(0 0 14px rgba(232,160,32,.6))}",
+".ep-title{font-size:24px;font-weight:900;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,#fff 25%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}",
+".ep-sub{font-size:13px;color:var(--text-faint)}",
+".ep-body{padding:0 16px}",
+".ep-state{text-align:center;padding:50px 20px;color:var(--text-faint);font-size:15px}",
+".ep-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:22px;box-shadow:var(--shadow-hero)}",
+".ep-label{display:block;margin-top:14px;margin-bottom:7px;color:rgba(255,255,255,.7);font-weight:700;font-size:13px}",
+".ep-label:first-child{margin-top:0}",
+".ep-input{width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid rgba(255,255,255,.1);background:var(--surface-softer);color:var(--text);font-family:'Tajawal',sans-serif;font-size:14px;outline:none;transition:border-color .2s}",
+".ep-input:focus{border-color:rgba(232,160,32,.5)}",
+".ep-input::placeholder{color:var(--text-dim)}",
+".ep-input option{background:#0c1322;color:#fff}",
+".ep-save{width:100%;margin-top:20px;padding:15px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#000;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(232,160,32,.35);transition:transform .15s}",
+".ep-save:active{transform:scale(.97)}",
+".ep-msg{margin-top:16px;padding:13px;border-radius:12px;text-align:center;font-size:14px;font-weight:600;background:var(--surface-soft);border:1px solid rgba(255,255,255,.1);color:#fff}",
+].join("\n");
 
-  const [user, setUser] = useState(null);
+function EditProfilePage() {
+  const navigate = useNavigate();
+  const [user, setUser] = useState<any>(null);
   const [fullName, setFullName] = useState("");
   const [age, setAge] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [birthPlace, setBirthPlace] = useState("");
-  const [grade, setGrade] = useState(1);
+  const [grade, setGrade] = useState<any>(1);
   const [bio, setBio] = useState("");
-
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    loadProfile();
-  }, []);
+  useEffect(() => { loadProfile(); }, []);
 
   async function loadProfile() {
     setLoading(true);
-
     const currentUser = await getCurrentUser();
     setUser(currentUser);
-
     if (currentUser) {
       const profile = await getProfile(currentUser.id);
-
       if (profile) {
         setFullName(profile.full_name || "");
         setAge(profile.age || "");
@@ -43,17 +65,13 @@ function EditProfilePage({ theme, setThemeName }) {
         setBio(profile.bio || "");
       }
     }
-
     setLoading(false);
   }
 
-  async function handleSave(e) {
+  async function handleSave(e: any) {
     e.preventDefault();
-
     if (!user) return;
-
     setMessage("");
-
     const result = await upsertProfile({
       id: user.id,
       full_name: fullName,
@@ -63,129 +81,71 @@ function EditProfilePage({ theme, setThemeName }) {
       grade,
       bio,
     });
-
     if (result.error) {
       setMessage("❌ حدث خطأ أثناء حفظ الملف الشخصي");
       return;
     }
-
     setMessage("✅ تم حفظ الملف الشخصي بنجاح");
-
-    setTimeout(() => {
-      navigate("/profile");
-    }, 800);
+    setTimeout(() => { navigate("/profile"); }, 800);
   }
 
   return (
-    <Layout theme={theme} setThemeName={setThemeName}>
-      <section style={heroStyle(theme)}>
-        <div style={{ fontSize: "56px" }}>✏️</div>
-        <h1 style={{ color: theme.text }}>تعديل الملف الشخصي</h1>
-        <p style={{ color: theme.muted }}>حدّث بيانات حسابك التعليمية</p>
-      </section>
+    <>
+      <style>{CSS}</style>
+      <div className="ep-root">
+        <div className="ep-orb ep-ob" /><div className="ep-orb ep-og" /><div className="ep-grid" />
+        <div className="ep-content">
+          <div className="ep-hero">
+            <button className="ep-back" onClick={() => navigate("/profile")}>← رجوع</button>
+            <div className="ep-logo">
+              <div className="ep-logo-bg" />
+              <span className="ep-logo-em">✏️</span>
+            </div>
+            <h1 className="ep-title">تعديل الملف الشخصي</h1>
+            <div className="ep-sub">حدّث بيانات حسابك التعليمية</div>
+          </div>
 
-      {loading ? (
-        <div style={cardStyle(theme)}>جاري تحميل البيانات...</div>
-      ) : !user ? (
-        <div style={cardStyle(theme)}>🔐 سجّل الدخول أولًا.</div>
-      ) : (
-        <form onSubmit={handleSave} style={cardStyle(theme)}>
-          <label style={labelStyle(theme)}>الاسم الكامل</label>
-          <input value={fullName} onChange={(e) => setFullName(e.target.value)} style={inputStyle(theme)} />
+          <div className="ep-body">
+            {loading ? (
+              <div className="ep-state">⏳ جاري تحميل البيانات...</div>
+            ) : !user ? (
+              <div className="ep-state">🔐 سجّل الدخول أولًا</div>
+            ) : (
+              <form onSubmit={handleSave} className="ep-card">
+                <label className="ep-label">الاسم الكامل</label>
+                <input className="ep-input" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="أحمد بن عمر" />
 
-          <label style={labelStyle(theme)}>العمر</label>
-          <input type="number" value={age} onChange={(e) => setAge(e.target.value)} style={inputStyle(theme)} />
+                <label className="ep-label">العمر</label>
+                <input className="ep-input" type="number" value={age} onChange={(e) => setAge(e.target.value)} />
 
-          <label style={labelStyle(theme)}>تاريخ الميلاد</label>
-          <input type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} style={inputStyle(theme)} />
+                <label className="ep-label">تاريخ الميلاد</label>
+                <input className="ep-input" type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
 
-          <label style={labelStyle(theme)}>مكان الميلاد</label>
-          <input value={birthPlace} onChange={(e) => setBirthPlace(e.target.value)} style={inputStyle(theme)} />
+                <label className="ep-label">مكان الميلاد</label>
+                <input className="ep-input" value={birthPlace} onChange={(e) => setBirthPlace(e.target.value)} />
 
-          <label style={labelStyle(theme)}>السنة الدراسية</label>
-          <select value={grade} onChange={(e) => setGrade(e.target.value)} style={inputStyle(theme)}>
-            <option value="1">السنة الأولى</option>
-            <option value="2">السنة الثانية</option>
-            <option value="3">السنة الثالثة</option>
-            <option value="4">السنة الرابعة</option>
-            <option value="5">السنة الخامسة</option>
-          </select>
+                <label className="ep-label">السنة الدراسية</label>
+                <select className="ep-input" value={grade} onChange={(e) => setGrade(e.target.value)}>
+                  <option value="1">السنة الأولى</option>
+                  <option value="2">السنة الثانية</option>
+                  <option value="3">السنة الثالثة</option>
+                  <option value="4">السنة الرابعة</option>
+                  <option value="5">السنة الخامسة</option>
+                </select>
 
-          <label style={labelStyle(theme)}>نبذة قصيرة</label>
-          <textarea
-            rows="4"
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-            placeholder="مثال: أحب الرياضيات والقراءة..."
-            style={{ ...inputStyle(theme), lineHeight: "1.8" }}
-          />
+                <label className="ep-label">نبذة قصيرة</label>
+                <textarea className="ep-input" rows={4} value={bio} onChange={(e) => setBio(e.target.value)} placeholder="مثال: أحب الرياضيات والقراءة..." style={{ lineHeight: "1.8", resize: "vertical" }} />
 
-          <button style={buttonStyle(theme)}>💾 حفظ التعديلات</button>
+                <button className="ep-save" type="submit">💾 حفظ التعديلات</button>
 
-          {message && <div style={messageStyle(theme)}>{message}</div>}
-        </form>
-      )}
-    </Layout>
+                {message && <div className="ep-msg">{message}</div>}
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
-
-const heroStyle = (theme) => ({
-  background: theme.surface,
-  border: `1px solid ${theme.border}`,
-  borderRadius: common.radius.large,
-  padding: "28px",
-  textAlign: "center",
-  boxShadow: common.shadow.hero,
-});
-
-const cardStyle = (theme) => ({
-  marginTop: "22px",
-  background: theme.surface,
-  border: `1px solid ${theme.border}`,
-  padding: "22px",
-  borderRadius: common.radius.large,
-  boxShadow: common.shadow.card,
-  color: theme.text,
-});
-
-const labelStyle = (theme) => ({
-  display: "block",
-  marginTop: "14px",
-  marginBottom: "8px",
-  color: theme.text,
-  fontWeight: "bold",
-});
-
-const inputStyle = (theme) => ({
-  width: "100%",
-  padding: "15px",
-  borderRadius: common.radius.medium,
-  border: `1px solid ${theme.border}`,
-  background: theme.surface2,
-  color: theme.text,
-  fontSize: "17px",
-  outline: "none",
-});
-
-const buttonStyle = (theme) => ({
-  width: "100%",
-  marginTop: "20px",
-  padding: "16px",
-  border: "none",
-  borderRadius: common.radius.medium,
-  background: `linear-gradient(135deg, ${theme.primary}, ${theme.secondary})`,
-  color: "white",
-  fontSize: "20px",
-  fontWeight: "bold",
-});
-
-const messageStyle = (theme) => ({
-  marginTop: "16px",
-  padding: "14px",
-  borderRadius: common.radius.medium,
-  background: theme.surface2,
-  border: `1px solid ${theme.border}`,
-  color: theme.text,
-});
 
 export default EditProfilePage;

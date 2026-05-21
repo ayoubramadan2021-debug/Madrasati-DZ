@@ -1,0 +1,68 @@
+:root,
+[data-theme="dark"] {
+  --bg: #07101f;
+  --surface: linear-gradient(135deg, rgba(15,25,45,.97), rgba(10,16,30,.99));
+  --surface-2: linear-gradient(135deg, rgba(15,25,45,.96), rgba(10,16,30,.98));
+  --surface-solid: #0c1322;
+  --surface-soft: rgba(255,255,255,.05);
+  --surface-softer: rgba(255,255,255,.04);
+  --surface-press: rgba(255,255,255,.08);
+  --text: #ffffff;
+  --text-muted: rgba(255,255,255,.5);
+  --text-faint: rgba(255,255,255,.4);
+  --text-dim: rgba(255,255,255,.3);
+  --border: rgba(255,255,255,.09);
+  --border-soft: rgba(255,255,255,.08);
+  --border-faint: rgba(255,255,255,.06);
+  --gold: #E8A020;
+  --gold-deep: #c97d0a;
+  --gold-soft: rgba(232,160,32,.1);
+  --gold-border: rgba(232,160,32,.4);
+  --blue: #1B3A6B;
+  --blue-light: #2D5BA3;
+  --title-grad: linear-gradient(135deg, #fff 25%, #E8A020 100%);
+  --shadow-card: 0 6px 22px rgba(0,0,0,.3);
+  --shadow-hero: 0 10px 30px rgba(0,0,0,.4);
+  --shadow-strong: 0 8px 32px rgba(0,0,0,.5);
+  --shadow-gold: 0 6px 18px rgba(232,160,32,.35);
+  --success: #22C55E;
+  --success-deep: #16a34a;
+  --danger: #ff6b6b;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #F5F5F7;
+  --surface: #ffffff;
+  --surface-2: #ffffff;
+  --surface-solid: #ffffff;
+  --surface-soft: rgba(0,0,0,.03);
+  --surface-softer: rgba(0,0,0,.02);
+  --surface-press: rgba(0,0,0,.05);
+  --text: #1d1d1f;
+  --text-muted: rgba(29,29,31,.55);
+  --text-faint: rgba(29,29,31,.45);
+  --text-dim: rgba(29,29,31,.3);
+  --border: rgba(0,0,0,.08);
+  --border-soft: rgba(0,0,0,.06);
+  --border-faint: rgba(0,0,0,.05);
+  --gold: #C8851A;
+  --gold-deep: #a8690a;
+  --gold-soft: rgba(232,160,32,.12);
+  --gold-border: rgba(200,133,26,.45);
+  --blue: #1B3A6B;
+  --blue-light: #2D5BA3;
+  --title-grad: linear-gradient(135deg, #1d1d1f 30%, #C8851A 100%);
+  --shadow-card: 0 2px 12px rgba(27,58,107,.07), 0 1px 3px rgba(0,0,0,.04);
+  --shadow-hero: 0 8px 30px rgba(27,58,107,.1), 0 2px 8px rgba(0,0,0,.05);
+  --shadow-strong: 0 8px 28px rgba(27,58,107,.14);
+  --shadow-gold: 0 6px 18px rgba(200,133,26,.3);
+  --success: #16a34a;
+  --success-deep: #15803d;
+  --danger: #dc2626;
+  color-scheme: light;
+}
+
+html { transition: background-color .4s ease; }
+body { background: var(--bg); }
+* { transition: background .35s ease, border-color .35s ease, color .35s ease, box-shadow .35s ease; }

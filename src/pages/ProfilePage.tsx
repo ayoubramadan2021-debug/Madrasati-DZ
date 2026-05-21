@@ -1,46 +1,99 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
+import { ThemeToggle } from "../useTheme";
 
-const C = {
-  primary: "#1B3A6B", primaryLight: "#2D5BA3",
-  accent: "#E8A020", success: "#2E7D5E",
-  error: "#C0392B", surface: "#FFFFFF",
-  surface2: "#F7F9FC", text: "#1A2540",
-  textMuted: "#8A97AA", border: "#D8E2F0",
-  shadow: "0 2px 12px rgba(27,58,107,0.09)",
-};
+const CSS = [
+"@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');",
+".pf-root *,.pf-root *::before,.pf-root *::after{box-sizing:border-box;margin:0;padding:0}",
+".pf-root{min-height:100dvh;background:var(--bg);font-family:'Tajawal',sans-serif;direction:rtl;overflow-x:hidden;position:relative;padding-bottom:100px}",
+".pf-orb{position:fixed;pointer-events:none;border-radius:50%;z-index:0}",
+".pf-ob{width:480px;height:480px;top:-180px;left:-120px;background:radial-gradient(circle,rgba(27,58,107,.6) 0%,transparent 70%);animation:pf-d1 14s ease-in-out infinite alternate}",
+".pf-og{width:360px;height:360px;bottom:-100px;right:-80px;background:radial-gradient(circle,rgba(232,160,32,.13) 0%,transparent 70%);animation:pf-d2 11s ease-in-out infinite alternate}",
+"@keyframes pf-d1{from{transform:translate(0,0)}to{transform:translate(6%,5%)}}",
+"@keyframes pf-d2{from{transform:translate(0,0)}to{transform:translate(-5%,-7%)}}",
+".pf-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px}",
+".pf-content{position:relative;z-index:2}",
+".pf-center{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;position:relative;z-index:2}",
+".pf-state{color:var(--text-muted);font-size:16px}",
+".pf-lock-em{font-size:62px;margin-bottom:16px}",
+".pf-lock-t{font-weight:800;color:var(--text);font-size:18px;margin-bottom:18px}",
+".pf-btn{padding:14px 32px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#000;font-family:'Tajawal',sans-serif;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(232,160,32,.35);transition:transform .2s}",
+".pf-btn:active{transform:scale(.96)}",
+".pf-hero{position:relative;padding:24px 16px 44px;text-align:center}",
+".pf-back{position:absolute;top:20px;right:16px;background:var(--border-faint);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.8);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .2s}",
+".pf-back:active{background:rgba(255,255,255,.12)}",
+".pf-av-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;width:92px;height:92px;margin:14px 0 12px;opacity:0;transform:scale(.7);transition:opacity .7s cubic-bezier(.34,1.56,.64,1),transform .7s cubic-bezier(.34,1.56,.64,1)}",
+".pf-av-wrap.in{opacity:1;transform:scale(1)}",
+".pf-av-ring{position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(232,160,32,.3);animation:pf-spin 16s linear infinite}",
+"@keyframes pf-spin{to{transform:rotate(360deg)}}",
+".pf-av{position:relative;width:92px;height:92px;border-radius:50%;background:linear-gradient(145deg,#1a3d73,#0c1e3a);border:2px solid rgba(232,160,32,.4);display:grid;place-items:center;font-size:44px;box-shadow:0 8px 28px rgba(0,0,0,.5)}",
+".pf-name{font-size:24px;font-weight:900;background:linear-gradient(135deg,#fff 30%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:0;transform:translateY(12px);transition:opacity .6s ease .2s,transform .6s ease .2s}",
+".pf-name.in{opacity:1;transform:translateY(0)}",
+".pf-body{padding:0 16px;margin-top:-24px;position:relative;z-index:3}",
+".pf-stats{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:20px;margin-bottom:14px;box-shadow:var(--shadow-hero);display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;opacity:0;transform:translateY(16px);transition:opacity .5s ease .3s,transform .5s ease .3s}",
+".pf-stats.in{opacity:1;transform:translateY(0)}",
+".pf-stat-n{font-size:24px;font-weight:900;line-height:1}",
+".pf-stat-l{color:var(--text-faint);font-size:11px;margin-top:4px}",
+".pf-stat-div{position:relative}",
+".pf-stat-div::before,.pf-stat-div::after{content:'';position:absolute;top:15%;height:70%;width:1px;background:var(--border-soft)}",
+".pf-stat-div::before{right:0}",
+".pf-stat-div::after{left:0}",
+".pf-card{background:var(--surface-2);border:1px solid var(--border-soft);border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-card);opacity:0;transform:translateY(16px);transition:opacity .5s ease .4s,transform .5s ease .4s}",
+".pf-card.in{opacity:1;transform:translateY(0)}",
+".pf-card-t{font-weight:800;color:var(--text);font-size:15px;margin-bottom:14px}",
+".pf-input{width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid rgba(232,160,32,.4);background:var(--surface-soft);color:var(--text);font-family:'Tajawal',sans-serif;font-size:14px;outline:none;margin-bottom:12;direction:rtl;margin-bottom:12px}",
+".pf-row-btns{display:flex;gap:10px}",
+".pf-save{flex:1;padding:12px;border:none;border-radius:12px;background:linear-gradient(135deg,#22C55E,#16a34a);color:var(--text);font-family:'Tajawal',sans-serif;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(34,197,94,.3);transition:transform .15s}",
+".pf-save:active{transform:scale(.96)}",
+".pf-cancel{flex:1;padding:12px;border:1.5px solid rgba(255,255,255,.12);border-radius:12px;background:transparent;color:rgba(255,255,255,.6);font-family:'Tajawal',sans-serif;font-size:14px;cursor:pointer}",
+".pf-view{display:flex;align-items:center;justify-content:space-between}",
+".pf-view-name{color:var(--text);font-size:15px;font-weight:700}",
+".pf-edit{padding:8px 16px;border:1.5px solid rgba(232,160,32,.4);border-radius:10px;background:rgba(232,160,32,.08);color:var(--gold);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s}",
+".pf-edit:active{background:rgba(232,160,32,.18)}",
+".pf-links{background:var(--surface-2);border:1px solid var(--border-soft);border-radius:18px;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow-card);opacity:0;transform:translateY(16px);transition:opacity .5s ease .5s,transform .5s ease .5s}",
+".pf-links.in{opacity:1;transform:translateY(0)}",
+".pf-link{width:100%;display:flex;align-items:center;gap:14px;padding:16px;border:none;background:transparent;font-family:'Tajawal',sans-serif;cursor:pointer;transition:background .2s}",
+".pf-link:active{background:var(--surface-softer)}",
+".pf-link-ic{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;font-size:20px;flex-shrink:0;background:rgba(232,160,32,.1)}",
+".pf-link-l{font-weight:700;color:var(--text);font-size:15px;flex:1;text-align:right}",
+".pf-link-a{color:var(--text-dim);font-size:18px}",
+".pf-logout{width:100%;padding:15px;border:1px solid rgba(220,80,80,.3);border-radius:16px;background:rgba(220,80,80,.1);color:#ff6b6b;font-family:'Tajawal',sans-serif;font-size:15px;font-weight:800;cursor:pointer;opacity:0;transition:opacity .5s ease .6s,background .2s;transform:translateY(16px)}",
+".pf-logout.in{opacity:1;transform:translateY(0)}",
+".pf-logout:active{background:rgba(220,80,80,.2)}",
+].join("\n");
 
 export default function ProfilePage() {
   const navigate = useNavigate();
   const [profile, setProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState(false);
-  const [name, setName]       = useState("");
-  const [saving, setSaving]   = useState(false);
-  const [points, setPoints]   = useState(0);
+  const [name, setName] = useState("");
+  const [saving, setSaving] = useState(false);
+  const [points, setPoints] = useState(0);
   const [completed, setCompleted] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
+  useEffect(() => { load(); }, []);
   useEffect(() => {
-    load();
-  }, []);
+    const t = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(t);
+  }, [profile]);
 
   async function load() {
     try {
       const { data: session } = await supabase.auth.getSession();
       const user = session?.session?.user;
       if (!user) { setLoading(false); return; }
-      const { data: prof } = await supabase
-        .from("profiles").select("*").eq("id", user.id).single();
-      const { data: prog } = await supabase
-        .from("progress").select("points,completed").eq("profile_id", user.id);
+      const { data: prof } = await supabase.from("profiles").select("*").eq("id", user.id).single();
+      const { data: prog } = await supabase.from("progress").select("points,completed").eq("user_id", user.id);
       setProfile(prof);
       setName(prof?.full_name || "");
       if (prog) {
-        setPoints(prog.reduce((s: number, i: any) => s + Number(i.points||0), 0));
+        setPoints(prog.reduce((s: number, i: any) => s + Number(i.points || 0), 0));
         setCompleted(prog.filter((i: any) => i.completed).length);
       }
-    } catch(e) {}
+    } catch (e) {}
     setLoading(false);
   }
 
@@ -53,7 +106,7 @@ export default function ProfilePage() {
         await supabase.from("profiles").update({ full_name: name }).eq("id", user.id);
         setProfile((p: any) => ({ ...p, full_name: name }));
       }
-    } catch(e) {}
+    } catch (e) {}
     setEditing(false);
     setSaving(false);
   }
@@ -63,106 +116,123 @@ export default function ProfilePage() {
     navigate("/auth");
   }
 
+  const cx = (...a: (string | false)[]) => a.filter(Boolean).join(" ");
+
   if (loading) return (
-    <div style={{ fontFamily:"'Cairo',sans-serif", minHeight:"100vh", background:C.surface2, display:"grid", placeItems:"center" }}>
-      <div style={{ color:C.textMuted, fontSize:16 }}>⏳ جاري التحميل...</div>
-    </div>
+    <>
+      <style>{CSS}</style>
+      <div className="pf-root">
+        <div className="pf-orb pf-ob" /><div className="pf-orb pf-og" /><div className="pf-grid" />
+        <div className="pf-center"><div className="pf-state">⏳ جاري التحميل...</div></div>
+      </div>
+    </>
   );
 
   if (!profile) return (
-    <div style={{ fontFamily:"'Cairo',sans-serif", minHeight:"100vh", background:C.surface2, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", padding:24 }}>
-      <div style={{ fontSize:64, marginBottom:16 }}>🔐</div>
-      <div style={{ fontWeight:700, color:C.text, fontSize:18, marginBottom:8 }}>سجّل الدخول أولاً</div>
-      <button onClick={() => navigate("/auth")}
-        style={{ padding:"14px 32px", border:"none", borderRadius:14, background:C.primary, color:"white", fontFamily:"'Cairo',sans-serif", fontSize:15, fontWeight:700, cursor:"pointer" }}>
-        تسجيل الدخول
-      </button>
-    </div>
+    <>
+      <style>{CSS}</style>
+      <div className="pf-root">
+        <div className="pf-orb pf-ob" /><div className="pf-orb pf-og" /><div className="pf-grid" />
+        <div className="pf-center">
+          <div className="pf-lock-em">🔐</div>
+          <div className="pf-lock-t">سجّل الدخول أولاً</div>
+          <button className="pf-btn" onClick={() => navigate("/auth")}>تسجيل الدخول</button>
+        </div>
+      </div>
+    </>
   );
 
   return (
-    <div style={{ fontFamily:"'Cairo',sans-serif", minHeight:"100vh", background:C.surface2, paddingBottom:100 }}>
+    <>
+      <style>{CSS}</style>
+      <div className="pf-root">
+        <div className="pf-orb pf-ob" /><div className="pf-orb pf-og" /><div className="pf-grid" />
 
-      {/* Header */}
-      <div style={{ background:`linear-gradient(135deg,${C.primary},${C.primaryLight})`, padding:"24px 16px 48px", borderRadius:"0 0 28px 28px" }}>
-        <button onClick={() => navigate("/")}
-          style={{ color:"white", background:"rgba(255,255,255,0.15)", border:"none", borderRadius:10, padding:"6px 12px", fontSize:13, fontWeight:600, cursor:"pointer", marginBottom:16, fontFamily:"'Cairo',sans-serif" }}>
-          ← رجوع
-        </button>
-        <div style={{ textAlign:"center" }}>
-          <div style={{ width:80, height:80, borderRadius:"50%", background:"rgba(255,255,255,0.2)", display:"grid", placeItems:"center", fontSize:40, margin:"0 auto 12px" }}>👦</div>
-          <div style={{ color:"white", fontSize:22, fontWeight:800 }}>{profile.full_name || "تلميذ"}</div>
-        </div>
-      </div>
-
-      <div style={{ padding:"0 16px", marginTop:-20 }}>
-
-        {/* الإحصائيات */}
-        <div style={{ background:C.surface, border:`1px solid ${C.border}`, borderRadius:18, padding:20, marginBottom:14, boxShadow:C.shadow, display:"grid", gridTemplateColumns:"1fr 1fr 1fr", textAlign:"center" }}>
-          <div>
-            <div style={{ fontSize:22, fontWeight:900, color:C.accent }}>{points}</div>
-            <div style={{ color:C.textMuted, fontSize:11 }}>النقاط</div>
-          </div>
-          <div>
-            <div style={{ fontSize:22, fontWeight:900, color:C.success }}>{completed}</div>
-            <div style={{ color:C.textMuted, fontSize:11 }}>مكتمل</div>
-          </div>
-          <div>
-            <div style={{ fontSize:22, fontWeight:900, color:C.primary }}>{profile.grade || "—"}</div>
-            <div style={{ color:C.textMuted, fontSize:11 }}>السنة</div>
-          </div>
-        </div>
-
-        {/* تعديل الاسم */}
-        <div style={{ background:C.surface, border:`1px solid ${C.border}`, borderRadius:18, padding:20, marginBottom:14, boxShadow:C.shadow }}>
-          <div style={{ fontWeight:700, color:C.text, fontSize:16, marginBottom:14 }}>معلوماتي</div>
-          {editing ? (
-            <>
-              <input value={name} onChange={e => setName(e.target.value)}
-                style={{ width:"100%", padding:"12px 16px", borderRadius:12, border:`1.5px solid ${C.primary}`, fontFamily:"'Cairo',sans-serif", fontSize:14, outline:"none", marginBottom:12, boxSizing:"border-box" as any, direction:"rtl" }} />
-              <div style={{ display:"flex", gap:10 }}>
-                <button onClick={handleSave} disabled={saving}
-                  style={{ flex:1, padding:"11px", border:"none", borderRadius:12, background:C.success, color:"white", fontFamily:"'Cairo',sans-serif", fontSize:14, fontWeight:700, cursor:"pointer" }}>
-                  {saving ? "..." : "حفظ ✓"}
-                </button>
-                <button onClick={() => setEditing(false)}
-                  style={{ flex:1, padding:"11px", border:`1.5px solid ${C.border}`, borderRadius:12, background:"transparent", color:C.textMuted, fontFamily:"'Cairo',sans-serif", fontSize:14, cursor:"pointer" }}>
-                  إلغاء
-                </button>
-              </div>
-            </>
-          ) : (
-            <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between" }}>
-              <span style={{ color:C.text, fontSize:15, fontWeight:600 }}>{profile.full_name || "—"}</span>
-              <button onClick={() => setEditing(true)}
-                style={{ padding:"8px 16px", border:`1.5px solid ${C.border}`, borderRadius:10, background:"transparent", color:C.primary, fontFamily:"'Cairo',sans-serif", fontSize:13, fontWeight:600, cursor:"pointer" }}>
-                تعديل ✏️
-              </button>
+        <div className="pf-content">
+          <div className="pf-hero">
+            <button className="pf-back" onClick={() => navigate("/")}>← رجوع</button>
+            <div className={cx("pf-av-wrap", mounted && "in")}>
+              <div className="pf-av-ring" />
+              <div className="pf-av">👦</div>
             </div>
-          )}
-        </div>
+            <div className={cx("pf-name", mounted && "in")}>{profile.full_name || "تلميذ"}</div>
+          </div>
 
-        {/* روابط */}
-        <div style={{ background:C.surface, border:`1px solid ${C.border}`, borderRadius:18, overflow:"hidden", marginBottom:14, boxShadow:C.shadow }}>
-          {[
-            { icon:"📊", label:"تقدمي", path:"/progress" },
-            { icon:"⭐", label:"المفضلة", path:"/favorites" },
-            { icon:"🔔", label:"الإشعارات", path:"/notifications" },
-          ].map((item, i) => (
-            <button key={i} onClick={() => navigate(item.path)}
-              style={{ width:"100%", display:"flex", alignItems:"center", gap:14, padding:"16px", border:"none", borderBottom: i < 2 ? `1px solid ${C.border}` : "none", background:"transparent", fontFamily:"'Cairo',sans-serif", cursor:"pointer" }}>
-              <span style={{ fontSize:22 }}>{item.icon}</span>
-              <span style={{ fontWeight:600, color:C.text, fontSize:15, flex:1 }}>{item.label}</span>
-              <span style={{ color:C.textMuted, fontSize:18 }}>←</span>
-            </button>
-          ))}
-        </div>
+          <div className="pf-body">
+            {/* الإحصائيات */}
+            <div className={cx("pf-stats", mounted && "in")}>
+              <div>
+                <div className="pf-stat-n" style={{ color: "var(--gold)" }}>{points}</div>
+                <div className="pf-stat-l">النقاط</div>
+              </div>
+              <div className="pf-stat-div">
+                <div className="pf-stat-n" style={{ color: "#22C55E" }}>{completed}</div>
+                <div className="pf-stat-l">مكتمل</div>
+              </div>
+              <div>
+                <div className="pf-stat-n" style={{ color: "#3B82F6" }}>{profile.grade || "—"}</div>
+                <div className="pf-stat-l">السنة</div>
+              </div>
+            </div>
 
-        <button onClick={handleLogout}
-          style={{ width:"100%", padding:"14px", border:"none", borderRadius:16, background:"#FDECEA", color:C.error, fontFamily:"'Cairo',sans-serif", fontSize:15, fontWeight:700, cursor:"pointer" }}>
-          تسجيل الخروج 🚪
-        </button>
+            {/* تعديل الاسم */}
+            <div className={cx("pf-card", mounted && "in")}>
+              <div className="pf-card-t">معلوماتي</div>
+              {editing ? (
+                <>
+                  <input className="pf-input" value={name} onChange={e => setName(e.target.value)} />
+                  <div className="pf-row-btns">
+                    <button className="pf-save" onClick={handleSave} disabled={saving}>{saving ? "..." : "حفظ ✓"}</button>
+                    <button className="pf-cancel" onClick={() => setEditing(false)}>إلغاء</button>
+                  </div>
+                </>
+              ) : (
+                <div className="pf-view">
+                  <span className="pf-view-name">{profile.full_name || "—"}</span>
+                  <button className="pf-edit" onClick={() => setEditing(true)}>تعديل ✏️</button>
+                </div>
+              )}
+            </div>
+
+            {/* روابط */}
+            {profile?.role !== "admin" && profile?.role !== "parent" && (
+            <div className={cx("pf-links", mounted && "in")}>
+              {[
+                { icon: "📊", label: "تقدمي", path: "/progress" },
+                { icon: "🏅", label: "الإنجازات", path: "/achievements" },
+                { icon: "⭐", label: "المفضلة", path: "/favorites" },
+                { icon: "🔔", label: "الإشعارات", path: "/notifications" },
+              ].map((item, i) => (
+                <button key={i} className="pf-link" onClick={() => navigate(item.path)} style={{ borderBottom: i < 2 ? "1px solid var(--border-faint)" : "none" }}>
+                  <span className="pf-link-ic">{item.icon}</span>
+                  <span className="pf-link-l">{item.label}</span>
+                  <span className="pf-link-a">←</span>
+                </button>
+              ))}
+            </div>
+            )}
+
+            {(profile?.role === "admin" || profile?.role === "parent") && (
+              <div className={cx("pf-links", mounted && "in")} style={{ border: "1px solid rgba(232,160,32,.25)" }}>
+                {[
+                  ...(profile?.role === "admin" ? [{ icon: "🧑‍🏫", label: "لوحة الإدارة", path: "/admin" }] : []),
+                  ...(profile?.role === "parent" ? [{ icon: "👨‍👩‍👧", label: "متابعة الأبناء", path: "/parent/dashboard" }] : []),
+                  ...(profile?.role === "parent" ? [{ icon: "🔗", label: "ربط وليّ الأمر", path: "/parent" }] : []),
+                ].map((item, i, arr) => (
+                  <button key={i} className="pf-link" onClick={() => navigate(item.path)} style={{ borderBottom: i < arr.length - 1 ? "1px solid var(--border-faint)" : "none" }}>
+                    <span className="pf-link-ic">{item.icon}</span>
+                    <span className="pf-link-l">{item.label}</span>
+                    <span className="pf-link-a">←</span>
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <div style={{ display: "flex", justifyContent: "center", marginBottom: 16 }}><ThemeToggle /></div>
+            <button className={cx("pf-logout", mounted && "in")} onClick={handleLogout}>تسجيل الخروج 🚪</button>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

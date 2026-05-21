@@ -1,86 +1,108 @@
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import appData from "../data/appData";
+import { getLessons } from "../services/lessonService";
 
-const C = {
-  primary: "#1B3A6B", primaryLight: "#2D5BA3",
-  accent: "#E8A020", success: "#2E7D5E",
-  surface: "#FFFFFF", surface2: "#F7F9FC",
-  text: "#1A2540", textMuted: "#8A97AA",
-  border: "#D8E2F0", shadow: "0 2px 12px rgba(27,58,107,0.09)",
-};
-
-const SUBJECT_COLORS: Record<string, string> = {
-  math: "#2E7D5E", arabic: "#C0392B", french: "#1565C0",
-  islamic: "#6A1B9A", civic: "#E65100", science: "#00838F",
-};
+const CSS = [
+"@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');",
+".ls-root *,.ls-root *::before,.ls-root *::after{box-sizing:border-box;margin:0;padding:0}",
+".ls-root{min-height:100dvh;background:var(--bg);font-family:'Tajawal',sans-serif;direction:rtl;overflow-x:hidden;position:relative;padding-bottom:100px}",
+".ls-orb{position:fixed;pointer-events:none;border-radius:50%;z-index:0}",
+".ls-ob{width:480px;height:480px;top:-180px;left:-120px;background:radial-gradient(circle,rgba(27,58,107,.6) 0%,transparent 70%);animation:ls-d1 14s ease-in-out infinite alternate}",
+".ls-og{width:360px;height:360px;bottom:-100px;right:-80px;background:radial-gradient(circle,rgba(232,160,32,.13) 0%,transparent 70%);animation:ls-d2 11s ease-in-out infinite alternate}",
+"@keyframes ls-d1{from{transform:translate(0,0)}to{transform:translate(6%,5%)}}",
+"@keyframes ls-d2{from{transform:translate(0,0)}to{transform:translate(-5%,-7%)}}",
+".ls-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px}",
+".ls-content{position:relative;z-index:2}",
+".ls-hero{position:relative;padding:24px 20px 28px;text-align:center}",
+".ls-back{position:absolute;top:20px;right:16px;background:var(--border-faint);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.8);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .2s}",
+".ls-back:active{background:rgba(255,255,255,.12)}",
+".ls-logo{position:relative;display:inline-flex;align-items:center;justify-content:center;width:80px;height:80px;margin:12px 0 12px;opacity:0;transform:scale(.7);transition:opacity .7s cubic-bezier(.34,1.56,.64,1),transform .7s cubic-bezier(.34,1.56,.64,1)}",
+".ls-logo.in{opacity:1;transform:scale(1)}",
+".ls-logo-bg{position:absolute;inset:0;border-radius:24px;background:linear-gradient(145deg,#1a3d73,#0c1e3a);border:1px solid rgba(232,160,32,.4);box-shadow:var(--shadow-strong),inset 0 1px 0 var(--border-soft)}",
+".ls-logo-em{position:relative;font-size:40px;filter:drop-shadow(0 0 14px rgba(232,160,32,.6));animation:ls-bob 4s ease-in-out infinite}",
+"@keyframes ls-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}",
+".ls-title{font-size:26px;font-weight:900;line-height:1;background:linear-gradient(135deg,#fff 25%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:0;transform:translateY(14px);transition:opacity .6s ease .2s,transform .6s ease .2s}",
+".ls-title.in{opacity:1;transform:translateY(0)}",
+".ls-body{padding:0 16px}",
+".ls-state{text-align:center;padding:50px 20px;color:var(--text-muted);font-size:15px}",
+".ls-list{display:flex;flex-direction:column;gap:12px}",
+".ls-card{position:relative;background:var(--surface-2);border:1px solid var(--border-soft);border-radius:18px;padding:18px;box-shadow:var(--shadow-card);overflow:hidden;animation:ls-slide .5s ease backwards}",
+"@keyframes ls-slide{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}",
+".ls-card-strip{position:absolute;right:0;top:0;bottom:0;width:4px;border-radius:0 18px 18px 0;background:linear-gradient(180deg,var(--gold),var(--gold-deep))}",
+".ls-num{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:9px;background:rgba(232,160,32,.12);color:var(--gold);font-weight:800;font-size:13px;margin-bottom:8px}",
+".ls-card-t{color:var(--text);font-size:17px;font-weight:800;margin-bottom:6px}",
+".ls-card-c{color:var(--text-muted);font-size:13px;line-height:1.7}",
+".ls-btns{display:flex;gap:10px;margin-top:14px}",
+".ls-open{flex:1;padding:13px;border-radius:13px;border:none;background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#000;font-family:'Tajawal',sans-serif;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 4px 14px rgba(232,160,32,.3);transition:transform .15s}",
+".ls-open:active{transform:scale(.97)}",
+".ls-quiz{flex:1;padding:13px;border-radius:13px;border:1.5px solid rgba(168,85,247,.5);background:rgba(168,85,247,.12);color:#c084fc;font-family:'Tajawal',sans-serif;font-weight:800;font-size:14px;cursor:pointer;transition:transform .15s,background .2s}",
+".ls-quiz:active{transform:scale(.97);background:rgba(168,85,247,.2)}",
+].join("\n");
 
 export default function LessonPage() {
-  const { gradeId, subject, lessonId } = useParams();
+  const { subjectId } = useParams();
   const navigate = useNavigate();
-  const subjectColor = SUBJECT_COLORS[subject || ""] || C.primary;
+  const [lessons, setLessons] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  // جلب الدرس من appData
-  const currentSubject = (appData.subjects || []).find((s: any) => s.slug === subject);
-  const lesson = (currentSubject?.lessons || []).find((l: any) => String(l.id) === String(lessonId));
+  useEffect(() => {
+    if (!subjectId) return;
+    setLoading(true);
+    getLessons(subjectId)
+      .then((data) => setLessons(data || []))
+      .finally(() => setLoading(false));
+  }, [subjectId]);
+
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(t);
+  }, []);
+
+  const cx = (...a: (string | false)[]) => a.filter(Boolean).join(" ");
 
   return (
-    <div style={{ fontFamily:"'Cairo',sans-serif", minHeight:"100vh", background:C.surface2, paddingBottom:32 }}>
+    <>
+      <style>{CSS}</style>
+      <div className="ls-root">
+        <div className="ls-orb ls-ob" />
+        <div className="ls-orb ls-og" />
+        <div className="ls-grid" />
 
-      {/* Header */}
-      <div style={{ background:`linear-gradient(135deg,${subjectColor},${subjectColor}bb)`, padding:"20px 16px 24px", borderRadius:"0 0 28px 28px", marginBottom:16 }}>
-        <button
-          onClick={() => navigate(`/grade/${gradeId}/subject/${subject}/section/lessons`)}
-          style={{ color:"white", background:"rgba(255,255,255,0.15)", border:"none", borderRadius:10, padding:"6px 12px", fontSize:13, fontWeight:600, cursor:"pointer", marginBottom:12, fontFamily:"'Cairo',sans-serif" }}
-        >
-          ← رجوع للدروس
-        </button>
-        <div style={{ textAlign:"center" }}>
-          <div style={{ fontSize:48, marginBottom:8 }}>📖</div>
-          <h1 style={{ margin:"0 0 6px", color:"white", fontSize:22, fontWeight:800 }}>
-            {lesson?.title || "الدرس"}
-          </h1>
-          <div style={{ color:"rgba(255,255,255,0.75)", fontSize:13 }}>
-            {currentSubject?.name} — السنة {gradeId} ابتدائي
+        <div className="ls-content">
+          <div className="ls-hero">
+            <button className="ls-back" onClick={() => navigate(-1)}>← رجوع</button>
+            <div className={cx("ls-logo", mounted && "in")}>
+              <div className="ls-logo-bg" />
+              <span className="ls-logo-em">📚</span>
+            </div>
+            <h1 className={cx("ls-title", mounted && "in")}>الدروس</h1>
+          </div>
+
+          <div className="ls-body">
+            {loading ? (
+              <div className="ls-state">⏳ جاري التحميل...</div>
+            ) : lessons.length === 0 ? (
+              <div className="ls-state">📭 لا توجد دروس</div>
+            ) : (
+              <div className="ls-list">
+                {lessons.map((l, i) => (
+                  <div key={l.id} className="ls-card" style={{ animationDelay: (0.3 + i * 0.07) + "s" }}>
+                    <div className="ls-card-strip" />
+                    <div className="ls-num">{i + 1}</div>
+                    <div className="ls-card-t">{l.title}</div>
+                    <div className="ls-card-c">{l.content}</div>
+                    <div className="ls-btns">
+                      <button className="ls-open" onClick={() => navigate(`/lesson/${l.id}`)}>فتح الدرس ←</button>
+                      <button className="ls-quiz" onClick={() => navigate(`/quiz/${l.id}`)}>الاختبار 🧠</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
-
-      <div style={{ padding:"0 16px" }}>
-
-        {!lesson ? (
-          <div style={{ textAlign:"center", padding:40, color:C.textMuted }}>
-            <div style={{ fontSize:48 }}>📭</div>
-            <div style={{ marginTop:8, fontSize:16 }}>الدرس غير موجود</div>
-          </div>
-        ) : (
-          <>
-            {/* محتوى الدرس */}
-            <div style={{ background:C.surface, border:`1px solid ${C.border}`, borderRadius:18, padding:20, boxShadow:C.shadow, marginBottom:14 }}>
-              <h2 style={{ margin:"0 0 14px", color:C.primary, fontSize:18, fontWeight:700 }}>
-                🧠 محتوى الدرس
-              </h2>
-              <p style={{ color:C.text, lineHeight:2, fontSize:16, margin:0 }}>
-                {lesson.desc}
-              </p>
-            </div>
-
-            {/* زر المفضلة */}
-            <button
-              style={{ width:"100%", padding:"14px", border:"none", borderRadius:16, background:C.accent, color:"white", fontSize:16, fontWeight:700, marginBottom:14, cursor:"pointer", fontFamily:"'Cairo',sans-serif", boxShadow:`0 4px 14px ${C.accent}44` }}
-            >
-              ⭐ حفظ في المفضلة
-            </button>
-
-            {/* زر التمارين */}
-            <button
-              onClick={() => navigate(`/grade/${gradeId}/subject/${subject}/section/exercises`)}
-              style={{ width:"100%", padding:"14px", border:"none", borderRadius:16, background:`linear-gradient(135deg,${C.primary},${C.primaryLight})`, color:"white", fontSize:16, fontWeight:700, cursor:"pointer", fontFamily:"'Cairo',sans-serif", boxShadow:`0 4px 14px ${C.primary}44` }}
-            >
-              ✍️ اذهب إلى التمارين
-            </button>
-          </>
-        )}
-      </div>
-    </div>
+    </>
   );
 }

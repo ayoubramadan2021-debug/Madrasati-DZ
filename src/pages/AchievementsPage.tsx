@@ -1,213 +1,147 @@
 import { useEffect, useState } from "react";
-
-import Layout from "../components/Layout";
-import { common } from "../theme";
-
 import { getCurrentUser } from "../services/sessionService";
 import { getProfile } from "../services/profileService";
 import { getUserProgress } from "../services/progressService";
 
-function AchievementsPage({ theme, setThemeName }) {
-  const [loading, setLoading] = useState(true);
-  const [profile, setProfile] = useState(null);
-  const [progress, setProgress] = useState([]);
+const CSS = [
+"@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');",
+".ac-root *,.ac-root *::before,.ac-root *::after{box-sizing:border-box;margin:0;padding:0}",
+".ac-root{min-height:100dvh;background:var(--bg);font-family:'Tajawal',sans-serif;direction:rtl;overflow-x:hidden;position:relative;padding-bottom:100px}",
+".ac-orb{position:fixed;pointer-events:none;border-radius:50%;z-index:0}",
+".ac-ob{width:480px;height:480px;top:-180px;left:-120px;background:radial-gradient(circle,rgba(27,58,107,.6) 0%,transparent 70%);animation:ac-d1 14s ease-in-out infinite alternate}",
+".ac-og{width:360px;height:360px;bottom:-100px;right:-80px;background:radial-gradient(circle,rgba(232,160,32,.13) 0%,transparent 70%);animation:ac-d2 11s ease-in-out infinite alternate}",
+"@keyframes ac-d1{from{transform:translate(0,0)}to{transform:translate(6%,5%)}}",
+"@keyframes ac-d2{from{transform:translate(0,0)}to{transform:translate(-5%,-7%)}}",
+".ac-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px}",
+".ac-content{position:relative;z-index:2}",
+".ac-hero{position:relative;padding:24px 20px 24px;text-align:center}",
+".ac-logo{position:relative;display:inline-flex;align-items:center;justify-content:center;width:80px;height:80px;margin:8px 0 10px;opacity:0;transform:scale(.7);transition:opacity .7s cubic-bezier(.34,1.56,.64,1),transform .7s cubic-bezier(.34,1.56,.64,1)}",
+".ac-logo.in{opacity:1;transform:scale(1)}",
+".ac-logo-bg{position:absolute;inset:0;border-radius:24px;background:linear-gradient(145deg,#1a3d73,#0c1e3a);border:1px solid rgba(232,160,32,.4);box-shadow:var(--shadow-strong)}",
+".ac-logo-em{position:relative;font-size:40px;filter:drop-shadow(0 0 14px rgba(232,160,32,.6));animation:ac-bob 4s ease-in-out infinite}",
+"@keyframes ac-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}",
+".ac-title{font-size:24px;font-weight:900;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,#fff 25%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}",
+".ac-sub{font-size:13px;color:var(--text-faint)}",
+".ac-body{padding:0 16px}",
+".ac-state{text-align:center;padding:50px 20px;color:var(--text-faint);font-size:15px}",
+".ac-summary{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:20px;margin-bottom:18px;box-shadow:var(--shadow-hero)}",
+".ac-greet{font-size:18px;font-weight:800;color:var(--text);margin-bottom:6px}",
+".ac-count{font-size:13px;color:var(--text-muted);margin-bottom:14px}",
+".ac-count b{color:var(--gold)}",
+".ac-bar{width:100%;height:14px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden}",
+".ac-bar-f{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--gold),var(--gold-deep));box-shadow:0 0 12px rgba(232,160,32,.5);transition:width .9s cubic-bezier(.34,1.2,.64,1)}",
+".ac-list{display:flex;flex-direction:column;gap:12px}",
+".ac-badge{position:relative;border-radius:18px;padding:18px;display:flex;align-items:center;gap:16px;overflow:hidden;animation:ac-pop .5s ease backwards}",
+"@keyframes ac-pop{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}",
+".ac-badge-strip{position:absolute;right:0;top:0;bottom:0;width:4px;border-radius:0 18px 18px 0}",
+".ac-badge-em{font-size:44px;flex-shrink:0;transition:transform .3s}",
+".ac-badge-body{flex:1;min-width:0}",
+".ac-badge-t{font-size:16px;font-weight:800;color:var(--text);margin-bottom:4px}",
+".ac-badge-d{font-size:12px;color:var(--text-muted);line-height:1.6;margin-bottom:8px}",
+".ac-badge-s{font-size:12px;font-weight:800}",
+].join("\n");
 
+function AchievementsPage() {
+  const [loading, setLoading] = useState(true);
+  const [profile, setProfile] = useState<any>(null);
+  const [progress, setProgress] = useState<any[]>([]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { loadAchievements(); }, []);
   useEffect(() => {
-    loadAchievements();
-  }, []);
+    const t = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(t);
+  }, [profile]);
 
   async function loadAchievements() {
     setLoading(true);
-
     const user = await getCurrentUser();
-
-    if (!user) {
-      setLoading(false);
-      return;
-    }
-
+    if (!user) { setLoading(false); return; }
     const userProfile = await getProfile(user.id);
     const userProgress = await getUserProgress(user.id);
-
     setProfile(userProfile);
     setProgress(userProgress || []);
-
     setLoading(false);
   }
 
-  const totalPoints = progress.reduce(
-    (sum, item) => sum + Number(item.points || 0),
-    0
-  );
-
-  const completedExercises = progress.filter((item) =>
-    String(item.lesson_id || "").includes("exercise")
-  ).length;
-
-  const completedQuizzes = progress.filter((item) =>
-    String(item.lesson_id || "").includes("quiz")
-  ).length;
+  const totalPoints = progress.reduce((sum, item) => sum + Number(item.points || 0), 0);
+  const completedExercises = progress.filter((item) => String(item.lesson_id || "").includes("exercise")).length;
+  const completedQuizzes = progress.filter((item) => String(item.lesson_id || "").includes("quiz")).length;
 
   const badges = [
-    {
-      icon: "🎯",
-      title: "البداية القوية",
-      desc: "أكمل أول نشاط داخل التطبيق.",
-      unlocked: progress.length >= 1,
-    },
-    {
-      icon: "⭐",
-      title: "أول 10 نقاط",
-      desc: "احصل على 10 نقاط على الأقل.",
-      unlocked: totalPoints >= 10,
-    },
-    {
-      icon: "🏅",
-      title: "متعلم نشيط",
-      desc: "أكمل 3 أنشطة تعليمية.",
-      unlocked: progress.length >= 3,
-    },
-    {
-      icon: "🧮",
-      title: "بطل التمارين",
-      desc: "أكمل 3 تمارين.",
-      unlocked: completedExercises >= 3,
-    },
-    {
-      icon: "📝",
-      title: "محب الاختبارات",
-      desc: "أكمل اختبارًا واحدًا على الأقل.",
-      unlocked: completedQuizzes >= 1,
-    },
-    {
-      icon: "👑",
-      title: "نجم مدرستي",
-      desc: "احصل على 100 نقطة.",
-      unlocked: totalPoints >= 100,
-    },
+    { icon: "🎯", title: "البداية القوية", desc: "أكمل أول نشاط داخل التطبيق.", unlocked: progress.length >= 1 },
+    { icon: "⭐", title: "أول 10 نقاط", desc: "احصل على 10 نقاط على الأقل.", unlocked: totalPoints >= 10 },
+    { icon: "🏅", title: "متعلم نشيط", desc: "أكمل 3 أنشطة تعليمية.", unlocked: progress.length >= 3 },
+    { icon: "🧮", title: "بطل التمارين", desc: "أكمل 3 تمارين.", unlocked: completedExercises >= 3 },
+    { icon: "📝", title: "محب الاختبارات", desc: "أكمل اختبارًا واحدًا على الأقل.", unlocked: completedQuizzes >= 1 },
+    { icon: "👑", title: "نجم مدرستي", desc: "احصل على 100 نقطة.", unlocked: totalPoints >= 100 },
   ];
 
-  const unlockedCount = badges.filter((badge) => badge.unlocked).length;
+  const unlockedCount = badges.filter((b) => b.unlocked).length;
+  const cx = (...a: (string | false)[]) => a.filter(Boolean).join(" ");
 
   return (
-    <Layout theme={theme} setThemeName={setThemeName}>
-      <section style={heroStyle(theme)}>
-        <div style={{ fontSize: "60px" }}>🏅</div>
-
-        <h1 style={{ color: theme.text }}>الإنجازات والشارات</h1>
-
-        <p style={{ color: theme.muted }}>
-          شارات تحفيزية حسب تقدمك داخل المنصة
-        </p>
-      </section>
-
-      {loading ? (
-        <div style={cardStyle(theme)}>جاري تحميل الإنجازات...</div>
-      ) : !profile ? (
-        <div style={cardStyle(theme)}>
-          🔐 سجّل الدخول لعرض إنجازاتك.
-        </div>
-      ) : (
-        <>
-          <div style={cardStyle(theme)}>
-            <h2 style={{ color: theme.text }}>
-              👋 {profile.full_name || "تلميذ"}
-            </h2>
-
-            <p style={{ color: theme.muted }}>
-              حصلت على {unlockedCount} من {badges.length} شارات
-            </p>
-
-            <div style={progressContainer(theme)}>
-              <div
-                style={{
-                  ...progressBar(theme),
-                  width: `${Math.round((unlockedCount / badges.length) * 100)}%`,
-                }}
-              />
+    <>
+      <style>{CSS}</style>
+      <div className="ac-root">
+        <div className="ac-orb ac-ob" /><div className="ac-orb ac-og" /><div className="ac-grid" />
+        <div className="ac-content">
+          <div className="ac-hero">
+            <div className={cx("ac-logo", mounted && "in")}>
+              <div className="ac-logo-bg" />
+              <span className="ac-logo-em">🏅</span>
             </div>
+            <h1 className="ac-title">الإنجازات والشارات</h1>
+            <div className="ac-sub">شارات تحفيزية حسب تقدمك</div>
           </div>
 
-          <div style={{ marginTop: "22px" }}>
-            {badges.map((badge) => (
-              <div
-                key={badge.title}
-                style={badgeCard(theme, badge.unlocked)}
-              >
-                <div style={{ fontSize: "46px" }}>{badge.icon}</div>
-
-                <div style={{ flex: 1 }}>
-                  <h2 style={{ color: theme.text, margin: 0 }}>
-                    {badge.title}
-                  </h2>
-
-                  <p style={{ color: theme.muted, lineHeight: "1.7" }}>
-                    {badge.desc}
-                  </p>
-
-                  <strong
-                    style={{
-                      color: badge.unlocked ? "#10b981" : theme.muted,
-                    }}
-                  >
-                    {badge.unlocked ? "✅ تم فتح الشارة" : "🔒 لم تُفتح بعد"}
-                  </strong>
+          <div className="ac-body">
+            {loading ? (
+              <div className="ac-state">⏳ جاري تحميل الإنجازات...</div>
+            ) : !profile ? (
+              <div className="ac-state">🔐 سجّل الدخول لعرض إنجازاتك</div>
+            ) : (
+              <>
+                <div className="ac-summary">
+                  <div className="ac-greet">👋 {profile.full_name || "تلميذ"}</div>
+                  <div className="ac-count">حصلت على <b>{unlockedCount}</b> من {badges.length} شارات</div>
+                  <div className="ac-bar">
+                    <div className="ac-bar-f" style={{ width: (mounted ? Math.round((unlockedCount / badges.length) * 100) : 0) + "%" }} />
+                  </div>
                 </div>
-              </div>
-            ))}
+
+                <div className="ac-list">
+                  {badges.map((badge, i) => (
+                    <div
+                      key={badge.title}
+                      className="ac-badge"
+                      style={{
+                        animationDelay: (0.3 + i * 0.08) + "s",
+                        background: badge.unlocked ? "linear-gradient(135deg,rgba(34,197,94,.1),rgba(16,163,74,.04))" : "var(--surface-2)",
+                        border: badge.unlocked ? "1px solid rgba(34,197,94,.3)" : "1px solid rgba(255,255,255,.07)",
+                        boxShadow: badge.unlocked ? "0 0 20px rgba(34,197,94,.12)" : "0 4px 16px rgba(0,0,0,.3)",
+                        opacity: badge.unlocked ? 1 : 0.6,
+                      }}
+                    >
+                      <div className="ac-badge-strip" style={{ background: badge.unlocked ? "linear-gradient(180deg,#22C55E,#16a34a)" : "rgba(255,255,255,.1)" }} />
+                      <div className="ac-badge-em" style={{ filter: badge.unlocked ? "none" : "grayscale(1)" }}>{badge.icon}</div>
+                      <div className="ac-badge-body">
+                        <div className="ac-badge-t">{badge.title}</div>
+                        <div className="ac-badge-d">{badge.desc}</div>
+                        <div className="ac-badge-s" style={{ color: badge.unlocked ? "#4ade80" : "var(--text-faint)" }}>
+                          {badge.unlocked ? "✅ تم فتح الشارة" : "🔒 لم تُفتح بعد"}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
-        </>
-      )}
-    </Layout>
+        </div>
+      </div>
+    </>
   );
 }
-
-const heroStyle = (theme) => ({
-  background: theme.surface,
-  border: `1px solid ${theme.border}`,
-  borderRadius: common.radius.large,
-  padding: "28px",
-  textAlign: "center",
-  boxShadow: common.shadow.hero,
-});
-
-const cardStyle = (theme) => ({
-  marginTop: "22px",
-  background: theme.surface,
-  border: `1px solid ${theme.border}`,
-  padding: "22px",
-  borderRadius: common.radius.large,
-  boxShadow: common.shadow.card,
-  color: theme.text,
-});
-
-const badgeCard = (theme, unlocked) => ({
-  background: theme.surface,
-  border: `1px solid ${theme.border}`,
-  borderRight: `8px solid ${unlocked ? "#10b981" : "#64748b"}`,
-  padding: "18px",
-  borderRadius: common.radius.large,
-  marginBottom: "14px",
-  boxShadow: common.shadow.card,
-  display: "flex",
-  alignItems: "center",
-  gap: "14px",
-  opacity: unlocked ? 1 : 0.55,
-});
-
-const progressContainer = (theme) => ({
-  width: "100%",
-  height: "18px",
-  borderRadius: "999px",
-  background: theme.surface2,
-  overflow: "hidden",
-  marginTop: "18px",
-});
-
-const progressBar = (theme) => ({
-  height: "100%",
-  background: `linear-gradient(135deg, ${theme.primary}, ${theme.secondary})`,
-  borderRadius: "999px",
-});
 
 export default AchievementsPage;

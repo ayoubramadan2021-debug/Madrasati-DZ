@@ -2,18 +2,50 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
 
-const C = {
-  primary: "#1B3A6B", primaryLight: "#2D5BA3",
-  accent: "#E8A020", success: "#2E7D5E",
-  surface: "#FFFFFF", surface2: "#F7F9FC",
-  text: "#1A2540", textMuted: "#8A97AA",
-  border: "#D8E2F0", shadow: "0 2px 12px rgba(27,58,107,0.09)",
-};
+const CSS = [
+"@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');",
+".nt-root *,.nt-root *::before,.nt-root *::after{box-sizing:border-box;margin:0;padding:0}",
+".nt-root{min-height:100dvh;background:var(--bg);font-family:'Tajawal',sans-serif;direction:rtl;overflow-x:hidden;position:relative;padding-bottom:100px}",
+".nt-orb{position:fixed;pointer-events:none;border-radius:50%;z-index:0}",
+".nt-ob{width:480px;height:480px;top:-180px;left:-120px;background:radial-gradient(circle,rgba(27,58,107,.6) 0%,transparent 70%);animation:nt-d1 14s ease-in-out infinite alternate}",
+".nt-og{width:360px;height:360px;bottom:-100px;right:-80px;background:radial-gradient(circle,rgba(232,160,32,.13) 0%,transparent 70%);animation:nt-d2 11s ease-in-out infinite alternate}",
+"@keyframes nt-d1{from{transform:translate(0,0)}to{transform:translate(6%,5%)}}",
+"@keyframes nt-d2{from{transform:translate(0,0)}to{transform:translate(-5%,-7%)}}",
+".nt-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px}",
+".nt-content{position:relative;z-index:2}",
+".nt-hero{position:relative;padding:24px 20px 28px;text-align:center}",
+".nt-back{position:absolute;top:20px;right:16px;background:var(--border-faint);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.8);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .2s}",
+".nt-back:active{background:rgba(255,255,255,.12)}",
+".nt-logo{position:relative;display:inline-flex;align-items:center;justify-content:center;width:80px;height:80px;margin:12px 0 12px;opacity:0;transform:scale(.7);transition:opacity .7s cubic-bezier(.34,1.56,.64,1),transform .7s cubic-bezier(.34,1.56,.64,1)}",
+".nt-logo.in{opacity:1;transform:scale(1)}",
+".nt-logo-bg{position:absolute;inset:0;border-radius:24px;background:linear-gradient(145deg,#1a3d73,#0c1e3a);border:1px solid rgba(232,160,32,.4);box-shadow:var(--shadow-strong)}",
+".nt-logo-em{position:relative;font-size:40px;filter:drop-shadow(0 0 14px rgba(232,160,32,.6));animation:nt-bob 4s ease-in-out infinite}",
+"@keyframes nt-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}",
+".nt-title{font-size:26px;font-weight:900;line-height:1;margin-bottom:8px;background:linear-gradient(135deg,#fff 25%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:0;transform:translateY(14px);transition:opacity .6s ease .2s,transform .6s ease .2s}",
+".nt-title.in{opacity:1;transform:translateY(0)}",
+".nt-badge{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#000;border-radius:20px;padding:4px 14px;font-size:12px;font-weight:800;opacity:0;transition:opacity .6s ease .35s}",
+".nt-badge.in{opacity:1}",
+".nt-body{padding:0 16px}",
+".nt-state{text-align:center;padding:50px 20px;color:var(--text-muted);font-size:15px}",
+".nt-empty{text-align:center;padding:50px 20px;color:var(--text-faint)}",
+".nt-empty-em{font-size:48px;margin-bottom:10px}",
+".nt-list{display:flex;flex-direction:column;gap:10px}",
+".nt-item{position:relative;border-radius:16px;padding:15px 16px;display:flex;gap:14px;overflow:hidden;animation:nt-slide .5s ease backwards;transition:transform .2s}",
+".nt-item:active{transform:scale(.99)}",
+"@keyframes nt-slide{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}",
+".nt-item-ic{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;font-size:21px;flex-shrink:0}",
+".nt-item-body{flex:1;min-width:0}",
+".nt-item-t{font-weight:700;color:var(--text);font-size:14px}",
+".nt-item-m{color:var(--text-muted);font-size:12px;margin-top:3px;line-height:1.5}",
+".nt-item-d{color:var(--text-dim);font-size:11px;margin-top:5px}",
+".nt-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);flex-shrink:0;margin-top:5px}",
+].join("\n");
 
 export default function NotificationsPage() {
-  const navigate  = useNavigate();
-  const [notifs, setNotifs]   = useState<any[]>([]);
+  const navigate = useNavigate();
+  const [notifs, setNotifs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     async function load() {
@@ -23,12 +55,17 @@ export default function NotificationsPage() {
       const { data } = await supabase
         .from("notifications")
         .select("*")
-        .eq("student_id", user.id)
+        .eq("user_id", user.id)
         .order("created_at", { ascending: false });
       setNotifs(data || []);
       setLoading(false);
     }
     load();
+  }, []);
+
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(t);
   }, []);
 
   async function markRead(id: string) {
@@ -37,48 +74,66 @@ export default function NotificationsPage() {
   }
 
   const unread = notifs.filter(n => !n.is_read).length;
+  const cx = (...a: (string | false)[]) => a.filter(Boolean).join(" ");
+
+  const iconBg = (type: string) =>
+    type === "success" ? "rgba(34,197,94,.15)" : type === "warning" ? "rgba(232,160,32,.15)" : "rgba(59,130,246,.15)";
+  const iconEm = (type: string) =>
+    type === "success" ? "✅" : type === "warning" ? "⚠️" : "ℹ️";
 
   return (
-    <div style={{ fontFamily:"'Cairo',sans-serif", minHeight:"100vh", background:C.surface2, paddingBottom:32 }}>
-      <div style={{ background:`linear-gradient(135deg,${C.primary},${C.primaryLight})`, padding:"20px 16px 28px", borderRadius:"0 0 28px 28px", marginBottom:16 }}>
-        <button onClick={() => navigate("/")} style={{ color:"white", background:"rgba(255,255,255,0.15)", border:"none", borderRadius:10, padding:"6px 12px", fontSize:13, fontWeight:600, cursor:"pointer", marginBottom:12, fontFamily:"'Cairo',sans-serif" }}>← رجوع</button>
-        <div style={{ textAlign:"center" }}>
-          <div style={{ fontSize:48, marginBottom:8 }}>🔔</div>
-          <h1 style={{ margin:"0 0 4px", color:"white", fontSize:22, fontWeight:800 }}>الإشعارات</h1>
-          {unread > 0 && <div style={{ display:"inline-block", background:C.accent, color:"white", borderRadius:20, padding:"3px 12px", fontSize:13, fontWeight:700 }}>{unread} جديد</div>}
-        </div>
-      </div>
-
-      <div style={{ padding:"0 16px" }}>
-        {loading && <div style={{ textAlign:"center", padding:40, color:C.textMuted }}>⏳ جاري التحميل...</div>}
-
-        {!loading && notifs.length === 0 && (
-          <div style={{ textAlign:"center", padding:40, color:C.textMuted }}>
-            <div style={{ fontSize:48 }}>🔕</div>
-            <div style={{ marginTop:8 }}>لا توجد إشعارات</div>
-          </div>
-        )}
-
-        <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
-          {notifs.map(n => (
-            <div
-              key={n.id}
-              onClick={() => !n.is_read && markRead(n.id)}
-              style={{ background: n.is_read ? C.surface : "#EBF1FA", border:`1.5px solid ${n.is_read ? C.border : C.primary}`, borderRadius:16, padding:"16px", display:"flex", gap:14, boxShadow:C.shadow, cursor: n.is_read ? "default" : "pointer" }}
-            >
-              <div style={{ width:44, height:44, borderRadius:12, background: n.type === "success" ? "#E8F5EF" : n.type === "warning" ? "#FDF3E0" : "#EBF1FA", display:"grid", placeItems:"center", fontSize:22, flexShrink:0 }}>
-                {n.type === "success" ? "✅" : n.type === "warning" ? "⚠️" : "ℹ️"}
-              </div>
-              <div style={{ flex:1 }}>
-                <div style={{ fontWeight:700, color:C.text, fontSize:14 }}>{n.title}</div>
-                <div style={{ color:C.textMuted, fontSize:12, marginTop:3 }}>{n.message}</div>
-                <div style={{ color:C.textMuted, fontSize:11, marginTop:4 }}>{new Date(n.created_at).toLocaleDateString("ar-DZ")}</div>
-              </div>
-              {!n.is_read && <div style={{ width:10, height:10, borderRadius:"50%", background:C.primary, flexShrink:0, marginTop:4 }} />}
+    <>
+      <style>{CSS}</style>
+      <div className="nt-root">
+        <div className="nt-orb nt-ob" /><div className="nt-orb nt-og" /><div className="nt-grid" />
+        <div className="nt-content">
+          <div className="nt-hero">
+            <button className="nt-back" onClick={() => navigate("/")}>← رجوع</button>
+            <div className={cx("nt-logo", mounted && "in")}>
+              <div className="nt-logo-bg" />
+              <span className="nt-logo-em">🔔</span>
             </div>
-          ))}
+            <h1 className={cx("nt-title", mounted && "in")}>الإشعارات</h1>
+            {unread > 0 && <div className={cx("nt-badge", mounted && "in")}>{unread} جديد</div>}
+          </div>
+
+          <div className="nt-body">
+            {loading && <div className="nt-state">⏳ جاري التحميل...</div>}
+
+            {!loading && notifs.length === 0 && (
+              <div className="nt-empty">
+                <div className="nt-empty-em">🔕</div>
+                <div>لا توجد إشعارات</div>
+              </div>
+            )}
+
+            <div className="nt-list">
+              {notifs.map((n, i) => (
+                <div
+                  key={n.id}
+                  className="nt-item"
+                  onClick={() => !n.is_read && markRead(n.id)}
+                  style={{
+                    animationDelay: (0.3 + i * 0.06) + "s",
+                    background: n.is_read ? "var(--surface-2)" : "linear-gradient(135deg,rgba(232,160,32,.12),rgba(201,125,10,.06))",
+                    border: n.is_read ? "1px solid rgba(255,255,255,.07)" : "1.5px solid rgba(232,160,32,.4)",
+                    boxShadow: n.is_read ? "0 4px 16px rgba(0,0,0,.3)" : "0 0 18px rgba(232,160,32,.15)",
+                    cursor: n.is_read ? "default" : "pointer",
+                  }}
+                >
+                  <div className="nt-item-ic" style={{ background: iconBg(n.type) }}>{iconEm(n.type)}</div>
+                  <div className="nt-item-body">
+                    <div className="nt-item-t">{n.title}</div>
+                    <div className="nt-item-m">{n.body}</div>
+                    <div className="nt-item-d">{new Date(n.created_at).toLocaleDateString("ar-DZ")}</div>
+                  </div>
+                  {!n.is_read && <div className="nt-dot" />}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

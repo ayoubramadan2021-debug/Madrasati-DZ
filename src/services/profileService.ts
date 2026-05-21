@@ -11,3 +11,13 @@ export async function getProfile(userId: string) {
 
   return data;
 }
+
+export async function upsertProfile(profile: any) {
+  const { supabase } = await import("../lib/supabaseClient");
+  const { data, error } = await supabase
+    .from("profiles")
+    .upsert([profile])
+    .select()
+    .single();
+  return { data, error };
+}

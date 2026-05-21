@@ -2,24 +2,50 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import appData from "../data/appData";
 
-const C = {
-  primary: "#1B3A6B", primaryLight: "#2D5BA3",
-  accent: "#E8A020", success: "#2E7D5E",
-  error: "#C0392B", surface: "#FFFFFF",
-  surface2: "#F7F9FC", text: "#1A2540",
-  textMuted: "#8A97AA", border: "#D8E2F0",
-  shadow: "0 2px 12px rgba(27,58,107,0.09)",
-};
-
-const SUBJECT_COLORS: Record<string, string> = {
-  math: "#2E7D5E", arabic: "#C0392B", french: "#1565C0",
-  islamic: "#6A1B9A", civic: "#E65100", science: "#00838F",
-};
+const CSS = [
+"@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');",
+".ex-root *,.ex-root *::before,.ex-root *::after{box-sizing:border-box;margin:0;padding:0}",
+".ex-root{min-height:100dvh;background:var(--bg);font-family:'Tajawal',sans-serif;direction:rtl;overflow-x:hidden;position:relative;padding-bottom:100px}",
+".ex-orb{position:fixed;pointer-events:none;border-radius:50%;z-index:0}",
+".ex-ob{width:480px;height:480px;top:-180px;left:-120px;background:radial-gradient(circle,rgba(27,58,107,.6) 0%,transparent 70%);animation:ex-d1 14s ease-in-out infinite alternate}",
+".ex-og{width:360px;height:360px;bottom:-100px;right:-80px;background:radial-gradient(circle,rgba(232,160,32,.13) 0%,transparent 70%);animation:ex-d2 11s ease-in-out infinite alternate}",
+"@keyframes ex-d1{from{transform:translate(0,0)}to{transform:translate(6%,5%)}}",
+"@keyframes ex-d2{from{transform:translate(0,0)}to{transform:translate(-5%,-7%)}}",
+".ex-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px}",
+".ex-content{position:relative;z-index:2}",
+".ex-hero{position:relative;padding:24px 20px 28px;text-align:center}",
+".ex-back{position:absolute;top:20px;right:16px;background:var(--border-faint);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.8);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .2s}",
+".ex-back:active{background:rgba(255,255,255,.12)}",
+".ex-logo{position:relative;display:inline-flex;align-items:center;justify-content:center;width:80px;height:80px;margin:12px 0 12px}",
+".ex-logo-bg{position:absolute;inset:0;border-radius:24px;background:linear-gradient(145deg,#1a3d73,#0c1e3a);border:1px solid rgba(232,160,32,.4);box-shadow:var(--shadow-strong)}",
+".ex-logo-em{position:relative;font-size:38px;filter:drop-shadow(0 0 14px rgba(232,160,32,.6))}",
+".ex-title{font-size:24px;font-weight:900;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,#fff 25%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}",
+".ex-sub{font-size:13px;color:var(--text-faint)}",
+".ex-body{padding:0 16px}",
+".ex-score{border-radius:20px;padding:24px;text-align:center;color:var(--text);margin-bottom:16px;animation:ex-pop .5s ease}",
+"@keyframes ex-pop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}",
+".ex-score-em{font-size:46px}",
+".ex-score-n{font-size:32px;font-weight:900;margin-top:4px}",
+".ex-score-l{margin-top:4px;opacity:.9;font-size:14px}",
+".ex-retry{margin-top:14px;padding:10px 22px;border-radius:12px;border:none;background:rgba(255,255,255,.2);color:var(--text);font-family:'Tajawal',sans-serif;font-weight:700;cursor:pointer;transition:transform .15s}",
+".ex-retry:active{transform:scale(.95)}",
+".ex-q{background:var(--surface-2);border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-card);transition:border-color .3s}",
+".ex-q-head{display:flex;gap:10px;margin-bottom:14px;align-items:flex-start}",
+".ex-q-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#000;display:grid;place-items:center;font-weight:800;font-size:13px;flex-shrink:0}",
+".ex-q-txt{font-weight:700;color:var(--text);font-size:15px;line-height:1.6;padding-top:3px}",
+".ex-opts{display:flex;flex-direction:column;gap:8px}",
+".ex-opt{padding:12px 14px;border-radius:12px;font-size:14px;transition:all .2s}",
+".ex-correct-btn{margin-top:12px;width:100%;padding:11px;border:none;border-radius:12px;background:linear-gradient(135deg,#3B82F6,#2563eb);color:var(--text);font-family:'Tajawal',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:transform .15s}",
+".ex-correct-btn:active{transform:scale(.97)}",
+".ex-finish{width:100%;padding:15px;border-radius:16px;border:none;background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#000;font-family:'Tajawal',sans-serif;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 6px 18px rgba(232,160,32,.35);transition:transform .15s}",
+".ex-finish:active{transform:scale(.97)}",
+".ex-empty{text-align:center;padding:50px 20px;color:var(--text-faint)}",
+".ex-empty-em{font-size:44px;margin-bottom:10px}",
+].join("\n");
 
 export default function ExercisePage() {
   const { gradeId, subject, exerciseId } = useParams();
   const navigate = useNavigate();
-  const subjectColor = SUBJECT_COLORS[subject || ""] || C.primary;
 
   const currentSubject = (appData.subjects || []).find((s: any) => s.slug === subject);
   const exercise = (currentSubject?.exercises || []).find((e: any) => String(e.id) === String(exerciseId));
@@ -31,10 +57,10 @@ export default function ExercisePage() {
 
   function checkAnswer(idx: number, q: any) {
     const correct = answers[idx] === q.correctAnswer;
-    setResults(prev => ({ ...prev, [idx]: correct }));
+    setResults((p) => ({ ...p, [idx]: correct }));
   }
 
-  function handleFinish() {
+  function finish() {
     const correct = Object.values(results).filter(Boolean).length;
     setScore(Math.round((correct / questions.length) * 100));
   }
@@ -42,98 +68,96 @@ export default function ExercisePage() {
   const allAnswered = questions.length > 0 && questions.every((_: any, i: number) => answers[i]);
 
   return (
-    <div style={{ fontFamily:"'Cairo',sans-serif", minHeight:"100vh", background:C.surface2, paddingBottom:32 }}>
+    <>
+      <style>{CSS}</style>
+      <div className="ex-root">
+        <div className="ex-orb ex-ob" />
+        <div className="ex-orb ex-og" />
+        <div className="ex-grid" />
 
-      {/* Header */}
-      <div style={{ background:`linear-gradient(135deg,${subjectColor},${subjectColor}bb)`, padding:"20px 16px 24px", borderRadius:"0 0 28px 28px", marginBottom:16 }}>
-        <button
-          onClick={() => navigate(`/grade/${gradeId}/subject/${subject}/section/exercises`)}
-          style={{ color:"white", background:"rgba(255,255,255,0.15)", border:"none", borderRadius:10, padding:"6px 12px", fontSize:13, fontWeight:600, cursor:"pointer", marginBottom:12, fontFamily:"'Cairo',sans-serif" }}
-        >
-          ← رجوع
-        </button>
-        <div style={{ textAlign:"center" }}>
-          <div style={{ fontSize:40, marginBottom:6 }}>✏️</div>
-          <h1 style={{ margin:"0 0 4px", color:"white", fontSize:22, fontWeight:800 }}>
-            {exercise?.title || "التمرين"}
-          </h1>
-          <div style={{ color:"rgba(255,255,255,0.75)", fontSize:13 }}>{questions.length} سؤال</div>
-        </div>
-      </div>
-
-      <div style={{ padding:"0 16px" }}>
-
-        {/* النتيجة */}
-        {score !== null && (
-          <div style={{ background: score >= 60 ? C.success : C.error, borderRadius:18, padding:24, textAlign:"center", color:"white", marginBottom:16, boxShadow:`0 4px 20px ${score >= 60 ? C.success : C.error}44` }}>
-            <div style={{ fontSize:48 }}>{score >= 60 ? "🏆" : "💪"}</div>
-            <div style={{ fontSize:32, fontWeight:900, marginTop:8 }}>{score}%</div>
-            <div style={{ fontSize:16, marginTop:4, opacity:0.9 }}>{score >= 60 ? "أحسنت! نتيجة ممتازة" : "حاول مرة أخرى"}</div>
-            <button
-              onClick={() => { setAnswers({}); setResults({}); setScore(null); }}
-              style={{ marginTop:14, padding:"10px 24px", border:"none", borderRadius:12, background:"rgba(255,255,255,0.2)", color:"white", fontFamily:"'Cairo',sans-serif", fontSize:14, fontWeight:700, cursor:"pointer" }}
-            >
-              🔄 إعادة المحاولة
-            </button>
+        <div className="ex-content">
+          <div className="ex-hero">
+            <button className="ex-back" onClick={() => navigate(`/grade/${gradeId}/subject/${subject}/section/exercises`)}>← رجوع</button>
+            <div className="ex-logo">
+              <div className="ex-logo-bg" />
+              <span className="ex-logo-em">✏️</span>
+            </div>
+            <h1 className="ex-title">{exercise?.title || "التمرين"}</h1>
+            <div className="ex-sub">{questions.length} سؤال</div>
           </div>
-        )}
 
-        {/* الأسئلة */}
-        {questions.map((q: any, idx: number) => (
-          <div key={idx} style={{ background:C.surface, border:`1.5px solid ${results[idx] !== undefined ? (results[idx] ? C.success : C.error) : C.border}`, borderRadius:18, padding:20, marginBottom:14, boxShadow:C.shadow }}>
-            <div style={{ display:"flex", alignItems:"flex-start", gap:10, marginBottom:14 }}>
-              <div style={{ width:32, height:32, borderRadius:"50%", background:C.primary, color:"white", display:"grid", placeItems:"center", fontWeight:700, flexShrink:0, fontSize:14 }}>{idx+1}</div>
-              <div style={{ fontWeight:700, color:C.text, fontSize:15, paddingTop:4 }}>{q.question}</div>
-            </div>
-
-            <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
-              {(q.options || []).map((opt: string) => {
-                const selected = answers[idx] === opt;
-                const answered = results[idx] !== undefined;
-                const isCorrect = opt === q.correctAnswer;
-                let bg = C.surface2, border = C.border, color = C.text;
-                if (answered && isCorrect) { bg = "#E8F5EF"; border = C.success; color = C.success; }
-                else if (answered && selected && !isCorrect) { bg = "#FDECEA"; border = C.error; color = C.error; }
-                else if (selected) { bg = "#EBF1FA"; border = C.primary; color = C.primary; }
-
-                return (
-                  <div
-                    key={opt}
-                    onClick={() => !answered && setAnswers(prev => ({ ...prev, [idx]: opt }))}
-                    style={{ padding:"12px 16px", borderRadius:12, border:`1.5px solid ${border}`, background:bg, color, fontWeight: selected || answered ? 700 : 400, cursor: answered ? "default" : "pointer", fontSize:14 }}
-                  >
-                    {answered && isCorrect ? "✅ " : answered && selected && !isCorrect ? "❌ " : ""}{opt}
-                  </div>
-                );
-              })}
-            </div>
-
-            {answers[idx] && results[idx] === undefined && (
-              <button
-                onClick={() => checkAnswer(idx, q)}
-                style={{ marginTop:12, width:"100%", padding:"11px", border:"none", borderRadius:12, background:C.primary, color:"white", fontFamily:"'Cairo',sans-serif", fontSize:14, fontWeight:700, cursor:"pointer" }}
-              >
-                تصحيح ✓
-              </button>
+          <div className="ex-body">
+            {questions.length === 0 && (
+              <div className="ex-empty"><div className="ex-empty-em">📭</div><div>لا توجد أسئلة بعد</div></div>
             )}
 
-            {results[idx] !== undefined && (
-              <div style={{ marginTop:10, padding:"10px 14px", borderRadius:12, background: results[idx] ? "#E8F5EF" : "#FDECEA", color: results[idx] ? C.success : C.error, fontWeight:700, fontSize:14, textAlign:"center" }}>
-                {results[idx] ? "✅ إجابة صحيحة!" : `❌ الإجابة الصحيحة: ${q.correctAnswer}`}
+            {/* النتيجة */}
+            {score !== null && (
+              <div className="ex-score" style={{
+                background: score >= 60 ? "linear-gradient(135deg,#22C55E,#16a34a)" : "linear-gradient(135deg,#EF4444,#dc2626)",
+                boxShadow: "0 8px 28px " + (score >= 60 ? "rgba(34,197,94,.35)" : "rgba(239,68,68,.35)"),
+              }}>
+                <div className="ex-score-em">{score >= 60 ? "🏆" : "💪"}</div>
+                <div className="ex-score-n">{score}%</div>
+                <div className="ex-score-l">{score >= 60 ? "نتيجة ممتازة" : "حاول مرة أخرى"}</div>
+                <button className="ex-retry" onClick={() => { setAnswers({}); setResults({}); setScore(null); }}>إعادة</button>
               </div>
             )}
-          </div>
-        ))}
 
-        {allAnswered && score === null && (
-          <button
-            onClick={handleFinish}
-            style={{ width:"100%", padding:"14px", border:"none", borderRadius:16, background:`linear-gradient(135deg,${C.accent},#F5B942)`, color:"white", fontFamily:"'Cairo',sans-serif", fontSize:16, fontWeight:700, cursor:"pointer", boxShadow:`0 4px 14px ${C.accent}44` }}
-          >
-            🏆 عرض النتيجة النهائية
-          </button>
-        )}
+            {/* الأسئلة */}
+            {questions.map((q: any, idx: number) => {
+              const answered = results[idx] !== undefined;
+              const border = answered ? (results[idx] ? "1.5px solid rgba(34,197,94,.5)" : "1.5px solid rgba(239,68,68,.5)") : "1px solid var(--border-soft)";
+              return (
+                <div key={idx} className="ex-q" style={{ border }}>
+                  <div className="ex-q-head">
+                    <div className="ex-q-num">{idx + 1}</div>
+                    <div className="ex-q-txt">{q.question}</div>
+                  </div>
+
+                  <div className="ex-opts">
+                    {(q.options || []).map((opt: string) => {
+                      const selected = answers[idx] === opt;
+                      const isCorrect = opt === q.correctAnswer;
+
+                      let bg = "var(--surface-softer)";
+                      let bd = "1.5px solid rgba(255,255,255,.1)";
+                      let col = "rgba(255,255,255,.85)";
+
+                      if (answered && isCorrect) {
+                        bg = "rgba(34,197,94,.15)"; bd = "1.5px solid #22C55E"; col = "#4ade80";
+                      } else if (answered && selected && !isCorrect) {
+                        bg = "rgba(239,68,68,.15)"; bd = "1.5px solid #EF4444"; col = "#f87171";
+                      } else if (selected) {
+                        bg = "rgba(232,160,32,.12)"; bd = "1.5px solid var(--gold)"; col = "var(--gold)";
+                      }
+
+                      return (
+                        <div
+                          key={opt}
+                          className="ex-opt"
+                          onClick={() => !answered && setAnswers((p) => ({ ...p, [idx]: opt }))}
+                          style={{ background: bg, border: bd, color: col, fontWeight: selected || answered ? 700 : 500, cursor: answered ? "default" : "pointer" }}
+                        >
+                          {answered && isCorrect ? "✅ " : answered && selected && !isCorrect ? "❌ " : ""}{opt}
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {answers[idx] && results[idx] === undefined && (
+                    <button className="ex-correct-btn" onClick={() => checkAnswer(idx, q)}>تصحيح</button>
+                  )}
+                </div>
+              );
+            })}
+
+            {allAnswered && score === null && (
+              <button className="ex-finish" onClick={finish}>عرض النتيجة ←</button>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
