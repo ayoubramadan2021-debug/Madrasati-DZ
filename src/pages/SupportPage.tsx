@@ -20,8 +20,8 @@ const CSS = [
 ".sp-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px}",
 ".sp-content{position:relative;z-index:2}",
 ".sp-hero{position:relative;padding:24px 20px 26px;text-align:center}",
-".sp-back{position:absolute;top:20px;right:16px;background:var(--border-faint);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.8);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .2s}",
-".sp-back:active{background:rgba(255,255,255,.12)}",
+".sp-back{position:absolute;top:20px;right:16px;background:var(--border-faint);border:1px solid var(--border);color:var(--text);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .2s}",
+".sp-back:active{background:var(--border-soft)}",
 ".sp-logo{position:relative;display:inline-flex;align-items:center;justify-content:center;width:78px;height:78px;margin:8px 0 10px}",
 ".sp-logo-bg{position:absolute;inset:0;border-radius:22px;background:linear-gradient(145deg,#1a3d73,#0c1e3a);border:1px solid rgba(232,160,32,.4);box-shadow:var(--shadow-strong)}",
 ".sp-logo-em{position:relative;font-size:38px;filter:drop-shadow(0 0 14px rgba(232,160,32,.6))}",
@@ -35,8 +35,8 @@ const CSS = [
 ".sp-faq-q{font-weight:700;color:var(--gold);font-size:14px;margin-bottom:6px}",
 ".sp-faq-a{color:var(--text-muted);font-size:13px;line-height:1.7}",
 ".sp-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:var(--shadow-hero)}",
-".sp-label{font-size:13px;font-weight:700;color:rgba(255,255,255,.7);display:block;margin-bottom:8px}",
-".sp-textarea{width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid rgba(255,255,255,.1);background:var(--surface-softer);color:var(--text);font-family:'Tajawal',sans-serif;font-size:14px;resize:vertical;outline:none;direction:rtl;line-height:1.7;transition:border-color .2s}",
+".sp-label{font-size:13px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:8px}",
+".sp-textarea{width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--surface-softer);color:var(--text);font-family:'Tajawal',sans-serif;font-size:14px;resize:vertical;outline:none;direction:rtl;line-height:1.7;transition:border-color .2s}",
 ".sp-textarea:focus{border-color:rgba(232,160,32,.5)}",
 ".sp-textarea::placeholder{color:var(--text-dim)}",
 ".sp-send{margin-top:12px;width:100%;padding:14px;border:none;border-radius:13px;color:#000;font-family:'Tajawal',sans-serif;font-size:15px;font-weight:800;transition:transform .15s}",
@@ -122,7 +122,7 @@ export default function SupportPage() {
                     onClick={handleSend}
                     disabled={!msg.trim() || loading}
                     style={{
-                      background: msg.trim() ? "linear-gradient(135deg,var(--gold),var(--gold-deep))" : "rgba(255,255,255,.1)",
+                      background: msg.trim() ? "linear-gradient(135deg,var(--gold),var(--gold-deep))" : "var(--border)",
                       color: msg.trim() ? "#000" : "var(--text-faint)",
                       cursor: msg.trim() ? "pointer" : "default",
                       boxShadow: msg.trim() ? "0 6px 18px rgba(232,160,32,.35)" : "none",

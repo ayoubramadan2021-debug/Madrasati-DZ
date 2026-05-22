@@ -15,8 +15,8 @@ const CSS = [
 ".qz-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px}",
 ".qz-content{position:relative;z-index:2}",
 ".qz-hero{position:relative;padding:24px 20px 28px;text-align:center}",
-".qz-back{position:absolute;top:20px;right:16px;background:var(--border-faint);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.8);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .2s}",
-".qz-back:active{background:rgba(255,255,255,.12)}",
+".qz-back{position:absolute;top:20px;right:16px;background:var(--border-faint);border:1px solid var(--border);color:var(--text);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .2s}",
+".qz-back:active{background:var(--border-soft)}",
 ".qz-logo{position:relative;display:inline-flex;align-items:center;justify-content:center;width:80px;height:80px;margin:12px 0 12px}",
 ".qz-logo-bg{position:absolute;inset:0;border-radius:24px;background:linear-gradient(145deg,#1a3d73,#0c1e3a);border:1px solid rgba(232,160,32,.4);box-shadow:var(--shadow-strong)}",
 ".qz-logo-em{position:relative;font-size:38px;filter:drop-shadow(0 0 14px rgba(232,160,32,.6))}",
@@ -29,7 +29,7 @@ const CSS = [
 ".qz-score-l{margin-top:4px;opacity:.9;font-size:14px}",
 ".qz-q{background:var(--surface-2);border:1px solid var(--border-soft);border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-card)}",
 ".qz-q-txt{font-weight:700;color:var(--text);font-size:15px;line-height:1.6;margin-bottom:12px}",
-".qz-opt{padding:12px 14px;border-radius:12px;margin-bottom:8px;font-size:14px;cursor:pointer;transition:all .2s;color:rgba(255,255,255,.85)}",
+".qz-opt{padding:12px 14px;border-radius:12px;margin-bottom:8px;font-size:14px;cursor:pointer;transition:all .2s;color:var(--text)}",
 ".qz-correct-btn{width:100%;margin-top:10px;padding:11px;border:none;border-radius:12px;background:linear-gradient(135deg,#3B82F6,#2563eb);color:var(--text);font-family:'Tajawal',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:transform .15s}",
 ".qz-correct-btn:active{transform:scale(.97)}",
 ".qz-verdict{margin-top:10px;font-weight:800;font-size:14px;text-align:center}",
@@ -118,8 +118,8 @@ export default function QuizPage() {
                         onClick={() => setSelected((p) => ({ ...p, [q.id]: opt }))}
                         style={{
                           background: sel ? "rgba(232,160,32,.12)" : "var(--surface-softer)",
-                          border: sel ? "1.5px solid var(--gold)" : "1.5px solid rgba(255,255,255,.1)",
-                          color: sel ? "var(--gold)" : "rgba(255,255,255,.85)",
+                          border: sel ? "1.5px solid var(--gold)" : "1.5px solid var(--border)",
+                          color: sel ? "var(--gold)" : "var(--text)",
                           fontWeight: sel ? 700 : 500,
                         }}
                       >

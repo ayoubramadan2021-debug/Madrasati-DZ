@@ -14,8 +14,8 @@ const CSS = [
 ".lb-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px}",
 ".lb-content{position:relative;z-index:2}",
 ".lb-hero{position:relative;padding:24px 20px 28px;text-align:center}",
-".lb-back{position:absolute;top:20px;right:16px;display:inline-flex;align-items:center;gap:6px;background:var(--border-faint);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.8);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .2s}",
-".lb-back:active{background:rgba(255,255,255,.12)}",
+".lb-back{position:absolute;top:20px;right:16px;display:inline-flex;align-items:center;gap:6px;background:var(--border-faint);border:1px solid var(--border);color:var(--text);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .2s}",
+".lb-back:active{background:var(--border-soft)}",
 ".lb-logo{position:relative;display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;margin:12px 0 14px;opacity:0;transform:scale(.7);transition:opacity .7s cubic-bezier(.34,1.56,.64,1),transform .7s cubic-bezier(.34,1.56,.64,1)}",
 ".lb-logo.in{opacity:1;transform:scale(1)}",
 ".lb-logo-bg{position:absolute;inset:0;border-radius:26px;background:linear-gradient(145deg,#1a3d73,#0c1e3a);border:1px solid rgba(232,160,32,.4);box-shadow:var(--shadow-strong),inset 0 1px 0 var(--border-soft)}",
@@ -146,7 +146,7 @@ export default function LeaderboardPage() {
                       boxShadow: isMe ? "0 0 20px rgba(232,160,32,.2)" : "0 4px 18px rgba(0,0,0,.3)",
                     }}
                   >
-                    <div className="lb-rank" style={{ background: "var(--border-faint)", color: "rgba(255,255,255,.6)" }}>{i + 4}</div>
+                    <div className="lb-rank" style={{ background: "var(--border-faint)", color: "var(--text-muted)" }}>{i + 4}</div>
                     <div className="lb-av">{isMe ? "🧑‍🚀" : "👦"}</div>
                     <div className="lb-ibody">
                       <div className="lb-iname">

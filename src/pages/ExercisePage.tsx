@@ -14,8 +14,8 @@ const CSS = [
 ".ex-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px}",
 ".ex-content{position:relative;z-index:2}",
 ".ex-hero{position:relative;padding:24px 20px 28px;text-align:center}",
-".ex-back{position:absolute;top:20px;right:16px;background:var(--border-faint);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.8);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .2s}",
-".ex-back:active{background:rgba(255,255,255,.12)}",
+".ex-back{position:absolute;top:20px;right:16px;background:var(--border-faint);border:1px solid var(--border);color:var(--text);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .2s}",
+".ex-back:active{background:var(--border-soft)}",
 ".ex-logo{position:relative;display:inline-flex;align-items:center;justify-content:center;width:80px;height:80px;margin:12px 0 12px}",
 ".ex-logo-bg{position:absolute;inset:0;border-radius:24px;background:linear-gradient(145deg,#1a3d73,#0c1e3a);border:1px solid rgba(232,160,32,.4);box-shadow:var(--shadow-strong)}",
 ".ex-logo-em{position:relative;font-size:38px;filter:drop-shadow(0 0 14px rgba(232,160,32,.6))}",
@@ -27,7 +27,7 @@ const CSS = [
 ".ex-score-em{font-size:46px}",
 ".ex-score-n{font-size:32px;font-weight:900;margin-top:4px}",
 ".ex-score-l{margin-top:4px;opacity:.9;font-size:14px}",
-".ex-retry{margin-top:14px;padding:10px 22px;border-radius:12px;border:none;background:rgba(255,255,255,.2);color:var(--text);font-family:'Tajawal',sans-serif;font-weight:700;cursor:pointer;transition:transform .15s}",
+".ex-retry{margin-top:14px;padding:10px 22px;border-radius:12px;border:none;background:var(--text-dim);color:var(--text);font-family:'Tajawal',sans-serif;font-weight:700;cursor:pointer;transition:transform .15s}",
 ".ex-retry:active{transform:scale(.95)}",
 ".ex-q{background:var(--surface-2);border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-card);transition:border-color .3s}",
 ".ex-q-head{display:flex;gap:10px;margin-bottom:14px;align-items:flex-start}",
@@ -121,8 +121,8 @@ export default function ExercisePage() {
                       const isCorrect = opt === q.correctAnswer;
 
                       let bg = "var(--surface-softer)";
-                      let bd = "1.5px solid rgba(255,255,255,.1)";
-                      let col = "rgba(255,255,255,.85)";
+                      let bd = "1.5px solid var(--border)";
+                      let col = "var(--text)";
 
                       if (answered && isCorrect) {
                         bg = "rgba(34,197,94,.15)"; bd = "1.5px solid #22C55E"; col = "#4ade80";

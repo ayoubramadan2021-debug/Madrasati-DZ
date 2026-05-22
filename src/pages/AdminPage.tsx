@@ -19,7 +19,7 @@ const CSS = [
 ".ad-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px}",
 ".ad-content{position:relative;z-index:2}",
 ".ad-hero{position:relative;padding:24px 20px 22px;text-align:center}",
-".ad-back{position:absolute;top:20px;right:16px;background:var(--border-faint);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.8);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif}",
+".ad-back{position:absolute;top:20px;right:16px;background:var(--border-faint);border:1px solid var(--border);color:var(--text);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif}",
 ".ad-logo{position:relative;display:inline-flex;align-items:center;justify-content:center;width:78px;height:78px;margin:8px 0 10px}",
 ".ad-logo-bg{position:absolute;inset:0;border-radius:22px;background:linear-gradient(145deg,#1a3d73,#0c1e3a);border:1px solid rgba(232,160,32,.4);box-shadow:var(--shadow-strong)}",
 ".ad-logo-em{position:relative;font-size:38px;filter:drop-shadow(0 0 14px rgba(232,160,32,.6))}",
@@ -37,8 +37,8 @@ const CSS = [
 ".ad-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px;margin-bottom:14px;box-shadow:var(--shadow-hero)}",
 ".ad-card-t{font-weight:800;color:var(--gold);font-size:16px;margin-bottom:14px}",
 ".ad-row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}",
-".ad-label{font-size:12px;font-weight:600;color:rgba(255,255,255,.6);display:block;margin-bottom:5px}",
-".ad-input{width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.1);background:var(--surface-softer);color:var(--text);font-family:'Tajawal',sans-serif;font-size:14px;outline:none;direction:rtl;transition:border-color .2s}",
+".ad-label{font-size:12px;font-weight:600;color:var(--text-muted);display:block;margin-bottom:5px}",
+".ad-input{width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface-softer);color:var(--text);font-family:'Tajawal',sans-serif;font-size:14px;outline:none;direction:rtl;transition:border-color .2s}",
 ".ad-input:focus{border-color:rgba(232,160,32,.5)}",
 ".ad-input::placeholder{color:var(--text-dim)}",
 ".ad-input option{background:#0c1322;color:#fff}",
@@ -192,7 +192,7 @@ export default function AdminPage() {
                   <textarea className="ad-input" value={content} onChange={e => setContent(e.target.value)} placeholder="محتوى الدرس..." rows={3} style={{ marginBottom: 10, resize: "vertical" }} />
                   {msg && <div className="ad-msg" style={{ background: msg.includes("✅") ? "rgba(34,197,94,.15)" : "rgba(239,68,68,.15)", color: msg.includes("✅") ? "#4ade80" : "#f87171" }}>{msg}</div>}
                   <button className="ad-add" onClick={addLesson} disabled={!title.trim() || loading}
-                    style={{ background: title.trim() ? "linear-gradient(135deg,var(--gold),var(--gold-deep))" : "rgba(255,255,255,.1)", color: title.trim() ? "#000" : "var(--text-faint)", cursor: title.trim() ? "pointer" : "default" }}>
+                    style={{ background: title.trim() ? "linear-gradient(135deg,var(--gold),var(--gold-deep))" : "var(--border)", color: title.trim() ? "#000" : "var(--text-faint)", cursor: title.trim() ? "pointer" : "default" }}>
                     {loading ? "جاري الإضافة..." : "إضافة الدرس ✓"}
                   </button>
                 </div>

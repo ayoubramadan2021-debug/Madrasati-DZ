@@ -20,7 +20,7 @@ const CSS = [
 "@keyframes db-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}",
 ".db-title{font-size:34px;font-weight:900;line-height:1;margin-bottom:8px;background:linear-gradient(135deg,#fff 25%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:0;transform:translateY(14px);transition:opacity .6s ease .2s,transform .6s ease .2s}",
 ".db-title.in{opacity:1;transform:translateY(0)}",
-".db-name{font-size:16px;color:rgba(255,255,255,.6);margin-bottom:20px;opacity:0;transition:opacity .6s ease .35s}",
+".db-name{font-size:16px;color:var(--text-muted);margin-bottom:20px;opacity:0;transition:opacity .6s ease .35s}",
 ".db-name.in{opacity:1}",
 ".db-points{background:var(--surface);border:1px solid rgba(232,160,32,.25);border-radius:20px;padding:22px;margin-bottom:22px;box-shadow:var(--shadow-hero);opacity:0;transform:translateY(16px);transition:opacity .5s ease .45s,transform .5s ease .45s}",
 ".db-points.in{opacity:1;transform:translateY(0)}",

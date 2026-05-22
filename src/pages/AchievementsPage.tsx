@@ -123,7 +123,7 @@ function AchievementsPage() {
                         opacity: badge.unlocked ? 1 : 0.6,
                       }}
                     >
-                      <div className="ac-badge-strip" style={{ background: badge.unlocked ? "linear-gradient(180deg,#22C55E,#16a34a)" : "rgba(255,255,255,.1)" }} />
+                      <div className="ac-badge-strip" style={{ background: badge.unlocked ? "linear-gradient(180deg,#22C55E,#16a34a)" : "var(--border)" }} />
                       <div className="ac-badge-em" style={{ filter: badge.unlocked ? "none" : "grayscale(1)" }}>{badge.icon}</div>
                       <div className="ac-badge-body">
                         <div className="ac-badge-t">{badge.title}</div>

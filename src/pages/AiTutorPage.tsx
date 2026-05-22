@@ -16,8 +16,8 @@ const CSS = [
 "@keyframes ai-d2{from{transform:translate(0,0)}to{transform:translate(-5%,-7%)}}",
 ".ai-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px}",
 ".ai-head{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;padding:16px;background:rgba(10,16,30,.7);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07)}",
-".ai-back{padding:8px 14px;background:var(--border-faint);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.1);border-radius:12px;font-family:'Tajawal',sans-serif;font-weight:700;font-size:13px;cursor:pointer;transition:background .2s}",
-".ai-back:active{background:rgba(255,255,255,.12)}",
+".ai-back{padding:8px 14px;background:var(--border-faint);color:var(--text);border:1px solid var(--border);border-radius:12px;font-family:'Tajawal',sans-serif;font-weight:700;font-size:13px;cursor:pointer;transition:background .2s}",
+".ai-back:active{background:var(--border-soft)}",
 ".ai-head-c{text-align:center;flex:1}",
 ".ai-head-t{display:flex;align-items:center;justify-content:center;gap:8px;font-size:17px;font-weight:900;background:linear-gradient(135deg,#fff 30%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}",
 ".ai-bot{font-size:20px;filter:drop-shadow(0 0 8px rgba(232,160,32,.6));animation:ai-bob 4s ease-in-out infinite}",
@@ -38,9 +38,9 @@ const CSS = [
 ".ai-tdot:nth-child(2){animation-delay:.2s}",
 ".ai-tdot:nth-child(3){animation-delay:.4s}",
 "@keyframes ai-type{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-6px);opacity:1}}",
-".ai-input-wrap{position:fixed;bottom:96px;left:14px;right:14px;z-index:50;background:rgba(14,22,40,.92);backdrop-filter:blur(20px);padding:8px;border-radius:20px;border:1px solid rgba(255,255,255,.1);display:flex;gap:8px;box-shadow:0 12px 35px rgba(0,0,0,.5)}",
+".ai-input-wrap{position:fixed;bottom:96px;left:14px;right:14px;z-index:50;background:rgba(14,22,40,.92);backdrop-filter:blur(20px);padding:8px;border-radius:20px;border:1px solid var(--border);display:flex;gap:8px;box-shadow:0 12px 35px rgba(0,0,0,.5)}",
 ".ai-input{flex:1;padding:14px;border-radius:14px;border:none;background:var(--surface-soft);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:600;color:var(--text);outline:none}",
-".ai-input::placeholder{color:rgba(255,255,255,.35)}",
+".ai-input::placeholder{color:var(--text-dim)}",
 ".ai-send{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#000;border:none;padding:0 22px;border-radius:14px;font-family:'Tajawal',sans-serif;font-weight:900;font-size:14px;cursor:pointer;box-shadow:0 4px 14px rgba(232,160,32,.35);transition:transform .15s}",
 ".ai-send:active{transform:scale(.95)}",
 ".ai-send:disabled{opacity:.5;cursor:default}",
@@ -72,10 +72,26 @@ export default function AiTutorPage() {
         .filter(m => m.role === "user" || m.role === "assistant")
         .map(m => ({ role: m.role, content: m.content }));
 
+      const systemPrompt = {
+        role: "system",
+        content: [
+          "أنت معلّم جزائري ودود في التعليم الابتدائي، اسمك \"المعلّم الذكي\".",
+          "قواعد صارمة يجب الالتزام بها حرفياً:",
+          "1. أجب بالعربية الفصحى السليمة حصراً. يُمنع منعاً باتاً استعمال أي كلمة أو حرف من أي لغة أخرى (روسية، إنجليزية، فرنسية...). كل كلمة في ردك يجب أن تكون عربية فصيحة.",
+          "2. تخاطب طفلاً صغيراً في المرحلة الابتدائية، فاستعمل لغة بسيطة وواضحة وجملاً قصيرة.",
+          "3. قدّم تعريفات دقيقة وصحيحة علمياً، مع أمثلة قريبة من حياة الطفل.",
+          "4. كن مشجّعاً ولطيفاً، واستعمل أحياناً رمزاً تعبيرياً واحداً مناسباً.",
+          "5. اجعل إجاباتك مختصرة ومنظّمة وسهلة الفهم.",
+          "6. إذا كان السؤال في الرياضيات، اشرح الخطوات بوضوح وتدرّج.",
+          "تذكّر: العربية الفصحى فقط، بلا أي خلط لغوي إطلاقاً."
+        ].join("\n")
+      };
+      const finalMsgs = [systemPrompt, ...apiMsgs];
+
       const res = await fetch(API + "/api/ai-tutor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: apiMsgs, grade: 1, subject: "عام" }),
+        body: JSON.stringify({ messages: finalMsgs, grade: 1, subject: "عام" }),
       });
       const data = await res.json();
       const reply = data?.choices?.[0]?.message?.content || "عذراً، ما قدرتش أجاوبك دلوقتي. حاول مرة أخرى 🙏";

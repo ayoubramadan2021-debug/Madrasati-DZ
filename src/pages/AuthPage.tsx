@@ -27,8 +27,8 @@ const CSS = [
 ".au-tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--surface-soft);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:4px;margin-bottom:22px}",
 ".au-tab{padding:11px;border:none;border-radius:11px;background:transparent;color:var(--text-faint);font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .25s}",
 ".au-tab.active{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#000;box-shadow:0 4px 12px rgba(232,160,32,.3)}",
-".au-label{font-size:13px;font-weight:700;color:rgba(255,255,255,.7);display:block;margin-bottom:6px}",
-".au-field{width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid rgba(255,255,255,.1);background:var(--surface-softer);color:var(--text);font-family:'Tajawal',sans-serif;font-size:14px;outline:none;margin-bottom:14px;transition:border-color .2s}",
+".au-label{font-size:13px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:6px}",
+".au-field{width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--surface-softer);color:var(--text);font-family:'Tajawal',sans-serif;font-size:14px;outline:none;margin-bottom:14px;transition:border-color .2s}",
 ".au-field::placeholder{color:var(--text-dim)}",
 ".au-field:focus{border-color:rgba(232,160,32,.5)}",
 ".au-field option{background:#0c1322;color:#fff}",
@@ -38,7 +38,7 @@ const CSS = [
 ".au-submit{width:100%;padding:15px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#000;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(232,160,32,.35);transition:transform .15s}",
 ".au-submit:active{transform:scale(.97)}",
 ".au-submit:disabled{opacity:.6;cursor:default}",
-".au-ghost{width:100%;margin-top:12px;padding:13px;border:1.5px solid rgba(255,255,255,.12);border-radius:14px;background:transparent;color:var(--text-muted);font-family:'Tajawal',sans-serif;font-size:14px;cursor:pointer;transition:background .2s}",
+".au-ghost{width:100%;margin-top:12px;padding:13px;border:1.5px solid var(--border-soft);border-radius:14px;background:transparent;color:var(--text-muted);font-family:'Tajawal',sans-serif;font-size:14px;cursor:pointer;transition:background .2s}",
 ".au-ghost:active{background:var(--surface-soft)}",
 ].join("\n");
 
