@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { Suspense } from "react";
 import Home from "./pages/Home";
 import AiTutorPage from "./pages/AiTutorPage";
+import ExerciseDemoPage from "./pages/ExerciseDemoPage";
 import BottomNav from "./shared/components/BottomNav";
 
 const lazy = (importFn: () => Promise<any>, title: string) => {
@@ -18,6 +19,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/exercise-demo" element={<ExerciseDemoPage />} />
         <Route path="/ai-tutor" element={<AiTutorPage />} />
 
         {/* مسار المادة والأقسام - موحّد مع روابط الصفحات */}
