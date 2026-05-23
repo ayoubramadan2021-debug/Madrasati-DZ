@@ -66,3 +66,61 @@
 html { transition: background-color .4s ease; }
 body { background: var(--bg); }
 * { transition: background .35s ease, border-color .35s ease, color .35s ease, box-shadow .35s ease; }
+
+/* ===== توافق الشاشات الكبيرة (تابلت/حاسوب) ===== */
+/* على الشاشات الأعرض من 520px، نوسّط المحتوى بحدّ أقصى كتطبيق هاتف أنيق */
+@media (min-width: 520px) {
+  #root {
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100dvh;
+    box-shadow: 0 0 60px rgba(0,0,0,.18);
+  }
+  /* خلفية الصفحة خلف الإطار الموسّط */
+  body {
+    background:
+      radial-gradient(circle at 20% 20%, rgba(27,58,107,.18), transparent 45%),
+      radial-gradient(circle at 80% 80%, rgba(232,160,32,.08), transparent 45%),
+      var(--bg);
+  }
+}
+
+/* ضبط العناصر الثابتة لتبقى ضمن الإطار الموسّط على الشاشات الكبيرة */
+@media (min-width: 520px) {
+  /* الشريط السفلي: نقيّده بعرض الإطار ونوسّطه */
+  nav[class*="nav"], div[class*="bottom"], div[class*="bnav"], div[class*="tabbar"] {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    max-width: 480px !important;
+    width: 100% !important;
+  }
+  /* القائمة الجانبية المنزلقة والخلفية المعتمة: ضمن الإطار */
+  div[class*="drawer-overlay"] {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    max-width: 480px !important;
+    width: 100% !important;
+  }
+  div[class*="drawer"]:not([class*="overlay"]) {
+    right: 50% !important;
+    margin-right: -240px !important;
+  }
+}
+
+/* ضبط القائمة الجانبية لتبقى ضمن الإطار الموسّط على الشاشات الكبيرة */
+@media (min-width: 520px) {
+  .drawer-overlay {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100% !important;
+    max-width: 480px !important;
+    right: auto !important;
+  }
+  .drawer {
+    right: 50% !important;
+    margin-right: -240px !important;
+  }
+}

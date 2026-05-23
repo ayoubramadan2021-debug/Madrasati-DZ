@@ -9,3 +9,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <App />
   </React.StrictMode>,
 )
+// إخفاء شاشة البداية بعد تحميل التطبيق
+setTimeout(() => {
+  const sp = document.getElementById("splash");
+  if (sp) {
+    sp.classList.add("hide");
+    setTimeout(() => sp.remove(), 500);
+  }
+}, 600);

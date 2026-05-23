@@ -100,7 +100,7 @@ export default function SectionPage() {
             {/* الدروس */}
             {isLessons && (
               <div className="sc-list">
-                {lessons.length === 0 && <div className="sc-empty"><div className="sc-empty-em">📭</div><div>لا توجد دروس بعد</div></div>}
+                {lessons.length === 0 && <div className="sc-empty"><div className="sc-empty-em">📚</div><div style={{fontWeight:800,color:"var(--text)",marginBottom:4}}>الدروس قريباً!</div><div style={{fontSize:13}}>نعمل على إضافة دروس هذه المادة. عُد قريباً ✨</div></div>}
                 {lessons.map((lesson: any, i: number) => (
                   <div key={lesson.id} className="sc-item" style={{ animationDelay: (0.3 + i * 0.07) + "s", boxShadow: "0 4px 18px rgba(0,0,0,.3)" }}
                     onClick={() => navigate(`/lesson/${lesson.id}`)}>
@@ -119,7 +119,7 @@ export default function SectionPage() {
             {/* التمارين */}
             {isExercises && (
               <div className="sc-list">
-                {exercises.length === 0 && <div className="sc-empty"><div className="sc-empty-em">📭</div><div>لا توجد تمارين بعد</div></div>}
+                {exercises.length === 0 && <div className="sc-empty"><div className="sc-empty-em">✏️</div><div style={{fontWeight:800,color:"var(--text)",marginBottom:4}}>التمارين قريباً!</div><div style={{fontSize:13}}>سنضيف تمارين تفاعلية ممتعة هنا قريباً 🎯</div></div>}
                 {exercises.map((ex: any, i: number) => (
                   <div key={ex.id} className="sc-item" style={{ animationDelay: (0.3 + i * 0.07) + "s", boxShadow: "0 4px 18px rgba(0,0,0,.3)" }}
                     onClick={() => navigate(`/exercise/${ex.id}`)}>
@@ -138,7 +138,7 @@ export default function SectionPage() {
             {/* الاختبارات */}
             {isQuizzes && (
               <div className="sc-list">
-                {quizzes.length === 0 && <div className="sc-empty"><div className="sc-empty-em">📭</div><div>لا توجد اختبارات بعد</div></div>}
+                {quizzes.length === 0 && <div className="sc-empty"><div className="sc-empty-em">📝</div><div style={{fontWeight:800,color:"var(--text)",marginBottom:4}}>الاختبارات قريباً!</div><div style={{fontSize:13}}>اختبارات قصيرة لقياس فهمك ستكون متاحة قريباً 🌟</div></div>}
                 {quizzes.map((q: any, i: number) => (
                   <div key={q.id || i} className="sc-item" style={{ animationDelay: (0.3 + i * 0.07) + "s", boxShadow: "0 4px 18px rgba(0,0,0,.3)" }}
                     onClick={() => navigate(`/quiz`)}>
