@@ -93,7 +93,13 @@ export default function SubjectPage() {
                 key={sec.slug}
                 className="sb-card"
                 style={{ animationDelay: (0.35 + i * 0.1) + "s", boxShadow: "0 6px 22px rgba(0,0,0,.35)" }}
-                onClick={() => navigate(`/grade/${gradeId}/subject/${subject}/section/${sec.slug}`)}
+                onClick={() => {
+                  if (String(gradeId) === "1" && subject === "math" && sec.slug === "exercises") {
+                    navigate("/exercise-demo");
+                  } else {
+                    navigate(`/grade/${gradeId}/subject/${subject}/section/${sec.slug}`);
+                  }
+                }}
               >
                 <div className="sb-card-bg" />
                 <div className="sb-card-glow" style={{ boxShadow: "inset 0 0 30px " + sec.color + "14", borderTop: "3px solid " + sec.color, borderRadius: "20px 20px 0 0" }} />
