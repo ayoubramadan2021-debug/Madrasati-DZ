@@ -28,6 +28,7 @@
   --success: #22C55E;
   --success-deep: #16a34a;
   --danger: #ff6b6b;
+  --bn-bg: rgba(10,16,30,.82);
   color-scheme: dark;
 }
 
@@ -60,6 +61,7 @@
   --success: #16a34a;
   --success-deep: #15803d;
   --danger: #dc2626;
+  --bn-bg: rgba(255,255,255,.85);
   color-scheme: light;
 }
 
