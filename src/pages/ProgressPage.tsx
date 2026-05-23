@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
+import { withTimeout } from "../lib/withTimeout";
 
 const CSS = [
 "@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');",
@@ -77,12 +78,12 @@ export default function ProgressPage() {
     async function load() {
       try {
         setErr(false);
-        const { data } = await supabase.auth.getSession();
+        const { data } = await withTimeout(Promise.resolve(supabase.auth.getSession()));
         const user = data.session?.user;
         if (!user) { setLoading(false); return; }
-        const { data: prof } = await supabase.from("profiles").select("*").eq("id", user.id).single();
+        const { data: prof } = await withTimeout(Promise.resolve(supabase.from("profiles").select("*").eq("id", user.id).single()));
         setProfile(prof);
-        const { data: prog } = await supabase.from("progress").select("*").eq("user_id", user.id);
+        const { data: prog } = await withTimeout(Promise.resolve(supabase.from("progress").select("*").eq("user_id", user.id)));
         setProgress(prog || []);
       } catch (e) {
         setErr(true);

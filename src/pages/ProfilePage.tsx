@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
+import { withTimeout } from "../lib/withTimeout";
 import { ThemeToggle } from "../useTheme";
 
 const CSS = [
@@ -85,11 +86,11 @@ export default function ProfilePage() {
   async function load() {
     try {
       setErr(false);
-      const { data: session } = await supabase.auth.getSession();
+      const { data: session } = await withTimeout(Promise.resolve(supabase.auth.getSession()));
       const user = session?.session?.user;
       if (!user) { setLoading(false); return; }
-      const { data: prof } = await supabase.from("profiles").select("*").eq("id", user.id).single();
-      const { data: prog } = await supabase.from("progress").select("points,completed").eq("user_id", user.id);
+      const { data: prof } = await withTimeout(Promise.resolve(supabase.from("profiles").select("*").eq("id", user.id).single()));
+      const { data: prog } = await withTimeout(Promise.resolve(supabase.from("progress").select("points,completed").eq("user_id", user.id)));
       setProfile(prof);
       setName(prof?.full_name || "");
       if (prog) {

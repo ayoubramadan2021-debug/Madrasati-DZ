@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
+import { withTimeout } from "../lib/withTimeout";
 
 const CSS = [
 "@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');",
@@ -55,14 +56,14 @@ export default function FavoritesPage() {
     async function load() {
       try {
         setErr(false);
-        const { data: session } = await supabase.auth.getSession();
+        const { data: session } = await withTimeout(Promise.resolve(supabase.auth.getSession()));
         const user = session.session?.user;
         if (!user) { setLoading(false); return; }
-        const { data } = await supabase
+        const { data } = await withTimeout(Promise.resolve(supabase
           .from("favorites")
           .select("*")
           .eq("user_id", user.id)
-          .order("created_at", { ascending: false });
+          .order("created_at", { ascending: false })));
         setFavorites(data || []);
       } catch (e) {
         setErr(true);

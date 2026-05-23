@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
+import { withTimeout } from "../lib/withTimeout";
 
 const CSS = [
 "@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');",
@@ -63,13 +64,13 @@ export default function LeaderboardPage() {
     async function load() {
       try {
         setErr(false);
-        const { data: session } = await supabase.auth.getSession();
+        const { data: session } = await withTimeout(Promise.resolve(supabase.auth.getSession()));
         setMyId(session.session?.user?.id || null);
-        const { data } = await supabase
+        const { data } = await withTimeout(Promise.resolve(supabase
           .from("profiles")
           .select("id, full_name, points, grade")
           .order("points", { ascending: false })
-          .limit(20);
+          .limit(20)));
         setLeaders(data || []);
       } catch (e) {
         setErr(true);

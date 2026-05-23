@@ -1,3 +1,4 @@
+import { withTimeout } from "../lib/withTimeout";
 import { useEffect, useState } from "react";
 import { getCurrentUser } from "../services/sessionService";
 import { getProfile } from "../services/profileService";
@@ -59,10 +60,10 @@ function AchievementsPage() {
     setLoading(true);
     try {
       setErr(false);
-      const user = await getCurrentUser();
+      const user = await withTimeout(Promise.resolve(getCurrentUser()));
       if (!user) { setLoading(false); return; }
-      const userProfile = await getProfile(user.id);
-      const userProgress = await getUserProgress(user.id);
+      const userProfile = await withTimeout(Promise.resolve(getProfile(user.id)));
+      const userProgress = await withTimeout(Promise.resolve(getUserProgress(user.id)));
       setProfile(userProfile);
       setProgress(userProgress || []);
     } catch (e) {
