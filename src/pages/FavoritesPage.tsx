@@ -47,20 +47,28 @@ export default function FavoritesPage() {
   const navigate = useNavigate();
   const [favorites, setFavorites] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState(false);
+  const reload = () => { setLoading(true); window.location.reload(); };
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     async function load() {
-      const { data: session } = await supabase.auth.getSession();
-      const user = session.session?.user;
-      if (!user) { setLoading(false); return; }
-      const { data } = await supabase
-        .from("favorites")
-        .select("*")
-        .eq("user_id", user.id)
-        .order("created_at", { ascending: false });
-      setFavorites(data || []);
-      setLoading(false);
+      try {
+        setErr(false);
+        const { data: session } = await supabase.auth.getSession();
+        const user = session.session?.user;
+        if (!user) { setLoading(false); return; }
+        const { data } = await supabase
+          .from("favorites")
+          .select("*")
+          .eq("user_id", user.id)
+          .order("created_at", { ascending: false });
+        setFavorites(data || []);
+      } catch (e) {
+        setErr(true);
+      } finally {
+        setLoading(false);
+      }
     }
     load();
   }, []);
@@ -95,8 +103,16 @@ export default function FavoritesPage() {
 
           <div className="fv-body">
             {loading && <div className="fv-state">⏳ جاري التحميل...</div>}
+            {err && (
+              <div className="fv-state">
+                <div style={{ fontSize: 42, marginBottom: 10 }}>📡</div>
+                <div style={{ fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>تعذّر تحميل البيانات</div>
+                <div style={{ fontSize: 13, marginBottom: 16 }}>تحقّق من اتصالك بالإنترنت وحاول مجدداً</div>
+                <button onClick={reload} style={{ padding: "11px 26px", border: "none", borderRadius: 12, background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#3a2400", fontFamily: "'Tajawal',sans-serif", fontSize: 14, fontWeight: 800, cursor: "pointer" }}>إعادة المحاولة ↻</button>
+              </div>
+            )}
 
-            {!loading && favorites.length === 0 && (
+            {!loading && !err && favorites.length === 0 && (
               <div className="fv-empty">
                 <div className="fv-empty-em">📭</div>
                 <div style={{ fontSize: 16 }}>لا يوجد عناصر في المفضلة</div>

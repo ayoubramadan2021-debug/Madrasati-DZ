@@ -67,6 +67,8 @@ export default function ProfilePage() {
   const navigate = useNavigate();
   const [profile, setProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState(false);
+  const reload = () => { setLoading(true); window.location.reload(); };
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState("");
   const [saving, setSaving] = useState(false);
@@ -82,6 +84,7 @@ export default function ProfilePage() {
 
   async function load() {
     try {
+      setErr(false);
       const { data: session } = await supabase.auth.getSession();
       const user = session?.session?.user;
       if (!user) { setLoading(false); return; }
@@ -93,8 +96,11 @@ export default function ProfilePage() {
         setPoints(prog.reduce((s: number, i: any) => s + Number(i.points || 0), 0));
         setCompleted(prog.filter((i: any) => i.completed).length);
       }
-    } catch (e) {}
-    setLoading(false);
+    } catch (e) {
+      setErr(true);
+    } finally {
+      setLoading(false);
+    }
   }
 
   async function handleSave() {
@@ -124,6 +130,21 @@ export default function ProfilePage() {
       <div className="pf-root">
         <div className="pf-orb pf-ob" /><div className="pf-orb pf-og" /><div className="pf-grid" />
         <div className="pf-center"><div className="pf-state">⏳ جاري التحميل...</div></div>
+      </div>
+    </>
+  );
+
+  if (err) return (
+    <>
+      <style>{CSS}</style>
+      <div className="pf-root">
+        <div className="pf-orb pf-ob" /><div className="pf-orb pf-og" /><div className="pf-grid" />
+        <div className="pf-center">
+          <div className="pf-lock-em">📡</div>
+          <div className="pf-lock-t">تعذّر تحميل البيانات</div>
+          <div className="pf-state" style={{ marginBottom: 16, textAlign: "center" }}>تحقّق من اتصالك بالإنترنت وحاول مجدداً</div>
+          <button className="pf-btn" onClick={reload}>إعادة المحاولة ↻</button>
+        </div>
       </div>
     </>
   );

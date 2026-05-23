@@ -54,20 +54,28 @@ export default function LeaderboardPage() {
   const navigate = useNavigate();
   const [leaders, setLeaders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState(false);
+  const reload = () => { setLoading(true); window.location.reload(); };
   const [myId, setMyId] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     async function load() {
-      const { data: session } = await supabase.auth.getSession();
-      setMyId(session.session?.user?.id || null);
-      const { data } = await supabase
-        .from("profiles")
-        .select("id, full_name, points, grade")
-        .order("points", { ascending: false })
-        .limit(20);
-      setLeaders(data || []);
-      setLoading(false);
+      try {
+        setErr(false);
+        const { data: session } = await supabase.auth.getSession();
+        setMyId(session.session?.user?.id || null);
+        const { data } = await supabase
+          .from("profiles")
+          .select("id, full_name, points, grade")
+          .order("points", { ascending: false })
+          .limit(20);
+        setLeaders(data || []);
+      } catch (e) {
+        setErr(true);
+      } finally {
+        setLoading(false);
+      }
     }
     load();
   }, []);
@@ -106,9 +114,17 @@ export default function LeaderboardPage() {
 
           <div className="lb-body">
             {loading && <div className="lb-state">⏳ جاري التحميل...</div>}
+            {err && (
+              <div className="lb-state">
+                <div style={{ fontSize: 42, marginBottom: 10 }}>📡</div>
+                <div style={{ fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>تعذّر تحميل البيانات</div>
+                <div style={{ fontSize: 13, marginBottom: 16 }}>تحقّق من اتصالك بالإنترنت وحاول مجدداً</div>
+                <button onClick={reload} style={{ padding: "11px 26px", border: "none", borderRadius: 12, background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#3a2400", fontFamily: "'Tajawal',sans-serif", fontSize: 14, fontWeight: 800, cursor: "pointer" }}>إعادة المحاولة ↻</button>
+              </div>
+            )}
 
             {/* المنصة - أول 3 */}
-            {!loading && leaders.length >= 3 && (
+            {!loading && !err && leaders.length >= 3 && (
               <div className="lb-podium">
                 {podium.map((p) => {
                   const l = leaders[p.idx];
@@ -161,7 +177,7 @@ export default function LeaderboardPage() {
               })}
             </div>
 
-            {!loading && leaders.length === 0 && (
+            {!loading && !err && leaders.length === 0 && (
               <div className="lb-empty">
                 <div className="lb-empty-em">📭</div>
                 <div>لا يوجد بيانات بعد</div>

@@ -43,6 +43,8 @@ const CSS = [
 
 function AchievementsPage() {
   const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState(false);
+  const reload = () => { setLoading(true); window.location.reload(); };
   const [profile, setProfile] = useState<any>(null);
   const [progress, setProgress] = useState<any[]>([]);
   const [mounted, setMounted] = useState(false);
@@ -55,13 +57,19 @@ function AchievementsPage() {
 
   async function loadAchievements() {
     setLoading(true);
-    const user = await getCurrentUser();
-    if (!user) { setLoading(false); return; }
-    const userProfile = await getProfile(user.id);
-    const userProgress = await getUserProgress(user.id);
-    setProfile(userProfile);
-    setProgress(userProgress || []);
-    setLoading(false);
+    try {
+      setErr(false);
+      const user = await getCurrentUser();
+      if (!user) { setLoading(false); return; }
+      const userProfile = await getProfile(user.id);
+      const userProgress = await getUserProgress(user.id);
+      setProfile(userProfile);
+      setProgress(userProgress || []);
+    } catch (e) {
+      setErr(true);
+    } finally {
+      setLoading(false);
+    }
   }
 
   const totalPoints = progress.reduce((sum, item) => sum + Number(item.points || 0), 0);
@@ -98,6 +106,13 @@ function AchievementsPage() {
           <div className="ac-body">
             {loading ? (
               <div className="ac-state">⏳ جاري تحميل الإنجازات...</div>
+            ) : err ? (
+              <div className="ac-state">
+                <div style={{ fontSize: 42, marginBottom: 10 }}>📡</div>
+                <div style={{ fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>تعذّر تحميل البيانات</div>
+                <div style={{ fontSize: 13, marginBottom: 16 }}>تحقّق من اتصالك بالإنترنت وحاول مجدداً</div>
+                <button onClick={reload} style={{ padding: "11px 26px", border: "none", borderRadius: 12, background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#3a2400", fontFamily: "'Tajawal',sans-serif", fontSize: 14, fontWeight: 800, cursor: "pointer" }}>إعادة المحاولة ↻</button>
+              </div>
             ) : !profile ? (
               <div className="ac-state">🔐 سجّل الدخول لعرض إنجازاتك</div>
             ) : (

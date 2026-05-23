@@ -69,18 +69,26 @@ export default function ProgressPage() {
   const [profile, setProfile] = useState<any>(null);
   const [progress, setProgress] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState(false);
+  const reload = () => { setLoading(true); window.location.reload(); };
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     async function load() {
-      const { data } = await supabase.auth.getSession();
-      const user = data.session?.user;
-      if (!user) { setLoading(false); return; }
-      const { data: prof } = await supabase.from("profiles").select("*").eq("id", user.id).single();
-      setProfile(prof);
-      const { data: prog } = await supabase.from("progress").select("*").eq("user_id", user.id);
-      setProgress(prog || []);
-      setLoading(false);
+      try {
+        setErr(false);
+        const { data } = await supabase.auth.getSession();
+        const user = data.session?.user;
+        if (!user) { setLoading(false); return; }
+        const { data: prof } = await supabase.from("profiles").select("*").eq("id", user.id).single();
+        setProfile(prof);
+        const { data: prog } = await supabase.from("progress").select("*").eq("user_id", user.id);
+        setProgress(prog || []);
+      } catch (e) {
+        setErr(true);
+      } finally {
+        setLoading(false);
+      }
     }
     load();
   }, []);
@@ -121,8 +129,16 @@ export default function ProgressPage() {
             {loading && (
               <div className="pg-state">⏳ جاري التحميل...</div>
             )}
+            {err && (
+              <div className="pg-state">
+                <div style={{ fontSize: 42, marginBottom: 10 }}>📡</div>
+                <div style={{ fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>تعذّر تحميل البيانات</div>
+                <div style={{ fontSize: 13, marginBottom: 16 }}>تحقّق من اتصالك بالإنترنت وحاول مجدداً</div>
+                <button onClick={reload} style={{ padding: "11px 26px", border: "none", borderRadius: 12, background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#3a2400", fontFamily: "'Tajawal',sans-serif", fontSize: 14, fontWeight: 800, cursor: "pointer" }}>إعادة المحاولة ↻</button>
+              </div>
+            )}
 
-            {!loading && !profile && (
+            {!loading && !err && !profile && (
               <div className="pg-lock">
                 <div className="pg-lock-em">🔐</div>
                 <div className="pg-lock-t">سجّل الدخول أولاً</div>
