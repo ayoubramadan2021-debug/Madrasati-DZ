@@ -4,7 +4,7 @@ import { supabase } from "../lib/supabaseClient";
 import { getCurrentUser } from "../services/authService";
 import { getProfile } from "../services/profileService";
 
-const TABS = ["الدروس", "التلاميذ", "الإحصائيات"];
+const TABS = ["الدروس", "التمارين", "الاختبارات", "التلاميذ", "الإحصائيات"];
 const SUBJECTS = ["math", "arabic", "french", "islamic", "civic", "science"];
 
 const CSS = [
@@ -76,6 +76,18 @@ export default function AdminPage() {
   const [subject, setSubject] = useState("math");
   const [grade, setGrade] = useState("1");
   const [content, setContent] = useState("");
+  const [exLessonId, setExLessonId] = useState("");
+  const [exTitle, setExTitle] = useState("");
+  const [exQuestion, setExQuestion] = useState("");
+  const [exOptions, setExOptions] = useState(["", "", "", ""]);
+  const [exCorrect, setExCorrect] = useState("");
+  const [exMsg, setExMsg] = useState("");
+  const [qzLessonId, setQzLessonId] = useState("");
+  const [qzTitle, setQzTitle] = useState("");
+  const [qzQuestion, setQzQuestion] = useState("");
+  const [qzOptions, setQzOptions] = useState(["", "", "", ""]);
+  const [qzCorrect, setQzCorrect] = useState("");
+  const [qzMsg, setQzMsg] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -108,6 +120,74 @@ export default function AdminPage() {
     else { setMsg("✅ تم إضافة الدرس!"); setTitle(""); setContent(""); loadData(); }
     setLoading(false);
     setTimeout(() => setMsg(""), 3000);
+  }
+
+  async function addExercise() {
+    if (!exQuestion.trim() || !exLessonId || !exCorrect.trim()) {
+      setExMsg("❌ املأ السؤال والدرس والإجابة الصحيحة");
+      setTimeout(() => setExMsg(""), 3000); return;
+    }
+    const cleanOptions = exOptions.map(o => o.trim()).filter(Boolean);
+    if (cleanOptions.length < 2) {
+      setExMsg("❌ أضف خيارين على الأقل");
+      setTimeout(() => setExMsg(""), 3000); return;
+    }
+    if (!cleanOptions.includes(exCorrect.trim())) {
+      setExMsg("❌ الإجابة الصحيحة يجب أن تطابق أحد الخيارات");
+      setTimeout(() => setExMsg(""), 3000); return;
+    }
+    setLoading(true);
+    const lesson = lessons.find(l => l.id === exLessonId);
+    const { error } = await supabase.from("exercises").insert([{
+      title: exTitle || "تمرين",
+      subject: lesson?.subject || "math",
+      grade: lesson?.grade || 1,
+      lesson_id: exLessonId,
+      question: exQuestion,
+      options: cleanOptions,
+      correct_answer: exCorrect.trim(),
+    }]);
+    if (error) { setExMsg("❌ " + error.message); }
+    else {
+      setExMsg("✅ تم إضافة التمرين!");
+      setExQuestion(""); setExOptions(["", "", "", ""]); setExCorrect(""); setExTitle("");
+    }
+    setLoading(false);
+    setTimeout(() => setExMsg(""), 3000);
+  }
+
+  async function addQuiz() {
+    if (!qzQuestion.trim() || !qzLessonId || !qzCorrect.trim()) {
+      setQzMsg("❌ املأ السؤال والدرس والإجابة الصحيحة");
+      setTimeout(() => setQzMsg(""), 3000); return;
+    }
+    const cleanOptions = qzOptions.map(o => o.trim()).filter(Boolean);
+    if (cleanOptions.length < 2) {
+      setQzMsg("❌ أضف خيارين على الأقل");
+      setTimeout(() => setQzMsg(""), 3000); return;
+    }
+    if (!cleanOptions.includes(qzCorrect.trim())) {
+      setQzMsg("❌ الإجابة الصحيحة يجب أن تطابق أحد الخيارات");
+      setTimeout(() => setQzMsg(""), 3000); return;
+    }
+    setLoading(true);
+    const lesson = lessons.find(l => l.id === qzLessonId);
+    const { error } = await supabase.from("quizzes").insert([{
+      title: qzTitle || "اختبار",
+      subject: lesson?.subject || "math",
+      grade: lesson?.grade || 1,
+      lesson_id: qzLessonId,
+      question: qzQuestion,
+      options: cleanOptions,
+      correct_answer: qzCorrect.trim(),
+    }]);
+    if (error) { setQzMsg("❌ " + error.message); }
+    else {
+      setQzMsg("✅ تم إضافة الاختبار!");
+      setQzQuestion(""); setQzOptions(["", "", "", ""]); setQzCorrect(""); setQzTitle("");
+    }
+    setLoading(false);
+    setTimeout(() => setQzMsg(""), 3000);
   }
 
   async function deleteLesson(id: string) {
@@ -216,8 +296,66 @@ export default function AdminPage() {
               </>
             )}
 
-            {/* التلاميذ */}
+            
+            {/* التمارين */}
             {tab === 1 && (
+              <>
+                <div className="ad-card">
+                  <div className="ad-card-t">➕ تمرين جديد</div>
+                  <label className="ad-label">الدرس التابع له</label>
+                  <select className="ad-input" value={exLessonId} onChange={e => setExLessonId(e.target.value)} style={{ marginBottom: 10 }}>
+                    <option value="">— اختر الدرس —</option>
+                    {lessons.map(l => <option key={l.id} value={l.id}>{l.title} (السنة {l.grade})</option>)}
+                  </select>
+                  <input className="ad-input" value={exTitle} onChange={e => setExTitle(e.target.value)} placeholder="عنوان التمرين (اختياري)" style={{ marginBottom: 10 }} />
+                  <input className="ad-input" value={exQuestion} onChange={e => setExQuestion(e.target.value)} placeholder="نص السؤال" style={{ marginBottom: 10 }} />
+                  <label className="ad-label">الخيارات (اثنان على الأقل)</label>
+                  {exOptions.map((opt, i) => (
+                    <input key={i} className="ad-input" value={opt}
+                      onChange={e => { const n = [...exOptions]; n[i] = e.target.value; setExOptions(n); }}
+                      placeholder={"الخيار " + (i + 1)} style={{ marginBottom: 8 }} />
+                  ))}
+                  <input className="ad-input" value={exCorrect} onChange={e => setExCorrect(e.target.value)} placeholder="الإجابة الصحيحة (تطابق أحد الخيارات)" style={{ marginTop: 6, marginBottom: 10 }} />
+                  {exMsg && <div className="ad-msg" style={{ background: exMsg.includes("✅") ? "rgba(34,197,94,.15)" : "rgba(239,68,68,.15)", color: exMsg.includes("✅") ? "#4ade80" : "#f87171" }}>{exMsg}</div>}
+                  <button className="ad-add" onClick={addExercise} disabled={loading}
+                    style={{ background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#000", cursor: "pointer" }}>
+                    {loading ? "جاري الإضافة..." : "إضافة التمرين ✓"}
+                  </button>
+                </div>
+              </>
+            )}
+
+            
+            {/* الاختبارات */}
+            {tab === 2 && (
+              <>
+                <div className="ad-card">
+                  <div className="ad-card-t">➕ اختبار جديد</div>
+                  <label className="ad-label">الدرس التابع له</label>
+                  <select className="ad-input" value={qzLessonId} onChange={e => setQzLessonId(e.target.value)} style={{ marginBottom: 10 }}>
+                    <option value="">— اختر الدرس —</option>
+                    {lessons.map(l => <option key={l.id} value={l.id}>{l.title} (السنة {l.grade})</option>)}
+                  </select>
+                  <input className="ad-input" value={qzTitle} onChange={e => setQzTitle(e.target.value)} placeholder="عنوان الاختبار (اختياري)" style={{ marginBottom: 10 }} />
+                  <input className="ad-input" value={qzQuestion} onChange={e => setQzQuestion(e.target.value)} placeholder="نص السؤال" style={{ marginBottom: 10 }} />
+                  <label className="ad-label">الخيارات (اثنان على الأقل)</label>
+                  {qzOptions.map((opt, i) => (
+                    <input key={i} className="ad-input" value={opt}
+                      onChange={e => { const n = [...qzOptions]; n[i] = e.target.value; setQzOptions(n); }}
+                      placeholder={"الخيار " + (i + 1)} style={{ marginBottom: 8 }} />
+                  ))}
+                  <input className="ad-input" value={qzCorrect} onChange={e => setQzCorrect(e.target.value)} placeholder="الإجابة الصحيحة (تطابق أحد الخيارات)" style={{ marginTop: 6, marginBottom: 10 }} />
+                  {qzMsg && <div className="ad-msg" style={{ background: qzMsg.includes("✅") ? "rgba(34,197,94,.15)" : "rgba(239,68,68,.15)", color: qzMsg.includes("✅") ? "#4ade80" : "#f87171" }}>{qzMsg}</div>}
+                  <button className="ad-add" onClick={addQuiz} disabled={loading}
+                    style={{ background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#000", cursor: "pointer" }}>
+                    {loading ? "جاري الإضافة..." : "إضافة الاختبار ✓"}
+                  </button>
+                </div>
+              </>
+            )}
+
+            {/* التلاميذ */}
+            {tab === 3 && (
               <div className="ad-list">
                 {students.map((s, i) => (
                   <div key={s.id} className="ad-item">
@@ -234,7 +372,7 @@ export default function AdminPage() {
             )}
 
             {/* الإحصائيات */}
-            {tab === 2 && (
+            {tab === 4 && (
               <div className="ad-card">
                 <div style={{ fontSize: 48, textAlign: "center", marginBottom: 16 }}>📊</div>
                 <div className="ad-statgrid">

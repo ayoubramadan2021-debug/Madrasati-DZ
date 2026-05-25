@@ -4,8 +4,13 @@ import { useNavigate } from "react-router-dom";
 type Msg = { role: "user" | "assistant"; content: string };
 type Grade = 1 | 2 | 3 | 4 | 5;
 
-// المستوى الافتراضي. لاحقاً يمكن تمريره من الرابط أو من حالة Zustand.
-const DEFAULT_GRADE: Grade = 3;
+const GRADE_LABELS: Record<Grade, string> = {
+  1: "السنة 1",
+  2: "السنة 2",
+  3: "السنة 3",
+  4: "السنة 4",
+  5: "السنة 5",
+};
 
 const CSS = [
   "@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');",
@@ -27,6 +32,10 @@ const CSS = [
   ".ai-head-s{display:flex;align-items:center;justify-content:center;gap:5px;font-size:11px;color:var(--text-faint);margin-top:3px}",
   ".ai-dot{width:6px;height:6px;border-radius:50%;background:#22C55E;box-shadow:0 0 6px #22C55E;animation:ai-blink 2s ease-in-out infinite}",
   "@keyframes ai-blink{0%,100%{opacity:1}50%{opacity:.3}}",
+  ".ai-grades{position:relative;z-index:3;display:flex;gap:7px;justify-content:center;flex-wrap:wrap;padding:12px 16px;background:rgba(10,16,30,.5);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.05)}",
+  ".ai-grade{padding:7px 14px;border-radius:12px;border:1px solid var(--border);background:var(--border-faint);color:var(--text-faint);font-family:'Tajawal',sans-serif;font-weight:700;font-size:12px;cursor:pointer;transition:all .2s}",
+  ".ai-grade:active{transform:scale(.94)}",
+  ".ai-grade.on{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#000;border-color:var(--gold);box-shadow:0 4px 14px rgba(232,160,32,.35)}",
   ".ai-msgs{flex:1;position:relative;z-index:2;padding:20px 16px 170px;display:flex;flex-direction:column;gap:14px;overflow-y:auto}",
   ".ai-row{display:flex;animation:ai-in .4s ease backwards}",
   "@keyframes ai-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}",
@@ -50,8 +59,9 @@ const CSS = [
 
 export default function AiTutorPage() {
   const navigate = useNavigate();
+  const [grade, setGrade] = useState<Grade>(3);
   const [messages, setMessages] = useState<Msg[]>([
-    { role: "assistant", content: "أهلاً بك يا بطل! 🌟 أنا المعلّم الذكي. اسألني عن أي درس أو تمرين صعب في الرياضيات أو اللغة وسأشرحه لك ببساطة." }
+    { role: "assistant", content: "أهلاً بك يا بطل! 🌟 أنا المعلّم الذكي. اختر سنتك الدراسية في الأعلى، ثم اسألني عن أي درس أو تمرين صعب وسأشرحه لك ببساطة." }
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -72,12 +82,7 @@ export default function AiTutorPage() {
       const res = await fetch("/api/ai", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          question,
-          grade: DEFAULT_GRADE,
-          subject: "عام",
-          mode: "answer",
-        }),
+        body: JSON.stringify({ question, grade, subject: "عام", mode: "answer" }),
       });
       const data = await res.json();
       const reply = res.ok
@@ -106,6 +111,18 @@ export default function AiTutorPage() {
             <div className="ai-head-s"><span className="ai-dot" /> متصل الآن</div>
           </div>
           <div style={{ width: 64 }} />
+        </div>
+
+        <div className="ai-grades">
+          {([1, 2, 3, 4, 5] as Grade[]).map(g => (
+            <button
+              key={g}
+              className={"ai-grade" + (grade === g ? " on" : "")}
+              onClick={() => setGrade(g)}
+            >
+              {GRADE_LABELS[g]}
+            </button>
+          ))}
         </div>
 
         <div className="ai-msgs">

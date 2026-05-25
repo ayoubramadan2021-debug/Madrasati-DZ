@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import appData from "../data/appData";
+import { getExercisesBySubject } from "../services/exerciseService";
 
 const SUBJECT_COLORS: Record<string, string> = {
   math: "#22C55E", arabic: "#EF4444", french: "#3B82F6",
@@ -59,7 +60,8 @@ export default function SectionPage() {
   const glow = SUBJECT_GLOW[subject || ""] || "var(--gold-deep)";
 
   const lessons   = currentSubject?.lessons   || [];
-  const exercises = currentSubject?.exercises || [];
+  const [exercises, setExercises] = useState<any[]>([]);
+  const [exLoading, setExLoading] = useState(false);
   const quizzes   = (currentSubject as any)?.quizzes || [];
 
   const isLessons   = section === "lessons";
@@ -71,6 +73,16 @@ export default function SectionPage() {
     const t = setTimeout(() => setMounted(true), 80);
     return () => clearTimeout(t);
   }, []);
+
+  useEffect(() => {
+    if (section !== "exercises" || !subject) return;
+    setExLoading(true);
+    getExercisesBySubject(subject, Number(gradeId))
+      .then((data) => { console.log("EX_DEBUG:", subject, Number(gradeId), data); setExercises(data || []); })
+      .catch((e) => { console.log("EX_ERROR:", e); setExercises([]); })
+      .finally(() => setExLoading(false));
+  }, [section, subject, gradeId]);
+
 
   const cx = (...a: (string | false)[]) => a.filter(Boolean).join(" ");
 
@@ -127,7 +139,7 @@ export default function SectionPage() {
                     <div className="sc-item-ic" style={{ background: "rgba(232,160,32,.15)", border: "1px solid rgba(232,160,32,.3)" }}>✏️</div>
                     <div className="sc-item-body">
                       <div className="sc-item-t">{ex.title}</div>
-                      <div className="sc-item-d">{ex.questions?.length || 0} سؤال</div>
+                      <div className="sc-item-d">{ex.question}</div>
                     </div>
                     <div className="sc-item-ar" style={{ background: "var(--gold)" }}>←</div>
                   </div>

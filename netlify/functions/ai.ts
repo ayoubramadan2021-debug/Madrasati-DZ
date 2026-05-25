@@ -36,7 +36,8 @@ ${subjectLine}
 ${modeLine}
 
 قواعد صارمة لإجابتك:
-- اكتب بالعربية الفصحى المبسّطة، الصحيحة لغوياً ونحوياً.
+- اكتب بالعربية الفصحى المبسّطة حصراً، الصحيحة لغوياً ونحوياً.
+- ممنوع منعاً باتاً استعمال أي حرف أو كلمة من أي لغة أخرى (صينية، إنجليزية، فرنسية، روسية، أو أي لغة). كل حرف في إجابتك يجب أن يكون عربياً. الأرقام تُكتب بالعربية (واحد، اثنان) أو بالأرقام العادية (1، 2) فقط.
 - الإجابة قصيرة جداً وهادفة: من جملة إلى أربع جمل كحدّ أقصى. لا مقدمات ولا حشو.
 - ادخل في صلب الإجابة مباشرة. لا تبدأ بعبارات مثل "بالطبع" أو "سؤال رائع".
 - استعمل مثالاً واحداً ملموساً من عالم الطفل عند الحاجة.
@@ -89,7 +90,7 @@ const handler: Handler = async (event: HandlerEvent) => {
     generationConfig: {
       thinkingConfig: { thinkingBudget: 0 },
       maxOutputTokens: 300,
-      temperature: 0.7,
+      temperature: 0.4,
       topP: 0.9,
     },
     safetySettings: [
@@ -122,11 +123,14 @@ const handler: Handler = async (event: HandlerEvent) => {
       return { statusCode: 200, headers, body: JSON.stringify({ answer: "لنبقَ في موضوع الدرس. اسألني سؤالاً عن دروسك وسأساعدك بكل سرور." }) };
     }
 
-    const answer =
+    let answer =
       data?.candidates?.[0]?.content?.parts
         ?.map((p: { text?: string }) => p.text || "")
         .join("")
         .trim() || "لم أفهم السؤال جيداً، هل يمكنك إعادة صياغته؟";
+
+    // طبقة حماية إضافية: إزالة أي حروف صينية/يابانية/كورية تسرّبت
+    answer = answer.replace(/[\u3000-\u9fff\uac00-\ud7af]/g, "").replace(/\s{2,}/g, " ").trim();
 
     return { statusCode: 200, headers, body: JSON.stringify({ answer }) };
   } catch (err) {

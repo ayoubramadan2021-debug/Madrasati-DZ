@@ -12,6 +12,29 @@ export async function getExercises(lesson_id: string) {
   return data;
 }
 
+export async function getExercisesBySubject(subject: string, grade: number) {
+  const { data, error } = await supabase
+    .from("exercises")
+    .select("*")
+    .eq("subject", subject)
+    .eq("grade", grade)
+    .order("created_at", { ascending: true });
+  if (error) throw error;
+  return data;
+}
+
+
+export async function getExerciseById(id: string) {
+  const { data, error } = await supabase
+    .from("exercises")
+    .select("*")
+    .eq("id", id)
+    .single();
+  if (error) throw error;
+  return data;
+}
+
+
 export async function submitExercise(
   profile_id: string,
   lesson_id: string,
