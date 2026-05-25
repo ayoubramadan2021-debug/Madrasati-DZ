@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import appData from "../data/appData";
 import { getExercisesBySubject } from "../services/exerciseService";
+import { getLessons } from "../services/lessonService";
 
 const SUBJECT_COLORS: Record<string, string> = {
   math: "#22C55E", arabic: "#EF4444", french: "#3B82F6",
@@ -59,7 +60,7 @@ export default function SectionPage() {
   const color = SUBJECT_COLORS[subject || ""] || "var(--gold)";
   const glow = SUBJECT_GLOW[subject || ""] || "var(--gold-deep)";
 
-  const lessons   = currentSubject?.lessons   || [];
+  const [lessons, setLessons] = useState<any[]>([]);
   const [exercises, setExercises] = useState<any[]>([]);
   const [exLoading, setExLoading] = useState(false);
   const quizzes   = (currentSubject as any)?.quizzes || [];
@@ -82,6 +83,14 @@ export default function SectionPage() {
       .catch((e) => { console.log("EX_ERROR:", e); setExercises([]); })
       .finally(() => setExLoading(false));
   }, [section, subject, gradeId]);
+
+  useEffect(() => {
+    if (section !== "lessons" || !subject) return;
+    getLessons(subject, Number(gradeId))
+      .then((data) => setLessons(data || []))
+      .catch(() => setLessons([]));
+  }, [section, subject, gradeId]);
+
 
 
   const cx = (...a: (string | false)[]) => a.filter(Boolean).join(" ");
@@ -114,15 +123,14 @@ export default function SectionPage() {
               <div className="sc-list">
                 {lessons.length === 0 && <div className="sc-empty"><div className="sc-empty-em">📚</div><div style={{fontWeight:800,color:"var(--text)",marginBottom:4}}>الدروس قريباً!</div><div style={{fontSize:13}}>نعمل على إضافة دروس هذه المادة. عُد قريباً ✨</div></div>}
                 {lessons.map((lesson: any, i: number) => (
-                  <div key={lesson.id} className="sc-item" style={{ animationDelay: (0.3 + i * 0.07) + "s", boxShadow: "0 4px 18px rgba(0,0,0,.3)" }}
-                    onClick={() => navigate(`/lesson/${lesson.id}`)}>
+                  <div key={lesson.id} className="sc-item" style={{ animationDelay: (0.3 + i * 0.07) + "s", boxShadow: "0 4px 18px rgba(0,0,0,.3)", flexWrap: "wrap" }}>
                     <div className="sc-item-strip" style={{ background: "linear-gradient(180deg," + color + "," + glow + ")" }} />
                     <div className="sc-item-ic" style={{ background: color + "22", border: "1px solid " + color + "30" }}>📖</div>
                     <div className="sc-item-body">
                       <div className="sc-item-t">{lesson.title}</div>
-                      <div className="sc-item-d">{lesson.desc}</div>
+                      <div className="sc-item-d">{lesson.content}</div>
                     </div>
-                    <div className="sc-item-ar" style={{ background: color }}>←</div>
+                    <button onClick={() => navigate(`/lesson/${lesson.id}`)} style={{ width: "100%", marginTop: 10, padding: "11px", borderRadius: 11, border: "none", background: "linear-gradient(135deg," + color + "," + glow + ")", color: "#fff", fontFamily: "Tajawal,sans-serif", fontWeight: 800, fontSize: 13, cursor: "pointer" }}>📖 فتح الدرس</button>
                   </div>
                 ))}
               </div>

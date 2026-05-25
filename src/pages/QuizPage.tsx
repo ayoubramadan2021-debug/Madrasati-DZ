@@ -53,11 +53,17 @@ export default function QuizPage() {
   }, [lessonId]);
 
   async function check(q: any) {
-    const { data } = await supabase.auth.getSession();
-    const user = data.session?.user;
-    if (!user) return;
-    const res = await submitQuiz(user.id, lessonId!, q.id, selected[q.id], q.correct_answer);
-    setResult((p) => ({ ...p, [q.id]: res.correct }));
+    // التصحيح يعمل دائماً (مقارنة محلية)
+    const correct = String(selected[q.id]).trim() === String(q.correct_answer).trim();
+    setResult((p) => ({ ...p, [q.id]: correct }));
+    // تسجيل النقاط فقط إن وُجد مستخدم (لا يوقف التصحيح إن غاب)
+    try {
+      const { data } = await supabase.auth.getSession();
+      const user = data.session?.user;
+      if (user) {
+        await submitQuiz(user.id, lessonId!, q.id, selected[q.id], q.correct_answer);
+      }
+    } catch { /* تجاهل بصمت */ }
   }
 
   function finish() {
