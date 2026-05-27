@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import appData from "../data/appData";
-import { useLanguage } from "../i18n/LanguageContext";
+import { useLang } from "../i18n/LanguageContext";
 
 const SUBJECT_COLORS: Record<string, string> = {
   math:    "#22C55E",
@@ -60,7 +60,7 @@ const CSS = [
 ].join("\n");
 
 export default function GradePage() {
-  const { t } = useLanguage() || { t: {} as any };
+  const { t } = useLang();
   const { gradeId: id } = useParams();
   const grade = appData.grades.find((g: any) => String(g.id) === String(id));
   const [mounted, setMounted] = useState(false);
@@ -82,13 +82,13 @@ export default function GradePage() {
 
         <div className="gr-content">
           <div className="gr-hero">
-            <Link to="/" className="gr-back">← رجوع</Link>
+            <Link to="/" className="gr-back">← {t("btn_back")}</Link>
             <div className={cx("gr-logo", mounted && "in")}>
               <div className="gr-logo-bg" />
               <span className="gr-logo-em">🎒</span>
             </div>
-            <h1 className={cx("gr-title", mounted && "in")}>{grade ? grade.name : `السنة ${id}`}</h1>
-            <div className={cx("gr-sub", mounted && "in")}>اختر المادة التي تريد تعلمها</div>
+            <h1 className={cx("gr-title", mounted && "in")}>{t(("grade_" + id) as any)}</h1>
+            <div className={cx("gr-sub", mounted && "in")}>{t("gr_choose_subject")}</div>
           </div>
 
           <div className="gr-list">
@@ -109,8 +109,8 @@ export default function GradePage() {
                       {subject.icon}
                     </div>
                     <div className="gr-tx">
-                      <span className="gr-nm">{subject.name}</span>
-                      <span className="gr-ds">دروس وتمارين هذه السنة</span>
+                      <span className="gr-nm">{t(("subj_" + subject.slug) as any)}</span>
+                      <span className="gr-ds">{t("gr_lessons_exercises")}</span>
                     </div>
                     <div className="gr-ar">←</div>
                   </div>

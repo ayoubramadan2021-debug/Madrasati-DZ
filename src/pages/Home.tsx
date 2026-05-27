@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { useTheme } from "../useTheme";
 import { supabase } from "../lib/supabaseClient";
+import { useLang } from "../i18n/LanguageContext";
 import { useNavigate } from "react-router-dom";
 
 interface Grade { id:number; name:string; color:string; glow:string; icon:string; subjects:number; lessons:number; progress:number; }
@@ -128,11 +129,13 @@ const CSS = [
 ".dr-foot{margin-top:auto;padding:18px 22px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:12px}",
 ".dr-theme{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:12px;border:1px solid var(--border);background:var(--surface-soft);color:var(--text-muted);font-family:\'Tajawal\',sans-serif;font-size:14px;font-weight:700;cursor:pointer}",
 ".dr-privacy{text-align:center;font-size:12px;color:var(--text-faint);cursor:pointer;padding:6px}",
+  ".dr-version{text-align:center;font-size:11px;color:var(--text-faint);opacity:.6;padding:2px}",
 ].join("\n");
 
 export default function Home() {
   const navigate = useNavigate();
   const { theme, toggle } = useTheme();
+  const { lang, toggleLang, t } = useLang();
   const [mounted, setMounted] = useState(false);
   const [active, setActive] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -197,13 +200,13 @@ export default function Home() {
               <span className="logo-emoji">🎓</span>
             </div>
             <div className={cx("badge", mounted && "in")}>
-              <div className="bdot" /> منصة جزائرية
+              <div className="bdot" /> {t("hero_badge")}
             </div>
-            <h1 className={cx("hero-title", mounted && "in")}>تعليم</h1>
-            <p className={cx("hero-sub", mounted && "in")}>منصة التعليم الذكي الجزائرية</p>
+            <h1 className={cx("hero-title", mounted && "in")}>{t("app_name")}</h1>
+            <p className={cx("hero-sub", mounted && "in")}>{t("app_tagline")}</p>
             <div className={cx("search-bar", mounted && "in")} onClick={() => navigate("/search")}>
               <span className="search-ic">🔎</span>
-              <input placeholder="ابحث عن درس، مادة، أو نشاط..." value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") navigate("/search"); }} />
+              <input placeholder={t("search_placeholder")} value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") navigate("/search"); }} />
             </div>
             <div className={cx("divider", mounted && "in")}>
               <div className="dline" />
@@ -213,7 +216,7 @@ export default function Home() {
           </div>
 
           <div className={cx("stats", mounted && "in")}>
-            {[["5","سنوات"],["40+","مادة"],["320+","درس"]].map(([n,l]) => (
+            {[["5",t("stat_years")],["40+",t("stat_subjects")],["320+",t("stat_lessons")]].map(([n,l]) => (
               <div className="stat" key={l}>
                 <span className="stat-n">{n}</span>
                 <span className="stat-l">{l}</span>
@@ -223,7 +226,7 @@ export default function Home() {
 
           <div className={cx("sec-head", mounted && "in")}>
             <span className="sec-ico">📚</span>
-            <span className="sec-title">اختر سنتك الدراسية</span>
+            <span className="sec-title">{t("choose_grade")}</span>
             <div className="sec-line" />
           </div>
 
@@ -257,10 +260,10 @@ export default function Home() {
                       {g.icon}
                     </div>
                     <div className="ctext">
-                      <span className="cname">{g.name}</span>
+                      <span className="cname">{t(("grade_" + g.id) as any)}</span>
                       <div className="cmeta">
-                        <span className="cpill">📖 {g.subjects} مواد</span>
-                        <span className="cpill">🎯 {g.lessons} درس</span>
+                        <span className="cpill">📖 {g.subjects} {t("unit_subjects")}</span>
+                        <span className="cpill">🎯 {g.lessons} {t("unit_lessons")}</span>
                       </div>
                       <div className="cprog-wrap">
                         <div className="cprog-fill" style={{ width: g.progress + "%", background:"linear-gradient(90deg," + g.color + "," + g.glow + ")", animationDelay: (delay + 0.3) + "s" }} />
@@ -286,16 +289,17 @@ export default function Home() {
           </div>
 
           {!me && (
-            <button className="dr-login" onClick={() => { setMenuOpen(false); navigate("/auth"); }}>تسجيل الدخول</button>
+            <button className="dr-login" onClick={() => { setMenuOpen(false); navigate("/auth"); }}>{t("menu_login")}</button>
           )}
 
-          <div className="dr-sec">حسابي</div>
+          <div className="dr-sec">{t("menu_account")}</div>
           {[
-            { icon: "📊", label: "تقدّمي", path: "/progress" },
-            { icon: "📈", label: "مدى تقدّم التلميذ", path: "/progress" },
-            { icon: "🔔", label: "الإشعارات", path: "/notifications" },
-            { icon: "⭐", label: "المفضلة", path: "/favorites" },
-            { icon: "👤", label: "الملف الشخصي", path: "/profile" },
+            { icon: "👤", label: t("menu_profile"), path: "/profile" },
+            { icon: "📊", label: t("menu_my_progress"), path: "/progress" },
+            { icon: "🏆", label: t("menu_achievements"), path: "/achievements" },
+            { icon: "⭐", label: t("menu_favorites"), path: "/favorites" },
+            { icon: "🔔", label: t("menu_notifications"), path: "/notifications" },
+            { icon: "👨‍👩‍👦", label: t("menu_parents"), path: "/parent" },
           ].map((it, i) => (
             <button key={i} className="dr-link" onClick={() => { setMenuOpen(false); navigate(it.path); }}>
               <span className="dr-link-ic">{it.icon}</span>
@@ -305,10 +309,26 @@ export default function Home() {
           ))}
 
           <div className="dr-foot">
-            <button className="dr-theme" onClick={toggle}>
-              {theme === "dark" ? "☀️ الوضع الفاتح" : "🌙 الوضع الغامق"}
+            <button className="dr-theme" onClick={toggleLang}>
+              {lang === "ar" ? "🇫🇷 Français" : "🇩🇿 العربية"}
             </button>
-            <div className="dr-privacy" onClick={() => { setMenuOpen(false); navigate("/support"); }}>سياسة الخصوصية · الدعم</div>
+            <button className="dr-theme" onClick={toggle}>
+              {theme === "dark" ? "☀️ " + t("menu_light") : "🌙 " + t("menu_dark")}
+            </button>
+            <button className="dr-link" onClick={() => { setMenuOpen(false); navigate("/about"); }}>
+              <span className="dr-link-ic">ℹ️</span>
+              <span className="dr-link-l">{t("menu_about")}</span>
+              <span className="dr-link-a">←</span>
+            </button>
+            {me && (
+              <button className="dr-link" onClick={async () => { setMenuOpen(false); await supabase.auth.signOut(); navigate("/auth"); }} style={{ color: "#ff6b6b" }}>
+                <span className="dr-link-ic">🚪</span>
+                <span className="dr-link-l">{t("menu_logout")}</span>
+                <span className="dr-link-a">←</span>
+              </button>
+            )}
+            <div className="dr-privacy" onClick={() => { setMenuOpen(false); navigate("/support"); }}>{t("menu_privacy")}</div>
+            <div className="dr-version">{t("version")}</div>
           </div>
         </div>
       </>

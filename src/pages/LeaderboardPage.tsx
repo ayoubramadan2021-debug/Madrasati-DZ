@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLang } from "../i18n/LanguageContext";
 import { supabase } from "../lib/supabaseClient";
 import { withTimeout } from "../lib/withTimeout";
 
@@ -52,6 +53,7 @@ const CSS = [
 ].join("\n");
 
 export default function LeaderboardPage() {
+  const { t } = useLang();
   const navigate = useNavigate();
   const [leaders, setLeaders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -104,22 +106,22 @@ export default function LeaderboardPage() {
 
         <div className="lb-content">
           <div className="lb-hero">
-            <button className="lb-back" onClick={() => navigate("/")}>← رجوع</button>
+            <button className="lb-back" onClick={() => navigate("/")}>← {t("btn_back")}</button>
             <div className={cx("lb-logo", mounted && "in")}>
               <div className="lb-logo-bg" />
               <span className="lb-logo-em">🏆</span>
             </div>
-            <h1 className={cx("lb-title", mounted && "in")}>لوحة الترتيب</h1>
-            <div className={cx("lb-sub", mounted && "in")}>أفضل 20 تلميذ</div>
+            <h1 className={cx("lb-title", mounted && "in")}>{t("lb_title")}</h1>
+            <div className={cx("lb-sub", mounted && "in")}>{t("lb_top20")}</div>
           </div>
 
           <div className="lb-body">
-            {loading && <div className="lb-state">⏳ جاري التحميل...</div>}
+            {loading && <div className="lb-state">⏳ {t("loading")}</div>}
             {err && (
               <div className="lb-state">
                 <div style={{ fontSize: 42, marginBottom: 10 }}>📡</div>
-                <div style={{ fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>تعذّر تحميل البيانات</div>
-                <div style={{ fontSize: 13, marginBottom: 16 }}>تحقّق من اتصالك بالإنترنت وحاول مجدداً</div>
+                <div style={{ fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>{t("pf_load_error")}</div>
+                <div style={{ fontSize: 13, marginBottom: 16 }}>{t("pf_check_net")}</div>
                 <button onClick={reload} style={{ padding: "11px 26px", border: "none", borderRadius: 12, background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#3a2400", fontFamily: "'Tajawal',sans-serif", fontSize: 14, fontWeight: 800, cursor: "pointer" }}>إعادة المحاولة ↻</button>
               </div>
             )}
@@ -139,7 +141,7 @@ export default function LeaderboardPage() {
                       <div className="lb-pcard" style={{ border: "2px solid " + p.color, boxShadow: "0 6px 24px " + p.color + "30", paddingTop: p.pt }}>
                         <div className="lb-pcard-glow" style={{ background: "radial-gradient(circle at 50% 0%," + p.color + "22,transparent 70%)" }} />
                         <div className="lb-pav">{l?.id === myId ? "🧑‍🚀" : "👦"}</div>
-                        <div className="lb-pname">{l?.full_name || "تلميذ"}</div>
+                        <div className="lb-pname">{l?.full_name || t("pg_student")}</div>
                         <div className="lb-ppts" style={{ color: p.color }}>{l?.points || 0}</div>
                       </div>
                     </div>
@@ -167,12 +169,12 @@ export default function LeaderboardPage() {
                     <div className="lb-av">{isMe ? "🧑‍🚀" : "👦"}</div>
                     <div className="lb-ibody">
                       <div className="lb-iname">
-                        {isMe && <span className="lb-me-badge">أنت</span>}
-                        {l.full_name || "تلميذ"}
+                        {isMe && <span className="lb-me-badge">{t("lb_me")}</span>}
+                        {l.full_name || t("pg_student")}
                       </div>
-                      <div className="lb-igrade">السنة {l.grade}</div>
+                      <div className="lb-igrade">{t("lb_year")} {l.grade}</div>
                     </div>
-                    <div className="lb-ipts">{l.points || 0} نقطة</div>
+                    <div className="lb-ipts">{l.points || 0} {t("lb_point")}</div>
                   </div>
                 );
               })}
@@ -181,7 +183,7 @@ export default function LeaderboardPage() {
             {!loading && !err && leaders.length === 0 && (
               <div className="lb-empty">
                 <div className="lb-empty-em">📭</div>
-                <div>لا يوجد بيانات بعد</div>
+                <div>{t("lb_no_data")}</div>
               </div>
             )}
           </div>

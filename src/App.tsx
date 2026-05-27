@@ -20,6 +20,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/exercise-demo" element={<ExerciseDemoPage />} />
+          <Route path="/exercise-test" element={lazy(() => import("./pages/ExerciseTestPage"), "اختبار التمرين")} />
         <Route path="/ai-tutor" element={<AiTutorPage />} />
 
         {/* مسار المادة والأقسام - موحّد مع روابط الصفحات */}
@@ -40,6 +41,7 @@ export default function App() {
         <Route path="/profile/edit" element={lazy(() => import("./pages/EditProfilePage"), "تعديل الحساب")} />
         <Route path="/auth" element={lazy(() => import("./pages/AuthPage"), "الدخول")} />
         <Route path="/parent" element={lazy(() => import("./pages/ParentPage"), "بوابة الأولياء")} />
+        <Route path="/about" element={lazy(() => import("./pages/AboutPage"), "عَنّا")} />
         <Route path="/parent/dashboard" element={lazy(() => import("./pages/ParentDashboardPage"), "لوحة الأولياء")} />
         <Route path="/admin" element={lazy(() => import("./pages/AdminPage"), "لوحة الإدارة")} />
         <Route path="/search" element={lazy(() => import("./pages/SearchPage"), "البحث")} />

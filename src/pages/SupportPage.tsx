@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLang } from "../i18n/LanguageContext";
 import { supabase } from "../lib/supabaseClient";
 
 const FAQ = [
-  { q: "كيف أبدأ التعلم؟", a: "اختر السنة الدراسية ثم المادة والدرس الذي تريده." },
-  { q: "كيف أحصل على نقاط؟", a: "أكمل التمارين بإجابات صحيحة لتحصل على نقاط." },
-  { q: "هل التطبيق مجاني؟", a: "نعم، تطبيق تعليم مجاني بالكامل لجميع تلاميذ الابتدائي." },
+  { q: "faq1_q", a: "faq1_a" },
+  { q: "faq2_q", a: "faq2_a" },
+  { q: "faq3_q", a: "faq3_a" },
 ];
 
 const CSS = [
@@ -50,6 +51,7 @@ const CSS = [
 ].join("\n");
 
 export default function SupportPage() {
+  const { t } = useLang();
   const navigate = useNavigate();
   const [msg, setMsg] = useState("");
   const [sent, setSent] = useState(false);
@@ -74,47 +76,47 @@ export default function SupportPage() {
         <div className="sp-orb sp-ob" /><div className="sp-orb sp-og" /><div className="sp-grid" />
         <div className="sp-content">
           <div className="sp-hero">
-            <button className="sp-back" onClick={() => navigate("/")}>← رجوع</button>
+            <button className="sp-back" onClick={() => navigate("/")}>← {t("btn_back")}</button>
             <div className="sp-logo">
               <div className="sp-logo-bg" />
               <span className="sp-logo-em">💬</span>
             </div>
-            <h1 className="sp-title">الدعم</h1>
-            <div className="sp-sub">نحن هنا لمساعدتك</div>
+            <h1 className="sp-title">{t("sp_title")}</h1>
+            <div className="sp-sub">{t("sp_sub")}</div>
           </div>
 
           <div className="sp-body">
             {sent ? (
               <div className="sp-success">
                 <div className="sp-success-em">✅</div>
-                <div className="sp-success-t">تم إرسال رسالتك!</div>
-                <div className="sp-success-d">سنرد عليك في أقرب وقت</div>
-                <button className="sp-again" onClick={() => { setSent(false); setMsg(""); }}>إرسال رسالة أخرى</button>
+                <div className="sp-success-t">{t("sp_sent_t")}</div>
+                <div className="sp-success-d">{t("sp_sent_d")}</div>
+                <button className="sp-again" onClick={() => { setSent(false); setMsg(""); }}>{t("sp_again")}</button>
               </div>
             ) : (
               <>
                 <div className="sp-sec">
                   <div className="sp-sec-bar" />
-                  <div className="sp-sec-t">أسئلة شائعة</div>
+                  <div className="sp-sec-t">{t("sp_faq")}</div>
                 </div>
                 {FAQ.map((item, i) => (
                   <div key={i} className="sp-faq">
-                    <div className="sp-faq-q">❓ {item.q}</div>
-                    <div className="sp-faq-a">{item.a}</div>
+                    <div className="sp-faq-q">❓ {t(item.q as any)}</div>
+                    <div className="sp-faq-a">{t(item.a as any)}</div>
                   </div>
                 ))}
 
                 <div className="sp-sec" style={{ marginTop: 20 }}>
                   <div className="sp-sec-bar" />
-                  <div className="sp-sec-t">راسلنا</div>
+                  <div className="sp-sec-t">{t("sp_contact")}</div>
                 </div>
                 <div className="sp-card">
-                  <label className="sp-label">رسالتك</label>
+                  <label className="sp-label">{t("sp_your_msg")}</label>
                   <textarea
                     className="sp-textarea"
                     value={msg}
                     onChange={e => setMsg(e.target.value)}
-                    placeholder="اكتب مشكلتك أو سؤالك هنا..."
+                    placeholder={t("sp_placeholder")}
                     rows={4}
                   />
                   <button
@@ -128,7 +130,7 @@ export default function SupportPage() {
                       boxShadow: msg.trim() ? "0 6px 18px rgba(232,160,32,.35)" : "none",
                     }}
                   >
-                    {loading ? "جاري الإرسال..." : "إرسال الرسالة 📤"}
+                    {loading ? t("sp_sending") : t("sp_send_msg") + " 📤"}
                   </button>
                 </div>
               </>

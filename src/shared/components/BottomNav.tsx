@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { useLang } from "../../i18n/LanguageContext";
 
 const C = {
   primary: "#1B3A6B",
@@ -9,12 +10,13 @@ const C = {
 
 export default function BottomNav() {
   const { pathname } = useLocation();
+  const { t } = useLang();
   const NAV = [
-    { to: "/", icon: "🏠", label: "الرئيسية" },
-    { to: "/progress", icon: "📊", label: "التقدم" },
-    { to: "/ai-tutor", icon: "🤖", label: "المعلم" },
-    { to: "/leaderboard", icon: "🏆", label: "الترتيب" },
-    { to: "/profile", icon: "👤", label: "حسابي" }
+    { to: "/", icon: "🏠", label: t("nav_home") },
+    { to: "/progress", icon: "📊", label: t("nav_progress") },
+    { to: "/ai-tutor", icon: "🤖", label: t("nav_tutor") },
+    { to: "/leaderboard", icon: "🏆", label: t("nav_leaderboard") },
+    { to: "/profile", icon: "👤", label: t("nav_account") }
   ];
 
   return (

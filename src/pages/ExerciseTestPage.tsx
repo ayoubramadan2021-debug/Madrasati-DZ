@@ -1,14 +1,12 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { supabase } from "../lib/supabaseClient";
-import { useLang } from "../i18n/LanguageContext";
-import { saveProgress } from "../services/progressService";
-import ArithmeticExercise from "../features/exercises/templates/ArithmeticExercise";
-import CountExercise from "../features/exercises/templates/CountExercise";
-import OrderExercise from "../features/exercises/templates/OrderExercise";
-import McqExercise from "../features/exercises/templates/McqExercise";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
+import { saveProgress } from "@/services/progressService";
+import ArithmeticExercise from "@/features/exercises/templates/ArithmeticExercise";
+import CountExercise from "@/features/exercises/templates/CountExercise";
+import OrderExercise from "@/features/exercises/templates/OrderExercise";
+import McqExercise from "@/features/exercises/templates/McqExercise";
 
-function withTimeout(p: any, ms = 12000) {
+function withTimeout(p, ms = 12000) {
   return Promise.race([
     Promise.resolve(p),
     new Promise((_, rej) =>
@@ -17,39 +15,31 @@ function withTimeout(p: any, ms = 12000) {
   ]);
 }
 
-export default function ExercisePage() {
-  const { t } = useLang();
-  const { exerciseId, lessonId } = useParams();
-  const id = exerciseId || lessonId;
-  const navigate = useNavigate();
+const TEST_TYPE = "mcq";
+const TEST_LESSON = 3;
 
+export default function ExerciseTestPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [type, setType] = useState("");
   const [title, setTitle] = useState("");
-  const [lessonNumber, setLessonNumber] = useState<number | null>(null);
   const [data, setData] = useState<any>(null);
 
   const load = async () => {
-    if (!id) {
-      setError("لا يوجد معرّف للتمرين");
-      setLoading(false);
-      return;
-    }
     setLoading(true);
     setError(null);
     try {
       const { data: row, error } = await withTimeout(
         supabase
           .from("exercises")
-          .select("type, title, lesson_number, data")
-          .eq("id", id)
+          .select("type, title, data")
+          .eq("type", TEST_TYPE)
+          .eq("lesson_number", TEST_LESSON)
           .single()
       );
       if (error) throw error;
       setType(row.type);
       setTitle(row.title);
-      setLessonNumber(row.lesson_number);
       setData(row.data);
     } catch (e) {
       setError(e instanceof Error ? e.message : "حدث خطأ");
@@ -60,43 +50,36 @@ export default function ExercisePage() {
 
   useEffect(() => {
     load();
-  }, [id]);
-
-  const onComplete = async (s: number, t: number) => {
-    try {
-      const { data: auth } = await supabase.auth.getUser();
-      if (!auth.user) return;
-      const key = lessonNumber != null ? String(lessonNumber) : String(id);
-      await saveProgress(auth.user.id, key, s, s === t);
-    } catch (e) {
-      console.log("تعذّر حفظ النقاط", e);
-    }
-  };
+  }, []);
 
   if (loading)
     return (
       <p dir="rtl" style={{ textAlign: "center", padding: 40 }}>
-        {t("loading")}
+        جارٍ التحميل…
       </p>
     );
 
   if (error)
     return (
       <div dir="rtl" style={{ textAlign: "center", padding: 40 }}>
-        <p>{error}</p>
-        <button
-          onClick={() => navigate(-1)}
-          style={{ marginTop: 12, padding: "10px 20px", marginLeft: 8 }}
-        >
-          ← {t("btn_back")}
-        </button>
+        <p>تعذّر تحميل التمرين: {error}</p>
         <button onClick={load} style={{ marginTop: 12, padding: "10px 20px" }}>
-          {t("btn_retry")}
+          إعادة المحاولة
         </button>
       </div>
     );
 
   if (!data) return null;
+
+  const onComplete = async (s: number, t: number) => {
+    try {
+      const { data: auth } = await supabase.auth.getUser();
+      if (!auth.user) return;
+      await saveProgress(auth.user.id, String(TEST_LESSON), s, s === t);
+    } catch (e) {
+      console.log("تعذّر حفظ النقاط", e);
+    }
+  };
 
   switch (type) {
     case "arithmetic":
@@ -138,7 +121,7 @@ export default function ExercisePage() {
     default:
       return (
         <p dir="rtl" style={{ textAlign: "center", padding: 40 }}>
-          {type}
+          نوع تمرين غير معروف: {type}
         </p>
       );
   }

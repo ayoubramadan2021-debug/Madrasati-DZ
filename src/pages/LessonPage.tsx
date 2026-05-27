@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useLang } from "../i18n/LanguageContext";
 import { getLessons } from "../services/lessonService";
 
 const CSS = [
@@ -40,6 +41,7 @@ const CSS = [
 ].join("\n");
 
 export default function LessonPage() {
+  const { t } = useLang();
   const { subjectId } = useParams();
   const navigate = useNavigate();
   const [lessons, setLessons] = useState<any[]>([]);
@@ -71,19 +73,19 @@ export default function LessonPage() {
 
         <div className="ls-content">
           <div className="ls-hero">
-            <button className="ls-back" onClick={() => navigate(-1)}>← رجوع</button>
+            <button className="ls-back" onClick={() => navigate(-1)}>← {t("btn_back")}</button>
             <div className={cx("ls-logo", mounted && "in")}>
               <div className="ls-logo-bg" />
               <span className="ls-logo-em">📚</span>
             </div>
-            <h1 className={cx("ls-title", mounted && "in")}>الدروس</h1>
+            <h1 className={cx("ls-title", mounted && "in")}>{t("ls_title")}</h1>
           </div>
 
           <div className="ls-body">
             {loading ? (
-              <div className="ls-state">⏳ جاري التحميل...</div>
+              <div className="ls-state">⏳ {t("loading")}</div>
             ) : lessons.length === 0 ? (
-              <div className="ls-state">📭 لا توجد دروس</div>
+              <div className="ls-state">📭 {t("ls_no_lessons")}</div>
             ) : (
               <div className="ls-list">
                 {lessons.map((l, i) => (
@@ -93,8 +95,8 @@ export default function LessonPage() {
                     <div className="ls-card-t">{l.title}</div>
                     <div className="ls-card-c">{l.content}</div>
                     <div className="ls-btns">
-                      <button className="ls-open" onClick={() => navigate(`/lesson/${l.id}`)}>فتح الدرس ←</button>
-                      <button className="ls-quiz" onClick={() => navigate(`/quiz/${l.id}`)}>الاختبار 🧠</button>
+                      <button className="ls-open" onClick={() => navigate(`/lesson/${l.id}`)}>{t("ls_open")} ←</button>
+                      <button className="ls-quiz" onClick={() => navigate(`/quiz/${l.id}`)}>{t("ls_quiz")} 🧠</button>
                     </div>
                   </div>
                 ))}

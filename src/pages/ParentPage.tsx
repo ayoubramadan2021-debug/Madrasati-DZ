@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLang } from "../i18n/LanguageContext";
 import { getCurrentUser } from "../services/authService";
 import { getProfile } from "../services/profileService";
 import { getUserProgress } from "../services/progressService";
@@ -41,6 +42,7 @@ const CSS = [
 ].join("\n");
 
 function ParentPage() {
+  const { t } = useLang();
   const navigate = useNavigate();
   const [authorized, setAuthorized] = useState<boolean | null>(null);
   const [user, setUser] = useState<any>(null);
@@ -70,8 +72,8 @@ function ParentPage() {
     const { error } = await supabase
       .from("parent_links")
       .insert([{ parent_email: parentEmail, student_id: user.id }]);
-    if (error) { setMessage("❌ حدث خطأ أثناء ربط ولي الأمر"); return; }
-    setMessage("✅ تم ربط ولي الأمر بنجاح");
+    if (error) { setMessage("❌ " + t("pa_err")); return; }
+    setMessage("✅ " + t("pa_ok"));
     setParentEmail("");
   }
 
@@ -80,15 +82,15 @@ function ParentPage() {
   const quizzes = progress.filter((i) => String(i.lesson_id || "").includes("quiz")).length;
 
   if (authorized === null) {
-    return <div className="pa-deny" style={{ color: "var(--gold)" }}>... جاري التحقق</div>;
+    return <div className="pa-deny" style={{ color: "var(--gold)" }}>... {t("pa_checking")}</div>;
   }
   if (authorized === false) {
     return (
       <div className="pa-deny">
         <div>
           <div style={{ fontSize: 60, marginBottom: 16 }}>🔒</div>
-          <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>غير مصرّح لك</div>
-          <div style={{ color: "var(--text-muted)", fontSize: 14 }}>هذه الصفحة مخصّصة لأولياء الأمور</div>
+          <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>{t("pa_denied")}</div>
+          <div style={{ color: "var(--text-muted)", fontSize: 14 }}>{t("pa_denied_d")}</div>
           <button onClick={() => navigate("/")} style={{ marginTop: 20, padding: "12px 24px", border: "none", borderRadius: 12, background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#000", fontFamily: "Tajawal,sans-serif", fontWeight: 800, fontSize: 14 }}>العودة للرئيسية</button>
         </div>
       </div>
@@ -102,30 +104,30 @@ function ParentPage() {
         <div className="pa-orb pa-ob" /><div className="pa-orb pa-og" /><div className="pa-grid" />
         <div className="pa-content">
           <div className="pa-hero">
-            <button className="pa-back" onClick={() => navigate("/")}>← رجوع</button>
+            <button className="pa-back" onClick={() => navigate("/")}>← {t("btn_back")}</button>
             <div className="pa-logo"><div className="pa-logo-bg" /><span className="pa-logo-em">👨‍👩‍👧</span></div>
-            <h1 className="pa-title">متابعة وليّ الأمر</h1>
-            <div className="pa-sub">متابعة تقدم التلميذ ونشاطه</div>
+            <h1 className="pa-title">{t("pa_title")}</h1>
+            <div className="pa-sub">{t("pa_sub")}</div>
           </div>
           <div className="pa-body">
             <div className="pa-card">
-              <div className="pa-card-t">👤 بيانات التلميذ</div>
+              <div className="pa-card-t">👤 {t("pa_student_data")}</div>
               <div className="pa-info">
-                الاسم: <b>{profile?.full_name || "تلميذ بدون اسم"}</b><br />
-                البريد: <b>{user?.email}</b><br />
-                السنة: <b>{profile?.grade || 1}</b>
+                {t("pa_name")}: <b>{profile?.full_name || t("pa_noname")}</b><br />
+                {t("pa_email")}: <b>{user?.email}</b><br />
+                {t("pa_year")}: <b>{profile?.grade || 1}</b>
               </div>
             </div>
             <div className="pa-grid3">
-              <div className="pa-stat"><div className="pa-stat-em">⭐</div><div className="pa-stat-n">{totalPoints}</div><div className="pa-stat-l">النقاط</div></div>
-              <div className="pa-stat"><div className="pa-stat-em">✍️</div><div className="pa-stat-n">{exercises}</div><div className="pa-stat-l">تمارين</div></div>
-              <div className="pa-stat"><div className="pa-stat-em">📝</div><div className="pa-stat-n">{quizzes}</div><div className="pa-stat-l">اختبارات</div></div>
+              <div className="pa-stat"><div className="pa-stat-em">⭐</div><div className="pa-stat-n">{totalPoints}</div><div className="pa-stat-l">{t("pa_points")}</div></div>
+              <div className="pa-stat"><div className="pa-stat-em">✍️</div><div className="pa-stat-n">{exercises}</div><div className="pa-stat-l">{t("pa_exercises")}</div></div>
+              <div className="pa-stat"><div className="pa-stat-em">📝</div><div className="pa-stat-n">{quizzes}</div><div className="pa-stat-l">{t("pa_quizzes")}</div></div>
             </div>
             <div className="pa-card">
-              <div className="pa-card-t">🔗 ربط وليّ الأمر</div>
-              <label className="pa-label">بريد وليّ الأمر</label>
+              <div className="pa-card-t">🔗 {t("pa_link")}</div>
+              <label className="pa-label">{t("pa_parent_email")}</label>
               <input className="pa-input" type="email" value={parentEmail} onChange={(e) => setParentEmail(e.target.value)} placeholder="parent@email.com" />
-              <button className="pa-save" onClick={saveParentLink}>حفظ وليّ الأمر</button>
+              <button className="pa-save" onClick={saveParentLink}>{t("pa_save")}</button>
               {message && <div className="pa-msg">{message}</div>}
             </div>
           </div>

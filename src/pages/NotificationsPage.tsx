@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLang } from "../i18n/LanguageContext";
 import { supabase } from "../lib/supabaseClient";
 import { withTimeout } from "../lib/withTimeout";
 
@@ -43,6 +44,7 @@ const CSS = [
 ].join("\n");
 
 export default function NotificationsPage() {
+  const { t } = useLang();
   const navigate = useNavigate();
   const [notifs, setNotifs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -97,22 +99,22 @@ export default function NotificationsPage() {
         <div className="nt-orb nt-ob" /><div className="nt-orb nt-og" /><div className="nt-grid" />
         <div className="nt-content">
           <div className="nt-hero">
-            <button className="nt-back" onClick={() => navigate("/")}>← رجوع</button>
+            <button className="nt-back" onClick={() => navigate("/")}>← {t("btn_back")}</button>
             <div className={cx("nt-logo", mounted && "in")}>
               <div className="nt-logo-bg" />
               <span className="nt-logo-em">🔔</span>
             </div>
-            <h1 className={cx("nt-title", mounted && "in")}>الإشعارات</h1>
-            {unread > 0 && <div className={cx("nt-badge", mounted && "in")}>{unread} جديد</div>}
+            <h1 className={cx("nt-title", mounted && "in")}>{t("nt_title")}</h1>
+            {unread > 0 && <div className={cx("nt-badge", mounted && "in")}>{unread} {t("nt_new")}</div>}
           </div>
 
           <div className="nt-body">
-            {loading && <div className="nt-state">⏳ جاري التحميل...</div>}
+            {loading && <div className="nt-state">⏳ {t("loading")}</div>}
             {err && (
               <div className="nt-state">
                 <div style={{ fontSize: 42, marginBottom: 10 }}>📡</div>
-                <div style={{ fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>تعذّر تحميل البيانات</div>
-                <div style={{ fontSize: 13, marginBottom: 16 }}>تحقّق من اتصالك بالإنترنت وحاول مجدداً</div>
+                <div style={{ fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>{t("pf_load_error")}</div>
+                <div style={{ fontSize: 13, marginBottom: 16 }}>{t("pf_check_net")}</div>
                 <button onClick={reload} style={{ padding: "11px 26px", border: "none", borderRadius: 12, background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#3a2400", fontFamily: "'Tajawal',sans-serif", fontSize: 14, fontWeight: 800, cursor: "pointer" }}>إعادة المحاولة ↻</button>
               </div>
             )}
@@ -120,7 +122,7 @@ export default function NotificationsPage() {
             {!loading && !err && notifs.length === 0 && (
               <div className="nt-empty">
                 <div className="nt-empty-em">🔕</div>
-                <div>لا توجد إشعارات</div>
+                <div>{t("nt_empty")}</div>
               </div>
             )}
 

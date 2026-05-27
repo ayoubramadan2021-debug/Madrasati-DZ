@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import appData from "../data/appData";
+import { useLang } from "../i18n/LanguageContext";
 import { getExercisesBySubject } from "../services/exerciseService";
 import { getLessons } from "../services/lessonService";
 
@@ -52,6 +53,7 @@ const CSS = [
 ].join("\n");
 
 export default function SectionPage() {
+  const { t } = useLang();
   const { gradeId, subject, section } = useParams();
   const navigate = useNavigate();
   const [mounted, setMounted] = useState(false);
@@ -63,6 +65,8 @@ export default function SectionPage() {
   const [lessons, setLessons] = useState<any[]>([]);
   const [exercises, setExercises] = useState<any[]>([]);
   const [exLoading, setExLoading] = useState(false);
+  const [exPage, setExPage] = useState(0);
+  const [exHasMore, setExHasMore] = useState(false);
   const quizzes   = (currentSubject as any)?.quizzes || [];
 
   const isLessons   = section === "lessons";
@@ -77,12 +81,28 @@ export default function SectionPage() {
 
   useEffect(() => {
     if (section !== "exercises" || !subject) return;
+    setExercises([]);
+    setExPage(0);
     setExLoading(true);
-    getExercisesBySubject(subject, Number(gradeId))
-      .then((data) => { console.log("EX_DEBUG:", subject, Number(gradeId), data); setExercises(data || []); })
-      .catch((e) => { console.log("EX_ERROR:", e); setExercises([]); })
+    getExercisesBySubject(subject, Number(gradeId), 0)
+      .then((res) => { setExercises(res.items); setExHasMore(res.hasMore); })
+      .catch(() => { setExercises([]); setExHasMore(false); })
       .finally(() => setExLoading(false));
   }, [section, subject, gradeId]);
+
+  const loadMoreExercises = () => {
+    if (!subject || exLoading) return;
+    const next = exPage + 1;
+    setExLoading(true);
+    getExercisesBySubject(subject, Number(gradeId), next)
+      .then((res) => {
+        setExercises((prev) => [...prev, ...res.items]);
+        setExHasMore(res.hasMore);
+        setExPage(next);
+      })
+      .catch(() => setExHasMore(false))
+      .finally(() => setExLoading(false));
+  };
 
   useEffect(() => {
     if (section !== "lessons" || !subject) return;
@@ -94,9 +114,15 @@ export default function SectionPage() {
 
 
   const cx = (...a: (string | false)[]) => a.filter(Boolean).join(" ");
+  const exTypeLabel = (type: string, tr: (k: any) => string) =>
+    type === "arithmetic" ? tr("extype_arithmetic")
+    : type === "count" ? tr("extype_count")
+    : type === "order" ? tr("extype_order")
+    : type === "mcq" ? tr("extype_mcq")
+    : tr("extype_default");
 
   const headEmoji = isLessons ? "📖" : isExercises ? "✏️" : isQuizzes ? "📝" : "⭐";
-  const headTitle = isLessons ? "الدروس" : isExercises ? "التمارين" : isQuizzes ? "الاختبارات" : "النقاط والتقدم";
+  const headTitle = isLessons ? t("section_lessons") : isExercises ? t("section_exercises") : isQuizzes ? t("section_quizzes") : t("section_progress");
 
   return (
     <>
@@ -108,20 +134,20 @@ export default function SectionPage() {
 
         <div className="sc-content">
           <div className="sc-hero">
-            <button className="sc-back" onClick={() => navigate(`/grade/${gradeId}/subject/${subject}`)}>← رجوع</button>
+            <button className="sc-back" onClick={() => navigate(`/grade/${gradeId}/subject/${subject}`)}>← {t("btn_back")}</button>
             <div className={cx("sc-logo", mounted && "in")}>
               <div className="sc-logo-bg" />
               <span className="sc-logo-em">{headEmoji}</span>
             </div>
             <h1 className={cx("sc-title", mounted && "in")}>{headTitle}</h1>
-            <div className={cx("sc-sub", mounted && "in")}>{currentSubject?.name} — السنة {gradeId} ابتدائي</div>
+            <div className={cx("sc-sub", mounted && "in")}>{currentSubject ? t(("subj_" + currentSubject.slug) as any) : subject} — {t("sb_year_badge")} {gradeId} {t("sb_primary")}</div>
           </div>
 
           <div className="sc-body">
             {/* الدروس */}
             {isLessons && (
               <div className="sc-list">
-                {lessons.length === 0 && <div className="sc-empty"><div className="sc-empty-em">📚</div><div style={{fontWeight:800,color:"var(--text)",marginBottom:4}}>الدروس قريباً!</div><div style={{fontSize:13}}>نعمل على إضافة دروس هذه المادة. عُد قريباً ✨</div></div>}
+                {lessons.length === 0 && <div className="sc-empty"><div className="sc-empty-em">📚</div><div style={{fontWeight:800,color:"var(--text)",marginBottom:4}}>{t("sc_lessons_soon")}</div><div style={{fontSize:13}}>{t("sc_lessons_soon_d")}</div></div>}
                 {lessons.map((lesson: any, i: number) => (
                   <div key={lesson.id} className="sc-item" style={{ animationDelay: (0.3 + i * 0.07) + "s", boxShadow: "0 4px 18px rgba(0,0,0,.3)", flexWrap: "wrap" }}>
                     <div className="sc-item-strip" style={{ background: "linear-gradient(180deg," + color + "," + glow + ")" }} />
@@ -138,8 +164,9 @@ export default function SectionPage() {
 
             {/* التمارين */}
             {isExercises && (
+              <>
               <div className="sc-list">
-                {exercises.length === 0 && <div className="sc-empty"><div className="sc-empty-em">✏️</div><div style={{fontWeight:800,color:"var(--text)",marginBottom:4}}>التمارين قريباً!</div><div style={{fontSize:13}}>سنضيف تمارين تفاعلية ممتعة هنا قريباً 🎯</div></div>}
+                {exercises.length === 0 && <div className="sc-empty"><div className="sc-empty-em">✏️</div><div style={{fontWeight:800,color:"var(--text)",marginBottom:4}}>{t("sc_exercises_soon")}</div><div style={{fontSize:13}}>{t("sc_exercises_soon_d")}</div></div>}
                 {exercises.map((ex: any, i: number) => (
                   <div key={ex.id} className="sc-item" style={{ animationDelay: (0.3 + i * 0.07) + "s", boxShadow: "0 4px 18px rgba(0,0,0,.3)" }}
                     onClick={() => navigate(`/exercise/${ex.id}`)}>
@@ -147,26 +174,49 @@ export default function SectionPage() {
                     <div className="sc-item-ic" style={{ background: "rgba(232,160,32,.15)", border: "1px solid rgba(232,160,32,.3)" }}>✏️</div>
                     <div className="sc-item-body">
                       <div className="sc-item-t">{ex.title}</div>
-                      <div className="sc-item-d">{ex.question}</div>
+                      <div className="sc-item-d">{exTypeLabel(ex.type, t)}</div>
                     </div>
                     <div className="sc-item-ar" style={{ background: "var(--gold)" }}>←</div>
                   </div>
                 ))}
               </div>
+                {exHasMore && (
+                  <div style={{ textAlign: "center", marginTop: 16 }}>
+                    <button
+                      onClick={loadMoreExercises}
+                      disabled={exLoading}
+                      style={{
+                        padding: "12px 28px",
+                        borderRadius: 14,
+                        border: "none",
+                        background: "linear-gradient(135deg,var(--gold),var(--gold-deep))",
+                        color: "#000",
+                        fontFamily: "Tajawal,sans-serif",
+                        fontWeight: 800,
+                        fontSize: 14,
+                        cursor: exLoading ? "default" : "pointer",
+                        opacity: exLoading ? 0.6 : 1,
+                      }}
+                    >
+                      {exLoading ? t("loading") : t("btn_more") + " ↓"}
+                    </button>
+                  </div>
+                )}
+              </>
             )}
 
             {/* الاختبارات */}
             {isQuizzes && (
               <div className="sc-list">
-                {quizzes.length === 0 && <div className="sc-empty"><div className="sc-empty-em">📝</div><div style={{fontWeight:800,color:"var(--text)",marginBottom:4}}>الاختبارات قريباً!</div><div style={{fontSize:13}}>اختبارات قصيرة لقياس فهمك ستكون متاحة قريباً 🌟</div></div>}
+                {quizzes.length === 0 && <div className="sc-empty"><div className="sc-empty-em">📝</div><div style={{fontWeight:800,color:"var(--text)",marginBottom:4}}>{t("sc_quizzes_soon")}</div><div style={{fontSize:13}}>{t("sc_quizzes_soon_d")}</div></div>}
                 {quizzes.map((q: any, i: number) => (
                   <div key={q.id || i} className="sc-item" style={{ animationDelay: (0.3 + i * 0.07) + "s", boxShadow: "0 4px 18px rgba(0,0,0,.3)" }}
                     onClick={() => navigate(`/quiz`)}>
                     <div className="sc-item-strip" style={{ background: "linear-gradient(180deg,#A855F7,#9333ea)" }} />
                     <div className="sc-item-ic" style={{ background: "rgba(168,85,247,.15)", border: "1px solid rgba(168,85,247,.3)" }}>📝</div>
                     <div className="sc-item-body">
-                      <div className="sc-item-t">{q.title || `اختبار ${i + 1}`}</div>
-                      <div className="sc-item-d">{q.questions?.length || 0} سؤال</div>
+                      <div className="sc-item-t">{q.title || (t("sc_quiz") + " " + (i + 1))}</div>
+                      <div className="sc-item-d">{q.questions?.length || 0} {t("sc_question")}</div>
                     </div>
                     <div className="sc-item-ar" style={{ background: "#A855F7" }}>←</div>
                   </div>
@@ -182,8 +232,8 @@ export default function SectionPage() {
                   <div className="sc-item-strip" style={{ background: "linear-gradient(180deg,#F97316,#ea580c)" }} />
                   <div className="sc-item-ic" style={{ background: "rgba(249,115,22,.15)", border: "1px solid rgba(249,115,22,.3)" }}>📊</div>
                   <div className="sc-item-body">
-                    <div className="sc-item-t">عرض تقدمي الكامل</div>
-                    <div className="sc-item-d">نقاطك ودروسك المكتملة</div>
+                    <div className="sc-item-t">{t("sc_view_full_progress")}</div>
+                    <div className="sc-item-d">{t("sc_points_lessons_done")}</div>
                   </div>
                   <div className="sc-item-ar" style={{ background: "#F97316" }}>←</div>
                 </div>

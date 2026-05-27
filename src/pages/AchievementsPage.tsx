@@ -78,12 +78,12 @@ function AchievementsPage() {
   const completedQuizzes = progress.filter((item) => String(item.lesson_id || "").includes("quiz")).length;
 
   const badges = [
-    { icon: "🎯", title: "البداية القوية", desc: "أكمل أول نشاط داخل التطبيق.", unlocked: progress.length >= 1 },
-    { icon: "⭐", title: "أول 10 نقاط", desc: "احصل على 10 نقاط على الأقل.", unlocked: totalPoints >= 10 },
-    { icon: "🏅", title: "متعلم نشيط", desc: "أكمل 3 أنشطة تعليمية.", unlocked: progress.length >= 3 },
-    { icon: "🧮", title: "بطل التمارين", desc: "أكمل 3 تمارين.", unlocked: completedExercises >= 3 },
-    { icon: "📝", title: "محب الاختبارات", desc: "أكمل اختبارًا واحدًا على الأقل.", unlocked: completedQuizzes >= 1 },
-    { icon: "👑", title: "نجم مدرستي", desc: "احصل على 100 نقطة.", unlocked: totalPoints >= 100 },
+    { icon: "🎯", title: t("badge_start_t"), desc: t("badge_start_d"), unlocked: progress.length >= 1 },
+    { icon: "⭐", title: t("badge_10pts_t"), desc: t("badge_10pts_d"), unlocked: totalPoints >= 10 },
+    { icon: "🏅", title: t("badge_active_t"), desc: t("badge_active_d"), unlocked: progress.length >= 3 },
+    { icon: "🧮", title: t("badge_exhero_t"), desc: t("badge_exhero_d"), unlocked: completedExercises >= 3 },
+    { icon: "📝", title: t("badge_quizlover_t"), desc: t("badge_quizlover_d"), unlocked: completedQuizzes >= 1 },
+    { icon: "👑", title: t("badge_star_t"), desc: t("badge_star_d"), unlocked: totalPoints >= 100 },
   ];
 
   const unlockedCount = badges.filter((b) => b.unlocked).length;
@@ -100,27 +100,27 @@ function AchievementsPage() {
               <div className="ac-logo-bg" />
               <span className="ac-logo-em">🏅</span>
             </div>
-            <h1 className="ac-title">الإنجازات والشارات</h1>
-            <div className="ac-sub">شارات تحفيزية حسب تقدمك</div>
+            <h1 className="ac-title">{t("ac_title")}</h1>
+            <div className="ac-sub">{t("ac_sub")}</div>
           </div>
 
           <div className="ac-body">
             {loading ? (
-              <div className="ac-state">⏳ جاري تحميل الإنجازات...</div>
+              <div className="ac-state">⏳ {t("ac_loading")}</div>
             ) : err ? (
               <div className="ac-state">
                 <div style={{ fontSize: 42, marginBottom: 10 }}>📡</div>
-                <div style={{ fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>تعذّر تحميل البيانات</div>
-                <div style={{ fontSize: 13, marginBottom: 16 }}>تحقّق من اتصالك بالإنترنت وحاول مجدداً</div>
+                <div style={{ fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>{t("pf_load_error")}</div>
+                <div style={{ fontSize: 13, marginBottom: 16 }}>{t("pf_check_net")}</div>
                 <button onClick={reload} style={{ padding: "11px 26px", border: "none", borderRadius: 12, background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#3a2400", fontFamily: "'Tajawal',sans-serif", fontSize: 14, fontWeight: 800, cursor: "pointer" }}>إعادة المحاولة ↻</button>
               </div>
             ) : !profile ? (
-              <div className="ac-state">🔐 سجّل الدخول لعرض إنجازاتك</div>
+              <div className="ac-state">🔐 {t("ac_login")}</div>
             ) : (
               <>
                 <div className="ac-summary">
-                  <div className="ac-greet">👋 {profile.full_name || "تلميذ"}</div>
-                  <div className="ac-count">حصلت على <b>{unlockedCount}</b> من {badges.length} شارات</div>
+                  <div className="ac-greet">👋 {profile.full_name || t("pg_student")}</div>
+                  <div className="ac-count">{t("ac_got_a")} <b>{unlockedCount}</b> {t("ac_got_b")} {badges.length} {t("ac_badges")}</div>
                   <div className="ac-bar">
                     <div className="ac-bar-f" style={{ width: (mounted ? Math.round((unlockedCount / badges.length) * 100) : 0) + "%" }} />
                   </div>
@@ -145,7 +145,7 @@ function AchievementsPage() {
                         <div className="ac-badge-t">{badge.title}</div>
                         <div className="ac-badge-d">{badge.desc}</div>
                         <div className="ac-badge-s" style={{ color: badge.unlocked ? "#4ade80" : "var(--text-faint)" }}>
-                          {badge.unlocked ? "✅ تم فتح الشارة" : "🔒 لم تُفتح بعد"}
+                          {badge.unlocked ? "✅ " + t("ac_unlocked") : "🔒 " + t("ac_locked")}
                         </div>
                       </div>
                     </div>

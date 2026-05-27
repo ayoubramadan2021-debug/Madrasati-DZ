@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
+import { useLang } from "../i18n/LanguageContext";
 import { withTimeout } from "../lib/withTimeout";
 
 const CSS = [
@@ -66,6 +67,7 @@ const CSS = [
 ].join("\n");
 
 export default function ProgressPage() {
+  const { t } = useLang();
   const navigate = useNavigate();
   const [profile, setProfile] = useState<any>(null);
   const [progress, setProgress] = useState<any[]>([]);
@@ -116,25 +118,25 @@ export default function ProgressPage() {
 
         <div className="pg-content">
           <div className="pg-hero">
-            <button className="pg-back" onClick={() => navigate("/")}>← رجوع</button>
+            <button className="pg-back" onClick={() => navigate("/")}>← {t("btn_back")}</button>
             <div className="pg-ring" />
             <div className={cx("pg-logo", mounted && "in")}>
               <div className="pg-logo-bg" />
               <span className="pg-logo-em">📊</span>
             </div>
-            <h1 className={cx("pg-title", mounted && "in")}>تقدمي</h1>
-            <div className={cx("pg-sub", mounted && "in")}>{profile?.full_name || "تلميذ"}</div>
+            <h1 className={cx("pg-title", mounted && "in")}>{t("pg_title")}</h1>
+            <div className={cx("pg-sub", mounted && "in")}>{profile?.full_name || t("pg_student")}</div>
           </div>
 
           <div className="pg-body">
             {loading && (
-              <div className="pg-state">⏳ جاري التحميل...</div>
+              <div className="pg-state">⏳ {t("loading")}</div>
             )}
             {err && (
               <div className="pg-state">
                 <div style={{ fontSize: 42, marginBottom: 10 }}>📡</div>
-                <div style={{ fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>تعذّر تحميل البيانات</div>
-                <div style={{ fontSize: 13, marginBottom: 16 }}>تحقّق من اتصالك بالإنترنت وحاول مجدداً</div>
+                <div style={{ fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>{t("pf_load_error")}</div>
+                <div style={{ fontSize: 13, marginBottom: 16 }}>{t("pf_check_net")}</div>
                 <button onClick={reload} style={{ padding: "11px 26px", border: "none", borderRadius: 12, background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#3a2400", fontFamily: "'Tajawal',sans-serif", fontSize: 14, fontWeight: 800, cursor: "pointer" }}>إعادة المحاولة ↻</button>
               </div>
             )}
@@ -142,8 +144,8 @@ export default function ProgressPage() {
             {!loading && !err && !profile && (
               <div className="pg-lock">
                 <div className="pg-lock-em">🔐</div>
-                <div className="pg-lock-t">سجّل الدخول أولاً</div>
-                <button className="pg-btn" onClick={() => navigate("/auth")}>تسجيل الدخول</button>
+                <div className="pg-lock-t">{t("pf_login_first")}</div>
+                <button className="pg-btn" onClick={() => navigate("/auth")}>{t("menu_login")}</button>
               </div>
             )}
 
@@ -153,23 +155,23 @@ export default function ProgressPage() {
                   <div className={cx("pg-stat", mounted && "in")} style={{ transitionDelay: "0.3s" }}>
                     <div className="pg-stat-strip" style={{ background: "linear-gradient(90deg,var(--gold),var(--gold-deep))" }} />
                     <div className="pg-stat-n" style={{ color: "var(--gold)" }}>{points}</div>
-                    <div className="pg-stat-l">النقاط</div>
+                    <div className="pg-stat-l">{t("pf_points")}</div>
                   </div>
                   <div className={cx("pg-stat", mounted && "in")} style={{ transitionDelay: "0.4s" }}>
                     <div className="pg-stat-strip" style={{ background: "linear-gradient(90deg,#22C55E,#16a34a)" }} />
                     <div className="pg-stat-n" style={{ color: "#22C55E" }}>{completed}</div>
-                    <div className="pg-stat-l">مكتمل</div>
+                    <div className="pg-stat-l">{t("pf_completed")}</div>
                   </div>
                   <div className={cx("pg-stat", mounted && "in")} style={{ transitionDelay: "0.5s" }}>
                     <div className="pg-stat-strip" style={{ background: "linear-gradient(90deg,#3B82F6,#2563eb)" }} />
                     <div className="pg-stat-n" style={{ color: "#3B82F6" }}>{pct}%</div>
-                    <div className="pg-stat-l">التقدم</div>
+                    <div className="pg-stat-l">{t("pg_progress_label")}</div>
                   </div>
                 </div>
 
                 <div className={cx("pg-card", mounted && "in")}>
                   <div className="pg-card-head">
-                    <span className="pg-card-t">التقدم الإجمالي</span>
+                    <span className="pg-card-t">{t("pg_total_progress")}</span>
                     <span className="pg-card-v">{completed}/{total}</span>
                   </div>
                   <div className="pg-bar">
@@ -179,13 +181,13 @@ export default function ProgressPage() {
 
                 <div className={cx("pg-sec", mounted && "in")}>
                   <div className="pg-sec-bar" />
-                  <div className="pg-sec-t">سجل النشاط</div>
+                  <div className="pg-sec-t">{t("pg_activity_log")}</div>
                 </div>
 
                 {progress.length === 0 && (
                   <div className="pg-empty">
                     <div className="pg-empty-em">📭</div>
-                    <div>لا يوجد نشاط بعد</div>
+                    <div>{t("pg_no_activity")}</div>
                   </div>
                 )}
 
@@ -197,8 +199,8 @@ export default function ProgressPage() {
                         {p.completed ? "✅" : "⏳"}
                       </div>
                       <div className="pg-item-body">
-                        <div className="pg-item-t">درس {p.lesson_id}</div>
-                        <div className="pg-item-s">{p.completed ? "مكتمل" : "قيد التقدم"}</div>
+                        <div className="pg-item-t">{t("pg_lesson")} {p.lesson_id}</div>
+                        <div className="pg-item-s">{p.completed ? t("pf_completed") : t("pg_in_progress")}</div>
                       </div>
                       <div className="pg-item-pts">+{p.points || 0}</div>
                     </div>

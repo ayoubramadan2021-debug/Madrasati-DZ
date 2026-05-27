@@ -56,11 +56,26 @@
   <body>
     <div id="splash">
       <div class="sp-logo">🎓</div>
-      <div class="sp-title">تعليم</div>
-      <div class="sp-sub">منصة التعليم الذكي الجزائرية</div>
+      <div class="sp-title" id="sp-title">تعليم</div>
+      <div class="sp-sub" id="sp-sub">منصة التعليم الذكي الجزائرية</div>
       <div class="sp-ring"></div>
     </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+  
+    <script>
+      (function () {
+        try {
+          var lang = localStorage.getItem("app_lang");
+          if (lang === "fr") {
+            document.documentElement.dir = "ltr";
+            var t = document.getElementById("sp-title");
+            var su = document.getElementById("sp-sub");
+            if (t) t.textContent = "Taalim";
+            if (su) su.textContent = "Plateforme educative intelligente algerienne";
+          }
+        } catch (e) {}
+      })();
+    </script>
   </body>
 </html>

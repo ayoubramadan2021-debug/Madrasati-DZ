@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
+import { useLang } from "../i18n/LanguageContext";
 import { withTimeout } from "../lib/withTimeout";
 import { ThemeToggle } from "../useTheme";
 
@@ -65,6 +66,7 @@ const CSS = [
 ].join("\n");
 
 export default function ProfilePage() {
+  const { t } = useLang();
   const navigate = useNavigate();
   const [profile, setProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -130,7 +132,7 @@ export default function ProfilePage() {
       <style>{CSS}</style>
       <div className="pf-root">
         <div className="pf-orb pf-ob" /><div className="pf-orb pf-og" /><div className="pf-grid" />
-        <div className="pf-center"><div className="pf-state">⏳ جاري التحميل...</div></div>
+        <div className="pf-center"><div className="pf-state">⏳ {t("pf_loading")}</div></div>
       </div>
     </>
   );
@@ -142,9 +144,9 @@ export default function ProfilePage() {
         <div className="pf-orb pf-ob" /><div className="pf-orb pf-og" /><div className="pf-grid" />
         <div className="pf-center">
           <div className="pf-lock-em">📡</div>
-          <div className="pf-lock-t">تعذّر تحميل البيانات</div>
-          <div className="pf-state" style={{ marginBottom: 16, textAlign: "center" }}>تحقّق من اتصالك بالإنترنت وحاول مجدداً</div>
-          <button className="pf-btn" onClick={reload}>إعادة المحاولة ↻</button>
+          <div className="pf-lock-t">{t("pf_load_error")}</div>
+          <div className="pf-state" style={{ marginBottom: 16, textAlign: "center" }}>{t("pf_check_net")}</div>
+          <button className="pf-btn" onClick={reload}>{t("btn_retry")} ↻</button>
         </div>
       </div>
     </>
@@ -157,8 +159,8 @@ export default function ProfilePage() {
         <div className="pf-orb pf-ob" /><div className="pf-orb pf-og" /><div className="pf-grid" />
         <div className="pf-center">
           <div className="pf-lock-em">🔐</div>
-          <div className="pf-lock-t">سجّل الدخول أولاً</div>
-          <button className="pf-btn" onClick={() => navigate("/auth")}>تسجيل الدخول</button>
+          <div className="pf-lock-t">{t("pf_login_first")}</div>
+          <button className="pf-btn" onClick={() => navigate("/auth")}>{t("menu_login")}</button>
         </div>
       </div>
     </>
@@ -172,12 +174,12 @@ export default function ProfilePage() {
 
         <div className="pf-content">
           <div className="pf-hero">
-            <button className="pf-back" onClick={() => navigate("/")}>← رجوع</button>
+            <button className="pf-back" onClick={() => navigate("/")}>← {t("btn_back")}</button>
             <div className={cx("pf-av-wrap", mounted && "in")}>
               <div className="pf-av-ring" />
               <div className="pf-av">👦</div>
             </div>
-            <div className={cx("pf-name", mounted && "in")}>{profile.full_name || "تلميذ"}</div>
+            <div className={cx("pf-name", mounted && "in")}>{profile.full_name || t("pg_student")}</div>
           </div>
 
           <div className="pf-body">
@@ -185,33 +187,33 @@ export default function ProfilePage() {
             <div className={cx("pf-stats", mounted && "in")}>
               <div>
                 <div className="pf-stat-n" style={{ color: "var(--gold)" }}>{points}</div>
-                <div className="pf-stat-l">النقاط</div>
+                <div className="pf-stat-l">{t("pf_points")}</div>
               </div>
               <div className="pf-stat-div">
                 <div className="pf-stat-n" style={{ color: "#22C55E" }}>{completed}</div>
-                <div className="pf-stat-l">مكتمل</div>
+                <div className="pf-stat-l">{t("pf_completed")}</div>
               </div>
               <div>
                 <div className="pf-stat-n" style={{ color: "#3B82F6" }}>{profile.grade || "—"}</div>
-                <div className="pf-stat-l">السنة</div>
+                <div className="pf-stat-l">{t("pf_year")}</div>
               </div>
             </div>
 
             {/* تعديل الاسم */}
             <div className={cx("pf-card", mounted && "in")}>
-              <div className="pf-card-t">معلوماتي</div>
+              <div className="pf-card-t">{t("pf_my_info")}</div>
               {editing ? (
                 <>
                   <input className="pf-input" value={name} onChange={e => setName(e.target.value)} />
                   <div className="pf-row-btns">
-                    <button className="pf-save" onClick={handleSave} disabled={saving}>{saving ? "..." : "حفظ ✓"}</button>
-                    <button className="pf-cancel" onClick={() => setEditing(false)}>إلغاء</button>
+                    <button className="pf-save" onClick={handleSave} disabled={saving}>{saving ? "..." : t("pf_save") + " ✓"}</button>
+                    <button className="pf-cancel" onClick={() => setEditing(false)}>{t("pf_cancel")}</button>
                   </div>
                 </>
               ) : (
                 <div className="pf-view">
                   <span className="pf-view-name">{profile.full_name || "—"}</span>
-                  <button className="pf-edit" onClick={() => setEditing(true)}>تعديل ✏️</button>
+                  <button className="pf-edit" onClick={() => setEditing(true)}>{t("pf_edit")} ✏️</button>
                 </div>
               )}
             </div>
@@ -220,10 +222,10 @@ export default function ProfilePage() {
             {profile?.role !== "admin" && profile?.role !== "parent" && (
             <div className={cx("pf-links", mounted && "in")}>
               {[
-                { icon: "📊", label: "تقدمي", path: "/progress" },
-                { icon: "🏅", label: "الإنجازات", path: "/achievements" },
-                { icon: "⭐", label: "المفضلة", path: "/favorites" },
-                { icon: "🔔", label: "الإشعارات", path: "/notifications" },
+                { icon: "📊", label: t("menu_my_progress"), path: "/progress" },
+                { icon: "🏅", label: t("menu_achievements"), path: "/achievements" },
+                { icon: "⭐", label: t("menu_favorites"), path: "/favorites" },
+                { icon: "🔔", label: t("menu_notifications"), path: "/notifications" },
               ].map((item, i) => (
                 <button key={i} className="pf-link" onClick={() => navigate(item.path)} style={{ borderBottom: i < 2 ? "1px solid var(--border-faint)" : "none" }}>
                   <span className="pf-link-ic">{item.icon}</span>
@@ -237,9 +239,9 @@ export default function ProfilePage() {
             {(profile?.role === "admin" || profile?.role === "parent") && (
               <div className={cx("pf-links", mounted && "in")} style={{ border: "1px solid rgba(232,160,32,.25)" }}>
                 {[
-                  ...(profile?.role === "admin" ? [{ icon: "🧑‍🏫", label: "لوحة الإدارة", path: "/admin" }] : []),
-                  ...(profile?.role === "parent" ? [{ icon: "👨‍👩‍👧", label: "متابعة الأبناء", path: "/parent/dashboard" }] : []),
-                  ...(profile?.role === "parent" ? [{ icon: "🔗", label: "ربط وليّ الأمر", path: "/parent" }] : []),
+                  ...(profile?.role === "admin" ? [{ icon: "🧑‍🏫", label: t("pf_admin"), path: "/admin" }] : []),
+                  ...(profile?.role === "parent" ? [{ icon: "👨‍👩‍👧", label: t("pf_follow_kids"), path: "/parent/dashboard" }] : []),
+                  ...(profile?.role === "parent" ? [{ icon: "🔗", label: t("pf_link_parent"), path: "/parent" }] : []),
                 ].map((item, i, arr) => (
                   <button key={i} className="pf-link" onClick={() => navigate(item.path)} style={{ borderBottom: i < arr.length - 1 ? "1px solid var(--border-faint)" : "none" }}>
                     <span className="pf-link-ic">{item.icon}</span>
@@ -251,7 +253,7 @@ export default function ProfilePage() {
             )}
 
             <div style={{ display: "flex", justifyContent: "center", marginBottom: 16 }}><ThemeToggle /></div>
-            <button className={cx("pf-logout", mounted && "in")} onClick={handleLogout}>تسجيل الخروج 🚪</button>
+            <button className={cx("pf-logout", mounted && "in")} onClick={handleLogout}>{t("menu_logout")} 🚪</button>
           </div>
         </div>
       </div>

@@ -25,15 +25,16 @@ export function calculateCompleted(progress: ProgressItem[]) {
 }
 
 export async function saveProgress(
-  profile_id: string,
+  user_id: string,
   lesson_id: string,
-  exercise_id: string,
   points: number,
   completed: boolean
 ) {
   const { data, error } = await supabase
     .from("progress")
-    .upsert([{ profile_id, lesson_id, exercise_id, points, completed }]);
+    .upsert([{ user_id, lesson_id, points, completed }], {
+      onConflict: "user_id,lesson_id",
+    });
   if (error) throw error;
   return data;
 }

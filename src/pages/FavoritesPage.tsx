@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLang } from "../i18n/LanguageContext";
 import { supabase } from "../lib/supabaseClient";
 import { withTimeout } from "../lib/withTimeout";
 
@@ -45,6 +46,7 @@ const CSS = [
 ].join("\n");
 
 export default function FavoritesPage() {
+  const { t } = useLang();
   const navigate = useNavigate();
   const [favorites, setFavorites] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -93,22 +95,22 @@ export default function FavoritesPage() {
         <div className="fv-orb fv-ob" /><div className="fv-orb fv-og" /><div className="fv-grid" />
         <div className="fv-content">
           <div className="fv-hero">
-            <button className="fv-back" onClick={() => navigate("/")}>← رجوع</button>
+            <button className="fv-back" onClick={() => navigate("/")}>← {t("btn_back")}</button>
             <div className={cx("fv-logo", mounted && "in")}>
               <div className="fv-logo-bg" />
               <span className="fv-logo-em">⭐</span>
             </div>
-            <h1 className={cx("fv-title", mounted && "in")}>المفضلة</h1>
-            <div className={cx("fv-sub", mounted && "in")}>{favorites.length} عنصر محفوظ</div>
+            <h1 className={cx("fv-title", mounted && "in")}>{t("fv_title")}</h1>
+            <div className={cx("fv-sub", mounted && "in")}>{favorites.length} {t("fv_saved_count")}</div>
           </div>
 
           <div className="fv-body">
-            {loading && <div className="fv-state">⏳ جاري التحميل...</div>}
+            {loading && <div className="fv-state">⏳ {t("loading")}</div>}
             {err && (
               <div className="fv-state">
                 <div style={{ fontSize: 42, marginBottom: 10 }}>📡</div>
-                <div style={{ fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>تعذّر تحميل البيانات</div>
-                <div style={{ fontSize: 13, marginBottom: 16 }}>تحقّق من اتصالك بالإنترنت وحاول مجدداً</div>
+                <div style={{ fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>{t("pf_load_error")}</div>
+                <div style={{ fontSize: 13, marginBottom: 16 }}>{t("pf_check_net")}</div>
                 <button onClick={reload} style={{ padding: "11px 26px", border: "none", borderRadius: 12, background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#3a2400", fontFamily: "'Tajawal',sans-serif", fontSize: 14, fontWeight: 800, cursor: "pointer" }}>إعادة المحاولة ↻</button>
               </div>
             )}
@@ -116,8 +118,8 @@ export default function FavoritesPage() {
             {!loading && !err && favorites.length === 0 && (
               <div className="fv-empty">
                 <div className="fv-empty-em">📭</div>
-                <div style={{ fontSize: 16 }}>لا يوجد عناصر في المفضلة</div>
-                <button className="fv-empty-btn" onClick={() => navigate("/grade/1")}>تصفح الدروس</button>
+                <div style={{ fontSize: 16 }}>{t("fv_empty")}</div>
+                <button className="fv-empty-btn" onClick={() => navigate("/grade/1")}>{t("fv_browse")}</button>
               </div>
             )}
 
@@ -127,8 +129,8 @@ export default function FavoritesPage() {
                   <div className="fv-item-strip" />
                   <div className="fv-item-ic">⭐</div>
                   <div className="fv-item-body">
-                    <div className="fv-item-t">{f.title || "درس"}</div>
-                    <div className="fv-item-d">{f.subject} — السنة {f.grade}</div>
+                    <div className="fv-item-t">{f.title || t("fv_lesson")}</div>
+                    <div className="fv-item-d">{f.subject} — {t("fv_year")} {f.grade}</div>
                   </div>
                   <button className="fv-del" onClick={() => removeFavorite(f.id)}>✕</button>
                 </div>

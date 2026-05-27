@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import appData from "../data/appData";
+import { useLang } from "../i18n/LanguageContext";
 
 const SUBJECT_COLORS: Record<string, string> = {
   math: "#22C55E", arabic: "#EF4444", french: "#3B82F6",
@@ -53,6 +54,7 @@ const CSS = [
 ].join("\n");
 
 export default function SubjectPage() {
+  const { t } = useLang();
   const { gradeId, subject } = useParams();
   const navigate = useNavigate();
   const [mounted, setMounted] = useState(false);
@@ -78,13 +80,13 @@ export default function SubjectPage() {
 
         <div className="sb-content">
           <div className="sb-hero">
-            <button className="sb-back" onClick={() => navigate(`/grade/${gradeId}`)}>← رجوع</button>
+            <button className="sb-back" onClick={() => navigate(`/grade/${gradeId}`)}>← {t("btn_back")}</button>
             <div className={cx("sb-logo", mounted && "in")}>
               <div className="sb-logo-bg" style={{ background: "linear-gradient(145deg," + color + "33," + glow + "22)" }} />
               <span className="sb-logo-em">{currentSubject?.icon || "📘"}</span>
             </div>
-            <h1 className={cx("sb-title", mounted && "in")}>{currentSubject?.name || subject}</h1>
-            <div className={cx("sb-badge", mounted && "in")}>السنة {gradeId} ابتدائي</div>
+            <h1 className={cx("sb-title", mounted && "in")}>{currentSubject ? t(("subj_" + currentSubject.slug) as any) : subject}</h1>
+            <div className={cx("sb-badge", mounted && "in")}>{t("sb_year_badge")} {gradeId} {t("sb_primary")}</div>
           </div>
 
           <div className="sb-body">
@@ -101,8 +103,8 @@ export default function SubjectPage() {
                   <div className="sb-card-ic" style={{ background: "linear-gradient(145deg," + sec.color + "26," + sec.color + "12)", border: "1px solid " + sec.color + "33" }}>
                     {sec.icon}
                   </div>
-                  <div className="sb-card-n">{sec.name}</div>
-                  <div className="sb-card-d">{sec.desc}</div>
+                  <div className="sb-card-n">{t(("section_" + sec.slug) as any)}</div>
+                  <div className="sb-card-d">{t(("section_" + sec.slug + "_desc") as any)}</div>
                 </div>
               </div>
             ))}

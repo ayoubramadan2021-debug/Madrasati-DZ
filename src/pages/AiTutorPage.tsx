@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLang } from "../i18n/LanguageContext";
 
 type Msg = { role: "user" | "assistant"; content: string };
 type Grade = 1 | 2 | 3 | 4 | 5;
@@ -50,7 +51,7 @@ const CSS = [
   ".ai-tdot:nth-child(3){animation-delay:.4s}",
   "@keyframes ai-type{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-6px);opacity:1}}",
   ".ai-input-wrap{position:fixed;bottom:96px;left:14px;right:14px;z-index:50;background:rgba(14,22,40,.92);backdrop-filter:blur(20px);padding:8px;border-radius:20px;border:1px solid var(--border);display:flex;gap:8px;box-shadow:0 12px 35px rgba(0,0,0,.5)}",
-  ".ai-input{flex:1;padding:14px;border-radius:14px;border:none;background:var(--surface-soft);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:600;color:var(--text);outline:none}",
+  ".ai-input{flex:1;padding:14px;border-radius:14px;border:none;background:rgba(255,255,255,.1);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:600;color:#fff;outline:none}",
   ".ai-input::placeholder{color:var(--text-dim)}",
   ".ai-send{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#000;border:none;padding:0 22px;border-radius:14px;font-family:'Tajawal',sans-serif;font-weight:900;font-size:14px;cursor:pointer;box-shadow:0 4px 14px rgba(232,160,32,.35);transition:transform .15s}",
   ".ai-send:active{transform:scale(.95)}",
@@ -58,10 +59,11 @@ const CSS = [
 ].join("\n");
 
 export default function AiTutorPage() {
+  const { t } = useLang();
   const navigate = useNavigate();
   const [grade, setGrade] = useState<Grade>(3);
   const [messages, setMessages] = useState<Msg[]>([
-    { role: "assistant", content: "أهلاً بك يا بطل! 🌟 أنا المعلّم الذكي. اختر سنتك الدراسية في الأعلى، ثم اسألني عن أي درس أو تمرين صعب وسأشرحه لك ببساطة." }
+    { role: "assistant", content: t("ai_welcome") }
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -86,11 +88,11 @@ export default function AiTutorPage() {
       });
       const data = await res.json();
       const reply = res.ok
-        ? (data.answer || "لم أفهم السؤال جيداً، هل يمكنك إعادة صياغته؟")
-        : (data.message || "تعذّر الوصول للمعلّم الآن. حاول مرة أخرى.");
+        ? (data.answer || t("ai_no_understand"))
+        : (data.message || t("ai_no_reach"));
       setMessages(prev => [...prev, { role: "assistant", content: reply }]);
     } catch (e) {
-      setMessages(prev => [...prev, { role: "assistant", content: "⚠️ تعذّر الاتصال بالخادم. تأكد من الإنترنت وحاول مجدداً." }]);
+      setMessages(prev => [...prev, { role: "assistant", content: t("ai_no_connect") }]);
     } finally {
       setLoading(false);
     }
@@ -105,10 +107,10 @@ export default function AiTutorPage() {
         <div className="ai-grid" />
 
         <div className="ai-head">
-          <button className="ai-back" onClick={() => navigate("/")}>الرئيسية</button>
+          <button className="ai-back" onClick={() => navigate("/")}>{t("nav_home")}</button>
           <div className="ai-head-c">
-            <div className="ai-head-t"><span className="ai-bot">🤖</span> المعلم الذكي</div>
-            <div className="ai-head-s"><span className="ai-dot" /> متصل الآن</div>
+            <div className="ai-head-t"><span className="ai-bot">🤖</span> {t("ai_name")}</div>
+            <div className="ai-head-s"><span className="ai-dot" /> {t("ai_online")}</div>
           </div>
           <div style={{ width: 64 }} />
         </div>
@@ -120,7 +122,7 @@ export default function AiTutorPage() {
               className={"ai-grade" + (grade === g ? " on" : "")}
               onClick={() => setGrade(g)}
             >
-              {GRADE_LABELS[g]}
+              {t(("grade_" + g) as any)}
             </button>
           ))}
         </div>
@@ -149,9 +151,9 @@ export default function AiTutorPage() {
             value={input}
             onChange={e => setInput(e.target.value)}
             onKeyDown={e => e.key === "Enter" && handleSend()}
-            placeholder="اكتب سؤالك أو تمرينك الصعب هنا يا ذكي..."
+            placeholder={t("ai_placeholder")}
           />
-          <button className="ai-send" onClick={handleSend} disabled={loading}>أرسل 🚀</button>
+          <button className="ai-send" onClick={handleSend} disabled={loading}>{t("ai_send")} 🚀</button>
         </div>
       </div>
     </>
