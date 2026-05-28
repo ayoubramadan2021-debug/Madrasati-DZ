@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useLang } from "../../../i18n/LanguageContext";
+import { pickLang } from "../../../lib/pickLang";
 
-type McqItem = { question: string; options: string[]; answer: number };
+type McqItem = { question: any; options: any[]; answer: number };
 
 export interface McqExerciseProps {
-  title: string;
-  instruction: string;
+  title: any;
+  instruction: any;
   items: McqItem[];
   onComplete?: (score: number, total: number) => void;
 }
@@ -19,7 +20,7 @@ export default function McqExercise({
   items,
   onComplete,
 }: McqExerciseProps) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [choices, setChoices] = useState<(number | null)[]>(() =>
     items.map(() => null)
   );
@@ -56,10 +57,10 @@ export default function McqExercise({
       }}
     >
       <h2 style={{ fontSize: 22, fontWeight: 800, margin: "0 0 4px" }}>
-        {title}
+        {pickLang(title, lang)}
       </h2>
       <p style={{ fontSize: 15, opacity: 0.8, margin: "0 0 20px" }}>
-        {instruction}
+        {pickLang(instruction, lang)}
       </p>
 
       <div style={{ display: "grid", gap: 20 }}>
@@ -84,7 +85,7 @@ export default function McqExercise({
                   textAlign: "center",
                 }}
               >
-                {it.question}
+                {pickLang(it.question, lang)}
               </p>
 
               <div style={{ display: "grid", gap: 10 }}>
@@ -133,7 +134,7 @@ export default function McqExercise({
                         transition: "all .15s",
                       }}
                     >
-                      {opt}
+                      {pickLang(opt, lang)}
                       {checked && isCorrect && " ✅"}
                       {checked && isChosen && !isCorrect && " ❌"}
                     </button>

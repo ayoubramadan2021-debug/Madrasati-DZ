@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useLang } from "../../../i18n/LanguageContext";
+import { pickLang } from "../../../lib/pickLang";
 
 type OrderItem = { numbers: number[] };
 
 export interface OrderExerciseProps {
-  title: string;
-  instruction: string;
+  title: any;
+  instruction: any;
   items: OrderItem[];
   onComplete?: (score: number, total: number) => void;
 }
@@ -23,7 +24,7 @@ export default function OrderExercise({
   items,
   onComplete,
 }: OrderExerciseProps) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [picked, setPicked] = useState<number[][]>(() => items.map(() => []));
   const [wrong, setWrong] = useState<(number | null)[]>(() =>
     items.map(() => null)
@@ -96,10 +97,10 @@ export default function OrderExercise({
       }}
     >
       <h2 style={{ fontSize: 22, fontWeight: 800, margin: "0 0 4px" }}>
-        {title}
+        {pickLang(title, lang)}
       </h2>
       <p style={{ fontSize: 15, opacity: 0.8, margin: "0 0 20px" }}>
-        {instruction}
+        {pickLang(instruction, lang)}
       </p>
 
       <div style={{ display: "grid", gap: 20 }}>
