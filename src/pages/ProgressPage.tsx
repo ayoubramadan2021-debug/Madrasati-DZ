@@ -48,7 +48,7 @@ const CSS = [
 ".pg-card-t{font-weight:800;color:var(--text);font-size:14px}",
 ".pg-card-v{color:var(--gold);font-weight:800;font-size:14px}",
 ".pg-bar{background:rgba(255,255,255,.07);border-radius:20px;height:10px;overflow:hidden}",
-".pg-bar-f{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--gold),var(--gold-deep));box-shadow:0 0 12px rgba(232,160,32,.5);transition:width .8s cubic-bezier(.34,1.2,.64,1)}",
+".pg-bar-f{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--gold),var(--gold-deep));box-shadow:0 0 12px rgba(232,160,32,.5);transition:width .8s cubic-bezier(.34,1.2,.64,1)}.pg-stars{display:flex;justify-content:center;gap:12px;margin-top:18px}.pg-star{font-size:28px;line-height:1;filter:grayscale(1) opacity(.35);transition:transform .4s,filter .4s}.pg-star.on{filter:drop-shadow(0 0 7px rgba(232,160,32,.7))}.pg-star.next{animation:pg-star-pulse 1.4s ease-in-out infinite}@keyframes pg-star-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.22)}}",
 ".pg-sec{display:flex;align-items:center;gap:10px;margin:22px 0 14px;opacity:0;transform:translateX(14px);transition:opacity .5s ease .25s,transform .5s ease .25s}",
 ".pg-sec.in{opacity:1;transform:translateX(0)}",
 ".pg-sec-bar{width:4px;height:20px;border-radius:4px;background:linear-gradient(180deg,var(--gold),var(--gold-deep))}",
@@ -176,6 +176,9 @@ export default function ProgressPage() {
                   </div>
                   <div className="pg-bar">
                     <div className="pg-bar-f" style={{ width: (mounted ? pct : 0) + "%" }} />
+                  </div>
+                  <div className="pg-stars">
+                    {[0,1,2,3,4].map((idx)=>{const filled=pct>=(idx+1)*20;const isNext=!filled&&pct>=idx*20;return(<span key={idx} className={cx("pg-star",filled&&"on",isNext&&mounted&&"next")}>{filled?"⭐":"☆"}</span>);})}
                   </div>
                 </div>
 

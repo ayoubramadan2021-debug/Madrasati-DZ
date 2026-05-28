@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLang } from "../i18n/LanguageContext";
+import dziad from "../assets/dziad.webp";
+import dziadThink from "../assets/dziad-think.webp";
+import dziadHappy from "../assets/dziad-happy.webp";
 
 type Msg = { role: "user" | "assistant"; content: string };
 type Grade = 1 | 2 | 3 | 4 | 5;
@@ -28,7 +31,7 @@ const CSS = [
   ".ai-back:active{background:var(--border-soft)}",
   ".ai-head-c{text-align:center;flex:1}",
   ".ai-head-t{display:flex;align-items:center;justify-content:center;gap:8px;font-size:17px;font-weight:900;background:linear-gradient(135deg,#fff 30%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}",
-  ".ai-bot{font-size:20px;filter:drop-shadow(0 0 8px rgba(232,160,32,.6));animation:ai-bob 4s ease-in-out infinite}",
+  ".ai-bot{width:30px;height:30px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(232,160,32,.6));animation:ai-bob 4s ease-in-out infinite}",
   "@keyframes ai-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}",
   ".ai-head-s{display:flex;align-items:center;justify-content:center;gap:5px;font-size:11px;color:var(--text-faint);margin-top:3px}",
   ".ai-dot{width:6px;height:6px;border-radius:50%;background:#22C55E;box-shadow:0 0 6px #22C55E;animation:ai-blink 2s ease-in-out infinite}",
@@ -37,7 +40,7 @@ const CSS = [
   ".ai-grade{padding:7px 14px;border-radius:12px;border:1px solid var(--border);background:var(--border-faint);color:var(--text-faint);font-family:'Tajawal',sans-serif;font-weight:700;font-size:12px;cursor:pointer;transition:all .2s}",
   ".ai-grade:active{transform:scale(.94)}",
   ".ai-grade.on{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#000;border-color:var(--gold);box-shadow:0 4px 14px rgba(232,160,32,.35)}",
-  ".ai-msgs{flex:1;position:relative;z-index:2;padding:20px 16px 170px;display:flex;flex-direction:column;gap:14px;overflow-y:auto}",
+  ".ai-msgs{flex:1;position:relative;z-index:2;padding:20px 16px 170px;display:flex;flex-direction:column;gap:14px;overflow-y:auto}",".ai-hero{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;margin:8px 0 4px;animation:ai-in .6s ease backwards}",".ai-hero-img{width:140px;height:140px;object-fit:contain;filter:drop-shadow(0 8px 20px rgba(232,160,32,.35));animation:ai-bob 4s ease-in-out infinite}",".ai-hero-txt{font-size:13px;font-weight:700;color:var(--gold);opacity:.9}",
   ".ai-row{display:flex;animation:ai-in .4s ease backwards}",
   "@keyframes ai-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}",
   ".ai-row.user{justify-content:flex-start}",
@@ -109,7 +112,7 @@ export default function AiTutorPage() {
         <div className="ai-head">
           <button className="ai-back" onClick={() => navigate("/")}>{t("nav_home")}</button>
           <div className="ai-head-c">
-            <div className="ai-head-t"><span className="ai-bot">🤖</span> {t("ai_name")}</div>
+            <div className="ai-head-t"><img className="ai-bot" src={dziad} alt="ديزاد" /> {t("ai_name")}</div>
             <div className="ai-head-s"><span className="ai-dot" /> {t("ai_online")}</div>
           </div>
           <div style={{ width: 64 }} />
@@ -128,6 +131,12 @@ export default function AiTutorPage() {
         </div>
 
         <div className="ai-msgs">
+          {(messages.length <= 1 || loading) && (
+            <div className="ai-hero">
+              <img className="ai-hero-img" src={loading ? dziadThink : dziad} alt="ديزاد" />
+              <div className="ai-hero-txt">{t("ai_name")}</div>
+            </div>
+          )}
           {messages.map((m, i) => (
             <div key={i} className={"ai-row " + (m.role === "user" ? "user" : "bot")} style={{ animationDelay: "0.05s" }}>
               <div className={"ai-bub " + (m.role === "user" ? "user" : "bot")}>{m.content}</div>

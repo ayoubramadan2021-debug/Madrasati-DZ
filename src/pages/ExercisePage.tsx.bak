@@ -101,40 +101,48 @@ export default function ExercisePage() {
 
   if (!data) return null;
 
-  let body;
   switch (type) {
     case "arithmetic":
-      body = <ArithmeticExercise title={title} instruction={data.instruction} items={data.items} onComplete={onComplete} />;
-      break;
+      return (
+        <ArithmeticExercise
+          title={title}
+          instruction={data.instruction}
+          items={data.items}
+          onComplete={onComplete}
+        />
+      );
     case "count":
-      body = <CountExercise title={title} instruction={data.instruction} items={data.items} onComplete={onComplete} />;
-      break;
+      return (
+        <CountExercise
+          title={title}
+          instruction={data.instruction}
+          items={data.items}
+          onComplete={onComplete}
+        />
+      );
     case "order":
-      body = <OrderExercise title={title} instruction={data.instruction} items={data.items} onComplete={onComplete} />;
-      break;
+      return (
+        <OrderExercise
+          title={title}
+          instruction={data.instruction}
+          items={data.items}
+          onComplete={onComplete}
+        />
+      );
     case "mcq":
-      body = <McqExercise title={title} instruction={data.instruction} items={data.items} onComplete={onComplete} />;
-      break;
+      return (
+        <McqExercise
+          title={title}
+          instruction={data.instruction}
+          items={data.items}
+          onComplete={onComplete}
+        />
+      );
     default:
-      body = <p dir="rtl" style={{ textAlign: "center", padding: 40 }}>{type}</p>;
+      return (
+        <p dir="rtl" style={{ textAlign: "center", padding: 40 }}>
+          {type}
+        </p>
+      );
   }
-
-  return (
-    <>
-      {body}
-      {cheer && (
-        <>
-          <style>{`@keyframes cheer-pop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}@keyframes cheer-jump{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}`}</style>
-          <div onClick={() => setCheer(null)} style={{ position: "fixed", inset: 0, background: "rgba(7,16,31,.82)", backdropFilter: "blur(6px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 999, padding: 24 }}>
-            <div dir="rtl" onClick={(e) => e.stopPropagation()} style={{ background: "var(--surface-2)", border: "1px solid var(--gold-border)", borderRadius: 28, padding: "32px 28px", textAlign: "center", maxWidth: 340, width: "100%", boxShadow: "var(--shadow-hero)", animation: "cheer-pop .5s cubic-bezier(.34,1.56,.64,1)" }}>
-              <img src={dziadHappy} alt="ديزاد" style={{ width: 150, height: 150, objectFit: "contain", filter: "drop-shadow(0 8px 20px rgba(232,160,32,.4))", animation: "cheer-jump 1.2s ease-in-out infinite" }} />
-              <div style={{ fontSize: 22, fontWeight: 900, color: "var(--text)", margin: "12px 0 6px" }}>{cheer.score === cheer.total ? t("cheer_perfect") : t("cheer_good")}</div>
-              <div style={{ fontSize: 28, fontWeight: 900, color: "var(--gold)", marginBottom: 20 }}>{cheer.score}/{cheer.total} ⭐</div>
-              <button onClick={() => navigate(-1)} style={{ padding: "13px 32px", border: "none", borderRadius: 999, background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#000", fontFamily: "'Tajawal',sans-serif", fontSize: 15, fontWeight: 800, cursor: "pointer", boxShadow: "0 4px 16px rgba(232,160,32,.35)" }}>{t("cheer_continue")}</button>
-            </div>
-          </div>
-        </>
-      )}
-    </>
-  );
 }

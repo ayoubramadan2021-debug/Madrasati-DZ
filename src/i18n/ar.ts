@@ -215,6 +215,9 @@ export const ar = {
   ls_no_lessons: "لا توجد دروس",
   ls_open: "فتح الدرس",
   ls_quiz: "الاختبار",
+  cheer_perfect: "ممتاز يا بطل! 🌟",
+  cheer_good: "أحسنت! 👏",
+  cheer_continue: "متابعة",
 };
 
 export type TranslationKeys = keyof typeof ar;

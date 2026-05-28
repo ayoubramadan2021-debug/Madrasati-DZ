@@ -217,4 +217,7 @@ export const fr: Record<TranslationKeys, string> = {
   ls_no_lessons: "Aucune lecon",
   ls_open: "Ouvrir la lecon",
   ls_quiz: "Quiz",
+  cheer_perfect: "Excellent, champion ! 🌟",
+  cheer_good: "Bravo ! 👏",
+  cheer_continue: "Continuer",
 };
