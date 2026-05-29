@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import AiTutorPage from "./pages/AiTutorPage";
 import ExerciseDemoPage from "./pages/ExerciseDemoPage";
 import BottomNav from "./shared/components/BottomNav";
+import AdminRoute from "./shared/components/AdminRoute";
 
 const lazy = (importFn: () => Promise<any>, title: string) => {
   const LazyComponent = React.lazy(importFn);
@@ -43,7 +44,7 @@ export default function App() {
         <Route path="/parent" element={lazy(() => import("./pages/ParentPage"), "بوابة الأولياء")} />
         <Route path="/about" element={lazy(() => import("./pages/AboutPage"), "عَنّا")} />
         <Route path="/parent/dashboard" element={lazy(() => import("./pages/ParentDashboardPage"), "لوحة الأولياء")} />
-        <Route path="/admin" element={lazy(() => import("./pages/AdminPage"), "لوحة الإدارة")} />
+        <Route path="/admin" element={<AdminRoute>{lazy(() => import("./pages/AdminPage"), "لوحة الإدارة")}</AdminRoute>} />
         <Route path="/search" element={lazy(() => import("./pages/SearchPage"), "البحث")} />
         <Route path="/achievements" element={lazy(() => import("./pages/AchievementsPage"), "الإنجازات")} />
         <Route path="/support" element={lazy(() => import("./pages/SupportPage"), "الدعم")} />
