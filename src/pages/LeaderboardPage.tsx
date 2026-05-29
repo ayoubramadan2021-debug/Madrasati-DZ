@@ -71,6 +71,7 @@ export default function LeaderboardPage() {
         const { data } = await withTimeout(Promise.resolve(supabase
           .from("profiles")
           .select("id, full_name, points, grade")
+          .neq("role", "admin")
           .order("points", { ascending: false })
           .limit(20)));
         setLeaders(data || []);

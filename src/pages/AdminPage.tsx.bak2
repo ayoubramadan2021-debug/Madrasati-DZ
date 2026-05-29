@@ -77,11 +77,10 @@ export default function AdminPage() {
   const [grade, setGrade] = useState("1");
   const [content, setContent] = useState("");
   const [exLessonId, setExLessonId] = useState("");
-  const [exTitleAr, setExTitleAr] = useState("");
-  const [exTitleFr, setExTitleFr] = useState("");
-  const [exInstrAr, setExInstrAr] = useState("");
-  const [exInstrFr, setExInstrFr] = useState("");
-  const [exProblems, setExProblems] = useState("");
+  const [exTitle, setExTitle] = useState("");
+  const [exQuestion, setExQuestion] = useState("");
+  const [exOptions, setExOptions] = useState(["", "", "", ""]);
+  const [exCorrect, setExCorrect] = useState("");
   const [exMsg, setExMsg] = useState("");
   const [qzLessonId, setQzLessonId] = useState("");
   const [qzTitle, setQzTitle] = useState("");
@@ -124,47 +123,34 @@ export default function AdminPage() {
   }
 
   async function addExercise() {
-    if (!exProblems.trim() || !exLessonId) {
-      setExMsg("❌ اختر الدرس واكتب المسائل");
+    if (!exQuestion.trim() || !exLessonId || !exCorrect.trim()) {
+      setExMsg("❌ املأ السؤال والدرس والإجابة الصحيحة");
       setTimeout(() => setExMsg(""), 3000); return;
     }
-    // تحويل "4+5, 8-3, 2*3, 6/2" إلى items
-    const items = [];
-    for (const raw of exProblems.split(",")) {
-      const s = raw.trim();
-      const m = s.match(/^(\d+)\s*([+\-*/])\s*(\d+)$/);
-      if (!m) continue;
-      const a = Number(m[1]); const op = m[2]; const b = Number(m[3]);
-      let answer = 0;
-      if (op === "+") answer = a + b;
-      else if (op === "-") answer = a - b;
-      else if (op === "*") answer = a * b;
-      else if (op === "/") answer = b !== 0 ? a / b : 0;
-      items.push({ a, b, op, answer });
+    const cleanOptions = exOptions.map(o => o.trim()).filter(Boolean);
+    if (cleanOptions.length < 2) {
+      setExMsg("❌ أضف خيارين على الأقل");
+      setTimeout(() => setExMsg(""), 3000); return;
     }
-    if (items.length === 0) {
-      setExMsg("❌ صيغة المسائل غير صحيحة (مثال: 4+5, 8-3)");
+    if (!cleanOptions.includes(exCorrect.trim())) {
+      setExMsg("❌ الإجابة الصحيحة يجب أن تطابق أحد الخيارات");
       setTimeout(() => setExMsg(""), 3000); return;
     }
     setLoading(true);
     const lesson = lessons.find(l => l.id === exLessonId);
     const { error } = await supabase.from("exercises").insert([{
-      type: "arithmetic",
-      title: exTitleAr || "تمرين",
+      title: exTitle || "تمرين",
       subject: lesson?.subject || "math",
       grade: lesson?.grade || 1,
-      lesson_number: lesson?.lesson_number ?? null,
-      is_published: true,
-      data: {
-        title: { ar: exTitleAr, fr: exTitleFr },
-        instruction: { ar: exInstrAr, fr: exInstrFr },
-        items,
-      },
+      lesson_id: exLessonId,
+      question: exQuestion,
+      options: cleanOptions,
+      correct_answer: exCorrect.trim(),
     }]);
     if (error) { setExMsg("❌ " + error.message); }
     else {
-      setExMsg("✅ تم إضافة " + items.length + " مسألة!");
-      setExTitleAr(""); setExTitleFr(""); setExInstrAr(""); setExInstrFr(""); setExProblems("");
+      setExMsg("✅ تم إضافة التمرين!");
+      setExQuestion(""); setExOptions(["", "", "", ""]); setExCorrect(""); setExTitle("");
     }
     setLoading(false);
     setTimeout(() => setExMsg(""), 3000);
@@ -321,16 +307,15 @@ export default function AdminPage() {
                     <option value="">— اختر الدرس —</option>
                     {lessons.map(l => <option key={l.id} value={l.id}>{l.title} (السنة {l.grade})</option>)}
                   </select>
-                  <div className="ad-row2">
-                    <input className="ad-input" value={exTitleAr} onChange={e => setExTitleAr(e.target.value)} placeholder="العنوان (عربي)" />
-                    <input className="ad-input" value={exTitleFr} onChange={e => setExTitleFr(e.target.value)} placeholder="Titre (français)" style={{ direction: "ltr" }} />
-                  </div>
-                  <div className="ad-row2">
-                    <input className="ad-input" value={exInstrAr} onChange={e => setExInstrAr(e.target.value)} placeholder="التعليمة (عربي)" />
-                    <input className="ad-input" value={exInstrFr} onChange={e => setExInstrFr(e.target.value)} placeholder="Consigne (français)" style={{ direction: "ltr" }} />
-                  </div>
-                  <label className="ad-label">المسائل (افصل بفاصلة: 4+5, 8-3, 2*3, 6/2)</label>
-                  <input className="ad-input" value={exProblems} onChange={e => setExProblems(e.target.value)} placeholder="4+5, 8-3, 2*3, 6/2" style={{ direction: "ltr", marginBottom: 10 }} />
+                  <input className="ad-input" value={exTitle} onChange={e => setExTitle(e.target.value)} placeholder="عنوان التمرين (اختياري)" style={{ marginBottom: 10 }} />
+                  <input className="ad-input" value={exQuestion} onChange={e => setExQuestion(e.target.value)} placeholder="نص السؤال" style={{ marginBottom: 10 }} />
+                  <label className="ad-label">الخيارات (اثنان على الأقل)</label>
+                  {exOptions.map((opt, i) => (
+                    <input key={i} className="ad-input" value={opt}
+                      onChange={e => { const n = [...exOptions]; n[i] = e.target.value; setExOptions(n); }}
+                      placeholder={"الخيار " + (i + 1)} style={{ marginBottom: 8 }} />
+                  ))}
+                  <input className="ad-input" value={exCorrect} onChange={e => setExCorrect(e.target.value)} placeholder="الإجابة الصحيحة (تطابق أحد الخيارات)" style={{ marginTop: 6, marginBottom: 10 }} />
                   {exMsg && <div className="ad-msg" style={{ background: exMsg.includes("✅") ? "rgba(34,197,94,.15)" : "rgba(239,68,68,.15)", color: exMsg.includes("✅") ? "#4ade80" : "#f87171" }}>{exMsg}</div>}
                   <button className="ad-add" onClick={addExercise} disabled={loading}
                     style={{ background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#000", cursor: "pointer" }}>
