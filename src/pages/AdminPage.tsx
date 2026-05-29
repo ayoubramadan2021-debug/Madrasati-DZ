@@ -116,7 +116,7 @@ export default function AdminPage() {
   async function addLesson() {
     if (!title.trim()) return;
     setLoading(true);
-    const { error } = await supabase.from("lessons").insert([{ title, subject, grade: Number(grade), content, is_published: true }]);
+    const { error } = await supabase.from("lessons").insert([{ title, subject, grade: Number(grade), content }]);
     if (error) { setMsg("❌ " + error.message); }
     else { setMsg("✅ تم إضافة الدرس!"); setTitle(""); setContent(""); loadData(); }
     setLoading(false);
