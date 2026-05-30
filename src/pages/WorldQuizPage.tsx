@@ -82,7 +82,10 @@ export default function WorldQuizPage() {
       {passed ? (
         <button onClick={() => navigate(-1)} style={{ padding: "14px 32px", border: "none", borderRadius: 14, background: "linear-gradient(135deg,#22c55e,#16a34a)", color: "#fff", fontFamily: "Tajawal,sans-serif", fontWeight: 800, fontSize: 15 }}>تابع 🎉</button>
       ) : (
-        <button onClick={restart} style={{ padding: "14px 32px", border: "none", borderRadius: 14, background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#000", fontFamily: "Tajawal,sans-serif", fontWeight: 800, fontSize: 15 }}>حاول مجدّداً 🔄</button>
+        <div style={{ display: "flex", flexDirection: "column", gap: 12, width: "100%", maxWidth: 320 }}>
+          <button onClick={() => navigate(`/world/${worldId}`)} style={{ padding: "14px 28px", border: "none", borderRadius: 14, background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#000", fontFamily: "Tajawal,sans-serif", fontWeight: 800, fontSize: 15, boxShadow: "0 6px 18px rgba(232,160,32,.35)" }}>📚 تدرّب على التمارين</button>
+          <button onClick={restart} style={{ padding: "13px 28px", borderRadius: 14, border: "1.5px solid var(--border)", background: "transparent", color: "var(--text-muted)", fontFamily: "Tajawal,sans-serif", fontWeight: 700, fontSize: 14 }}>🔄 أعد الاختبار</button>
+        </div>
       )}
     </div>
   );
