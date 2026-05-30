@@ -4,6 +4,7 @@ import { supabase } from "../lib/supabaseClient";
 import { useLang } from "../i18n/LanguageContext";
 import { withTimeout } from "../lib/withTimeout";
 import { ThemeToggle } from "../useTheme";
+import { getLevel } from "../lib/level";
 
 const CSS = [
 "@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');",
@@ -183,6 +184,20 @@ export default function ProfilePage() {
           </div>
 
           <div className="pf-body">
+            {(() => {
+              const lvl = getLevel(profile.xp || 0);
+              return (
+                <div className={cx("pf-stats", mounted && "in")} style={{ display: "block", marginBottom: 14 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+                    <div style={{ fontWeight: 900, fontSize: 18, color: "var(--gold)" }}>⭐ المستوى {lvl.level}</div>
+                    <div style={{ fontSize: 12, color: "var(--text-muted)" }}>{lvl.current}/{lvl.needed} للمستوى التالي</div>
+                  </div>
+                  <div style={{ height: 10, background: "var(--surface-softer)", borderRadius: 99, overflow: "hidden" }}>
+                    <div style={{ height: "100%", width: lvl.percent + "%", background: "linear-gradient(90deg,var(--gold),var(--gold-deep))", borderRadius: 99, transition: "width .5s" }} />
+                  </div>
+                </div>
+              );
+            })()}
             {/* الإحصائيات */}
             <div className={cx("pf-stats", mounted && "in")}>
               <div>
