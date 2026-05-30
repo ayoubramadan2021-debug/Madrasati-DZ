@@ -2,6 +2,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useLang } from "../i18n/LanguageContext";
 import { getWorldById, getWorldQuiz, getWorlds, completeWorld } from "../services/worldsService";
+import { addXp } from "../services/profileService";
+import { supabase } from "../lib/supabaseClient";
 
 export default function WorldQuizPage() {
   const { t, lang } = useLang();
@@ -51,6 +53,8 @@ export default function WorldQuizPage() {
         const idx = all.findIndex((w: any) => w.id === worldId);
         const next = idx >= 0 && idx + 1 < all.length ? all[idx + 1].id : null;
         await completeWorld(worldId, percent, next);
+        const { data: auth } = await supabase.auth.getUser();
+        if (auth.user?.id) await addXp(auth.user.id, percent);
       } catch (e) {
         console.error("خطأ فتح العالم التالي:", e);
       }
@@ -78,7 +82,10 @@ export default function WorldQuizPage() {
       <div style={{ fontSize: 64, marginBottom: 16 }}>{passed ? "🎉" : "💪"}</div>
       <div style={{ fontSize: 24, fontWeight: 900, color: "var(--text)", marginBottom: 10 }}>{passed ? "نجحت!" : "اقتربت، تدرّب أكثر وحاول مجدّداً"}</div>
       <div style={{ fontSize: 40, fontWeight: 900, color: passed ? "#4ade80" : "var(--gold)", marginBottom: 6 }}>{percent}%</div>
-      <div style={{ fontSize: 14, color: "var(--text-muted)", marginBottom: 28 }}>{correctCount} من {total} صحيحة</div>
+      <div style={{ fontSize: 14, color: "var(--text-muted)", marginBottom: passed ? 14 : 28 }}>{correctCount} من {total} صحيحة</div>
+      {passed && (
+        <div style={{ fontSize: 22, fontWeight: 900, color: "var(--gold)", marginBottom: 28, filter: "drop-shadow(0 0 10px rgba(232,160,32,.5))" }}>+{percent} XP 🌟</div>
+      )}
       {passed ? (
         <button onClick={() => navigate(-1)} style={{ padding: "14px 32px", border: "none", borderRadius: 14, background: "linear-gradient(135deg,#22c55e,#16a34a)", color: "#fff", fontFamily: "Tajawal,sans-serif", fontWeight: 800, fontSize: 15 }}>تابع 🎉</button>
       ) : (
