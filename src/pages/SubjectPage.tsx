@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import appData from "../data/appData";
 import { useLang } from "../i18n/LanguageContext";
+import { getWorlds } from "../services/worldsService";
 
 const SUBJECT_COLORS: Record<string, string> = {
   math: "#22C55E", arabic: "#EF4444", french: "#3B82F6",
@@ -54,10 +55,11 @@ const CSS = [
 ].join("\n");
 
 export default function SubjectPage() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const { gradeId, subject } = useParams();
   const navigate = useNavigate();
   const [mounted, setMounted] = useState(false);
+  const [worlds, setWorlds] = useState<any[]>([]);
 
   const currentSubject = (appData.subjects || []).find((s: any) => s.slug === subject);
   const color = SUBJECT_COLORS[subject || ""] || "var(--gold)";
@@ -67,6 +69,13 @@ export default function SubjectPage() {
     const t = setTimeout(() => setMounted(true), 80);
     return () => clearTimeout(t);
   }, []);
+
+  useEffect(() => {
+    if (!subject || !gradeId) return;
+    getWorlds(subject, Number(gradeId))
+      .then((data) => setWorlds(data))
+      .catch((err) => console.error("خطأ جلب العوالم:", err));
+  }, [subject, gradeId]);
 
   const cx = (...a: (string | false)[]) => a.filter(Boolean).join(" ");
 
@@ -90,6 +99,24 @@ export default function SubjectPage() {
           </div>
 
           <div className="sb-body">
+            {worlds.map((w, i) => (
+              <div
+                key={w.id}
+                className="sb-card"
+                style={{ animationDelay: (0.2 + i * 0.1) + "s", boxShadow: "0 6px 22px rgba(0,0,0,.35)" }}
+                onClick={() => navigate(`/world/${w.id}`)}
+              >
+                <div className="sb-card-bg" />
+                <div className="sb-card-glow" style={{ boxShadow: "inset 0 0 30px var(--gold)14", borderTop: "3px solid var(--gold)", borderRadius: "20px 20px 0 0" }} />
+                <div className="sb-card-in">
+                  <div className="sb-card-ic" style={{ background: "linear-gradient(145deg,var(--gold)26,var(--gold)12)", border: "1px solid var(--gold)33" }}>
+                    {w.icon || "🌟"}
+                  </div>
+                  <div className="sb-card-n">{w.title_ar}</div>
+                  <div className="sb-card-d">{lang === "fr" && w.title_fr ? w.title_fr : ""}</div>
+                </div>
+              </div>
+            ))}
             {SECTIONS.map((sec, i) => (
               <div
                 key={sec.slug}
