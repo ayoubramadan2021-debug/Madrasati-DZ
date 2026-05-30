@@ -190,6 +190,10 @@ export default function ProfilePage() {
                 <div className="pf-stat-l">{t("pf_points")}</div>
               </div>
               <div className="pf-stat-div">
+                <div className="pf-stat-n" style={{ color: "#E8A020" }}>🌟 {profile.xp || 0}</div>
+                <div className="pf-stat-l">نقطة خبرة</div>
+              </div>
+              <div className="pf-stat-div">
                 <div className="pf-stat-n" style={{ color: "#22C55E" }}>{completed}</div>
                 <div className="pf-stat-l">{t("pf_completed")}</div>
               </div>
