@@ -60,6 +60,20 @@ export default function WorldPage() {
             ))}
           </div>
         )}
+
+        {!loading && (
+          <div style={{ marginTop: 28, padding: "22px 18px", background: "linear-gradient(145deg,rgba(168,85,247,.12),rgba(168,85,247,.04))", border: "1px solid rgba(168,85,247,.3)", borderRadius: 20, textAlign: "center" }}>
+            <div style={{ fontSize: 32, marginBottom: 8 }}>🎯</div>
+            <div style={{ fontSize: 16, fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>اختبر معرفتك!</div>
+            <div style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 16 }}>اجتز الاختبار لتفتح العالم التالي 🔓</div>
+            <button
+              onClick={() => navigate(`/world/${worldId}/quiz`)}
+              style={{ width: "100%", padding: 15, border: "none", borderRadius: 14, background: "linear-gradient(135deg,#a855f7,#7c3aed)", color: "#fff", fontFamily: "Tajawal,sans-serif", fontSize: 16, fontWeight: 800, cursor: "pointer", boxShadow: "0 6px 18px rgba(168,85,247,.35)" }}
+            >
+              ابدأ اختبار العالم 🎯
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
