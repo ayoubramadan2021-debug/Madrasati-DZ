@@ -34,3 +34,17 @@ export async function getWorldLessons(world_id: string) {
   if (error) throw error;
   return data || [];
 }
+
+// جلب اختبار عالم معيّن (المنشور)
+export async function getWorldQuiz(world_id: string) {
+  const { data, error } = await supabase
+    .from("quizzes")
+    .select("*")
+    .eq("world_id", world_id)
+    .eq("is_published", true)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (error) throw error;
+  return data;
+}
