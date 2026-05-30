@@ -2,7 +2,10 @@ import { withTimeout } from "../lib/withTimeout";
 import { useEffect, useState } from "react";
 import { getCurrentUser } from "../services/sessionService";
 import { getProfile } from "../services/profileService";
+import { getMyWorldProgress } from "../services/worldsService";
+import { getLevel } from "../lib/level";
 import { getUserProgress } from "../services/progressService";
+import { useLang } from "../i18n/LanguageContext";
 
 const CSS = [
 "@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');",
@@ -43,17 +46,19 @@ const CSS = [
 ].join("\n");
 
 function AchievementsPage() {
+  const { t } = useLang();
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(false);
   const reload = () => { setLoading(true); window.location.reload(); };
   const [profile, setProfile] = useState<any>(null);
   const [progress, setProgress] = useState<any[]>([]);
+  const [worldProgress, setWorldProgress] = useState<any[]>([]);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => { loadAchievements(); }, []);
   useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 80);
-    return () => clearTimeout(t);
+    const tm = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(tm);
   }, [profile]);
 
   async function loadAchievements() {
@@ -66,6 +71,10 @@ function AchievementsPage() {
       const userProgress = await withTimeout(Promise.resolve(getUserProgress(user.id)));
       setProfile(userProfile);
       setProgress(userProgress || []);
+      try {
+        const wp = await withTimeout(Promise.resolve(getMyWorldProgress()));
+        setWorldProgress(wp || []);
+      } catch { /* تجاهل */ }
     } catch (e) {
       setErr(true);
     } finally {
@@ -76,6 +85,8 @@ function AchievementsPage() {
   const totalPoints = progress.reduce((sum, item) => sum + Number(item.points || 0), 0);
   const completedExercises = progress.filter((item) => String(item.lesson_id || "").includes("exercise")).length;
   const completedQuizzes = progress.filter((item) => String(item.lesson_id || "").includes("quiz")).length;
+  const completedWorlds = worldProgress.filter((w) => w.status === "completed").length;
+  const level = getLevel(profile?.xp || 0).level;
 
   const badges = [
     { icon: "🎯", title: t("badge_start_t"), desc: t("badge_start_d"), unlocked: progress.length >= 1 },
@@ -84,6 +95,10 @@ function AchievementsPage() {
     { icon: "🧮", title: t("badge_exhero_t"), desc: t("badge_exhero_d"), unlocked: completedExercises >= 3 },
     { icon: "📝", title: t("badge_quizlover_t"), desc: t("badge_quizlover_d"), unlocked: completedQuizzes >= 1 },
     { icon: "👑", title: t("badge_star_t"), desc: t("badge_star_d"), unlocked: totalPoints >= 100 },
+    { icon: "🏆", title: "فاتح العوالم", desc: "أكمل عالماً كاملاً بنجاح", unlocked: completedWorlds >= 1 },
+    { icon: "🔥", title: "مغامر مثابر", desc: "أكمل 3 عوالم", unlocked: completedWorlds >= 3 },
+    { icon: "🌟", title: "نجم صاعد", desc: "وصل المستوى 3", unlocked: level >= 3 },
+    { icon: "🚀", title: "خبير", desc: "وصل المستوى 5", unlocked: level >= 5 },
   ];
 
   const unlockedCount = badges.filter((b) => b.unlocked).length;
