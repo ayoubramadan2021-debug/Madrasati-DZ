@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import appData from "../data/appData";
 import { useLang } from "../i18n/LanguageContext";
-import { getWorlds } from "../services/worldsService";
+import { getWorlds, getMyWorldProgress } from "../services/worldsService";
 
 const SUBJECT_COLORS: Record<string, string> = {
   math: "#22C55E", arabic: "#EF4444", french: "#3B82F6",
@@ -61,6 +61,7 @@ export default function SubjectPage() {
   const [mounted, setMounted] = useState(false);
   const [worlds, setWorlds] = useState<any[]>([]);
   const [lockedOpen, setLockedOpen] = useState(false);
+  const [progress, setProgress] = useState<any[]>([]);
 
   const currentSubject = (appData.subjects || []).find((s: any) => s.slug === subject);
   const color = SUBJECT_COLORS[subject || ""] || "var(--gold)";
@@ -74,7 +75,10 @@ export default function SubjectPage() {
   useEffect(() => {
     if (!subject || !gradeId) return;
     getWorlds(subject, Number(gradeId))
-      .then((data) => setWorlds(data))
+      .then((data) => setWorlds(data));
+    getMyWorldProgress()
+      .then((p) => setProgress(p))
+      .catch(() => {})
       .catch((err) => console.error("خطأ جلب العوالم:", err));
   }, [subject, gradeId]);
 
@@ -101,7 +105,9 @@ export default function SubjectPage() {
 
           <div className="sb-body">
             {worlds.map((w, i) => {
-              const locked = i !== 0;
+              const prog = progress.find((p: any) => p.world_id === w.id);
+              const unlocked = i === 0 || prog?.status === "unlocked" || prog?.status === "completed";
+              const locked = !unlocked;
               return (
               <div
                 key={w.id}

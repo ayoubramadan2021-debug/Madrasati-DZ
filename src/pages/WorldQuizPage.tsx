@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useLang } from "../i18n/LanguageContext";
-import { getWorldById, getWorldQuiz } from "../services/worldsService";
+import { getWorldById, getWorldQuiz, getWorlds, completeWorld } from "../services/worldsService";
 
 export default function WorldQuizPage() {
   const { t, lang } = useLang();
@@ -41,6 +41,21 @@ export default function WorldQuizPage() {
   const correctCount = questions.reduce((acc: number, q: any, i: number) => acc + (answers[i] === q.answer ? 1 : 0), 0);
   const percent = total > 0 ? Math.round((correctCount / total) * 100) : 0;
   const passed = percent >= passThreshold;
+
+  // عند النجاح: أكمل العالم وافتح التالي
+  useEffect(() => {
+    if (!finished || !passed || !world || !worldId) return;
+    (async () => {
+      try {
+        const all = await getWorlds(world.subject, world.grade);
+        const idx = all.findIndex((w: any) => w.id === worldId);
+        const next = idx >= 0 && idx + 1 < all.length ? all[idx + 1].id : null;
+        await completeWorld(worldId, percent, next);
+      } catch (e) {
+        console.error("خطأ فتح العالم التالي:", e);
+      }
+    })();
+  }, [finished, passed, world, worldId, percent]);
 
   function restart() {
     setCurrent(0); setAnswers([]); setFinished(false);
