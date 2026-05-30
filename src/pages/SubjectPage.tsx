@@ -60,6 +60,7 @@ export default function SubjectPage() {
   const navigate = useNavigate();
   const [mounted, setMounted] = useState(false);
   const [worlds, setWorlds] = useState<any[]>([]);
+  const [lockedOpen, setLockedOpen] = useState(false);
 
   const currentSubject = (appData.subjects || []).find((s: any) => s.slug === subject);
   const color = SUBJECT_COLORS[subject || ""] || "var(--gold)";
@@ -99,24 +100,27 @@ export default function SubjectPage() {
           </div>
 
           <div className="sb-body">
-            {worlds.map((w, i) => (
+            {worlds.map((w, i) => {
+              const locked = i !== 0;
+              return (
               <div
                 key={w.id}
                 className="sb-card"
-                style={{ animationDelay: (0.2 + i * 0.1) + "s", boxShadow: "0 6px 22px rgba(0,0,0,.35)" }}
-                onClick={() => navigate(`/world/${w.id}`)}
+                style={{ animationDelay: (0.2 + i * 0.1) + "s", boxShadow: "0 6px 22px rgba(0,0,0,.35)", opacity: locked ? 0.55 : 1, cursor: locked ? "not-allowed" : "pointer" }}
+                onClick={() => { if (locked) { setLockedOpen(true); return; } navigate(`/world/${w.id}`); }}
               >
                 <div className="sb-card-bg" />
-                <div className="sb-card-glow" style={{ boxShadow: "inset 0 0 30px var(--gold)14", borderTop: "3px solid var(--gold)", borderRadius: "20px 20px 0 0" }} />
+                <div className="sb-card-glow" style={{ boxShadow: "inset 0 0 30px var(--gold)14", borderTop: "3px solid " + (locked ? "var(--text-dim)" : "var(--gold)"), borderRadius: "20px 20px 0 0" }} />
                 <div className="sb-card-in">
-                  <div className="sb-card-ic" style={{ background: "linear-gradient(145deg,var(--gold)26,var(--gold)12)", border: "1px solid var(--gold)33" }}>
-                    {w.icon || "🌟"}
+                  <div className="sb-card-ic" style={{ background: locked ? "rgba(120,120,120,.15)" : "linear-gradient(145deg,var(--gold)26,var(--gold)12)", border: "1px solid " + (locked ? "rgba(120,120,120,.3)" : "var(--gold)33"), filter: locked ? "grayscale(1)" : "none" }}>
+                    {locked ? "🔒" : (w.icon || "🌟")}
                   </div>
                   <div className="sb-card-n">{w.title_ar}</div>
-                  <div className="sb-card-d">{lang === "fr" && w.title_fr ? w.title_fr : ""}</div>
+                  <div className="sb-card-d">{locked ? "مقفل 🔒" : (lang === "fr" && w.title_fr ? w.title_fr : "")}</div>
                 </div>
               </div>
-            ))}
+              );
+            })}
             {SECTIONS.map((sec, i) => (
               <div
                 key={sec.slug}
@@ -137,6 +141,28 @@ export default function SubjectPage() {
             ))}
           </div>
         </div>
+
+        {lockedOpen && (
+          <div
+            onClick={() => setLockedOpen(false)}
+            style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,.65)", backdropFilter: "blur(4px)", display: "grid", placeItems: "center", zIndex: 100, padding: 20 }}
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              style={{ background: "var(--surface)", border: "1px solid rgba(232,160,32,.35)", borderRadius: 24, padding: "32px 26px", maxWidth: 340, width: "100%", textAlign: "center", boxShadow: "0 20px 60px rgba(0,0,0,.5)", fontFamily: "Tajawal,sans-serif", direction: "rtl" }}
+            >
+              <div style={{ fontSize: 56, marginBottom: 14 }}>🔒</div>
+              <div style={{ fontSize: 20, fontWeight: 900, color: "var(--text)", marginBottom: 10 }}>هذا العالم مقفل</div>
+              <div style={{ fontSize: 14, color: "var(--text-muted)", lineHeight: 1.7, marginBottom: 24 }}>أكمل العالم السابق أولاً لتفتح مغامرة جديدة! 💪</div>
+              <button
+                onClick={() => setLockedOpen(false)}
+                style={{ width: "100%", padding: 14, border: "none", borderRadius: 14, background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#000", fontFamily: "Tajawal,sans-serif", fontSize: 15, fontWeight: 800, cursor: "pointer", boxShadow: "0 6px 18px rgba(232,160,32,.35)" }}
+              >
+                حسناً 👍
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
