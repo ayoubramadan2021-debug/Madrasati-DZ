@@ -68,6 +68,7 @@ export default function AdminPage() {
   const [tab, setTab] = useState(0);
   const [authorized, setAuthorized] = useState<boolean | null>(null);
   const [lessons, setLessons] = useState<any[]>([]);
+  const [worlds, setWorlds] = useState<any[]>([]);
   const [students, setStudents] = useState<any[]>([]);
   const [stats, setStats] = useState({ lessons: 0, students: 0, progress: 0 });
   const [loading, setLoading] = useState(false);
@@ -83,11 +84,12 @@ export default function AdminPage() {
   const [exInstrFr, setExInstrFr] = useState("");
   const [exProblems, setExProblems] = useState("");
   const [exMsg, setExMsg] = useState("");
-  const [qzLessonId, setQzLessonId] = useState("");
-  const [qzTitle, setQzTitle] = useState("");
-  const [qzQuestion, setQzQuestion] = useState("");
-  const [qzOptions, setQzOptions] = useState(["", "", "", ""]);
-  const [qzCorrect, setQzCorrect] = useState("");
+  const [qzWorldId, setQzWorldId] = useState("");
+  const [qzTitleAr, setQzTitleAr] = useState("");
+  const [qzTitleFr, setQzTitleFr] = useState("");
+  const [qzPass, setQzPass] = useState("70");
+  const [qzTime, setQzTime] = useState("");
+  const [qzQuestions, setQzQuestions] = useState("");
   const [qzMsg, setQzMsg] = useState("");
 
   useEffect(() => {
@@ -102,12 +104,14 @@ export default function AdminPage() {
 
   async function loadData() {
     setLoading(true);
-    const [l, s, p] = await Promise.all([
+    const [l, s, p, w] = await Promise.all([
       supabase.from("lessons").select("*").order("created_at", { ascending: false }).limit(20),
       supabase.from("profiles").select("*").order("points", { ascending: false }).limit(20),
       supabase.from("progress").select("id", { count: "exact" }),
+      supabase.from("worlds").select("*").order("sort_order", { ascending: true }),
     ]);
     setLessons(l.data || []);
+    setWorlds(w.data || []);
     setStudents(s.data || []);
     setStats({ lessons: l.data?.length || 0, students: s.data?.length || 0, progress: (p as any).count || 0 });
     setLoading(false);
@@ -171,34 +175,44 @@ export default function AdminPage() {
   }
 
   async function addQuiz() {
-    if (!qzQuestion.trim() || !qzLessonId || !qzCorrect.trim()) {
-      setQzMsg("❌ املأ السؤال والدرس والإجابة الصحيحة");
+    if (!qzWorldId || !qzQuestions.trim()) {
+      setQzMsg("❌ اختر العالم واكتب الأسئلة");
       setTimeout(() => setQzMsg(""), 3000); return;
     }
-    const cleanOptions = qzOptions.map(o => o.trim()).filter(Boolean);
-    if (cleanOptions.length < 2) {
-      setQzMsg("❌ أضف خيارين على الأقل");
-      setTimeout(() => setQzMsg(""), 3000); return;
+    // تحويل الأسطر: السؤال | خ1 | خ2 | خ3 | خ4 | رقم_الإجابة
+    const questions = [];
+    for (const line of qzQuestions.split("\n")) {
+      const parts = line.split("|").map(p => p.trim());
+      if (parts.length < 4) continue;
+      const q = parts[0];
+      const answerIdx = Number(parts[parts.length - 1]) - 1;
+      const options = parts.slice(1, parts.length - 1);
+      if (!q || options.length < 2 || isNaN(answerIdx) || answerIdx < 0 || answerIdx >= options.length) continue;
+      questions.push({ q, options, answer: answerIdx });
     }
-    if (!cleanOptions.includes(qzCorrect.trim())) {
-      setQzMsg("❌ الإجابة الصحيحة يجب أن تطابق أحد الخيارات");
+    if (questions.length === 0) {
+      setQzMsg("❌ صيغة غير صحيحة (مثال: السؤال | 2 | 3 | 4 | 5 | 3)");
       setTimeout(() => setQzMsg(""), 3000); return;
     }
     setLoading(true);
-    const lesson = lessons.find(l => l.id === qzLessonId);
+    const world = worlds.find(w => w.id === qzWorldId);
     const { error } = await supabase.from("quizzes").insert([{
-      title: qzTitle || "اختبار",
-      subject: lesson?.subject || "math",
-      grade: lesson?.grade || 1,
-      lesson_id: qzLessonId,
-      question: qzQuestion,
-      options: cleanOptions,
-      correct_answer: qzCorrect.trim(),
+      title: qzTitleAr || "اختبار",
+      subject: world?.subject || "math",
+      grade: world?.grade || 1,
+      world_id: qzWorldId,
+      pass_threshold: Number(qzPass) || 70,
+      time_limit: qzTime ? Number(qzTime) : null,
+      is_published: true,
+      data: {
+        title: { ar: qzTitleAr, fr: qzTitleFr },
+        questions,
+      },
     }]);
     if (error) { setQzMsg("❌ " + error.message); }
     else {
-      setQzMsg("✅ تم إضافة الاختبار!");
-      setQzQuestion(""); setQzOptions(["", "", "", ""]); setQzCorrect(""); setQzTitle("");
+      setQzMsg("✅ تم إضافة اختبار بـ " + questions.length + " سؤال!");
+      setQzWorldId(""); setQzTitleAr(""); setQzTitleFr(""); setQzPass("70"); setQzTime(""); setQzQuestions("");
     }
     setLoading(false);
     setTimeout(() => setQzMsg(""), 3000);
@@ -346,20 +360,21 @@ export default function AdminPage() {
               <>
                 <div className="ad-card">
                   <div className="ad-card-t">➕ اختبار جديد</div>
-                  <label className="ad-label">الدرس التابع له</label>
-                  <select className="ad-input" value={qzLessonId} onChange={e => setQzLessonId(e.target.value)} style={{ marginBottom: 10 }}>
-                    <option value="">— اختر الدرس —</option>
-                    {lessons.map(l => <option key={l.id} value={l.id}>{l.title} (السنة {l.grade})</option>)}
+                  <label className="ad-label">العالم (بوّابته)</label>
+                  <select className="ad-input" value={qzWorldId} onChange={e => setQzWorldId(e.target.value)} style={{ marginBottom: 10 }}>
+                    <option value="">— اختر العالم —</option>
+                    {worlds.map(w => <option key={w.id} value={w.id}>{w.title_ar} (السنة {w.grade})</option>)}
                   </select>
-                  <input className="ad-input" value={qzTitle} onChange={e => setQzTitle(e.target.value)} placeholder="عنوان الاختبار (اختياري)" style={{ marginBottom: 10 }} />
-                  <input className="ad-input" value={qzQuestion} onChange={e => setQzQuestion(e.target.value)} placeholder="نص السؤال" style={{ marginBottom: 10 }} />
-                  <label className="ad-label">الخيارات (اثنان على الأقل)</label>
-                  {qzOptions.map((opt, i) => (
-                    <input key={i} className="ad-input" value={opt}
-                      onChange={e => { const n = [...qzOptions]; n[i] = e.target.value; setQzOptions(n); }}
-                      placeholder={"الخيار " + (i + 1)} style={{ marginBottom: 8 }} />
-                  ))}
-                  <input className="ad-input" value={qzCorrect} onChange={e => setQzCorrect(e.target.value)} placeholder="الإجابة الصحيحة (تطابق أحد الخيارات)" style={{ marginTop: 6, marginBottom: 10 }} />
+                  <div className="ad-row2">
+                    <input className="ad-input" value={qzTitleAr} onChange={e => setQzTitleAr(e.target.value)} placeholder="العنوان (عربي)" />
+                    <input className="ad-input" value={qzTitleFr} onChange={e => setQzTitleFr(e.target.value)} placeholder="Titre (français)" style={{ direction: "ltr" }} />
+                  </div>
+                  <div className="ad-row2">
+                    <input className="ad-input" value={qzPass} onChange={e => setQzPass(e.target.value)} placeholder="نسبة النجاح %" type="number" />
+                    <input className="ad-input" value={qzTime} onChange={e => setQzTime(e.target.value)} placeholder="المدة (دقائق، اختياري)" type="number" />
+                  </div>
+                  <label className="ad-label">الأسئلة (سطر لكل سؤال: السؤال | خيار1 | خيار2 | خيار3 | خيار4 | رقم الإجابة)</label>
+                  <textarea className="ad-input" value={qzQuestions} onChange={e => setQzQuestions(e.target.value)} placeholder={"ما العدد بعد 3؟ | 2 | 3 | 4 | 5 | 3\nكم 2+2؟ | 3 | 4 | 5 | 6 | 2"} rows={6} style={{ marginBottom: 10, resize: "vertical", fontFamily: "monospace" }} />
                   {qzMsg && <div className="ad-msg" style={{ background: qzMsg.includes("✅") ? "rgba(34,197,94,.15)" : "rgba(239,68,68,.15)", color: qzMsg.includes("✅") ? "#4ade80" : "#f87171" }}>{qzMsg}</div>}
                   <button className="ad-add" onClick={addQuiz} disabled={loading}
                     style={{ background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#000", cursor: "pointer" }}>
