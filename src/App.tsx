@@ -30,6 +30,7 @@ export default function App() {
         <Route path="/grade/:gradeId/subject/:subject/section/:section" element={lazy(() => import("./pages/SectionPage"), "القسم")} />
 
         {/* مسارات الدروس والتمارين والاختبارات */}
+        <Route path="/world/:worldId" element={lazy(() => import("./pages/WorldPage"), "العالم")} />
         <Route path="/lesson/:lessonId" element={lazy(() => import("./pages/LessonPage"), "الدروس")} />
         <Route path="/exercise/:exerciseId" element={lazy(() => import("./pages/ExercisePage"), "التمارين")} />
         <Route path="/quiz/:lessonId" element={lazy(() => import("./pages/QuizPage"), "الاختبارات")} />
