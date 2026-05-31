@@ -47,15 +47,17 @@ export default function ExercisePage() {
           .from("exercises")
           .select("type, title, lesson_number, data")
           .eq("id", id)
-          .single()
+          .maybeSingle()
       );
       if (error) throw error;
+      if (!row) throw new Error("التمرين غير موجود (تحقق من المعرّف في الرابط)");
       setType(row.type);
       setTitle(row.title);
       setLessonNumber(row.lesson_number);
       setData(row.data);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "حدث خطأ");
+    } catch (e: any) {
+      const full = e?.message || e?.error_description || e?.details || JSON.stringify(e);
+      setError("خطأ: " + full);
     } finally {
       setLoading(false);
     }
@@ -87,7 +89,7 @@ export default function ExercisePage() {
   if (error)
     return (
       <div dir="rtl" style={{ textAlign: "center", padding: 40 }}>
-        <p>{error}</p>
+        <p style={{whiteSpace:"pre-wrap",fontSize:13,direction:"ltr",padding:"0 16px"}}>{error}</p>
         <button
           onClick={() => navigate(-1)}
           style={{ marginTop: 12, padding: "10px 20px", marginLeft: 8 }}
