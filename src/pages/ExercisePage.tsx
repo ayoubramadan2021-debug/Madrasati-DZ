@@ -7,6 +7,7 @@ import ArithmeticExercise from "../features/exercises/templates/ArithmeticExerci
 import CountExercise from "../features/exercises/templates/CountExercise";
 import OrderExercise from "../features/exercises/templates/OrderExercise";
 import McqExercise from "../features/exercises/templates/McqExercise";
+import ColorExercise from "../features/exercises/templates/ColorExercise";
 import dziadHappy from "../assets/dziad-happy.webp";
 
 function withTimeout(p: any, ms = 12000) {
@@ -114,6 +115,9 @@ export default function ExercisePage() {
       break;
     case "mcq":
       body = <McqExercise title={title} instruction={data.instruction} items={data.items} onComplete={onComplete} />;
+      break;
+    case "color":
+      body = <ColorExercise title={title} instruction={data.instruction} palette={data.palette} items={data.items} onComplete={onComplete} />;
       break;
     default:
       body = <p dir="rtl" style={{ textAlign: "center", padding: 40 }}>{type}</p>;
