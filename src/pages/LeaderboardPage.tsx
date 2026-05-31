@@ -7,7 +7,7 @@ import { withTimeout } from "../lib/withTimeout";
 const CSS = [
 "@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');",
 ".lb-root *,.lb-root *::before,.lb-root *::after{box-sizing:border-box;margin:0;padding:0}",
-".lb-root{min-height:100dvh;background:var(--bg);font-family:'Tajawal',sans-serif;direction:rtl;overflow-x:hidden;position:relative;padding-bottom:100px}",
+".lb-root{min-height:100dvh;background:var(--bg);font-family:Tajawal,sans-serif;direction:rtl;overflow-x:hidden;position:relative;padding-bottom:100px}",
 ".lb-orb{position:fixed;pointer-events:none;border-radius:50%;z-index:0}",
 ".lb-ob{width:480px;height:480px;top:-180px;left:-120px;background:radial-gradient(circle,rgba(27,58,107,.6) 0%,transparent 70%);animation:lb-d1 14s ease-in-out infinite alternate}",
 ".lb-og{width:360px;height:360px;bottom:-100px;right:-80px;background:radial-gradient(circle,rgba(232,160,32,.14) 0%,transparent 70%);animation:lb-d2 11s ease-in-out infinite alternate}",
@@ -16,7 +16,7 @@ const CSS = [
 ".lb-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px}",
 ".lb-content{position:relative;z-index:2}",
 ".lb-hero{position:relative;padding:24px 20px 28px;text-align:center}",
-".lb-back{position:absolute;top:20px;right:16px;display:inline-flex;align-items:center;gap:6px;background:var(--border-faint);border:1px solid var(--border);color:var(--text);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:background .2s}",
+".lb-back{position:absolute;top:20px;right:16px;display:inline-flex;align-items:center;gap:6px;background:var(--border-faint);border:1px solid var(--border);color:var(--text);border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:Tajawal,sans-serif;transition:background .2s}",
 ".lb-back:active{background:var(--border-soft)}",
 ".lb-logo{position:relative;display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;margin:12px 0 14px;opacity:0;transform:scale(.7);transition:opacity .7s cubic-bezier(.34,1.56,.64,1),transform .7s cubic-bezier(.34,1.56,.64,1)}",
 ".lb-logo.in{opacity:1;transform:scale(1)}",
@@ -35,14 +35,14 @@ const CSS = [
 ".lb-medal{font-size:34px;margin-bottom:4px;filter:drop-shadow(0 0 10px rgba(0,0,0,.4))}",
 ".lb-pcard{position:relative;border-radius:18px;padding:14px 10px;overflow:hidden;background:var(--surface-2)}",
 ".lb-pcard-glow{position:absolute;inset:0;opacity:.5}",
-".lb-pav{position:relative;font-size:26px}",
+".lb-pav{position:relative;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:18px;font-weight:900;margin:0 auto 4px;color:#fff}",
 ".lb-pname{position:relative;font-weight:800;color:var(--text);font-size:13px;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}",
 ".lb-ppts{position:relative;font-weight:900;font-size:17px;margin-top:2px}",
 ".lb-list{display:flex;flex-direction:column;gap:10px}",
 ".lb-item{position:relative;border-radius:16px;padding:13px 16px;display:flex;align-items:center;gap:14px;overflow:hidden;animation:lb-slide .5s ease backwards}",
 "@keyframes lb-slide{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}",
 ".lb-rank{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:15px;flex-shrink:0}",
-".lb-av{font-size:26px}",
+".lb-av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:15px;font-weight:900;color:#fff;flex-shrink:0}",
 ".lb-ibody{flex:1;min-width:0}",
 ".lb-iname{font-weight:700;color:var(--text);font-size:14px}",
 ".lb-igrade{color:var(--text-faint);font-size:12px;margin-top:2px}",
@@ -51,6 +51,23 @@ const CSS = [
 ".lb-empty{text-align:center;padding:40px;color:var(--text-faint)}",
 ".lb-empty-em{font-size:42px;margin-bottom:8px}",
 ].join("\n");
+
+const AVATAR_COLORS = [
+  "#3B82F6","#22C55E","#EF4444","#A855F7",
+  "#F97316","#06B6D4","#E8A020","#EC4899",
+];
+
+function getInitial(name: string) {
+  if (!name) return "؟";
+  return name.trim()[0].toUpperCase();
+}
+
+function getAvatarColor(name: string) {
+  if (!name) return AVATAR_COLORS[0];
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
+}
 
 export default function LeaderboardPage() {
   const { t } = useLang();
@@ -92,9 +109,9 @@ export default function LeaderboardPage() {
   const cx = (...a: (string | false)[]) => a.filter(Boolean).join(" ");
 
   const podium = [
-    { idx: 1, medal: "🥈", color: "#C0C7D0", flex: 1,   delay: "0.35s", pt: 18 },
+    { idx: 1, medal: "🥈", color: "#C0C7D0", flex: 1,    delay: "0.35s", pt: 18 },
     { idx: 0, medal: "🥇", color: "var(--gold)", flex: 1.25, delay: "0.25s", pt: 26 },
-    { idx: 2, medal: "🥉", color: "#CD7F32", flex: 1,   delay: "0.45s", pt: 18 },
+    { idx: 2, medal: "🥉", color: "#CD7F32", flex: 1,    delay: "0.45s", pt: 18 },
   ];
 
   return (
@@ -123,15 +140,16 @@ export default function LeaderboardPage() {
                 <div style={{ fontSize: 42, marginBottom: 10 }}>📡</div>
                 <div style={{ fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>{t("pf_load_error")}</div>
                 <div style={{ fontSize: 13, marginBottom: 16 }}>{t("pf_check_net")}</div>
-                <button onClick={reload} style={{ padding: "11px 26px", border: "none", borderRadius: 12, background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#3a2400", fontFamily: "'Tajawal',sans-serif", fontSize: 14, fontWeight: 800, cursor: "pointer" }}>إعادة المحاولة ↻</button>
+                <button onClick={reload} style={{ padding: "11px 26px", border: "none", borderRadius: 12, background: "linear-gradient(135deg,var(--gold),var(--gold-deep))", color: "#3a2400", fontFamily: "Tajawal,sans-serif", fontSize: 14, fontWeight: 800, cursor: "pointer" }}>إعادة المحاولة ↻</button>
               </div>
             )}
 
-            {/* المنصة - أول 3 */}
             {!loading && !err && leaders.length >= 3 && (
               <div className="lb-podium">
                 {podium.map((p) => {
                   const l = leaders[p.idx];
+                  const name = l?.full_name || "";
+                  const isMe = l?.id === myId;
                   return (
                     <div
                       key={p.idx}
@@ -141,8 +159,10 @@ export default function LeaderboardPage() {
                       <div className="lb-medal">{p.medal}</div>
                       <div className="lb-pcard" style={{ border: "2px solid " + p.color, boxShadow: "0 6px 24px " + p.color + "30", paddingTop: p.pt }}>
                         <div className="lb-pcard-glow" style={{ background: "radial-gradient(circle at 50% 0%," + p.color + "22,transparent 70%)" }} />
-                        <div className="lb-pav">{l?.id === myId ? "🧑‍🚀" : "👦"}</div>
-                        <div className="lb-pname">{l?.full_name || t("pg_student")}</div>
+                        <div className="lb-pav" style={{ background: isMe ? "var(--gold)" : getAvatarColor(name) }}>
+                          {isMe ? "★" : getInitial(name)}
+                        </div>
+                        <div className="lb-pname">{name || t("pg_student")}</div>
                         <div className="lb-ppts" style={{ color: p.color }}>{l?.points || 0}</div>
                       </div>
                     </div>
@@ -151,10 +171,10 @@ export default function LeaderboardPage() {
               </div>
             )}
 
-            {/* باقي القائمة */}
             <div className="lb-list">
               {leaders.slice(3).map((l, i) => {
                 const isMe = l.id === myId;
+                const name = l.full_name || "";
                 return (
                   <div
                     key={l.id}
@@ -167,11 +187,13 @@ export default function LeaderboardPage() {
                     }}
                   >
                     <div className="lb-rank" style={{ background: "var(--border-faint)", color: "var(--text-muted)" }}>{i + 4}</div>
-                    <div className="lb-av">{isMe ? "🧑‍🚀" : "👦"}</div>
+                    <div className="lb-av" style={{ background: isMe ? "var(--gold)" : getAvatarColor(name) }}>
+                      {isMe ? "★" : getInitial(name)}
+                    </div>
                     <div className="lb-ibody">
                       <div className="lb-iname">
                         {isMe && <span className="lb-me-badge">{t("lb_me")}</span>}
-                        {l.full_name || t("pg_student")}
+                        {name || t("pg_student")}
                       </div>
                       <div className="lb-igrade">{t("lb_year")} {l.grade}</div>
                     </div>
