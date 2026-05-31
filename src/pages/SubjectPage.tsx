@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import appData from "../data/appData";
 import { useLang } from "../i18n/LanguageContext";
 import { getWorlds, getMyWorldProgress } from "../services/worldsService";
+import JourneyMap from "../shared/components/JourneyMap";
 
 const SUBJECT_COLORS: Record<string, string> = {
   math: "#22C55E", arabic: "#EF4444", french: "#3B82F6",
@@ -103,49 +104,13 @@ export default function SubjectPage() {
             <div className={cx("sb-badge", mounted && "in")}>{t("sb_year_badge")} {gradeId} {t("sb_primary")}</div>
           </div>
 
-          <div className="sb-body">
-            {worlds.map((w, i) => {
-              const prog = progress.find((p: any) => p.world_id === w.id);
-              const unlocked = i === 0 || prog?.status === "unlocked" || prog?.status === "completed";
-              const locked = !unlocked;
-              return (
-              <div
-                key={w.id}
-                className="sb-card"
-                style={{ animationDelay: (0.2 + i * 0.1) + "s", boxShadow: "0 6px 22px rgba(0,0,0,.35)", opacity: locked ? 0.55 : 1, cursor: locked ? "not-allowed" : "pointer" }}
-                onClick={() => { if (locked) { setLockedOpen(true); return; } navigate(`/world/${w.id}`); }}
-              >
-                <div className="sb-card-bg" />
-                <div className="sb-card-glow" style={{ boxShadow: "inset 0 0 30px var(--gold)14", borderTop: "3px solid " + (locked ? "var(--text-dim)" : "var(--gold)"), borderRadius: "20px 20px 0 0" }} />
-                <div className="sb-card-in">
-                  <div className="sb-card-ic" style={{ background: locked ? "rgba(120,120,120,.15)" : "linear-gradient(145deg,var(--gold)26,var(--gold)12)", border: "1px solid " + (locked ? "rgba(120,120,120,.3)" : "var(--gold)33"), filter: locked ? "grayscale(1)" : "none" }}>
-                    {locked ? "🔒" : (w.icon || "🌟")}
-                  </div>
-                  <div className="sb-card-n">{w.title_ar}</div>
-                  <div className="sb-card-d">{locked ? "مقفل 🔒" : (lang === "fr" && w.title_fr ? w.title_fr : "")}</div>
-                </div>
-              </div>
-              );
-            })}
-            {SECTIONS.map((sec, i) => (
-              <div
-                key={sec.slug}
-                className="sb-card"
-                style={{ animationDelay: (0.35 + i * 0.1) + "s", boxShadow: "0 6px 22px rgba(0,0,0,.35)" }}
-                onClick={() => navigate(`/grade/${gradeId}/subject/${subject}/section/${sec.slug}`)}
-              >
-                <div className="sb-card-bg" />
-                <div className="sb-card-glow" style={{ boxShadow: "inset 0 0 30px " + sec.color + "14", borderTop: "3px solid " + sec.color, borderRadius: "20px 20px 0 0" }} />
-                <div className="sb-card-in">
-                  <div className="sb-card-ic" style={{ background: "linear-gradient(145deg," + sec.color + "26," + sec.color + "12)", border: "1px solid " + sec.color + "33" }}>
-                    {sec.icon}
-                  </div>
-                  <div className="sb-card-n">{t(("section_" + sec.slug) as any)}</div>
-                  <div className="sb-card-d">{t(("section_" + sec.slug + "_desc") as any)}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <JourneyMap
+            worlds={worlds}
+            progress={progress}
+            lang={lang}
+            onOpen={(id) => navigate(`/world/${id}`)}
+            onLocked={() => setLockedOpen(true)}
+          />
         </div>
 
         {lockedOpen && (
