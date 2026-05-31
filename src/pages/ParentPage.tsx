@@ -38,7 +38,7 @@ const CSS = [
 ".pa-input:focus{border-color:rgba(232,160,32,.5)}",
 ".pa-save{width:100%;margin-top:16px;padding:14px;border:none;border-radius:13px;background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#000;font-family:'Tajawal',sans-serif;font-size:15px;font-weight:800;cursor:pointer}",
 ".pa-msg{margin-top:14px;padding:13px;border-radius:12px;text-align:center;font-size:14px;font-weight:600;background:var(--surface-soft);border:1px solid var(--border);color:#fff}",
-".pa-deny{min-height:100dvh;background:var(--bg);color:var(--text);display:grid;place-items:center;text-align:center;padding:30px;font-family:'Tajawal',sans-serif;direction:rtl}",
+".pa-deny{min-height:100dvh;background:var(--bg);color:var(--text);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;font-family:Tajawal,sans-serif;direction:rtl}",
 ].join("\n");
 
 function ParentPage() {
@@ -86,7 +86,7 @@ function ParentPage() {
   }
   if (authorized === false) {
     return (
-      <div className="pa-deny">
+      <div style={{ minHeight: "100dvh", background: "var(--bg)", color: "var(--text)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "30px", fontFamily: "Tajawal,sans-serif", direction: "rtl" }}>
         <div>
           <div style={{ fontSize: 60, marginBottom: 16 }}>🔒</div>
           <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>{t("pa_denied")}</div>
