@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getQuizzes, submitQuiz } from "../services/quizService";
 import { supabase } from "../lib/supabaseClient";
+import { getWorlds, completeWorld } from "../services/worldsService";
 
 const CSS = [
 "@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');",
@@ -66,9 +67,26 @@ export default function QuizPage() {
     } catch { /* تجاهل بصمت */ }
   }
 
-  function finish() {
+  async function finish() {
     const correct = Object.values(result).filter(Boolean).length;
-    setScore(Math.round((correct / quizzes.length) * 100));
+    const pct = Math.round((correct / quizzes.length) * 100);
+    setScore(pct);
+    // فتح العالم التالي عند النجاح
+    if (pct >= 60 && lessonId) {
+      try {
+        // الدرس -> العالم
+        const { data: lessonRow } = await supabase
+          .from("lessons").select("world_id, subject, grade").eq("id", lessonId).maybeSingle();
+        if (lessonRow?.world_id) {
+          const worlds = await getWorlds(lessonRow.subject, lessonRow.grade);
+          const idx = worlds.findIndex((w: any) => w.id === lessonRow.world_id);
+          const next = idx >= 0 && idx + 1 < worlds.length ? worlds[idx + 1] : null;
+          await completeWorld(lessonRow.world_id, pct, next ? next.id : null);
+        }
+      } catch (e) {
+        console.error("تعذّر فتح العالم التالي:", e);
+      }
+    }
   }
 
   return (
