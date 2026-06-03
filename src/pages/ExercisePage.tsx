@@ -15,6 +15,7 @@ import PaintExercise from "../features/exercises/templates/PaintExercise";
 import BalloonExercise from "../features/exercises/templates/BalloonExercise";
 import ConnectExercise from "../features/exercises/templates/ConnectExercise";
 import GenerateExercise from "../features/exercises/templates/GenerateExercise";
+import LessonScene from "../features/exercises/templates/LessonScene";
 import dziadHappy from "../assets/dziad-happy.webp";
 
 function withTimeout(p: any, ms = 12000) {
@@ -148,6 +149,9 @@ export default function ExercisePage() {
       break;
     case "generate":
       body = <GenerateExercise title={title} instruction={data.instruction} mode={data.mode} max={data.max} rounds={data.rounds} onComplete={onComplete} />;
+      break;
+    case "lesson":
+      body = <LessonScene title={title} instruction={data.instruction} scenes={data.scenes} />;
       break;
     default:
       body = <p dir="rtl" style={{ textAlign: "center", padding: 40 }}>{type}</p>;
