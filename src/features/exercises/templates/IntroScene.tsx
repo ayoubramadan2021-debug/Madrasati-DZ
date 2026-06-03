@@ -135,7 +135,7 @@ export default function IntroScene({ narrator, hotspots, background_image, onDon
         </div>
       )}
 
-      <div style={{ textAlign: "center", marginTop: 16, fontSize: 14, color: NAVY, fontWeight: 700 }}>{found.filter(Boolean).length} / {hotspots.length}</div>
+      <div style={{ textAlign: "center", marginTop: 16, fontSize: 14, color: NAVY, fontWeight: 700, direction: "ltr" }}>{found.filter(Boolean).length} / {hotspots.length}</div>
 
       <button onClick={() => { try { window.speechSynthesis.cancel(); } catch (e) {} onDone?.(); }} disabled={!allFound} style={{ width: "100%", height: 56, marginTop: 16, fontSize: 18, fontWeight: 800, color: allFound ? "#000" : "#fff", background: allFound ? "linear-gradient(135deg," + GOLD + ",#c9810a)" : "#9aa3b2", border: "none", borderRadius: 16, cursor: allFound ? "pointer" : "not-allowed", fontFamily: "inherit", boxShadow: allFound ? "0 6px 18px rgba(232,160,32,.4)" : "none" }}>
         {allFound ? t("cheer_continue") : pickLang({ar:"اكْتَشِفْ كُلَّ العَناصِر أَوّلاً",fr:"Découvre tous les éléments"}, lang)}

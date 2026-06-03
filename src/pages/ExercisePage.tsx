@@ -8,6 +8,13 @@ import CountExercise from "../features/exercises/templates/CountExercise";
 import OrderExercise from "../features/exercises/templates/OrderExercise";
 import McqExercise from "../features/exercises/templates/McqExercise";
 import ColorExercise from "../features/exercises/templates/ColorExercise";
+import DragDropExercise from "../features/exercises/templates/DragDropExercise";
+import CatchExercise from "../features/exercises/templates/CatchExercise";
+import TraceExercise from "../features/exercises/templates/TraceExercise";
+import PaintExercise from "../features/exercises/templates/PaintExercise";
+import BalloonExercise from "../features/exercises/templates/BalloonExercise";
+import ConnectExercise from "../features/exercises/templates/ConnectExercise";
+import GenerateExercise from "../features/exercises/templates/GenerateExercise";
 import dziadHappy from "../assets/dziad-happy.webp";
 
 function withTimeout(p: any, ms = 12000) {
@@ -28,7 +35,7 @@ export default function ExercisePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [type, setType] = useState("");
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState<any>("");
   const [lessonNumber, setLessonNumber] = useState<number | null>(null);
   const [data, setData] = useState<any>(null);
   const [cheer, setCheer] = useState<{ score: number; total: number } | null>(null);
@@ -52,7 +59,7 @@ export default function ExercisePage() {
       if (error) throw error;
       if (!row) throw new Error("التمرين غير موجود (تحقق من المعرّف في الرابط)");
       setType(row.type);
-      setTitle(row.title);
+      try { setTitle(typeof row.title === "string" && row.title.trim().startsWith("{") ? JSON.parse(row.title) : row.title); } catch { setTitle(row.title); }
       setLessonNumber(row.lesson_number);
       setData(row.data);
     } catch (e: any) {
@@ -120,6 +127,27 @@ export default function ExercisePage() {
       break;
     case "color":
       body = <ColorExercise title={title} instruction={data.instruction} palette={data.palette} items={data.items} onComplete={onComplete} />;
+      break;
+    case "dragdrop":
+      body = <DragDropExercise title={title} instruction={data.instruction} slots={data.slots} tokens={data.tokens} onComplete={onComplete} />;
+      break;
+    case "catch":
+      body = <CatchExercise title={title} instruction={data.instruction} rule={data.rule} items={data.items} target={data.target} duration={data.duration} spawnEvery={data.spawnEvery} onComplete={onComplete} />;
+      break;
+    case "trace":
+      body = <TraceExercise title={title} instruction={data.instruction} glyphs={data.glyphs} threshold={data.threshold} onComplete={onComplete} />;
+      break;
+    case "paint":
+      body = <PaintExercise title={title} instruction={data.instruction} colors={data.colors} onComplete={onComplete} />;
+      break;
+    case "balloon":
+      body = <BalloonExercise title={title} instruction={data.instruction} rule={data.rule} items={data.items} target={data.target} duration={data.duration} spawnEvery={data.spawnEvery} onComplete={onComplete} />;
+      break;
+    case "connect":
+      body = <ConnectExercise title={title} instruction={data.instruction} left={data.left} right={data.right} pairs={data.pairs} onComplete={onComplete} />;
+      break;
+    case "generate":
+      body = <GenerateExercise title={title} instruction={data.instruction} mode={data.mode} max={data.max} rounds={data.rounds} onComplete={onComplete} />;
       break;
     default:
       body = <p dir="rtl" style={{ textAlign: "center", padding: 40 }}>{type}</p>;

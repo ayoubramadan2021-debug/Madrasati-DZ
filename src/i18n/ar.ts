@@ -24,6 +24,8 @@ export const ar = {
   // أزرار شائعة
   btn_check: "تحقّق",
   btn_retry: "إعادة المحاولة",
+  btn_start: "ابدأ",
+  btn_done: "تمّ",
   btn_back: "رجوع",
   btn_more: "عرض المزيد",
   btn_send: "إرسال",

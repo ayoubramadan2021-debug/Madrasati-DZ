@@ -26,6 +26,8 @@ export const fr: Record<TranslationKeys, string> = {
   // Boutons communs
   btn_check: "Vérifier",
   btn_retry: "Réessayer",
+  btn_start: "Commencer",
+  btn_done: "Terminé",
   btn_back: "Retour",
   btn_more: "Voir plus",
   btn_send: "Envoyer",
