@@ -29,3 +29,11 @@ dist-ssr
 supabase/.temp/
 *.bak
 *.bak*
+
+# Local backups (not for git)
+backups/
+
+# Test/temp files
+public/test_child.mp3
+regen_taline_ssml.py
+*.bak
