@@ -5,6 +5,7 @@ import { pickLang } from "../lib/pickLang";
 import { supabase } from "../lib/supabaseClient";
 import { getExercises } from "../services/exerciseService";
 import IntroScene from "../features/exercises/templates/IntroScene";
+import StoryLessonScene from "../features/exercises/templates/StoryLessonScene";
 
 const NAVY = "#1B3A6B";
 const GOLD = "#E8A020";
@@ -49,6 +50,30 @@ export default function LessonDetailPage() {
   const cx = (...a: (string | false)[]) => a.filter(Boolean).join(" ");
 
   // فرع الوضعية الانطلاقية
+  const goExercises = () => {
+    const first = exercises[0];
+    if (first) navigate(`/exercise/${first.id}`);
+    else navigate(-1);
+  };
+
+  // درس قصصي (story-driven lesson)
+  if (structured?.kind === "story_lesson") {
+    return (
+      <div style={{ minHeight: "100dvh", background: "var(--bg)", fontFamily: "Tajawal,sans-serif", direction: "rtl" }}>
+        <div style={{ padding: "16px 8px", position: "relative", zIndex: 10 }}>
+          <button onClick={() => navigate(-1)} style={{ background: "var(--border-faint)", border: "1px solid var(--border)", color: "var(--text)", borderRadius: 12, padding: "8px 14px", fontSize: 13, fontWeight: 700, fontFamily: "Tajawal,sans-serif", marginRight: 8 }}>← {t("btn_back")}</button>
+        </div>
+        <StoryLessonScene
+          audio_base={structured.audio_base}
+          intro={structured.intro}
+          discover={structured.discover}
+          recap={structured.recap}
+          onDone={goExercises}
+        />
+      </div>
+    );
+  }
+
   if (lesson?.lesson_type === "intro" && structured?.hotspots) {
     return (
       <div style={{ minHeight: "100dvh", background: "var(--bg)", fontFamily: "Tajawal,sans-serif", direction: "rtl", paddingBottom: 100 }}>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>الدرس 1 — الأعداد من 1 إلى 5 | Taalim-DZ v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B3A6B; --navy-deep: #0F2447;
+    --gold: #E8A020; --gold-soft: #F5C257; --gold-glow: #FFD982;
+    --cream: #FFF8EC; --cream-deep: #FCEFD0;
+    --green: #1FA463;
+    --bg: #F7EBD0; --surface: #FFFFFF;
+    --text: #2A1B0A; --text-soft: #6B5840;
+    --border: #E0CFA8;
+    --font: 'Tajawal', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    font-family: var(--font); color: var(--text); background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    user-select: none; -webkit-tap-highlight-color: transparent;
+  }
+  .phone {
+    width: 100vw; height: 100dvh; max-width: 480px;
+    margin: 0 auto; position: relative; overflow: hidden;
+    background: var(--bg); display: flex; flex-direction: column;
+  }
+  .topbar {
+    flex-shrink: 0; padding: 14px 16px 8px;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 10;
+  }
+  .back-btn {
+    background: rgba(255,255,255,.7); border: 1px solid var(--border);
+    padding: 8px 16px; border-radius: 14px;
+    font: 700 14px var(--font); cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,.05);
+  }
+  .progress-dots { display: flex; gap: 6px; }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--border); transition: all .3s ease;
+  }
+  .dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
+  .dot.done { background: var(--green); }
+  .stage { flex: 1; position: relative; overflow: hidden; }
+  .scene {
+    position: absolute; inset: 0;
+    display: none; flex-direction: column;
+    opacity: 0; transition: opacity .4s ease;
+  }
+  .scene.active { display: flex; opacity: 1; }
+  .intro-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at top, #FFE9B8 0%, transparent 60%),
+      linear-gradient(180deg, #F7EBD0 0%, #E8C88A 100%);
+  }
+  .intro-bg::before, .intro-bg::after {
+    content: ''; position: absolute;
+    width: 60px; height: 60px;
+    background: radial-gradient(circle, var(--gold-glow), transparent 70%);
+    border-radius: 50%; opacity: .5;
+  }
+  .intro-bg::before { top: 15%; left: 8%; animation: float 4s ease-in-out infinite; }
+  .intro-bg::after { bottom: 25%; right: 10%; animation: float 5s ease-in-out infinite reverse; }
+  .intro-content {
+    position: relative; z-index: 2; flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: space-between;
+    padding: 20px 24px 32px;
+  }
+  .lesson-badge {
+    display: inline-block; background: var(--navy); color: var(--cream);
+    font-size: 13px; font-weight: 700;
+    padding: 6px 14px; border-radius: 999px;
+    letter-spacing: .5px; margin-bottom: 12px;
+  }
+  .intro-title-wrap { text-align: center; margin-top: 16px; }
+  .intro-title {
+    font-size: 28px; font-weight: 900; color: var(--navy-deep);
+    line-height: 1.2; margin-bottom: 8px;
+  }
+  .intro-sub { font-size: 15px; color: var(--text-soft); font-weight: 500; }
+  .char-placeholder {
+    width: 120px; height: 200px;
+    background: linear-gradient(180deg, #FFB8C4 0%, #D67587 100%);
+    border-radius: 60px 60px 30px 30px;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding-top: 30px; font-size: 60px;
+    box-shadow: 0 8px 16px rgba(0,0,0,.15);
+    position: relative;
+  }
+  .char-placeholder.boy { background: linear-gradient(180deg, #80C7E8 0%, #4A90C0 100%); }
+  .char-placeholder::after {
+    content: attr(data-name); position: absolute; bottom: -22px;
+    left: 50%; transform: translateX(-50%);
+    font-size: 12px; font-weight: 700; color: var(--navy-deep);
+    background: white; padding: 2px 10px; border-radius: 999px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .karaoke-bubble {
+    background: var(--surface);
+    border: 2px solid var(--gold); border-radius: 20px;
+    padding: 16px 20px; max-width: 340px; min-height: 90px;
+    font-size: 17px; font-weight: 600; line-height: 1.8;
+    color: var(--navy-deep); position: relative;
+    box-shadow: 0 6px 20px rgba(232, 160, 32, .2);
+    text-align: center;
+  }
+  .karaoke-bubble::before {
+    content: ''; position: absolute;
+    bottom: -10px; right: 30px;
+    width: 0; height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid var(--gold);
+  }
+  .karaoke-bubble::after {
+    content: ''; position: absolute;
+    bottom: -7px; right: 33px;
+    width: 0; height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 9px solid var(--surface);
+  }
+  .kw {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .25s ease, transform .25s ease, color .15s ease;
+    margin: 0 2px;
+  }
+  .kw.shown { opacity: 1; transform: translateY(0); }
+  .kw.current { color: var(--gold); font-weight: 900; transform: translateY(-3px) scale(1.1); }
+  .cta {
+    background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+    color: var(--navy-deep); border: none;
+    padding: 16px 40px; border-radius: 999px;
+    font: 900 18px var(--font); cursor: pointer;
+    box-shadow: 0 0 0 4px rgba(232,160,32,.2), 0 8px 24px rgba(232,160,32,.4);
+    animation: pulse-gold 2s ease-in-out infinite;
+    transition: transform .15s ease;
+  }
+  .cta:active { transform: scale(.96); }
+  .discover-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, #FFF8EC 0%, #FFEED0 50%, #F7DBA0 100%);
+  }
+  .discover-content {
+    position: relative; z-index: 2; flex: 1;
+    display: flex; flex-direction: column;
+    padding: 16px; gap: 12px;
+  }
+  .story-card {
+    flex: 1; background: var(--surface);
+    border-radius: 28px;
+    box-shadow: 0 8px 24px rgba(27, 58, 107, .12);
+    overflow: hidden; display: flex; flex-direction: column;
+    position: relative; border: 3px solid var(--gold);
+  }
+  .number-display {
+    background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+    color: var(--cream); padding: 20px 24px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .number-display::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .number-arabic {
+    font-size: 96px; font-weight: 900; line-height: 1;
+    color: var(--gold);
+    text-shadow: 0 4px 12px rgba(232, 160, 32, .5);
+    animation: zoom-in .6s cubic-bezier(.34,1.56,.64,1);
+  }
+  .number-french {
+    font-size: 18px; color: var(--cream-deep);
+    font-weight: 500; margin-top: 4px; opacity: .85;
+  }
+  .scene-visual {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 20px; gap: 16px;
+  }
+  .characters-row {
+    display: flex; align-items: flex-end; gap: 12px; height: 130px;
+  }
+  .apples {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    justify-content: center; min-height: 60px; max-width: 280px;
+  }
+  .apple {
+    font-size: 42px;
+    animation: pop-in .4s cubic-bezier(.34,1.56,.64,1) backwards;
+    filter: drop-shadow(0 4px 8px rgba(200, 60, 30, .3));
+  }
+  .apple:nth-child(1) { animation-delay: .1s; }
+  .apple:nth-child(2) { animation-delay: .25s; }
+  .apple:nth-child(3) { animation-delay: .4s; }
+  .apple:nth-child(4) { animation-delay: .55s; }
+  .apple:nth-child(5) { animation-delay: .7s; }
+  .karaoke-ribbon {
+    background: var(--cream);
+    border: 2px dashed var(--gold);
+    border-radius: 16px;
+    padding: 14px 18px; margin: 0 16px 16px;
+    text-align: center;
+    font-size: 17px; font-weight: 700;
+    color: var(--navy-deep); line-height: 1.7;
+    min-height: 56px;
+  }
+  .nav-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 8px;
+  }
+  .nav-btn {
+    background: var(--surface); border: 2px solid var(--gold);
+    width: 56px; height: 56px; border-radius: 50%;
+    font-size: 24px; cursor: pointer; color: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 12px rgba(232, 160, 32, .25);
+    transition: transform .15s ease;
+  }
+  .nav-btn:active { transform: scale(.92); }
+  .nav-btn:disabled { opacity: .35; cursor: not-allowed; }
+  .nav-btn.primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+    color: var(--navy-deep); font-weight: 900;
+  }
+  .step-indicator {
+    font-size: 14px; color: var(--text-soft); font-weight: 700;
+    background: rgba(255,255,255,.8);
+    padding: 6px 14px; border-radius: 999px;
+    border: 1px solid var(--border);
+  }
+  .audio-btn {
+    position: absolute; top: 16px; left: 16px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--gold); color: white;
+    border: 3px solid var(--cream);
+    font-size: 20px; cursor: pointer;
+    box-shadow: 0 4px 12px rgba(232, 160, 32, .4);
+    z-index: 5;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .audio-btn.playing { animation: subtle-pulse 1s ease-in-out infinite; }
+  .audio-btn:active { transform: scale(.92); }
+  .recap-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, #FFE5A8 0%, #F4B968 60%, #D89A40 100%);
+  }
+  .recap-bg::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle 4px at 15% 20%, var(--gold-glow), transparent),
+      radial-gradient(circle 3px at 85% 15%, var(--navy), transparent),
+      radial-gradient(circle 5px at 75% 75%, var(--gold), transparent),
+      radial-gradient(circle 3px at 25% 85%, var(--navy-deep), transparent);
+    opacity: .5;
+  }
+  .recap-content {
+    position: relative; z-index: 2; flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: space-between;
+    padding: 24px;
+  }
+  .stars-row { display: flex; gap: 12px; margin-top: 8px; }
+  .star {
+    font-size: 56px; opacity: 0;
+    filter: drop-shadow(0 6px 12px rgba(232, 160, 32, .6));
+    animation: star-pop .5s cubic-bezier(.34,1.56,.64,1) forwards;
+  }
+  .star:nth-child(1) { animation-delay: .3s; }
+  .star:nth-child(2) { animation-delay: .6s; }
+  .star:nth-child(3) { animation-delay: .9s; }
+  .recap-title {
+    font-size: 32px; font-weight: 900; color: var(--navy-deep);
+    text-shadow: 0 2px 0 rgba(255,255,255,.5);
+  }
+  .recap-summary {
+    background: rgba(255, 255, 255, .85);
+    backdrop-filter: blur(8px);
+    border: 2px solid var(--gold); border-radius: 20px;
+    padding: 18px 24px; text-align: center;
+    font-size: 16px; font-weight: 600; color: var(--navy-deep);
+    line-height: 1.7; max-width: 360px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.1);
+    min-height: 80px;
+  }
+  .xp-badge {
+    background: var(--navy-deep); color: var(--gold-glow);
+    padding: 12px 28px; border-radius: 999px;
+    font-size: 20px; font-weight: 900;
+    box-shadow: 0 6px 16px rgba(15, 36, 71, .4);
+    animation: xp-bounce 1s cubic-bezier(.34,1.56,.64,1) 1.3s backwards;
+  }
+  @keyframes float { 0%,100% { transform: translate(0,0); } 50% { transform: translate(10px,-15px); } }
+  @keyframes pulse-gold {
+    0%,100% { box-shadow: 0 0 0 4px rgba(232,160,32,.2), 0 8px 24px rgba(232,160,32,.4); }
+    50% { box-shadow: 0 0 0 12px rgba(232,160,32,.05), 0 8px 32px rgba(232,160,32,.6); }
+  }
+  @keyframes zoom-in { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  @keyframes pop-in { from { transform: scale(0) rotate(-180deg); opacity: 0; } to { transform: scale(1) rotate(0); opacity: 1; } }
+  @keyframes star-pop {
+    0% { transform: scale(0) rotate(-30deg); opacity: 0; }
+    60% { transform: scale(1.3) rotate(10deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0); opacity: 1; }
+  }
+  @keyframes xp-bounce {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes subtle-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+  .stage-nav {
+    position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+    z-index: 100; display: flex; gap: 8px;
+    background: rgba(15, 36, 71, .85); backdrop-filter: blur(12px);
+    padding: 8px 12px; border-radius: 999px;
+  }
+  .stage-nav button {
+    background: transparent; border: 1px solid var(--gold-soft);
+    color: var(--gold-glow);
+    padding: 6px 12px; border-radius: 999px;
+    font: 700 12px var(--font); cursor: pointer;
+  }
+  .stage-nav button.active {
+    background: var(--gold); color: var(--navy-deep); border-color: var(--gold);
+  }
+
+  /* Character images (real avatars) */
+  .char-img {
+    height: 200px;
+    width: auto;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,.15));
+    object-fit: contain;
+    animation: gentle-bob 3s ease-in-out infinite;
+  }
+  .char-img-small {
+    height: 100%;
+    width: auto;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,.15));
+    object-fit: contain;
+  }
+  @keyframes gentle-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* Character images (real avatars) */
+  .char-img {
+    height: 200px;
+    width: auto;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,.15));
+    object-fit: contain;
+    animation: gentle-bob 3s ease-in-out infinite;
+  }
+  .char-img-small {
+    height: 100%;
+    width: auto;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,.15));
+    object-fit: contain;
+  }
+  @keyframes gentle-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="topbar">
+    <button class="back-btn">← رجوع</button>
+    <div class="progress-dots">
+      <div class="dot active" id="dot-0"></div>
+      <div class="dot" id="dot-1"></div>
+      <div class="dot" id="dot-2"></div>
+    </div>
+    <div style="width: 60px"></div>
+  </div>
+
+  <div class="stage">
+
+    <div class="scene active" id="scene-intro">
+      <div class="intro-bg"></div>
+      <div class="intro-content">
+        <div class="intro-title-wrap">
+          <div class="lesson-badge">العالم 1 · في المدرسة</div>
+          <h1 class="intro-title">الأعداد من 1 إلى 5</h1>
+          <p class="intro-sub">سنتعلّم كيف نعدّ مع الأستاذة تالين</p>
+        </div>
+        <img class="char-img" src="/public/characters/taline_full.webp" alt="تالين">
+        <div class="karaoke-bubble" id="intro-bubble"></div>
+        <button class="cta" onclick="goScene('discover')">هَيَّا نَبْدَأ ✨</button>
+      </div>
+    </div>
+
+    <div class="scene" id="scene-discover">
+      <div class="discover-bg"></div>
+      <div class="discover-content">
+        <div class="story-card">
+          <button class="audio-btn" id="audio-btn" onclick="playStepAudio()">🔊</button>
+          <div class="number-display">
+            <div class="number-arabic" id="num-ar">1</div>
+            <div class="number-french" id="num-fr">un — وَاحِد</div>
+          </div>
+          <div class="scene-visual">
+            <div class="characters-row" id="chars-row"></div>
+            <div class="apples" id="apples-row"></div>
+          </div>
+          <div class="karaoke-ribbon" id="story-bubble"></div>
+        </div>
+        <div class="nav-row">
+          <button class="nav-btn" id="prev-step" onclick="prevStep()">‹</button>
+          <div class="step-indicator">
+            <span id="step-num">1</span> / 5
+          </div>
+          <button class="nav-btn primary" id="next-step" onclick="nextStep()">›</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="scene" id="scene-recap">
+      <div class="recap-bg"></div>
+      <div class="recap-content">
+        <div style="text-align:center">
+          <div class="stars-row">
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+          </div>
+        </div>
+        <h2 class="recap-title">أَحْسَنْت!</h2>
+        <img class="char-img" src="/public/characters/khalil_full.webp" alt="خليل">
+        <div class="karaoke-bubble" id="recap-bubble"></div>
+        <div class="xp-badge">+50 XP 💎</div>
+        <button class="cta" onclick="alert('انتقل إلى الدرس التالي')">
+          الدَّرْسُ التَّالِي ←
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="stage-nav">
+    <button class="active" data-scene="intro" onclick="goScene('intro', this)">المشهد الافتتاحي</button>
+    <button data-scene="discover" onclick="goScene('discover', this)">اكتشف</button>
+    <button data-scene="recap" onclick="goScene('recap', this)">تعلّمت</button>
+  </div>
+
+</div>
+<script>
+  const AUDIO_BASE = '/public/audio/lesson_1';
+
+  const STORY = [
+    { ar: '1', fr: 'un — وَاحِد',     apples: 1, chars: ['khalil'],           audio: 'step_1_ar' },
+    { ar: '2', fr: 'deux — اِثْنَان',  apples: 2, chars: ['khalil','taline'],  audio: 'step_2_ar' },
+    { ar: '3', fr: 'trois — ثَلَاثَة', apples: 3, chars: ['khalil','taline'],  audio: 'step_3_ar' },
+    { ar: '4', fr: 'quatre — أَرْبَعَة',apples: 4, chars: ['khalil','taline'], audio: 'step_4_ar' },
+    { ar: '5', fr: 'cinq — خَمْسَة',   apples: 5, chars: ['khalil','taline'],  audio: 'step_5_ar' },
+  ];
+
+  let currentStep = 0;
+  let currentAudio = null;
+  let karaokeTimers = [];
+
+  async function loadTimings(audioKey) {
+    try {
+      const res = await fetch(`${AUDIO_BASE}/${audioKey}.json`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.json();
+    } catch (e) {
+      console.warn(`No timings for ${audioKey}:`, e);
+      return null;
+    }
+  }
+
+  function clearKaraokeTimers() {
+    karaokeTimers.forEach(t => clearTimeout(t));
+    karaokeTimers = [];
+  }
+
+  function stopAudio() {
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      currentAudio = null;
+    }
+    clearKaraokeTimers();
+    document.getElementById('audio-btn')?.classList.remove('playing');
+  }
+
+  function renderKaraokeWords(container, words) {
+    container.innerHTML = '';
+    words.forEach((w, i) => {
+      const span = document.createElement('span');
+      span.className = 'kw';
+      span.id = `${container.id}-w${i}`;
+      span.textContent = w.text;
+      container.appendChild(span);
+      container.appendChild(document.createTextNode(' '));
+    });
+  }
+
+  async function playKaraoke(audioKey, container) {
+    stopAudio();
+    const words = await loadTimings(audioKey);
+
+    if (!words || words.length === 0) {
+      container.querySelectorAll('.kw').forEach(el => el.classList.add('shown'));
+      return;
+    }
+
+    renderKaraokeWords(container, words);
+
+    const audio = new Audio(`${AUDIO_BASE}/${audioKey}.mp3`);
+    currentAudio = audio;
+    audio.play().catch(e => console.warn('Audio play failed:', e));
+
+    const btn = document.getElementById('audio-btn');
+    btn?.classList.add('playing');
+
+    audio.addEventListener('ended', () => {
+      btn?.classList.remove('playing');
+      container.querySelectorAll('.kw').forEach(el => el.classList.remove('current'));
+    });
+
+    words.forEach((w, i) => {
+      const showTimer = setTimeout(() => {
+        const el = document.getElementById(`${container.id}-w${i}`);
+        if (!el) return;
+        container.querySelectorAll('.kw.current').forEach(p => p.classList.remove('current'));
+        el.classList.add('shown', 'current');
+      }, w.offset);
+
+      const unhighlightTimer = setTimeout(() => {
+        const el = document.getElementById(`${container.id}-w${i}`);
+        if (el) el.classList.remove('current');
+      }, w.offset + w.duration);
+
+      karaokeTimers.push(showTimer, unhighlightTimer);
+    });
+  }
+
+  async function initIntro() {
+    const bubble = document.getElementById('intro-bubble');
+    const words = await loadTimings('intro_ar');
+    if (words) {
+      renderKaraokeWords(bubble, words);
+      setTimeout(() => playKaraoke('intro_ar', bubble), 500);
+    } else {
+      bubble.textContent = 'مَرْحَبًا يَا صَدِيقِي! أَنَا الْأُسْتَاذَةُ تَالِين.';
+    }
+  }
+
+  async function renderStep() {
+    stopAudio();
+    const s = STORY[currentStep];
+
+    document.getElementById('num-ar').textContent = s.ar;
+    document.getElementById('num-fr').textContent = s.fr;
+    document.getElementById('step-num').textContent = currentStep + 1;
+
+    const numEl = document.getElementById('num-ar');
+    numEl.style.animation = 'none';
+    setTimeout(() => { numEl.style.animation = 'zoom-in .6s cubic-bezier(.34,1.56,.64,1)'; }, 10);
+
+    const applesRow = document.getElementById('apples-row');
+    applesRow.innerHTML = '';
+    for (let i = 0; i < s.apples; i++) {
+      const a = document.createElement('span');
+      a.className = 'apple';
+      a.textContent = '🍎';
+      applesRow.appendChild(a);
+    }
+
+    const charsRow = document.getElementById('chars-row');
+    charsRow.innerHTML = '';
+    s.chars.forEach(c => {
+      const img = document.createElement('img');
+      img.className = 'char-img-small';
+      img.src = `/public/characters/${c}_full.webp`;
+      img.alt = c === 'khalil' ? 'خليل' : 'تالين';
+      charsRow.appendChild(img);
+    });
+
+    const bubble = document.getElementById('story-bubble');
+    const words = await loadTimings(s.audio);
+    if (words) {
+      renderKaraokeWords(bubble, words);
+      setTimeout(() => playKaraoke(s.audio, bubble), 600);
+    }
+
+    document.getElementById('prev-step').disabled = currentStep === 0;
+    document.getElementById('next-step').textContent = currentStep === STORY.length - 1 ? '✓' : '›';
+  }
+
+  function nextStep() {
+    if (currentStep < STORY.length - 1) {
+      currentStep++;
+      renderStep();
+    } else {
+      goScene('recap');
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 0) {
+      currentStep--;
+      renderStep();
+    }
+  }
+
+  function playStepAudio() {
+    const s = STORY[currentStep];
+    const bubble = document.getElementById('story-bubble');
+    playKaraoke(s.audio, bubble);
+  }
+
+  async function initRecap() {
+    const bubble = document.getElementById('recap-bubble');
+    const words = await loadTimings('recap_ar');
+    if (words) {
+      renderKaraokeWords(bubble, words);
+      setTimeout(() => playKaraoke('recap_ar', bubble), 1400);
+    } else {
+      bubble.textContent = 'الْيَوْمَ تَعَلَّمْنَا الْأَعْدَادَ: 1 · 2 · 3 · 4 · 5';
+    }
+    document.querySelectorAll('.star').forEach(s => {
+      s.style.animation = 'none';
+      setTimeout(() => s.style.animation = '', 10);
+    });
+  }
+
+  function goScene(name, btnEl) {
+    stopAudio();
+    document.querySelectorAll('.scene').forEach(el => el.classList.remove('active'));
+    document.getElementById(`scene-${name}`).classList.add('active');
+
+    if (name === 'intro')    initIntro();
+    if (name === 'discover') { currentStep = 0; renderStep(); }
+    if (name === 'recap')    initRecap();
+
+    document.querySelectorAll('.stage-nav button').forEach(b => b.classList.remove('active'));
+    if (btnEl && btnEl.classList) {
+      btnEl.classList.add('active');
+    } else {
+      document.querySelector(`.stage-nav button[data-scene="${name}"]`)?.classList.add('active');
+    }
+
+    const order = { intro: 0, discover: 1, recap: 2 };
+    const idx = order[name];
+    [0,1,2].forEach(i => {
+      const d = document.getElementById(`dot-${i}`);
+      d.classList.remove('active', 'done');
+      if (i < idx) d.classList.add('done');
+      else if (i === idx) d.classList.add('active');
+    });
+  }
+
+  initIntro();
+</script>
+</body>
+</html>
