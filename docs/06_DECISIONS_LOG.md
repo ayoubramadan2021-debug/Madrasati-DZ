@@ -1,3 +1,32 @@
+## 2026-06-09 — قرارات معماريّة محوريّة
+
+### قرار 1: قالب الدرس (story-driven Discover)
+**القرار:** StoryLessonScene بـ3 مشاهد (Intro/Discover/Recap)، Discover = 5 شرائح story-driven مع karaoke.
+**البدائل المرفوضة:** صفحات منفصلة (يكسر التدفّق)، lesson طويل (سعة انتباه 5-7 سنوات لا تتحمّل).
+
+### قرار 2: مقاربة المشاهد (DALL-E الكامل)
+**السياق:** WorldIntroScene V1 (composite) أنتج شخصيات «طافية»، رفضها الـuser بحق.
+**تقييم البدائل:**
+- Pixi.js: مرفوض (sprite sheets + Spine + desktop)
+- Three.js: مرفوض (Blender + 3D models)
+- Lottie: مرفوض جزئياً (يحتاج Rive)
+**القرار:** صور DALL-E كاملة + Lottie للتأثيرات لاحقاً.
+
+### قرار 3: أصوات الأطفال (الصمت المتعمّد)
+edge-tts ar-DZ لا يقدّم أصوات أطفال مقبولة. الأطفال يظهرون بصرياً فقط، السرد بصوت تالين/خليل.
+**بديل مؤجّل:** ElevenLabs لاحقاً.
+
+### قرار 4: منطق "عُرض مرّة واحدة"
+جدول world_intro_views (user_id, world_id, viewed_at) + RLS + فحص في WorldPage قبل الـrender.
+
+### قرار 5: drag & drop library
+@dnd-kit/core (touch-friendly، 30KB، يستعمله Lingokids). البدائل (react-dnd, HTML5 native) لا تدعم touch بشكل مستقرّ.
+
+### قرار 6: السؤال التفاعلي (3 إجابات صحيحة)
+كل الإجابات صحيحة (السلام، الجلوس، الاستماع). الترتيب حر. الأساس التربوي: «الأدب» متعدّد الأشكال.
+
+---
+
 # سجلّ القرارات
 
 ## الطريقة العامة

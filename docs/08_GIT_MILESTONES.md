@@ -1,3 +1,18 @@
+## 2026-06-09 — 6 commits متتالية
+
+| Hash | الإنجاز |
+|------|---------|
+| 8cf0529 | POC الدرس 1 كامل (Numbers 1-5، 43 ملف، 1938 سطر) |
+| a97ae0b | إضافة أصول المشهد الافتتاحي (3 أفاتار + 2 خلفيات + 9 أصوات) |
+| a78dbf3 | 6 مشاهد DALL-E سينمائية للعالم 1 |
+| e2e94b0 | WorldIntroSceneV2 + karaoke + 3-correct-answers logic |
+| 60e9eb3 | Integration في WorldPage + DB (world_intro_views) |
+| 619d1d2 | تثبيت @dnd-kit/core للـPaintExercise القادم |
+
+**النتيجة:** الدرس 1 + المشهد الافتتاحي للعالم 1 live ومُختبَران.
+
+---
+
 fb353ac feat: زر اختبار العالم في WorldPage (اكتمال حلقة الوصول)
 924cfc2 feat: منطق الفتح الكامل (نجاح الاختبار يفتح العالم التالي)
 73e3192 feat: واجهة اختبار العالم WorldQuizPage (أسئلة + نتيجة + صياغة مهذبة)

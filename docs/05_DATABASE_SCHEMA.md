@@ -1,3 +1,35 @@
+## تحديث 2026-06-09 — جداول المشهد الافتتاحي
+
+### جدول جديد: world_intro_views
+يتتبّع من شاهد المشهد الافتتاحي لكل عالم.
+
+- Columns: user_id (uuid, FK auth.users), world_id (uuid, FK worlds), viewed_at (timestamptz, default now())
+- PRIMARY KEY: (user_id, world_id)
+- RLS: enabled
+- Policies:
+  - users_read_own_intro_views: SELECT حيث user_id = auth.uid()
+  - users_insert_own_intro_views: INSERT حيث user_id = auth.uid()
+
+### عمود جديد: worlds.intro_content (jsonb)
+يحفظ بنية المشهد الافتتاحي (slides + audio + options).
+
+**بنية الـJSON:**
+- audio_base: المسار الأساس للصوتيات
+- slides: array من الشرائح، كل شريحة:
+  - scene_image: مسار الصورة
+  - audio_key: مفتاح الصوت
+  - options (اختياري): قائمة بطاقات الإجابات لشريحة السؤال
+  - audio_correct, audio_retry: للسؤال التفاعلي
+  - is_closing, cta_text: للشريحة الأخيرة
+
+### Lesson 1 المُدخَل
+- ID: b5683a02-a878-4408-8e42-90ca32919aa4
+- World: b0a43712-8b45-428d-bea2-55ff3de52d3a (العالم 1)
+- Type: story_lesson
+- Content: JSON كامل (intro + discover.steps + recap)
+
+---
+
 # مخطّط قاعدة البيانات — exercises
 
 ## enum: exercise_type
