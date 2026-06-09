@@ -13,6 +13,7 @@ export default function WorldPage() {
   const [lessons, setLessons] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [showIntro, setShowIntro] = useState(false);
+  const [isReplay, setIsReplay] = useState(false);
   const [introChecked, setIntroChecked] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -51,13 +52,22 @@ export default function WorldPage() {
 
   const handleIntroDone = async () => {
     setShowIntro(false);
+    if (isReplay) {
+      setIsReplay(false);
+      return;
+    }
     const { data: userData } = await supabase.auth.getUser();
     if (userData?.user && world) {
-      await supabase.from("world_intro_views").insert({
+      await supabase.from("world_intro_views").upsert({
         user_id: userData.user.id,
         world_id: world.id,
-      });
+      }, { onConflict: "user_id,world_id" });
     }
+  };
+
+  const handleReplayIntro = () => {
+    setIsReplay(true);
+    setShowIntro(true);
   };
 
   // Show intro scene if not viewed
@@ -74,7 +84,12 @@ export default function WorldPage() {
   return (
     <div style={{ minHeight: "100dvh", background: "var(--bg)", fontFamily: "Tajawal,sans-serif", direction: "rtl", paddingBottom: 100 }}>
       <div style={{ padding: "24px 16px", position: "relative", zIndex: 2 }}>
-        <button onClick={() => navigate(-1)} style={{ background: "var(--border-faint)", border: "1px solid var(--border)", color: "var(--text)", borderRadius: 12, padding: "8px 14px", fontSize: 13, fontWeight: 700, fontFamily: "Tajawal,sans-serif", marginBottom: 18 }}>← {t("btn_back")}</button>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18, gap: 8 }}>
+          <button onClick={() => navigate(-1)} style={{ background: "var(--border-faint)", border: "1px solid var(--border)", color: "var(--text)", borderRadius: 12, padding: "8px 14px", fontSize: 13, fontWeight: 700, fontFamily: "Tajawal,sans-serif" }}>← {t("btn_back")}</button>
+          {world?.intro_content && (
+            <button onClick={handleReplayIntro} style={{ background: "linear-gradient(135deg,var(--gold),#FFB84D)", border: "none", color: "#fff", borderRadius: 12, padding: "8px 14px", fontSize: 13, fontWeight: 700, fontFamily: "Tajawal,sans-serif", cursor: "pointer", boxShadow: "0 4px 12px rgba(232,160,32,.35)" }}>🎬 شاهد المقدمة</button>
+          )}
+        </div>
 
         <div style={{ textAlign: "center", marginBottom: 24 }}>
           <div style={{ fontSize: 56, marginBottom: 10 }}>{world?.icon || "🌟"}</div>

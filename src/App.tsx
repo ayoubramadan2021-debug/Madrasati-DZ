@@ -21,7 +21,6 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/exercise-demo" element={<ExerciseDemoPage />} />
-          <Route path="/exercise-test" element={lazy(() => import("./pages/ExerciseTestPage"), "اختبار التمرين")} />
         <Route path="/ai-tutor" element={<AiTutorPage />} />
 
         {/* مسار المادة والأقسام - موحّد مع روابط الصفحات */}
@@ -32,8 +31,6 @@ export default function App() {
         {/* مسارات الدروس والتمارين والاختبارات */}
         <Route path="/world/:worldId" element={lazy(() => import("./pages/WorldPage"), "العالم")} />
         <Route path="/world/:worldId/quiz" element={lazy(() => import("./pages/WorldQuizPage"), "اختبار العالم")} />
-        <Route path="/lesson/:lessonId" element={lazy(() => import("./pages/LessonDetailPage"), "الدرس")} />
-        <Route path="/exercise/:exerciseId" element={lazy(() => import("./pages/ExercisePage"), "التمارين")} />
         <Route path="/quiz/:lessonId" element={lazy(() => import("./pages/QuizPage"), "الاختبارات")} />
         <Route path="/quiz" element={lazy(() => import("./pages/QuizPage"), "الاختبارات")} />
 
