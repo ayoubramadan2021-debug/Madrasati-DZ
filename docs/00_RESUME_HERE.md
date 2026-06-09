@@ -1,110 +1,55 @@
-# 🎯 نقطة الاستئناف — Taalim-DZ
-
-> **آخر تحديث:** 2026-06-09
-> **الحالة:** Lesson 1 + World 1 Intro live ومُختبَران ✅
+# نقطة الاستئناف — Taalim-DZ
+> **آخر تحديث:** 2026-06-09 (مساءً)
+> **الحالة:** Clean slate جاهز لبناء Lesson Template v2 ✅
 
 ---
 
 ## 📍 أين توقّفنا
 
-### آخر إنجاز
-- ✅ Lesson 1 (Numbers 1-5) كامل ومُختبَر
-- ✅ World 1 Intro Scene كامل (6 DALL-E + karaoke + DB)
-- ✅ @dnd-kit/core@6.3.1 مثبّت
-- ✅ صورة التفّاحة جاهزة (نسختان: outline + colored) في Downloads
+### الإنجاز الكبير اليوم
+✅ **Refactor كامل: clean slate لبناء v2**
+- DB: 4 أعمدة جديدة في lessons + جدولان جديدان (world_unlocks, exercise_attempts)
+- حذف 11 ملف exercise قديم + 3 pages قديمة + 3 routes
+- 3388 سطر كود قديم محذوف
+- مستند 00_LESSON_BLUEPRINT.md المرجعي جاهز
 
-### آخر commits
-- 5c3a408 docs: update for 2026-06-09 session
-- 619d1d2 chore: install @dnd-kit/core
-- 60e9eb3 integrate intro scene into WorldPage
-- e2e94b0 complete intro scene with DALL-E + karaoke
-- a78dbf3 6 DALL-E scenes for school intro
-- a97ae0b add assets for upcoming intro scene
-- 8cf0529 Lesson 1 POC complete
+### آخر commit
+- 25257b7 refactor: clean slate for lesson template v2
+- (محلي، لم يُرفع لـorigin/dev بعد)
 
 ---
 
-## ⏭️ الخطوة القادمة: PaintExercise (قسم «أَنْجِزُ» للدرس 1)
+## ⏭️ الجلسة القادمة: الأيام 3-5 — درس نموذجي
 
-### المقاربة المعتمدة
-- **التفاعل:** drag & drop (اسحب اللون للصورة)
-- **Library:** @dnd-kit/core (مثبّت)
-- **التصميم:** صور موضوعات كبيرة (تفاحة، بالون، نجوم، زهور، أوراق)
-- **المنطق:** سائل بسيط (لا أخطاء، لون واستمر)
-- **Integration:** بعد Discover تلقائياً، قبل Recap
+### المهمة
+بناء `LessonTemplate.tsx` + 4 scenes + درس "الأعداد من 1 إلى 5 (1)" كنموذج كامل.
 
-### الـTODO
+### الـTODO قبل الجلسة
+1. ⏳ **توليد صورة DALL-E** لخلفية الفصل (بدون شخصيات):
+   > Empty Algerian primary school classroom interior, soft warm morning light through windows, green chalkboard, wooden desks, Algerian flag, no people, Pixar 3D style, wide angle, child-friendly
 
-#### 1. توليد 4 صور باقية في ChatGPT
-| # | الصورة | اللون | الحالة |
-|---|---|---|---|
-| 1 | تفّاحة واحدة | أحمر | ✅ جاهزة |
-| 2 | بالونان (2) | أزرق | ⏳ ولّد |
-| 3 | 3 نجوم | أصفر | ⏳ ولّد |
-| 4 | 4 زهور | وردي | ⏳ ولّد |
-| 5 | 5 أوراق شجر | أخضر | ⏳ ولّد |
+2. ⏳ ضغطها بـcwebp ووضعها في:
+   `public/lessons/v2/classroom-bg.webp`
 
-كل صورة = نسختان (outline + colored) في صورة 1024×1024.
-
-#### 2. تقسيم الصور
-ImageMagick: convert image.png -crop 50%x100% ينتج نصفين.
-
-#### 3. بناء PaintExercise.tsx
-- 5 شرائح، كل واحدة:
-  - صورة فارغة كبيرة في الوسط
-  - 3 ألوان قابلة للسحب أسفلها
-  - عند سحب اللون الصحيح فوق الصورة: تتلوّن
-  - زرّ التالي يظهر بعد ~2 ثانية
-
-#### 4. Integration في StoryLessonScene
-- إضافة phase جديد "anjiz" بعد "discover"
-- قبل phase "recap"
-
-#### 5. Supabase content update
-- Lesson 1 content يحوي قسم anjiz بـitems
+### الـTODO في الجلسة
+- بناء مجلد `src/features/lesson-v2/` بالكامل
+- بناء `LessonTemplate.tsx` (القالب الموحد)
+- بناء 4 scenes components
+- بناء أفاتارات SVG لخليل وتالين (داخل الكود، لا PNG)
+- بناء رسومات SVG للأعداد والتفاحات
+- إنشاء أول درس فعلي في Supabase
 
 ---
 
-## 📚 ملفّات مرجعية مهمّة
-
-- docs/01_MASTER_CONTEXT.md — السياق العام
-- docs/02_TECH_ARCHITECTURE.md — البنية التقنيّة
-- docs/05_DATABASE_SCHEMA.md — جداول Supabase
-- docs/06_DECISIONS_LOG.md — كل القرارات المعمارية
-- docs/08_SESSION_LOG.md — سجلّ الجلسات
-- docs/09_LESSON_SCENARIO.md — بنية الدرس الموحّدة
-- src/features/exercises/templates/StoryLessonScene.tsx (792 سطر)
-- src/features/exercises/templates/WorldIntroSceneV2.tsx (398 سطر)
-- src/pages/WorldPage.tsx
+## 📚 المراجع
+- docs/00_LESSON_BLUEPRINT.md ← **المرجع الأساسي**
+- docs/01_MASTER_CONTEXT.md
+- docs/05_DATABASE_SCHEMA.md
+- WorldIntroSceneV2.tsx ← نموذج بصري للجودة المستهدفة
 
 ---
 
-## 🎙️ كيف تبدأ الجلسة القادمة مع Claude
+## 🎙️ كيف تبدأ الجلسة القادمة
+> أيوب من Taalim-DZ. اقرأ docs/00_RESUME_HERE.md ثم docs/00_LESSON_BLUEPRINT.md. نواصل بناء LessonTemplate v2.
 
-افتح محادثة جديدة وقل:
-
-> أيوب من Taalim-DZ. اقرأ docs/00_RESUME_HERE.md لمعرفة أين توقّفنا. نواصل PaintExercise.
-
-ثم الصق محتوى الملف. Claude سيعرف كل شيء فوراً.
-
----
-
-## 🔑 أوامر سريعة عند الحاجة
-
-- npm run dev -- --host 0.0.0.0
-- npm run build
-- git log --oneline -5
-
----
-
-## 📊 إحصائيات المشروع الحالية
-
-- Components: StoryLessonScene + WorldIntroSceneV2 + 8 exercise engines
-- ملفات صوتية: 35 (mp3 + JSON)
-- صور: 6 مشاهد DALL-E + 5 أفاتار + خلفيات
-- Supabase: worlds, lessons, exercises, world_intro_views
-- npm: @dnd-kit/core للـPaintExercise القادم
-
----
-
-**آخر تذكير:** كل العمل live في GitHub. الأساس متين.
+ثم الصق الصورة الجديدة للخلفية.
