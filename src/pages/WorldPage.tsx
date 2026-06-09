@@ -2,6 +2,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useLang } from "../i18n/LanguageContext";
 import { getWorldById, getWorldLessons } from "../services/worldsService";
+import { supabase } from "../lib/supabaseClient";
+import WorldIntroSceneV2 from "../features/exercises/templates/WorldIntroSceneV2";
 
 export default function WorldPage() {
   const { t, lang } = useLang();
@@ -10,6 +12,8 @@ export default function WorldPage() {
   const [world, setWorld] = useState<any>(null);
   const [lessons, setLessons] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showIntro, setShowIntro] = useState(false);
+  const [introChecked, setIntroChecked] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -21,12 +25,51 @@ export default function WorldPage() {
     if (!worldId) return;
     setLoading(true);
     Promise.all([getWorldById(worldId), getWorldLessons(worldId)])
-      .then(([w, ls]) => { setWorld(w); setLessons(ls); })
+      .then(async ([w, ls]) => {
+        setWorld(w);
+        setLessons(ls);
+        // check if user has seen the intro
+        if (w?.intro_content) {
+          const { data: userData } = await supabase.auth.getUser();
+          if (userData?.user) {
+            const { data: viewed } = await supabase
+              .from("world_intro_views")
+              .select("viewed_at")
+              .eq("user_id", userData.user.id)
+              .eq("world_id", w.id)
+              .maybeSingle();
+            if (!viewed) setShowIntro(true);
+          }
+        }
+        setIntroChecked(true);
+      })
       .catch((e) => console.error("خطأ تحميل العالم:", e))
       .finally(() => setLoading(false));
   }, [worldId]);
 
   const title = world ? (lang === "fr" && world.title_fr ? world.title_fr : world.title_ar) : "";
+
+  const handleIntroDone = async () => {
+    setShowIntro(false);
+    const { data: userData } = await supabase.auth.getUser();
+    if (userData?.user && world) {
+      await supabase.from("world_intro_views").insert({
+        user_id: userData.user.id,
+        world_id: world.id,
+      });
+    }
+  };
+
+  // Show intro scene if not viewed
+  if (showIntro && world?.intro_content) {
+    return (
+      <WorldIntroSceneV2
+        audio_base={world.intro_content.audio_base}
+        slides={world.intro_content.slides}
+        onDone={handleIntroDone}
+      />
+    );
+  }
 
   return (
     <div style={{ minHeight: "100dvh", background: "var(--bg)", fontFamily: "Tajawal,sans-serif", direction: "rtl", paddingBottom: 100 }}>

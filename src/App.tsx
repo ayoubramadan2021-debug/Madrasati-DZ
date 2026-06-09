@@ -32,7 +32,6 @@ export default function App() {
         {/* مسارات الدروس والتمارين والاختبارات */}
         <Route path="/world/:worldId" element={lazy(() => import("./pages/WorldPage"), "العالم")} />
         <Route path="/world/:worldId/quiz" element={lazy(() => import("./pages/WorldQuizPage"), "اختبار العالم")} />
-        <Route path="/test-world-intro" element={lazy(() => import("./pages/TestWorldIntroPage"), "مشهد العالم")} />
         <Route path="/lesson/:lessonId" element={lazy(() => import("./pages/LessonDetailPage"), "الدرس")} />
         <Route path="/exercise/:exerciseId" element={lazy(() => import("./pages/ExercisePage"), "التمارين")} />
         <Route path="/quiz/:lessonId" element={lazy(() => import("./pages/QuizPage"), "الاختبارات")} />
