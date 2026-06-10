@@ -1,55 +1,105 @@
 # نقطة الاستئناف — Taalim-DZ
-> **آخر تحديث:** 2026-06-09 (مساءً)
-> **الحالة:** Clean slate جاهز لبناء Lesson Template v2 ✅
+> **آخر تحديث:** 2026-06-10 (منتصف النهار)
+> **الحالة:** الدرس الأول 100% مكتمل ✅ — جاهز لبناء الدرس الثاني
 
 ---
 
 ## 📍 أين توقّفنا
 
-### الإنجاز الكبير اليوم
-✅ **Refactor كامل: clean slate لبناء v2**
-- DB: 4 أعمدة جديدة في lessons + جدولان جديدان (world_unlocks, exercise_attempts)
-- حذف 11 ملف exercise قديم + 3 pages قديمة + 3 routes
-- 3388 سطر كود قديم محذوف
-- مستند 00_LESSON_BLUEPRINT.md المرجعي جاهز
+### الإنجاز الكبير: الدرس الأول الكامل
+✅ **الدرس** (`/lesson-v2`):
+- 6 scenes DALL-E (الأعداد 1-5)
+- TTS karaoke مع التفاحات المتزامنة
+- النصوص بالتشكيل الكامل والإعراب الصحيح
 
-### آخر commit
-- 25257b7 refactor: clean slate for lesson template v2
-- (محلي، لم يُرفع لـorigin/dev بعد)
+✅ **5 تمارين** (`/lesson-exercises`) — 25 سؤال إجمالاً:
+1. **TapSelectExerciseV2** — كم تفاحة ترى؟ (5 أسئلة)
+2. **CountTapExerciseV2** — اختر المجموعة + كاريوكي عددي على الرقم الكبير (5)
+3. **DragMatchExerciseV2** — 5 أنماط مختلفة (num↔count, word↔count, إلخ) (5)
+4. **SortSequenceExerciseV2** — رتّب تصاعدي/تنازلي (5)
+5. **TraceExerciseV2** — اكتب الرقم على canvas (5)
 
----
+### Tech stack المُثبّت
+- `@dnd-kit/core@6.3.1` + `@dnd-kit/utilities@3.2.2` (للسحب والإفلات)
+- `react-sketch-canvas` (للكتابة الحركية)
+- `edge-tts` Python lib (Khalil=IsmaelNeural, Taline=AminaNeural)
+- نفس النمط لكل تمرين: useKaraoke hook + scene_image + audio_base
 
-## ⏭️ الجلسة القادمة: الأيام 3-5 — درس نموذجي
-
-### المهمة
-بناء `LessonTemplate.tsx` + 4 scenes + درس "الأعداد من 1 إلى 5 (1)" كنموذج كامل.
-
-### الـTODO قبل الجلسة
-1. ⏳ **توليد صورة DALL-E** لخلفية الفصل (بدون شخصيات):
-   > Empty Algerian primary school classroom interior, soft warm morning light through windows, green chalkboard, wooden desks, Algerian flag, no people, Pixar 3D style, wide angle, child-friendly
-
-2. ⏳ ضغطها بـcwebp ووضعها في:
-   `public/lessons/v2/classroom-bg.webp`
-
-### الـTODO في الجلسة
-- بناء مجلد `src/features/lesson-v2/` بالكامل
-- بناء `LessonTemplate.tsx` (القالب الموحد)
-- بناء 4 scenes components
-- بناء أفاتارات SVG لخليل وتالين (داخل الكود، لا PNG)
-- بناء رسومات SVG للأعداد والتفاحات
-- إنشاء أول درس فعلي في Supabase
+### آخر commits
+- `feat(lesson-v2): complete lesson 1 with 5 unified exercises`
+- `feat(lesson-v2): premium cinematic lesson with apple karaoke`
+- `refactor: clean slate for lesson template v2`
 
 ---
 
-## 📚 المراجع
-- docs/00_LESSON_BLUEPRINT.md ← **المرجع الأساسي**
-- docs/01_MASTER_CONTEXT.md
-- docs/05_DATABASE_SCHEMA.md
-- WorldIntroSceneV2.tsx ← نموذج بصري للجودة المستهدفة
+## ⏭️ الجلسة القادمة: الدرس الثاني
+
+### العنوان: "تعيين موقع في الفضاء (1)"
+**المصدر:** المذكرة رقم 11، الجيل الثاني، السنة الأولى ابتدائي
+
+### المحتوى التعليمي
+المفردات: **أمام، وراء، بجانب، مقابل**
+
+### خطة الدرس 2
+- 5-6 scenes DALL-E (شخصيات في مواقع مختلفة)
+- نفس نمط الدرس 1 (يستخدم WorldIntroSceneV2)
+- إعادة استخدام `items_count` لو احتجنا تأكيد بصري
+
+### خطة التمارين الـ5 للدرس 2
+سنُكيّف نفس الـcomponents الـ5 الموجودة (لا حاجة لبناء جديد):
+1. **TapSelect:** صورة تلميذ + 4 خيارات (أمام/وراء/بجانب/مقابل)
+2. **CountTap → MoveTap:** نُعدّل للاتجاهات (يحتاج tweak صغير)
+3. **DragMatch:** اسحب الكلمة (أمام/وراء) إلى الصورة المناسبة
+4. **SortSequence:** قد لا يصلح لهذا الدرس، نستبدله بـTapSelect2
+5. **Trace:** كتابة كلمات (أمام، وراء...) — أو نُلغيه ونضع تمرين آخر
+
+### المهام الأولى للجلسة القادمة
+1. توليد 6 صور DALL-E لمواقع الفضاء (تلميذ أمام/وراء/بجانب/مقابل)
+2. نسخ بنية `lesson1.ts` → `lesson2.ts` بمحتوى المواقع
+3. توليد TTS للنصوص الـ6
+4. نسخ بنية تمارين الدرس 1 → تمارين الدرس 2
+5. صفحة `LessonV2Page` تكون ديناميكية (تجلب الـlesson من Supabase حسب lessonId)
+
+---
+
+## 📚 المراجع المهمة
+- `docs/00_LESSON_BLUEPRINT.md` ← **المرجع المعماري الأساسي**
+- `src/features/lesson-v2/exercises-v2/` ← الـ5 تمارين كنماذج
+- `src/features/lesson-v2/content/lesson1*.ts` ← أمثلة بنية المحتوى
+- `gen_audio_lesson1.py` + `gen_audio_exercise*.py` ← سكريبتات TTS
+
+---
+
+## 🛠️ مبادئ مكتسبة (لا تُكسر)
+
+1. **صور DALL-E الكاملة** للمشاهد التعليمية (لا أفاتارات منفصلة)
+2. **اللون الذهبي #E8A020** للكاريوكي والـactive states
+3. **`padding-bottom: 100px`** لكل تمرين (لتجنّب BottomNav)
+4. **التشكيل الكامل** في كل نص يُمرَّر لـedge-tts
+5. **الإعراب الصحيح:**
+   - بعد "في" → كسرة
+   - بعد "إلى" → كسرة
+   - "كم + اسم" → نصب منوّن (كم تفاحةً)
+   - "ثَلَاثُ تُفَّاحَاتٍ" → مضاف ومضاف إليه (تنوين كسر)
+6. **لا نقاط XP في التمارين** (محفوظة فقط للاختبارات)
+7. **3 محاولات** قبل المرور للسؤال التالي
+8. **No scroll، 100dvh، flex column** لكل screen
 
 ---
 
 ## 🎙️ كيف تبدأ الجلسة القادمة
-> أيوب من Taalim-DZ. اقرأ docs/00_RESUME_HERE.md ثم docs/00_LESSON_BLUEPRINT.md. نواصل بناء LessonTemplate v2.
 
-ثم الصق الصورة الجديدة للخلفية.
+> أيوب من Taalim-DZ. أنهيت الدرس 1 كاملاً (6 scenes + 5 تمارين × 5 أسئلة = 25 سؤال). 
+> 
+> اقرأ `docs/00_RESUME_HERE.md` ثم `docs/00_LESSON_BLUEPRINT.md`. 
+> نبدأ الآن الدرس 2: **"تعيين موقع في الفضاء (1)"** — المذكرة 11. 
+> سنُكيّف نفس بنية الدرس 1 (WorldIntroSceneV2 + الـ5 تمارين) للمحتوى الجديد.
+
+---
+
+## 📊 إحصائيات الإنتاج
+- **الكود:** ~3000 سطر TypeScript للـv2
+- **الصور:** 6 DALL-E (441KB)  
+- **الصوت:** 31 ملف TTS (~600KB)
+- **مدة الدرس + التمارين:** ~15-18 دقيقة
+- **عدد التفاعلات:** ~50 (لقاءً ↔ نقرة ↔ سحب ↔ رسم)
