@@ -1,90 +1,67 @@
 #!/usr/bin/env python3
-"""gen_audio_lesson1.py — Lesson 1 audio + word timings via edge-tts"""
-
 import asyncio
 import json
-import os
-import sys
+from pathlib import Path
+import edge_tts
 
-try:
-    import edge_tts
-except ImportError:
-    print("❌ edge-tts not installed. Run: pip install edge-tts")
-    sys.exit(1)
+OUTPUT_DIR = Path("public/audio/lesson_1_numbers_1_5")
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-
-OUT_DIR = "public/audio/lesson_1"
-
-VOICES = {
-    "khalil":  {"voice": "ar-DZ-IsmaelNeural", "rate": "-5%", "pitch": "+20Hz"},
-    "taline":  {"voice": "ar-DZ-AminaNeural",  "rate": "-5%", "pitch": "+10Hz"},
-    "fr_male": {"voice": "fr-FR-HenriNeural",  "rate": "-5%", "pitch": "+0Hz"},
+TEXTS = {
+    "l1_intro": "مَرْحَبًا بِكُمْ يَا أَصْدِقَائِي. أَنَا الْأُسْتَاذَةُ تَالِينْ، وَهَذَا الْأُسْتَاذُ خَلِيلْ. الْيَوْمَ سَنَتَعَلَّمُ مَعًا الْأَعْدَادَ مِنْ وَاحِدٍ إِلَى خَمْسَة",
+    "l1_num_1": "اُنْظُرُوا! خَلِيلْ يَحْمِلُ تُفَّاحَةً وَاحِدَةً. هَذَا هُوَ الْعَدَدُ وَاحِد",
+    "l1_num_2": "وَالْآنَ تَالِينْ تَحْمِلُ تُفَّاحَتَانِ. تُفَّاحَةٌ وَتُفَّاحَةٌ، صَارَ عِنْدَنَا اِثْنَان",
+    "l1_num_3": "هَا هِيَ ثَلَاثُ تُفَّاحَاتٍ عَلَى الصِّينِيَّةِ. عُدُّوا مَعِي: وَاحِد، اِثْنَان، ثَلَاثَة",
+    "l1_num_4": "تَالِينْ رَتَّبَتْ أَرْبَعَ تُفَّاحَاتٍ عَلَى الطَّاوِلَة. وَاحِد، اِثْنَان، ثَلَاثَة، أَرْبَعَة",
+    "l1_num_5": "وَالْآنَ خَمْسُ تُفَّاحَات! تَعَلَّمْنَا الْأَعْدَاد: وَاحِد، اِثْنَان، ثَلَاثَة، أَرْبَعَة، خَمْسَة. أَحْسَنْتُمْ يَا أَبْطَال",
 }
 
-ITEMS = [
-    ("intro_ar",
-     "مَرْحَبًا يَا صَدِيقِي! أَنَا الْأُسْتَاذَةُ تَالِين. الْيَوْمَ سَنَتَعَلَّمُ مَعًا الْأَعْدَادَ مِنْ وَاحِد إِلَى خَمْسَةْ",
-     "taline"),
-    ("step_1_ar", "خَلِيلْ يَحْمِلُ تُفَّاحَةً وَاحِدَةً",                        "khalil"),
-    ("step_2_ar", "تَأْتِي تَالِين بِتُفَّاحَةٍ أُخْرَى. الْآنَ عِنْدَنَا تُفَّاحَتَانِ",   "taline"),
-    ("step_3_ar", "نُضِيفُ تُفَّاحَةً ثَالِثَةً. ثَلَاثُ تُفَّاحَاتٍ!",                "khalil"),
-    ("step_4_ar", "هَا هِيَ تُفَّاحَةٌ رَابِعَةٌ. أَرْبَعُ تُفَّاحَاتٍ",                "taline"),
-    ("step_5_ar", "وَأَخِيرًا الْخَامِسَةُ! خَمْسُ تُفَّاحَاتٍ كَامِلَةٌ",              "khalil"),
-    ("num_1_ar", "وَاحِد",   "khalil"),
-    ("num_2_ar", "اِثْنَان",  "khalil"),
-    ("num_3_ar", "ثَلَاثَةٌ",  "khalil"),
-    ("num_4_ar", "أَرْبَعَةٌ",  "khalil"),
-    ("num_5_ar", "خَمْسَةٌ",   "khalil"),
-    ("num_1_fr", "un",      "fr_male"),
-    ("num_2_fr", "deux",    "fr_male"),
-    ("num_3_fr", "trois",   "fr_male"),
-    ("num_4_fr", "quatre",  "fr_male"),
-    ("num_5_fr", "cinq",    "fr_male"),
-    ("recap_ar",
-     "أَحْسَنْت! الْيَوْمَ تَعَلَّمْنَا الْأَعْدَادَ... وَاحِد، اِثْنَان، ثَلَاثَة، أَرْبَعَة، خَمْسَة. رَبِحْتَ خَمْسِينَ نُقْطَةً!",
-     "khalil"),
-]
+VOICES = {
+    "l1_intro": "ar-DZ-AminaNeural",
+    "l1_num_1": "ar-DZ-IsmaelNeural",
+    "l1_num_2": "ar-DZ-AminaNeural",
+    "l1_num_3": "ar-DZ-IsmaelNeural",
+    "l1_num_4": "ar-DZ-AminaNeural",
+    "l1_num_5": "ar-DZ-AminaNeural",
+}
 
+TUNING = {
+    "ar-DZ-IsmaelNeural": {"pitch": "+8Hz", "rate": "-3%"},
+    "ar-DZ-AminaNeural": {"pitch": "+10Hz", "rate": "-3%"},
+}
 
-async def gen_one(filename, text, voice_key):
-    cfg = VOICES[voice_key]
-    audio_path = os.path.join(OUT_DIR, f"{filename}.mp3")
-    json_path  = os.path.join(OUT_DIR, f"{filename}.json")
-
+async def generate_one(key, text, voice):
+    mp3_path = OUTPUT_DIR / f"{key}.mp3"
+    json_path = OUTPUT_DIR / f"{key}.json"
+    tuning = TUNING.get(voice, {"pitch": "+0Hz", "rate": "+0%"})
+    print(f"  ▶ {key} ({voice})")
     communicate = edge_tts.Communicate(
-        text, cfg["voice"], rate=cfg["rate"], pitch=cfg["pitch"], boundary="WordBoundary"
+        text=text, voice=voice,
+        pitch=tuning["pitch"], rate=tuning["rate"],
+        boundary="WordBoundary",
     )
-
-    boundaries = []
-    with open(audio_path, "wb") as audio_f:
+    timings = []
+    with open(mp3_path, "wb") as f:
         async for chunk in communicate.stream():
             if chunk["type"] == "audio":
-                audio_f.write(chunk["data"])
+                f.write(chunk["data"])
             elif chunk["type"] == "WordBoundary":
-                boundaries.append({
-                    "text":     chunk["text"],
-                    "offset":   chunk["offset"]   // 10000,
-                    "duration": chunk["duration"] // 10000,
+                timings.append({
+                    "text": chunk["text"],
+                    "offset": int(chunk["offset"] / 10_000),
+                    "duration": int(chunk["duration"] / 10_000),
                 })
-
-    with open(json_path, "w", encoding="utf-8") as json_f:
-        json.dump(boundaries, json_f, ensure_ascii=False, indent=2)
-
-    print(f"   ✅ {filename}.mp3 + {filename}.json ({len(boundaries)} words)")
-
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(timings, f, ensure_ascii=False, indent=2)
+    print(f"    OK {mp3_path.stat().st_size // 1024}KB, {len(timings)} words")
 
 async def main():
-    os.makedirs(OUT_DIR, exist_ok=True)
-    total = len(ITEMS)
-    print(f"🔊 Generating {total} audio files + timings...\n")
-    for i, (filename, text, voice_key) in enumerate(ITEMS, 1):
-        print(f"[{i}/{total}] {filename} ({voice_key})")
+    print(f"Output: {OUTPUT_DIR.absolute()}\n")
+    for key, text in TEXTS.items():
         try:
-            await gen_one(filename, text, voice_key)
+            await generate_one(key, text, VOICES[key])
         except Exception as e:
-            print(f"   ❌ error: {e}")
-    print(f"\n✅ Done — files in: {OUT_DIR}")
+            print(f"    ERROR {key}: {e}")
+    print(f"\nDone!")
 
-
-if __name__ == "__main__":
-    asyncio.run(main())
+asyncio.run(main())

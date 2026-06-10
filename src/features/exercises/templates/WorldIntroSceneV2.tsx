@@ -19,6 +19,9 @@ type Slide = {
   audio_retry?: string;
   is_closing?: boolean;
   cta_text?: string;
+  items_count?: number;       // عدد التفاحات المتحركة قبل الـcaption (1-5)
+  items_emoji?: string;       // ايموجي العنصر (افتراضي: 🍎)
+  count_word_indices?: number[]; // index كل كلمة عدّية في الـtimings (نفس ترتيب التفاحات)
 };
 
 export interface WorldIntroSceneV2Props {
@@ -148,7 +151,10 @@ export default function WorldIntroSceneV2({
     if (!slide) return;
     const t = timings[slide.audio_key];
     if (!t) return;
-    const timer = setTimeout(() => karaoke.play(slide.audio_key, t), 500);
+    // delay يكفي لظهور التفاحات قبل الصوت (200ms initial + 250ms لكل تفاحة + 500ms buffer)
+    const itemsCount = slide.items_count || 0;
+    const audioDelay = itemsCount > 0 ? 200 + itemsCount * 250 + 500 : 500;
+    const timer = setTimeout(() => karaoke.play(slide.audio_key, t), audioDelay);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slideIdx, timings]);
@@ -252,6 +258,51 @@ export default function WorldIntroSceneV2({
 
       {/* Spacer pushes content to bottom */}
       <div style={{ flex: 1 }} />
+
+      {/* Animated items row (apples) — appears before the caption, glows on karaoke */}
+      {slide.items_count && slide.items_count > 0 && (
+        <div style={{
+          position: "relative", zIndex: 2,
+          padding: "0 16px 8px",
+          display: "flex",
+          justifyContent: "center",
+          gap: 10,
+        }}>
+          {Array.from({ length: slide.items_count }).map((_, i) => {
+            const wordIdx = slide.count_word_indices?.[i];
+            const isCounting = wordIdx !== undefined && karaoke.currentIdx === wordIdx;
+            const wasCounted = wordIdx !== undefined && karaoke.shown.has(wordIdx);
+            return (
+              <span
+                key={`${slideIdx}-item-${i}`}
+                style={{
+                  fontSize: isCounting ? 52 : 38,
+                  display: "inline-block",
+                  opacity: 0,
+                  animation: `itemDrop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards`,
+                  animationDelay: `${0.2 + i * 0.25}s`,
+                  filter: isCounting
+                    ? "drop-shadow(0 0 16px #E8A020) drop-shadow(0 0 8px #FFD700) brightness(1.15)"
+                    : wasCounted
+                    ? "drop-shadow(0 4px 8px rgba(0,0,0,0.25)) brightness(1.05)"
+                    : "drop-shadow(0 4px 8px rgba(0,0,0,0.25))",
+                  transform: isCounting ? "translateY(-8px) scale(1.2) rotate(-5deg)" : "translateY(0) scale(1)",
+                  transition: "all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                }}
+              >
+                {slide.items_emoji || "🍎"}
+              </span>
+            );
+          })}
+          <style>{`
+            @keyframes itemDrop {
+              0% { opacity: 0; transform: translateY(-30px) scale(0.3) rotate(-20deg); }
+              60% { opacity: 1; transform: translateY(4px) scale(1.15) rotate(8deg); }
+              100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+            }
+          `}</style>
+        </div>
+      )}
 
       {/* Karaoke text bubble */}
       <div style={{
