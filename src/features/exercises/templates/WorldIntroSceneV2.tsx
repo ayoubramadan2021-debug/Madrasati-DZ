@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import EmojiIcon from "../../../features/lesson-v2/components/EmojiIcon";
 
 // ═══════════════════════════════════════════════
 // Types
@@ -19,9 +20,10 @@ type Slide = {
   audio_retry?: string;
   is_closing?: boolean;
   cta_text?: string;
-  items_count?: number;       // عدد التفاحات المتحركة قبل الـcaption (1-5)
-  items_emoji?: string;       // ايموجي العنصر (افتراضي: 🍎)
-  count_word_indices?: number[]; // index كل كلمة عدّية في الـtimings (نفس ترتيب التفاحات)
+  items_count?: number;       // عدد العناصر المتحركة قبل الـcaption (1-5)
+  items_emoji?: string;       // emoji موحّد لكل العناصر (افتراضي: 🍎)
+  items_emoji_list?: string[]; // emoji مخصّص لكل عنصر (له أولوية على items_emoji)
+  count_word_indices?: number[]; // index كل كلمة عدّية في الـtimings (نفس ترتيب العناصر)
 };
 
 export interface WorldIntroSceneV2Props {
@@ -276,7 +278,6 @@ export default function WorldIntroSceneV2({
               <span
                 key={`${slideIdx}-item-${i}`}
                 style={{
-                  fontSize: isCounting ? 52 : 38,
                   display: "inline-block",
                   opacity: 0,
                   animation: `itemDrop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards`,
@@ -290,7 +291,10 @@ export default function WorldIntroSceneV2({
                   transition: "all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)",
                 }}
               >
-                {slide.items_emoji || "🍎"}
+                <EmojiIcon
+                  emoji={slide.items_emoji_list?.[i] || slide.items_emoji || "🍎"}
+                  size={isCounting ? 52 : 38}
+                />
               </span>
             );
           })}

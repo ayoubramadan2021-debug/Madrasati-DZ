@@ -13,7 +13,8 @@ import {
 export type ItemRepresentation =
   | { kind: "number"; value: number }
   | { kind: "count"; value: number; emoji?: string }
-  | { kind: "word"; value: string };
+  | { kind: "word"; value: string }
+  | { kind: "image"; src: string; alt?: string };
 
 export type DragMatchPair = {
   draggable: ItemRepresentation;   // العنصر القابل للسحب
@@ -124,6 +125,42 @@ function renderRepresentation(rep: ItemRepresentation, size: "sm" | "md" | "lg" 
       <span style={{ fontSize: 18, fontWeight: 800, color: C.navyDeep, padding: "0 4px" }}>
         {rep.value}
       </span>
+    );
+  }
+  if (rep.kind === "image") {
+    const imgSize = size === "lg" ? 100 : size === "md" ? 76 : 50;
+    return (
+      <img
+        src={rep.src}
+        alt={rep.alt || ""}
+        style={{
+          width: imgSize,
+          height: (imgSize * 16) / 9,
+          maxHeight: 110,
+          objectFit: "cover",
+          borderRadius: 10,
+          boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+        }}
+        draggable={false}
+      />
+    );
+  }
+  if (rep.kind === "image") {
+    const imgW = size === "lg" ? 100 : size === "md" ? 76 : 50;
+    return (
+      <img
+        src={rep.src}
+        alt={rep.alt || ""}
+        style={{
+          width: imgW,
+          height: (imgW * 16) / 9,
+          maxHeight: 110,
+          objectFit: "cover",
+          borderRadius: 10,
+          boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+        }}
+        draggable={false}
+      />
     );
   }
   // count → render emojis

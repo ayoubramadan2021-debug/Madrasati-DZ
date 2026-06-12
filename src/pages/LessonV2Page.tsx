@@ -1,17 +1,35 @@
 import { useNavigate, useParams } from "react-router-dom";
 import WorldIntroSceneV2 from "../features/exercises/templates/WorldIntroSceneV2";
 import { LESSON_1_CONTENT } from "../features/lesson-v2/content/lesson1";
+import { LESSON_2_CONTENT } from "../features/lesson-v2/content/lesson2";
+
+/**
+ * LessonV2Page — صفحة الدرس الديناميكية
+ * 
+ * يحدّد الدرس من lessonId في الـURL:
+ *   /lesson-v2/lesson1  → الأعداد 1-5
+ *   /lesson-v2/lesson2  → بيت تالين (المواقع)
+ *   /lesson-v2          → الدرس 1 (افتراضي)
+ */
+
+const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
+  lesson1: LESSON_1_CONTENT,
+  lesson2: LESSON_2_CONTENT,
+};
 
 export default function LessonV2Page() {
   const navigate = useNavigate();
   const { lessonId } = useParams();
-  const lesson = LESSON_1_CONTENT;
+
+  // اختر الدرس من الـURL، أو الدرس 1 افتراضياً
+  const lesson = (lessonId && LESSONS_MAP[lessonId]) || LESSON_1_CONTENT;
 
   const handleDone = () => {
+    // عند انتهاء الدرس، انتقل لتمارينه
     if (lessonId) {
-      navigate(`/lesson/${lessonId}/exercises`);
+      navigate(`/lesson-v2/${lessonId}/exercises`);
     } else {
-      navigate(-1);
+      navigate("/lesson-exercises");
     }
   };
 
