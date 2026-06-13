@@ -41,7 +41,7 @@ export const LESSON_2_CONTENT = {
       scene_image: "/lessons/v2/lesson2-house/scene-6-garden.webp",
       audio_key: "l2_outro",
       is_closing: true,
-      cta_text: "هَيَّا إِلَى التَّمَارِين ←",
+      cta_text: "هَيَّا نَتَدَرَّب ←",
     },
   ],
 };

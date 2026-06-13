@@ -58,7 +58,7 @@ export const LESSON_1_CONTENT = {
       items_emoji: "🍎",
       count_word_indices: [5, 6, 7, 8, 9],
       is_closing: true,
-      cta_text: "هَيَّا إِلَى التَّمَارِين ←",
+      cta_text: "هَيَّا نَتَدَرَّب ←",
     },
   ],
 };

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { isKeyword } from "../keywords";
 import { ReactSketchCanvas, ReactSketchCanvasRef } from "react-sketch-canvas";
 
 // ═══════════════════════════════════════════════════════════════
@@ -40,7 +41,9 @@ function useKaraoke(audioBase: string) {
 
   const stop = useCallback(() => {
     if (audioRef.current) {
+      audioRef.current.muted = true;
       audioRef.current.pause();
+      audioRef.current.currentTime = 0;
       audioRef.current = null;
     }
     timersRef.current.forEach(clearTimeout);
@@ -277,14 +280,14 @@ export default function TraceExerciseV2({
           cursor: "pointer",
         }}>
           {words ? words.map((w, i) => {
-            const isShown = !isActive || karaoke.shown.has(i);
+            const isShown = karaoke.activeKey ? karaoke.shown.has(i) : false;
             const isCurrent = isActive && karaoke.currentIdx === i;
             return (
               <span key={i} style={{
                 display: "inline-block",
                 opacity: isShown ? 1 : 0,
                 transform: isCurrent ? "translateY(-3px) scale(1.1)" : "translateY(0)",
-                color: isCurrent ? C.gold : C.navyDeep,
+                color: isCurrent ? C.gold : (isKeyword(w.text) ? "#16a34a" : C.navyDeep),
                 fontWeight: isCurrent ? 900 : 700,
                 transition: "all .25s ease",
                 margin: "0 2px",
