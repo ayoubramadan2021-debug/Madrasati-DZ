@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useLang } from "../i18n/LanguageContext";
 import { getWorldById, getWorldLessons } from "../services/worldsService";
 import { supabase } from "../lib/supabaseClient";
+import { getV2Key } from "../features/lesson-v2/v2Registry";
 import WorldIntroSceneV2 from "../features/exercises/templates/WorldIntroSceneV2";
 
 export default function WorldPage() {
@@ -105,7 +106,7 @@ export default function WorldPage() {
             {lessons.map((l, i) => (
               <div
                 key={l.id}
-                onClick={() => navigate(`/lesson/${l.id}`)}
+                onClick={() => { const k = getV2Key(l.id); navigate(k ? `/lesson-v2/${k}` : `/lesson/${l.id}`); }}
                 style={{ background: "var(--surface-2)", border: "1px solid var(--border-soft)", borderRadius: 16, padding: "16px 18px", display: "flex", alignItems: "center", gap: 14, cursor: "pointer", boxShadow: "0 4px 16px rgba(0,0,0,.3)", opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(10px)", transition: `all .4s ease ${i * 0.08}s` }}
               >
                 <div style={{ width: 44, height: 44, borderRadius: 12, background: "linear-gradient(145deg,var(--gold)26,var(--gold)12)", border: "1px solid var(--gold)33", display: "grid", placeItems: "center", fontSize: 20, flexShrink: 0 }}>📖</div>
