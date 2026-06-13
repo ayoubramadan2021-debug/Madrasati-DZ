@@ -1,16 +1,15 @@
-# خطة تكامل دروس v2
+# خطة تكامل دروس v2 — مكتملة ✅
+> نُفّذت 2026-06-13
 
-**الحالة:** محضَّر — جاهز للتنفيذ في جلسة جديدة
-**التقدير:** 45-60 دقيقة
+## كيف يعمل
+1. DB: صفّان في `lessons` بـUUIDs ثابتة، world_id `b0a43712-…`, template_version 2.
+2. Registry: `src/features/lesson-v2/v2Registry.ts` — UUID → مفتاح v2 (lesson1/lesson2).
+3. WorldPage onClick: getV2Key(l.id) → `/lesson-v2/<key>` إن وُجد، وإلا `/lesson/<id>`.
 
-## الهدف
-ربط الدرسَين v2 (lesson1, lesson2) بـnavigation الرئيسي.
-حالياً المستخدم يصل لهما فقط بكتابة URL يدوياً.
+## لإضافة درس v2 جديد
+1. INSERT صف في `lessons` (UUID ثابت، world_id، sort_order، template_version=2).
+2. سطر في `v2Registry.ts`: `"<uuid>": "<v2 key>"`.
+3. تأكد أن المفتاح في LESSONS_MAP بـLessonV2Page.tsx.
 
-## ما ينقص في DB
-عمود template_version في جدول lessons.
-
-## ما موجود مسبقاً (مؤكد)
-- Routes في App.tsx: /lesson-v2/:lessonId? + /lesson-v2/:lessonId/exercises
-- LessonV2Page ديناميكية (تقرأ lessonId من URL)
-- Migration 002 يحوي world_id, title_fr, sort_order
+## ملاحظة
+`template_version` كان موجوداً أصلاً — لم نحتج migration كما افترضت الخطة الأولى.
