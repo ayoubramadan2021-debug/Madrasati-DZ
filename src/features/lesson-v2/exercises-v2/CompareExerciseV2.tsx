@@ -130,7 +130,9 @@ export default function CompareExerciseV2({ items, audio_base, onComplete }: Com
       {/* groups */}
       <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 14 }}>
         {renderGroup(item.group_a)}
-        <div style={{ fontSize: 28, fontWeight: 900, color: C.navy }}>↔</div>
+        <div style={{ fontSize: 28, fontWeight: 900, color: C.navy }}>
+          {item.correct === "أَكْثَر" ? "→" : item.correct === "أَقَلّ" ? "←" : "↔"}
+        </div>
         {renderGroup(item.group_b)}
       </div>
 

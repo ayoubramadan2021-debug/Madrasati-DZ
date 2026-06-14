@@ -267,10 +267,15 @@ export default function WorldIntroSceneV2({
           position: "relative", zIndex: 2,
           padding: "0 16px 8px",
           display: "flex",
+          flexWrap: "wrap",
           justifyContent: "center",
-          gap: 10,
+          alignItems: "center",
+          gap: (slide.items_count ?? 0) > 6 ? 6 : 10,
+          maxWidth: 460,
+          margin: "0 auto",
         }}>
           {Array.from({ length: slide.items_count }).map((_, i) => {
+            const baseSize = (slide.items_count ?? 0) > 7 ? 30 : (slide.items_count ?? 0) > 5 ? 34 : 38;
             const wordIdx = slide.count_word_indices?.[i];
             const isCounting = wordIdx !== undefined && karaoke.currentIdx === wordIdx;
             const wasCounted = wordIdx !== undefined && karaoke.shown.has(wordIdx);
@@ -287,13 +292,13 @@ export default function WorldIntroSceneV2({
                     : wasCounted
                     ? "drop-shadow(0 4px 8px rgba(0,0,0,0.25)) brightness(1.05)"
                     : "drop-shadow(0 4px 8px rgba(0,0,0,0.25))",
-                  transform: isCounting ? "translateY(-8px) scale(1.2) rotate(-5deg)" : "translateY(0) scale(1)",
+                  transform: isCounting ? "translateY(-16px) scale(1.25) rotate(-5deg)" : "translateY(0) scale(1)",
                   transition: "all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)",
                 }}
               >
                 <EmojiIcon
                   emoji={slide.items_emoji_list?.[i] || slide.items_emoji || "🍎"}
-                  size={isCounting ? 52 : 38}
+                  size={isCounting ? baseSize + 14 : baseSize}
                 />
               </span>
             );
