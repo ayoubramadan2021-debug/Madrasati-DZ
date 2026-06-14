@@ -29,7 +29,7 @@ export default function LessonV2Page() {
   const handleDone = () => {
     // عند انتهاء الدرس، انتقل لتمارينه
     if (lessonId) {
-      lessonId === "lesson2" ? navigate("/lesson2-exercises") : navigate(`/lesson-v2/${lessonId}/exercises`);
+      lessonId === "lesson2" ? navigate("/lesson2-exercises") : lessonId === "lesson3" ? navigate("/lesson3-exercises") : navigate(`/lesson-v2/${lessonId}/exercises`);
     } else {
       navigate("/lesson-exercises");
     }

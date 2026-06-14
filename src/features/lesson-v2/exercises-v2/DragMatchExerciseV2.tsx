@@ -47,68 +47,7 @@ const C = {
   redSoft: "#F4C4BE",
 };
 
-type WordTiming = { text: string; offset: number; duration: number };
-
-function useKaraoke(audioBase: string) {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const timersRef = useRef<number[]>([]);
-  const [activeKey, setActiveKey] = useState<string | null>(null);
-  const [currentIdx, setCurrentIdx] = useState(-1);
-  const [shown, setShown] = useState<Set<number>>(new Set());
-
-  const stop = useCallback(() => {
-    if (audioRef.current) {
-      audioRef.current.muted = true;
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-      audioRef.current = null;
-    }
-    timersRef.current.forEach(clearTimeout);
-    timersRef.current = [];
-    setActiveKey(null);
-    setCurrentIdx(-1);
-  }, []);
-
-  const play = useCallback(async (key: string, words: WordTiming[]) => {
-    stop();
-    setShown(new Set());
-    setActiveKey(key);
-    const audio = new Audio(`${audioBase}/${key}.mp3`);
-    audioRef.current = audio;
-    audio.addEventListener("ended", () => setCurrentIdx(-1));
-    try {
-      await audio.play();
-    } catch {
-      const all = new Set<number>();
-      words.forEach((_, i) => all.add(i));
-      setShown(all);
-      return;
-    }
-    words.forEach((w, i) => {
-      const t1 = window.setTimeout(() => {
-        setShown((prev) => new Set(prev).add(i));
-        setCurrentIdx(i);
-      }, w.offset);
-      const t2 = window.setTimeout(() => {
-        setCurrentIdx((cur) => (cur === i ? -1 : cur));
-      }, w.offset + w.duration);
-      timersRef.current.push(t1, t2);
-    });
-  }, [audioBase, stop]);
-
-  useEffect(() => () => stop(), [stop]);
-  return { play, stop, activeKey, currentIdx, shown };
-}
-
-async function loadTimings(audioBase: string, key: string): Promise<WordTiming[] | null> {
-  try {
-    const r = await fetch(`${audioBase}/${key}.json`);
-    if (!r.ok) return null;
-    return await r.json();
-  } catch {
-    return null;
-  }
-}
+import { useKaraoke, loadTimings, type WordTiming } from "../useKaraoke";
 
 const FEEDBACK_CORRECT = "/audio/v2_feedback/correct.mp3";
 const FEEDBACK_RETRY = "/audio/v2_feedback/retry.mp3";
@@ -370,6 +309,7 @@ export default function DragMatchExerciseV2({
       const pair = item.pairs.find((p) => p.match_id === draggedMatchId);
       if (!pair) return;
       const newMatches = { ...matches, [targetMatchId]: pair.draggable };
+      karaoke.stop();
       setMatches(newMatches);
       playFeedback(true);
       if (Object.keys(newMatches).length === item.pairs.length) {

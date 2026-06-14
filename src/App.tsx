@@ -26,6 +26,7 @@ export default function App() {
         <Route path="/lesson-v2/:lessonId/exercises" element={lazy(() => import("./pages/LessonExercisesPage"), "التمارين")} />
         <Route path="/lesson-exercises" element={lazy(() => import("./pages/LessonExercisesPage"), "التمارين")} />
         <Route path="/lesson2-exercises" element={lazy(() => import("./pages/Lesson2ExercisesPage"), "تمارين الدرس 2")} />
+        <Route path="/lesson3-exercises" element={lazy(() => import("./pages/Lesson3ExercisesPage"), "تمارين الدرس 3")} />
 
         {/* مسار المادة والأقسام - موحّد مع روابط الصفحات */}
         <Route path="/grade/:gradeId" element={lazy(() => import("./pages/GradePage"), "الأقسام")} />

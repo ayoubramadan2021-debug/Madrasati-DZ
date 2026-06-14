@@ -36,6 +36,7 @@ type WordTiming = { text: string; offset: number; duration: number };
 function useKaraoke(audioBase: string) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const timersRef = useRef<number[]>([]);
+  const genRef = useRef(0);
   const [activeKey, setActiveKey] = useState<string | null>(null);
   const [currentIdx, setCurrentIdx] = useState(-1);
   const [shown, setShown] = useState<Set<number>>(new Set());
@@ -47,6 +48,7 @@ function useKaraoke(audioBase: string) {
       audioRef.current.currentTime = 0;
       audioRef.current = null;
     }
+    genRef.current++;
     timersRef.current.forEach(clearTimeout);
     timersRef.current = [];
     setActiveKey(null);
@@ -55,6 +57,7 @@ function useKaraoke(audioBase: string) {
 
   const play = useCallback(async (key: string, words: WordTiming[]) => {
     stop();
+    const myGen = genRef.current;
     setShown(new Set());
     setActiveKey(key);
     const audio = new Audio(`${audioBase}/${key}.mp3`);
@@ -68,6 +71,7 @@ function useKaraoke(audioBase: string) {
       setShown(all);
       return;
     }
+    if (myGen !== genRef.current) { audio.pause(); return; }
     words.forEach((w, i) => {
       const t1 = window.setTimeout(() => {
         setShown((prev) => new Set(prev).add(i));
