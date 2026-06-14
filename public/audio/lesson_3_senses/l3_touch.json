@@ -1,37 +1,37 @@
 [
   {
-    "text": "نَلْمَسُ",
+    "text": "أَلْمَسُ",
     "offset": 104,
-    "duration": 556
+    "duration": 447
   },
   {
     "text": "لِحَاءَ",
-    "offset": 674,
+    "offset": 565,
     "duration": 420
   },
   {
     "text": "الأَشْجَارِ",
-    "offset": 1108,
+    "offset": 999,
     "duration": 610
   },
   {
-    "text": "بِأَيْدِينَا",
-    "offset": 1732,
-    "duration": 854
+    "text": "بِيَدِي",
+    "offset": 1623,
+    "duration": 664
   },
   {
     "text": "هَذِهِ",
-    "offset": 2817,
-    "duration": 529
+    "offset": 2505,
+    "duration": 556
   },
   {
     "text": "حَاسَّةُ",
-    "offset": 3359,
+    "offset": 3074,
     "duration": 447
   },
   {
     "text": "اللَّمْس",
-    "offset": 3821,
-    "duration": 624
+    "offset": 3536,
+    "duration": 610
   }
 ]

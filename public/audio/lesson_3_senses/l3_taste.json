@@ -1,32 +1,32 @@
 [
   {
-    "text": "نَتَذَوَّقُ",
+    "text": "أَتَذَوَّقُ",
     "offset": 104,
-    "duration": 759
+    "duration": 637
   },
   {
     "text": "الثِّمَارَ",
-    "offset": 877,
+    "offset": 755,
     "duration": 583
   },
   {
-    "text": "بِأَلْسِنَتِنَا",
-    "offset": 1474,
-    "duration": 949
+    "text": "بِلِسَانِي",
+    "offset": 1352,
+    "duration": 841
   },
   {
     "text": "هَذِهِ",
-    "offset": 2654,
-    "duration": 515
+    "offset": 2396,
+    "duration": 501
   },
   {
     "text": "حَاسَّةُ",
-    "offset": 3183,
-    "duration": 447
+    "offset": 2912,
+    "duration": 420
   },
   {
     "text": "الذَّوْق",
-    "offset": 3644,
+    "offset": 3346,
     "duration": 678
   }
 ]

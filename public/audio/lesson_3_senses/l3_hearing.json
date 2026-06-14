@@ -1,37 +1,37 @@
 [
   {
-    "text": "نَسْمَعُ",
+    "text": "أَسْمَعُ",
     "offset": 104,
-    "duration": 569
+    "duration": 542
   },
   {
     "text": "تَغْرِيدَ",
-    "offset": 687,
-    "duration": 447
+    "offset": 660,
+    "duration": 474
   },
   {
     "text": "الطُّيُورِ",
     "offset": 1148,
-    "duration": 556
+    "duration": 529
   },
   {
-    "text": "بِآذَانِنَا",
-    "offset": 1718,
-    "duration": 949
+    "text": "بِأُذُنِي",
+    "offset": 1691,
+    "duration": 732
   },
   {
     "text": "هَذِهِ",
-    "offset": 2885,
-    "duration": 515
+    "offset": 2654,
+    "duration": 542
   },
   {
     "text": "حَاسَّةُ",
-    "offset": 3414,
+    "offset": 3210,
     "duration": 434
   },
   {
     "text": "السَّمْع",
-    "offset": 3861,
-    "duration": 596
+    "offset": 3658,
+    "duration": 610
   }
 ]
