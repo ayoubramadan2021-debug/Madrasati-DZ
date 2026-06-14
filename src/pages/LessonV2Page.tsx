@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import WorldIntroSceneV2 from "../features/exercises/templates/WorldIntroSceneV2";
 import { LESSON_1_CONTENT } from "../features/lesson-v2/content/lesson1";
 import { LESSON_2_CONTENT } from "../features/lesson-v2/content/lesson2";
+import { LESSON_3_CONTENT } from "../features/lesson-v2/content/lesson3";
 
 /**
  * LessonV2Page — صفحة الدرس الديناميكية
@@ -15,6 +16,7 @@ import { LESSON_2_CONTENT } from "../features/lesson-v2/content/lesson2";
 const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
   lesson1: LESSON_1_CONTENT,
   lesson2: LESSON_2_CONTENT,
+  lesson3: LESSON_3_CONTENT,
 };
 
 export default function LessonV2Page() {
