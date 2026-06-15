@@ -28,6 +28,7 @@ export default function Lesson5ExercisesPage() {
         عَدَدْتَ وَقَارَنْتَ مِنْ سِتَّةٍ إِلَى تِسْعَةٍ! 🥄☕🚗
       </p>
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", marginTop: 12 }}>
+        <button onClick={() => navigate("/lesson-v2/lesson6")} style={{ background: "#1FA463", color: "#fff", border: "none", padding: "14px 24px", borderRadius: 16, fontSize: 16, fontWeight: 700, fontFamily: "Tajawal,sans-serif", cursor: "pointer" }}>الدَّرْسُ التَّالِي ←</button>
         <button onClick={() => navigate("/")} style={{ background: C.navy, color: "#fff", border: "none", padding: "14px 24px", borderRadius: 16, fontSize: 16, fontWeight: 700, fontFamily: "Tajawal,sans-serif", cursor: "pointer" }}>الرَّئِيسِيَّة 🏠</button>
         <button onClick={() => setStage("ex1")} style={{ background: C.gold, color: "#fff", border: "none", padding: "14px 24px", borderRadius: 16, fontSize: 16, fontWeight: 700, fontFamily: "Tajawal,sans-serif", cursor: "pointer" }}>إِعَادَة 🔁</button>
       </div>

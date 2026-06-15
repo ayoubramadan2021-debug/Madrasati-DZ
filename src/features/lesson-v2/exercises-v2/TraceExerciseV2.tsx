@@ -103,6 +103,10 @@ const DIGIT_PATHS: Record<number, string> = {
   3: "M 25 35 Q 25 20 50 20 Q 75 20 75 45 Q 75 65 55 65 Q 75 65 75 95 Q 75 120 50 120 Q 25 120 25 100",
   4: "M 65 20 L 25 80 L 80 80 M 65 50 L 65 120",
   5: "M 75 20 L 30 20 L 25 65 Q 50 55 70 70 Q 80 85 75 100 Q 70 120 45 120 Q 25 120 22 100",
+  6: "M 70 25 Q 45 25 35 55 Q 25 80 30 100 Q 35 120 55 120 Q 78 120 78 95 Q 78 72 55 72 Q 38 72 32 90",
+  7: "M 25 25 L 78 25 L 50 120",
+  8: "M 50 20 Q 28 20 28 42 Q 28 62 50 65 Q 72 68 72 95 Q 72 120 50 120 Q 28 120 28 95 Q 28 68 50 65 Q 72 62 72 42 Q 72 20 50 20",
+  9: "M 70 60 Q 70 25 48 25 Q 28 25 28 48 Q 28 70 50 70 Q 68 70 70 55 L 65 120",
 };
 
 function NumberGuide({ number, drawn }: { number: number; drawn: boolean }) {
@@ -131,8 +135,8 @@ function NumberGuide({ number, drawn }: { number: number; drawn: boolean }) {
       />
       {/* Start dot */}
       <circle
-        cx={number === 4 ? 65 : number === 1 ? 35 : 25}
-        cy={number === 4 ? 20 : number === 1 ? 30 : 35}
+        cx={number === 4 ? 65 : number === 1 ? 35 : number === 7 ? 25 : number === 9 ? 70 : number === 6 ? 70 : number === 8 ? 50 : 25}
+        cy={number === 4 ? 20 : number === 1 ? 30 : number === 7 ? 25 : number === 9 ? 60 : number === 6 ? 25 : number === 8 ? 20 : 35}
         r="6"
         fill={C.gold}
         opacity={drawn ? 0.3 : 1}

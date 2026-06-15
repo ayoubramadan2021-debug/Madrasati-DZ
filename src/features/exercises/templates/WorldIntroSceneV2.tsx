@@ -155,7 +155,7 @@ export default function WorldIntroSceneV2({
     if (!t) return;
     // delay يكفي لظهور التفاحات قبل الصوت (200ms initial + 250ms لكل تفاحة + 500ms buffer)
     const itemsCount = slide.items_count || 0;
-    const audioDelay = itemsCount > 0 ? 200 + itemsCount * 250 + 500 : 500;
+    const audioDelay = itemsCount > 0 ? 700 : 500;
     const timer = setTimeout(() => karaoke.play(slide.audio_key, t), audioDelay);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -277,16 +277,17 @@ export default function WorldIntroSceneV2({
           {Array.from({ length: slide.items_count }).map((_, i) => {
             const baseSize = (slide.items_count ?? 0) > 7 ? 30 : (slide.items_count ?? 0) > 5 ? 34 : 38;
             const wordIdx = slide.count_word_indices?.[i];
-            const isCounting = wordIdx !== undefined && karaoke.currentIdx === wordIdx;
-            const wasCounted = wordIdx !== undefined && karaoke.shown.has(wordIdx);
+            const sceneActive = karaoke.activeKey === slide.audio_key;
+            const isCounting = sceneActive && wordIdx !== undefined && karaoke.currentIdx === wordIdx;
+            const wasCounted = sceneActive && wordIdx !== undefined && karaoke.shown.has(wordIdx);
             return (
               <span
                 key={`${slideIdx}-item-${i}`}
                 style={{
                   display: "inline-block",
-                  opacity: 0,
-                  animation: `itemDrop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards`,
-                  animationDelay: `${0.2 + i * 0.25}s`,
+                  opacity: 1,
+                  animation: `itemDrop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both`,
+                  animationDelay: `${i * 0.05}s`,
                   filter: isCounting
                     ? "drop-shadow(0 0 16px #E8A020) drop-shadow(0 0 8px #FFD700) brightness(1.15)"
                     : wasCounted
@@ -334,8 +335,9 @@ export default function WorldIntroSceneV2({
         }}>
           {words ? (
             words.map((w, i) => {
-              const isShown = !isActive || karaoke.shown.has(i);
-              const isCurrent = isActive && karaoke.currentIdx === i;
+              const sceneActiveTxt = karaoke.activeKey === slide.audio_key;
+              const isShown = sceneActiveTxt ? karaoke.shown.has(i) : false;
+              const isCurrent = sceneActiveTxt && karaoke.currentIdx === i;
               return (
                 <span key={i} style={{
                   display: "inline-block",

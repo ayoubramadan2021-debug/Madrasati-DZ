@@ -6,6 +6,15 @@ import { supabase } from "../lib/supabaseClient";
 import { getV2Key } from "../features/lesson-v2/v2Registry";
 import WorldIntroSceneV2 from "../features/exercises/templates/WorldIntroSceneV2";
 
+// نزع التشكيل + تحويل الكلمات الرقمية — للعرض في الفهرس فقط
+function cleanTitle(s: string): string {
+  if (!s) return s;
+  return s
+    .replace(/[\u064B-\u0652\u0670]/g, "")
+    .replace(/ستة/g, "6")
+    .replace(/تسعة/g, "9");
+}
+
 export default function WorldPage() {
   const { t, lang } = useLang();
   const { worldId } = useParams();
@@ -109,27 +118,27 @@ export default function WorldPage() {
                 onClick={() => { const k = getV2Key(l.id); navigate(k ? `/lesson-v2/${k}` : `/lesson/${l.id}`); }}
                 style={{ background: "var(--surface-2)", border: "1px solid var(--border-soft)", borderRadius: 16, padding: "16px 18px", display: "flex", alignItems: "center", gap: 14, cursor: "pointer", boxShadow: "0 4px 16px rgba(0,0,0,.3)", opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(10px)", transition: `all .4s ease ${i * 0.08}s` }}
               >
-                <div style={{ width: 44, height: 44, borderRadius: 12, background: "linear-gradient(145deg,var(--gold)26,var(--gold)12)", border: "1px solid var(--gold)33", display: "grid", placeItems: "center", fontSize: 20, flexShrink: 0 }}>📖</div>
+                <div style={{ width: 50, height: 50, borderRadius: 15, background: "linear-gradient(135deg,var(--gold),#F4B942)", color: "#1B3A6B", display: "grid", placeItems: "center", fontSize: 22, fontWeight: 900, flexShrink: 0, boxShadow: "0 4px 12px rgba(232,160,32,.35)" }}>{i + 1}</div>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontWeight: 700, color: "var(--text)", fontSize: 15 }}>{lang === "fr" && l.title_fr ? l.title_fr : l.title}</div>
-                  <div style={{ color: "var(--text-muted)", fontSize: 12, marginTop: 2 }}>الدرس {i + 1}</div>
+                  <div style={{ color: "var(--text-muted)", fontSize: 11, fontWeight: 700, marginBottom: 3, letterSpacing: ".3px" }}>الدرس {i + 1}</div>
+                  <div style={{ fontWeight: 800, color: "var(--text)", fontSize: 16, lineHeight: 1.3 }}>{lang === "fr" && l.title_fr ? l.title_fr : cleanTitle(l.title)}</div>
                 </div>
-                <div style={{ color: "var(--gold)", fontSize: 18 }}>←</div>
+                <div style={{ width: 11, height: 11, borderLeft: "2.5px solid var(--gold)", borderBottom: "2.5px solid var(--gold)", transform: "rotate(45deg)", flexShrink: 0, marginLeft: 4 }} />
               </div>
             ))}
           </div>
         )}
 
         {!loading && (
-          <div style={{ marginTop: 28, padding: "22px 18px", background: "linear-gradient(145deg,rgba(168,85,247,.12),rgba(168,85,247,.04))", border: "1px solid rgba(168,85,247,.3)", borderRadius: 20, textAlign: "center" }}>
-            <div style={{ fontSize: 32, marginBottom: 8 }}>🎯</div>
-            <div style={{ fontSize: 16, fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>اختبر معرفتك!</div>
-            <div style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 16 }}>اجتز الاختبار لتفتح العالم التالي 🔓</div>
+          <div style={{ marginTop: 28, padding: "22px 18px", background: "linear-gradient(145deg,rgba(232,160,32,.14),rgba(27,58,107,.18))", border: "1px solid var(--gold)33", borderRadius: 22, textAlign: "center" }}>
+            <div style={{ width: 60, height: 60, margin: "0 auto 12px", borderRadius: 18, background: "linear-gradient(135deg,#1B3A6B,#264a7d)", border: "2px solid var(--gold)", display: "grid", placeItems: "center", fontSize: 30, boxShadow: "0 4px 16px rgba(0,0,0,.25)" }}>🏆</div>
+            <div style={{ fontSize: 18, fontWeight: 900, color: "var(--text)", marginBottom: 5 }}>اِخْتَبِرْ مَعْرِفَتَك!</div>
+            <div style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 16 }}>🔒 اجتَزِ الاختبارَ لتفتحَ العالمَ التالي</div>
             <button
               onClick={() => navigate(`/world/${worldId}/quiz`)}
-              style={{ width: "100%", padding: 15, border: "none", borderRadius: 14, background: "linear-gradient(135deg,#a855f7,#7c3aed)", color: "#fff", fontFamily: "Tajawal,sans-serif", fontSize: 16, fontWeight: 800, cursor: "pointer", boxShadow: "0 6px 18px rgba(168,85,247,.35)" }}
+              style={{ width: "100%", padding: 15, border: "none", borderRadius: 16, background: "linear-gradient(135deg,var(--gold),#F4B942)", color: "#1B3A6B", fontFamily: "Tajawal,sans-serif", fontSize: 16, fontWeight: 900, cursor: "pointer", boxShadow: "0 6px 20px rgba(232,160,32,.4)" }}
             >
-              ابدأ اختبار العالم 🎯
+              ابدأ اختبار العالم 🏆
             </button>
           </div>
         )}

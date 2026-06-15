@@ -80,6 +80,7 @@ export default function Lesson3ExercisesPage() {
         أَكْمَلْتَ تَمَارِينَ الحَوَاسِّ الخَمْس! 👂👁👃👅✋
       </p>
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", marginTop: 12 }}>
+        <button onClick={() => navigate("/lesson-v2/lesson4")} style={{ background: "#1FA463", color: "#fff", border: "none", padding: "14px 24px", borderRadius: 16, fontSize: 16, fontWeight: 700, fontFamily: "Tajawal,sans-serif", cursor: "pointer" }}>الدَّرْسُ التَّالِي ←</button>
         <button onClick={() => navigate("/")} style={{
           background: C.navy, color: "white", border: "none",
           padding: "14px 24px", borderRadius: 16,

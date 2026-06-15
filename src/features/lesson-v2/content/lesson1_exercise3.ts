@@ -18,38 +18,38 @@ export const LESSON_1_EXERCISE_3: DragMatchItem[] = [
       {
         match_id: "p1",
         draggable: { kind: "number", value: 1 },
-        target: { kind: "count", value: 1, emoji: "🍎" },
+        target: { kind: "count", value: 1, emoji: "🍊" },
       },
       {
         match_id: "p2",
         draggable: { kind: "number", value: 2 },
-        target: { kind: "count", value: 2, emoji: "🍎" },
+        target: { kind: "count", value: 2, emoji: "🍊" },
       },
       {
         match_id: "p3",
         draggable: { kind: "number", value: 3 },
-        target: { kind: "count", value: 3, emoji: "🍎" },
+        target: { kind: "count", value: 3, emoji: "🍊" },
       },
     ],
   },
   // ─── Q2: كمية → رقم (معكوس، 3 أزواج) ───
   {
-    question: "اِسْحَبْ كُلَّ مَجْمُوعَةِ تُفَّاحَاتٍ إِلَى رَقَمِهَا",
+    question: "اِسْحَبْ كُلَّ مَجْمُوعَةِ بُرْتُقَالَاتٍ إِلَى رَقَمِهَا",
     question_audio_key: "ex3_q2",
     pairs: [
       {
         match_id: "p1",
-        draggable: { kind: "count", value: 2, emoji: "🍎" },
+        draggable: { kind: "count", value: 2, emoji: "🍊" },
         target: { kind: "number", value: 2 },
       },
       {
         match_id: "p2",
-        draggable: { kind: "count", value: 3, emoji: "🍎" },
+        draggable: { kind: "count", value: 3, emoji: "🍊" },
         target: { kind: "number", value: 3 },
       },
       {
         match_id: "p3",
-        draggable: { kind: "count", value: 4, emoji: "🍎" },
+        draggable: { kind: "count", value: 4, emoji: "🍊" },
         target: { kind: "number", value: 4 },
       },
     ],
@@ -62,17 +62,17 @@ export const LESSON_1_EXERCISE_3: DragMatchItem[] = [
       {
         match_id: "p1",
         draggable: { kind: "word", value: "وَاحِد" },
-        target: { kind: "count", value: 1, emoji: "🍎" },
+        target: { kind: "count", value: 1, emoji: "🍊" },
       },
       {
         match_id: "p2",
         draggable: { kind: "word", value: "ثَلَاثَة" },
-        target: { kind: "count", value: 3, emoji: "🍎" },
+        target: { kind: "count", value: 3, emoji: "🍊" },
       },
       {
         match_id: "p3",
         draggable: { kind: "word", value: "خَمْسَة" },
-        target: { kind: "count", value: 5, emoji: "🍎" },
+        target: { kind: "count", value: 5, emoji: "🍊" },
       },
     ],
   },
@@ -106,12 +106,12 @@ export const LESSON_1_EXERCISE_3: DragMatchItem[] = [
       {
         match_id: "p1",
         draggable: { kind: "number", value: 1 },
-        target: { kind: "count", value: 1, emoji: "🍎" },
+        target: { kind: "count", value: 1, emoji: "🍊" },
       },
       {
         match_id: "p2",
         draggable: { kind: "word", value: "ثَلَاثَة" },
-        target: { kind: "count", value: 3, emoji: "🍎" },
+        target: { kind: "count", value: 3, emoji: "🍊" },
       },
       {
         match_id: "p3",
@@ -120,7 +120,7 @@ export const LESSON_1_EXERCISE_3: DragMatchItem[] = [
       },
       {
         match_id: "p4",
-        draggable: { kind: "count", value: 5, emoji: "🍎" },
+        draggable: { kind: "count", value: 5, emoji: "🍊" },
         target: { kind: "number", value: 5 },
       },
     ],
