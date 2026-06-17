@@ -27,6 +27,19 @@ function emojiToCodepoint(emoji: string): string | null {
 }
 
 export default function EmojiIcon({ emoji, size = 32, style }: EmojiIconProps) {
+  // دعم صورة محلّية: إذا كان emoji مسار صورة (يبدأ بـ/) نعرضه مباشرةً
+  if (emoji.startsWith("/")) {
+    return (
+      <img
+        src={emoji}
+        alt="icon"
+        width={size}
+        height={size}
+        draggable={false}
+        style={{ display: "inline-block", verticalAlign: "middle", userSelect: "none", pointerEvents: "none", ...style }}
+      />
+    );
+  }
   const codepoint = emojiToCodepoint(emoji);
 
   if (!codepoint) {
