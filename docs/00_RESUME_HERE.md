@@ -68,3 +68,47 @@
 ## ما تبقّى
 - الدرس 6 (المنهاج: الأعداد 6-9 جزء 2 — تعيين الكمية "ارسم بقدر")
 - تحقّق بصري نهائي من اتجاه السهم (RTL) في الدرسين 4 و5
+
+## تحديث 2026-06-15 — الدرس 7 (الكود مكتمل ✅، بانتظار الصور)
+- **الدرس 7: حَوَاسِّي كُنُوزِي** (الحواس 2: أهميتها + الحفاظ عليها) — UUID …0007, sort_order 7, subject "math"
+  - البطل خليل، درس مفاهيمي سلوكي (لا عددي) — تصنيف مُفِيد/ضَارّ
+  - المحرّك: TapSelectWordsV2 (بطاقة صورة + خيارَيْن مُفِيد/ضَارّ) — لا محرّك جديد
+  - سؤال موحّد واحد l7_ex_q (صوت متكرّر) — كنمط الدرسين 4 و5
+  - 6 مشاهد + 3 تمارين × 5 بطاقات
+  - ✅ الصوت مولَّد (gen_lesson7.py): 6 مشاهد + l7_ex_q
+  - ✅ الربط: v2Registry + LessonV2Page (import/map/navigate) + Lesson7ExercisesPage + Route + npm run build ينجح
+  - نظّفنا تكرارات سابقة: lesson6 مكرّر في map (LessonV2Page س28) وفي Route (App.tsx س34)
+
+## دروس تقنية (الدرس 7)
+- **subject موحّد "math"**: كل دروس v2 على subject "math" في جدول lessons. WorldPage يجلب بـ getLessons("math", 1). أي subject آخر (مثل "science") لن يظهر. غيّرنا الدرس 7 من science→math.
+- **درس غير عددي ضمن دروس الأعداد**: المنهاج يضع الحواس 2 بين دروس 6-9. التزمنا بترتيب المنهاج (sort_order 7).
+- **TapSelectWordsV2 vs TapSelectImagesV2**: الأول = صورة في السؤال + خيارات كلمات (يناسب مفيد/ضارّ ودرس الحواس). الثاني = كلمة + خيارات صور. لا تخلط.
+
+## ما تبقّى للدرس 7
+- 18 صورة WebP في public/lessons/v2/lesson7-care/ (s1-s6 + ex1/ex2/ex3 × 5) — ChatGPT ثم cwebp q82 width 800
+- SQL في Supabase: insert into lessons (id, title, subject, grade, created_at) values ('11111111-1111-1111-1111-000000000007','حَوَاسِّي كُنُوزِي','math',1,now());
+- اختبار محلّي: /lesson-v2/lesson7 و /lesson7-exercises
+
+## النشر
+- متوقّف حتى ≈21 جوان (رصيد البناء). ادفع dev فقط، لا merge dev→main الآن.
+
+## تصحيح مهم (2026-06-15) — كيف يظهر درس في WorldPage
+- WorldPage يجلب عبر getWorldLessons(worldId) في worldsService.ts:
+  .from("lessons").eq("world_id", world_id).order("sort_order")
+- أي صفّ درس جديد يجب أن يحوي world_id + sort_order (ليس فقط subject/grade).
+- world_id لعالم المدرسة = b0a43712-8b45-428d-bea2-55ff3de52d3a
+- خطأ شائع: insert بدون world_id/sort_order → الصفّ موجود لكنه لا يظهر في القائمة.
+- SQL الصحيح الكامل لتسجيل درس v2:
+  insert into lessons (id, title, subject, grade, world_id, sort_order, created_at)
+  values ('...0007','حَوَاسِّي كُنُوزِي','math',1,'b0a43712-8b45-428d-bea2-55ff3de52d3a',7,now());
+- الدرس 7 الآن مربوط بالكامل ويظهر في WorldPage ✅
+
+## تحديث 2026-06-16 — الدرس 7 مكتمل 100% ✅
+- 21 صورة (6 مشاهد + 15 تمرين)، أشخاص بالغون متنوّعون (تجنّب رفض Gemini للقاصرين في مواقف سلبية)
+- أسئلة وصفية لكل بطاقة (15 سؤال + صوت منفصل) بدل سؤال موحّد
+- شاشة النهاية: اختبار العالم (بارز) + إعادة + الرئيسية
+- دروس مهمة:
+  * عند التحويل، تحقّق بصرياً من تطابق كل صورة باسمها — خلط أسماء webp يسبب صورة/نص غير متطابقين
+  * TapSelectWordsV2: key={itemIdx} على الحاوية الأمّ لتزامن الصورة مع النص
+  * Gemini يرفض القاصرين في مواقف ضارّة → استعمل بالغين
+  * مشاهد الدرس صورها مقرّبة على الوجه (cover يقصّ الأطراف) — مقبول حالياً

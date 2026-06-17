@@ -208,7 +208,7 @@ export default function WorldIntroSceneV2({
       position: "relative",
       fontFamily: "Tajawal, sans-serif",
       direction: "rtl",
-      background: "#000",
+      background: "#FFF8EC",
       display: "flex",
       flexDirection: "column",
     }}>
@@ -217,7 +217,7 @@ export default function WorldIntroSceneV2({
         position: "absolute",
         inset: 0,
         backgroundImage: `url('${slide.scene_image}')`,
-        backgroundSize: "cover",
+        backgroundSize: "contain",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }} />

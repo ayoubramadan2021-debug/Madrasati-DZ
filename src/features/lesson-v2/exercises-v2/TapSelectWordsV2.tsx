@@ -187,7 +187,7 @@ export default function TapSelectWordsV2({
   const isActive = karaoke.activeKey === item.question_audio_key;
 
   return (
-    <div style={{
+    <div key={itemIdx} style={{
       minHeight: "100dvh",
       width: "100%",
       position: "relative",
@@ -200,10 +200,12 @@ export default function TapSelectWordsV2({
     }}>
       {/* Scene image */}
       <div style={{
-        position: "absolute", inset: 0,
+        position: "absolute", left: 0, right: 0, top: 0, height: "58%",
+        backgroundColor: "#FFF8EC",
         backgroundImage: `url('${item.scene_image}')`,
         backgroundSize: "cover", backgroundPosition: "center",
-        filter: "brightness(0.95)",
+        backgroundRepeat: "no-repeat",
+        filter: "brightness(0.97)",
       }} />
 
       {/* Bottom gradient for readability */}
