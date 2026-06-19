@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import LessonCompleteV2 from "../features/lesson-v2/components/LessonCompleteV2";
 import TapSelectWordsV2 from "../features/lesson-v2/exercises-v2/TapSelectWordsV2";
 import TapSelectImagesV2 from "../features/lesson-v2/exercises-v2/TapSelectImagesV2";
 import DragMatchExerciseV2 from "../features/lesson-v2/exercises-v2/DragMatchExerciseV2";
@@ -26,7 +26,6 @@ const C = {
 type Stage = "ex1" | "ex2" | "ex3" | "done";
 
 export default function Lesson2ExercisesPage() {
-  const navigate = useNavigate();
   const [stage, setStage] = useState<Stage>("ex1");
 
   if (stage === "ex1") {
@@ -58,51 +57,10 @@ export default function Lesson2ExercisesPage() {
   }
 
   return (
-    <div style={{
-      minHeight: "100dvh",
-      background: "linear-gradient(180deg, #FFF8EC 0%, #F5E3B0 100%)",
-      fontFamily: "Tajawal, sans-serif",
-      direction: "rtl",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      padding: "32px 20px",
-      gap: 20,
-    }}>
-      <div style={{ fontSize: 96, animation: "bounceIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)" }}>🌟</div>
-      <h1 style={{ fontSize: 30, color: C.navy, fontWeight: 900, margin: 0, textAlign: "center" }}>
-        أَحْسَنْتَ يَا بَطَل!
-      </h1>
-      <p style={{ fontSize: 17, color: C.navy, margin: 0, textAlign: "center", maxWidth: 320, lineHeight: 1.6 }}>
-        أَكْمَلْتَ ثَلَاثَةَ تَمَارِين. التَّمَارِين الْأُخْرَى قَرِيبًا...
-      </p>
-      <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", marginTop: 12 }}>
-        <button onClick={() => navigate("/lesson-v2/lesson3")} style={{ background: "#1FA463", color: "#fff", border: "none", padding: "14px 24px", borderRadius: 16, fontSize: 16, fontWeight: 700, fontFamily: "Tajawal,sans-serif", cursor: "pointer" }}>الدَّرْسُ التَّالِي ←</button>
-        <button onClick={() => navigate("/")} style={{
-          background: C.navy, color: "white", border: "none",
-          padding: "14px 24px", borderRadius: 16,
-          fontSize: 16, fontWeight: 700,
-          fontFamily: "Tajawal, sans-serif",
-          cursor: "pointer",
-          boxShadow: "0 6px 16px rgba(27,58,107,0.3)",
-        }}>الرَّئِيسِيَّة 🏠</button>
-        <button onClick={() => setStage("ex1")} style={{
-          background: C.gold, color: "white", border: "none",
-          padding: "14px 24px", borderRadius: 16,
-          fontSize: 16, fontWeight: 700,
-          fontFamily: "Tajawal, sans-serif",
-          cursor: "pointer",
-          boxShadow: "0 6px 16px rgba(232,160,32,0.4)",
-        }}>إِعَادَة 🔁</button>
-      </div>
-      <style>{`
-        @keyframes bounceIn {
-          0% { opacity: 0; transform: scale(0.3); }
-          60% { opacity: 1; transform: scale(1.15); }
-          100% { opacity: 1; transform: scale(1); }
-        }
-      `}</style>
-    </div>
+    <LessonCompleteV2
+      message="أَكْمَلْتَ ثَلَاثَةَ تَمَارِين. التَّمَارِين الْأُخْرَى قَرِيبًا..."
+      onReplay={() => setStage("ex1")}
+      nextLessonKey="lesson3"
+    />
   );
 }

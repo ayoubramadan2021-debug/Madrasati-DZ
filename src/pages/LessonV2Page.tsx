@@ -9,6 +9,7 @@ import { LESSON_6_CONTENT } from "../features/lesson-v2/content/lesson6";
 import { LESSON_7_CONTENT } from "../features/lesson-v2/content/lesson7";
 import { LESSON_8_CONTENT } from "../features/lesson-v2/content/lesson8";
 import { LESSON_9_CONTENT } from "../features/lesson-v2/content/lesson9";
+import { LESSON_10_CONTENT } from "../features/lesson-v2/content/lesson10";
 
 /**
  * LessonV2Page — صفحة الدرس الديناميكية
@@ -29,6 +30,7 @@ const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
   lesson7: LESSON_7_CONTENT,
   lesson8: LESSON_8_CONTENT,
   lesson9: LESSON_9_CONTENT,
+  lesson10: LESSON_10_CONTENT,
 };
 
 export default function LessonV2Page() {
@@ -41,7 +43,7 @@ export default function LessonV2Page() {
   const handleDone = () => {
     // عند انتهاء الدرس، انتقل لتمارينه
     if (lessonId) {
-      lessonId === "lesson2" ? navigate("/lesson2-exercises") : lessonId === "lesson3" ? navigate("/lesson3-exercises") : lessonId === "lesson4" ? navigate("/lesson4-exercises") : lessonId === "lesson5" ? navigate("/lesson5-exercises") : lessonId === "lesson6" ? navigate("/lesson6-exercises") : lessonId === "lesson7" ? navigate("/lesson7-exercises") : lessonId === "lesson8" ? navigate("/lesson8-exercises") : lessonId === "lesson9" ? navigate("/lesson9-exercises") : navigate(`/lesson-v2/${lessonId}/exercises`);
+      lessonId === "lesson2" ? navigate("/lesson2-exercises") : lessonId === "lesson3" ? navigate("/lesson3-exercises") : lessonId === "lesson4" ? navigate("/lesson4-exercises") : lessonId === "lesson5" ? navigate("/lesson5-exercises") : lessonId === "lesson6" ? navigate("/lesson6-exercises") : lessonId === "lesson7" ? navigate("/lesson7-exercises") : lessonId === "lesson8" ? navigate("/lesson8-exercises") : lessonId === "lesson9" ? navigate("/lesson9-exercises") : lessonId === "lesson10" ? navigate("/lesson10-exercises") : navigate(`/lesson-v2/${lessonId}/exercises`);
     } else {
       navigate("/lesson-exercises");
     }
