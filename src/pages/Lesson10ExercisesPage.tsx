@@ -20,6 +20,7 @@ export default function Lesson10ExercisesPage() {
     <LessonCompleteV2
       message="تَعَلَّمْتَ أَنَّ العَدَدَ يَبْقى ثابِتًا مَهْما غَيَّرْنا تَرْتيبَ الأَدَواتِ! ✏️📓📐"
       onReplay={() => setStage("ex1")}
+      nextLessonKey="lesson11"
     />
   );
 }
