@@ -9,7 +9,7 @@ import { ReactSketchCanvas, ReactSketchCanvasRef } from "react-sketch-canvas";
 // ═══════════════════════════════════════════════════════════════
 
 export type TraceItem = {
-  number: number;            // 1-5
+  number: number;            // 0-9
   question: string;
   question_audio_key: string;
 };
@@ -98,6 +98,7 @@ const FEEDBACK_CORRECT = "/audio/v2_feedback/correct.mp3";
 // ─── SVG paths for digits 1-5 (Eastern Arabic style for clarity) ───
 // كل رقم بـ viewBox 100x140
 const DIGIT_PATHS: Record<number, string> = {
+  0: "M 50 20 Q 25 20 25 70 Q 25 120 50 120 Q 75 120 75 70 Q 75 20 50 20 Z",
   1: "M 35 30 L 55 20 L 55 120",
   2: "M 25 45 Q 25 20 50 20 Q 75 20 75 45 Q 75 65 55 80 L 25 120 L 80 120",
   3: "M 25 35 Q 25 20 50 20 Q 75 20 75 45 Q 75 65 55 65 Q 75 65 75 95 Q 75 120 50 120 Q 25 120 25 100",
@@ -135,8 +136,8 @@ function NumberGuide({ number, drawn }: { number: number; drawn: boolean }) {
       />
       {/* Start dot */}
       <circle
-        cx={number === 4 ? 65 : number === 1 ? 35 : number === 7 ? 25 : number === 9 ? 70 : number === 6 ? 70 : number === 8 ? 50 : 25}
-        cy={number === 4 ? 20 : number === 1 ? 30 : number === 7 ? 25 : number === 9 ? 60 : number === 6 ? 25 : number === 8 ? 20 : 35}
+        cx={number === 0 ? 50 : number === 4 ? 65 : number === 1 ? 35 : number === 7 ? 25 : number === 9 ? 70 : number === 6 ? 70 : number === 8 ? 50 : 25}
+        cy={number === 0 ? 20 : number === 4 ? 20 : number === 1 ? 30 : number === 7 ? 25 : number === 9 ? 60 : number === 6 ? 25 : number === 8 ? 20 : 35}
         r="6"
         fill={C.gold}
         opacity={drawn ? 0.3 : 1}

@@ -20,6 +20,7 @@ export default function Lesson11ExercisesPage() {
     <LessonCompleteV2
       message="تَعَلَّمْتَ كَيْفَ تَتَحَرَّكُ وَتَتَنَقَّل: تَمْشي، تَجْري، تَقْفِزُ، وَتَتَسَلَّقُ! 🏃🤸"
       onReplay={() => setStage("ex1")}
+      nextLessonKey="lesson12"
     />
   );
 }
