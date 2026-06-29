@@ -9,7 +9,7 @@ import { ReactSketchCanvas, ReactSketchCanvasRef } from "react-sketch-canvas";
 // ═══════════════════════════════════════════════════════════════
 
 export type TraceItem = {
-  number: number;            // 0-9
+  number: number;            // 0-10
   question: string;
   question_audio_key: string;
 };
@@ -108,6 +108,7 @@ const DIGIT_PATHS: Record<number, string> = {
   7: "M 25 25 L 78 25 L 50 120",
   8: "M 50 20 Q 28 20 28 42 Q 28 62 50 65 Q 72 68 72 95 Q 72 120 50 120 Q 28 120 28 95 Q 28 68 50 65 Q 72 62 72 42 Q 72 20 50 20",
   9: "M 70 60 Q 70 25 48 25 Q 28 25 28 48 Q 28 70 50 70 Q 68 70 70 55 L 65 120",
+  10: "M 18 30 L 32 20 L 32 120 M 68 20 Q 48 20 48 70 Q 48 120 68 120 Q 88 120 88 70 Q 88 20 68 20 Z",
 };
 
 function NumberGuide({ number, drawn }: { number: number; drawn: boolean }) {

@@ -11,6 +11,7 @@ export type TapSelectImageItem = {
   question_audio_key: string;
   options: string[];       // مسارات 4 صور
   correct_index: number;   // index الصورة الصحيحة
+  image_fit?: "cover" | "contain";
 };
 
 export interface TapSelectImagesV2Props {
@@ -198,7 +199,7 @@ export default function TapSelectImagesV2({
       <div style={{
         position: "absolute", inset: 0,
         backgroundImage: `url('${background_image}')`,
-        backgroundSize: "cover", backgroundPosition: "center",
+        backgroundSize: item.image_fit ?? "cover", backgroundPosition: "center",
         filter: "blur(3px) brightness(0.7)",
       }} />
       <div style={{
@@ -315,7 +316,7 @@ export default function TapSelectImagesV2({
                 style={{
                   width: "100%",
                   height: "100%",
-                  objectFit: "cover",
+                  objectFit: item.image_fit ?? "cover",
                   display: "block",
                 }}
               />

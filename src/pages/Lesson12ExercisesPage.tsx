@@ -23,6 +23,7 @@ export default function Lesson12ExercisesPage() {
     <LessonCompleteV2
       message="تَعَلَّمْتَ العَدَدَ صِفْر! إِذا كانَ الصُّنْدوقُ فارِغًا، عَدَدُهُ صِفْرٌ. 📦0️⃣"
       onReplay={() => setStage("ex1")}
+      nextLessonKey="lesson13"
     />
   );
 }
