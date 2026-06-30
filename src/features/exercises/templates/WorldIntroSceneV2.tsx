@@ -35,6 +35,8 @@ export interface WorldIntroSceneV2Props {
 // ═══════════════════════════════════════════════
 // Brand colors
 // ═══════════════════════════════════════════════
+const KARAOKE_LEAD_MS = 0;
+
 const C = {
   navy: "#1B3A6B",
   navyDeep: "#0F2447",
@@ -90,10 +92,10 @@ function useKaraoke(audioBase: string) {
       const t1 = window.setTimeout(() => {
         setShown((prev) => new Set(prev).add(i));
         setCurrentIdx(i);
-      }, w.offset);
+      }, Math.max(0, w.offset - KARAOKE_LEAD_MS));
       const t2 = window.setTimeout(() => {
         setCurrentIdx((cur) => (cur === i ? -1 : cur));
-      }, w.offset + w.duration);
+      }, Math.max(0, w.offset - KARAOKE_LEAD_MS) + w.duration);
       timersRef.current.push(t1, t2);
     });
   }, [audioBase, stop]);

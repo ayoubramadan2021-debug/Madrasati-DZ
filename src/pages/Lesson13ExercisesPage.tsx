@@ -75,6 +75,7 @@ export default function Lesson13ExercisesPage() {
     <LessonCompleteV2
       message="أَحْسَنْتَ! أَصْبَحْتَ تُجِيدُ عَدَّ الأَشْيَاءِ مِنْ ١ إِلَى ١٠. 🎉"
       onReplay={() => setStage("ex1")}
+      nextLessonKey="lesson14"
     />
   );
 }

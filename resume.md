@@ -43,3 +43,55 @@
 - `public/audio/lesson_13_counting/`
 - `public/audio/lesson_13_exercises/`
 
+
+---
+
+## Lesson 14 completed — أَتَذَكَّرُ الكَمِّيَّةَ بِالعَدَدِ
+
+Status: completed locally and registered in Supabase.
+
+### Main lesson
+- Added lesson 14 content in `src/features/lesson-v2/content/lesson14.ts`.
+- Added 6 scene images in `public/lessons/v2/lesson14/`.
+- Audio base:
+  - `/audio/lesson_14_memory_quantity`
+- Taline voice uses `ar-DZ-AminaNeural`.
+- Karaoke timing adjusted to match audio, with `KARAOKE_LEAD_MS = 0`.
+- `WorldIntroSceneV2.tsx` handles lesson scene rendering, karaoke, scene counter, and animated temoji.
+- Animated temoji requires:
+  - `items_count`
+  - `items_emoji_list`
+  - `count_word_indices`
+
+### Exercises
+Created and used memory-focused engines:
+- `MemoryQuantityExerciseV2`
+- `MemoryBuildQuantityExerciseV2`
+- `MemorySameQuantityExerciseV2`
+
+Final exercise flow:
+1. `CountSelectV2` — count and choose the number that remembers the quantity.
+2. `MemoryQuantityExerciseV2` — see quantity, hide it, choose remembered number.
+3. `MemoryBuildQuantityExerciseV2` — rebuild the same quantity from memory.
+4. `MemorySameQuantityExerciseV2` — choose the group with the same quantity.
+
+Writing exercise was removed because it was less aligned with the lesson objective.
+
+### Supabase
+Lesson 14 was added officially to the `lessons` table:
+- id: `11111111-1111-1111-1111-000000000014`
+- title: `أَتَذَكَّرُ الكَمِّيَّةَ بِالعَدَدِ`
+- sort_order: `14`
+- same `world_id` as lesson 13.
+
+### Routing / linking
+- `v2Registry.ts` maps:
+  - `11111111-1111-1111-1111-000000000014` → `lesson14`
+- `/lesson-v2/lesson14` works.
+- `/lesson14-exercises` works.
+- Lesson 13 completion links to lesson 14 with `nextLessonKey="lesson14"`.
+- Lesson 14 appears in the world/board from Supabase.
+
+### Deployment note
+Do not deploy to Netlify yet.
+Plan: collect five lessons, then deploy together.
