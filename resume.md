@@ -95,3 +95,41 @@ Lesson 14 was added officially to the `lessons` table:
 ### Deployment note
 Do not deploy to Netlify yet.
 Plan: collect five lessons, then deploy together.
+---
+
+## Lesson 15 completed — أُعَيِّنُ الرُّتْبَةَ بِالعَدَدِ
+
+Status: completed locally on branch `batch-lessons-14-18`.
+
+### Content
+- Route: `/lesson-v2/lesson15`
+- Exercises route: `/lesson15-exercises`
+- Supabase id: `11111111-1111-1111-1111-000000000015`
+- Title: `أُعَيِّنُ الرُّتْبَةَ بِالعَدَدِ`
+- Topic: استعمال العدد / العد لتعيين الرتبة.
+- Teacher: Khalil.
+- Images: `public/lessons/v2/lesson15-order/s1.webp` to `s6.webp`.
+- Lesson audio: `public/audio/lesson_15_order_rank`.
+
+### Exercises
+- Custom engine: `RankOrderExerciseV2`.
+- Page: `src/pages/Lesson15ExercisesPage.tsx`.
+- Exercise content:
+  - `lesson15_exercise1.ts`: القاطرات، 5 أسئلة.
+  - `lesson15_exercise2.ts`: السيارات، 5 أسئلة.
+  - `lesson15_exercise3.ts`: البطاقات، 5 أسئلة، with wording `مَا الرُّتْبَةُ`.
+  - `lesson15_exercise4.ts`: السلسلة، 5 أسئلة.
+- Exercise audio:
+  - `public/audio/lesson_15_exercise1`
+  - `public/audio/lesson_15_exercise2`
+  - `public/audio/lesson_15_exercise3`
+  - `public/audio/lesson_15_exercise4`
+
+### Integration
+- `LessonV2Page.tsx` imports and maps `LESSON_15_CONTENT`.
+- `v2Registry.ts` maps `11111111-1111-1111-1111-000000000015` to `lesson15`.
+- `App.tsx` includes `/lesson15-exercises`.
+
+### Deployment note
+Do not deploy to Netlify yet. Keep collecting lessons 15–18 on `batch-lessons-14-18` and deploy together later.
+

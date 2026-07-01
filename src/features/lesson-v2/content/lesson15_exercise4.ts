@@ -1,0 +1,61 @@
+import type { RankOrderItem } from "../exercises-v2/RankOrderExerciseV2";
+
+export const LESSON_15_EXERCISE_4_AUDIO_BASE = "/audio/lesson_15_exercise4";
+
+export const LESSON_15_EXERCISE_4: RankOrderItem[] = [
+  {
+    scene_image: "/lessons/v2/lesson15-order/s5.webp",
+    question_audio_key: "q1",
+    title: "أُكْمِلُ السِّلْسِلَةَ",
+    instruction: "اِخْتَرِ الرُّتْبَةَ النَّاقِصَةَ.",
+    question: "الأَوَّلُ، الثَّانِي، ___، الرَّابِعُ",
+    mode: "missingRank",
+    correct: "الثَّالِثُ",
+    sequence: ["الأَوَّلُ", "الثَّانِي", "؟", "الرَّابِعُ"],
+    options: ["الثَّالِثُ", "الأَوَّلُ", "الرَّابِعُ", "الثَّانِي"],
+  },
+  {
+    scene_image: "/lessons/v2/lesson15-order/s5.webp",
+    question_audio_key: "q2",
+    title: "أُكْمِلُ السِّلْسِلَةَ",
+    instruction: "اِقْرَأْ، ثُمَّ أَكْمِلْ.",
+    question: "الأَوَّلُ، الثَّانِي، الثَّالِثُ، ___",
+    mode: "missingRank",
+    correct: "الرَّابِعُ",
+    sequence: ["الأَوَّلُ", "الثَّانِي", "الثَّالِثُ", "؟"],
+    options: ["الرَّابِعُ", "الثَّانِي", "الأَوَّلُ", "الثَّالِثُ"],
+  },
+  {
+    scene_image: "/lessons/v2/lesson15-order/s5.webp",
+    question_audio_key: "q3",
+    title: "أُكْمِلُ السِّلْسِلَةَ",
+    instruction: "مَا الرُّتْبَةُ التَّالِيَةُ؟",
+    question: "مَا الرُّتْبَةُ الَّتِي تَأْتِي بَعْدَ الثَّالِثِ؟",
+    mode: "missingRank",
+    correct: "الرَّابِعُ",
+    sequence: ["الأَوَّلُ", "الثَّانِي", "الثَّالِثُ", "؟"],
+    options: ["الرَّابِعُ", "الأَوَّلُ", "الثَّانِي", "الثَّالِثُ"],
+  },
+  {
+    scene_image: "/lessons/v2/lesson15-order/s5.webp",
+    question_audio_key: "q4",
+    title: "أُكْمِلُ السِّلْسِلَةَ",
+    instruction: "اِبْحَثْ عَنِ المَكَانِ النَّاقِصِ.",
+    question: "___، الثَّانِي، الثَّالِثُ، الرَّابِعُ",
+    mode: "missingRank",
+    correct: "الأَوَّلُ",
+    sequence: ["؟", "الثَّانِي", "الثَّالِثُ", "الرَّابِعُ"],
+    options: ["الأَوَّلُ", "الثَّانِي", "الثَّالِثُ", "الرَّابِعُ"],
+  },
+  {
+    scene_image: "/lessons/v2/lesson15-order/s5.webp",
+    question_audio_key: "q5",
+    title: "أُكْمِلُ السِّلْسِلَةَ",
+    instruction: "أَكْمِلِ الرُّتَبَ بِالتَّرْتِيبِ.",
+    question: "الأَوَّلُ، ___، الثَّالِثُ، الرَّابِعُ",
+    mode: "missingRank",
+    correct: "الثَّانِي",
+    sequence: ["الأَوَّلُ", "؟", "الثَّالِثُ", "الرَّابِعُ"],
+    options: ["الرَّابِعُ", "الثَّالِثُ", "الثَّانِي", "الأَوَّلُ"],
+  },
+];

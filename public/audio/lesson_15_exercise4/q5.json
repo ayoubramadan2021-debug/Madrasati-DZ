@@ -1,0 +1,32 @@
+[
+  {
+    "text": "الأَوَّلُ",
+    "offset": 0,
+    "duration": 900
+  },
+  {
+    "text": "الثَّالِثُ",
+    "offset": 925,
+    "duration": 900
+  },
+  {
+    "text": "الرَّابِعُ",
+    "offset": 1850,
+    "duration": 900
+  },
+  {
+    "text": "مَا",
+    "offset": 2775,
+    "duration": 460
+  },
+  {
+    "text": "الرُّتْبَةُ",
+    "offset": 3260,
+    "duration": 900
+  },
+  {
+    "text": "النَّاقِصَةُ",
+    "offset": 4185,
+    "duration": 900
+  }
+]
