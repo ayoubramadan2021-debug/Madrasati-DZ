@@ -69,6 +69,7 @@ export default function Lesson15ExercisesPage() {
 
   return (
     <LessonCompleteV2
+      nextLessonKey="lesson16"
       message="أَحْسَنْتَ! أَصْبَحْتَ تَعْرِفُ الرُّتْبَةَ بِالعَدِّ مِنَ الأَوَّلِ إِلَى الأَخِيرِ. 🎉"
       onReplay={() => setStage("ex1")}
     />
