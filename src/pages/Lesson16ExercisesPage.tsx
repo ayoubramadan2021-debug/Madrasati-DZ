@@ -70,6 +70,7 @@ export default function Lesson16ExercisesPage() {
   return (
     <LessonCompleteV2
       message="أَحْسَنْتَ! أَصْبَحْتَ تَعْرِفُ كَيْفَ تَتَحَرَّكُ وَتُحَافِظُ عَلَى صِحَّتِكَ. 🎉"
+      nextLessonKey="lesson17"
       onReplay={() => setStage("ex1")}
     />
   );
