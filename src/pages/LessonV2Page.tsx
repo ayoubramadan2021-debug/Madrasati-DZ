@@ -16,6 +16,7 @@ import { LESSON_13_CONTENT } from "../features/lesson-v2/content/lesson13";
 import { LESSON_14_CONTENT } from "../features/lesson-v2/content/lesson14";
 import { LESSON_15_CONTENT } from "../features/lesson-v2/content/lesson15";
 import { LESSON_16_CONTENT } from "../features/lesson-v2/content/lesson16";
+import { LESSON_17_CONTENT } from "../features/lesson-v2/content/lesson17";
 
 /**
  * LessonV2Page — صفحة الدرس الديناميكية
@@ -43,6 +44,7 @@ const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
   lesson14: LESSON_14_CONTENT,
   lesson15: LESSON_15_CONTENT,
   lesson16: LESSON_16_CONTENT,
+  lesson17: LESSON_17_CONTENT,
 };
 
 export default function LessonV2Page() {
@@ -55,7 +57,7 @@ export default function LessonV2Page() {
   const handleDone = () => {
     // عند انتهاء الدرس، انتقل لتمارينه
     if (lessonId) {
-      lessonId === "lesson2" ? navigate("/lesson2-exercises") : lessonId === "lesson3" ? navigate("/lesson3-exercises") : lessonId === "lesson4" ? navigate("/lesson4-exercises") : lessonId === "lesson5" ? navigate("/lesson5-exercises") : lessonId === "lesson6" ? navigate("/lesson6-exercises") : lessonId === "lesson7" ? navigate("/lesson7-exercises") : lessonId === "lesson8" ? navigate("/lesson8-exercises") : lessonId === "lesson9" ? navigate("/lesson9-exercises") : lessonId === "lesson10" ? navigate("/lesson10-exercises") : lessonId === "lesson11" ? navigate("/lesson11-exercises") : lessonId === "lesson12" ? navigate("/lesson12-exercises") : lessonId === "lesson13" ? navigate("/lesson13-exercises") : lessonId === "lesson14" ? navigate("/lesson14-exercises") : lessonId === "lesson16" ? navigate("/lesson16-exercises") : lessonId === "lesson15" ? navigate("/lesson15-exercises") : navigate(`/lesson-v2/${lessonId}/exercises`);
+      lessonId === "lesson2" ? navigate("/lesson2-exercises") : lessonId === "lesson3" ? navigate("/lesson3-exercises") : lessonId === "lesson4" ? navigate("/lesson4-exercises") : lessonId === "lesson5" ? navigate("/lesson5-exercises") : lessonId === "lesson6" ? navigate("/lesson6-exercises") : lessonId === "lesson7" ? navigate("/lesson7-exercises") : lessonId === "lesson8" ? navigate("/lesson8-exercises") : lessonId === "lesson9" ? navigate("/lesson9-exercises") : lessonId === "lesson10" ? navigate("/lesson10-exercises") : lessonId === "lesson11" ? navigate("/lesson11-exercises") : lessonId === "lesson12" ? navigate("/lesson12-exercises") : lessonId === "lesson13" ? navigate("/lesson13-exercises") : lessonId === "lesson14" ? navigate("/lesson14-exercises") : lessonId === "lesson16" ? navigate("/lesson16-exercises") : lessonId === "lesson17" ? navigate("/lesson17-exercises") : lessonId === "lesson15" ? navigate("/lesson15-exercises") : navigate(`/lesson-v2/${lessonId}/exercises`);
     } else {
       navigate("/lesson-exercises");
     }
