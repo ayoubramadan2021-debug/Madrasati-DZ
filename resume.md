@@ -133,3 +133,11 @@ Status: completed locally on branch `batch-lessons-14-18`.
 ### Deployment note
 Do not deploy to Netlify yet. Keep collecting lessons 15–18 on `batch-lessons-14-18` and deploy together later.
 
+
+---
+
+## Navigation fix after Lesson 15
+
+- Updated `Lesson14ExercisesPage.tsx`.
+- Lesson 14 completion now points to `nextLessonKey="lesson15"`.
+- Rule to keep: after completing lesson N, the completion icon/button must point to lesson N+1.

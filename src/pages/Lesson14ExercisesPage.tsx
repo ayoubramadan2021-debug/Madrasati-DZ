@@ -138,6 +138,7 @@ export default function Lesson14ExercisesPage() {
     <LessonCompleteV2
       message="أَحْسَنْتَ! أَصْبَحْتَ تَتَذَكَّرُ الكَمِّيَّةَ وَتَعْرِفُ المَجْمُوعَاتِ المُتَسَاوِيَةَ. 🎉"
       onReplay={() => setStage("ex1")}
+      nextLessonKey="lesson15"
     />
   );
 }
