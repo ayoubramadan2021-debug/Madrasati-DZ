@@ -263,3 +263,103 @@ Exercise audio folders:
 ### Deployment note
 Do not deploy to Netlify yet.
 Continue collecting lessons 14–18 on branch `batch-lessons-14-18`, then deploy together later.
+
+---
+
+## Lesson 18 completed — أُعَيِّنُ المَوْقِعَ فِي الفَضَاءِ
+
+Status: completed locally, added to Supabase, and ready for batch deployment later.
+
+### Content
+- Route: `/lesson-v2/lesson18`
+- Exercises route: `/lesson18-exercises`
+- Supabase id: `11111111-1111-1111-1111-000000000018`
+- Title: `أُعَيِّنُ المَوْقِعَ فِي الفَضَاءِ`
+- Subject: `math`
+- Topic: تحديد مواقع الأشياء في الفضاء.
+- Core vocabulary:
+  - `يَمِين / يَسَار`
+  - `فَوْق / تَحْت`
+  - `أَمَام / خَلْف`
+  - `دَاخِل / خَارِج`
+
+### Images
+- Final images were approved and used as-is.
+- Image folder:
+  - `public/lessons/v2/lesson18-position/`
+- Files:
+  - `s1.webp` introduction
+  - `s2.webp` right/left
+  - `s3.webp` above/below
+  - `s4.webp` front/behind
+  - `s5.webp` inside/outside
+  - `s6.webp` summary
+- Important rule kept from lesson 17:
+  - Use the final approved image as the source of truth.
+  - Text and exercises must match the actual image, not the original prompt if they differ.
+  - Keep a large empty lower area for karaoke text.
+
+### Lesson audio and karaoke
+- Audio base:
+  - `/audio/lesson_18_positions`
+- Voice:
+  - Taline voice: `ar-DZ-AminaNeural`
+- Audio was regenerated at `+10%` speed.
+- Karaoke was adjusted with a small positive offset to reduce early highlighting.
+- The word `أُنْظُرُوا` was corrected in lesson scenes.
+
+### Exercises
+Created 4 exercise files, each with 5 questions:
+1. `lesson18_exercise1.ts` — right / left
+2. `lesson18_exercise2.ts` — above / below
+3. `lesson18_exercise3.ts` — front / behind
+4. `lesson18_exercise4.ts` — inside / outside
+
+Exercise page:
+- `src/pages/Lesson18ExercisesPage.tsx`
+
+Exercise engine:
+- `RankOrderExerciseV2`
+
+Exercise audio:
+- `public/audio/lesson_18_exercise1`
+- `public/audio/lesson_18_exercise2`
+- `public/audio/lesson_18_exercise3`
+- `public/audio/lesson_18_exercise4`
+
+### Integration
+- `LessonV2Page.tsx` imports and maps `LESSON_18_CONTENT`.
+- `v2Registry.ts` maps:
+  - `11111111-1111-1111-1111-000000000018` → `lesson18`
+- `App.tsx` includes:
+  - `/lesson18-exercises`
+- Lesson 17 completion links to lesson 18 with:
+  - `nextLessonKey="lesson18"`
+
+### Supabase
+Lesson 18 was inserted into `lessons` using only existing columns:
+- `id`
+- `title`
+- `subject`
+- `grade`
+- `sort_order`
+- `world_id`
+- `template_version`
+
+Columns not available in current schema and therefore avoided:
+- `is_published`
+- `type`
+- `duration_seconds`
+
+### Deployment note
+Do not deploy to Netlify yet.
+Lessons not deployed to Netlify yet:
+- 14
+- 15
+- 16
+- 17
+- 18
+
+Next step:
+- Final full test of lessons 14–18.
+- Then deploy once to Netlify.
