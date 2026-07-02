@@ -42,6 +42,7 @@ export default function App() {
         <Route path="/lesson16-exercises" element={lazy(() => import("./pages/Lesson16ExercisesPage"), "تمارين الدرس 16")} />
         <Route path="/lesson17-exercises" element={lazy(() => import("./pages/Lesson17ExercisesPage"), "تمارين الدرس 17")} />
         <Route path="/lesson18-exercises" element={lazy(() => import("./pages/Lesson18ExercisesPage"), "تمارين الدرس 18")} />
+        <Route path="/lesson19-exercises" element={lazy(() => import("./pages/Lesson19ExercisesPage"), "تمارين الدرس 19")} />
         <Route path="/lesson5-exercises" element={lazy(() => import("./pages/Lesson5ExercisesPage"), "تمارين الدرس 5")} />
 
         {/* مسار المادة والأقسام - موحّد مع روابط الصفحات */}

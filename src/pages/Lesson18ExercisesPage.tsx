@@ -70,6 +70,7 @@ export default function Lesson18ExercisesPage() {
   return (
     <LessonCompleteV2
       message="أَحْسَنْتَ! أَصْبَحْتَ تَعْرِفُ كَيْفَ تُحَدِّدُ مَكَانَ الشَّيْءِ فِي الفَضَاءِ. 🎉"
+      nextLessonKey="lesson19"
       onReplay={() => setStage("ex1")}
     />
   );

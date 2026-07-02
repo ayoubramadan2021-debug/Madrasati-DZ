@@ -363,3 +363,182 @@ Lessons not deployed to Netlify yet:
 Next step:
 - Final full test of lessons 14–18.
 - Then deploy once to Netlify.
+
+---
+
+## Lesson 19 completed — أُصَنِّفُ أَغْذِيَتِي
+
+Status: completed locally, added to Supabase, and pushed to GitHub.  
+Netlify deployment is postponed until collecting 5 new lessons because monthly deploy/build usage is limited.
+
+### Main idea
+Lesson 19 teaches first-grade children how to classify foods into simple food groups.
+
+### Environment
+- School cafeteria.
+- Teacher: Taline.
+- Students: Fadel, Sirine, Rahma.
+
+### Food groups
+The lesson introduces four food categories:
+1. Fruits and vegetables.
+2. Meat and fish.
+3. Milk and dairy products.
+4. Grains and grain products.
+
+### Images
+Final images were generated and approved before coding.
+
+Image folder:
+- `public/lessons/v2/lesson19-food/`
+
+Files:
+- `s1.webp` — introduction in the school cafeteria.
+- `s2.webp` — fruits and vegetables.
+- `s3.webp` — meat and fish.
+- `s4.webp` — milk and dairy products.
+- `s5.webp` — grains and grain products.
+- `s6.webp` — summary board.
+
+Important visual rules kept from lessons 18 and 19:
+- Use the final approved image as the source of truth.
+- Keep the lower part of the image empty for karaoke subtitles.
+- Keep characters consistent.
+- Use clear, large food objects.
+- No text, no logos, no watermark inside images.
+
+### Lesson content
+Created:
+- `src/features/lesson-v2/content/lesson19.ts`
+
+Audio base:
+- `/audio/lesson_19_food_groups`
+
+Voice:
+- Taline voice: `ar-DZ-AminaNeural`
+
+Audio and karaoke:
+- Generated lesson MP3 files.
+- Generated JSON karaoke files.
+- Used the same timing logic and speed approach as lesson 18.
+
+### Exercises
+Created 4 exercises, each with 5 questions:
+
+1. `lesson19_exercise1.ts`
+   - Fruits and vegetables.
+   - Questions use wording like:
+     - `مَا صِنْفُ التُّفَّاحِ؟`
+     - Correct answers use:
+       - `مِنْ صِنْفِ الفَوَاكِهِ`
+
+2. `lesson19_exercise2.ts`
+   - Meat and fish.
+
+3. `lesson19_exercise3.ts`
+   - Milk and dairy products.
+
+4. `lesson19_exercise4.ts`
+   - Grains and grain products.
+
+Exercise page:
+- `src/pages/Lesson19ExercisesPage.tsx`
+
+Exercise engine:
+- `RankOrderExerciseV2`
+
+Important fix:
+- Added `key="ex1"`, `key="ex2"`, `key="ex3"`, `key="ex4"` to force the exercise engine to reset correctly between stages.
+- This fixed the missing counter and transition issue.
+
+Exercise audio:
+- `public/audio/lesson_19_exercise1`
+- `public/audio/lesson_19_exercise2`
+- `public/audio/lesson_19_exercise3`
+- `public/audio/lesson_19_exercise4`
+
+Each question has:
+- `.mp3`
+- `.json`
+
+### Integration
+Updated:
+- `src/pages/LessonV2Page.tsx`
+  - Imported and mapped `LESSON_19_CONTENT`.
+  - Fixed `handleDone` so lesson 19 goes to `/lesson19-exercises`.
+
+- `src/features/lesson-v2/v2Registry.ts`
+  - Added:
+    - `11111111-1111-1111-1111-000000000019` → `lesson19`
+
+- `src/App.tsx`
+  - Added route:
+    - `/lesson19-exercises`
+
+- `src/pages/Lesson18ExercisesPage.tsx`
+  - Linked lesson 18 completion to lesson 19:
+    - `nextLessonKey="lesson19"`
+
+### Supabase
+Lesson 19 was inserted into `lessons` with existing schema columns only:
+- `id`
+- `title`
+- `subject`
+- `grade`
+- `sort_order`
+- `world_id`
+- `template_version`
+
+Supabase id:
+- `11111111-1111-1111-1111-000000000019`
+
+Title:
+- `أُصَنِّفُ أَغْذِيَتِي`
+
+Subject:
+- `science`
+
+### Testing
+Verified locally using:
+- `npm run dev -- --host 0.0.0.0`
+
+Checked:
+- Lesson 18 works.
+- Lesson 18 links to lesson 19.
+- Lesson 19 appears in the app after Supabase insertion.
+- Lesson 19 opens.
+- Lesson 19 exercises open directly.
+- Lesson 19 no longer redirects to generic lesson 1 exercises.
+- Exercise counter and progression work after adding stage keys.
+
+### Important rule
+Do not deploy to Netlify after every lesson.
+
+Netlify deployment rule:
+- Deploy only after collecting 5 lessons and testing them together.
+- This saves monthly Netlify usage because it is limited.
+
+Current new batch after lesson 18:
+- Lesson 19 completed.
+- Continue collecting until the next 5-lesson batch is ready.
+
+### Scripts created during lesson 19
+- `build_lesson19_content_audio.sh`
+- `build_lesson19_exercises.sh`
+- `fix_lesson19_exercises.sh`
+- `fix_lesson19_exercise_route.sh`
+- `fix_lesson19_handle_done.sh`
+- `link_lesson18_to_19.sh`
+
+### Next step
+Start lesson 20 using the same methodology:
+1. Scenario.
+2. Prompts.
+3. Images.
+4. Review images.
+5. Lesson content.
+6. Audio and karaoke.
+7. Exercises.
+8. Supabase.
+9. resume.md.
+10. GitHub.
