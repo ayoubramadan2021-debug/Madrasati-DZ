@@ -169,7 +169,7 @@ export default function NumberChoiceExerciseV2({ items, audio_base, onComplete }
               <span key={i} style={{
                 ...styles.word,
                 color: active === i ? C.gold : C.navy,
-                opacity: shown.has(i) ? 1 : 0.42,
+                opacity: (shown.has(i) || feedback !== "idle") ? 1 : 0.42,
                 transform: active === i ? "scale(1.08)" : "scale(1)"
               }}>{w}</span>
             ))}

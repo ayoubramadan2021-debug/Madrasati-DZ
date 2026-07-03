@@ -144,7 +144,7 @@ export default function CompareExerciseV2({ items, audio_base, onComplete }: Com
         boxShadow: "0 4px 14px rgba(0,0,0,.12)",
       }}>
         {words ? words.map((w, i) => {
-          const isShown = karaoke.activeKey ? karaoke.shown.has(i) : false;
+          const isShown = karaoke.activeKey ? karaoke.shown.has(i) : true;
           const isCurrent = isActive && karaoke.currentIdx === i;
           return (
             <span key={i} style={{
@@ -159,7 +159,7 @@ export default function CompareExerciseV2({ items, audio_base, onComplete }: Com
 
       {/* options */}
       <div style={{ display: "flex", flexDirection: "column", gap: 10, paddingBottom: 90 }}>
-        {item.options.map((opt) => {
+        {item.options.map((opt, optionIndex) => {
           const isSelected = selectedOption === opt;
           const showAsCorrect = isSelected && feedbackState === "correct";
           const showAsWrong = isSelected && feedbackState === "wrong";
@@ -173,6 +173,9 @@ export default function CompareExerciseV2({ items, audio_base, onComplete }: Com
                 borderRadius: 16, fontSize: 20, fontWeight: 800, color: C.navyDeep,
                 fontFamily: "Tajawal, sans-serif", cursor: locked ? "default" : "pointer",
                 transition: "all .25s ease",
+                opacity: 0,
+                animation: "optionPopIn .42s ease forwards",
+                animationDelay: `${optionIndex * 90}ms`,
               }}>{opt}</button>
           );
         })}
@@ -203,6 +206,12 @@ export default function CompareExerciseV2({ items, audio_base, onComplete }: Com
       )}
 
       <style>{`
+        @keyframes optionPopIn {
+          0% { opacity: 0; transform: translateY(16px) scale(0.92); }
+          70% { opacity: 1; transform: translateY(-2px) scale(1.03); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
         @keyframes feedbackPop {
           0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
           60% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }

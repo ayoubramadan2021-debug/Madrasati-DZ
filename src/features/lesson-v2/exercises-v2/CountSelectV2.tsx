@@ -142,7 +142,7 @@ export default function CountSelectV2({ items, audio_base, onComplete }: CountSe
         fontSize: 18, fontWeight: 700, lineHeight: 1.7, boxShadow: "0 4px 14px rgba(0,0,0,.12)",
       }}>
         {words ? words.map((w, i) => {
-          const isShown = karaoke.activeKey ? karaoke.shown.has(i) : false;
+          const isShown = karaoke.activeKey ? karaoke.shown.has(i) : true;
           const isCurrent = isActive && karaoke.currentIdx === i;
           return (
             <span key={i} style={{
@@ -156,7 +156,7 @@ export default function CountSelectV2({ items, audio_base, onComplete }: CountSe
       </div>
 
       <div style={{ display: "flex", justifyContent: "center", gap: 14, padding: "8px 16px 90px" }}>
-        {item.options.map((opt) => {
+        {item.options.map((opt, optionIndex) => {
           const isSelected = selectedOption === opt;
           const showAsCorrect = isSelected && feedbackState === "correct";
           const showAsWrong = isSelected && feedbackState === "wrong";
@@ -168,7 +168,11 @@ export default function CountSelectV2({ items, audio_base, onComplete }: CountSe
                 fontFamily: "Tajawal,sans-serif", cursor: locked ? "default" : "pointer",
                 border: `3px solid ${showAsCorrect || showHint ? C.green : showAsWrong ? C.red : C.gold}`,
                 background: showAsCorrect || showHint ? C.greenSoft : showAsWrong ? C.redSoft : "#fff",
-                color: C.navy, transition: "all .2s ease",
+                color: C.navy,
+                transition: "all .2s ease",
+                opacity: 0,
+                animation: "optionPopIn .42s ease forwards",
+                animationDelay: `${optionIndex * 90}ms`,
               }}>{opt}</button>
           );
         })}
@@ -199,6 +203,12 @@ export default function CountSelectV2({ items, audio_base, onComplete }: CountSe
       )}
 
       <style>{`
+        @keyframes optionPopIn {
+          0% { opacity: 0; transform: translateY(16px) scale(0.92); }
+          70% { opacity: 1; transform: translateY(-2px) scale(1.03); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
         @keyframes popIn {
           0%{opacity:0;transform:translateY(-20px) scale(0.4);}
           60%{opacity:1;transform:translateY(2px) scale(1.1);}
