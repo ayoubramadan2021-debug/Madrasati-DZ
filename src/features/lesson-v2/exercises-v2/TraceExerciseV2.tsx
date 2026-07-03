@@ -286,12 +286,12 @@ export default function TraceExerciseV2({
           cursor: "pointer",
         }}>
           {words ? words.map((w, i) => {
-            const isShown = karaoke.activeKey ? karaoke.shown.has(i) : false;
+            const isShown = karaoke.activeKey ? karaoke.shown.has(i) : true;
             const isCurrent = isActive && karaoke.currentIdx === i;
             return (
               <span key={i} style={{
                 display: "inline-block",
-                opacity: isShown ? 1 : 0,
+                opacity: (isShown || hasDrawn || completed) ? 1 : 0,
                 transform: isCurrent ? "translateY(-3px) scale(1.1)" : "translateY(0)",
                 color: isCurrent ? C.gold : (isKeyword(w.text) ? "#16a34a" : C.navyDeep),
                 fontWeight: isCurrent ? 900 : 700,
@@ -317,6 +317,8 @@ export default function TraceExerciseV2({
           width: 240,
           height: 320,
           background: "rgba(255,255,255,0.96)",
+          opacity: 0,
+          animation: "traceBoxEnter .45s ease forwards",
           border: `4px solid ${completed ? C.green : C.gold}`,
           borderRadius: 24,
           boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
@@ -399,6 +401,11 @@ export default function TraceExerciseV2({
       </div>
 
       <style>{`
+        @keyframes traceBoxEnter {
+          0% { opacity: 0; transform: translateY(18px) scale(0.97); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
         @keyframes popIn {
           0% { opacity: 0; transform: scale(0.5); }
           60% { opacity: 1; transform: scale(1.2); }
