@@ -1,33 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-type WordTiming = { text: string; offset: number; duration: number   feedbackOverlay: {
-    position: "fixed",
-    inset: 0,
-    zIndex: 50,
-    background: "rgba(255,248,236,.58)",
-    backdropFilter: "blur(3px)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    pointerEvents: "none",
-  },
-  feedbackCard: {
-    minWidth: 240,
-    borderRadius: 999,
-    padding: "22px 34px",
-    color: "#fff",
-    fontWeight: 900,
-    textAlign: "center",
-    boxShadow: "0 18px 35px rgba(0,0,0,.22)",
-    border: "0",
-    transform: "scale(1.02)",
-  },
-  feedbackText: {
-    fontSize: 31,
-    fontWeight: 900,
-    lineHeight: 1.2,
-  },
-};
+type WordTiming = { text: string; offset: number; duration: number };
 
 export type NumberSortItem = {
   title: string;
@@ -114,6 +87,7 @@ export default function NumberSortExerciseV2({ items, audio_base, onComplete }: 
 
     if (next.length === item.correct.length) {
       const ok = next.join(",") === item.correct.join(",");
+      setFeedback(ok ? "correct" : "wrong");
       new Audio(ok ? "/audio/v2_feedback/correct.mp3" : "/audio/v2_feedback/retry.mp3").play().catch(() => {});
       setTimeout(() => {
         if (ok) {
@@ -121,9 +95,9 @@ export default function NumberSortExerciseV2({ items, audio_base, onComplete }: 
           else onComplete?.();
         } else {
           setSelected([]);
-    setFeedback("idle");
+          setFeedback("idle");
         }
-      }, 850);
+      }, 950);
     }
   };
 
@@ -164,7 +138,7 @@ export default function NumberSortExerciseV2({ items, audio_base, onComplete }: 
             <div
               style={{
                 ...styles.feedbackCard,
-                background: feedback === "correct" ? "#22A866" : "#EF4444",
+                background: feedback === "correct" ? "#20A567" : "#EF4444",
               }}
             >
               <div style={styles.feedbackText}>
@@ -219,4 +193,29 @@ const styles: Record<string, React.CSSProperties> = {
   word: { display: "inline-block", margin: "0 3px", transition: "all .15s" },
   options: { display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginTop: 11 },
   option: { minHeight: 58, borderRadius: 20, border: "4px solid white", color: "#fff", fontSize: 30, fontWeight: 900, fontFamily: "Tajawal,sans-serif", boxShadow: "0 8px 14px #0002" },
+  feedbackOverlay: {
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    zIndex: 1000,
+    pointerEvents: "none",
+  },
+  feedbackCard: {
+    minWidth: 245,
+    borderRadius: 999,
+    padding: "20px 34px",
+    color: "#fff",
+    fontWeight: 900,
+    textAlign: "center",
+    boxShadow: "0 18px 38px rgba(0,0,0,.28)",
+    border: "6px solid rgba(255,255,255,.9)",
+    transform: "scale(1.02)",
+  },
+  feedbackText: {
+    fontSize: 31,
+    fontWeight: 900,
+    lineHeight: 1.2,
+  },
+
 };

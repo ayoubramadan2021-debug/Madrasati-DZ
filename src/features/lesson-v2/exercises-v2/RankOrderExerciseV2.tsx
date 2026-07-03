@@ -312,10 +312,10 @@ export default function RankOrderExerciseV2({
           <div
             style={{
               ...styles.feedback,
-              background: feedback === "correct" ? "#1FA463" : "#D45447",
+              background: feedback === "correct" ? "#20A567" : "#EF4444",
             }}
           >
-            {feedback === "correct" ? "أَحْسَنْتَ ✅" : "حَاوِلْ مَرَّةً أُخْرَى 🌟"}
+            {feedback === "correct" ? "✅ أَحْسَنْتَ" : "حَاوِلْ مَرَّةً أُخْرَى ✨"}
           </div>
         )}
       </section>
