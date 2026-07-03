@@ -300,12 +300,12 @@ export default function CountTapExerciseV2({
           cursor: "pointer",
         }}>
           {words ? words.map((w, i) => {
-            const isShown = karaoke.activeKey ? karaoke.shown.has(i) : false;
+            const isShown = karaoke.activeKey ? karaoke.shown.has(i) : true;
             const isCurrent = isActive && karaoke.currentIdx === i;
             return (
               <span key={i} style={{
                 display: "inline-block",
-                opacity: isShown ? 1 : 0,
+                opacity: (isShown || feedbackState !== "idle" || locked) ? 1 : 0,
                 transform: isCurrent ? "translateY(-3px) scale(1.1)" : "translateY(0)",
                 color: isCurrent ? C.gold : (isKeyword(w.text) ? "#16a34a" : C.navyDeep),
                 fontWeight: isCurrent ? 900 : 700,
@@ -364,6 +364,9 @@ export default function CountTapExerciseV2({
                 boxShadow: isSelected ? "0 6px 16px rgba(0,0,0,.25)" : "0 4px 12px rgba(0,0,0,.1)",
                 transform: showAsCorrect ? "scale(1.08)" : showAsWrong ? "scale(0.95)" : "scale(1)",
                 transition: "all .3s ease",
+                opacity: 0,
+                animation: "optionPopIn .42s ease forwards",
+                animationDelay: `${idx * 90}ms`,
                 fontFamily: "Tajawal, sans-serif",
               }}
             >
@@ -406,6 +409,12 @@ export default function CountTapExerciseV2({
       )}
 
       <style>{`
+        @keyframes optionPopIn {
+          0% { opacity: 0; transform: translateY(16px) scale(0.92); }
+          70% { opacity: 1; transform: translateY(-2px) scale(1.03); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
         @keyframes feedbackPop {
           0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
           60% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
