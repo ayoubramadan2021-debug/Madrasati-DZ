@@ -305,6 +305,9 @@ export default function TapSelectImagesV2({
                 boxShadow: isSelected ? "0 6px 16px rgba(0,0,0,.3)" : "0 4px 12px rgba(0,0,0,.15)",
                 transform: showAsCorrect ? "scale(1.05)" : showAsWrong ? "scale(0.95)" : "scale(1)",
                 transition: "all .3s ease",
+                opacity: 0,
+                animation: "optionPopIn .42s ease forwards",
+                animationDelay: `${idx * 90}ms`,
                 overflow: "hidden",
                 aspectRatio: "9/16",
                 position: "relative",
@@ -380,6 +383,12 @@ export default function TapSelectImagesV2({
       )}
 
       <style>{`
+        @keyframes optionPopIn {
+          0% { opacity: 0; transform: translateY(16px) scale(0.92); }
+          70% { opacity: 1; transform: translateY(-2px) scale(1.03); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
         @keyframes feedbackPop {
           0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
           60% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }

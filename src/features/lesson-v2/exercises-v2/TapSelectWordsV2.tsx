@@ -294,7 +294,7 @@ export default function TapSelectWordsV2({
         margin: "0 auto",
         width: "100%",
       }}>
-        {item.options.map((opt) => {
+        {item.options.map((opt, optionIndex) => {
           const isSelected = selectedOption === opt;
           const isCorrectAnswer = opt === item.correct;
           const showAsCorrect = isSelected && feedbackState === "correct";
@@ -324,6 +324,9 @@ export default function TapSelectWordsV2({
                 transform: showAsCorrect ? "scale(1.05)" : showAsWrong ? "scale(0.95)" : "scale(1)",
                 transition: "all .3s ease",
                 minHeight: 64,
+                opacity: 0,
+                animation: "optionPopIn .42s ease forwards",
+                animationDelay: `${optionIndex * 90}ms`,
               }}
             >{opt}</button>
           );
@@ -355,6 +358,12 @@ export default function TapSelectWordsV2({
       )}
 
       <style>{`
+        @keyframes optionPopIn {
+          0% { opacity: 0; transform: translateY(16px) scale(0.92); }
+          70% { opacity: 1; transform: translateY(-2px) scale(1.03); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
         @keyframes feedbackPop {
           0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
           60% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
