@@ -542,3 +542,126 @@ Start lesson 20 using the same methodology:
 8. Supabase.
 9. resume.md.
 10. GitHub.
+
+---
+
+## Lesson 20 completed — مُتَتَالِيَةُ الأَعْدَادِ إِلَى 10
+
+Status: completed locally and pushed to GitHub.  
+Netlify deployment is postponed. We deploy only after collecting 5 new lessons.
+
+### Main idea
+Lesson 20 teaches first-grade learners the number sequence from 1 to 10.
+
+### Teacher and environment
+- Teacher: Khalil.
+- Students: Fadel, Sirine, Rahma.
+- Environment: Algerian school playground.
+
+### Lesson scenes
+Created 6 scenes:
+1. Introduction to the number sequence.
+2. Reading numbers from 1 to 10.
+3. The next number.
+4. The number that comes before.
+5. Connecting number 9 with a set of balls.
+6. Summary board with numbers 1 to 10.
+
+### Assets
+Images:
+- `public/lessons/v2/lesson20-numbers/s1.webp`
+- `public/lessons/v2/lesson20-numbers/s2.webp`
+- `public/lessons/v2/lesson20-numbers/s3.webp`
+- `public/lessons/v2/lesson20-numbers/s4.webp`
+- `public/lessons/v2/lesson20-numbers/s5.webp`
+- `public/lessons/v2/lesson20-numbers/s6.webp`
+
+Audio:
+- `public/audio/lesson_20_numbers`
+
+Voice:
+- Khalil voice: `ar-DZ-IsmaelNeural`
+
+### Lesson file
+Created:
+- `src/features/lesson-v2/content/lesson20.ts`
+
+### Exercises
+The first exercise version used old image-based exercises and was rejected because it was repetitive and not premium enough.
+
+Final exercise system:
+- Created new premium engines:
+  - `NumberChoiceExerciseV2`
+  - `NumberSortExerciseV2`
+
+Final exercises:
+1. Complete the sequence.
+2. Find the number that comes before.
+3. Find the number that comes after.
+4. Sort numbers from smallest to largest.
+
+Exercise page:
+- `src/pages/Lesson20ExercisesPage.tsx`
+
+Exercise content:
+- `lesson20_exercise1.ts`
+- `lesson20_exercise2.ts`
+- `lesson20_exercise3.ts`
+- `lesson20_exercise4.ts`
+
+Exercise audio:
+- `public/audio/lesson_20_exercise1`
+- `public/audio/lesson_20_exercise2`
+- `public/audio/lesson_20_exercise3`
+- `public/audio/lesson_20_exercise4`
+
+### Premium UX fixes
+- Removed repetitive large image layout.
+- Added colorful number cards.
+- Added compact mobile-friendly layout that does not cover the bottom navigation bar.
+- Added colored selected numbers inside empty slots.
+- Added feedback overlay similar to previous premium exercises:
+  - Green pill: `✅ أَحْسَنْتَ`
+  - Red pill: `حَاوِلْ مَرَّةً أُخْرَى ✨`
+- Fixed Exercise 4 so it asks only: `رَتِّبُوا الأَعْدَادَ.`
+
+### Integration
+Updated:
+- `src/App.tsx`
+  - Added `/lesson20-exercises`.
+
+- `src/pages/LessonV2Page.tsx`
+  - Imported and mapped `LESSON_20_CONTENT`.
+  - Added route from lesson 20 to `/lesson20-exercises`.
+
+- `src/features/lesson-v2/v2Registry.ts`
+  - Added:
+    - `11111111-1111-1111-1111-000000000020` → `lesson20`
+
+- `src/pages/Lesson19ExercisesPage.tsx`
+  - Linked lesson 19 completion to lesson 20.
+
+### Supabase
+Lesson 20 should be present in Supabase with:
+- id: `11111111-1111-1111-1111-000000000020`
+- title: `مُتَتَالِيَةُ الأَعْدَادِ إِلَى 10`
+- subject: `math`
+- grade: `1`
+- sort_order: `20`
+- template_version: `2`
+
+### Testing
+Verified:
+- Lesson 20 displays locally.
+- Lesson audio works.
+- Karaoke works.
+- Exercises open locally.
+- New exercise engines build successfully.
+
+### Deployment note
+Do not deploy to Netlify now.  
+Current post-Netlify batch:
+- Lesson 19 completed.
+- Lesson 20 completed.
+- Continue with lessons 21, 22, and 23 before Netlify deployment.
+

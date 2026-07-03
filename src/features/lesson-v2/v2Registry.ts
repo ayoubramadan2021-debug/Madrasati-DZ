@@ -20,6 +20,7 @@ export const V2_LESSON_MAP: Record<string, string> = {
   "11111111-1111-1111-1111-000000000017": "lesson17",
   "11111111-1111-1111-1111-000000000018": "lesson18",
   "11111111-1111-1111-1111-000000000019": "lesson19",
+  "11111111-1111-1111-1111-000000000020": "lesson20",
 };
 
 export function getV2Key(lessonId: string): string | null {
