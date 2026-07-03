@@ -185,6 +185,7 @@ function DraggableSortItem({
         opacity: isDragging ? 0.3 : (isPlaced ? 0.4 : 1),
         boxShadow: isPlaced ? "none" : "0 6px 14px rgba(232,160,32,0.35)",
         userSelect: "none",
+        animation: isPlaced ? "none" : "sortItemEnter .42s ease both",
       }}
     >
       {renderSortItem(item)}
@@ -246,6 +247,7 @@ export default function SortSequenceExerciseV2({
   const [placements, setPlacements] = useState<Record<number, { id: string; item: SortItem }>>({});
   const [activeDrag, setActiveDrag] = useState<SortItem | null>(null);
   const [wrongSlot, setWrongSlot] = useState<number | null>(null);
+  const [questionRevealed, setQuestionRevealed] = useState(false);
   const [feedbackState, setFeedbackState] = useState<"idle" | "complete">("idle");
 
   const karaoke = useKaraoke(audio_base);
@@ -278,6 +280,7 @@ export default function SortSequenceExerciseV2({
     setPlacements({});
     setFeedbackState("idle");
     setWrongSlot(null);
+    setQuestionRevealed(false);
     setActiveDrag(null);
     if (!question) return;
     const t = timings[question.question_audio_key];
@@ -304,6 +307,7 @@ export default function SortSequenceExerciseV2({
 
   const handleDragEnd = (e: DragEndEvent) => {
     setActiveDrag(null);
+    setQuestionRevealed(true);
     const { active, over } = e;
     if (!over) return;
     const draggedId = active.data.current?.id as string | undefined;
@@ -408,12 +412,12 @@ export default function SortSequenceExerciseV2({
           cursor: "pointer",
         }}>
           {words ? words.map((w, i) => {
-            const isShown = karaoke.activeKey ? karaoke.shown.has(i) : false;
+            const isShown = karaoke.activeKey ? karaoke.shown.has(i) : true;
             const isCurrent = isActive && karaoke.currentIdx === i;
             return (
               <span key={i} style={{
                 display: "inline-block",
-                opacity: isShown ? 1 : 0,
+                opacity: (isShown || questionRevealed || wrongSlot !== null || feedbackState !== "idle" || Object.keys(placements).length > 0) ? 1 : 0,
                 transform: isCurrent ? "translateY(-3px) scale(1.1)" : "translateY(0)",
                 color: isCurrent ? C.gold : (isKeyword(w.text) ? "#16a34a" : C.navyDeep),
                 fontWeight: isCurrent ? 900 : 700,
@@ -526,6 +530,12 @@ export default function SortSequenceExerciseV2({
       )}
 
       <style>{`
+        @keyframes sortItemEnter {
+          0% { opacity: 0; transform: translateY(16px) scale(0.94); }
+          70% { opacity: 1; transform: translateY(-2px) scale(1.03); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
         @keyframes shake {
           0%, 100% { transform: translateX(0); }
           25% { transform: translateX(-8px); }
