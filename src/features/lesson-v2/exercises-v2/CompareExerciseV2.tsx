@@ -180,14 +180,35 @@ export default function CompareExerciseV2({ items, audio_base, onComplete }: Com
 
       {feedbackState !== "idle" && (
         <div style={{
-          position: "fixed", top: "50%", left: "50%", transform: "translate(-50%,-50%)",
-          background: feedbackState === "correct" ? C.green : C.gold, color: "#fff",
-          padding: "16px 28px", borderRadius: 24, fontSize: 20, fontWeight: 800,
-          boxShadow: "0 12px 32px rgba(0,0,0,.3)", zIndex: 100, pointerEvents: "none",
+          position: "fixed",
+          top: "50%", left: "50%",
+          transform: "translate(-50%, -50%)",
+          background: feedbackState === "correct" ? "#20A567" : "#EF4444",
+          color: "#fff",
+          padding: "20px 34px",
+          borderRadius: 999,
+          fontSize: 28,
+          fontWeight: 900,
+          boxShadow: "0 18px 38px rgba(0,0,0,.28)",
+          border: "6px solid rgba(255,255,255,.9)",
+          zIndex: 1000,
+          pointerEvents: "none",
+          textAlign: "center",
+          fontFamily: "Tajawal, sans-serif",
+          minWidth: 245,
+          animation: "feedbackPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
         }}>
-          {feedbackState === "correct" ? "أَحْسَنْت 🎉" : `حَاوِلْ مَرَّةً أُخْرَى (${3 - attempts})`}
+          {feedbackState === "correct" ? "✅ أَحْسَنْتَ" : "حَاوِلْ مَرَّةً أُخْرَى ✨"}
         </div>
       )}
+
+      <style>{`
+        @keyframes feedbackPop {
+          0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+          60% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+          100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+      `}</style>
     </div>
   );
 }

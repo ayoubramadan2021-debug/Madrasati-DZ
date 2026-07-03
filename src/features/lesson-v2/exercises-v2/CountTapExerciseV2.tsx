@@ -386,18 +386,22 @@ export default function CountTapExerciseV2({
           position: "fixed",
           top: "50%", left: "50%",
           transform: "translate(-50%, -50%)",
-          background: feedbackState === "correct" ? C.green : C.gold,
+          background: feedbackState === "correct" ? "#20A567" : "#EF4444",
           color: "white",
-          padding: "16px 28px",
-          borderRadius: 24,
-          fontSize: 20, fontWeight: 800,
-          boxShadow: "0 12px 32px rgba(0,0,0,.3)",
-          zIndex: 100,
+          padding: "20px 34px",
+          borderRadius: 999,
+          fontSize: 28,
+          fontWeight: 900,
+          boxShadow: "0 18px 38px rgba(0,0,0,.28)",
+          border: "6px solid rgba(255,255,255,.9)",
+          zIndex: 1000,
           animation: "feedbackPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
           pointerEvents: "none",
           textAlign: "center",
+          fontFamily: "Tajawal, sans-serif",
+          minWidth: 245,
         }}>
-          {feedbackState === "correct" ? "أَحْسَنْت 🎉" : `حَاوِلْ مَرَّةً أُخْرَى (${3 - attempts})`}
+          {feedbackState === "correct" ? "✅ أَحْسَنْتَ" : "حَاوِلْ مَرَّةً أُخْرَى ✨"}
         </div>
       )}
 

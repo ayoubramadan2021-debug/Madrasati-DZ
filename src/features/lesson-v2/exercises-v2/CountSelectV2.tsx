@@ -174,7 +174,43 @@ export default function CountSelectV2({ items, audio_base, onComplete }: CountSe
         })}
       </div>
 
-      <style>{`@keyframes popIn { 0%{opacity:0;transform:translateY(-20px) scale(0.4);} 60%{opacity:1;transform:translateY(2px) scale(1.1);} 100%{opacity:1;transform:translateY(0) scale(1);} }`}</style>
+      {feedbackState !== "idle" && (
+        <div style={{
+          position: "fixed",
+          top: "50%", left: "50%",
+          transform: "translate(-50%, -50%)",
+          background: feedbackState === "correct" ? "#20A567" : "#EF4444",
+          color: "white",
+          padding: "20px 34px",
+          borderRadius: 999,
+          fontSize: 28,
+          fontWeight: 900,
+          boxShadow: "0 18px 38px rgba(0,0,0,.28)",
+          border: "6px solid rgba(255,255,255,.9)",
+          zIndex: 1000,
+          animation: "feedbackPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
+          pointerEvents: "none",
+          textAlign: "center",
+          fontFamily: "Tajawal, sans-serif",
+          minWidth: 245,
+        }}>
+          {feedbackState === "correct" ? "✅ أَحْسَنْتَ" : "حَاوِلْ مَرَّةً أُخْرَى ✨"}
+        </div>
+      )}
+
+      <style>{`
+        @keyframes popIn {
+          0%{opacity:0;transform:translateY(-20px) scale(0.4);}
+          60%{opacity:1;transform:translateY(2px) scale(1.1);}
+          100%{opacity:1;transform:translateY(0) scale(1);}
+        }
+
+        @keyframes feedbackPop {
+          0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+          60% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+          100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+      `}</style>
     </div>
   );
 }
