@@ -214,6 +214,23 @@ export default function WorldIntroSceneV2({
       display: "flex",
       flexDirection: "column",
     }}>
+      <style>{`
+        @keyframes lessonTextIn {
+          0% { opacity: 0; transform: translateY(14px) scale(.97); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes lessonOptionEnter {
+          0% { opacity: 0; transform: translateY(14px) scale(.96); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes lessonCtaPulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.04); }
+        }
+      `}</style>
+
       {/* Full scene image */}
       <div style={{
         position: "absolute",
@@ -334,16 +351,17 @@ export default function WorldIntroSceneV2({
           textAlign: "center",
           boxShadow: "0 6px 20px rgba(0,0,0,.15)",
           cursor: "pointer",
+          animation: "lessonTextIn .45s ease both",
         }}>
           {words ? (
             words.map((w, i) => {
               const sceneActiveTxt = karaoke.activeKey === slide.audio_key;
-              const isShown = sceneActiveTxt ? karaoke.shown.has(i) : false;
+              const isShown = sceneActiveTxt ? karaoke.shown.has(i) : true;
               const isCurrent = sceneActiveTxt && karaoke.currentIdx === i;
               return (
                 <span key={i} style={{
                   display: "inline-block",
-                  opacity: isShown ? 1 : 0,
+                  opacity: (isShown || questionAnswered || Object.keys(answerState).length > 0) ? 1 : 0,
                   transform: isCurrent ? "translateY(-3px) scale(1.1)" : "translateY(0)",
                   color: isCurrent ? C.gold : C.navyDeep,
                   fontWeight: isCurrent ? 900 : 700,
@@ -364,7 +382,7 @@ export default function WorldIntroSceneV2({
           display: "flex", flexDirection: "column", gap: 8,
           maxWidth: 480, margin: "0 auto", width: "100%",
         }}>
-          {slide.options.map((opt) => {
+          {slide.options.map((opt, optIndex) => {
             const state = answerState[opt.id] || "idle";
             const bg = state === "correct" ? C.greenSoft : state === "wrong" ? C.redSoft : "rgba(255,255,255,0.95)";
             const border = state === "correct" ? C.green : state === "wrong" ? C.red : C.gold;
@@ -379,7 +397,7 @@ export default function WorldIntroSceneV2({
                   border: `3px solid ${border}`,
                   borderRadius: 16,
                   padding: "12px 16px",
-                  fontSize: 15,
+                  fontSize: 17,
                   fontWeight: 700,
                   color: C.navyDeep,
                   fontFamily: "Tajawal, sans-serif",
@@ -414,7 +432,7 @@ export default function WorldIntroSceneV2({
       <div style={{
         position: "relative", zIndex: 2,
         display: "flex", justifyContent: "space-between", alignItems: "center",
-        padding: "12px 16px 100px",
+        padding: "10px 16px 110px",
       }}>
         <button onClick={goPrev} disabled={slideIdx === 0} style={{
           background: "rgba(255,255,255,0.95)",
@@ -438,13 +456,15 @@ export default function WorldIntroSceneV2({
             background: `linear-gradient(135deg, ${C.gold}, ${C.goldSoft})`,
             color: C.navyDeep,
             border: "none",
-            padding: "12px 24px",
+            padding: "15px 30px",
             borderRadius: 999,
             fontSize: 15,
             fontWeight: 900,
             cursor: "pointer",
             fontFamily: "Tajawal, sans-serif",
-            boxShadow: "0 6px 18px rgba(232,160,32,.5)",
+            boxShadow: "0 8px 22px rgba(232,160,32,.55)",
+            minWidth: 150,
+            animation: "lessonCtaPulse 1.6s ease-in-out infinite",
           }}>{slide.cta_text || "ابدأ ←"}</button>
         ) : slide.options && !questionAnswered ? (
           <div style={{ width: 52 }} />
