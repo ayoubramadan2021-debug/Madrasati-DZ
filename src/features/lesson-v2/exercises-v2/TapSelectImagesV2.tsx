@@ -252,12 +252,12 @@ export default function TapSelectImagesV2({
           cursor: "pointer",
         }}>
           {words ? words.map((w, i) => {
-            const isShown = karaoke.activeKey ? karaoke.shown.has(i) : false;
+            const isShown = karaoke.activeKey ? karaoke.shown.has(i) : true;
             const isCurrent = isActive && karaoke.currentIdx === i;
             return (
               <span key={i} style={{
                 display: "inline-block",
-                opacity: isShown ? 1 : 0,
+                opacity: (isShown || feedbackState !== "idle" || locked) ? 1 : 0,
                 transform: isCurrent ? "translateY(-3px) scale(1.1)" : "translateY(0)",
                 color: isCurrent ? C.gold : (isKeyword(w.text) ? "#16a34a" : C.navyDeep),
                 fontWeight: isCurrent ? 900 : 700,

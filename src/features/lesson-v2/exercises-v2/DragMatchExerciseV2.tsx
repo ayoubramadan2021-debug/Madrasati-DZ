@@ -247,6 +247,7 @@ export default function DragMatchExerciseV2({
   const [matches, setMatches] = useState<Record<string, ItemRepresentation>>({});
   const [activeDrag, setActiveDrag] = useState<ItemRepresentation | null>(null);
   const [wrongMatchId, setWrongMatchId] = useState<string | null>(null);
+  const [questionRevealed, setQuestionRevealed] = useState(false);
   const [feedbackState, setFeedbackState] = useState<"idle" | "complete">("idle");
 
   const karaoke = useKaraoke(audio_base);
@@ -270,6 +271,7 @@ export default function DragMatchExerciseV2({
     setMatches({});
     setFeedbackState("idle");
     setWrongMatchId(null);
+    setQuestionRevealed(false);
     setActiveDrag(null);
     if (!item) return;
     const t = timings[item.question_audio_key];
@@ -298,6 +300,7 @@ export default function DragMatchExerciseV2({
 
   const handleDragEnd = (e: DragEndEvent) => {
     setActiveDrag(null);
+    setQuestionRevealed(true);
     const { active, over } = e;
     if (!over) return;
     const draggedMatchId = active.data.current?.match_id as string | undefined;
@@ -401,12 +404,12 @@ export default function DragMatchExerciseV2({
           cursor: "pointer",
         }}>
           {words ? words.map((w, i) => {
-            const isShown = karaoke.activeKey ? karaoke.shown.has(i) : false;
+            const isShown = karaoke.activeKey ? karaoke.shown.has(i) : true;
             const isCurrent = isActive && karaoke.currentIdx === i;
             return (
               <span key={i} style={{
                 display: "inline-block",
-                opacity: isShown ? 1 : 0,
+                opacity: (isShown || questionRevealed || wrongMatchId !== null || feedbackState !== "idle" || matchedIds.size > 0) ? 1 : 0,
                 transform: isCurrent ? "translateY(-3px) scale(1.1)" : "translateY(0)",
                 color: isCurrent ? C.gold : (isKeyword(w.text) ? "#16a34a" : C.navyDeep),
                 fontWeight: isCurrent ? 900 : 700,
@@ -449,12 +452,20 @@ export default function DragMatchExerciseV2({
           gap: 12,
           flexWrap: "wrap",
         }}>
-          {item.pairs.map((pair) => (
-            <DraggableChip
+          {item.pairs.map((pair, pairIndex) => (
+            <div
               key={pair.match_id}
-              pair={pair}
-              isMatched={matchedIds.has(pair.match_id)}
-            />
+              style={{
+                opacity: 0,
+                animation: "dragChipEnter .42s ease forwards",
+                animationDelay: `${pairIndex * 90}ms`,
+              }}
+            >
+              <DraggableChip
+                pair={pair}
+                isMatched={matchedIds.has(pair.match_id)}
+              />
+            </div>
           ))}
         </div>
 
@@ -499,6 +510,12 @@ export default function DragMatchExerciseV2({
       )}
 
       <style>{`
+        @keyframes dragChipEnter {
+          0% { opacity: 0; transform: translateY(16px) scale(0.94); }
+          70% { opacity: 1; transform: translateY(-2px) scale(1.03); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
         @keyframes shake {
           0%, 100% { transform: translateX(0); }
           25% { transform: translateX(-8px); }
