@@ -119,6 +119,13 @@ export default function NumberChoiceExerciseV2({ items, audio_base, onComplete }
   return (
     <main dir="rtl" style={styles.page}>
       <section style={styles.card}>
+        <style>{`
+          @keyframes lesson20OptionEnter {
+            0% { opacity: 0; transform: translateY(16px) scale(0.94); }
+            70% { opacity: 1; transform: translateY(-2px) scale(1.03); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+          }
+        `}</style>
         <div style={styles.top}>
           <button onClick={playQuestion} style={styles.sound}>🔊</button>
           <div style={styles.counter}>{idx + 1} / {items.length}</div>
@@ -182,6 +189,9 @@ export default function NumberChoiceExerciseV2({ items, audio_base, onComplete }
               ...styles.option,
               borderColor: palette[i % palette.length],
               boxShadow: `0 8px 0 ${palette[i % palette.length]}55`,
+              opacity: 0,
+              animation: "lesson20OptionEnter .42s ease forwards",
+              animationDelay: `${i * 90}ms`,
             }}>
               <span style={{ ...styles.optionDot, background: palette[i % palette.length] }} />
               {o}

@@ -106,6 +106,13 @@ export default function NumberSortExerciseV2({ items, audio_base, onComplete }: 
   return (
     <main dir="rtl" style={styles.page}>
       <section style={styles.card}>
+        <style>{`
+          @keyframes lesson20OptionEnter {
+            0% { opacity: 0; transform: translateY(16px) scale(0.94); }
+            70% { opacity: 1; transform: translateY(-2px) scale(1.03); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+          }
+        `}</style>
         <div style={styles.top}>
           <button onClick={playQuestion} style={styles.sound}>🔊</button>
           <div style={styles.counter}>{idx + 1} / {items.length}</div>
@@ -167,7 +174,9 @@ export default function NumberSortExerciseV2({ items, audio_base, onComplete }: 
             <button disabled={selected.includes(n)} key={n} onClick={() => pick(n)} style={{
               ...styles.option,
               background: palette[i % palette.length],
-              opacity: selected.includes(n) ? 0.3 : 1
+              opacity: selected.includes(n) ? 0.3 : 0,
+              animation: selected.includes(n) ? "none" : "lesson20OptionEnter .42s ease forwards",
+              animationDelay: `${i * 90}ms`,
             }}>{n}</button>
           ))}
         </div>
