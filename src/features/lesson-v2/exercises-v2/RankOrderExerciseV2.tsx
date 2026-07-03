@@ -197,6 +197,13 @@ export default function RankOrderExerciseV2({
   return (
     <main dir="rtl" style={styles.page}>
       <section style={styles.screen}>
+        <style>{`
+          @keyframes rankItemEnter {
+            0% { opacity: 0; transform: translateY(14px) scale(0.94); }
+            70% { opacity: 1; transform: translateY(-2px) scale(1.03); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+          }
+        `}</style>
         <header style={styles.header}>
           <div style={styles.counter}>{itemIdx + 1} / {items.length}</div>
           <button style={styles.soundBtnTop} onClick={replayQuestion}>🔊</button>
@@ -217,7 +224,7 @@ export default function RankOrderExerciseV2({
                 style={{
                   ...styles.word,
                   color: audio.currentIdx === i ? "#E8A020" : "#1B3A6B",
-                  opacity: audio.shown.has(i) ? 1 : 0.42,
+                  opacity: (audio.shown.has(i) || feedback !== "idle" || locked || selected !== null) ? 1 : 0.42,
                   transform: audio.currentIdx === i ? "scale(1.08)" : "scale(1)",
                 }}
               >
@@ -279,7 +286,7 @@ export default function RankOrderExerciseV2({
 
         {item.mode !== "pickObject" && item.options && (
           <div style={styles.optionsGrid}>
-            {item.options.map((opt) => {
+            {item.options.map((opt, optionIndex) => {
               const isSelected = selected === opt;
               return (
                 <button
