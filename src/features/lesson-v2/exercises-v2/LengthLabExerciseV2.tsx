@@ -260,12 +260,19 @@ export default function LengthLabExerciseV2({
 
         {feedback !== "idle" && (
           <>
-            {feedback === "correct" && (
-              <div style={styles.successPill}>
-                <span style={styles.successText}>أَحْسَنْتَ</span>
-                <span style={styles.successIcon}>✅</span>
-              </div>
-            )}
+            <div
+              style={{
+                ...styles.bigFeedbackPill,
+                background: feedback === "correct" ? "#20A567" : "#EF4444",
+              }}
+            >
+              <span style={styles.bigFeedbackText}>
+                {feedback === "correct" ? "أَحْسَنْتَ" : "حَاوِلْ مَرَّةً أُخْرَى"}
+              </span>
+              <span style={styles.bigFeedbackIcon}>
+                {feedback === "correct" ? "✅" : "✨"}
+              </span>
+            </div>
 
             <div
               style={{
@@ -276,10 +283,12 @@ export default function LengthLabExerciseV2({
               <div
                 style={{
                   ...styles.feedbackToastText,
-                  color: feedback === "correct" ? C.navy : C.brown,
+                  color: feedback === "correct" ? C.navy : C.navy,
                 }}
               >
-                {feedback === "correct" ? "رائع يا بطل! اخترت الإجابة الصحيحة 🎉" : "اقتربت! حاول مرة أخرى 👏"}
+                {feedback === "correct"
+                  ? "رائع يا بطل! اخترت الإجابة الصحيحة 🎉"
+                  : "اقتربت! حاول مرة أخرى 👏"}
               </div>
             </div>
           </>
@@ -467,7 +476,26 @@ const styles: Record<string, CSSProperties> = {
     color: C.navy,
   },
 
-  successPill: {
+successText: {
+    fontSize: "clamp(34px,8vw,50px)",
+    fontWeight: 1000,
+    lineHeight: 1,
+  },
+feedbackToast: {
+    position: "fixed",
+    left: 20,
+    right: 20,
+    bottom: 108,
+    zIndex: 999,
+    background: "rgba(255,255,255,.96)",
+    border: "4px solid",
+    borderRadius: 22,
+    padding: "11px 14px",
+    textAlign: "center",
+    boxShadow: "0 10px 24px rgba(0,0,0,.16)",
+    animation: "feedbackPop .30s ease",
+  },
+  bigFeedbackPill: {
     position: "fixed",
     left: "50%",
     top: "45%",
@@ -476,7 +504,6 @@ const styles: Record<string, CSSProperties> = {
     minWidth: 250,
     minHeight: 105,
     borderRadius: 999,
-    background: "#20A567",
     border: "8px solid rgba(255,255,255,.92)",
     boxShadow: "0 18px 36px rgba(0,0,0,.22)",
     color: "#fff",
@@ -484,15 +511,16 @@ const styles: Record<string, CSSProperties> = {
     alignItems: "center",
     justifyContent: "center",
     gap: 14,
+    textAlign: "center",
     animation: "feedbackPop .32s cubic-bezier(0.34, 1.56, 0.64, 1)",
   },
-  successText: {
-    fontSize: "clamp(34px,8vw,50px)",
+  bigFeedbackText: {
+    fontSize: "clamp(30px,7.5vw,46px)",
     fontWeight: 1000,
-    lineHeight: 1,
+    lineHeight: 1.15,
   },
-  successIcon: {
-    fontSize: "clamp(34px,8vw,48px)",
+  bigFeedbackIcon: {
+    fontSize: "clamp(32px,7.5vw,46px)",
     lineHeight: 1,
   },
   feedbackToast: {
