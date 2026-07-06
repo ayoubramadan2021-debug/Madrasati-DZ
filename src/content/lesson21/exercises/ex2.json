@@ -1,0 +1,21 @@
+{
+  "id": "lesson21-ex2",
+  "type": "choice",
+  "title": "اختر الأطول",
+  "question": "أيُّ الشَّيْئَيْنِ أَطْوَلُ؟",
+  "image": "ex2.webp",
+  "options": [
+    {
+      "id": "a",
+      "text": "الحبل الطويل",
+      "correct": true
+    },
+    {
+      "id": "b",
+      "text": "الحبل القصير",
+      "correct": false
+    }
+  ],
+  "success": "رائع!",
+  "failure": "أعد المحاولة."
+}

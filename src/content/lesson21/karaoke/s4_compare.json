@@ -1,0 +1,13 @@
+{
+  "lessonId": 21,
+  "sceneId": "s4_compare",
+  "audio": "/audio/lesson21/s4_compare.mp3",
+  "image": "/images/lesson21/s4.webp",
+  "segments": [
+    { "id": 1, "text": "هَيَّا نُقَارِنُ بَيْنَ الْأَشْيَاءِ.", "start": 0.0, "end": 3.0 },
+    { "id": 2, "text": "نَنْظُرُ إِلَى الطُّولِ.", "start": 3.1, "end": 5.2 },
+    { "id": 3, "text": "ثُمَّ نَقُولُ:", "start": 5.3, "end": 6.6 },
+    { "id": 4, "text": "هَذَا أَطْوَلُ.", "start": 6.7, "end": 8.2 },
+    { "id": 5, "text": "وَهَذَا أَقْصَرُ.", "start": 8.3, "end": 10.0 }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "lessonId": 21,
+  "sceneId": "s6_outro",
+  "audio": "/audio/lesson21/s6_outro.mp3",
+  "image": "/images/lesson21/s6.webp",
+  "segments": [
+    { "id": 1, "text": "الْيَوْمَ تَعَلَّمْنَا:", "start": 0.0, "end": 2.0 },
+    { "id": 2, "text": "الأَقْصَرَ.", "start": 2.1, "end": 3.3 },
+    { "id": 3, "text": "وَالأَطْوَلَ.", "start": 3.4, "end": 4.7 },
+    { "id": 4, "text": "أَرَاكُمْ فِي الدَّرْسِ الْقَادِمِ.", "start": 4.8, "end": 7.5 },
+    { "id": 5, "text": "إِلَى اللِّقَاءِ.", "start": 7.6, "end": 9.0 }
+  ]
+}

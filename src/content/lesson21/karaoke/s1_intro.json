@@ -1,0 +1,13 @@
+{
+  "lessonId": 21,
+  "sceneId": "s1_intro",
+  "audio": "/audio/lesson21/s1_intro.mp3",
+  "image": "/images/lesson21/s1.webp",
+  "segments": [
+    { "id": 1, "text": "مَرْحَبًا أَحِبَّائِي!", "start": 0.0, "end": 2.0 },
+    { "id": 2, "text": "اليَوْمَ سَنَتَعَرَّفُ عَلَى:", "start": 2.1, "end": 4.5 },
+    { "id": 3, "text": "الأَقْصَرِ وَالأَطْوَلِ.", "start": 4.6, "end": 7.0 },
+    { "id": 4, "text": "هَلْ أَنْتُمْ مُسْتَعِدُّونَ؟", "start": 7.1, "end": 9.2 },
+    { "id": 5, "text": "هَيَّا نَبْدَأُ.", "start": 9.3, "end": 11.0 }
+  ]
+}
