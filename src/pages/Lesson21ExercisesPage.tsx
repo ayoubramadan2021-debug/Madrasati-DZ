@@ -53,6 +53,7 @@ export default function Lesson21ExercisesPage() {
   return (
     <LessonCompleteV2
       lessonKey="lesson21"
+      nextLessonKey="lesson22"
       message="أَحْسَنْتَ يَا بَطَل! 🎉 أَكْمَلْتَ تَمَارِينَ دَرْسِ الأَقْصَرِ وَالأَطْوَلِ."
       onReplay={() => setStage("ex1")}
     />

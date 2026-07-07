@@ -21,6 +21,7 @@ import { LESSON_18_CONTENT } from "../features/lesson-v2/content/lesson18";
 import { LESSON_19_CONTENT } from "../features/lesson-v2/content/lesson19";
 import { LESSON_20_CONTENT } from "../features/lesson-v2/content/lesson20";
 import { LESSON_21_CONTENT } from "../features/lesson-v2/content/lesson21";
+import { LESSON_22_CONTENT } from "../features/lesson-v2/content/lesson22";
 
 const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
   lesson1: LESSON_1_CONTENT,
@@ -44,6 +45,7 @@ const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
   lesson19: LESSON_19_CONTENT,
   lesson20: LESSON_20_CONTENT,
   lesson21: LESSON_21_CONTENT,
+  lesson22: LESSON_22_CONTENT,
 };
 
 export default function LessonV2Page() {
@@ -73,6 +75,8 @@ export default function LessonV2Page() {
       : lessonId === "lesson19" ? navigate("/lesson19-exercises")
       : lessonId === "lesson20" ? navigate("/lesson20-exercises")
       : lessonId === "lesson21" ? navigate("/lesson21-exercises")
+      : lessonId === "lesson22"
+      ? navigate("/lesson22-exercises")
       : navigate(`/lesson-v2/${lessonId}/exercises`);
   };
 
