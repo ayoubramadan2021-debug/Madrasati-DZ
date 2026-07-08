@@ -77,6 +77,8 @@ export default function App() {
         <Route path="/notifications" element={lazy(() => import("./pages/NotificationsPage"), "الإشعارات")} />
 
         <Route path="*" element={<Home />} />
+              <Route path="/lesson23-exercises" element={lazy(() => import("./pages/Lesson23ExercisesPage"), "تمارين الدرس 23")} />
+              <Route path="/lesson24-exercises" element={lazy(() => import("./pages/Lesson24ExercisesPage"), "تمارين الدرس 24")} />
       </Routes>
       <BottomNav />
     </Router>

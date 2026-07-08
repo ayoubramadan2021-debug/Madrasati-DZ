@@ -1,5 +1,7 @@
 // يربط معرّف صف الدرس في Supabase بمفتاح درس v2 في الكود.
-// أضف صفاً هنا لكل درس v2 جديد تربطه بالـnavigation.
+// الدروس 1-21 كانت مربوطة بـ UUID ثابت.
+// الدروس الجديدة نربطها أيضًا عبر sort_order لأن id في Supabase من نوع uuid.
+
 export const V2_LESSON_MAP: Record<string, string> = {
   "11111111-1111-1111-1111-000000000001": "lesson1",
   "11111111-1111-1111-1111-000000000002": "lesson2",
@@ -24,6 +26,45 @@ export const V2_LESSON_MAP: Record<string, string> = {
   "11111111-1111-1111-1111-000000000021": "lesson21",
 };
 
+export const V2_SORT_ORDER_MAP: Record<number, string> = {
+  1: "lesson1",
+  2: "lesson2",
+  3: "lesson3",
+  4: "lesson4",
+  5: "lesson5",
+  6: "lesson6",
+  7: "lesson7",
+  8: "lesson8",
+  9: "lesson9",
+  10: "lesson10",
+  11: "lesson11",
+  12: "lesson12",
+  13: "lesson13",
+  14: "lesson14",
+  15: "lesson15",
+  16: "lesson16",
+  17: "lesson17",
+  18: "lesson18",
+  19: "lesson19",
+  20: "lesson20",
+  21: "lesson21",
+  22: "lesson22",
+  23: "lesson23",
+  24: "lesson24",
+};
+
 export function getV2Key(lessonId: string): string | null {
   return V2_LESSON_MAP[lessonId] ?? null;
+}
+
+export function getV2KeyByLesson(lesson: any): string | null {
+  const byId = lesson?.id ? V2_LESSON_MAP[String(lesson.id)] : null;
+  if (byId) return byId;
+
+  const order = Number(lesson?.sort_order);
+  if (Number.isFinite(order) && V2_SORT_ORDER_MAP[order]) {
+    return V2_SORT_ORDER_MAP[order];
+  }
+
+  return null;
 }
