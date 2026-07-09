@@ -116,7 +116,19 @@ const appData = {
     { slug: "exercises", title: "التمارين", icon: "✍️", desc: "تمارين تفاعلية مع تصحيح فوري.", color: "#10b981", dataKey: "exercises" },
     { slug: "quizzes", title: "الاختبارات", icon: "📝", desc: "اختبارات قصيرة لقياس فهم التلميذ.", color: "#f59e0b", dataKey: "quizzes" },
     { slug: "progress", title: "النقاط والتقدم", icon: "⭐", desc: "متابعة مستوى التلميذ وتحفيزه.", color: "#3b82f6", dataKey: "progress" },
-  ],
+  
+  {
+    id: 22,
+    title: "صِحَّتِي فِي غِذَائِي",
+    title_ar: "صِحَّتِي فِي غِذَائِي",
+    title_fr: "Ma santé dans mon alimentation",
+    subject: "science",
+    grade: 1,
+    sort_order: 22,
+    v2_key: "lesson22",
+    is_active: true,
+  },
+],
 };
 
 export default appData;

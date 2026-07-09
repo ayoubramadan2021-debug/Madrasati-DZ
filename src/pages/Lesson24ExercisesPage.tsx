@@ -1,4 +1,5 @@
 import { useState } from "react";
+import LessonCompleteV2 from "../features/lesson-v2/components/LessonCompleteV2";
 import PathJourneyExerciseV2 from "../features/lesson-v2/exercises-v2/PathJourneyExerciseV2";
 import PathTraceExerciseV2 from "../features/lesson-v2/exercises-v2/PathTraceExerciseV2";
 import {
@@ -38,36 +39,10 @@ export default function Lesson24ExercisesPage() {
   }
 
   return (
-    <main
-      dir="rtl"
-      style={{
-        minHeight: "100dvh",
-        display: "grid",
-        placeItems: "center",
-        padding: 22,
-        paddingBottom: 90,
-        background: "linear-gradient(180deg,#fff7d6,#ffe7a3)",
-        fontFamily: "Tajawal, sans-serif",
-        textAlign: "center",
-        color: "#1B3A6B",
-      }}
-    >
-      <section
-        style={{
-          width: "min(92vw, 430px)",
-          borderRadius: 28,
-          border: "6px solid #E8A020",
-          background: "#FFF8EC",
-          padding: 24,
-          boxShadow: "0 16px 34px rgba(0,0,0,.18)",
-        }}
-      >
-        <div style={{ fontSize: 58, marginBottom: 8 }}>🏁</div>
-        <h1 style={{ margin: 0, fontSize: 32, fontWeight: 1000 }}>أَحْسَنْتَ</h1>
-        <p style={{ fontSize: 24, fontWeight: 900, lineHeight: 1.6 }}>
-          أَكْمَلْتَ تَمَارِينَ المَسَارِ بِمَهَارَةٍ
-        </p>
-      </section>
-    </main>
+    <LessonCompleteV2
+      lessonKey="lesson24"
+      nextLessonKey="lesson25"
+      onReplay={() => setStage("ex1")}
+    />
   );
 }

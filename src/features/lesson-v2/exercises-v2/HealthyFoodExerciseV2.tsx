@@ -387,14 +387,17 @@ export default function HealthyFoodExerciseV2({
 
 export function HealthyFoodComplete({
   lessonKey,
+  nextLessonKey,
   onReplay,
 }: {
   lessonKey: string;
+  nextLessonKey?: string;
   onReplay: () => void;
 }) {
   return (
     <LessonCompleteV2
       lessonKey={lessonKey}
+      nextLessonKey={nextLessonKey}
       message="أَحْسَنْتَ يَا بَطَل أَكْمَلْتَ تَمَارِينَ الدَّرْسِ"
       onReplay={onReplay}
     />
@@ -515,11 +518,18 @@ const styles: Record<string, CSSProperties> = {
   },
   wordActive: {
     display: "inline-block",
-    padding: "0 4px",
-    borderRadius: 10,
-    background: "#fff0b8",
-    color: COLORS.brown,
-    transform: "translateY(-1px)",
+    opacity: 1,
+    transform: "translateY(-3px) scale(1.1)",
+    color: COLORS.gold,
+    fontWeight: 900,
+    transition: "all .25s ease",
+    margin: "0 2px",
+    background: "transparent",
+    borderBottom: "none",
+    textDecoration: "none",
+    boxShadow: "none",
+    borderRadius: 0,
+    padding: 0,
   },
   optionsGrid: {
     maxWidth: 620,

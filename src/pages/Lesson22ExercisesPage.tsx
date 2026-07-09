@@ -60,5 +60,11 @@ export default function Lesson22ExercisesPage() {
     );
   }
 
-  return <HealthyFoodComplete lessonKey="lesson22" onReplay={() => setStage("ex1")} />;
+  return (
+    <HealthyFoodComplete
+      lessonKey="lesson22"
+      nextLessonKey="lesson23"
+      onReplay={() => setStage("ex1")}
+    />
+  );
 }

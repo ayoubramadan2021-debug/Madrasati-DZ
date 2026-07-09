@@ -1,9 +1,0 @@
-{
-  "id": "lesson21-ex3",
-  "type": "trueFalse",
-  "title": "صح أم خطأ",
-  "question": "العصا الطويلة أطول من العصا القصيرة.",
-  "correct": true,
-  "success": "إجابة صحيحة.",
-  "failure": "الإجابة الصحيحة هي: صح."
-}

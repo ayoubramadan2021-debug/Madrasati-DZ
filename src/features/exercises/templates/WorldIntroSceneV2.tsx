@@ -15,6 +15,7 @@ type AnswerOption = {
 type Slide = {
   scene_image: string;        // path to webp scene
   audio_key: string;          // e.g. "w1_intro_1"
+  text?: string;               // fallback caption when karaoke json/mp3 is missing
   options?: AnswerOption[];   // only on question slide
   audio_correct?: string;
   audio_retry?: string;
@@ -115,6 +116,26 @@ async function loadTimings(audioBase: string, key: string): Promise<WordTiming[]
   }
 }
 
+function makeFallbackTimings(text?: string): WordTiming[] {
+  const words = (text || "").trim().split(/\s+/).filter(Boolean);
+  return words.map((w, i) => ({
+    text: w,
+    offset: i * 520,
+    duration: 480,
+  }));
+}
+
+function speakArabic(text?: string) {
+  if (!text) return;
+  try {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = "ar-SA";
+    u.rate = 0.82;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(u);
+  } catch {}
+}
+
 
 // ═══════════════════════════════════════════════
 // Main Component
@@ -142,7 +163,13 @@ export default function WorldIntroSceneV2({
     });
     keys.forEach(async (k) => {
       const t = await loadTimings(audio_base, k);
-      if (t) setTimings((p) => ({ ...p, [k]: t }));
+      if (t) {
+        setTimings((p) => ({ ...p, [k]: t }));
+      } else {
+        const relatedSlide = slides.find((sl) => sl.audio_key === k);
+        const fallback = makeFallbackTimings(relatedSlide?.text);
+        if (fallback.length) setTimings((p) => ({ ...p, [k]: fallback }));
+      }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [audio_base]);
@@ -177,6 +204,8 @@ export default function WorldIntroSceneV2({
   const replayCurrent = () => {
     if (slide && timings[slide.audio_key]) {
       karaoke.play(slide.audio_key, timings[slide.audio_key]);
+    } else {
+      speakArabic(slide?.text);
     }
   };
 
@@ -201,7 +230,7 @@ export default function WorldIntroSceneV2({
 
   if (!slide) return <div>Loading...</div>;
 
-  const words = timings[slide.audio_key] || null;
+  const words = timings[slide.audio_key] || makeFallbackTimings(slide.text);
   const isActive = karaoke.activeKey === slide.audio_key;
 
   return (

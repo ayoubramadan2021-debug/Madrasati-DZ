@@ -24,6 +24,8 @@ import { LESSON_21_CONTENT } from "../features/lesson-v2/content/lesson21";
 import { LESSON_22_CONTENT } from "../features/lesson-v2/content/lesson22";
 import { LESSON_23_CONTENT } from "../features/lesson-v2/content/lesson23";
 import { LESSON_24_CONTENT } from "../features/lesson-v2/content/lesson24";
+import { LESSON_25_CONTENT } from "../features/lesson-v2/content/lesson25";
+import { LESSON_26_CONTENT } from "../features/lesson-v2/content/lesson26";
 
 const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
   lesson1: LESSON_1_CONTENT,
@@ -50,6 +52,8 @@ const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
   lesson22: LESSON_22_CONTENT,
   lesson23: LESSON_23_CONTENT,
   lesson24: LESSON_24_CONTENT,
+  lesson25: LESSON_25_CONTENT,
+  lesson26: LESSON_26_CONTENT,
 };
 
 export default function LessonV2Page() {

@@ -474,3 +474,16 @@
 - تم ربط الدروس 22 و23 و24 داخل التطبيق.
 - تم إنشاء SQL لإظهار الدرسين 23 و24 داخل Supabase حسب schema الحقيقي.
 - الحالة: جاهز للدفع إلى GitHub.
+
+## 2026-07-09 — Lessons 25 & 26 completed
+- Completed lesson 25: وَضْعِيَّاتُ جَمْعٍ أَوْ طَرْحٍ.
+- Fixed lesson 25 exercises: image/story/object consistency, karaoke timing, unified feedback/celebration style with lesson 1 exercises, and removed answer-revealing icons.
+- Completed lesson 26: أَعْتَنِي بِصِحَّتِي.
+- Added lesson 26 exercises using existing HealthyFoodExerciseV2 engine.
+- Generated audio/karaoke for lesson 26 exercises.
+- Unified lesson 26 karaoke style with lesson 1 / lesson 25.
+- Linked lesson 24 exercises completion to lesson 25.
+- Lesson 25 completion links to lesson 26.
+- Lesson 26 completion links to lesson 27.
+- Added Supabase SQL entries for lessons 25 and 26.
+- Important workflow rule: verify an existing successful engine first, then patch only what is missing.
