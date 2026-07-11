@@ -53,6 +53,8 @@ export const V2_SORT_ORDER_MAP: Record<number, string> = {
   24: "lesson24",
   25: "lesson25",
   26: "lesson26",
+  27: "lesson27",
+  28: "lesson28",
 };
 
 export function getV2Key(lessonId: string): string | null {

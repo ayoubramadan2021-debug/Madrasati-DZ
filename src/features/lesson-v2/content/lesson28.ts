@@ -1,0 +1,54 @@
+export const LESSON_28_CONTENT = {
+  id: "lesson28",
+  title: "الرَّمْزَانِ - وَ =",
+  subtitle: "أَتَعَلَّمُ مَعْنَى نَاقِص وَيُسَاوِي",
+  teacher: "khalil",
+  audio_base: "/audio/teachers/khalil/lesson_28_minus_equals",
+
+  scenes: [
+    {
+      id: "s1_intro",
+      scene_image: "/lessons/v2/lesson28-minus-equals/s1.webp",
+      audio_key: "s1_intro",
+      text: "مَرْحَبًا أَحِبَّائِي! اليَوْمَ نَتَعَلَّمُ رَمْزًا جَدِيدًا فِي الحِسَابِ: نَاقِص، وَنَسْتَعْمِلُ مَعَهُ الرَّمْزَ يُسَاوِي.",
+    },
+    {
+      id: "s2_minus_meaning",
+      scene_image: "/lessons/v2/lesson28-minus-equals/s2.webp",
+      audio_key: "s2_minus_meaning",
+      text: "كَانَتْ فِي الصَّحْنِ سَبْعُ حَبَّاتِ جَوْزٍ، أَخَذَتْ رَحْمَةُ ثَلَاثَ حَبَّاتٍ. نَسْتَعْمِلُ الرَّمْزَ نَاقِص.",
+      items_count: 1,
+      items_emoji: "➖",
+      count_word_indices: [12],
+    },
+    {
+      id: "s3_equals_result",
+      scene_image: "/lessons/v2/lesson28-minus-equals/s3.webp",
+      audio_key: "s3_equals_result",
+      text: "بَقِيَ فِي الصَّحْنِ أَرْبَعُ حَبَّاتٍ. نَكْتُبُ: سَبْعَةٌ نَاقِصُ ثَلَاثَةٍ يُسَاوِي أَرْبَعَةً.",
+      items_count: 1,
+      items_emoji: "=",
+      count_word_indices: [9],
+    },
+    {
+      id: "s4_flowers_story",
+      scene_image: "/lessons/v2/lesson28-minus-equals/s4.webp",
+      audio_key: "s4_flowers_story",
+      text: "كَانَ عَلَى السَّبُّورَةِ سِتُّ زَهْرَاتٍ، مَسَحَ فَاضِلٌ زَهْرَتَيْنِ. كَمْ زَهْرَةً بَقِيَتْ؟",
+    },
+    {
+      id: "s5_write_operation",
+      scene_image: "/lessons/v2/lesson28-minus-equals/s5.webp",
+      audio_key: "s5_write_operation",
+      text: "بَقِيَتْ أَرْبَعُ زَهْرَاتٍ. نَكْتُبُ العَمَلِيَّةَ هَكَذَا: سِتَّةٌ نَاقِصُ اثْنَيْنِ يُسَاوِي أَرْبَعَةً.",
+    },
+    {
+      id: "s6_closing",
+      scene_image: "/lessons/v2/lesson28-minus-equals/s6.webp",
+      audio_key: "s6_closing",
+      text: "تَعَلَّمْنَا أَنَّ الرَّمْزَ نَاقِص يَعْنِي نَأْخُذُ أَوْ نُنْقِصُ، وَالرَّمْزَ يُسَاوِي يَدُلُّ عَلَى النَّتِيجَةِ.",
+      is_closing: true,
+      cta_text: "هَيَّا نَتَدَرَّب ←",
+    },
+  ],
+} as const;

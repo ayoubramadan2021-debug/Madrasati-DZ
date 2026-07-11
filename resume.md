@@ -487,3 +487,33 @@
 - Lesson 26 completion links to lesson 27.
 - Added Supabase SQL entries for lessons 25 and 26.
 - Important workflow rule: verify an existing successful engine first, then patch only what is missing.
+
+<!-- lessons-27-28-complete -->
+## الدروسان 27 و28 — مكتملان (2026-07-11)
+
+### الدرس 27
+- العنوان: الرَّمْزَانِ + وَ =
+- ستة مشاهد تعليمية.
+- صور وصوت وكاريوكي متزامن.
+- أربعة تمارين تفاعلية.
+- رابط الدرس: `/lesson-v2/lesson27`
+- رابط التمارين: `/lesson-v2/lesson27/exercises`
+
+### الدرس 28
+- العنوان: الرَّمْزَانِ - وَ =
+- ستة مشاهد تعليمية.
+- صور وصوت وكاريوكي متزامن.
+- أربعة تمارين تفاعلية.
+- رابط الدرس: `/lesson-v2/lesson28`
+- رابط التمارين: `/lesson-v2/lesson28/exercises`
+
+### التعديلات المشتركة
+- تسجيل الدرسين في `LessonV2Page`.
+- تسجيل الترتيب 27 و28 في `v2Registry`.
+- التسلسل: الدرس 26 ← الدرس 27 ← الدرس 28.
+- زر «هَيَّا نَتَدَرَّب» يعمل في المشهد الختامي.
+- واجهة التمارين بنمط Full Screen.
+- توحيد رأس التمارين والكاروكي والنتائج.
+- حذف أيقونة النجمة من كبسولة مهمة الاختبار.
+- ربط الدرسين بجدول `public.lessons` في Supabase عبر `sort_order` 27 و28.
+- التمارين مرتبطة داخل التطبيق عبر المسارات وصفحات React.

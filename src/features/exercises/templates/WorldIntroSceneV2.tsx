@@ -334,21 +334,57 @@ export default function WorldIntroSceneV2({
                 style={{
                   display: "inline-block",
                   opacity: 1,
-                  animation: `itemDrop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both`,
-                  animationDelay: `${i * 0.05}s`,
+                  animation: wordIdx === undefined
+                    ? `itemDrop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both`
+                    : "none",
+                  animationDelay: wordIdx === undefined ? `${i * 0.05}s` : "0s",
                   filter: isCounting
                     ? "drop-shadow(0 0 16px #E8A020) drop-shadow(0 0 8px #FFD700) brightness(1.15)"
                     : wasCounted
                     ? "drop-shadow(0 4px 8px rgba(0,0,0,0.25)) brightness(1.05)"
                     : "drop-shadow(0 4px 8px rgba(0,0,0,0.25))",
                   transform: isCounting ? "translateY(-16px) scale(1.25) rotate(-5deg)" : "translateY(0) scale(1)",
-                  transition: "all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                  transition: wordIdx !== undefined
+                    ? "transform .18s ease, filter .18s ease"
+                    : "all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)",
                 }}
               >
-                <EmojiIcon
-                  emoji={slide.items_emoji_list?.[i] || slide.items_emoji || "🍎"}
-                  size={isCounting ? baseSize + 14 : baseSize}
-                />
+                {["➕", "➖", "="].includes(
+                    slide.items_emoji_list?.[i] || slide.items_emoji || ""
+                  ) ? (
+                    <span
+                      aria-label={
+                        (slide.items_emoji_list?.[i] || slide.items_emoji) === "="
+                          ? "يساوي"
+                          : "زائد"
+                      }
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: isCounting ? 86 : 74,
+                        height: isCounting ? 86 : 74,
+                        borderRadius: 18,
+                        background: C.gold,
+                        color: C.navyDeep,
+                        border: "4px solid #FFFFFF",
+                        boxShadow:
+                          "0 0 0 4px rgba(232,160,32,.40), 0 8px 22px rgba(0,0,0,.28)",
+                        fontSize: isCounting ? 68 : 58,
+                        fontWeight: 900,
+                        fontFamily: "Arial, Tahoma, sans-serif",
+                        lineHeight: 1,
+                      }}
+                    >
+                      {slide.items_emoji_list?.[i] ||
+                        slide.items_emoji}
+                    </span>
+                  ) : (
+                    <EmojiIcon
+                      emoji={slide.items_emoji_list?.[i] || slide.items_emoji || "🍎"}
+                      size={isCounting ? baseSize + 14 : baseSize}
+                    />
+                  )}
               </span>
             );
           })}
@@ -394,7 +430,7 @@ export default function WorldIntroSceneV2({
                   transform: isCurrent ? "translateY(-3px) scale(1.1)" : "translateY(0)",
                   color: isCurrent ? C.gold : C.navyDeep,
                   fontWeight: isCurrent ? 900 : 700,
-                  transition: "all .25s ease",
+                  transition: "transform .18s ease",
                   margin: "0 2px",
                 }}>{w.text} </span>
               );

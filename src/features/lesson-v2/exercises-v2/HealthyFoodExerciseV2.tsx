@@ -49,6 +49,41 @@ function cleanText(t: string) {
   return (t || "").replace(/[،,.!?؟؛:]/g, "").trim();
 }
 
+
+export function Lesson26ExerciseFeedbackV2({
+  feedback,
+  hint,
+}: {
+  feedback: "idle" | "correct" | "wrong";
+  hint?: string;
+}) {
+  if (feedback === "idle") return null;
+
+  return (
+    <>
+          <div
+            style={{
+              ...styles.bigFeedback,
+              background: feedback === "correct" ? COLORS.green : COLORS.red,
+            }}
+          >
+            {feedback === "correct" ? "أَحْسَنْتَ" : "حَاوِلْ مَرَّةً أُخْرَى"}
+          </div>
+
+          <div
+            style={{
+              ...styles.toast,
+              borderColor: feedback === "correct" ? COLORS.green : COLORS.red,
+            }}
+          >
+            {feedback === "correct"
+              ? "رائع يا بطل اخترت الإجابة الصحيحة 🎉"
+              : "اقتربت حَاوِلْ مَرَّةً أُخْرَى 👏"}
+          </div>
+        </>
+  );
+}
+
 export default function HealthyFoodExerciseV2({
   items,
   audio_base,

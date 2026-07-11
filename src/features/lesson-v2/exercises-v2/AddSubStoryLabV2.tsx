@@ -1,3 +1,6 @@
+import UnifiedExerciseKaraokeV2 from "../components/UnifiedExerciseKaraokeV2";
+import UnifiedExerciseHeaderV2 from "../components/UnifiedExerciseHeaderV2";
+import { Lesson26ExerciseFeedbackV2 } from "./HealthyFoodExerciseV2";
 import { useEffect, useRef, useState } from "react";
 
 export type AddSubOption = { id: string; label: string; emoji?: string };
@@ -29,8 +32,8 @@ type Props = {
 
 type Timing = { text: string; offset: number; duration: number };
 
-const FEEDBACK_CORRECT = "/audio/v2_feedback/correct.mp3";
-const FEEDBACK_RETRY = "/audio/v2_feedback/retry.mp3";
+const FEEDBACK_CORRECT = "/audio/teachers/taline/feedback/correct.mp3";
+const FEEDBACK_RETRY = "/audio/teachers/taline/feedback/wrong.mp3";
 const KARAOKE_LEAD_MS = 420;
 
 const C = {
@@ -269,6 +272,11 @@ export default function AddSubStoryLabV2({
   const words = timings[item.question_audio_key] ?? [];
   const isPlaying = activeKey === item.question_audio_key;
 
+  const karaokeWords = item.question
+    .split(/\s+/)
+    .map((word) => word.trim())
+    .filter(Boolean);
+
   return (
     <main
       style={{
@@ -282,7 +290,7 @@ export default function AddSubStoryLabV2({
         background: `linear-gradient(180deg, ${C.bg}, #fff8dc)`,
         fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
         color: C.navy,
-        padding: "12px 16px 18px",
+        padding: "8px 10px 84px",
         boxSizing: "border-box",
       }}
     >
@@ -306,75 +314,18 @@ export default function AddSubStoryLabV2({
       </style>
 
       <section style={{ width: "100%", maxWidth: 520, margin: "0 auto" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10, direction: "ltr" }}>
-          <button
-            onClick={() => playQuestion(timings[item.question_audio_key])}
-            style={{
-              width: 58,
-              height: 58,
-              borderRadius: "50%",
-              border: "5px solid #fff",
-              background: C.gold,
-              boxShadow: "0 6px 14px rgba(128,83,0,.18)",
-              fontSize: 24,
-            }}
-          >
-            🔊
-          </button>
-
-          <div
-            style={{
-              direction: "ltr",
-              minWidth: 88,
-              height: 54,
-              background: C.white,
-              border: `4px solid ${C.gold}`,
-              borderRadius: 22,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 23,
-              fontWeight: 1000,
-              color: C.brown,
-              boxShadow: "0 6px 14px rgba(128,83,0,.14)",
-            }}
-          >
-            {index + 1} / {items.length}
-          </div>
-        </div>
-
-        <div style={{ display: "flex", justifyContent: "center", gap: 9, marginBottom: 10, direction: "ltr" }}>
-          {items.map((_, i) => (
-            <span
-              key={i}
-              style={{
-                width: i === index ? 48 : 18,
-                height: 18,
-                borderRadius: 999,
-                background: i === index ? C.gold : i < index ? C.green : "#dfd2a9",
-              }}
-            />
-          ))}
-        </div>
-
-        <div
-          style={{
-            margin: "0 auto 12px",
-            width: "fit-content",
-            maxWidth: "92%",
-            background: C.white,
-            border: `3px solid ${C.gold}`,
-            borderRadius: 999,
-            padding: "7px 22px",
-            color: C.navy,
-            fontWeight: 1000,
-            fontSize: 19,
-            boxShadow: "0 6px 14px rgba(128,83,0,.10)",
-          }}
-        >
-          <span style={{ marginInlineStart: 7 }}>{missionIcon}</span>
-          {missionTitle}
-        </div>
+        <UnifiedExerciseHeaderV2
+          index={index}
+          total={items.length}
+          missionTitle={missionTitle}
+          missionIcon={missionIcon}
+          onReplay={() =>
+            playQuestion(
+              timings[item.question_audio_key],
+            )
+          }
+          isPlaying={isPlaying}
+        />
 
         <div
           style={{
@@ -402,53 +353,12 @@ export default function AddSubStoryLabV2({
           />
         </div>
 
-        <div
-          style={{
-            width: "100%",
-            marginTop: 12,
-            background: C.white,
-            border: `4px solid ${C.gold}`,
-            borderRadius: 26,
-            padding: "16px 16px",
-            textAlign: "center",
-            color: C.navy,
-            fontWeight: 900,
-            fontSize: 22,
-            lineHeight: 1.9,
-            minHeight: 94,
-            boxShadow: "0 6px 14px rgba(128,83,0,.10)",
-            boxSizing: "border-box",
-          }}
-        >
-          {words.length > 0 ? (
-            words.map((w, i) => {
-              const visible = !isPlaying || shown.has(i) || currentIdx === i;
-              return (
-                <span
-                  key={`${w.text}-${i}`}
-                  style={{
-                    opacity: visible ? 1 : 0,
-                    transition: "opacity .12s ease",
-                    color: C.navy,
-                    fontWeight: 900,
-                    background: "transparent",
-                    borderBottom: "none",
-                    textDecoration: "none",
-                    boxShadow: "none",
-                  }}
-                >
-                  {cleanText(w.text)}{" "}
-                </span>
-              );
-            })
-          ) : (
-            <>
-              {item.story}
-              <br />
-              {item.question}
-            </>
-          )}
-        </div>
+        <UnifiedExerciseKaraokeV2
+          words={karaokeWords}
+          activeIndex={
+            isPlaying ? currentIdx : -1
+          }
+        />
 
         <div
           style={{
@@ -582,6 +492,19 @@ export default function AddSubStoryLabV2({
         )}
 
       </section>
-    </main>
+
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 2147483646,
+          pointerEvents: "none",
+        }}
+      >
+        <Lesson26ExerciseFeedbackV2
+          feedback={feedback}
+        />
+      </div>
+</main>
   );
 }

@@ -1,0 +1,83 @@
+import type { AddSubStoryItem } from "../exercises-v2/AddSubStoryLabV2";
+import { LESSON_28_EXERCISE_AUDIO_BASE } from "./lesson28_exercise1";
+
+export { LESSON_28_EXERCISE_AUDIO_BASE };
+
+export const LESSON_28_EXERCISE_4: AddSubStoryItem[] = [
+  {
+    id: "l28_e4_q1",
+    title: "جَمْعٌ أَمْ طَرْحٌ؟",
+    story: "أَضَفْنَا ثَلَاثَ كُرَاتٍ إِلَى أَرْبَعِ كُرَاتٍ.",
+    question: "هَلْ هَذِهِ وَضْعِيَّةُ جَمْعٍ أَمْ طَرْحٍ؟",
+    question_audio_key: "ex4_q1",
+    scene_image: "/lessons/v2/lesson28-minus-equals/s2.webp",
+    mode: "classify",
+    emoji: "🔵",
+    before: 4,
+    change: 3,
+    action: "add",
+    options: [
+      { id: "add", label: "جَمْع", emoji: "➕" },
+      { id: "sub", label: "طَرْح", emoji: "➖" },
+    ],
+    correct: "add",
+    success: "أَحْسَنْتَ! الإِضَافَةُ تَعْنِي الجَمْعَ.",
+  },
+  {
+    id: "l28_e4_q2",
+    title: "جَمْعٌ أَمْ طَرْحٌ؟",
+    story: "أَخَذْنَا تُفَّاحَتَيْنِ مِنْ سَبْعِ تُفَّاحَاتٍ.",
+    question: "هَلْ هَذِهِ وَضْعِيَّةُ جَمْعٍ أَمْ طَرْحٍ؟",
+    question_audio_key: "ex4_q2",
+    scene_image: "/lessons/v2/lesson28-minus-equals/s3.webp",
+    mode: "classify",
+    emoji: "🍎",
+    before: 7,
+    change: 2,
+    action: "sub",
+    options: [
+      { id: "add", label: "جَمْع", emoji: "➕" },
+      { id: "sub", label: "طَرْح", emoji: "➖" },
+    ],
+    correct: "sub",
+    success: "مُمْتَاز! الأَخْذُ يَعْنِي الطَّرْحَ.",
+  },
+  {
+    id: "l28_e4_q3",
+    title: "جَمْعٌ أَمْ طَرْحٌ؟",
+    story: "فِي الحَدِيقَةِ سِتُّ زَهْرَاتٍ، ذَبُلَتْ زَهْرَتَانِ.",
+    question: "هَلْ هَذِهِ وَضْعِيَّةُ جَمْعٍ أَمْ طَرْحٍ؟",
+    question_audio_key: "ex4_q3",
+    scene_image: "/lessons/v2/lesson28-minus-equals/s4.webp",
+    mode: "classify",
+    emoji: "🌸",
+    before: 6,
+    change: 2,
+    action: "sub",
+    options: [
+      { id: "add", label: "جَمْع", emoji: "➕" },
+      { id: "sub", label: "طَرْح", emoji: "➖" },
+    ],
+    correct: "sub",
+    success: "رَائِع! نَقَصَ العَدَدُ، فَهَذَا طَرْحٌ.",
+  },
+  {
+    id: "l28_e4_q4",
+    title: "جَمْعٌ أَمْ طَرْحٌ؟",
+    story: "رَبِحَ فَاضِلٌ كُرَتَيْنِ وَأَضَافَهُمَا إِلَى كُرَاتِهِ.",
+    question: "هَلْ هَذِهِ وَضْعِيَّةُ جَمْعٍ أَمْ طَرْحٍ؟",
+    question_audio_key: "ex4_q4",
+    scene_image: "/lessons/v2/lesson28-minus-equals/s5.webp",
+    mode: "classify",
+    emoji: "🔵",
+    before: 4,
+    change: 2,
+    action: "add",
+    options: [
+      { id: "add", label: "جَمْع", emoji: "➕" },
+      { id: "sub", label: "طَرْح", emoji: "➖" },
+    ],
+    correct: "add",
+    success: "بَطَل! زِيَادَةُ الكُرَاتِ تَعْنِي الجَمْعَ.",
+  },
+];
