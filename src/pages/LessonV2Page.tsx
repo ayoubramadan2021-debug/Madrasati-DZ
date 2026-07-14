@@ -30,6 +30,8 @@ import { LESSON_27_CONTENT } from "../features/lesson-v2/content/lesson27";
 import { LESSON_28_CONTENT } from "../features/lesson-v2/content/lesson28";
 import { LESSON_29_CONTENT } from "../features/lesson-v2/content/lesson29";
 import { LESSON_30_CONTENT } from "../features/lesson-v2/content/lesson30";
+import { LESSON_31_CONTENT } from "../features/lesson-v2/content/lesson31";
+import { LESSON_32_CONTENT } from "../features/lesson-v2/content/lesson32";
 
 const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
   lesson1: LESSON_1_CONTENT,
@@ -62,6 +64,8 @@ const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
   lesson28: LESSON_28_CONTENT,
   lesson29: LESSON_29_CONTENT,
   lesson30: LESSON_30_CONTENT,
+  lesson31: LESSON_31_CONTENT,
+  lesson32: LESSON_32_CONTENT,
 };
 
 export default function LessonV2Page() {

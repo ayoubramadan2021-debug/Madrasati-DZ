@@ -90,6 +90,10 @@ export default function App() {
         <Route path="/lesson30-exercises" element={lazy(() => import("./pages/Lesson30ExercisesPage"), "تمارين الدرس 30")} />
         <Route path="/lesson-v2/lesson29/exercises" element={lazy(() => import("./pages/Lesson29ExercisesPage"), "تمارين الدرس 29")} />
         <Route path="/lesson-v2/lesson30/exercises" element={lazy(() => import("./pages/Lesson30ExercisesPage"), "تمارين الدرس 30")} />
+        <Route path="/lesson31-exercises" element={lazy(() => import("./pages/Lesson31ExercisesPage"), "تمارين الدرس 31")} />
+        <Route path="/lesson-v2/lesson31/exercises" element={lazy(() => import("./pages/Lesson31ExercisesPage"), "تمارين الدرس 31")} />
+        <Route path="/lesson32-exercises" element={lazy(() => import("./pages/Lesson32ExercisesPage"), "تمارين الدرس 32")} />
+        <Route path="/lesson-v2/lesson32/exercises" element={lazy(() => import("./pages/Lesson32ExercisesPage"), "تمارين الدرس 32")} />
         <Route path="*" element={<Home />} />
 </Routes>
       <BottomNav />
