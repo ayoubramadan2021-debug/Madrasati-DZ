@@ -296,8 +296,32 @@ export default function RankOrderExerciseV2({
 
         <h1 style={styles.mainTitle}>{item.title}</h1>
 
-        <div style={styles.sceneBox}>
-          <img src={item.scene_image} alt="" style={styles.sceneImage} />
+        <div
+          style={{
+            ...styles.sceneBox,
+            ...(item.scene_image.includes("rank-amusement-")
+              ? {
+                  height: "auto",
+                  minHeight: 0,
+                  maxHeight: "none",
+                  aspectRatio: "900 / 570",
+                }
+              : {}),
+          }}
+        >
+          <img
+            src={item.scene_image}
+            alt=""
+            style={{
+              ...styles.sceneImage,
+              objectFit: item.scene_image.includes(
+                "rank-amusement-",
+              )
+                ? "contain"
+                : "cover",
+              objectPosition: "center",
+            }}
+          />
         </div>
 
         <div style={styles.questionBox}>
@@ -370,7 +394,15 @@ export default function RankOrderExerciseV2({
         )}
 
         {item.mode !== "pickObject" && item.options && (
-          <div style={styles.optionsGrid}>
+          <div
+            style={{
+              ...styles.optionsGrid,
+              gridTemplateColumns:
+                item.scene_image.includes("rank-amusement-")
+                  ? "1fr"
+                  : "repeat(2, minmax(0, 1fr))",
+            }}
+          >
             {item.options.map((opt, optionIndex) => {
               const isSelected = selected === opt;
               return (

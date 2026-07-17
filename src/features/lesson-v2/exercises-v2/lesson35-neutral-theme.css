@@ -1,0 +1,44 @@
+.lesson35-neutral-theme {
+  width: 100%;
+  min-height: 100%;
+}
+
+.lesson35-neutral-theme img {
+  object-fit: contain !important;
+  background: #ffffff;
+}
+
+/* بطاقات محايدة قبل اختيار الإجابة */
+.lesson35-neutral-theme button:not(:disabled) {
+  --lesson35-border: #dfa51f;
+}
+
+/* توحيد زر الصوت مع بقية التمارين */
+.lesson35-neutral-theme button[aria-label*="صوت"],
+.lesson35-neutral-theme button[aria-label*="استمع"],
+.lesson35-neutral-theme button[aria-label*="سماع"],
+.lesson35-neutral-theme button[aria-label*="السؤال"],
+.lesson35-neutral-theme button[title*="صوت"],
+.lesson35-neutral-theme button[title*="استمع"] {
+  width: 62px !important;
+  height: 62px !important;
+  padding: 0 !important;
+  border: 4px solid #e4a21b !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  color: #174578 !important;
+  font-size: 0 !important;
+  box-shadow: 0 8px 18px rgba(18,58,102,.14) !important;
+}
+
+.lesson35-neutral-theme button[aria-label*="صوت"]::before,
+.lesson35-neutral-theme button[aria-label*="استمع"]::before,
+.lesson35-neutral-theme button[aria-label*="سماع"]::before,
+.lesson35-neutral-theme button[aria-label*="السؤال"]::before,
+.lesson35-neutral-theme button[title*="صوت"]::before,
+.lesson35-neutral-theme button[title*="استمع"]::before {
+  content: "🔊";
+  display: block;
+  font-size: 28px;
+  line-height: 1;
+}

@@ -1,14 +1,35 @@
-import { useState, useEffect } from "react";
-import { useKaraoke, loadTimings, type WordTiming } from "../useKaraoke";
+import { useEffect, useState } from "react";
+import {
+  useKaraoke,
+  loadTimings,
+  type WordTiming,
+} from "../useKaraoke";
 import { isKeyword } from "../keywords";
 import EmojiIcon from "../components/EmojiIcon";
 
+export type CompareVisual = {
+  image: string;
+  label: string;
+  alt?: string;
+  accent?: string;
+  badge?: string;
+};
+
 export type CompareItem = {
-  group_a: string[];          // إيموجي المجموعة الأولى
-  group_b: string[];          // إيموجي المجموعة الثانية
+  group_a?: string[];
+  group_b?: string[];
+  visual_a?: CompareVisual;
+  visual_b?: CompareVisual;
+  background_image?: string;
+  relation?: "longer" | "shorter";
+  mission_title?: string;
+  hint?: string;
+  coach_idle?: string;
+  coach_correct?: string;
+  coach_wrong?: string;
   question: string;
   question_audio_key: string;
-  options: string[];          // كلمات: أكثر/أقل/بقدر
+  options: string[];
   correct: string;
 };
 
@@ -19,29 +40,70 @@ interface CompareExerciseV2Props {
 }
 
 const C = {
-  navy: "#1B3A6B", navyDeep: "#152C50", gold: "#E8A020",
-  green: "#1FA463", greenSoft: "#D7F0E2", red: "#E05B49", redSoft: "#F8DAD5",
+  navy: "#1B3A6B",
+  navyDeep: "#10294D",
+  gold: "#E8A020",
+  cream: "#FFF8EC",
+  green: "#1FA463",
+  greenSoft: "#DCFCE7",
+  red: "#D45447",
+  redSoft: "#FEE2E2",
 };
-const FEEDBACK_CORRECT = "/audio/v2_feedback/correct.mp3";
-const FEEDBACK_RETRY = "/audio/v2_feedback/retry.mp3";
 
-export default function CompareExerciseV2({ items, audio_base, onComplete }: CompareExerciseV2Props) {
+const FEEDBACK_CORRECT =
+  "/audio/v2_feedback/correct.mp3";
+const FEEDBACK_RETRY =
+  "/audio/v2_feedback/retry.mp3";
+
+export default function CompareExerciseV2({
+  items,
+  audio_base,
+  onComplete,
+}: CompareExerciseV2Props) {
   const [itemIdx, setItemIdx] = useState(0);
-  const [timings, setTimings] = useState<Record<string, WordTiming[]>>({});
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const [feedbackState, setFeedbackState] = useState<"idle" | "correct" | "wrong">("idle");
+  const [timings, setTimings] = useState<
+    Record<string, WordTiming[]>
+  >({});
+  const [selectedOption, setSelectedOption] =
+    useState<string | null>(null);
+  const [feedbackState, setFeedbackState] =
+    useState<"idle" | "correct" | "wrong">("idle");
   const [attempts, setAttempts] = useState(0);
   const [locked, setLocked] = useState(false);
+
   const karaoke = useKaraoke(audio_base);
   const item = items[itemIdx];
 
   useEffect(() => {
-    items.forEach(async (it) => {
-      const t = await loadTimings(audio_base, it.question_audio_key);
-      if (t) setTimings((p) => ({ ...p, [it.question_audio_key]: t }));
+    setItemIdx(0);
+    setSelectedOption(null);
+    setFeedbackState("idle");
+    setAttempts(0);
+    setLocked(false);
+  }, [items, audio_base]);
+
+  useEffect(() => {
+    let cancelled = false;
+    setTimings({});
+
+    items.forEach(async (entry) => {
+      const result = await loadTimings(
+        audio_base,
+        entry.question_audio_key,
+      );
+
+      if (!cancelled && result) {
+        setTimings((previous) => ({
+          ...previous,
+          [entry.question_audio_key]: result,
+        }));
+      }
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [audio_base]);
+
+    return () => {
+      cancelled = true;
+    };
+  }, [audio_base, items]);
 
   useEffect(() => {
     karaoke.stop();
@@ -49,297 +111,632 @@ export default function CompareExerciseV2({ items, audio_base, onComplete }: Com
     setFeedbackState("idle");
     setAttempts(0);
     setLocked(false);
+
     if (!item) return;
-    const t = timings[item.question_audio_key];
-    if (!t) return;
-    const timer = setTimeout(() => karaoke.play(item.question_audio_key, t), 600);
-    return () => clearTimeout(timer);
+
+    const words = timings[item.question_audio_key];
+    if (!words) return;
+
+    const timer = window.setTimeout(() => {
+      karaoke.play(item.question_audio_key, words);
+    }, 600);
+
+    return () => window.clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itemIdx, timings]);
 
+  if (!item) return null;
+
   const playFeedback = (correct: boolean) => {
-    const a = new Audio(correct ? FEEDBACK_CORRECT : FEEDBACK_RETRY);
-    a.play().catch(() => {});
+    const audio = new Audio(
+      correct ? FEEDBACK_CORRECT : FEEDBACK_RETRY,
+    );
+    audio.play().catch(() => {});
+  };
+
+  const nextItem = () => {
+    if (itemIdx < items.length - 1) {
+      setItemIdx((current) => current + 1);
+    } else {
+      onComplete?.(items.length, items.length);
+    }
   };
 
   const handleSelect = (option: string) => {
     if (locked || feedbackState === "correct") return;
+
     karaoke.stop();
     setSelectedOption(option);
-    const isCorrect = option === item.correct;
-    const newAttempts = attempts + 1;
-    setAttempts(newAttempts);
-    if (isCorrect) {
+
+    const correct = option === item.correct;
+    const nextAttempts = attempts + 1;
+    setAttempts(nextAttempts);
+
+    if (correct) {
       setFeedbackState("correct");
       setLocked(true);
       playFeedback(true);
-      setTimeout(() => {
-        if (itemIdx < items.length - 1) setItemIdx(itemIdx + 1);
-        else onComplete?.(items.length, items.length);
-      }, 1800);
-    } else {
-      setFeedbackState("wrong");
-      playFeedback(false);
-      if (newAttempts >= 3) {
-        setLocked(true);
-        setTimeout(() => {
-          if (itemIdx < items.length - 1) setItemIdx(itemIdx + 1);
-          else onComplete?.(items.length, items.length);
-        }, 2200);
-      } else {
-        setTimeout(() => { setFeedbackState("idle"); setSelectedOption(null); }, 1500);
-      }
+      window.setTimeout(nextItem, 1700);
+      return;
+    }
+
+    setFeedbackState("wrong");
+    playFeedback(false);
+
+    if (nextAttempts >= 3) {
+      setLocked(true);
+      window.setTimeout(nextItem, 2200);
+      return;
+    }
+
+    window.setTimeout(() => {
+      setFeedbackState("idle");
+      setSelectedOption(null);
+    }, 1400);
+  };
+
+  const replayQuestion = () => {
+    const words = timings[item.question_audio_key];
+    if (words) {
+      karaoke.play(item.question_audio_key, words);
     }
   };
 
-  if (!item) return null;
-  const words = timings[item.question_audio_key];
-  const isActive = karaoke.activeKey === item.question_audio_key;
-
-  const progressEmoji = "⚖️";
-  const missionText = `مهمة المقارنة ${itemIdx + 1}`;
-
-  const coachText =
-    feedbackState === "correct"
-      ? "رائع يا بطل! قارنتَ المجموعتين بشكل صحيح 🎉"
-      : feedbackState === "wrong"
-        ? "اقتربت! انظر أي مجموعة أكثر أو أقل 👏"
-        : "قارن بين المجموعتين ثم اختر الإجابة ⚖️";
-
-  const feedbackText =
-    feedbackState === "correct"
-      ? "✅ أَحْسَنْتَ"
-      : "حَاوِلْ مَرَّةً أُخْرَى ✨";
-
-  const renderGroup = (emojis: string[]) => (
-    <div style={{
-      flex: 1, display: "flex", flexWrap: "wrap", gap: 6,
-      justifyContent: "center", alignItems: "center",
-      background: "rgba(255,255,255,0.7)", borderRadius: 16,
-      border: `2px solid ${C.gold}33`, padding: 8, minHeight: 80,
-    }}>
-      {emojis.map((e, i) => (
-        <span key={`${itemIdx}-${i}-${e}`} style={{ fontSize: 34, lineHeight: 1 }}>
-          <EmojiIcon emoji={e} size={38} />
-        </span>
+  const renderLegacyGroup = (emojis: string[]) => (
+    <div style={styles.legacyGroup}>
+      {emojis.map((emoji, index) => (
+        <EmojiIcon
+          key={`${itemIdx}-${index}-${emoji}`}
+          emoji={emoji}
+          size={38}
+        />
       ))}
     </div>
   );
 
-  return (
-    <div style={{
-      minHeight: "100dvh", width: "100%",
-      fontFamily: "Tajawal, sans-serif", direction: "rtl",
-      background: "linear-gradient(180deg,#FFF8EC 0%,#F5E3B0 100%)",
-      display: "flex", flexDirection: "column", padding: "16px",
-    }}>
-      {/* progress + replay */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-        <div style={{ background: C.navy, color: "#fff", borderRadius: 20, padding: "4px 12px", fontWeight: 800, fontSize: 13 }}>
-          <span dir="ltr">{itemIdx + 1} / {items.length}</span>
-        </div>
-        <button onClick={() => { const t = timings[item.question_audio_key]; if (t) karaoke.play(item.question_audio_key, t); }}
-          style={{ width: 40, height: 40, borderRadius: "50%", background: C.gold, color: "#fff", border: "none", fontSize: 18, cursor: "pointer" }}>🔊</button>
-      </div>
-
-      <div
-        aria-label="تقدم التمرين"
-        style={{
-          position: "relative",
-          zIndex: 2,
-          display: "flex",
-          gap: 6,
-          alignItems: "center",
-          justifyContent: "center",
-          margin: "0 auto 6px",
-          background: "rgba(255,255,255,.55)",
-          border: "2px solid rgba(232,160,32,.35)",
-          borderRadius: 999,
-          padding: "6px 10px",
-          boxShadow: "0 6px 14px rgba(0,0,0,.08)",
-          width: "fit-content",
-        }}
-      >
-        {items.map((_, i) => {
-          const done = i < itemIdx;
-          const current = i === itemIdx;
-          return (
-            <span
-              key={i}
-              style={{
-                width: current ? 28 : 22,
-                height: current ? 28 : 22,
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: current ? 22 : 18,
-                opacity: done || current ? 1 : 0.35,
-                filter: done || current ? "none" : "grayscale(1)",
-                transform: current ? "translateY(-2px) scale(1.08)" : "scale(1)",
-                transition: "all .25s ease",
-              }}
-            >
-              {progressEmoji}
-            </span>
-          );
-        })}
-      </div>
-
-      {/* groups */}
-      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 14 }}>
-        {renderGroup(item.group_a)}
-        <div style={{ fontSize: 28, fontWeight: 900, color: C.navy }}>
-          {item.correct === "أَكْثَر" ? "→" : item.correct === "أَقَلّ" ? "←" : "↔"}
-        </div>
-        {renderGroup(item.group_b)}
-      </div>
-
-      <div
-        style={{
-          position: "relative",
-          zIndex: 2,
-          display: "flex",
-          justifyContent: "center",
-          marginTop: 4,
-          marginBottom: 6,
-        }}
-      >
-        <div
+  const renderVisual = (
+    visual: CompareVisual,
+    side: "a" | "b",
+  ) => (
+    <article
+      style={{
+        ...styles.visualCard,
+        borderColor: visual.accent ?? C.gold,
+      }}
+    >
+      {visual.badge && (
+        <span
           style={{
-            background: "rgba(255,255,255,.88)",
-            color: C.navyDeep,
-            border: `2px solid ${C.gold}`,
-            borderRadius: 999,
-            padding: "8px 16px",
-            fontSize: 16,
-            fontWeight: 900,
-            boxShadow: "0 6px 16px rgba(0,0,0,.12)",
+            ...styles.visualBadge,
+            background: visual.accent ?? C.gold,
           }}
         >
-          {progressEmoji} {missionText}
+          {visual.badge}
+        </span>
+      )}
+
+      <img
+        src={visual.image}
+        alt={visual.alt ?? visual.label}
+        style={styles.visualImage}
+        draggable={false}
+      />
+
+      <div style={styles.visualLabel}>
+        <span style={styles.sideMarker}>
+          {side === "a" ? "أ" : "ب"}
+        </span>
+        {visual.label}
+      </div>
+    </article>
+  );
+
+  const words = timings[item.question_audio_key];
+  const active =
+    karaoke.activeKey === item.question_audio_key;
+
+  const missionText =
+    item.mission_title ??
+    (item.relation === "shorter"
+      ? `مهمة الأقصر ${itemIdx + 1}`
+      : `مهمة الأطول ${itemIdx + 1}`);
+
+  const coachText =
+    feedbackState === "correct"
+      ? item.coach_correct ??
+        "ممتاز! قارنتَ الطولين بدقة 🎉"
+      : feedbackState === "wrong"
+        ? item.coach_wrong ??
+          "انظر إلى بداية الشيئين ونهايتهما ثم حاول مجددًا 👏"
+        : item.coach_idle ??
+          "قارن بين الشيئين واختر الإجابة الصحيحة.";
+
+  return (
+    <main dir="rtl" style={styles.page}>
+      {item.background_image && (
+        <div
+          style={{
+            ...styles.background,
+            backgroundImage:
+              `url("${item.background_image}")`,
+          }}
+        />
+      )}
+      <div style={styles.overlay} />
+
+      <section style={styles.content}>
+        <header style={styles.header}>
+          <button
+            type="button"
+            onClick={replayQuestion}
+            style={styles.soundButton}
+            aria-label="إعادة صوت السؤال"
+          >
+            🔊
+          </button>
+
+          <div style={styles.progressIcons}>
+            {items.map((_, index) => {
+              const done = index < itemIdx;
+              const current = index === itemIdx;
+
+              return (
+                <span
+                  key={index}
+                  style={{
+                    ...styles.progressIcon,
+                    opacity:
+                      done || current ? 1 : 0.28,
+                    transform: current
+                      ? "translateY(-3px) scale(1.15)"
+                      : "scale(1)",
+                    filter:
+                      done || current
+                        ? "none"
+                        : "grayscale(1)",
+                  }}
+                >
+                  🎡
+                </span>
+              );
+            })}
+          </div>
+
+          <div style={styles.counter}>
+            <span dir="ltr">
+              {itemIdx + 1} / {items.length}
+            </span>
+          </div>
+        </header>
+
+        <div style={styles.mission}>
+          🎯 {missionText}
         </div>
-      </div>
 
-      {/* question */}
-      <div style={{
-        background: "#fff", borderRadius: 18, border: `2px solid ${C.gold}`,
-        padding: "12px 16px", margin: "8px 0", textAlign: "center",
-        fontSize: 17, fontWeight: 700, lineHeight: 1.7,
-        boxShadow: "0 4px 14px rgba(0,0,0,.12)",
-      }}>
-        {words ? words.map((w, i) => {
-          const isShown = karaoke.activeKey ? karaoke.shown.has(i) : true;
-          const isCurrent = isActive && karaoke.currentIdx === i;
-          return (
-            <span key={i} style={{
-              display: "inline-block", opacity: isShown ? 1 : 0,
-              transform: isCurrent ? "translateY(-3px) scale(1.1)" : "translateY(0)",
-              color: isCurrent ? C.gold : (isKeyword(w.text) ? "#16a34a" : C.navyDeep),
-              fontWeight: isCurrent ? 900 : 700, transition: "all .25s ease", margin: "0 2px",
-            }}>{w.text} </span>
-          );
-        }) : <span style={{ opacity: 0.5 }}>{item.question}</span>}
-      </div>
+        <section style={styles.compareArea}>
+          {item.visual_a && item.visual_b ? (
+            <>
+              {renderVisual(item.visual_a, "a")}
+              <div style={styles.compareSymbol}>↔</div>
+              {renderVisual(item.visual_b, "b")}
+            </>
+          ) : (
+            <>
+              {renderLegacyGroup(item.group_a ?? [])}
+              <div style={styles.compareSymbol}>↔</div>
+              {renderLegacyGroup(item.group_b ?? [])}
+            </>
+          )}
+        </section>
 
-      {/* options */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 10, paddingBottom: 90 }}>
-        {item.options.map((opt, optionIndex) => {
-          const isSelected = selectedOption === opt;
-          const showAsCorrect = isSelected && feedbackState === "correct";
-          const showAsWrong = isSelected && feedbackState === "wrong";
-          const showHint = locked && opt === item.correct && feedbackState !== "correct";
-          const bg = showAsCorrect || showHint ? C.greenSoft : showAsWrong ? C.redSoft : "#fff";
-          const border = showAsCorrect || showHint ? C.green : showAsWrong ? C.red : C.gold;
-          return (
-            <button key={opt} onClick={() => handleSelect(opt)} disabled={locked}
+        {item.hint && (
+          <div style={styles.hint}>{item.hint}</div>
+        )}
+
+        <section
+          style={styles.questionBox}
+          onClick={replayQuestion}
+        >
+          {words ? (
+            words.map((word, index) => {
+              const shown = karaoke.activeKey
+                ? karaoke.shown.has(index)
+                : true;
+              const current =
+                active &&
+                karaoke.currentIdx === index;
+
+              return (
+                <span
+                  key={`${word.text}-${index}`}
+                  style={{
+                    ...styles.word,
+                    opacity: shown ? 1 : 0,
+                    color: current
+                      ? C.gold
+                      : isKeyword(word.text)
+                        ? "#16884E"
+                        : C.navyDeep,
+                    transform: current
+                      ? "translateY(-3px) scale(1.08)"
+                      : "translateY(0) scale(1)",
+                  }}
+                >
+                  {word.text}{" "}
+                </span>
+              );
+            })
+          ) : (
+            <span>{item.question}</span>
+          )}
+        </section>
+
+        <section style={styles.options}>
+          {item.options.map((option, index) => {
+            const selected =
+              selectedOption === option;
+            const correct =
+              selected &&
+              feedbackState === "correct";
+            const wrong =
+              selected &&
+              feedbackState === "wrong";
+            const reveal =
+              locked &&
+              option === item.correct &&
+              feedbackState !== "correct";
+
+            return (
+              <button
+                type="button"
+                key={option}
+                onClick={() => handleSelect(option)}
+                disabled={locked}
+                style={{
+                  ...styles.optionButton,
+                  background:
+                    correct || reveal
+                      ? C.greenSoft
+                      : wrong
+                        ? C.redSoft
+                        : "#FFFFFF",
+                  borderColor:
+                    correct || reveal
+                      ? C.green
+                      : wrong
+                        ? C.red
+                        : C.gold,
+                  animationDelay: `${index * 90}ms`,
+                }}
+              >
+                {option}
+              </button>
+            );
+          })}
+        </section>
+
+        {feedbackState !== "idle" && (
+          <>
+            <div
               style={{
-                padding: "16px", background: bg, border: `3px solid ${border}`,
-                borderRadius: 16, fontSize: 20, fontWeight: 800, color: C.navyDeep,
-                fontFamily: "Tajawal, sans-serif", cursor: locked ? "default" : "pointer",
-                transition: "all .25s ease",
-                opacity: 0,
-                animation: "optionPopIn .42s ease forwards",
-                animationDelay: `${optionIndex * 90}ms`,
-              }}>{opt}</button>
-          );
-        })}
-      </div>
+                ...styles.feedbackPill,
+                background:
+                  feedbackState === "correct"
+                    ? C.green
+                    : "#EF4444",
+              }}
+            >
+              {feedbackState === "correct"
+                ? "🌟 أَحْسَنْتَ!"
+                : "حَاوِلْ مَرَّةً أُخْرَى ✨"}
+            </div>
 
-      {feedbackState !== "idle" && (
-        <div style={{
-          position: "fixed",
-          left: 18,
-          right: 18,
-          bottom: 96,
-          zIndex: 999,
-          background: "rgba(255,255,255,.96)",
-          color: C.navyDeep,
-          border: `3px solid ${feedbackState === "correct" ? C.green : C.gold}`,
-          borderRadius: 22,
-          padding: "12px 16px",
-          textAlign: "center",
-          fontSize: 18,
-          fontWeight: 900,
-          boxShadow: "0 10px 26px rgba(0,0,0,.18)",
-          animation: "feedbackPop .35s cubic-bezier(0.34, 1.56, 0.64, 1)",
-        }}>
-          {coachText}
-        </div>
-      )}
-
-      {feedbackState === "correct" && (
-        <div style={{
-          position: "fixed",
-          inset: 0,
-          pointerEvents: "none",
-          zIndex: 998,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: 44,
-          animation: "feedbackPop .45s cubic-bezier(0.34, 1.56, 0.64, 1)",
-        }}>
-          ✨ 🎉 ⚖️
-        </div>
-      )}
-
-      {feedbackState !== "idle" && (
-        <div style={{
-          position: "fixed",
-          top: "50%", left: "50%",
-          transform: "translate(-50%, -50%)",
-          background: feedbackState === "correct" ? "#20A567" : "#EF4444",
-          color: "#fff",
-          padding: "20px 34px",
-          borderRadius: 999,
-          fontSize: 28,
-          fontWeight: 900,
-          boxShadow: "0 18px 38px rgba(0,0,0,.28)",
-          border: "6px solid rgba(255,255,255,.9)",
-          zIndex: 1000,
-          pointerEvents: "none",
-          textAlign: "center",
-          fontFamily: "Tajawal, sans-serif",
-          minWidth: 245,
-          animation: "feedbackPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
-        }}>
-          {feedbackText}
-        </div>
-      )}
+            <div
+              style={{
+                ...styles.coach,
+                borderColor:
+                  feedbackState === "correct"
+                    ? C.green
+                    : C.gold,
+              }}
+            >
+              {coachText}
+            </div>
+          </>
+        )}
+      </section>
 
       <style>{`
-        @keyframes optionPopIn {
-          0% { opacity: 0; transform: translateY(16px) scale(0.92); }
-          70% { opacity: 1; transform: translateY(-2px) scale(1.03); }
-          100% { opacity: 1; transform: translateY(0) scale(1); }
+        @keyframes premiumOptionIn {
+          0% {
+            opacity: 0;
+            transform: translateY(16px) scale(.94);
+          }
+          70% {
+            opacity: 1;
+            transform: translateY(-2px) scale(1.02);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
         }
 
-        @keyframes feedbackPop {
-          0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-          60% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
-          100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        @keyframes premiumFeedback {
+          0% {
+            opacity: 0;
+            transform: translate(-50%,-50%) scale(.65);
+          }
+          65% {
+            opacity: 1;
+            transform: translate(-50%,-50%) scale(1.08);
+          }
+          100% {
+            opacity: 1;
+            transform: translate(-50%,-50%) scale(1);
+          }
         }
       `}</style>
-    </div>
+    </main>
   );
 }
+
+const styles: Record<
+  string,
+  React.CSSProperties
+> = {
+  page: {
+    position: "relative",
+    width: "100%",
+    minHeight: "100dvh",
+    overflow: "hidden",
+    background:
+      "linear-gradient(180deg,#E9F8FF,#FFF1C8)",
+    fontFamily: "Tajawal, system-ui, sans-serif",
+  },
+  background: {
+    position: "fixed",
+    inset: 0,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    filter: "blur(4px) brightness(.82)",
+    transform: "scale(1.04)",
+  },
+  overlay: {
+    position: "fixed",
+    inset: 0,
+    background:
+      "linear-gradient(180deg,rgba(230,248,255,.86),rgba(255,241,199,.95))",
+  },
+  content: {
+    position: "relative",
+    zIndex: 2,
+    width: "min(900px,100%)",
+    minHeight: "100dvh",
+    margin: "0 auto",
+    padding: "14px 14px 130px",
+    boxSizing: "border-box",
+  },
+  header: {
+    display: "grid",
+    gridTemplateColumns: "52px 1fr auto",
+    alignItems: "center",
+    gap: 10,
+  },
+  soundButton: {
+    width: 50,
+    height: 50,
+    border: "4px solid #FFFFFF",
+    borderRadius: "50%",
+    background: C.gold,
+    color: "#FFFFFF",
+    fontSize: 22,
+    boxShadow:
+      "0 8px 18px rgba(127,77,0,.22)",
+  },
+  progressIcons: {
+    display: "flex",
+    justifyContent: "center",
+    gap: 7,
+  },
+  progressIcon: {
+    display: "inline-grid",
+    placeItems: "center",
+    width: 27,
+    height: 27,
+    fontSize: 22,
+    transition: "all .2s ease",
+  },
+  counter: {
+    minWidth: 70,
+    padding: "7px 13px",
+    borderRadius: 999,
+    background: C.navy,
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: 900,
+    textAlign: "center",
+  },
+  mission: {
+    width: "fit-content",
+    margin: "12px auto",
+    padding: "8px 17px",
+    border: `3px solid ${C.gold}`,
+    borderRadius: 999,
+    background: "rgba(255,255,255,.94)",
+    color: C.navyDeep,
+    fontSize: 17,
+    fontWeight: 950,
+    boxShadow:
+      "0 8px 20px rgba(53,71,91,.13)",
+  },
+  compareArea: {
+    display: "grid",
+    gridTemplateColumns:
+      "minmax(0,1fr) 38px minmax(0,1fr)",
+    alignItems: "center",
+    gap: 8,
+    marginTop: 8,
+  },
+  visualCard: {
+    position: "relative",
+    overflow: "hidden",
+    minWidth: 0,
+    border: "4px solid",
+    borderRadius: 25,
+    background: "rgba(255,255,255,.96)",
+    boxShadow:
+      "0 14px 30px rgba(29,63,87,.17)",
+  },
+  visualImage: {
+    display: "block",
+    width: "100%",
+    aspectRatio: "1 / 1.08",
+    objectFit: "contain",
+    background:
+      "linear-gradient(180deg,#DFF5FF,#FFF2C7)",
+  },
+  visualLabel: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 7,
+    minHeight: 52,
+    padding: "7px 5px",
+    color: C.navyDeep,
+    fontSize: "clamp(13px,3.5vw,19px)",
+    fontWeight: 950,
+    textAlign: "center",
+  },
+  sideMarker: {
+    display: "inline-grid",
+    placeItems: "center",
+    width: 27,
+    height: 27,
+    flex: "0 0 auto",
+    borderRadius: "50%",
+    background: C.navy,
+    color: "#FFFFFF",
+    fontSize: 14,
+  },
+  visualBadge: {
+    position: "absolute",
+    zIndex: 2,
+    top: 9,
+    right: 9,
+    padding: "5px 9px",
+    borderRadius: 999,
+    color: "#FFFFFF",
+    fontSize: 12,
+    fontWeight: 900,
+    boxShadow:
+      "0 5px 12px rgba(0,0,0,.15)",
+  },
+  legacyGroup: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 6,
+    minHeight: 180,
+    padding: 12,
+    border: `3px solid ${C.gold}`,
+    borderRadius: 24,
+    background: "#FFFFFF",
+  },
+  compareSymbol: {
+    display: "grid",
+    placeItems: "center",
+    color: C.navy,
+    fontSize: 30,
+    fontWeight: 1000,
+  },
+  hint: {
+    width: "fit-content",
+    margin: "10px auto 0",
+    padding: "7px 13px",
+    borderRadius: 14,
+    background: "rgba(27,58,107,.09)",
+    color: C.navy,
+    fontSize: 14,
+    fontWeight: 850,
+    textAlign: "center",
+  },
+  questionBox: {
+    marginTop: 12,
+    padding: "13px 14px",
+    border: `3px solid ${C.gold}`,
+    borderRadius: 22,
+    background: "rgba(255,255,255,.97)",
+    color: C.navyDeep,
+    fontSize: "clamp(19px,4.9vw,29px)",
+    fontWeight: 950,
+    lineHeight: 1.65,
+    textAlign: "center",
+    boxShadow:
+      "0 9px 20px rgba(29,63,87,.12)",
+  },
+  word: {
+    display: "inline-block",
+    margin: "0 2px",
+    transition: "all .22s ease",
+  },
+  options: {
+    display: "grid",
+    gridTemplateColumns:
+      "repeat(2,minmax(0,1fr))",
+    gap: 10,
+    marginTop: 13,
+  },
+  optionButton: {
+    minHeight: 68,
+    padding: "11px 8px",
+    border: "4px solid",
+    borderRadius: 22,
+    color: C.navyDeep,
+    fontFamily: "Tajawal, sans-serif",
+    fontSize: "clamp(16px,4.3vw,23px)",
+    fontWeight: 950,
+    boxShadow:
+      "0 9px 18px rgba(29,63,87,.12)",
+    opacity: 0,
+    animation:
+      "premiumOptionIn .42s ease forwards",
+  },
+  feedbackPill: {
+    position: "fixed",
+    zIndex: 1000,
+    top: "48%",
+    left: "50%",
+    transform: "translate(-50%,-50%)",
+    minWidth: 250,
+    padding: "18px 28px",
+    border: "6px solid rgba(255,255,255,.92)",
+    borderRadius: 999,
+    color: "#FFFFFF",
+    fontSize: 27,
+    fontWeight: 1000,
+    textAlign: "center",
+    boxShadow:
+      "0 18px 42px rgba(0,0,0,.27)",
+    animation:
+      "premiumFeedback .38s cubic-bezier(.34,1.56,.64,1)",
+  },
+  coach: {
+    position: "fixed",
+    zIndex: 999,
+    left: 16,
+    right: 16,
+    bottom: 88,
+    padding: "12px 15px",
+    border: "3px solid",
+    borderRadius: 22,
+    background: "rgba(255,255,255,.97)",
+    color: C.navyDeep,
+    fontSize: 17,
+    fontWeight: 900,
+    textAlign: "center",
+    boxShadow:
+      "0 12px 28px rgba(0,0,0,.17)",
+  },
+};

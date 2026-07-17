@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+      width="720" height="720"
+      viewBox="0 0 720 720">
+      <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#DFF6FF"/>
+          <stop offset=".72" stop-color="#FFF2C9"/>
+          <stop offset="1" stop-color="#F7D98A"/>
+        </linearGradient>
+        <filter id="shadow" x="-30%" y="-30%"
+          width="160%" height="160%">
+          <feDropShadow dx="0" dy="10" stdDeviation="9"
+            flood-color="#183B63" flood-opacity=".23"/>
+        </filter>
+      </defs>
+      <rect width="720" height="720" rx="42" fill="url(#bg)"/>
+      <circle cx="78" cy="90" r="34" fill="#FFD55A"/>
+      <path d="M0 620 Q170 550 350 615
+        T720 600 V720 H0Z" fill="#8FD275"/>
+      <rect x="28" y="28" width="664" height="664"
+        rx="38" fill="none" stroke="#2FA866" stroke-width="7"/>
+
+        <rect x="95" y="30" width="530" height="64"
+          rx="32" fill="#FFFFFF" fill-opacity=".95"
+          stroke="#2FA866" stroke-width="4"/>
+        <text x="360.0" y="73" text-anchor="middle"
+          direction="rtl" font-family="Tahoma,Arial"
+          font-size="27" font-weight="900"
+          fill="#183B63">مسلك أخضر مفتوح</text>
+
+
+      <g>
+        <circle cx="115" cy="540" r="42" fill="#FFFFFF"
+          stroke="#2FA866" stroke-width="9"/>
+        <path d="M95 555 V493 M95 493 H150 L132 516 H95"
+          fill="#2FA866" stroke="#183B63" stroke-width="5"/>
+        <path d="M115 540 L115 350 Q115 300 165 300 H590 V190" fill="none" stroke="#2FA866"
+          stroke-width="58" stroke-linecap="round"
+          stroke-linejoin="round"/>
+        <path d="M115 540 L115 350 Q115 300 165 300 H590 V190" fill="none" stroke="#FFFFFF"
+          stroke-width="8" stroke-dasharray="22 18"
+          stroke-linecap="round"/>
+
+        <g transform="translate(590,190)">
+          <rect x="-72" y="-42" width="144" height="78"
+            rx="20" fill="#2FA866"/>
+          <rect x="-45" y="-72" width="88" height="48"
+            rx="14" fill="#FFFFFF"/>
+          <circle cx="-43" cy="54" r="17" fill="#183B63"/>
+          <circle cx="43" cy="54" r="17" fill="#183B63"/>
+        </g>
+      </g>
+
+    </svg>

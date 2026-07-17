@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+      width="720" height="720"
+      viewBox="0 0 720 720">
+      <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#DFF6FF"/>
+          <stop offset=".72" stop-color="#FFF2C9"/>
+          <stop offset="1" stop-color="#F7D98A"/>
+        </linearGradient>
+        <filter id="shadow" x="-30%" y="-30%"
+          width="160%" height="160%">
+          <feDropShadow dx="0" dy="10" stdDeviation="9"
+            flood-color="#183B63" flood-opacity=".23"/>
+        </filter>
+      </defs>
+      <rect width="720" height="720" rx="42" fill="url(#bg)"/>
+      <circle cx="78" cy="90" r="34" fill="#FFD55A"/>
+      <path d="M0 620 Q170 550 350 615
+        T720 600 V720 H0Z" fill="#8FD275"/>
+      <rect x="28" y="28" width="664" height="664"
+        rx="38" fill="none" stroke="#E45B55" stroke-width="7"/>
+
+        <rect x="95" y="30" width="530" height="64"
+          rx="32" fill="#FFFFFF" fill-opacity=".95"
+          stroke="#E45B55" stroke-width="4"/>
+        <text x="360.0" y="73" text-anchor="middle"
+          direction="rtl" font-family="Tahoma,Arial"
+          font-size="27" font-weight="900"
+          fill="#183B63">مسلك مغلق</text>
+
+
+      <g>
+        <circle cx="115" cy="540" r="42" fill="#FFFFFF"
+          stroke="#2FA866" stroke-width="9"/>
+        <path d="M95 555 V493 M95 493 H150 L132 516 H95"
+          fill="#2FA866" stroke="#183B63" stroke-width="5"/>
+        <path d="M115 540 H390 Q445 540 445 485 V190 H590" fill="none" stroke="#E45B55"
+          stroke-width="58" stroke-linecap="round"
+          stroke-linejoin="round"/>
+        <path d="M115 540 H390 Q445 540 445 485 V190 H590" fill="none" stroke="#FFFFFF"
+          stroke-width="8" stroke-dasharray="22 18"
+          stroke-linecap="round"/>
+
+        <g transform="translate(590,190)">
+          <path d="M-45 -80 H5 L65 55" fill="none"
+            stroke="#E45B55" stroke-width="22"
+            stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M-52 -78 V55 M8 -78 V55"
+            stroke="#183B63" stroke-width="10"/>
+        </g>
+      </g>
+
+        <g transform="translate(390,365)" filter="url(#shadow)">
+          <rect x="-68" y="-28" width="136" height="56"
+            rx="10" fill="#FFFFFF" stroke="#E45B55" stroke-width="8"/>
+          <path d="M-52 0 H52" stroke="#E45B55" stroke-width="12"/>
+          <path d="M-45 -18 L-12 18 M0 -18 L33 18"
+            stroke="#E45B55" stroke-width="8"/>
+        </g>
+
+    </svg>
