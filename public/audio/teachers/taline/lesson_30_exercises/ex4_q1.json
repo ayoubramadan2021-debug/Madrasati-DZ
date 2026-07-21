@@ -1,22 +1,27 @@
 [
   {
-    "text": "مَا",
+    "text": "أَيُّ",
     "offset": 107,
-    "duration": 172
+    "duration": 300
   },
   {
-    "text": "التَّرْكِيبُ",
-    "offset": 293,
-    "duration": 586
+    "text": "تَرْكِيبٍ",
+    "offset": 421,
+    "duration": 629
   },
   {
-    "text": "الصَّحِيحُ",
-    "offset": 894,
-    "duration": 615
+    "text": "يُكَوِّنُ",
+    "offset": 1065,
+    "duration": 529
   },
   {
-    "text": "لِلْعَدَدِ",
-    "offset": 1523,
-    "duration": 815
+    "text": "العَدَدَ",
+    "offset": 1608,
+    "duration": 500
+  },
+  {
+    "text": "عَشَرَةَ",
+    "offset": 2123,
+    "duration": 643
   }
 ]

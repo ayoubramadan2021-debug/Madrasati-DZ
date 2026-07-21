@@ -1,0 +1,15 @@
+{
+  "lesson_number": 42,
+  "sort_order": 10,
+  "title_ar": "قَلْبِي يَنْبِضُ (1)",
+  "title_fr": "Mon cœur bat (1)",
+  "subject": "science",
+  "speaker": "khalil",
+  "audio_base": "/audio/teachers/khalil/lesson_42_my_heart_beats_1",
+  "scene_count": 6,
+  "objectives": [
+    "اكتشاف أن القلب ينبض باستمرار.",
+    "الإحساس بنبض القلب بوضع اليد على الجهة اليسرى من الصدر.",
+    "ربط الحركة واللعب بازدياد سرعة النبض."
+  ]
+}

@@ -31,6 +31,7 @@ import { LESSON_28_CONTENT } from "../features/lesson-v2/content/lesson28";
 import { LESSON_29_CONTENT } from "../features/lesson-v2/content/lesson29";
 import { LESSON_30_CONTENT } from "../features/lesson-v2/content/lesson30";
 import { LESSON_31_CONTENT } from "../features/lesson-v2/content/lesson31";
+
 import { LESSON_32_CONTENT } from "../features/lesson-v2/content/lesson32";
 
 const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {

@@ -1,3 +1,5 @@
+import GeneratedLessonExercises from "../features/lesson-v2/generated/GeneratedLessonExercises";
+import { GENERATED_CURRICULUM_REGISTRY } from "../features/lesson-v2/generated/registry";
 import "../features/lesson-v2/exercises-v2/lesson35-neutral-theme.css";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -367,6 +369,21 @@ export default function LessonExercisesPage() {
 
   if (lessonId === "35") {
     return <Lesson35Exercises />;
+  }
+
+  const generatedManifest =
+    lessonId
+      ? GENERATED_CURRICULUM_REGISTRY[
+          lessonId as keyof typeof GENERATED_CURRICULUM_REGISTRY
+        ]
+      : undefined;
+
+  if (generatedManifest) {
+    return (
+      <GeneratedLessonExercises
+        manifestPath={generatedManifest}
+      />
+    );
   }
 
   return <SchoolLessonOneExercises />;

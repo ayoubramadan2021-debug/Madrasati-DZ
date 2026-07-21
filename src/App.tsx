@@ -23,6 +23,7 @@ export default function App() {
         <Route path="/exercise-demo" element={<ExerciseDemoPage />} />
         <Route path="/ai-tutor" element={<AiTutorPage />} />
         <Route path="/lesson-v2/:lessonId?" element={lazy(() => import("./pages/LessonV2Page"), "الدرس")} />
+        <Route path="/world2-lesson/:lessonId" element={lazy(() => import("./pages/World2LessonPage"), "درس عالم الألعاب")} />
         <Route path="/lesson-v2/:lessonId/exercises" element={lazy(() => import("./pages/LessonExercisesPage"), "التمارين")} />
         <Route path="/lesson-exercises" element={lazy(() => import("./pages/LessonExercisesPage"), "التمارين")} />
         <Route path="/lesson2-exercises" element={lazy(() => import("./pages/Lesson2ExercisesPage"), "تمارين الدرس 2")} />

@@ -1,0 +1,18 @@
+{
+  "lesson_number": 38,
+  "world_order": 6,
+  "title_ar": "أَتَنَفَّسُ بِهُدُوءٍ فِي عَالَمِ الْمَرَحِ",
+  "teacher": "khalil",
+  "image_base": "/lessons/v2/lesson38",
+  "audio_base": "/audio/teachers/khalil/lesson_38_amusement_positions",
+  "scene_start": 1,
+  "scene_end": 6,
+  "scenes": [
+    "s1.webp",
+    "s2.webp",
+    "s3.webp",
+    "s4.webp",
+    "s5.webp",
+    "s6.webp"
+  ]
+}

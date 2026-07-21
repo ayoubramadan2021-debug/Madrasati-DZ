@@ -1,22 +1,42 @@
 [
   {
-    "text": "مَا",
+    "text": "أَيُّ",
     "offset": 107,
-    "duration": 172
+    "duration": 314
   },
   {
-    "text": "التَّرْكِيبُ",
-    "offset": 293,
+    "text": "كِتَابَةٍ",
+    "offset": 436,
+    "duration": 700
+  },
+  {
+    "text": "تُمَثِّلُ",
+    "offset": 1151,
     "duration": 586
   },
   {
-    "text": "المُطَابِقُ",
-    "offset": 894,
-    "duration": 758
+    "text": "ثَمَانِيَ",
+    "offset": 1751,
+    "duration": 529
   },
   {
-    "text": "لِلصُّورَةِ",
-    "offset": 1666,
-    "duration": 715
+    "text": "دَوَائِرَ",
+    "offset": 2295,
+    "duration": 615
+  },
+  {
+    "text": "خَضْرَاءَ",
+    "offset": 2924,
+    "duration": 557
+  },
+  {
+    "text": "وَدَائِرَتَيْنِ",
+    "offset": 3496,
+    "duration": 986
+  },
+  {
+    "text": "بَنَفْسَجِيَّتَيْنِ",
+    "offset": 4497,
+    "duration": 1358
   }
 ]

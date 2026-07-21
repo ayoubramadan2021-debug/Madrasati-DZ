@@ -1,0 +1,18 @@
+{
+  "lesson_number": 36,
+  "world_order": 4,
+  "title_ar": "الْأَعْدَادُ إِلَى 19 (1)",
+  "teacher": "khalil",
+  "image_base": "/lessons/v2/lesson36",
+  "audio_base": "/audio/teachers/khalil/lesson_36_amusement_sorting",
+  "scene_start": 1,
+  "scene_end": 6,
+  "scenes": [
+    "s1.webp",
+    "s2.webp",
+    "s3.webp",
+    "s4.webp",
+    "s5.webp",
+    "s6.webp"
+  ]
+}

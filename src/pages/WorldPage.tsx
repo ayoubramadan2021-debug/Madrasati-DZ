@@ -115,7 +115,25 @@ export default function WorldPage() {
             {lessons.map((l, i) => (
               <div
                 key={l.id}
-                onClick={() => { const k = getV2KeyByLesson(l); navigate(k ? `/lesson-v2/${k}` : `/lesson/${l.id}`); }}
+                onClick={() => {
+                  if (
+                    String(l.world_id ?? world?.id ?? worldId) === "5daed3bb-7e62-4a5a-93a1-f6dec60df810"
+                  ) {
+                    navigate(
+                      `/world2-lesson/${l.id}`
+                    );
+                    return;
+                  }
+
+                  const k =
+                    getV2KeyByLesson(l);
+
+                  navigate(
+                    k
+                      ? `/lesson-v2/${k}`
+                      : `/lesson/${l.id}`
+                  );
+                }}
                 style={{ background: "var(--surface-2)", border: "1px solid var(--border-soft)", borderRadius: 16, padding: "16px 18px", display: "flex", alignItems: "center", gap: 14, cursor: "pointer", boxShadow: "0 4px 16px rgba(0,0,0,.3)", opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(10px)", transition: `all .4s ease ${i * 0.08}s` }}
               >
                 <div style={{ width: 50, height: 50, borderRadius: 15, background: "linear-gradient(135deg,var(--gold),#F4B942)", color: "#1B3A6B", display: "grid", placeItems: "center", fontSize: 26, fontWeight: 900, flexShrink: 0, boxShadow: "0 4px 12px rgba(232,160,32,.35)" }}>{i + 1}</div>

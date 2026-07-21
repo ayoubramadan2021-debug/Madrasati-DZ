@@ -1,119 +1,119 @@
-import type { EquationBuilderItem } from "../exercises-v2/EquationBuilderV2";
-import { LESSON_30_EXERCISE_AUDIO_BASE } from "./lesson30_exercise1";
+import type {
+  Lesson30CompositionBuilderItem,
+} from "../exercises-v2/lesson30/Lesson30CompositionBuilderEngineV2";
 
-export { LESSON_30_EXERCISE_AUDIO_BASE };
-
-export const LESSON_30_EXERCISE_3: EquationBuilderItem[] = [
+export const LESSON_30_EXERCISE_3:
+  Lesson30CompositionBuilderItem[] = [
   {
-    "id": "l30_e3_q1",
-    "title": "أَبْنِي تَرْكِيبَ العَدَدِ",
-    "question": "رَتِّبِ البِطَاقَاتِ لِتَرْكِيبِ العَدَدِ الصَّحِيحِ.",
-    "question_audio_key": "ex3_q1",
-    "scene_image": "/lessons/v2/lesson30-number-composition/s8.webp",
-    "mode": "build-equation",
-    "emoji": "🍎",
-    "before": 4,
-    "change": 6,
-    "result": 10,
-    "action": "add",
-    "equation": [
+    question:
+      "رَتِّبِ البِطَاقَاتِ لِكِتَابَةِ أَرْبَعَةٍ زَائِدِ سِتَّةٍ يُسَاوِي عَشَرَةَ.",
+
+    question_audio_key: "ex3_q1",
+
+    leftCount: 4,
+    rightCount: 6,
+
+    leftEmoji: "🍎",
+    rightEmoji: "🍏",
+
+    equation: [
       "4",
       "+",
       "6",
       "=",
-      "10"
+      "10",
     ],
-    "bank": [
+
+    bank: [
       "6",
       "=",
       "10",
       "+",
-      "4"
+      "4",
     ],
-    "success": "أَحْسَنْتَ! رَكَّبْتَ العَدَدَ عَشَرَةَ."
   },
   {
-    "id": "l30_e3_q2",
-    "title": "أَبْنِي تَرْكِيبَ العَدَدِ",
-    "question": "رَتِّبِ البِطَاقَاتِ لِتَرْكِيبِ العَدَدِ الصَّحِيحِ.",
-    "question_audio_key": "ex3_q2",
-    "scene_image": "/lessons/v2/lesson30-number-composition/s9.webp",
-    "mode": "build-equation",
-    "emoji": "🧊",
-    "before": 5,
-    "change": 5,
-    "result": 10,
-    "action": "add",
-    "equation": [
+    question:
+      "رَتِّبِ البِطَاقَاتِ لِكِتَابَةِ خَمْسَةٍ زَائِدِ خَمْسَةٍ يُسَاوِي عَشَرَةَ.",
+
+    question_audio_key: "ex3_q2",
+
+    leftCount: 5,
+    rightCount: 5,
+
+    leftEmoji: "🟦",
+    rightEmoji: "🟨",
+
+    equation: [
       "5",
       "+",
       "5",
       "=",
-      "10"
+      "10",
     ],
-    "bank": [
+
+    bank: [
       "5",
       "10",
       "+",
       "=",
-      "5"
+      "5",
     ],
-    "success": "مُمْتَاز! خَمْسَةٌ زَائِدُ خَمْسَةٍ يُسَاوِي عَشَرَةَ."
   },
   {
-    "id": "l30_e3_q3",
-    "title": "أَبْنِي تَرْكِيبَ العَدَدِ",
-    "question": "رَتِّبِ البِطَاقَاتِ لِتَرْكِيبِ العَدَدِ الصَّحِيحِ.",
-    "question_audio_key": "ex3_q3",
-    "scene_image": "/lessons/v2/lesson30-number-composition/s10.webp",
-    "mode": "build-equation",
-    "emoji": "🌼",
-    "before": 6,
-    "change": 3,
-    "result": 9,
-    "action": "add",
-    "equation": [
+    question:
+      "رَتِّبِ البِطَاقَاتِ لِكِتَابَةِ سِتَّةٍ زَائِدِ ثَلَاثَةٍ يُسَاوِي تِسْعَةَ.",
+
+    question_audio_key: "ex3_q3",
+
+    leftCount: 6,
+    rightCount: 3,
+
+    leftEmoji: "🌼",
+    rightEmoji: "🌺",
+
+    equation: [
       "6",
       "+",
       "3",
       "=",
-      "9"
+      "9",
     ],
-    "bank": [
+
+    bank: [
       "=",
       "3",
       "9",
       "6",
-      "+"
+      "+",
     ],
-    "success": "رَائِع! سِتَّةٌ زَائِدُ ثَلَاثَةٍ يُسَاوِي تِسْعَةَ."
   },
   {
-    "id": "l30_e3_q4",
-    "title": "أَبْنِي تَرْكِيبَ العَدَدِ",
-    "question": "رَتِّبِ البِطَاقَاتِ لِتَرْكِيبِ العَدَدِ الصَّحِيحِ.",
-    "question_audio_key": "ex3_q4",
-    "scene_image": "/lessons/v2/lesson30-number-composition/s11.webp",
-    "mode": "build-equation",
-    "emoji": "🟢",
-    "before": 8,
-    "change": 2,
-    "result": 10,
-    "action": "add",
-    "equation": [
+    question:
+      "رَتِّبِ البِطَاقَاتِ لِكِتَابَةِ ثَمَانِيَةٍ زَائِدِ اثْنَيْنِ يُسَاوِي عَشَرَةَ.",
+
+    question_audio_key: "ex3_q4",
+
+    leftCount: 8,
+    rightCount: 2,
+
+    leftEmoji: "🟢",
+    rightEmoji: "🟣",
+
+    equation: [
       "8",
       "+",
       "2",
       "=",
-      "10"
+      "10",
     ],
-    "bank": [
+
+    bank: [
       "2",
       "+",
       "10",
       "8",
-      "="
+      "=",
     ],
-    "success": "بَطَل! ثَمَانِيَةٌ زَائِدُ اثْنَيْنِ يُسَاوِي عَشَرَةَ."
-  }
+  },
 ];

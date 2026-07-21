@@ -19,7 +19,7 @@ const LESSON_ALIASES: Record<
   string,
   {
     title: string;
-    exercisePath: string;
+    exercisePath?: string;
     audioToken: string;
   }
 > = {
@@ -37,6 +37,47 @@ const LESSON_ALIASES: Record<
     title: "أتنفس جيدًا في عالم المرح",
     exercisePath: "/lesson-v2/35/exercises",
     audioToken: "lesson_35_amusement_breathing",
+  },
+  "36": {
+    title: "الْأَعْدَادُ إِلَى 19 (1)",
+    audioToken: "lesson_36_amusement_sorting",
+  },
+  "37": {
+    title: "قِرَاءَةُ جَدْوَلٍ",
+    audioToken: "lesson_37_amusement_picture_table",
+  },
+  "38": {
+    title: "أَتَنَفَّسُ بِهُدُوءٍ فِي عَالَمِ الْمَرَحِ",
+    audioToken: "lesson_38_amusement_positions",
+  },
+  "39": {
+    title: "رِحْلَةُ الْقِطَارِ الْمُرَتَّبِ",
+    audioToken: "lesson_39_ordered_train_journey",
+  },
+  "40": {
+    title: "اِكْتَشِفِ النَّمَطَ السِّرِّيَّ",
+    audioToken: "lesson_40_secret_pattern",
+  },
+  "41": {
+    title: "صُفُوفٌ وَأَعْمِدَةٌ فِي لَوْحَةِ اللَّعِبِ",
+    audioToken: "lesson_41_rows_columns_game_board",
+  },
+  "42": {
+    title: "قَلْبِي يَنْبِضُ (1)",
+    audioToken: "lesson_42_my_heart_beats_1",
+  },
+  "43": {
+    title: "أَكْتَشِفُ ضِعْفَ عَدَدٍ أَصْغَرَ مِنْ عَشَرَةٍ",
+    audioToken: "lesson_43_double_number_under_10",
+  },
+  "44": {
+    title: "أَكْتَشِفُ نِصْفَ عَدَدٍ أَصْغَرَ مِنْ عِشْرِينَ",
+    audioToken: "lesson_44_half_number_under_20",
+  },
+
+  "45": {
+    title: "إِتْمَامُ الْجَدْوَلِ",
+    audioToken: "lesson_45_complete_table",
   },
 };
 
@@ -310,7 +351,7 @@ export default function World2LessonPage() {
       audio_base={preparedLesson.audioBase}
       slides={preparedLesson.slides as any}
       onDone={() => {
-        if (alias) {
+        if (alias?.exercisePath) {
           navigate(alias.exercisePath);
           return;
         }

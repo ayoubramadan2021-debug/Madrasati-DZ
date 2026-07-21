@@ -1,123 +1,94 @@
-import type { AddSubStoryItem } from "../exercises-v2/AddSubStoryLabV2";
+import type {
+  Lesson30CompositionCountItem,
+} from "../exercises-v2/lesson30/Lesson30CompositionCountEngineV2";
 
 export const LESSON_30_EXERCISE_AUDIO_BASE =
   "/audio/teachers/taline/lesson_30_exercises";
 
-export const LESSON_30_EXERCISE_1: AddSubStoryItem[] = [
+export const LESSON_30_EXERCISE_1:
+  Lesson30CompositionCountItem[] = [
   {
-    "id": "l30_e1_q1",
-    "title": "أُرَكِّبُ العَدَدَ",
-    "story": "أَرْبَعُ تُفَّاحَاتٍ حَمْرَاءَ وَسِتُّ تُفَّاحَاتٍ خَضْرَاءَ.",
-    "question": "كَمْ صَارَ العَدَدُ بَعْدَ جَمْعِ المَجْمُوعَتَيْنِ؟",
-    "question_audio_key": "ex1_q1",
-    "scene_image": "/lessons/v2/lesson30-number-composition/s8.webp",
-    "mode": "result",
-    "emoji": "🍎",
-    "before": 4,
-    "change": 6,
-    "action": "add",
-    "options": [
-      {
-        "id": "8",
-        "label": "8"
-      },
-      {
-        "id": "9",
-        "label": "9"
-      },
-      {
-        "id": "10",
-        "label": "10"
-      }
-    ],
-    "correct": "10",
-    "success": "أَحْسَنْتَ! رَكَّبْتَ العَدَدَ عَشَرَةَ."
+    question:
+      "أَرْبَعُ تُفَّاحَاتٍ حَمْرَاءَ وَسِتُّ تُفَّاحَاتٍ خَضْرَاءَ. كَمْ تُفَّاحَةً لَدَيْنَا؟",
+
+    question_audio_key: "ex1_q1",
+
+    leftCount: 4,
+    rightCount: 6,
+
+    leftEmoji: "🍎",
+    rightEmoji: "🍏",
+
+    leftLabel:
+      "تُفَّاحٌ أَحْمَرُ",
+
+    rightLabel:
+      "تُفَّاحٌ أَخْضَرُ",
+
+    options: [8, 9, 10],
+    correct: 10,
   },
   {
-    "id": "l30_e1_q2",
-    "title": "أُرَكِّبُ العَدَدَ",
-    "story": "خَمْسَةُ مُكَعَّبَاتٍ زَرْقَاءَ وَخَمْسَةُ مُكَعَّبَاتٍ صَفْرَاءَ.",
-    "question": "كَمْ صَارَ العَدَدُ بَعْدَ جَمْعِ المَجْمُوعَتَيْنِ؟",
-    "question_audio_key": "ex1_q2",
-    "scene_image": "/lessons/v2/lesson30-number-composition/s9.webp",
-    "mode": "result",
-    "emoji": "🧊",
-    "before": 5,
-    "change": 5,
-    "action": "add",
-    "options": [
-      {
-        "id": "9",
-        "label": "9"
-      },
-      {
-        "id": "10",
-        "label": "10"
-      },
-      {
-        "id": "11",
-        "label": "11"
-      }
-    ],
-    "correct": "10",
-    "success": "مُمْتَاز! خَمْسَةٌ وَخَمْسَةٌ تُكَوِّنَانِ عَشَرَةَ."
+    question:
+      "خَمْسَةُ مُكَعَّبَاتٍ زَرْقَاءَ وَخَمْسَةُ مُكَعَّبَاتٍ صَفْرَاءَ. كَمْ مُكَعَّبًا لَدَيْنَا؟",
+
+    question_audio_key: "ex1_q2",
+
+    leftCount: 5,
+    rightCount: 5,
+
+    leftEmoji: "🟦",
+    rightEmoji: "🟨",
+
+    leftLabel:
+      "مُكَعَّبَاتٌ زَرْقَاءُ",
+
+    rightLabel:
+      "مُكَعَّبَاتٌ صَفْرَاءُ",
+
+    options: [9, 10, 11],
+    correct: 10,
   },
   {
-    "id": "l30_e1_q3",
-    "title": "أُرَكِّبُ العَدَدَ",
-    "story": "سِتُّ زَهَرَاتٍ صَفْرَاءَ وَثَلَاثُ زَهَرَاتٍ حَمْرَاءَ.",
-    "question": "كَمْ صَارَ العَدَدُ بَعْدَ جَمْعِ المَجْمُوعَتَيْنِ؟",
-    "question_audio_key": "ex1_q3",
-    "scene_image": "/lessons/v2/lesson30-number-composition/s10.webp",
-    "mode": "result",
-    "emoji": "🌼",
-    "before": 6,
-    "change": 3,
-    "action": "add",
-    "options": [
-      {
-        "id": "8",
-        "label": "8"
-      },
-      {
-        "id": "9",
-        "label": "9"
-      },
-      {
-        "id": "10",
-        "label": "10"
-      }
-    ],
-    "correct": "9",
-    "success": "رَائِع! رَكَّبْتَ العَدَدَ تِسْعَةَ."
+    question:
+      "سِتُّ زَهَرَاتٍ صَفْرَاءَ وَثَلَاثُ زَهَرَاتٍ حَمْرَاءَ. كَمْ زَهْرَةً لَدَيْنَا؟",
+
+    question_audio_key: "ex1_q3",
+
+    leftCount: 6,
+    rightCount: 3,
+
+    leftEmoji: "🌼",
+    rightEmoji: "🌺",
+
+    leftLabel:
+      "زَهَرَاتٌ صَفْرَاءُ",
+
+    rightLabel:
+      "زَهَرَاتٌ حَمْرَاءُ",
+
+    options: [8, 9, 10],
+    correct: 9,
   },
   {
-    "id": "l30_e1_q4",
-    "title": "أُرَكِّبُ العَدَدَ",
-    "story": "سَبْعُ دَوَائِرَ بُرْتُقَالِيَّةٍ وَثَلَاثُ دَوَائِرَ زَرْقَاءَ.",
-    "question": "كَمْ صَارَ العَدَدُ بَعْدَ جَمْعِ المَجْمُوعَتَيْنِ؟",
-    "question_audio_key": "ex1_q4",
-    "scene_image": "/lessons/v2/lesson30-number-composition/s11.webp",
-    "mode": "result",
-    "emoji": "🔵",
-    "before": 7,
-    "change": 3,
-    "action": "add",
-    "options": [
-      {
-        "id": "9",
-        "label": "9"
-      },
-      {
-        "id": "10",
-        "label": "10"
-      },
-      {
-        "id": "11",
-        "label": "11"
-      }
-    ],
-    "correct": "10",
-    "success": "بَطَل! سَبْعَةٌ وَثَلَاثَةٌ تُكَوِّنَانِ عَشَرَةَ."
-  }
+    question:
+      "سَبْعُ دَوَائِرَ بُرْتُقَالِيَّةٍ وَثَلَاثُ دَوَائِرَ زَرْقَاءَ. كَمْ دَائِرَةً لَدَيْنَا؟",
+
+    question_audio_key: "ex1_q4",
+
+    leftCount: 7,
+    rightCount: 3,
+
+    leftEmoji: "🟠",
+    rightEmoji: "🔵",
+
+    leftLabel:
+      "دَوَائِرُ بُرْتُقَالِيَّةٌ",
+
+    rightLabel:
+      "دَوَائِرُ زَرْقَاءُ",
+
+    options: [9, 10, 11],
+    correct: 10,
+  },
 ];

@@ -89,7 +89,7 @@ export default function SubjectPage() {
             progress={progress}
             lang={lang}
             onOpen={(id) => navigate(`/world/${id}`)}
-            onLocked={() => setLockedOpen(true)}
+            onLocked={import.meta.env.DEV ? false : (() => setLockedOpen(true))}
           />
         </div>
         {lockedOpen && (

@@ -1,32 +1,47 @@
 [
   {
-    "text": "كَمْ",
+    "text": "سَبْعُ",
     "offset": 107,
-    "duration": 257
+    "duration": 457
   },
   {
-    "text": "صَارَ",
-    "offset": 379,
-    "duration": 300
+    "text": "دَوَائِرَ",
+    "offset": 579,
+    "duration": 586
   },
   {
-    "text": "العَدَدُ",
-    "offset": 694,
-    "duration": 529
+    "text": "بُرْتُقَالِيَّةٍ",
+    "offset": 1179,
+    "duration": 1029
   },
   {
-    "text": "بَعْدَ",
-    "offset": 1237,
-    "duration": 343
+    "text": "وَثَلَاثُ",
+    "offset": 2223,
+    "duration": 672
   },
   {
-    "text": "جَمْعِ",
-    "offset": 1595,
-    "duration": 358
+    "text": "دَوَائِرَ",
+    "offset": 2910,
+    "duration": 600
   },
   {
-    "text": "المَجْمُوعَتَيْنِ",
-    "offset": 1966,
-    "duration": 1244
+    "text": "زَرْقَاءَ",
+    "offset": 3525,
+    "duration": 858
+  },
+  {
+    "text": "كَمْ",
+    "offset": 5391,
+    "duration": 280
+  },
+  {
+    "text": "دَائِرَةً",
+    "offset": 5649,
+    "duration": 657
+  },
+  {
+    "text": "لَدَيْنَا",
+    "offset": 6321,
+    "duration": 729
   }
 ]

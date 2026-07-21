@@ -2,26 +2,41 @@
   {
     "text": "رَتِّبِ",
     "offset": 107,
-    "duration": 458
+    "duration": 443
   },
   {
     "text": "البِطَاقَاتِ",
-    "offset": 579,
-    "duration": 801
+    "offset": 564,
+    "duration": 786
   },
   {
-    "text": "لِتَرْكِيبِ",
-    "offset": 1394,
-    "duration": 601
+    "text": "لِكِتَابَةِ",
+    "offset": 1365,
+    "duration": 729
   },
   {
-    "text": "العَدَدِ",
-    "offset": 2009,
-    "duration": 458
+    "text": "ثَمَانِيَةٍ",
+    "offset": 2109,
+    "duration": 815
   },
   {
-    "text": "الصَّحِيحِ",
-    "offset": 2481,
-    "duration": 858
+    "text": "زَائِدِ",
+    "offset": 2939,
+    "duration": 371
+  },
+  {
+    "text": "اثْنَيْنِ",
+    "offset": 3325,
+    "duration": 600
+  },
+  {
+    "text": "يُسَاوِي",
+    "offset": 3940,
+    "duration": 600
+  },
+  {
+    "text": "عَشَرَةَ",
+    "offset": 4555,
+    "duration": 600
   }
 ]

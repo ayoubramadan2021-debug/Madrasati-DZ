@@ -1,0 +1,15 @@
+{
+  "lesson_number": 43,
+  "sort_order": 11,
+  "title_ar": "أَكْتَشِفُ ضِعْفَ عَدَدٍ أَصْغَرَ مِنْ عَشَرَةٍ",
+  "title_fr": "Le double d’un nombre inférieur à 10",
+  "subject": "math",
+  "speaker": "taline",
+  "audio_base": "/audio/teachers/taline/lesson_43_double_number_under_10",
+  "scene_count": 6,
+  "objectives": [
+    "فهم أن الضعف يتكوّن من مجموعتين متساويتين.",
+    "حساب ضعف عدد أصغر من عشرة.",
+    "ربط ضعف العدد بجمع العدد إلى نفسه."
+  ]
+}

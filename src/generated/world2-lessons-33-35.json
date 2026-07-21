@@ -1,0 +1,33 @@
+{
+  "world_id": "5daed3bb-7e62-4a5a-93a1-f6dec60df810",
+  "world_title": "عالم الألعاب والترفيه",
+  "lessons": [
+    {
+      "number": 33,
+      "world_order": 1,
+      "title_ar": "أقارن أطوال أشياء عالم المرح",
+      "slug": "lesson33-amusement-lengths",
+      "audio_base": "/audio/teachers/taline/lesson_33_amusement_lengths",
+      "image_base": "/lessons/v2/lesson33-amusement-lengths",
+      "is_published": false
+    },
+    {
+      "number": 34,
+      "world_order": 2,
+      "title_ar": "مسالك عالم الألعاب والترفيه",
+      "slug": "lesson34-amusement-paths",
+      "audio_base": "/audio/teachers/khalil/lesson_34_amusement_paths",
+      "image_base": "/lessons/v2/lesson34-amusement-paths",
+      "is_published": false
+    },
+    {
+      "number": 35,
+      "world_order": 3,
+      "title_ar": "أتنفس جيدًا في عالم المرح",
+      "slug": "lesson35-amusement-breathing",
+      "audio_base": "/audio/teachers/taline/lesson_35_amusement_breathing",
+      "image_base": "/lessons/v2/lesson35-amusement-breathing",
+      "is_published": false
+    }
+  ]
+}
