@@ -1,0 +1,350 @@
+src/features/exercises/templates/CountExercise.tsx:24:  const [values, setValues] = useState<string[]>(() => items.map(() => ""));
+src/features/exercises/templates/CountExercise.tsx:26:    items.map(() => null)
+src/features/exercises/templates/CountExercise.tsx:32:    setValues((prev) => prev.map((x, idx) => (idx === i ? clean : x)));
+src/features/exercises/templates/CountExercise.tsx:36:    const next = items.map((it, i) => Number(values[i]) === it.answer);
+src/features/exercises/templates/CountExercise.tsx:44:    setValues(items.map(() => ""));
+src/features/exercises/templates/CountExercise.tsx:45:    setStatus(items.map(() => null));
+src/features/exercises/templates/CountExercise.tsx:71:        {items.map((it, i) => {
+src/features/exercises/templates/CountExercise.tsx:101:                {Array.from({ length: it.count }).map((_, k) => (
+src/features/exercises/templates/McqExercise.tsx:25:    items.map(() => null)
+src/features/exercises/templates/McqExercise.tsx:31:    setChoices((prev) => prev.map((c, i) => (i === qi ? oi : c)));
+src/features/exercises/templates/McqExercise.tsx:41:    setChoices(items.map(() => null));
+src/features/exercises/templates/McqExercise.tsx:67:        {items.map((it, qi) => {
+src/features/exercises/templates/McqExercise.tsx:92:                {it.options.map((opt, oi) => {
+src/features/exercises/templates/OrderExercise.tsx:28:  const [picked, setPicked] = useState<number[][]>(() => items.map(() => []));
+src/features/exercises/templates/OrderExercise.tsx:30:    items.map(() => null)
+src/features/exercises/templates/OrderExercise.tsx:41:        prev.map((arr, i) => (i === qi ? [...arr, idx] : arr))
+src/features/exercises/templates/OrderExercise.tsx:43:      setWrong((prev) => prev.map((w, i) => (i === qi ? null : w)));
+src/features/exercises/templates/OrderExercise.tsx:45:      setWrong((prev) => prev.map((w, i) => (i === qi ? idx : w)));
+src/features/exercises/templates/OrderExercise.tsx:47:        setWrong((prev) => prev.map((w, i) => (i === qi ? null : w)));
+src/features/exercises/templates/OrderExercise.tsx:55:      prev.map((arr, i) => (i === qi ? arr.slice(0, -1) : arr))
+src/features/exercises/templates/OrderExercise.tsx:60:    const next = items.map((it, qi) => {
+src/features/exercises/templates/OrderExercise.tsx:62:      const answer = picked[qi].map((idx) => it.numbers[idx]);
+src/features/exercises/templates/OrderExercise.tsx:74:    setPicked(items.map(() => []));
+src/features/exercises/templates/OrderExercise.tsx:75:    setWrong(items.map(() => null));
+src/features/exercises/templates/OrderExercise.tsx:82:    const answer = picked[qi].map((idx) => it.numbers[idx]);
+src/features/exercises/templates/OrderExercise.tsx:107:        {items.map((it, qi) => {
+src/features/exercises/templates/OrderExercise.tsx:140:                  current.map((idx, k) => (
+src/features/exercises/templates/OrderExercise.tsx:165:                {it.numbers.map((n, idx) => {
+src/features/exercises/templates/TraceExercise.tsx:5:type Glyph = { label: string; path: string };
+src/features/exercises/templates/TraceExercise.tsx:17:const VB = 100; // viewBox size (paths drawn in 0..100 space)
+src/features/exercises/templates/TraceExercise.tsx:18:const SAMPLES = 100; // points sampled along path
+src/features/exercises/templates/TraceExercise.tsx:35:  const pathRef = useRef<SVGPathElement | null>(null);
+src/features/exercises/templates/TraceExercise.tsx:44:  // sample points along current path
+src/features/exercises/templates/TraceExercise.tsx:46:    const p = pathRef.current;
+src/features/exercises/templates/TraceExercise.tsx:229:        {/* guide path (dotted) */}
+src/features/exercises/templates/TraceExercise.tsx:230:        <path
+src/features/exercises/templates/TraceExercise.tsx:231:          ref={pathRef}
+src/features/exercises/templates/TraceExercise.tsx:232:          d={glyph?.path}
+src/features/exercises/templates/TraceExercise.tsx:241:        {samplesRef.current.map((pt, i) =>
+src/features/exercises/templates/WorldIntroSceneV2.tsx:16:  scene_image: string;        // path to webp scene
+src/features/exercises/templates/WorldIntroSceneV2.tsx:121:  return words.map((w, i) => ({
+src/features/exercises/templates/WorldIntroSceneV2.tsx:297:          {slides.map((_, i) => (
+src/features/exercises/templates/WorldIntroSceneV2.tsx:325:          {Array.from({ length: slide.items_count }).map((_, i) => {
+src/features/exercises/templates/WorldIntroSceneV2.tsx:386:            words.map((w, i) => {
+src/features/exercises/templates/WorldIntroSceneV2.tsx:414:          {slide.options.map((opt, optIndex) => {
+src/features/lesson-v2/components/DialogBubble.tsx:170:        {words.map((w, i) => {
+src/features/lesson-v2/components/EmojiIcon.tsx:30:  // دعم صورة محلّية: إذا كان emoji مسار صورة (يبدأ بـ/) نعرضه مباشرةً
+src/features/lesson-v2/components/EmojiIcon.tsx:38:        draggable={false}
+src/features/lesson-v2/components/EmojiIcon.tsx:59:      draggable={false}
+src/features/lesson-v2/components/LessonCompleteV2.tsx:2:import { useNavigate } from "react-router-dom";
+src/features/lesson-v2/content/lesson1_exercise3.ts:1:import type { DragMatchItem } from "../exercises-v2/DragMatchExerciseV2";
+src/features/lesson-v2/content/lesson1_exercise3.ts:12:export const LESSON_1_EXERCISE_3: DragMatchItem[] = [
+src/features/lesson-v2/content/lesson1_exercise3.ts:20:        draggable: { kind: "number", value: 1 },
+src/features/lesson-v2/content/lesson1_exercise3.ts:25:        draggable: { kind: "number", value: 2 },
+src/features/lesson-v2/content/lesson1_exercise3.ts:30:        draggable: { kind: "number", value: 3 },
+src/features/lesson-v2/content/lesson1_exercise3.ts:42:        draggable: { kind: "count", value: 2, emoji: "🍊" },
+src/features/lesson-v2/content/lesson1_exercise3.ts:47:        draggable: { kind: "count", value: 3, emoji: "🍊" },
+src/features/lesson-v2/content/lesson1_exercise3.ts:52:        draggable: { kind: "count", value: 4, emoji: "🍊" },
+src/features/lesson-v2/content/lesson1_exercise3.ts:64:        draggable: { kind: "word", value: "وَاحِد" },
+src/features/lesson-v2/content/lesson1_exercise3.ts:69:        draggable: { kind: "word", value: "ثَلَاثَة" },
+src/features/lesson-v2/content/lesson1_exercise3.ts:74:        draggable: { kind: "word", value: "خَمْسَة" },
+src/features/lesson-v2/content/lesson1_exercise3.ts:86:        draggable: { kind: "number", value: 2 },
+src/features/lesson-v2/content/lesson1_exercise3.ts:91:        draggable: { kind: "number", value: 4 },
+src/features/lesson-v2/content/lesson1_exercise3.ts:96:        draggable: { kind: "number", value: 5 },
+src/features/lesson-v2/content/lesson1_exercise3.ts:108:        draggable: { kind: "number", value: 1 },
+src/features/lesson-v2/content/lesson1_exercise3.ts:113:        draggable: { kind: "word", value: "ثَلَاثَة" },
+src/features/lesson-v2/content/lesson1_exercise3.ts:118:        draggable: { kind: "number", value: 4 },
+src/features/lesson-v2/content/lesson1_exercise3.ts:123:        draggable: { kind: "count", value: 5, emoji: "🍊" },
+src/features/lesson-v2/content/lesson2_exercise3.ts:1:import type { DragMatchItem } from "../exercises-v2/DragMatchExerciseV2";
+src/features/lesson-v2/content/lesson2_exercise3.ts:8:export const LESSON_2_EXERCISE_3: DragMatchItem[] = [
+src/features/lesson-v2/content/lesson2_exercise3.ts:13:      { match_id: "p1", draggable: { kind: "word", value: "أَمَامَ" }, target: { kind: "image", src: SCENE_2 } },
+src/features/lesson-v2/content/lesson2_exercise3.ts:14:      { match_id: "p2", draggable: { kind: "word", value: "وَرَاءَ" }, target: { kind: "image", src: SCENE_3 } },
+src/features/lesson-v2/content/lesson2_exercise3.ts:15:      { match_id: "p3", draggable: { kind: "word", value: "بِجَانِبِ" }, target: { kind: "image", src: SCENE_4 } },
+src/features/lesson-v2/content/lesson2_exercise3.ts:22:      { match_id: "p1", draggable: { kind: "word", value: "بِجَانِبِ" }, target: { kind: "image", src: SCENE_4 } },
+src/features/lesson-v2/content/lesson2_exercise3.ts:23:      { match_id: "p2", draggable: { kind: "word", value: "مُقَابِلَ" }, target: { kind: "image", src: SCENE_5 } },
+src/features/lesson-v2/content/lesson2_exercise3.ts:24:      { match_id: "p3", draggable: { kind: "word", value: "أَمَامَ" }, target: { kind: "image", src: SCENE_2 } },
+src/features/lesson-v2/content/lesson2_exercise3.ts:31:      { match_id: "p1", draggable: { kind: "word", value: "وَرَاءَ" }, target: { kind: "image", src: SCENE_3 } },
+src/features/lesson-v2/content/lesson2_exercise3.ts:32:      { match_id: "p2", draggable: { kind: "word", value: "مُقَابِلَ" }, target: { kind: "image", src: SCENE_5 } },
+src/features/lesson-v2/content/lesson2_exercise3.ts:33:      { match_id: "p3", draggable: { kind: "word", value: "بِجَانِبِ" }, target: { kind: "image", src: SCENE_4 } },
+src/features/lesson-v2/content/lesson2_exercise3.ts:40:      { match_id: "p1", draggable: { kind: "word", value: "أَمَامَ" }, target: { kind: "image", src: SCENE_2 } },
+src/features/lesson-v2/content/lesson2_exercise3.ts:41:      { match_id: "p2", draggable: { kind: "word", value: "وَرَاءَ" }, target: { kind: "image", src: SCENE_3 } },
+src/features/lesson-v2/content/lesson2_exercise3.ts:42:      { match_id: "p3", draggable: { kind: "word", value: "بِجَانِبِ" }, target: { kind: "image", src: SCENE_4 } },
+src/features/lesson-v2/content/lesson2_exercise3.ts:43:      { match_id: "p4", draggable: { kind: "word", value: "مُقَابِلَ" }, target: { kind: "image", src: SCENE_5 } },
+src/features/lesson-v2/content/lesson2_exercise3.ts:50:      { match_id: "p1", draggable: { kind: "word", value: "مُقَابِلَ" }, target: { kind: "image", src: SCENE_5 } },
+src/features/lesson-v2/content/lesson2_exercise3.ts:51:      { match_id: "p2", draggable: { kind: "word", value: "أَمَامَ" }, target: { kind: "image", src: SCENE_2 } },
+src/features/lesson-v2/content/lesson2_exercise3.ts:52:      { match_id: "p3", draggable: { kind: "word", value: "بِجَانِبِ" }, target: { kind: "image", src: SCENE_4 } },
+src/features/lesson-v2/content/lesson2_exercise3.ts:53:      { match_id: "p4", draggable: { kind: "word", value: "وَرَاءَ" }, target: { kind: "image", src: SCENE_3 } },
+src/features/lesson-v2/content/lesson3_exercise2.ts:1:import type { DragMatchItem } from "../exercises-v2/DragMatchExerciseV2";
+src/features/lesson-v2/content/lesson3_exercise2.ts:6:export const LESSON_3_EXERCISE_2: DragMatchItem[] = [
+src/features/lesson-v2/content/lesson3_exercise2.ts:11:      { match_id: "p1", draggable: W("السَّمْع"), target: W("الأُذُن") },
+src/features/lesson-v2/content/lesson3_exercise2.ts:12:      { match_id: "p2", draggable: W("الرُّؤْيَة"), target: W("العَيْن") },
+src/features/lesson-v2/content/lesson3_exercise2.ts:13:      { match_id: "p3", draggable: W("الشَّمّ"), target: W("الأَنْف") },
+src/features/lesson-v2/content/lesson3_exercise2.ts:20:      { match_id: "p1", draggable: W("الذَّوْق"), target: W("اللِّسَان") },
+src/features/lesson-v2/content/lesson3_exercise2.ts:21:      { match_id: "p2", draggable: W("اللَّمْس"), target: W("اليَد") },
+src/features/lesson-v2/content/lesson3_exercise2.ts:22:      { match_id: "p3", draggable: W("السَّمْع"), target: W("الأُذُن") },
+src/features/lesson-v2/content/lesson3_exercise2.ts:29:      { match_id: "p1", draggable: W("الرُّؤْيَة"), target: W("العَيْن") },
+src/features/lesson-v2/content/lesson3_exercise2.ts:30:      { match_id: "p2", draggable: W("الشَّمّ"), target: W("الأَنْف") },
+src/features/lesson-v2/content/lesson3_exercise2.ts:31:      { match_id: "p3", draggable: W("الذَّوْق"), target: W("اللِّسَان") },
+src/features/lesson-v2/content/lesson3_exercise2.ts:38:      { match_id: "p1", draggable: W("السَّمْع"), target: W("الأُذُن") },
+src/features/lesson-v2/content/lesson3_exercise2.ts:39:      { match_id: "p2", draggable: W("الرُّؤْيَة"), target: W("العَيْن") },
+src/features/lesson-v2/content/lesson3_exercise2.ts:40:      { match_id: "p3", draggable: W("اللَّمْس"), target: W("اليَد") },
+src/features/lesson-v2/content/lesson3_exercise2.ts:41:      { match_id: "p4", draggable: W("الذَّوْق"), target: W("اللِّسَان") },
+src/features/lesson-v2/content/lesson3_exercise2.ts:48:      { match_id: "p1", draggable: W("الشَّمّ"), target: W("الأَنْف") },
+src/features/lesson-v2/content/lesson3_exercise2.ts:49:      { match_id: "p2", draggable: W("اللَّمْس"), target: W("اليَد") },
+src/features/lesson-v2/content/lesson3_exercise2.ts:50:      { match_id: "p3", draggable: W("الرُّؤْيَة"), target: W("العَيْن") },
+src/features/lesson-v2/content/lesson3_exercise2.ts:51:      { match_id: "p4", draggable: W("السَّمْع"), target: W("الأُذُن") },
+src/features/lesson-v2/content/lesson6_exercise3.ts:1:// الدرس 6 - التمرين 3: ربط العدد بكتابته وصورته (DragMatchExerciseV2)
+src/features/lesson-v2/content/lesson6_exercise3.ts:2:import type { DragMatchItem } from "../exercises-v2/DragMatchExerciseV2";
+src/features/lesson-v2/content/lesson6_exercise3.ts:8:export const LESSON_6_EXERCISE_3: DragMatchItem[] = [
+src/features/lesson-v2/content/lesson6_exercise3.ts:13:      { match_id: "p1", draggable: N(6), target: C(6, "⚽") },
+src/features/lesson-v2/content/lesson6_exercise3.ts:14:      { match_id: "p2", draggable: N(7), target: C(7, "🏀") },
+src/features/lesson-v2/content/lesson6_exercise3.ts:15:      { match_id: "p3", draggable: N(8), target: C(8, "🎈") },
+src/features/lesson-v2/content/lesson6_exercise3.ts:22:      { match_id: "p1", draggable: C(7, "🧸"), target: N(7) },
+src/features/lesson-v2/content/lesson6_exercise3.ts:23:      { match_id: "p2", draggable: C(8, "🪁"), target: N(8) },
+src/features/lesson-v2/content/lesson6_exercise3.ts:24:      { match_id: "p3", draggable: C(9, "🎁"), target: N(9) },
+src/features/lesson-v2/content/lesson6_exercise3.ts:31:      { match_id: "p1", draggable: N(6), target: W("سِتَّة") },
+src/features/lesson-v2/content/lesson6_exercise3.ts:32:      { match_id: "p2", draggable: N(7), target: W("سَبْعَة") },
+src/features/lesson-v2/content/lesson6_exercise3.ts:33:      { match_id: "p3", draggable: N(8), target: W("ثَمَانِيَة") },
+src/features/lesson-v2/content/lesson6_exercise3.ts:40:      { match_id: "p1", draggable: W("سَبْعَة"), target: C(7, "🍪") },
+src/features/lesson-v2/content/lesson6_exercise3.ts:41:      { match_id: "p2", draggable: W("ثَمَانِيَة"), target: C(8, "⭐") },
+src/features/lesson-v2/content/lesson6_exercise3.ts:42:      { match_id: "p3", draggable: W("تِسْعَة"), target: C(9, "🌸") },
+src/features/lesson-v2/content/lesson6_exercise3.ts:49:      { match_id: "p1", draggable: N(6), target: W("سِتَّة") },
+src/features/lesson-v2/content/lesson6_exercise3.ts:50:      { match_id: "p2", draggable: N(7), target: W("سَبْعَة") },
+src/features/lesson-v2/content/lesson6_exercise3.ts:51:      { match_id: "p3", draggable: N(8), target: W("ثَمَانِيَة") },
+src/features/lesson-v2/content/lesson6_exercise3.ts:52:      { match_id: "p4", draggable: N(9), target: W("تِسْعَة") },
+src/features/lesson-v2/content/lesson8_exercise3.ts:1:// الدرس 8 - التمرين 3: ربط العدد بكتابته وكميته (DragMatchExerciseV2) — 1→9
+src/features/lesson-v2/content/lesson8_exercise3.ts:2:import type { DragMatchItem } from "../exercises-v2/DragMatchExerciseV2";
+src/features/lesson-v2/content/lesson8_exercise3.ts:8:export const LESSON_8_EXERCISE_3: DragMatchItem[] = [
+src/features/lesson-v2/content/lesson8_exercise3.ts:13:      { match_id: "p1", draggable: N(1), target: C(1, "🐠") },
+src/features/lesson-v2/content/lesson8_exercise3.ts:14:      { match_id: "p2", draggable: N(2), target: C(2, "🐚") },
+src/features/lesson-v2/content/lesson8_exercise3.ts:15:      { match_id: "p3", draggable: N(3), target: C(3, "🦀") },
+src/features/lesson-v2/content/lesson8_exercise3.ts:22:      { match_id: "p1", draggable: C(4, "🐟"), target: N(4) },
+src/features/lesson-v2/content/lesson8_exercise3.ts:23:      { match_id: "p2", draggable: C(5, "🐙"), target: N(5) },
+src/features/lesson-v2/content/lesson8_exercise3.ts:24:      { match_id: "p3", draggable: C(6, "🐠"), target: N(6) },
+src/features/lesson-v2/content/lesson8_exercise3.ts:31:      { match_id: "p1", draggable: N(7), target: W("سَبْعَة") },
+src/features/lesson-v2/content/lesson8_exercise3.ts:32:      { match_id: "p2", draggable: N(8), target: W("ثَمَانِيَة") },
+src/features/lesson-v2/content/lesson8_exercise3.ts:33:      { match_id: "p3", draggable: N(9), target: W("تِسْعَة") },
+src/features/lesson-v2/content/lesson8_exercise3.ts:40:      { match_id: "p1", draggable: W("وَاحِد"), target: C(1, "🐚") },
+src/features/lesson-v2/content/lesson8_exercise3.ts:41:      { match_id: "p2", draggable: W("ثَلَاثَة"), target: C(3, "🦀") },
+src/features/lesson-v2/content/lesson8_exercise3.ts:42:      { match_id: "p3", draggable: W("خَمْسَة"), target: C(5, "🐠") },
+src/features/lesson-v2/content/lesson8_exercise3.ts:49:      { match_id: "p1", draggable: N(6), target: W("سِتَّة") },
+src/features/lesson-v2/content/lesson8_exercise3.ts:50:      { match_id: "p2", draggable: N(7), target: W("سَبْعَة") },
+src/features/lesson-v2/content/lesson8_exercise3.ts:51:      { match_id: "p3", draggable: N(8), target: W("ثَمَانِيَة") },
+src/features/lesson-v2/content/lesson8_exercise3.ts:52:      { match_id: "p4", draggable: N(9), target: W("تِسْعَة") },
+src/features/lesson-v2/content/lesson9_exercise3.ts:1:// الدرس 9 - التمرين 3: ربط الكلمة المكانية بالصورة (DragMatchExerciseV2)
+src/features/lesson-v2/content/lesson9_exercise3.ts:2:import type { DragMatchItem } from "../exercises-v2/DragMatchExerciseV2";
+src/features/lesson-v2/content/lesson9_exercise3.ts:12:export const LESSON_9_EXERCISE_3: DragMatchItem[] = [
+src/features/lesson-v2/content/lesson9_exercise3.ts:17:      { match_id: "p1", draggable: W("أَعْلى"), target: I(S4) },
+src/features/lesson-v2/content/lesson9_exercise3.ts:18:      { match_id: "p2", draggable: W("عَلى"), target: I(S3) },
+src/features/lesson-v2/content/lesson9_exercise3.ts:19:      { match_id: "p3", draggable: W("أَسْفَلَ"), target: I(S5) },
+src/features/lesson-v2/content/lesson9_exercise3.ts:26:      { match_id: "p1", draggable: I(S4), target: W("أَعْلى") },
+src/features/lesson-v2/content/lesson9_exercise3.ts:27:      { match_id: "p2", draggable: I(S5), target: W("أَسْفَلَ") },
+src/features/lesson-v2/content/lesson9_exercise3.ts:28:      { match_id: "p3", draggable: I(S2), target: W("فَوْقَ") },
+src/features/lesson-v2/content/lesson9_exercise3.ts:35:      { match_id: "p1", draggable: W("عَلى"), target: I(S3) },
+src/features/lesson-v2/content/lesson9_exercise3.ts:36:      { match_id: "p2", draggable: W("فَوْقَ"), target: I(S2) },
+src/features/lesson-v2/content/lesson9_exercise3.ts:37:      { match_id: "p3", draggable: W("أَسْفَلَ"), target: I(S5) },
+src/features/lesson-v2/content/lesson10_exercise3.ts:1:// الدرس 10 - التمرين 3: اربط مجموعة الأدوات بالعدد (DragMatchExerciseV2)
+src/features/lesson-v2/content/lesson10_exercise3.ts:2:import type { DragMatchItem } from "../exercises-v2/DragMatchExerciseV2";
+src/features/lesson-v2/content/lesson10_exercise3.ts:7:export const LESSON_10_EXERCISE_3: DragMatchItem[] = [
+src/features/lesson-v2/content/lesson10_exercise3.ts:12:      { match_id: "p1", draggable: N(3), target: C(3, "✏️") },
+src/features/lesson-v2/content/lesson10_exercise3.ts:13:      { match_id: "p2", draggable: N(4), target: C(4, "📓") },
+src/features/lesson-v2/content/lesson10_exercise3.ts:14:      { match_id: "p3", draggable: N(5), target: C(5, "📐") },
+src/features/lesson-v2/content/lesson10_exercise3.ts:21:      { match_id: "p1", draggable: C(6, "✂️"), target: N(6) },
+src/features/lesson-v2/content/lesson10_exercise3.ts:22:      { match_id: "p2", draggable: C(7, "✏️"), target: N(7) },
+src/features/lesson-v2/content/lesson10_exercise3.ts:23:      { match_id: "p3", draggable: C(8, "📓"), target: N(8) },
+src/features/lesson-v2/content/lesson10_exercise3.ts:30:      { match_id: "p1", draggable: N(2), target: C(2, "📐") },
+src/features/lesson-v2/content/lesson10_exercise3.ts:31:      { match_id: "p2", draggable: N(5), target: C(5, "✏️") },
+src/features/lesson-v2/content/lesson10_exercise3.ts:32:      { match_id: "p3", draggable: N(9), target: C(9, "📓") },
+src/features/lesson-v2/content/lesson11_exercise3.ts:1:// الدرس 11 - التمرين 3: اربط الحركة بصورتها (DragMatchExerciseV2)
+src/features/lesson-v2/content/lesson11_exercise3.ts:2:import type { DragMatchItem } from "../exercises-v2/DragMatchExerciseV2";
+src/features/lesson-v2/content/lesson11_exercise3.ts:12:export const LESSON_11_EXERCISE_3: DragMatchItem[] = [
+src/features/lesson-v2/content/lesson11_exercise3.ts:17:      { match_id: "p1", draggable: W("يَجْري"), target: I(RUN) },
+src/features/lesson-v2/content/lesson11_exercise3.ts:18:      { match_id: "p2", draggable: W("يَقْفِزُ"), target: I(JUMP) },
+src/features/lesson-v2/content/lesson11_exercise3.ts:19:      { match_id: "p3", draggable: W("يَتَسَلَّقُ"), target: I(CLIMB) },
+src/features/lesson-v2/content/lesson11_exercise3.ts:26:      { match_id: "p1", draggable: I(WALK), target: W("يَمْشي") },
+src/features/lesson-v2/content/lesson11_exercise3.ts:27:      { match_id: "p2", draggable: I(RUN), target: W("يَجْري") },
+src/features/lesson-v2/content/lesson11_exercise3.ts:28:      { match_id: "p3", draggable: I(JUMP), target: W("يَقْفِزُ") },
+src/features/lesson-v2/content/lesson11_exercise3.ts:35:      { match_id: "p1", draggable: W("يَمْشي"), target: I(WALK) },
+src/features/lesson-v2/content/lesson11_exercise3.ts:36:      { match_id: "p2", draggable: W("يَتَسَلَّقُ"), target: I(CLIMB) },
+src/features/lesson-v2/content/lesson11_exercise3.ts:37:      { match_id: "p3", draggable: W("يَقْفِزُ"), target: I(JUMP) },
+src/features/lesson-v2/content/lesson12_exercise3.ts:1:// الدرس 12 - التمرين 3: اربط كل مجموعة بعددها (يشمل 0) — DragMatchExerciseV2
+src/features/lesson-v2/content/lesson12_exercise3.ts:2:import type { DragMatchItem } from "../exercises-v2/DragMatchExerciseV2";
+src/features/lesson-v2/content/lesson12_exercise3.ts:7:export const LESSON_12_EXERCISE_3: DragMatchItem[] = [
+src/features/lesson-v2/content/lesson12_exercise3.ts:12:      { match_id: "p1", draggable: N(0), target: C(0, "⚽") },
+src/features/lesson-v2/content/lesson12_exercise3.ts:13:      { match_id: "p2", draggable: N(2), target: C(2, "⚽") },
+src/features/lesson-v2/content/lesson12_exercise3.ts:14:      { match_id: "p3", draggable: N(4), target: C(4, "⚽") },
+src/features/lesson-v2/content/lesson12_exercise3.ts:21:      { match_id: "p1", draggable: C(1, "🎈"), target: N(1) },
+src/features/lesson-v2/content/lesson12_exercise3.ts:22:      { match_id: "p2", draggable: C(0, "🎈"), target: N(0) },
+src/features/lesson-v2/content/lesson12_exercise3.ts:23:      { match_id: "p3", draggable: C(5, "🎈"), target: N(5) },
+src/features/lesson-v2/content/lesson12_exercise3.ts:30:      { match_id: "p1", draggable: N(3), target: C(3, "⭐") },
+src/features/lesson-v2/content/lesson12_exercise3.ts:31:      { match_id: "p2", draggable: N(0), target: C(0, "⭐") },
+src/features/lesson-v2/content/lesson12_exercise3.ts:32:      { match_id: "p3", draggable: N(2), target: C(2, "⭐") },
+src/features/lesson-v2/content/lesson13_exercise3.ts:1:import type { DragMatchItem } from "../exercises-v2/DragMatchExerciseV2";
+src/features/lesson-v2/content/lesson13_exercise3.ts:11:export const LESSON_13_EXERCISE_3: DragMatchItem[] = [
+src/features/lesson-v2/content/lesson13_exercise3.ts:16:      { match_id: "p1", draggable: W("3"), target: I(S2) },
+src/features/lesson-v2/content/lesson13_exercise3.ts:17:      { match_id: "p2", draggable: W("5"), target: I(S3) },
+src/features/lesson-v2/content/lesson13_exercise3.ts:18:      { match_id: "p3", draggable: W("8"), target: I(S4) },
+src/features/lesson-v2/content/lesson13_exercise3.ts:25:      { match_id: "p1", draggable: I(S3), target: W("5") },
+src/features/lesson-v2/content/lesson13_exercise3.ts:26:      { match_id: "p2", draggable: I(S4), target: W("8") },
+src/features/lesson-v2/content/lesson13_exercise3.ts:27:      { match_id: "p3", draggable: I(S5), target: W("10") },
+src/features/lesson-v2/content/lesson13_exercise3.ts:34:      { match_id: "p1", draggable: W("10"), target: I(S5) },
+src/features/lesson-v2/content/lesson13_exercise3.ts:35:      { match_id: "p2", draggable: W("3"), target: I(S2) },
+src/features/lesson-v2/content/lesson13_exercise3.ts:36:      { match_id: "p3", draggable: W("5"), target: I(S3) },
+src/features/lesson-v2/content/lesson14_exercise3.ts:1:import type { DragMatchItem } from "../exercises-v2/DragMatchExerciseV2";
+src/features/lesson-v2/content/lesson14_exercise3.ts:11:export const LESSON_14_EXERCISE_3: DragMatchItem[] = [
+src/features/lesson-v2/content/lesson14_exercise3.ts:16:      { match_id: "p1", draggable: W("5"), target: I(G5) },
+src/features/lesson-v2/content/lesson14_exercise3.ts:17:      { match_id: "p2", draggable: W("6"), target: I(G6) },
+src/features/lesson-v2/content/lesson14_exercise3.ts:18:      { match_id: "p3", draggable: W("7"), target: I(G7) },
+src/features/lesson-v2/content/lesson14_exercise3.ts:25:      { match_id: "p1", draggable: I(G6), target: W("6") },
+src/features/lesson-v2/content/lesson14_exercise3.ts:26:      { match_id: "p2", draggable: I(G7), target: W("7") },
+src/features/lesson-v2/content/lesson14_exercise3.ts:27:      { match_id: "p3", draggable: I(G8), target: W("8") },
+src/features/lesson-v2/content/lesson14_exercise3.ts:34:      { match_id: "p1", draggable: W("6"), target: I(G6) },
+src/features/lesson-v2/content/lesson14_exercise3.ts:35:      { match_id: "p2", draggable: W("7"), target: I(G7) },
+src/features/lesson-v2/content/lesson14_exercise3.ts:36:      { match_id: "p3", draggable: W("8"), target: I(G8) },
+src/features/lesson-v2/content/lesson21_exercise2.ts:17:    hint: "قارن نهاية كل شريط.",
+src/features/lesson-v2/content/lesson24_exercise1.ts:1:import type { PathQuestion } from "../exercises-v2/PathJourneyExerciseV2";
+src/features/lesson-v2/content/lesson24_exercise1.ts:5:export const LESSON_24_EXERCISE_1: PathQuestion[] = [
+src/features/lesson-v2/content/lesson24_exercise2.ts:1:import type { PathQuestion } from "../exercises-v2/PathJourneyExerciseV2";
+src/features/lesson-v2/content/lesson24_exercise2.ts:5:export const LESSON_24_EXERCISE_2: PathQuestion[] = [
+src/features/lesson-v2/content/lesson21_exercise3.ts:11:    hint: "قارن النهاية اليمنى للشريطين.",
+src/features/lesson-v2/content/lesson24.ts:11:  audio_base: "/audio/teachers/khalil/lesson_24_draw_path",
+src/features/lesson-v2/content/lesson24.ts:15:      scene_image: "/lessons/v2/lesson24-draw-path/s1.webp",
+src/features/lesson-v2/content/lesson24.ts:20:      scene_image: "/lessons/v2/lesson24-draw-path/s2.webp",
+src/features/lesson-v2/content/lesson24.ts:25:      scene_image: "/lessons/v2/lesson24-draw-path/s3.webp",
+src/features/lesson-v2/content/lesson24.ts:26:      audio_key: "s3_straight_path",
+src/features/lesson-v2/content/lesson24.ts:30:      scene_image: "/lessons/v2/lesson24-draw-path/s4.webp",
+src/features/lesson-v2/content/lesson24.ts:31:      audio_key: "s4_curved_path",
+src/features/lesson-v2/content/lesson24.ts:35:      scene_image: "/lessons/v2/lesson24-draw-path/s5.webp",
+src/features/lesson-v2/content/lesson24.ts:36:      audio_key: "s5_draw_path",
+src/features/lesson-v2/content/lesson24.ts:40:      scene_image: "/lessons/v2/lesson24-draw-path/s6.webp",
+src/features/lesson-v2/content/lesson24_exercise3.ts:1:import type { TracePathItem } from "../exercises-v2/PathTraceExerciseV2";
+src/features/lesson-v2/content/lesson24_exercise3.ts:5:export const LESSON_24_EXERCISE_3: TracePathItem[] = [
+src/features/lesson-v2/content/lesson24_exercise3.ts:9:    path_d: "M 42 86 L 258 86",
+src/features/lesson-v2/content/lesson24_exercise3.ts:17:    path_d: "M 42 104 C 100 34, 180 132, 258 70",
+src/features/lesson-v2/content/lesson24_exercise3.ts:25:    path_d: "M 42 86 L 96 86 L 150 86 L 204 86 L 258 86",
+src/features/lesson-v2/content/lesson24_exercise3.ts:33:    path_d: "M 42 98 C 78 44, 130 42, 154 86 C 178 128, 226 106, 258 66",
+src/features/lesson-v2/content/lesson24_exercise3.ts:41:    path_d: "M 42 104 C 96 52, 150 124, 204 58 C 226 34, 246 48, 258 70",
+src/features/lesson-v2/exercises-v2/CountTapExerciseV2.tsx:266:          {items.map((_, i) => {
+src/features/lesson-v2/exercises-v2/CountTapExerciseV2.tsx:375:          {words ? words.map((w, i) => {
+src/features/lesson-v2/exercises-v2/CountTapExerciseV2.tsx:405:        {item.options.map((count, idx) => {
+src/features/lesson-v2/exercises-v2/CountTapExerciseV2.tsx:446:              {Array.from({ length: count }).map((_, i) => (
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:4:  DndContext, DragEndEvent, PointerSensor, TouchSensor,
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:5:  useSensor, useSensors, useDraggable, useDroppable,
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:10:// DragMatchExerciseV2 — ربط مرن (4 أنماط مختلفة)
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:20:export type DragMatchPair = {
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:21:  draggable: ItemRepresentation;   // العنصر القابل للسحب
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:26:export type DragMatchItem = {
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:29:  pairs: DragMatchPair[];          // 3-4 أزواج
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:32:export interface DragMatchExerciseV2Props {
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:33:  items: DragMatchItem[];
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:86:        draggable={false}
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:104:        draggable={false}
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:117:      {Array.from({ length: count }).map((_, i) => (
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:127:// ─── Draggable chip ───
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:128:function DraggableChip({
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:130:}: { pair: DragMatchPair; isMatched: boolean }) {
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:131:  const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:163:        renderRepresentation(pair.draggable, "md")
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:169:// ─── Droppable target ───
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:170:function DroppableTarget({
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:171:  pair, matchedDraggable, isWrong,
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:173:  pair: DragMatchPair;
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:174:  matchedDraggable: ItemRepresentation | null;
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:177:  const { setNodeRef, isOver } = useDroppable({
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:188:        background: matchedDraggable !== null
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:193:        border: `3px solid ${matchedDraggable !== null ? C.green : isOver ? C.gold : "#E0CFA8"}`,
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:219:        background: matchedDraggable !== null ? C.green : "rgba(255,255,255,0.5)",
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:220:        border: `2px dashed ${matchedDraggable !== null ? C.green : "#B8AB8E"}`,
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:225:        color: matchedDraggable !== null ? "white" : "#B8AB8E",
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:228:        {matchedDraggable !== null
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:229:          ? renderRepresentation(matchedDraggable, "sm")
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:239:export default function DragMatchExerciseV2({
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:244:}: DragMatchExerciseV2Props) {
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:258:    useSensor(TouchSensor, { activationConstraint: { delay: 80, tolerance: 6 } })
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:298:    if (pair) setActiveDrag(pair.draggable);
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:314:      const newMatches = { ...matches, [targetMatchId]: pair.draggable };
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:400:          {items.map((_, i) => {
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:471:          {words ? words.map((w, i) => {
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:489:      <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:501:          {item.pairs.map((pair) => (
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:502:            <DroppableTarget
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:505:              matchedDraggable={matches[pair.match_id] ?? null}
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:511:        {/* Draggables row */}
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:520:          {item.pairs.map((pair, pairIndex) => (
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:529:              <DraggableChip
+src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx:553:      </DndContext>
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:4:  DndContext, DragEndEvent, PointerSensor, TouchSensor,
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:5:  useSensor, useSensors, useDraggable, useDroppable,
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:153:      {Array.from({ length: count }).map((_, i) => (
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:160:// ─── Draggable ───
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:161:function DraggableSortItem({
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:164:  const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:196:// ─── Droppable slot ───
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:197:function DroppableSlot({
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:205:  const { setNodeRef, isOver } = useDroppable({
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:258:    useSensor(TouchSensor, { activationConstraint: { delay: 80, tolerance: 6 } })
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:355:  const placedIds = new Set(Object.values(placements).map((p) => p.id));
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:410:          {items.map((_, i) => {
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:481:          {words ? words.map((w, i) => {
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:499:      <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:525:            {sortedItems.map((_, slotIdx) => (
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:526:              <DroppableSlot
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:537:        {/* Draggables (scrambled) */}
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:546:          {question.items.map((it, idx) => {
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:549:              <DraggableSortItem
+src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx:575:      </DndContext>
+src/features/lesson-v2/exercises-v2/TapSelectExerciseV2.tsx:267:          {items.map((_, i) => {
+src/features/lesson-v2/exercises-v2/TapSelectExerciseV2.tsx:321:          {Array.from({ length: item.items_count }).map((_, i) => (
+src/features/lesson-v2/exercises-v2/TapSelectExerciseV2.tsx:357:          {words ? words.map((w, i) => {
+src/features/lesson-v2/exercises-v2/TapSelectExerciseV2.tsx:386:        {item.options.map((opt, optionIndex) => {
+src/features/lesson-v2/exercises-v2/TapSelectImagesV2.tsx:12:  options: string[];       // مسارات 4 صور
+src/features/lesson-v2/exercises-v2/TapSelectImagesV2.tsx:254:          {items.map((_, i) => {
+src/features/lesson-v2/exercises-v2/TapSelectImagesV2.tsx:325:          {words ? words.map((w, i) => {
+src/features/lesson-v2/exercises-v2/TapSelectImagesV2.tsx:356:        {item.options.map((src, idx) => {
+src/features/lesson-v2/exercises-v2/TapSelectWordsV2.tsx:273:          {items.map((_, i) => {
+src/features/lesson-v2/exercises-v2/TapSelectWordsV2.tsx:381:          {words ? words.map((w, i) => {
+src/features/lesson-v2/exercises-v2/TapSelectWordsV2.tsx:410:        {item.options.map((opt, optionIndex) => {
+src/features/lesson-v2/exercises-v2/TraceExerciseV2.tsx:98:// ─── SVG paths for digits 1-5 (Eastern Arabic style for clarity) ───
+src/features/lesson-v2/exercises-v2/TraceExerciseV2.tsx:100:const DIGIT_PATHS: Record<number, string> = {
+src/features/lesson-v2/exercises-v2/TraceExerciseV2.tsx:115:  const path = DIGIT_PATHS[number];
+src/features/lesson-v2/exercises-v2/TraceExerciseV2.tsx:127:      {/* Dotted guide path */}
+src/features/lesson-v2/exercises-v2/TraceExerciseV2.tsx:128:      <path
+src/features/lesson-v2/exercises-v2/TraceExerciseV2.tsx:129:        d={path}
+src/features/lesson-v2/exercises-v2/TraceExerciseV2.tsx:282:          {items.map((_, i) => {
+src/features/lesson-v2/exercises-v2/TraceExerciseV2.tsx:353:          {words ? words.map((w, i) => {
+src/features/lesson-v2/exercises-v2/CompareExerciseV2.tsx:121:      {emojis.map((e, i) => (
+src/features/lesson-v2/exercises-v2/CompareExerciseV2.tsx:163:        {items.map((_, i) => {
+src/features/lesson-v2/exercises-v2/CompareExerciseV2.tsx:230:        {words ? words.map((w, i) => {
+src/features/lesson-v2/exercises-v2/CompareExerciseV2.tsx:246:        {item.options.map((opt, optionIndex) => {
+src/features/lesson-v2/exercises-v2/CountSelectV2.tsx:206:          {rows.map((row, r) => (
+src/features/lesson-v2/exercises-v2/CountSelectV2.tsx:215:              {row.map((e, i) => {
+src/features/lesson-v2/exercises-v2/CountSelectV2.tsx:291:        {words ? words.map((w, i) => {
+src/features/lesson-v2/exercises-v2/CountSelectV2.tsx:306:        {item.options.map((opt, optionIndex) => {
+src/features/lesson-v2/exercises-v2/ConservationV2.tsx:143:            {arr.map((_, i) => {
+src/features/lesson-v2/exercises-v2/ConservationV2.tsx:159:            {arr.map((_, i) => (
+src/features/lesson-v2/exercises-v2/ConservationV2.tsx:184:            {words ? words.map((w, i) => {
+src/features/lesson-v2/exercises-v2/ConservationV2.tsx:199:            {item.options.map((opt) => {
+src/features/lesson-v2/exercises-v2/MemoryQuantityExerciseV2.tsx:203:          {items.map((_, i) => {
+src/features/lesson-v2/exercises-v2/MemoryQuantityExerciseV2.tsx:291:          words.map((w, i) => {
+src/features/lesson-v2/exercises-v2/MemoryQuantityExerciseV2.tsx:333:          item.items.map((emoji, i) => (
+src/features/lesson-v2/exercises-v2/MemoryQuantityExerciseV2.tsx:389:          {item.options.map((option) => {
+src/features/lesson-v2/exercises-v2/MemoryBuildQuantityExerciseV2.tsx:183:          {items.map((_, i) => {
+src/features/lesson-v2/exercises-v2/MemoryBuildQuantityExerciseV2.tsx:271:          words.map((w, i) => {
+src/features/lesson-v2/exercises-v2/MemoryBuildQuantityExerciseV2.tsx:312:          item.sample_items.map((emoji, i) => (
+src/features/lesson-v2/exercises-v2/MemoryBuildQuantityExerciseV2.tsx:349:                (item.build_items ? item.build_items.slice(0, built) : Array.from({ length: built }).map(() => item.build_emoji)).map((emoji, i) => (
+src/features/lesson-v2/exercises-v2/MemorySameQuantityExerciseV2.tsx:268:          {items.map((_, i) => {
+src/features/lesson-v2/exercises-v2/MemorySameQuantityExerciseV2.tsx:353:          words.map((w, i) => {
+src/features/lesson-v2/exercises-v2/MemorySameQuantityExerciseV2.tsx:395:          item.sample_items.map((emoji, i) => (
+src/features/lesson-v2/exercises-v2/MemorySameQuantityExerciseV2.tsx:426:            {item.options.map((opt, idx) => {
+src/features/lesson-v2/exercises-v2/MemorySameQuantityExerciseV2.tsx:466:                    {opt.items.map((emoji, i) => (

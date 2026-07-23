@@ -11,7 +11,10 @@
     "format": "prettier --write src/**/*.{ts,tsx,css,json}",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "curriculum:scan": "python3 tools/curriculum_factory.py scan",
+    "curriculum:validate": "python3 tools/curriculum_factory.py validate --file curriculum/madrasati_curriculum_template.xlsx",
+    "curriculum:generate": "python3 tools/curriculum_factory.py generate --file curriculum/madrasati_curriculum_template.xlsx"
   },
   "dependencies": {
     "@capacitor/android": "^8.3.4",

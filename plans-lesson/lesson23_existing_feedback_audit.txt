@@ -1,0 +1,52 @@
+
+----- src/features/lesson-v2/exercises-v2/LengthLabExerciseV2.tsx -----
+71:    karaoke.stop();
+91:    karaoke.stop();
+95:      new Audio("/audio/v2_feedback/correct.mp3").play().catch(() => {});
+102:      new Audio("/audio/v2_feedback/retry.mp3").play().catch(() => {});
+174:          @keyframes feedbackPop {
+270:                {feedback === "correct" ? "أَحْسَنْتَ" : "حَاوِلْ مَرَّةً أُخْرَى"}
+279:                ...styles.feedbackToast,
+285:                  ...styles.feedbackToastText,
+484:feedbackToast: {
+496:    animation: "feedbackPop .30s ease",
+515:    animation: "feedbackPop .32s cubic-bezier(0.34, 1.56, 0.64, 1)",
+526:  feedbackToast: {
+538:    animation: "feedbackPop .30s ease",
+540:  feedbackToastText: {
+
+----- src/features/lesson-v2/exercises-v2/RankOrderExerciseV2.tsx -----
+31:const FEEDBACK_CORRECT = "/audio/v2_feedback/correct.mp3";
+32:const FEEDBACK_RETRY = "/audio/v2_feedback/retry.mp3";
+66:      stop();
+106:  useEffect(() => () => stop(), [stop]);
+136:    audio.stop();
+158:    const a = new Audio(correct ? FEEDBACK_CORRECT : FEEDBACK_RETRY);
+173:    audio.stop();
+209:      ? "✅ أَحْسَنْتَ"
+210:      : "حَاوِلْ مَرَّةً أُخْرَى ✨";
+222:          @keyframes feedbackPop {
+419:            animation: "feedbackPop .35s cubic-bezier(0.34, 1.56, 0.64, 1)",
+435:            animation: "feedbackPop .45s cubic-bezier(0.34, 1.56, 0.64, 1)",
+
+----- src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx -----
+52:const FEEDBACK_CORRECT = "/audio/v2_feedback/correct.mp3";
+53:const FEEDBACK_RETRY = "/audio/v2_feedback/retry.mp3";
+270:    karaoke.stop();
+290:    const a = new Audio(correct ? FEEDBACK_CORRECT : FEEDBACK_RETRY);
+315:      karaoke.stop();
+571:          animation: "feedbackPop .35s cubic-bezier(0.34, 1.56, 0.64, 1)",
+587:          animation: "feedbackPop .45s cubic-bezier(0.34, 1.56, 0.64, 1)",
+607:          animation: "feedbackPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
+612:        }}>✅ أَحْسَنْتَ</div>
+627:        @keyframes feedbackPop {
+
+----- src/features/lesson-v2/exercises-v2/HealthyFoodExerciseV2.tsx -----
+44:  correct: "/audio/teachers/taline/feedback/correct.mp3",
+45:  wrong: "/audio/teachers/taline/feedback/wrong.mp3",
+369:            {feedback === "correct" ? "أَحْسَنْتَ" : "حَاوِلْ مَرَّةً أُخْرَى"}
+380:              : "اقتربت حَاوِلْ مَرَّةً أُخْرَى 👏"}
+401:      message="أَحْسَنْتَ يَا بَطَل أَكْمَلْتَ تَمَارِينَ الدَّرْسِ"
+
+✅ الصوت الصحيح المعتمد من الموجود: /audio/v2_feedback/correct.mp3
+✅ صوت الخطأ المعتمد من الموجود: /audio/v2_feedback/retry.mp3

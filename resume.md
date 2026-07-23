@@ -754,3 +754,82 @@ CHOKIDAR_USEPOLLING=1 npm run dev -- --host 0.0.0.0
 - القرار: محرك الدروس يوحّد العرض والصوت والكاريوكي والتنقل، ومحرك تدفق التمارين ينسق المحركات الأصلية عبر `stage` و`onComplete` دون إعادة كتابة منطقها.
 
 <!-- PREMIUM_UNIFIED_ENGINE_STATUS:END -->
+
+<!-- MADRASATI_FULL_HANDOFF:START -->
+
+## تسليم كامل لمشروع مدرستي DZ
+
+تم إنشاء فرع تسليم مستقل: `handoff-premium-20260723_100341` انطلاقًا من `batch-lessons-14-18`.
+
+يشمل التسليم:
+
+- `plans-lesson/PREMIUM_UNIFIED_ENGINE_PLAN.md`
+- `plans-lesson/handoff/docs/PROJECT_HANDOFF.md`
+- `plans-lesson/handoff/docs/PREMIUM_ARCHITECTURE.md`
+- `plans-lesson/handoff/docs/WORKFLOW.md`
+- `plans-lesson/handoff/docs/BUILD_AND_AUDIT.md`
+- `plans-lesson/handoff/scripts/`
+- `plans-lesson/handoff/snapshots/`
+- ملفات محركات Premium المكتشفة والمسارات المرجعية.
+- patch لحالة العمل الحالية وقائمة الملفات غير المتتبعة دون أسرار أو ملفات بيئة.
+
+### القرار المعماري
+
+- محرك Premium للدروس يوحّد المشاهد والصوت والكاريوكي والتقدم والتنقل.
+- تدفق Premium للتمارين ينسق المحركات الأصلية عبر `stage` و`onComplete`.
+- لا يُعاد تنفيذ كل أنواع التمارين داخل محرك واحد.
+- الدرس 1 هو مرجع تدفق التمارين.
+- `WorldIntroSceneV2` هو مرجع عرض الدروس الحالي.
+- بعض ملفات الدرس 36 محفوظة كحالة عمل WIP لنقل السياق، وليست اعتمادًا نهائيًا.
+
+### أوامر الاستئناف في الحساب الجديد
+
+```bash
+git fetch origin --prune
+git switch handoff-premium-20260723_100341
+cat plans-lesson/handoff/docs/PROJECT_HANDOFF.md
+cat plans-lesson/handoff/docs/PREMIUM_ARCHITECTURE.md
+cat plans-lesson/handoff/docs/WORKFLOW.md
+cat plans-lesson/handoff/docs/BUILD_AND_AUDIT.md
+npm install
+npm run build
+```
+
+<!-- MADRASATI_FULL_HANDOFF:END -->
+
+<!-- MADRASATI_SECURE_HANDOFF:START -->
+
+## تسليم آمن وكامل لمشروع مدرستي DZ
+
+فرع التسليم: `handoff-premium-secure-20260723_103324`
+الفرع الأصلي: `handoff-premium-20260723_100341`
+
+المحتوى المحفوظ:
+
+- خطة Premium الموحدة.
+- محركات الدروس والتمارين Premium المكتشفة.
+- جميع تغييرات الشفرة المتتبعة الحالية.
+- ملفات المشروع غير المتتبعة في المسارات الآمنة.
+- سكربتات الفحص والبناء والإصلاح والرفع المعروفة.
+- وثائق المعمارية وطريقة العمل.
+- جرد ملفات المحركات داخل `plans-lesson/handoff/snapshots/premium-engine-files.txt`.
+
+القرار المعماري:
+
+- محرك الدروس يوحد العرض والصوت والكاريوكي والتنقل.
+- تدفق التمارين ينسق المحركات الأصلية عبر `stage` و`onComplete`.
+- الدرس 1 هو المرجع لتسلسل التمارين.
+- `WorldIntroSceneV2` مرجع واجهة الدروس الحالي.
+- الدرس 36 يبقى WIP إلى نجاح الاختبار اليدوي.
+
+أوامر الاستئناف:
+
+```bash
+git fetch origin --prune
+git switch handoff-premium-secure-20260723_103324
+cat plans-lesson/handoff/docs/PROJECT_HANDOFF.md
+npm install
+npm run build
+```
+
+<!-- MADRASATI_SECURE_HANDOFF:END -->

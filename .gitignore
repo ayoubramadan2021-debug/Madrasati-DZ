@@ -37,3 +37,5 @@ backups/
 public/test_child.mp3
 regen_taline_ssml.py
 *.bak
+
+.env.local

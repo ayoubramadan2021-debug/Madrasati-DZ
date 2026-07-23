@@ -1,0 +1,2 @@
+origin	https://github.com/ayoubramadan2021-debug/Madrasati-DZ.git (fetch)
+origin	https://github.com/ayoubramadan2021-debug/Madrasati-DZ.git (push)

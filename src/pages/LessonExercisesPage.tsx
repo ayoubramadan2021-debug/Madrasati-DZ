@@ -89,6 +89,23 @@ import {
   LESSON_35_EXERCISE_4_AUDIO_BASE,
 } from "../features/lesson-v2/content/lesson35_exercise4";
 
+import {
+  LESSON_36_EXERCISE_1,
+  LESSON_36_EXERCISE_1_AUDIO_BASE,
+} from "../features/lesson-v2/content/lesson36_exercise1";
+import {
+  LESSON_36_EXERCISE_2,
+  LESSON_36_EXERCISE_2_AUDIO_BASE,
+} from "../features/lesson-v2/content/lesson36_exercise2";
+import {
+  LESSON_36_EXERCISE_3,
+  LESSON_36_EXERCISE_3_AUDIO_BASE,
+} from "../features/lesson-v2/content/lesson36_exercise3";
+import {
+  LESSON_36_EXERCISE_4,
+  LESSON_36_EXERCISE_4_AUDIO_BASE,
+} from "../features/lesson-v2/content/lesson36_exercise4";
+
 const WORLD2_ID =
   "5daed3bb-7e62-4a5a-93a1-f6dec60df810";
 
@@ -107,6 +124,13 @@ type SchoolStage =
   | "done";
 
 type WorldStage =
+  | "ex1"
+  | "ex2"
+  | "ex3"
+  | "ex4"
+  | "done";
+
+type Lesson36Stage =
   | "ex1"
   | "ex2"
   | "ex3"
@@ -355,6 +379,70 @@ function Lesson35Exercises() {
   );
 }
 
+function Lesson36Exercises() {
+  const [stage, setStage] =
+    useState<Lesson36Stage>("ex1");
+
+  if (stage === "ex1") {
+    return (
+      <TapSelectExerciseV2
+        key="lesson36-ex1-count"
+        items={LESSON_36_EXERCISE_1}
+        audio_base={LESSON_36_EXERCISE_1_AUDIO_BASE}
+        background_image="/lessons/v2/lesson36/s1.webp"
+        onComplete={() => setStage("ex2")}
+      />
+    );
+  }
+
+  if (stage === "ex2") {
+    return (
+      <CountTapExerciseV2
+        key="lesson36-ex2-identify"
+        items={LESSON_36_EXERCISE_2}
+        audio_base={LESSON_36_EXERCISE_2_AUDIO_BASE}
+        background_image="/lessons/v2/lesson36/s2.webp"
+        onComplete={() => setStage("ex3")}
+      />
+    );
+  }
+
+  if (stage === "ex3") {
+    return (
+      <SortSequenceExerciseV2
+        key="lesson36-ex3-build"
+        items={LESSON_36_EXERCISE_3}
+        audio_base={LESSON_36_EXERCISE_3_AUDIO_BASE}
+        background_image="/lessons/v2/lesson36/s3.webp"
+        onComplete={() => setStage("ex4")}
+      />
+    );
+  }
+
+  if (stage === "ex4") {
+    return (
+      <DragMatchExerciseV2
+        key="lesson36-ex4-match"
+        items={LESSON_36_EXERCISE_4}
+        audio_base={LESSON_36_EXERCISE_4_AUDIO_BASE}
+        background_image="/lessons/v2/lesson36/s4.webp"
+        onComplete={() => setStage("done")}
+      />
+    );
+  }
+
+  return (
+    <LessonCompleteV2
+      lessonKey="lesson36"
+      message="أَكْمَلْتَ تَمَارِينَ الْأَعْدَادِ إِلَى 19."
+      onReplay={() => setStage("ex1")}
+      nextPath={WORLD2_HOME}
+      nextLabel="العودة إلى عالم الألعاب"
+      quizPath={WORLD2_QUIZ}
+    />
+  );
+}
+
 export default function LessonExercisesPage() {
   const { lessonId } =
     useParams<{ lessonId?: string }>();
@@ -369,6 +457,10 @@ export default function LessonExercisesPage() {
 
   if (lessonId === "35") {
     return <Lesson35Exercises />;
+  }
+
+  if (lessonId === "36") {
+    return <Lesson36Exercises />;
   }
 
   const generatedManifest =

@@ -40,6 +40,7 @@ const LESSON_ALIASES: Record<
   },
   "36": {
     title: "الْأَعْدَادُ إِلَى 19 (1)",
+    exercisePath: "/lesson-v2/36/exercises",
     audioToken: "lesson_36_amusement_sorting",
   },
   "37": {
