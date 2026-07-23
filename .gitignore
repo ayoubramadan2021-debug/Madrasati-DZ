@@ -39,3 +39,10 @@ regen_taline_ssml.py
 *.bak
 
 .env.local
+.env.*.local
+*.backup-*
+fix-startup-hang.sh
+fix-supabase-env.sh
+repair-supabase-values.sh
+index.html.backup
+index.html.before-startup-fix
