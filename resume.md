@@ -739,3 +739,18 @@ CHOKIDAR_USEPOLLING=1 npm run dev -- --host 0.0.0.0
 - عدم تغيير محتوى الدروس المكتملة.
 
 <!-- WORLD2_LESSONS_36_45_END -->
+
+<!-- PREMIUM_UNIFIED_ENGINE_STATUS:START -->
+
+## محرك Premium الموحّد للدروس والتمارين
+
+آخر تحقق: 2026-07-23 09:52:38 +0100
+الفرع: `batch-lessons-14-18` — المرجع: `origin/batch-lessons-14-18`
+
+- خطة العمل: `plans-lesson/PREMIUM_UNIFIED_ENGINE_PLAN.md`
+- محرك التمارين `PremiumExerciseEngineV2.tsx`: موجود محليًا **نعم**، متتبع **لا**، مرفوع على الفرع البعيد **لا**.
+- مرجع عرض الدروس `WorldIntroSceneV2.tsx`: موجود محليًا **نعم**، متتبع **نعم**، مرفوع على الفرع البعيد **نعم**.
+- حالة محرك Premium الموحّد الصريح للدروس: **وُجد محرك/ملفات Premium موحدة للدروس على origin/batch-lessons-14-18.**
+- القرار: محرك الدروس يوحّد العرض والصوت والكاريوكي والتنقل، ومحرك تدفق التمارين ينسق المحركات الأصلية عبر `stage` و`onComplete` دون إعادة كتابة منطقها.
+
+<!-- PREMIUM_UNIFIED_ENGINE_STATUS:END -->
