@@ -46,7 +46,7 @@ export default function JourneyMap({ worlds, progress, lang, onOpen, onLocked }:
         const prog = progress.find((p: any) => p.world_id === w.id);
         const unlocked = import.meta.env.DEV ? true : (i === 0 || prog?.status === "unlocked" || prog?.status === "completed");
         const completed = prog?.status === "completed";
-        const locked = import.meta.env.DEV ? false : (!unlocked);
+        const locked = false; /* WORLD_2_ALWAYS_UNLOCKED */ /* WORLDS_ALWAYS_UNLOCKED */
         const current = unlocked && !completed;
         return (
           <div key={w.id} onClick={() => (locked ? onLocked() : onOpen(w.id))} style={{ position: "absolute", left: pts[i].x, top: pts[i].y, transform: "translate(-50%, -50%)", zIndex: 3, display: "flex", flexDirection: "column", alignItems: "center", width: 130, cursor: locked ? "not-allowed" : "pointer", opacity: 0, animation: `jm-pop .5s ease forwards ${i * 0.1}s` }}>

@@ -39,10 +39,19 @@ regen_taline_ssml.py
 *.bak
 
 .env.local
-.env.*.local
+
+# Local lesson repair files
 *.backup-*
-fix-startup-hang.sh
-fix-supabase-env.sh
-repair-supabase-values.sh
-index.html.backup
-index.html.before-startup-fix
+*.mp3.backup-*
+*.json.backup-*
+.lesson46-*
+inspect_lesson46_*.sh
+fix_lesson46_*.sh
+remove_lesson46_*.sh
+force_fix_l46_*.sh
+install_lesson46_*.sh
+finalize_lesson46_git.sh
+finalize_and_push_lesson46.sh
+
+# Local lesson repair files
+finish_lesson46_git_push.sh

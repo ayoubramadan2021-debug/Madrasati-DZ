@@ -21,7 +21,13 @@ const LESSON_ALIASES: Record<
     title: string;
     exercisePath?: string;
     audioToken: string;
-  }
+
+  "37": {
+    title: "قراءة جدول",
+    exercisePath: "/lesson-v2/37/exercises",
+    audioToken: "lesson_37_amusement_picture_table",
+  },
+}
 > = {
   "33": {
     title: "أقارن أطوال أشياء عالم المرح",
@@ -56,29 +62,41 @@ const LESSON_ALIASES: Record<
     audioToken: "lesson_39_ordered_train_journey",
   },
   "40": {
-    title: "اِكْتَشِفِ النَّمَطَ السِّرِّيَّ",
-    audioToken: "lesson_40_secret_pattern",
+    title: "أُقَارِنُ وَأُرَتِّبُ",
+    audioToken: "lesson_40_amusement_compare_order",
+    exercisePath: "/lesson-v2/40/exercises",
   },
   "41": {
-    title: "صُفُوفٌ وَأَعْمِدَةٌ فِي لَوْحَةِ اللَّعِبِ",
-    audioToken: "lesson_41_rows_columns_game_board",
+    title: "صفوف وأعمدة في لوحة اللعب",
+    audioToken: "lesson_41_amusement_rows_columns",
+    exercisePath: "/lesson-v2/41/exercises",
   },
   "42": {
     title: "قَلْبِي يَنْبِضُ (1)",
     audioToken: "lesson_42_my_heart_beats_1",
+    exercisePath: "/lesson-v2/42/exercises",
   },
   "43": {
     title: "أَكْتَشِفُ ضِعْفَ عَدَدٍ أَصْغَرَ مِنْ عَشَرَةٍ",
     audioToken: "lesson_43_double_number_under_10",
+    exercisePath: "/lesson-v2/43/exercises",
   },
   "44": {
     title: "أَكْتَشِفُ نِصْفَ عَدَدٍ أَصْغَرَ مِنْ عِشْرِينَ",
     audioToken: "lesson_44_half_number_under_20",
+    exercisePath: "/lesson-v2/44/exercises",
   },
 
   "45": {
-    title: "إِتْمَامُ الْجَدْوَلِ",
+    title: "إِتْمَامُ جَدْوَلٍ",
     audioToken: "lesson_45_complete_table",
+    exercisePath: "/lesson-v2/45/exercises",
+  },
+
+  "46": {
+    title: "قَلْبِي يَنْبِضُ (2)",
+    audioToken: "lesson_46_my_heart_beats_2",
+    exercisePath: "/lesson-v2/46/exercises",
   },
 };
 
@@ -208,21 +226,61 @@ export default function World2LessonPage() {
       const alias =
         LESSON_ALIASES[lessonId];
 
-      let query = supabase
-        .from("lessons")
-        .select(
-          "id,title,world_id,content,scenes",
-        )
-        .eq("world_id", WORLD2_ID);
+      let data: LessonRow | null = null;
+      let queryError: unknown = null;
 
-      query = alias
-        ? query.eq("title", alias.title)
-        : query.eq("id", lessonId);
+      if (alias) {
+        const result = await supabase
+          .from("lessons")
+          .select(
+            "id,title,world_id,content,scenes",
+          )
+          .eq("world_id", WORLD2_ID);
 
-      const {
-        data,
-        error: queryError,
-      } = await query.single();
+        queryError = result.error;
+
+        if (!result.error && result.data) {
+          const matchingLesson =
+            result.data.find((row) => {
+              const rowContent =
+                parseObject(row.content);
+
+              const rowAudioBase =
+                String(
+                  rowContent.audio_base ??
+                    rowContent.audioBase ??
+                    "",
+                );
+
+              return (
+                String(row.title ?? "").trim() ===
+                  alias.title.trim() ||
+                rowAudioBase.includes(
+                  alias.audioToken,
+                )
+              );
+            });
+
+          data =
+            (matchingLesson as LessonRow | undefined) ??
+            null;
+        }
+      } else {
+        const result = await supabase
+          .from("lessons")
+          .select(
+            "id,title,world_id,content,scenes",
+          )
+          .eq("world_id", WORLD2_ID)
+          .eq("id", lessonId)
+          .single();
+
+        queryError = result.error;
+
+        data =
+          (result.data as LessonRow | null) ??
+          null;
+      }
 
       if (cancelled) return;
 
@@ -352,10 +410,199 @@ export default function World2LessonPage() {
       audio_base={preparedLesson.audioBase}
       slides={preparedLesson.slides as any}
       onDone={() => {
-        if (alias?.exercisePath) {
+
+        const isLesson46 =
+          lessonId === "46" ||
+          preparedLesson.audioBase.includes(
+            "lesson_46_my_heart_beats_2",
+          );
+
+        if (isLesson46) {
+          navigate(
+            "/lesson-v2/46/exercises",
+          );
+
+          return;
+        }
+
+        const isLesson45 =
+          lessonId === "45" ||
+          preparedLesson.audioBase.includes(
+            "lesson_45_complete_table",
+          );
+
+        if (isLesson45) {
+          navigate(
+            "/lesson-v2/45/exercises",
+          );
+
+          return;
+        }
+
+        const isLesson44 =
+          lessonId === "44" ||
+          preparedLesson.audioBase.includes(
+            "lesson_44_half_number_under_20",
+          );
+
+        if (isLesson44) {
+          navigate(
+            "/lesson-v2/44/exercises",
+          );
+
+          return;
+        }
+
+        const isLesson43 =
+          lessonId === "43" ||
+          preparedLesson.audioBase.includes(
+            "lesson_43_double_number_under_10",
+          );
+
+        if (isLesson43) {
+          navigate(
+            "/lesson-v2/43/exercises",
+          );
+
+          return;
+        }
+
+        const isLesson42 =
+          lessonId === "42" ||
+          preparedLesson.audioBase.includes(
+            "lesson_42_my_heart_beats_1",
+          );
+
+        if (isLesson42) {
+          navigate(
+            "/lesson-v2/42/exercises",
+          );
+
+          return;
+        }
+
+        const lesson41Title =
+          String(lesson?.title ?? "")
+            .normalize("NFKD")
+            .replace(/[\u064B-\u065F\u0670]/g, "")
+            .trim();
+
+        const isLesson41 =
+          lessonId === "41" ||
+          preparedLesson.audioBase.includes(
+            "lesson_41_amusement_rows_columns",
+          ) ||
+          lesson41Title.includes(
+            "صفوف وأعمدة في لوحة اللعب",
+          ) ||
+          lesson41Title.includes(
+            "صفوف واعمدة في لوحة اللعب",
+          );
+
+        if (isLesson41) {
+          navigate(
+            "/lesson-v2/41/exercises",
+          );
+
+          return;
+        }
+
+        const isLesson40 =
+          lessonId === "40" ||
+          preparedLesson.audioBase.includes(
+            "lesson_40",
+          );
+
+        if (isLesson40) {
+          navigate(
+            "/lesson-v2/40/exercises",
+          );
+
+          return;
+        }
+
+        const lesson39Title =
+          String(lesson?.title ?? "")
+            .normalize("NFKD")
+            .replace(/[\u064B-\u065F\u0670]/g, "")
+            .trim();
+
+        const isLesson39 =
+          lessonId === "39" ||
+          preparedLesson.audioBase.includes(
+            "lesson_39",
+          ) ||
+          lesson39Title.includes(
+            "رحلة القطار المرتب",
+          ) ||
+          lesson39Title.includes(
+            "القطار المرتب",
+          );
+
+        if (isLesson39) {
+          navigate(
+            "/lesson-v2/39/exercises",
+          );
+
+          return;
+        }
+
+        const isLesson38 =
+          lessonId === "38" ||
+          preparedLesson.audioBase.includes(
+            "lesson_38_amusement_positions",
+          );
+
+        if (isLesson38) {
+          navigate(
+            "/lesson-v2/38/exercises",
+          );
+          return;
+        }
+        const normalizedTitle =
+          String(lesson?.title ?? "")
+            .trim();
+
+        const isLesson37 =
+          lessonId === "37" ||
+          preparedLesson.audioBase.includes(
+            "lesson_37_amusement_picture_table",
+          ) ||
+          normalizedTitle.includes(
+            "قراءة جدول",
+          ) ||
+          normalizedTitle.includes(
+            "قِرَاءَةُ جَدْوَلٍ",
+          ) ||
+          normalizedTitle.includes(
+            "لَوْحَةَ الْأَلْعَابِ",
+          ) ||
+          normalizedTitle.includes(
+            "لوحة الألعاب",
+          );
+
+        if (isLesson37) {
+          navigate(
+            "/lesson-v2/37/exercises",
+          );
+
+          return;
+        }
+
+        if (alias) {
           navigate(alias.exercisePath);
           return;
         }
+
+        console.error(
+          "تعذر تحديد مسار التمارين.",
+          {
+            lessonId,
+            title: lesson?.title,
+            audioBase:
+              preparedLesson.audioBase,
+          },
+        );
 
         navigate(-1);
       }}

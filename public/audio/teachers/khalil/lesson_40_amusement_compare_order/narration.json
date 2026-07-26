@@ -1,0 +1,50 @@
+[
+  {
+    "scene": 1,
+    "key": "lesson40_s1",
+    "audio_key": "lesson40_s1",
+    "speaker": "khalil",
+    "image": "/lessons/v2/lesson40/s1.webp",
+    "text": "فِي عَالَمِ الْمَرَحِ نُشَاهِدُ مَجْمُوعَاتٍ مِنَ الْأَقْلَامِ وَالْمَمَاحِي وَالْمَبَارِي وَالْمَسَاطِرِ."
+  },
+  {
+    "scene": 2,
+    "key": "lesson40_s2",
+    "audio_key": "lesson40_s2",
+    "speaker": "khalil",
+    "image": "/lessons/v2/lesson40/s2.webp",
+    "text": "عَدَدُ الْأَقْلَامِ أَكْثَرُ مِنْ عَدَدِ الْمَبَارِي."
+  },
+  {
+    "scene": 3,
+    "key": "lesson40_s3",
+    "audio_key": "lesson40_s3",
+    "speaker": "khalil",
+    "image": "/lessons/v2/lesson40/s3.webp",
+    "text": "عَدَدُ الْمَبَارِي أَقَلُّ مِنْ عَدَدِ الْمَمَاحِي."
+  },
+  {
+    "scene": 4,
+    "key": "lesson40_s4",
+    "audio_key": "lesson40_s4",
+    "speaker": "khalil",
+    "image": "/lessons/v2/lesson40/s4.webp",
+    "text": "عَدَدُ الْمَسَاطِرِ يُسَاوِي عَدَدَ الْمَبَارِي."
+  },
+  {
+    "scene": 5,
+    "key": "lesson40_s5",
+    "audio_key": "lesson40_s5",
+    "speaker": "khalil",
+    "image": "/lessons/v2/lesson40/s5.webp",
+    "text": "نُرَتِّبُ الْمَجْمُوعَاتِ مِنَ الْأَقَلِّ عَدَدًا إِلَى الْأَكْثَرِ عَدَدًا."
+  },
+  {
+    "scene": 6,
+    "key": "lesson40_s6",
+    "audio_key": "lesson40_s6",
+    "speaker": "khalil",
+    "image": "/lessons/v2/lesson40/s6.webp",
+    "text": "نُرَتِّبُ الدِّبَبَةَ مِنَ الْأَكْبَرِ إِلَى الْأَصْغَرِ، وَنَسْتَعْمِلُ أَكْثَرُ مِنْ، وَأَقَلُّ مِنْ، وَيُسَاوِي. هَيَّا نَتَدَرَّبْ!"
+  }
+]

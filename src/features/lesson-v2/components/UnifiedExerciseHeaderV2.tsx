@@ -37,7 +37,7 @@ export default function UnifiedExerciseHeaderV2({
           🔊
         </button>
 
-        <div style={styles.counter}>
+        <div style={styles.counter} dir="ltr">
           {index + 1} / {total}
         </div>
       </div>
@@ -88,6 +88,8 @@ const styles: Record<string, CSSProperties> = {
     fontWeight: 1000,
     boxShadow: "0 4px 12px rgba(0,0,0,.08)",
     direction: "ltr",
+    unicodeBidi: "isolate",
+    fontVariantNumeric: "tabular-nums",
   },
 
   soundBtn: {
