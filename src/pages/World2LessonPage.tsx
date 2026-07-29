@@ -98,6 +98,12 @@ const LESSON_ALIASES: Record<
     audioToken: "lesson_46_my_heart_beats_2",
     exercisePath: "/lesson-v2/46/exercises",
   },
+  "48": {
+    title: "الأَعْدَادُ إِلَى 39 (1)",
+    exercisePath: "/lesson-v2/48/exercises",
+    audioToken: "lesson_48_numbers_to_39",
+  },
+
 };
 
 type UnknownRecord =
@@ -410,6 +416,36 @@ export default function World2LessonPage() {
       audio_base={preparedLesson.audioBase}
       slides={preparedLesson.slides as any}
       onDone={() => {
+
+        // LESSON48_WORLD2_EXERCISE_ROUTE
+        // مطابق لربط الدرس 36 داخل عالم الألعاب.
+        const isLesson48 =
+          lessonId === "48" ||
+          preparedLesson.audioBase.includes(
+            "lesson_48_numbers_to_39",
+          );
+
+        if (isLesson48) {
+          navigate(
+            "/lesson-v2/48/exercises",
+          );
+
+          return;
+        }
+
+
+        // LESSON47_WORLD2_EXERCISE_ROUTE
+        // الدرس 47 يُفتح من مسار العالم الثاني، لذلك نربط زر «هيا نتدرب»
+        // بصفحة تمارينه المخصصة قبل منطق الدروس الأخرى.
+        const lesson47NormalizedTitle = (lesson?.title ?? "")
+          .normalize("NFD")
+          .replace(/[\u064B-\u065F\u0670]/g, "");
+
+        if (lesson47NormalizedTitle.includes("التنقل على مرصوفة")) {
+          navigate("/lesson-v2/lesson47/exercises");
+          return;
+        }
+
 
         const isLesson46 =
           lessonId === "46" ||

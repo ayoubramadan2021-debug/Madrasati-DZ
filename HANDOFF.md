@@ -237,3 +237,42 @@ The following files must remain synchronized after text changes:
 
 Continue with lesson 47 using the same verified workflow.
 <!-- LESSON46-HANDOFF-END -->
+
+<!-- LESSON48_HANDOFF_START -->
+## تسليم الدرس 48
+
+آخر تحديث: 2026-07-29
+
+التسلسل النهائي:
+
+/world2-lesson/48
+→ World2LessonPage
+→ /lesson-v2/48/exercises
+→ Lesson48ExercisesPage
+→ NumbersTo39ExerciseV2
+
+الدرس 36 هو المرجع الرسمي في:
+
+- LESSON_ALIASES
+- World2LessonPage.onDone
+- مسارات التمارين الرقمية
+- شاشة الإتمام
+- حركة الكأس والنجوم
+
+ملفات الدرس 48:
+
+- src/pages/World2LessonPage.tsx
+- src/pages/Lesson48Page.tsx
+- src/pages/Lesson48ExercisesPage.tsx
+- src/features/lesson-v2/content/lesson48.ts
+- src/features/lesson-v2/content/lesson48_types.ts
+- src/features/lesson-v2/content/lesson48_exercise1.ts
+- src/features/lesson-v2/content/lesson48_exercise2.ts
+- src/features/lesson-v2/content/lesson48_exercise3.ts
+- src/features/lesson-v2/content/lesson48_exercise4.ts
+- src/features/lesson-v2/exercises-v2/NumbersTo39ExerciseV2.tsx
+
+أداة التحقق:
+
+bash scripts/lesson48/verify_lesson48_release.sh
+<!-- LESSON48_HANDOFF_END -->

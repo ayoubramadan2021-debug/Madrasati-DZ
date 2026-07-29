@@ -977,12 +977,12 @@ export default function Lesson46HeartBeats2Exercises() {
         lessonKey="lesson46"
         title="🌟 أَحْسَنْتَ!"
         subtitle="أَتْقَنْتَ دَرْسَ قَلْبِي يَنْبِضُ."
-        nextPath="/world2-lesson/47"
+        nextPath="/lesson-v2/lesson47"
         onNext={() =>
-          navigate("/world2-lesson/47")
+          navigate("/lesson-v2/lesson47")
         }
         onContinue={() =>
-          navigate("/world2-lesson/47")
+          navigate("/lesson-v2/lesson47")
         }
       />
     );
