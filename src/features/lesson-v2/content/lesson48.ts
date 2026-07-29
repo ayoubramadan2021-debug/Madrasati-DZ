@@ -29,10 +29,9 @@ export const lesson48 = {
   audio_base:
     "/audio/teachers/khalil/lesson_48_numbers_to_39",
 
-  exercisePath: "/lesson-v2/lesson48/exercises",
+  exercisePath: "/lesson-v2/48/exercises",
 
-  nextLessonKey:
-    "lesson49",
+  nextLessonKey: "lesson49",
 
   objectives: [
     "قراءة الأعداد من 20 إلى 39.",

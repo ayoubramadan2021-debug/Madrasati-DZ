@@ -116,8 +116,7 @@ export default function Lesson48ExercisesPage() {
               ...styles.nextButton,
             }}
             onClick={() => {
-              window.location.href =
-                "/lesson-v2/lesson49";
+              window.location.href = "/lesson-v2/lesson49";
             }}
           >
             الدَّرْسُ التَّالِي

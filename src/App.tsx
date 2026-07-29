@@ -9,7 +9,9 @@ import AdminRoute from "./shared/components/AdminRoute";
 import Lesson47Page from "./pages/Lesson47Page";
 import Lesson47ExercisesPage from "./pages/Lesson47ExercisesPage";
 import Lesson48Page from "./pages/Lesson48Page";
+import Lesson49Page from "./pages/Lesson49Page";
 import Lesson48ExercisesPage from "./pages/Lesson48ExercisesPage";
+import Lesson49ExercisesPage from "./pages/Lesson49ExercisesPage";
 const lazy = (importFn: () => Promise<any>, title: string) => {
   const LazyComponent = React.lazy(importFn);
   return (
@@ -35,8 +37,18 @@ export default function App() {
         />
 
         <Route
+          path="/lesson-v2/lesson49"
+          element={<Lesson49Page />}
+        />
+
+        <Route
           path="/lesson-v2/lesson48/exercises"
           element={<Lesson48ExercisesPage />}
+        />
+
+        <Route
+          path="/lesson-v2/49/exercises"
+          element={<Lesson49ExercisesPage />}
         />
 <Route path="/lesson-v2/:lessonId?" element={lazy(() => import("./pages/LessonV2Page"), "الدرس")} />
 <Route path="/world2-lesson/:lessonId" element={lazy(() => import("./pages/World2LessonPage"), "درس عالم الألعاب")} />

@@ -1058,3 +1058,14 @@ npm run build
 - التوثيق: docs/LESSON48_PREMIUM_HANDOFF.md
 - التحقق: scripts/lesson48/verify_lesson48_release.sh
 <!-- LESSON48_RESUME_END -->
+
+## LESSON 49 COMPLETED
+- الدرس: مصادر الأغذية والوجبة الصحية
+- العالم: الألعاب والترفيه
+- ترتيب Supabase: 17
+- مسار الدرس: /world2-lesson/49
+- مسار التمارين: /lesson-v2/49/exercises
+- 6 مشاهد بصوت تالين وكاريوكي
+- 4 تمارين و16 سؤالًا
+- رُبط الدرس 48 بالدرس 49
+- الخطوة التالية: الدرس 50

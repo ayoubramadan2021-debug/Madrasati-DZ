@@ -103,6 +103,11 @@ const LESSON_ALIASES: Record<
     exercisePath: "/lesson-v2/48/exercises",
     audioToken: "lesson_48_numbers_to_39",
   },
+  "49": {
+    title: "مَصَادِرُ الْأَغْذِيَةِ وَالْوَجْبَةُ الصِّحِّيَّةُ",
+    exercisePath: "/lesson-v2/49/exercises",
+    audioToken: "lesson_49_food_sources",
+  },
 
 };
 
@@ -416,6 +421,21 @@ export default function World2LessonPage() {
       audio_base={preparedLesson.audioBase}
       slides={preparedLesson.slides as any}
       onDone={() => {
+
+        // LESSON49_WORLD2_EXERCISE_ROUTE
+        const isLesson49 =
+          lessonId === "49" ||
+          preparedLesson.audioBase.includes(
+            "lesson_49_food_sources",
+          );
+
+        if (isLesson49) {
+          navigate(
+            "/lesson-v2/49/exercises",
+          );
+
+          return;
+        }
 
         // LESSON48_WORLD2_EXERCISE_ROUTE
         // مطابق لربط الدرس 36 داخل عالم الألعاب.

@@ -31,13 +31,12 @@ export interface WorldIntroSceneV2Props {
   audio_base: string;         // "/audio/world_1_intro"
   slides: Slide[];
   onDone?: () => void;
+  karaoke_lead_ms?: number;
 }
 
 // ═══════════════════════════════════════════════
 // Brand colors
 // ═══════════════════════════════════════════════
-const KARAOKE_LEAD_MS = 0;
-
 const C = {
   navy: "#1B3A6B",
   navyDeep: "#0F2447",
@@ -53,59 +52,170 @@ const C = {
 // ═══════════════════════════════════════════════
 // Karaoke hook
 // ═══════════════════════════════════════════════
-function useKaraoke(audioBase: string) {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const timersRef = useRef<number[]>([]);
-  const [activeKey, setActiveKey] = useState<string | null>(null);
-  const [currentIdx, setCurrentIdx] = useState(-1);
-  const [shown, setShown] = useState<Set<number>>(new Set());
+function useKaraoke(
+  audioBase: string,
+  karaokeLeadMs = 0,
+) {
+  const audioRef =
+    useRef<HTMLAudioElement | null>(null);
+
+  const animationRef =
+    useRef<number | null>(null);
+
+  const [activeKey, setActiveKey] =
+    useState<string | null>(null);
+
+  const [currentIdx, setCurrentIdx] =
+    useState(-1);
+
+  const [shown, setShown] =
+    useState<Set<number>>(new Set());
 
   const stop = useCallback(() => {
+    if (animationRef.current !== null) {
+      window.cancelAnimationFrame(
+        animationRef.current,
+      );
+
+      animationRef.current = null;
+    }
+
     if (audioRef.current) {
       audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      audioRef.current.src = "";
       audioRef.current = null;
     }
-    timersRef.current.forEach(clearTimeout);
-    timersRef.current = [];
+
     setActiveKey(null);
     setCurrentIdx(-1);
   }, []);
 
-  const play = useCallback(async (key: string, words: WordTiming[]) => {
-    stop();
-    setShown(new Set());
-    setActiveKey(key);
+  const play = useCallback(
+    async (
+      key: string,
+      words: WordTiming[],
+    ) => {
+      stop();
 
-    const audio = new Audio(`${audioBase}/${key}.mp3`);
-    audioRef.current = audio;
-    audio.addEventListener("ended", () => setCurrentIdx(-1));
+      setShown(new Set());
+      setCurrentIdx(-1);
+      setActiveKey(key);
 
-    try {
-      await audio.play();
-    } catch {
-      const all = new Set<number>();
-      words.forEach((_, i) => all.add(i));
-      setShown(all);
-      return;
-    }
+      const audio = new Audio(
+        `${audioBase}/${key}.mp3`,
+      );
 
-    words.forEach((w, i) => {
-      const t1 = window.setTimeout(() => {
-        setShown((prev) => new Set(prev).add(i));
-        setCurrentIdx(i);
-      }, Math.max(0, w.offset - KARAOKE_LEAD_MS));
-      const t2 = window.setTimeout(() => {
-        setCurrentIdx((cur) => (cur === i ? -1 : cur));
-      }, Math.max(0, w.offset - KARAOKE_LEAD_MS) + w.duration);
-      timersRef.current.push(t1, t2);
-    });
-  }, [audioBase, stop]);
+      audio.preload = "auto";
+      audioRef.current = audio;
 
-  useEffect(() => () => stop(), [stop]);
+      const synchronize = () => {
+        if (audioRef.current !== audio) {
+          return;
+        }
 
-  return { play, stop, activeKey, currentIdx, shown };
+        const currentTimeMs =
+          audio.currentTime * 1000;
+
+        const visibleWords =
+          new Set<number>();
+
+        let activeIndex = -1;
+
+        words.forEach((word, index) => {
+          const start = Math.max(
+            0,
+            word.offset - karaokeLeadMs,
+          );
+
+          const end =
+            start + word.duration;
+
+          if (currentTimeMs >= start) {
+            visibleWords.add(index);
+          }
+
+          if (
+            currentTimeMs >= start &&
+            currentTimeMs < end
+          ) {
+            activeIndex = index;
+          }
+        });
+
+        setShown(visibleWords);
+        setCurrentIdx(activeIndex);
+
+        if (
+          !audio.paused &&
+          !audio.ended
+        ) {
+          animationRef.current =
+            window.requestAnimationFrame(
+              synchronize,
+            );
+        }
+      };
+
+      audio.addEventListener(
+        "ended",
+        () => {
+          if (
+            animationRef.current !== null
+          ) {
+            window.cancelAnimationFrame(
+              animationRef.current,
+            );
+
+            animationRef.current = null;
+          }
+
+          setShown(
+            new Set(
+              words.map((_, index) => index),
+            ),
+          );
+
+          setCurrentIdx(-1);
+          setActiveKey(null);
+        },
+        { once: true },
+      );
+
+      try {
+        await audio.play();
+
+        animationRef.current =
+          window.requestAnimationFrame(
+            synchronize,
+          );
+      } catch {
+        setShown(
+          new Set(
+            words.map((_, index) => index),
+          ),
+        );
+
+        setCurrentIdx(-1);
+        setActiveKey(null);
+      }
+    },
+    [audioBase, karaokeLeadMs, stop],
+  );
+
+  useEffect(
+    () => () => stop(),
+    [stop],
+  );
+
+  return {
+    play,
+    stop,
+    activeKey,
+    currentIdx,
+    shown,
+  };
 }
-
 async function loadTimings(audioBase: string, key: string): Promise<WordTiming[] | null> {
   try {
     const r = await fetch(`${audioBase}/${key}.json`);
@@ -144,13 +254,17 @@ export default function WorldIntroSceneV2({
   audio_base,
   slides,
   onDone,
+  karaoke_lead_ms = 0,
 }: WorldIntroSceneV2Props) {
   const [slideIdx, setSlideIdx] = useState(0);
   const [timings, setTimings] = useState<Record<string, WordTiming[]>>({});
   const [answerState, setAnswerState] = useState<Record<string, "idle" | "correct" | "wrong">>({});
   const [questionAnswered, setQuestionAnswered] = useState(false);
 
-  const karaoke = useKaraoke(audio_base);
+  const karaoke = useKaraoke(
+    audio_base,
+    karaoke_lead_ms,
+  );
   const slide = slides[slideIdx];
 
   // Preload all timings
