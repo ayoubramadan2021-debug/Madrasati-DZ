@@ -108,6 +108,12 @@ const LESSON_ALIASES: Record<
     exercisePath: "/lesson-v2/49/exercises",
     audioToken: "lesson_49_food_sources",
   },
+  "50": {
+    exercise: "/lesson-v2/50/exercises",
+    title: "أُجَنِّدُ مَعَارِفِي فِي الْأَلْعَابِ الْمَدْرَسِيَّةِ",
+    exercisePath: "/lesson-v2/50/exercises",
+    audioToken: "lesson_50_games_review",
+  },
 
 };
 
