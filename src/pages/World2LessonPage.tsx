@@ -114,6 +114,13 @@ const LESSON_ALIASES: Record<
     exercisePath: "/lesson-v2/50/exercises",
     audioToken: "lesson_50_games_review",
   },
+  "51": {
+    exercise: "/lesson-v2/51/exercises",
+    title:
+      "الْحَصِيلَةُ 1 — أُجَنِّدُ مَعَارِفِي فِي مَدِينَةِ الْأَلْعَابِ وَالتَّرْفِيهِ",
+    exercisePath: "/lesson-v2/51/exercises",
+    audioToken: "lesson_51_bilan_1",
+  },
 
 };
 

@@ -1,0 +1,82 @@
+{
+  "m1_q1_first_color": {
+    "text": "أَيُّ لَوْنٍ يَحْتَلُّ الْمَرْتَبَةَ الْأُولَى؟",
+    "audio": "m1_q1_first_color.mp3",
+    "karaoke": "m1_q1_first_color.json"
+  },
+  "m1_q2_second_color": {
+    "text": "أَيُّ لَوْنٍ يَحْتَلُّ الْمَرْتَبَةَ الثَّانِيَةَ؟",
+    "audio": "m1_q2_second_color.mp3",
+    "karaoke": "m1_q2_second_color.json"
+  },
+  "m1_q3_third_child": {
+    "text": "مَنْ يَحْتَلُّ الْمَرْتَبَةَ الثَّالِثَةَ؟",
+    "audio": "m1_q3_third_child.mp3",
+    "karaoke": "m1_q3_third_child.json"
+  },
+  "m1_q4_second_shape": {
+    "text": "مَا الَّذِي يَحْتَلُّ الْمَرْتَبَةَ الثَّانِيَةَ؟",
+    "audio": "m1_q4_second_shape.mp3",
+    "karaoke": "m1_q4_second_shape.json"
+  },
+  "m2_q1_add_7_4": {
+    "text": "كَمْ يُسَاوِي 7 زَائِدُ 4؟",
+    "audio": "m2_q1_add_7_4.mp3",
+    "karaoke": "m2_q1_add_7_4.json"
+  },
+  "m2_q2_add_8_5": {
+    "text": "كَمْ يُسَاوِي 8 زَائِدُ 5؟",
+    "audio": "m2_q2_add_8_5.mp3",
+    "karaoke": "m2_q2_add_8_5.json"
+  },
+  "m2_q3_add_9_7": {
+    "text": "كَمْ يُسَاوِي 9 زَائِدُ 7؟",
+    "audio": "m2_q3_add_9_7.mp3",
+    "karaoke": "m2_q3_add_9_7.json"
+  },
+  "m2_q4_add_10_9": {
+    "text": "كَمْ يُسَاوِي 10 زَائِدُ 9؟",
+    "audio": "m2_q4_add_10_9.mp3",
+    "karaoke": "m2_q4_add_10_9.json"
+  },
+  "m3_q1_choose_equation_7_4": {
+    "text": "أَيُّ عَمَلِيَّةِ جَمْعٍ تُمَثِّلُ الصُّورَةَ؟",
+    "audio": "m3_q1_choose_equation_7_4.mp3",
+    "karaoke": "m3_q1_choose_equation_7_4.json"
+  },
+  "m3_q2_choose_equation_8_5": {
+    "text": "أَيُّ عَمَلِيَّةِ جَمْعٍ تُمَثِّلُ الصُّورَةَ؟",
+    "audio": "m3_q2_choose_equation_8_5.mp3",
+    "karaoke": "m3_q2_choose_equation_8_5.json"
+  },
+  "m3_q3_choose_equation_9_7": {
+    "text": "أَيُّ عَمَلِيَّةِ جَمْعٍ تُمَثِّلُ الصُّورَةَ؟",
+    "audio": "m3_q3_choose_equation_9_7.mp3",
+    "karaoke": "m3_q3_choose_equation_9_7.json"
+  },
+  "m3_q4_choose_equation_10_9": {
+    "text": "أَيُّ عَمَلِيَّةِ جَمْعٍ تُمَثِّلُ الصُّورَةَ؟",
+    "audio": "m3_q4_choose_equation_10_9.mp3",
+    "karaoke": "m3_q4_choose_equation_10_9.json"
+  },
+  "m4_q1_complete_addition_11_19": {
+    "text": "أَكْمِلْ عَمَلِيَّةَ الْجَمْعِ الصَّحِيحَةَ.",
+    "audio": "m4_q1_complete_addition_11_19.mp3",
+    "karaoke": "m4_q1_complete_addition_11_19.json"
+  },
+  "m4_q2_complete_addition_12_19": {
+    "text": "أَكْمِلْ عَمَلِيَّةَ الْجَمْعِ الصَّحِيحَةَ.",
+    "audio": "m4_q2_complete_addition_12_19.mp3",
+    "karaoke": "m4_q2_complete_addition_12_19.json"
+  },
+  "m4_q3_complete_addition_14_19": {
+    "text": "أَكْمِلْ عَمَلِيَّةَ الْجَمْعِ الصَّحِيحَةَ.",
+    "audio": "m4_q3_complete_addition_14_19.mp3",
+    "karaoke": "m4_q3_complete_addition_14_19.json"
+  },
+  "m4_q4_complete_addition_16_19": {
+    "text": "أَكْمِلْ عَمَلِيَّةَ الْجَمْعِ الصَّحِيحَةَ.",
+    "audio": "m4_q4_complete_addition_16_19.mp3",
+    "karaoke": "m4_q4_complete_addition_16_19.json"
+  }
+}
