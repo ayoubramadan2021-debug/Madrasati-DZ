@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "===== تنظيف المسافات الزائدة تلقائيًا ====="
+python3 scripts/fix_staged_whitespace.py
+
+echo "===== فحص Git ====="
+git diff --cached --check
+
+echo "✅ فحص Git ناجح."

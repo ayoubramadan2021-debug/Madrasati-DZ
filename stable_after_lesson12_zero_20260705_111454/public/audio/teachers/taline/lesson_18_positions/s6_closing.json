@@ -1,0 +1,62 @@
+[
+  {
+    "text": "أَحْسَنْتُمْ",
+    "offset": 60,
+    "duration": 820
+  },
+  {
+    "text": "تَعَلَّمْنَا",
+    "offset": 905,
+    "duration": 820
+  },
+  {
+    "text": "كَلِمَاتِ",
+    "offset": 1750,
+    "duration": 820
+  },
+  {
+    "text": "المَوْقِعِ",
+    "offset": 2595,
+    "duration": 820
+  },
+  {
+    "text": "يَمِين،",
+    "offset": 3440,
+    "duration": 665
+  },
+  {
+    "text": "يَسَار،",
+    "offset": 4130,
+    "duration": 665
+  },
+  {
+    "text": "فَوْق،",
+    "offset": 4820,
+    "duration": 570
+  },
+  {
+    "text": "تَحْت،",
+    "offset": 5415,
+    "duration": 570
+  },
+  {
+    "text": "أَمَام،",
+    "offset": 6010,
+    "duration": 665
+  },
+  {
+    "text": "خَلْف،",
+    "offset": 6700,
+    "duration": 570
+  },
+  {
+    "text": "دَاخِل،",
+    "offset": 7295,
+    "duration": 665
+  },
+  {
+    "text": "خَارِج",
+    "offset": 7985,
+    "duration": 570
+  }
+]

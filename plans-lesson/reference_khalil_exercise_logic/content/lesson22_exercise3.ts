@@ -1,0 +1,86 @@
+import type { HealthyFoodItem } from "../exercises-v2/HealthyFoodExerciseV2";
+
+export const LESSON_22_EXERCISE_3_AUDIO_BASE = "/audio/teachers/taline/lesson_22_exercises";
+
+export const LESSON_22_EXERCISE_3: HealthyFoodItem[] = [
+  {
+    title: "أُكَوِّنُ طَبَقًا مُتَنَوِّعًا",
+    mission: "اِخْتَرْ ثَلَاثَةَ أَغْذِيَةٍ مُفِيدَةٍ",
+    question: "اِخْتَرْ ثَلَاثَةَ أَغْذِيَةٍ لِطَبَقٍ صِحِّيٍّ",
+    question_audio_key: "l22_ex3_q1",
+    scene_image: "/lessons/v2/lesson22-food/s6.webp",
+    mode: "multi",
+    correct: ["apple", "milk", "bread"],
+    hint: "اِخْتَرْ ثَلَاثَةَ أَجْوِبَةٍ",
+    options: [
+      { id: "apple", label: "تُفَّاحٌ", emoji: "🍎", tone: "healthy" },
+      { id: "milk", label: "حَلِيبٌ", emoji: "🥛", tone: "dairy" },
+      { id: "bread", label: "خُبْزٌ", emoji: "🥖", tone: "grain" },
+      { id: "candy", label: "حَلْوَى", emoji: "🍬", tone: "sugar" },
+    ],
+  },
+  {
+    title: "أُكَوِّنُ طَبَقًا مُتَنَوِّعًا",
+    mission: "اِخْتَرْ غِذَاءً مِنَ الخُضَرِ وَغِذَاءً مِنَ الحَلِيبِ وَغِذَاءً مِنَ الحُبُوبِ",
+    question: "اِخْتَرْ ثَلَاثَةَ أَغْذِيَةٍ مُتَنَوِّعَةٍ",
+    question_audio_key: "l22_ex3_q2",
+    scene_image: "/lessons/v2/lesson22-food/s2.webp",
+    mode: "multi",
+    correct: ["carrot", "yogurt", "rice"],
+    hint: "اِخْتَرْ ثَلَاثَةَ أَجْوِبَةٍ",
+    options: [
+      { id: "carrot", label: "جَزَرٌ", emoji: "🥕", tone: "healthy" },
+      { id: "yogurt", label: "يَاغُورْتٌ", emoji: "🥛", tone: "dairy" },
+      { id: "rice", label: "أَرُزٌّ", emoji: "🍚", tone: "grain" },
+      { id: "cake", label: "كَعْكٌ", emoji: "🍰", tone: "sugar" },
+    ],
+  },
+  {
+    title: "أُكَوِّنُ طَبَقًا مُتَنَوِّعًا",
+    mission: "اِخْتَرْ أَغْذِيَةً تُعْطِي الجِسْمَ نَشَاطًا",
+    question: "مَا الأَغْذِيَةُ الَّتِي تُسَاعِدُ الجِسْمَ",
+    question_audio_key: "l22_ex3_q3",
+    scene_image: "/lessons/v2/lesson22-food/s3.webp",
+    mode: "multi",
+    correct: ["fish", "banana", "water"],
+    hint: "اِخْتَرْ ثَلَاثَةَ أَجْوِبَةٍ",
+    options: [
+      { id: "fish", label: "سَمَكٌ", emoji: "🐟", tone: "protein" },
+      { id: "banana", label: "مَوْزٌ", emoji: "🍌", tone: "healthy" },
+      { id: "water", label: "مَاءٌ", emoji: "💧", tone: "water" },
+      { id: "soda", label: "مَشْرُوبٌ غَازِيٌّ", emoji: "🥤", tone: "sugar" },
+    ],
+  },
+  {
+    title: "أُكَوِّنُ طَبَقًا مُتَنَوِّعًا",
+    mission: "اِخْتَرْ مَا نَضَعُهُ فِي الطَّبَقِ وَنُقَلِّلُ مِنَ الحَلْوَى",
+    question: "مَا اخْتِيَارُنَا الصَّحِيحُ لِطَبَقٍ مُتَنَوِّعٍ",
+    question_audio_key: "l22_ex3_q4",
+    scene_image: "/lessons/v2/lesson22-food/s6.webp",
+    mode: "multi",
+    correct: ["vegetables", "chicken", "milk"],
+    hint: "اِخْتَرْ ثَلَاثَةَ أَجْوِبَةٍ",
+    options: [
+      { id: "vegetables", label: "خُضَرٌ", emoji: "🥦", tone: "healthy" },
+      { id: "chicken", label: "دَجَاجٌ", emoji: "🍗", tone: "protein" },
+      { id: "milk", label: "حَلِيبٌ", emoji: "🥛", tone: "dairy" },
+      { id: "lollipop", label: "مَصَّاصَةٌ", emoji: "🍭", tone: "sugar" },
+    ],
+  },
+  {
+    title: "أُكَوِّنُ طَبَقًا مُتَنَوِّعًا",
+    mission: "اِخْتَرْ عَادَاتٍ تُحَافِظُ عَلَى الصِّحَّةِ",
+    question: "مَا العَادَاتُ الصَّحِيحَةُ لِصِحَّتِنَا",
+    question_audio_key: "l22_ex3_q5",
+    scene_image: "/lessons/v2/lesson22-food/s5.webp",
+    mode: "multi",
+    correct: ["diverse", "less_sugar", "brush"],
+    hint: "اِخْتَرْ ثَلَاثَةَ أَجْوِبَةٍ",
+    options: [
+      { id: "diverse", label: "نُنَوِّعُ غِذَاءَنَا", emoji: "🍽️", tone: "healthy" },
+      { id: "less_sugar", label: "نُقَلِّلُ السُّكَّرَ", emoji: "✅", tone: "healthy" },
+      { id: "brush", label: "نُنَظِّفُ الأَسْنَانَ", emoji: "🪥", tone: "healthy" },
+      { id: "more_sugar", label: "نُكْثِرُ الحَلْوَى", emoji: "🍬", tone: "sugar" },
+    ],
+  },
+];

@@ -1,0 +1,13 @@
+{
+  "lessonId": 21,
+  "sceneId": "s2_shorter",
+  "audio": "/audio/lesson21/s2_shorter.mp3",
+  "image": "/images/lesson21/s2.webp",
+  "segments": [
+    { "id": 1, "text": "اُنْظُرُوا إِلَى هَذَيْنِ الْقَلَمَيْنِ.", "start": 0.0, "end": 2.8 },
+    { "id": 2, "text": "هَذَا الْقَلَمُ أَقْصَرُ.", "start": 2.9, "end": 5.1 },
+    { "id": 3, "text": "وَهَذَا الْقَلَمُ أَطْوَلُ.", "start": 5.2, "end": 7.5 },
+    { "id": 4, "text": "نَقُولُ: أَقْصَرُ.", "start": 7.6, "end": 9.6 },
+    { "id": 5, "text": "أَطْوَلُ.", "start": 9.7, "end": 11.0 }
+  ]
+}

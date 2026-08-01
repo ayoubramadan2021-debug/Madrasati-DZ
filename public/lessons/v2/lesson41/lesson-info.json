@@ -1,0 +1,13 @@
+{
+  "lesson_number": 41,
+  "title_ar": "صُفُوفٌ وَأَعْمِدَةٌ فِي لَوْحَةِ اللَّعِبِ",
+  "title_fr": "Lignes et colonnes sur le plateau de jeu",
+  "speaker": "taline",
+  "audio_base": "/audio/teachers/taline/lesson_41_rows_columns_game_board",
+  "scene_count": 6,
+  "objectives": [
+    "التعرّف إلى الصفوف الأفقية في شبكة الخانات.",
+    "التعرّف إلى الأعمدة العمودية في شبكة الخانات.",
+    "تحديد خانة التقاطع بين صف وعمود."
+  ]
+}

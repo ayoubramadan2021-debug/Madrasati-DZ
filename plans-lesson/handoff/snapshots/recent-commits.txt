@@ -1,0 +1,50 @@
+4b95f19 (HEAD -> handoff-premium-secure-20260723_103324, origin/batch-lessons-14-18, handoff-premium-20260723_100341, batch-lessons-14-18) docs: plan unified premium lesson and exercise engines
+5438e7c feat: complete World 2 lessons 36-45
+90a2ba2 feat: complete amusement world lessons 33 34 35
+36a2d3e Complete lessons 31 and 32
+ee4f4c0 Complete lessons 29 and 30 with Supabase audio karaoke and exercises
+12ba2a1 feat: complete lessons 27 and 28 with exercises
+c7fd0b0 Complete lessons 25 and 26 with exercises and linking
+f825fae Finalize lessons 23 and 24 with exercises and linking
+0761cad Add lesson 22 food health lesson and exercises
+570ab3b Finalize lesson 21 feedback and progress notes
+b461062 Finalize lesson 21 length exercises and link lesson 20
+b0e1a12 Complete lesson 21 exercises and karaoke files
+65df370 Update lessons 1-20 visuals, world page UI, and resume before lesson 21
+6cba55a Improve lesson intro scene experience
+7a36f43 Improve world lessons page experience
+1e1b7b4 Improve lesson complete fullscreen experience
+9503e54 Add lesson 20 option entry motion
+70c75a8 Improve trace exercise motion and question visibility
+113163c Add rank order motion and keep question visible
+b4496f5 Add sort sequence motion and keep question visible
+2a569e9 Improve drag match motion and image question visibility
+d3067d8 Add count tap option motion and keep karaoke visible
+b461723 Add smooth option motion and keep karaoke visible
+df90fd5 Add smooth option entry motion part 1
+de2127b Improve rank order exercise bottom spacing
+38c555b Unify exercise feedback overlays part 2
+09c4e65 Unify exercise feedback overlays part 1
+f6dbc19 Backup and clean routes before global improvements
+97279e4 Complete lesson 20 number sequence
+8beea38 Complete lesson 19 food classification
+49f384c Complete lesson 18 spatial positions
+383c2fe Link lesson 16 completion to lesson 17
+2175b1c Update resume through lesson 17
+e3d2b6d Add lesson 17 extract information with audio exercises
+3a7a9a5 Complete lesson 16 movement and health
+8ea1b64 Link lesson 14 completion to lesson 15
+d3ff981 Complete lesson 15 ordinal rank
+c2d9f6d (dev) Complete lesson 14 memory quantity
+5e5b781 (origin/dev) Complete lesson 13 counting and exercises
+dca82ba docs: تحديث RESUME — الدرس 12 مكتمل (العدد 0)
+468194e feat: الدرس 12 صندوق المفاجآت (العدد 0) — 6 مشاهد + 4 تمارين
+28261e5 docs: تحديث RESUME — الدرس 11 مكتمل
+b6e5a68 feat: الدرس 11 ساحتي ملعبي (أتحرك وأتنقل) — 6 مشاهد + 3 تمارين
+8c5918d docs: تحديث RESUME — الدرس 10 + توحيد شاشات النهاية
+ac374b8 feat: الدرس 10 (تشكيل الكميات) + توحيد شاشات نهاية كل الدروس 1-10
+1110e27 docs: تحديث RESUME — الدرس 10 + توحيد شاشات النهاية
+c437ebf feat: الدرس 10 تشكيل الكميات + توحيد شاشات نهاية التمارين
+33d4936 docs: تحديث RESUME — الدرس 9 مكتمل
+e4da268 feat: الدرس 9 حديقة الألعاب (تعيين موقع في الفضاء) — 6 مشاهد + 3 تمارين
+6af1464 docs: تحديث RESUME — الدرس 8 مكتمل

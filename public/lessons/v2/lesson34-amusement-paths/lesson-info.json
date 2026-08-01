@@ -1,0 +1,15 @@
+{
+  "lesson_number": 34,
+  "world_order": 2,
+  "title_ar": "مسالك عالم الألعاب والترفيه",
+  "scene_start": 7,
+  "scene_end": 12,
+  "scenes": [
+    "s7.webp",
+    "s8.webp",
+    "s9.webp",
+    "s10.webp",
+    "s11.webp",
+    "s12.webp"
+  ]
+}

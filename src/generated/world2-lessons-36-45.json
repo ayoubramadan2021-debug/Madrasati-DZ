@@ -1,0 +1,116 @@
+{
+  "world_id": "5daed3bb-7e62-4a5a-93a1-f6dec60df810",
+  "world_title": "عالم الألعاب والترفيه",
+  "lessons": [
+    {
+      "number": 36,
+      "world_order": 4,
+      "title_ar": "أُصَنِّفُ أَلْعَابَ الْمِهْرَجَانِ",
+      "slug": "lesson36",
+      "teacher": "khalil",
+      "audio_base": "/audio/teachers/khalil/lesson_36_amusement_sorting",
+      "image_base": "/lessons/v2/lesson36",
+      "scene_count": 6,
+      "is_published": false
+    },
+    {
+      "number": 37,
+      "world_order": 5,
+      "title_ar": "أَقْرَأُ لَوْحَةَ الْأَلْعَابِ",
+      "slug": "lesson37",
+      "teacher": "taline",
+      "audio_base": "/audio/teachers/taline/lesson_37_amusement_picture_table",
+      "image_base": "/lessons/v2/lesson37",
+      "scene_count": 6,
+      "is_published": false
+    },
+    {
+      "number": 38,
+      "world_order": 6,
+      "title_ar": "أُحَدِّدُ مَكَانِي بَيْنَ أَصْدِقَائِي",
+      "slug": "lesson38",
+      "teacher": "khalil",
+      "audio_base": "/audio/teachers/khalil/lesson_38_amusement_positions",
+      "image_base": "/lessons/v2/lesson38",
+      "scene_count": 6,
+      "is_published": false
+    },
+    {
+      "number": 39,
+      "world_order": 7,
+      "title_ar": "رِحْلَةُ الْقِطَارِ الْمُرَتَّبِ",
+      "slug": "lesson39",
+      "teacher": "taline",
+      "audio_base": "/audio/teachers/taline/lesson_39_amusement_order",
+      "image_base": "/lessons/v2/lesson39",
+      "scene_count": 6,
+      "is_published": false
+    },
+    {
+      "number": 40,
+      "world_order": 8,
+      "title_ar": "أَكْتَشِفُ النَّمَطَ السِّرِّيَّ",
+      "slug": "lesson40",
+      "teacher": "khalil",
+      "audio_base": "/audio/teachers/khalil/lesson_40_amusement_patterns",
+      "image_base": "/lessons/v2/lesson40",
+      "scene_count": 6,
+      "is_published": false
+    },
+    {
+      "number": 41,
+      "world_order": 9,
+      "title_ar": "صُفُوفٌ وَأَعْمِدَةٌ فِي لَوْحَةِ اللَّعِبِ",
+      "slug": "lesson41",
+      "teacher": "taline",
+      "audio_base": "/audio/teachers/taline/lesson_41_amusement_rows_columns",
+      "image_base": "/lessons/v2/lesson41",
+      "scene_count": 6,
+      "is_published": false
+    },
+    {
+      "number": 42,
+      "world_order": 10,
+      "title_ar": "أَتَحَرَّكُ دَاخِلَ الشَّبَكَةِ",
+      "slug": "lesson42",
+      "teacher": "khalil",
+      "audio_base": "/audio/teachers/khalil/lesson_42_amusement_grid_paths",
+      "image_base": "/lessons/v2/lesson42",
+      "scene_count": 6,
+      "is_published": false
+    },
+    {
+      "number": 43,
+      "world_order": 11,
+      "title_ar": "أَتَعَرَّفُ إِلَى الْأَعْدَادِ مِنْ عِشْرِينَ إِلَى تِسْعَةٍ وَثَلَاثِينَ",
+      "slug": "lesson43",
+      "teacher": "taline",
+      "audio_base": "/audio/teachers/taline/lesson_43_amusement_numbers_20_39",
+      "image_base": "/lessons/v2/lesson43",
+      "scene_count": 6,
+      "is_published": false
+    },
+    {
+      "number": 44,
+      "world_order": 12,
+      "title_ar": "أُرَتِّبُ الْأَعْدَادَ فِي قِطَارِ الْأَرْقَامِ",
+      "slug": "lesson44",
+      "teacher": "khalil",
+      "audio_base": "/audio/teachers/khalil/lesson_44_amusement_number_order",
+      "image_base": "/lessons/v2/lesson44",
+      "scene_count": 6,
+      "is_published": false
+    },
+    {
+      "number": 45,
+      "world_order": 13,
+      "title_ar": "أَبْنِي الْعَدَدَ بِالْعَشَرَاتِ وَالْوَحَدَاتِ",
+      "slug": "lesson45",
+      "teacher": "taline",
+      "audio_base": "/audio/teachers/taline/lesson_45_amusement_tens_units",
+      "image_base": "/lessons/v2/lesson45",
+      "scene_count": 6,
+      "is_published": false
+    }
+  ]
+}

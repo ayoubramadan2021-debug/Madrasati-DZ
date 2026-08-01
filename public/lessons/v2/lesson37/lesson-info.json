@@ -1,0 +1,18 @@
+{
+  "lesson_number": 37,
+  "world_order": 5,
+  "title_ar": "قِرَاءَةُ جَدْوَلٍ",
+  "teacher": "taline",
+  "image_base": "/lessons/v2/lesson37",
+  "audio_base": "/audio/teachers/taline/lesson_37_amusement_picture_table",
+  "scene_start": 1,
+  "scene_end": 6,
+  "scenes": [
+    "s1.webp",
+    "s2.webp",
+    "s3.webp",
+    "s4.webp",
+    "s5.webp",
+    "s6.webp"
+  ]
+}

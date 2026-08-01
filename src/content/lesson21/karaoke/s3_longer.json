@@ -1,0 +1,13 @@
+{
+  "lessonId": 21,
+  "sceneId": "s3_longer",
+  "audio": "/audio/lesson21/s3_longer.mp3",
+  "image": "/images/lesson21/s3.webp",
+  "segments": [
+    { "id": 1, "text": "اُنْظُرُوا إِلَى الْحَبْلَيْنِ.", "start": 0.0, "end": 2.5 },
+    { "id": 2, "text": "أَيُّهُمَا أَطْوَلُ؟", "start": 2.6, "end": 4.5 },
+    { "id": 3, "text": "أَحْسَنْتُمْ.", "start": 4.6, "end": 5.8 },
+    { "id": 4, "text": "الْحَبْلُ الْأَخْضَرُ أَطْوَلُ.", "start": 5.9, "end": 8.6 },
+    { "id": 5, "text": "وَالْحَبْلُ الْأَحْمَرُ أَقْصَرُ.", "start": 8.7, "end": 11.5 }
+  ]
+}

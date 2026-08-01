@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useLang } from "../i18n/LanguageContext";
 import { getWorldById, getWorldLessons } from "../services/worldsService";
 import { supabase } from "../lib/supabaseClient";
-import { getV2Key } from "../features/lesson-v2/v2Registry";
+import { getV2KeyByLesson } from "../features/lesson-v2/v2Registry";
 import WorldIntroSceneV2 from "../features/exercises/templates/WorldIntroSceneV2";
 
 // نزع التشكيل + تحويل الكلمات الرقمية — للعرض في الفهرس فقط
@@ -92,10 +92,10 @@ export default function WorldPage() {
   }
 
   return (
-    <div style={{ minHeight: "100dvh", background: "var(--bg)", fontFamily: "Tajawal,sans-serif", direction: "rtl", paddingBottom: 100 }}>
-      <div style={{ padding: "24px 16px", position: "relative", zIndex: 2 }}>
+    <div style={{ minHeight: "100dvh", background: "radial-gradient(circle at top, #14264a 0%, #071122 48%, #050b16 100%)", fontFamily: "Tajawal,sans-serif", direction: "rtl", paddingBottom: 150, overflowX: "hidden" }}>
+      <div style={{ padding: "18px 16px 34px", position: "relative", zIndex: 2, maxWidth: 760, margin: "0 auto" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18, gap: 8 }}>
-          <button onClick={() => navigate(-1)} style={{ background: "var(--border-faint)", border: "1px solid var(--border)", color: "var(--text)", borderRadius: 12, padding: "8px 14px", fontSize: 13, fontWeight: 700, fontFamily: "Tajawal,sans-serif" }}>← {t("btn_back")}</button>
+          <button onClick={() => navigate(-1)} style={{ background: "var(--border-faint)", border: "1px solid var(--border)", color: "#fff", borderRadius: 12, padding: "8px 14px", fontSize: 13, fontWeight: 700, fontFamily: "Tajawal,sans-serif" }}>← {t("btn_back")}</button>
           {world?.intro_content && (
             <button onClick={handleReplayIntro} style={{ background: "linear-gradient(135deg,var(--gold),#FFB84D)", border: "none", color: "#fff", borderRadius: 12, padding: "8px 14px", fontSize: 13, fontWeight: 700, fontFamily: "Tajawal,sans-serif", cursor: "pointer", boxShadow: "0 4px 12px rgba(232,160,32,.35)" }}>🎬 شاهد المقدمة</button>
           )}
@@ -103,7 +103,7 @@ export default function WorldPage() {
 
         <div style={{ textAlign: "center", marginBottom: 24 }}>
           <div style={{ fontSize: 56, marginBottom: 10 }}>{world?.icon || "🌟"}</div>
-          <h1 style={{ fontSize: 26, fontWeight: 900, color: "var(--text)", margin: 0 }}>{title}</h1>
+          <h1 style={{ fontSize: 26, fontWeight: 900, color: "#fff", margin: 0 }}>{title}</h1>
         </div>
 
         {loading ? (
@@ -115,13 +115,31 @@ export default function WorldPage() {
             {lessons.map((l, i) => (
               <div
                 key={l.id}
-                onClick={() => { const k = getV2Key(l.id); navigate(k ? `/lesson-v2/${k}` : `/lesson/${l.id}`); }}
+                onClick={() => {
+                  if (
+                    String(l.world_id ?? world?.id ?? worldId) === "5daed3bb-7e62-4a5a-93a1-f6dec60df810"
+                  ) {
+                    navigate(
+                      `/world2-lesson/${l.id}`
+                    );
+                    return;
+                  }
+
+                  const k =
+                    getV2KeyByLesson(l);
+
+                  navigate(
+                    k
+                      ? `/lesson-v2/${k}`
+                      : `/lesson/${l.id}`
+                  );
+                }}
                 style={{ background: "var(--surface-2)", border: "1px solid var(--border-soft)", borderRadius: 16, padding: "16px 18px", display: "flex", alignItems: "center", gap: 14, cursor: "pointer", boxShadow: "0 4px 16px rgba(0,0,0,.3)", opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(10px)", transition: `all .4s ease ${i * 0.08}s` }}
               >
-                <div style={{ width: 50, height: 50, borderRadius: 15, background: "linear-gradient(135deg,var(--gold),#F4B942)", color: "#1B3A6B", display: "grid", placeItems: "center", fontSize: 22, fontWeight: 900, flexShrink: 0, boxShadow: "0 4px 12px rgba(232,160,32,.35)" }}>{i + 1}</div>
+                <div style={{ width: 50, height: 50, borderRadius: 15, background: "linear-gradient(135deg,var(--gold),#F4B942)", color: "#1B3A6B", display: "grid", placeItems: "center", fontSize: 26, fontWeight: 900, flexShrink: 0, boxShadow: "0 4px 12px rgba(232,160,32,.35)" }}>{i + 1}</div>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ color: "var(--text-muted)", fontSize: 11, fontWeight: 700, marginBottom: 3, letterSpacing: ".3px" }}>الدرس {i + 1}</div>
-                  <div style={{ fontWeight: 800, color: "var(--text)", fontSize: 16, lineHeight: 1.3 }}>{lang === "fr" && l.title_fr ? l.title_fr : cleanTitle(l.title)}</div>
+                  <div style={{ fontWeight: 800, color: "#fff", fontSize: 16, lineHeight: 1.3 }}>{lang === "fr" && l.title_fr ? l.title_fr : cleanTitle(l.title)}</div>
                 </div>
                 <div style={{ width: 11, height: 11, borderLeft: "2.5px solid var(--gold)", borderBottom: "2.5px solid var(--gold)", transform: "rotate(45deg)", flexShrink: 0, marginLeft: 4 }} />
               </div>
@@ -130,9 +148,9 @@ export default function WorldPage() {
         )}
 
         {!loading && (
-          <div style={{ marginTop: 28, padding: "22px 18px", background: "linear-gradient(145deg,rgba(232,160,32,.14),rgba(27,58,107,.18))", border: "1px solid var(--gold)33", borderRadius: 22, textAlign: "center" }}>
+          <div style={{ marginTop: 28, padding: "22px 18px", background: "linear-gradient(145deg,rgba(232,160,32,.14),rgba(27,58,107,.18))", border: "1px solid var(--gold)33", borderRadius: 28, textAlign: "center" }}>
             <div style={{ width: 60, height: 60, margin: "0 auto 12px", borderRadius: 18, background: "linear-gradient(135deg,#1B3A6B,#264a7d)", border: "2px solid var(--gold)", display: "grid", placeItems: "center", fontSize: 30, boxShadow: "0 4px 16px rgba(0,0,0,.25)" }}>🏆</div>
-            <div style={{ fontSize: 18, fontWeight: 900, color: "var(--text)", marginBottom: 5 }}>اِخْتَبِرْ مَعْرِفَتَك!</div>
+            <div style={{ fontSize: 18, fontWeight: 900, color: "#fff", marginBottom: 5 }}>اِخْتَبِرْ مَعْرِفَتَك!</div>
             <div style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 16 }}>🔒 اجتَزِ الاختبارَ لتفتحَ العالمَ التالي</div>
             <button
               onClick={() => navigate(`/world/${worldId}/quiz`)}

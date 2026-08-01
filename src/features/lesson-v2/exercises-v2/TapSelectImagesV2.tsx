@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback,
+  type ReactNode,
+} from "react";
 import { isKeyword } from "../keywords";
 
 // ═══════════════════════════════════════════════════════════════
@@ -14,10 +16,37 @@ export type TapSelectImageItem = {
   image_fit?: "cover" | "contain";
 };
 
+
+// LESSON52_CUSTOM_RENDER_EXTENSION
+export type TapSelectImagesCustomContext = {
+  item: TapSelectImageItem;
+  itemIndex: number;
+  total: number;
+  locked: boolean;
+  feedbackState:
+    | "idle"
+    | "correct"
+    | "wrong";
+  showCorrect: (
+    after?: () => void,
+  ) => void;
+  showWrong: (
+    after?: () => void,
+  ) => void;
+  completeRound: (
+    after?: () => void,
+  ) => void;
+};
+
 export interface TapSelectImagesV2Props {
   items: TapSelectImageItem[];
   audio_base: string;
   background_image?: string;
+  progress_emoji?: string;
+  mission_prefix?: string;
+  render_custom?: (
+    context: TapSelectImagesCustomContext,
+  ) => ReactNode;
   onComplete?: (score: number, total: number) => void;
 }
 
@@ -102,6 +131,9 @@ export default function TapSelectImagesV2({
   items,
   audio_base,
   background_image = "/lessons/v2/lesson1-numbers-1-5/scene-1-intro.webp",
+  progress_emoji = "🖼️",
+  mission_prefix = "مهمة الصور",
+  render_custom,
   onComplete,
 }: TapSelectImagesV2Props) {
   const [itemIdx, setItemIdx] = useState(0);
@@ -180,9 +212,93 @@ export default function TapSelectImagesV2({
     }
   };
 
+
+  const showCustomCorrect = (
+    after?: () => void,
+  ) => {
+    if (locked) return;
+
+    karaoke.stop();
+    setLocked(true);
+    setFeedbackState("correct");
+    playFeedback(true);
+
+    window.setTimeout(() => {
+      setFeedbackState("idle");
+      setLocked(false);
+      after?.();
+    }, 620);
+  };
+
+  const showCustomWrong = (
+    after?: () => void,
+  ) => {
+    if (locked) return;
+
+    karaoke.stop();
+    setLocked(true);
+    setFeedbackState("wrong");
+    playFeedback(false);
+
+    window.setTimeout(() => {
+      setFeedbackState("idle");
+      setLocked(false);
+      after?.();
+    }, 650);
+  };
+
+  const completeCustomRound = (
+    after?: () => void,
+  ) => {
+    if (
+      locked ||
+      feedbackState === "correct"
+    ) {
+      return;
+    }
+
+    karaoke.stop();
+    setLocked(true);
+    setFeedbackState("correct");
+    playFeedback(true);
+
+    window.setTimeout(() => {
+      after?.();
+
+      if (
+        itemIdx <
+        items.length - 1
+      ) {
+        setItemIdx(
+          current => current + 1,
+        );
+      } else {
+        onComplete?.(
+          items.length,
+          items.length,
+        );
+      }
+    }, 720);
+  };
+
   if (!item) return null;
   const words = timings[item.question_audio_key];
   const isActive = karaoke.activeKey === item.question_audio_key;
+
+  const progressEmoji = progress_emoji;
+  const missionText = `${mission_prefix} ${itemIdx + 1}`;
+
+  const coachText =
+    feedbackState === "correct"
+      ? "رائع يا بطل! اخترتَ الصورة الصحيحة 🎉"
+      : feedbackState === "wrong"
+        ? "اقتربت! انظر للصورة مرة أخرى 👏"
+        : "استمع جيدًا واختر الصورة المناسبة 🖼️";
+
+  const feedbackText =
+    feedbackState === "correct"
+      ? "✅ أَحْسَنْتَ"
+      : "حَاوِلْ مَرَّةً أُخْرَى ✨";
 
   return (
     <div style={{
@@ -195,6 +311,7 @@ export default function TapSelectImagesV2({
       display: "flex",
       flexDirection: "column",
       overflow: "hidden",
+              minHeight: 190,
     }}>
       <div style={{
         position: "absolute", inset: 0,
@@ -221,24 +338,79 @@ export default function TapSelectImagesV2({
           fontSize: 20, cursor: "pointer",
           boxShadow: "0 4px 12px rgba(232,160,32,.4)",
         }}>🔊</button>
-        <div style={{ display: "flex", gap: 6 }}>
-          {items.map((_, i) => (
-            <div key={i} style={{
-              width: i === itemIdx ? 24 : 8, height: 8, borderRadius: 4,
-              background: i < itemIdx ? C.green : i === itemIdx ? C.gold : "#E0CFA8",
-              transition: "all .3s ease",
-            }} />
-          ))}
+        <div
+          aria-label="تقدم التمرين"
+          style={{
+            display: "flex",
+            gap: 6,
+            alignItems: "center",
+            justifyContent: "center",
+            background: "rgba(255,255,255,.55)",
+            border: "2px solid rgba(232,160,32,.35)",
+            borderRadius: 999,
+            padding: "6px 10px",
+            boxShadow: "0 6px 14px rgba(0,0,0,.08)",
+          }}
+        >
+          {items.map((_, i) => {
+            const done = i < itemIdx;
+            const current = i === itemIdx;
+            return (
+              <span
+                key={i}
+                style={{
+                  width: current ? 28 : 22,
+                  height: current ? 28 : 22,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: current ? 22 : 18,
+                  opacity: done || current ? 1 : 0.35,
+                  filter: done || current ? "none" : "grayscale(1)",
+                  transform: current ? "translateY(-2px) scale(1.08)" : "scale(1)",
+                  transition: "all .25s ease",
+                }}
+              >
+                {progressEmoji}
+              </span>
+            );
+          })}
         </div>
         <div style={{
           background: C.navy, color: C.cream,
           padding: "6px 12px", borderRadius: 999,
           fontSize: 13, fontWeight: 700,
-        }}>{itemIdx + 1} / {items.length}</div>
+        }}><span dir="ltr">{itemIdx + 1} / {items.length}</span></div>
+      </div>
+
+      <div
+        style={{
+          position: "relative",
+          zIndex: 2,
+          display: "flex",
+          justifyContent: "center",
+          marginTop: 4,
+          marginBottom: 6,
+        }}
+      >
+        <div
+          style={{
+            background: "rgba(255,255,255,.88)",
+            color: C.navyDeep,
+            border: `2px solid ${C.gold}`,
+            borderRadius: 999,
+            padding: "8px 16px",
+            fontSize: 16,
+            fontWeight: 900,
+            boxShadow: "0 6px 16px rgba(0,0,0,.12)",
+          }}
+        >
+          {progressEmoji} {missionText}
+        </div>
       </div>
 
       {/* Question */}
-      <div style={{ position: "relative", zIndex: 2, padding: "8px 16px 14px" }}>
+      <div style={{ position: "relative", zIndex: 2, padding: "4px 16px 14px" }}>
         <div onClick={replayQuestion} style={{
           background: "rgba(255,255,255,0.96)",
           border: `2px solid ${C.gold}`,
@@ -252,12 +424,12 @@ export default function TapSelectImagesV2({
           cursor: "pointer",
         }}>
           {words ? words.map((w, i) => {
-            const isShown = karaoke.activeKey ? karaoke.shown.has(i) : false;
+            const isShown = karaoke.activeKey ? karaoke.shown.has(i) : true;
             const isCurrent = isActive && karaoke.currentIdx === i;
             return (
               <span key={i} style={{
                 display: "inline-block",
-                opacity: isShown ? 1 : 0,
+                opacity: (isShown || feedbackState !== "idle" || locked) ? 1 : 0,
                 transform: isCurrent ? "translateY(-3px) scale(1.1)" : "translateY(0)",
                 color: isCurrent ? C.gold : (isKeyword(w.text) ? "#16a34a" : C.navyDeep),
                 fontWeight: isCurrent ? 900 : 700,
@@ -282,7 +454,34 @@ export default function TapSelectImagesV2({
         flex: 1,
         alignContent: "center",
       }}>
-        {item.options.map((src, idx) => {
+        {render_custom
+            ? (
+              <div
+                data-lesson52-custom-full-width="true"
+                style={{
+                  gridColumn: "1 / -1",
+                  width: "100%",
+                  minWidth: 0,
+                  alignSelf: "stretch",
+                  justifySelf: "stretch",
+                }}
+              >
+                {render_custom({
+                item,
+                itemIndex: itemIdx,
+                total: items.length,
+                locked,
+                feedbackState,
+                showCorrect:
+                  showCustomCorrect,
+                showWrong:
+                  showCustomWrong,
+                completeRound:
+                  completeCustomRound,
+              })}
+              </div>
+            )
+            : item.options.map((src, idx) => {
           const isSelected = selectedIdx === idx;
           const isCorrectAnswer = idx === item.correct_index;
           const showAsCorrect = isSelected && feedbackState === "correct";
@@ -302,11 +501,15 @@ export default function TapSelectImagesV2({
                 border: `4px solid ${border}`,
                 borderRadius: 16,
                 cursor: locked ? "default" : "pointer",
-                boxShadow: isSelected ? "0 6px 16px rgba(0,0,0,.3)" : "0 4px 12px rgba(0,0,0,.15)",
-                transform: showAsCorrect ? "scale(1.05)" : showAsWrong ? "scale(0.95)" : "scale(1)",
+                boxShadow: showAsCorrect ? "0 12px 30px rgba(31,164,99,.38)" : isSelected ? "0 6px 16px rgba(0,0,0,.3)" : "0 4px 12px rgba(0,0,0,.15)",
+                transform: showAsCorrect ? "translateY(-5px) scale(1.08)" : showAsWrong ? "scale(0.95)" : "scale(1)",
                 transition: "all .3s ease",
+                opacity: 0,
+                animation: "optionPopIn .42s ease forwards",
+                animationDelay: `${idx * 90}ms`,
                 overflow: "hidden",
-                aspectRatio: "9/16",
+              minHeight: 190,
+                aspectRatio: "4 / 5",
                 position: "relative",
               }}
             >
@@ -358,24 +561,72 @@ export default function TapSelectImagesV2({
       {feedbackState !== "idle" && (
         <div style={{
           position: "fixed",
+          left: 18,
+          right: 18,
+          bottom: 96,
+          zIndex: 999,
+          background: "rgba(255,255,255,.96)",
+          color: C.navyDeep,
+          border: `3px solid ${feedbackState === "correct" ? C.green : C.gold}`,
+          borderRadius: 22,
+          padding: "12px 16px",
+          textAlign: "center",
+          fontSize: 18,
+          fontWeight: 900,
+          boxShadow: "0 10px 26px rgba(0,0,0,.18)",
+          animation: "feedbackPop .35s cubic-bezier(0.34, 1.56, 0.64, 1)",
+        }}>
+          {coachText}
+        </div>
+      )}
+
+      {feedbackState === "correct" && (
+        <div style={{
+          position: "fixed",
+          inset: 0,
+          pointerEvents: "none",
+          zIndex: 998,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: 44,
+          animation: "feedbackPop .45s cubic-bezier(0.34, 1.56, 0.64, 1)",
+        }}>
+          ✨ 🎉 🖼️
+        </div>
+      )}
+
+      {feedbackState !== "idle" && (
+        <div style={{
+          position: "fixed",
           top: "50%", left: "50%",
           transform: "translate(-50%, -50%)",
-          background: feedbackState === "correct" ? C.green : C.gold,
+          background: feedbackState === "correct" ? "#20A567" : "#EF4444",
           color: "white",
-          padding: "16px 28px",
-          borderRadius: 24,
-          fontSize: 20, fontWeight: 800,
-          boxShadow: "0 12px 32px rgba(0,0,0,.3)",
-          zIndex: 100,
+          padding: "20px 34px",
+          borderRadius: 999,
+          fontSize: 28,
+          fontWeight: 900,
+          boxShadow: "0 18px 38px rgba(0,0,0,.28)",
+          border: "6px solid rgba(255,255,255,.9)",
+          zIndex: 1000,
           animation: "feedbackPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
           pointerEvents: "none",
           textAlign: "center",
+          fontFamily: "Tajawal, sans-serif",
+          minWidth: 245,
         }}>
-          {feedbackState === "correct" ? "أَحْسَنْت 🎉" : `حَاوِلْ مَرَّةً أُخْرَى (${3 - attempts})`}
+          {feedbackText}
         </div>
       )}
 
       <style>{`
+        @keyframes optionPopIn {
+          0% { opacity: 0; transform: translateY(16px) scale(0.92); }
+          70% { opacity: 1; transform: translateY(-2px) scale(1.03); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
         @keyframes feedbackPop {
           0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
           60% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }

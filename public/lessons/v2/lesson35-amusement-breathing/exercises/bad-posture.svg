@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+      width="720" height="720"
+      viewBox="0 0 720 720">
+      <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#DFF6FF"/>
+          <stop offset=".72" stop-color="#FFF2C9"/>
+          <stop offset="1" stop-color="#F7D98A"/>
+        </linearGradient>
+        <filter id="shadow" x="-30%" y="-30%"
+          width="160%" height="160%">
+          <feDropShadow dx="0" dy="10" stdDeviation="9"
+            flood-color="#183B63" flood-opacity=".23"/>
+        </filter>
+      </defs>
+      <rect width="720" height="720" rx="42" fill="url(#bg)"/>
+      <circle cx="78" cy="90" r="34" fill="#FFD55A"/>
+      <path d="M0 620 Q170 550 350 615
+        T720 600 V720 H0Z" fill="#8FD275"/>
+      <rect x="28" y="28" width="664" height="664"
+        rx="38" fill="none" stroke="#E45B55" stroke-width="7"/>
+
+        <rect x="95" y="30" width="530" height="64"
+          rx="32" fill="#FFFFFF" fill-opacity=".95"
+          stroke="#E45B55" stroke-width="4"/>
+        <text x="360.0" y="73" text-anchor="middle"
+          direction="rtl" font-family="Tahoma,Arial"
+          font-size="27" font-weight="900"
+          fill="#183B63">أنحني وأضغط على صدري</text>
+
+
+      <g>
+        <circle cx="390" cy="280" r="62" fill="#F2C29B"/>
+        <path d="M335 257 Q390 200 445 257"
+          fill="#8B5E3C"/>
+        <circle cx="368" cy="273" r="6" fill="#183B63"/>
+        <circle cx="412" cy="273" r="6" fill="#183B63"/>
+        <path d="M372 307 Q390 320 408 307"
+          fill="none" stroke="#183B63" stroke-width="5"/>
+        <rect x="326" y="343" width="128" height="150"
+          rx="42" fill="#F28C28"/>
+        <path d="M345 370 L295 430 M435 370 L485 430" stroke="#F2C29B" stroke-width="22" stroke-linecap="round"/>
+        <path d="M360 480 L315 545 M420 480 L465 545" stroke="#183B63" stroke-width="22" stroke-linecap="round"/>
+      </g>
+
+          <path d="M190 225 Q260 175 320 230" fill="none"
+            stroke="#E45B55" stroke-width="18"/>
+
+    </svg>

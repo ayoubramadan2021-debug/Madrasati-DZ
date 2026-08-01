@@ -1,0 +1,16 @@
+{
+  "lesson_number": 44,
+  "sort_order": 12,
+  "title_ar": "أَكْتَشِفُ نِصْفَ عَدَدٍ أَصْغَرَ مِنْ عِشْرِينَ",
+  "title_fr": "La moitié d’un nombre inférieur à 20",
+  "subject": "math",
+  "speaker": "khalil",
+  "audio_base": "/audio/teachers/khalil/lesson_44_half_number_under_20",
+  "scene_count": 6,
+  "status": "ready",
+  "objectives": [
+    "فهم النصف من خلال تكوين مجموعتين متساويتين.",
+    "تحديد نصف عدد زوجي أصغر من عشرين.",
+    "الربط بين العدد ونصفه بالاعتماد على المحسوس."
+  ]
+}

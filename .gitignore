@@ -37,3 +37,21 @@ backups/
 public/test_child.mp3
 regen_taline_ssml.py
 *.bak
+
+.env.local
+
+# Local lesson repair files
+*.backup-*
+*.mp3.backup-*
+*.json.backup-*
+.lesson46-*
+inspect_lesson46_*.sh
+fix_lesson46_*.sh
+remove_lesson46_*.sh
+force_fix_l46_*.sh
+install_lesson46_*.sh
+finalize_lesson46_git.sh
+finalize_and_push_lesson46.sh
+
+# Local lesson repair files
+finish_lesson46_git_push.sh

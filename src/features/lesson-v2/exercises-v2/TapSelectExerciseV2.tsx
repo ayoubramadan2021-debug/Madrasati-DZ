@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { isKeyword } from "../keywords";
+import UnifiedCountDisplayV2 from "../components/UnifiedCountDisplayV2";
+import UnifiedExerciseAnswersV2 from "../components/UnifiedExerciseAnswersV2";
+import UnifiedExerciseScreenV2 from "../components/UnifiedExerciseScreenV2";
 
 // ═══════════════════════════════════════════════════════════════
 // TapSelectExerciseV2 — انقر الرقم الصحيح
@@ -131,8 +134,13 @@ export default function TapSelectExerciseV2({
     if (!item) return;
     const t = timings[item.question_audio_key];
     if (!t) return;
-    const delay = 200 + item.items_count * 250 + 500;
-    const timer = setTimeout(() => karaoke.play(item.question_audio_key, t), delay);
+    // بعد انتهاء تغذية «أحسنت» والانتقال للسؤال التالي،
+    // يبدأ صوت السؤال والكاريوكي مباشرة.
+    const delay = 250;
+    const timer = setTimeout(
+      () => karaoke.play(item.question_audio_key, t),
+      delay,
+    );
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itemIdx, timings]);
@@ -192,219 +200,67 @@ export default function TapSelectExerciseV2({
   const words = timings[item.question_audio_key];
   const isActive = karaoke.activeKey === item.question_audio_key;
 
+  const questionWords =
+    words?.map((word) => word.text) ??
+    item.question
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+
+  const missionText = "أَعُدُّ وَأَخْتَارُ الْعَدَدَ الصَّحِيحَ";
+
   return (
-    <div style={{
-      minHeight: "100dvh",
-      width: "100%",
-      position: "relative",
-      fontFamily: "Tajawal, sans-serif",
-      direction: "rtl",
-      background: "#000",
-      display: "flex",
-      flexDirection: "column",
-      overflow: "hidden",
-    }}>
-      <div style={{
-        position: "absolute",
-        inset: 0,
-        backgroundImage: `url('${background_image}')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        filter: "blur(2px) brightness(0.85)",
-      }} />
+    <UnifiedExerciseScreenV2
+      index={itemIdx}
+      total={items.length}
+      missionTitle={missionText}
+      questionWords={questionWords}
+      activeWordIndex={
+        isActive
+          ? karaoke.currentIdx
+          : -1
+      }
+      onReplay={replayQuestion}
+      isPlaying={isActive}
+      backgroundImage={background_image}
+      activity={
+        <UnifiedCountDisplayV2
+          count={item.items_count}
+          emoji={item.items_emoji || "🍎"}
+          itemLabel="عناصر للعد"
+        />
+      }
+      answers={
+        <UnifiedExerciseAnswersV2
+          options={item.options.map((option) => ({
+            id: String(option),
+            content: String(option),
+            ariaLabel: `اختيار العدد ${option}`,
+          }))}
+          selectedId={
+            selectedOption === null
+              ? null
+              : String(selectedOption)
+          }
+          feedback={feedbackState}
+          onSelect={(id) => {
+            const option = Number(id);
 
-      <div style={{
-        position: "absolute",
-        bottom: 0, left: 0, right: 0,
-        height: "65%",
-        background: "linear-gradient(180deg, transparent 0%, rgba(255,248,236,0.88) 45%, rgba(247,219,160,0.98) 100%)",
-        pointerEvents: "none",
-      }} />
-
-      <div style={{
-        position: "relative", zIndex: 2,
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "14px 16px",
-      }}>
-        <button onClick={replayQuestion} style={{
-          width: 44, height: 44, borderRadius: "50%",
-          background: C.gold, color: "white",
-          border: `3px solid ${C.cream}`,
-          fontSize: 20, cursor: "pointer",
-          boxShadow: "0 4px 12px rgba(232,160,32,.4)",
-        }}>🔊</button>
-
-        <div style={{ display: "flex", gap: 6 }}>
-          {items.map((_, i) => (
-            <div key={i} style={{
-              width: i === itemIdx ? 24 : 8, height: 8, borderRadius: 4,
-              background: i < itemIdx ? C.green : i === itemIdx ? C.gold : "#E0CFA8",
-              transition: "all .3s ease",
-            }} />
-          ))}
-        </div>
-
-        <div style={{
-          background: C.navy, color: C.cream,
-          padding: "6px 12px", borderRadius: 999,
-          fontSize: 13, fontWeight: 700,
-        }}>
-          {itemIdx + 1} / {items.length}
-        </div>
-      </div>
-
-      <div style={{
-        position: "relative", zIndex: 2,
-        flex: 1,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "20px",
-      }}>
-        <div style={{
-          background: "rgba(255,255,255,0.95)",
-          border: `3px solid ${C.gold}`,
-          borderRadius: 24,
-          padding: "30px 40px",
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          gap: 12,
-          maxWidth: 360,
-          boxShadow: "0 8px 24px rgba(0,0,0,.2)",
-        }}>
-          {Array.from({ length: item.items_count }).map((_, i) => (
-            <span
-              key={`${itemIdx}-apple-${i}`}
-              style={{
-                fontSize: 52,
-                display: "inline-block",
-                opacity: 0,
-                animation: `appleAppear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards`,
-                animationDelay: `${0.2 + i * 0.25}s`,
-                filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.25))",
-              }}
-            >
-              {item.items_emoji || "🍎"}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div style={{
-        position: "relative", zIndex: 2,
-        padding: "0 16px 12px",
-      }}>
-        <div onClick={replayQuestion} style={{
-          background: "rgba(255,255,255,0.95)",
-          border: `2px solid ${C.gold}`,
-          borderRadius: 18,
-          padding: "12px 16px",
-          maxWidth: 400,
-          margin: "0 auto",
-          minHeight: 50,
-          fontSize: 16,
-          lineHeight: 1.6,
-          textAlign: "center",
-          boxShadow: "0 6px 20px rgba(0,0,0,.15)",
-          cursor: "pointer",
-        }}>
-          {words ? words.map((w, i) => {
-            const isShown = karaoke.activeKey ? karaoke.shown.has(i) : false;
-            const isCurrent = isActive && karaoke.currentIdx === i;
-            return (
-              <span key={i} style={{
-                display: "inline-block",
-                opacity: isShown ? 1 : 0,
-                transform: isCurrent ? "translateY(-3px) scale(1.1)" : "translateY(0)",
-                color: isCurrent ? C.gold : (isKeyword(w.text) ? "#16a34a" : C.navyDeep),
-                fontWeight: isCurrent ? 900 : 700,
-                transition: "all .25s ease",
-                margin: "0 2px",
-              }}>{w.text} </span>
-            );
-          }) : <span style={{ opacity: 0.5 }}>...</span>}
-        </div>
-      </div>
-
-      <div style={{
-        position: "relative", zIndex: 2,
-        padding: "8px 16px 100px",
-        display: "flex",
-        justifyContent: "center",
-        gap: 12,
-        flexWrap: "wrap",
-        maxWidth: 480,
-        margin: "0 auto",
-        width: "100%",
-      }}>
-        {item.options.map((opt) => {
-          const isSelected = selectedOption === opt;
-          const isCorrectAnswer = opt === item.correct;
-          const showAsCorrect = isSelected && feedbackState === "correct";
-          const showAsWrong = isSelected && feedbackState === "wrong";
-          const showCorrectHint = locked && isCorrectAnswer && feedbackState !== "correct";
-          const bg = showAsCorrect || showCorrectHint ? C.greenSoft
-            : showAsWrong ? C.redSoft
-            : "rgba(255,255,255,0.95)";
-          const border = showAsCorrect || showCorrectHint ? C.green
-            : showAsWrong ? C.red
-            : C.gold;
-          return (
-            <button
-              key={opt}
-              onClick={() => handleSelect(opt)}
-              disabled={locked}
-              style={{
-                width: 72, height: 72,
-                background: bg,
-                border: `4px solid ${border}`,
-                borderRadius: 18,
-                fontSize: 36, fontWeight: 900,
-                color: C.navyDeep,
-                fontFamily: "Tajawal, sans-serif",
-                cursor: locked ? "default" : "pointer",
-                boxShadow: isSelected ? "0 6px 16px rgba(0,0,0,.25)" : "0 4px 12px rgba(0,0,0,.1)",
-                transform: showAsCorrect ? "scale(1.1)" : showAsWrong ? "scale(0.95)" : "scale(1)",
-                transition: "all .3s ease",
-              }}
-            >{opt}</button>
-          );
-        })}
-      </div>
-
-      {feedbackState !== "idle" && (
-        <div style={{
-          position: "fixed",
-          top: "50%", left: "50%",
-          transform: "translate(-50%, -50%)",
-          background: feedbackState === "correct" ? C.green : C.gold,
-          color: "white",
-          padding: "16px 28px",
-          borderRadius: 24,
-          fontSize: 20, fontWeight: 800,
-          boxShadow: "0 12px 32px rgba(0,0,0,.3)",
-          zIndex: 100,
-          animation: "feedbackPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
-          pointerEvents: "none",
-          textAlign: "center",
-        }}>
-          {feedbackState === "correct" ? "أَحْسَنْت 🎉" : `حَاوِلْ مَرَّةً أُخْرَى (${3 - attempts})`}
-        </div>
-      )}
-
-      <style>{`
-        @keyframes appleAppear {
-          0% { opacity: 0; transform: translateY(-20px) scale(0.4) rotate(-15deg); }
-          60% { opacity: 1; transform: translateY(4px) scale(1.15) rotate(5deg); }
-          100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
-        }
-        @keyframes feedbackPop {
-          0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-          60% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
-          100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        }
-      `}</style>
-    </div>
+            if (Number.isFinite(option)) {
+              handleSelect(option);
+            }
+          }}
+          variant="number"
+          columns="auto"
+          disabled={locked}
+          direction="ltr"
+        />
+      }
+      feedback={feedbackState}
+      successText="🌟 أَحْسَنْتَ!"
+      retryText="حَاوِلْ مَرَّةً أُخْرَى ✨"
+      activityLabel="مجموعة عناصر للعد"
+      answersLabel="الأعداد المقترحة"
+    />
   );
 }

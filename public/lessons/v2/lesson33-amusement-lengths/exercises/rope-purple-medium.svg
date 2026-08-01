@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+      width="720" height="720" viewBox="0 0 720 720">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0"
+          x2="0" y2="1">
+          <stop offset="0" stop-color="#DDF5FF"/>
+          <stop offset=".72" stop-color="#FFF0BE"/>
+          <stop offset="1" stop-color="#F7D98A"/>
+        </linearGradient>
+        <linearGradient id="shine" x1="0" y1="0"
+          x2="1" y2="1">
+          <stop offset="0" stop-color="#FFFFFF"
+            stop-opacity=".75"/>
+          <stop offset=".3" stop-color="#FFFFFF"
+            stop-opacity=".05"/>
+          <stop offset="1" stop-color="#FFFFFF"
+            stop-opacity="0"/>
+        </linearGradient>
+        <filter id="shadow" x="-30%" y="-30%"
+          width="160%" height="160%">
+          <feDropShadow dx="0" dy="12" stdDeviation="10"
+            flood-color="#183B63" flood-opacity=".24"/>
+        </filter>
+      </defs>
+
+      <rect width="720" height="720" rx="42"
+        fill="url(#sky)"/>
+
+      <circle cx="88" cy="92" r="35"
+        fill="#FFD35A"/>
+
+      <g opacity=".9">
+        <circle cx="610" cy="126" r="32"
+          fill="#FFFFFF"/>
+        <circle cx="650" cy="129" r="23"
+          fill="#FFFFFF"/>
+        <circle cx="574" cy="135" r="22"
+          fill="#FFFFFF"/>
+      </g>
+
+      <path d="M0 584 Q150 520 310 585
+        T720 570 V720 H0Z"
+        fill="#8ED477"/>
+
+      <path d="M0 625 Q190 565 370 625
+        T720 610 V720 H0Z"
+        fill="#64BD66" opacity=".8"/>
+
+      <rect x="28" y="28" width="664" height="664"
+        rx="38" fill="none" stroke="#8458D6"
+        stroke-width="8" opacity=".92"/>
+
+
+        <rect x="105" y="36" width="510" height="62"
+          rx="31" fill="#ffffff" fill-opacity=".94"/>
+        <text x="360" y="78" text-anchor="middle"
+          direction="rtl" font-family="Tahoma,Arial"
+          font-size="28" font-weight="800"
+          fill="#183B63">الحبل البنفسجي</text>
+
+
+      <g filter="url(#shadow)">
+        <circle cx="230" cy="340" r="31"
+          fill="#FFFFFF" stroke="#8458D6"
+          stroke-width="15"/>
+        <circle cx="490" cy="340" r="31"
+          fill="#FFFFFF" stroke="#8458D6"
+          stroke-width="15"/>
+        <path d="M230 340
+          C300 235,365 450,445 340
+          S415 240,490 340"
+          fill="none" stroke="#8458D6"
+          stroke-width="28" stroke-linecap="round"/>
+      </g>
+      <rect x="245" y="510" width="39" height="35" rx="8" fill="#8458D6" stroke="#fff" stroke-width="3"/><rect x="291" y="510" width="39" height="35" rx="8" fill="#8458D6" stroke="#fff" stroke-width="3"/><rect x="337" y="510" width="39" height="35" rx="8" fill="#8458D6" stroke="#fff" stroke-width="3"/><rect x="383" y="510" width="39" height="35" rx="8" fill="#8458D6" stroke="#fff" stroke-width="3"/><rect x="429" y="510" width="39" height="35" rx="8" fill="#8458D6" stroke="#fff" stroke-width="3"/>
+
+
+      <path d="M58 48 H280 Q200 118 90 250Z"
+        fill="url(#shine)" opacity=".55"/>
+    </svg>

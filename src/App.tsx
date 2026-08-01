@@ -6,6 +6,18 @@ import ExerciseDemoPage from "./pages/ExerciseDemoPage";
 import BottomNav from "./shared/components/BottomNav";
 import AdminRoute from "./shared/components/AdminRoute";
 
+import Lesson47Page from "./pages/Lesson47Page";
+import Lesson47ExercisesPage from "./pages/Lesson47ExercisesPage";
+import Lesson48Page from "./pages/Lesson48Page";
+import Lesson49Page from "./pages/Lesson49Page";
+import Lesson50Page from "./pages/Lesson50Page";
+import Lesson51Page from "./pages/Lesson51Page";
+import Lesson48ExercisesPage from "./pages/Lesson48ExercisesPage";
+import Lesson49ExercisesPage from "./pages/Lesson49ExercisesPage";
+import Lesson50ExercisesPage from "./pages/Lesson50ExercisesPage";
+import Lesson51ExercisesPage from "./pages/Lesson51ExercisesPage";
+import Lesson52Page from "./pages/Lesson52Page";
+import Lesson52ExercisesPage from "./pages/Lesson52ExercisesPage";
 const lazy = (importFn: () => Promise<any>, title: string) => {
   const LazyComponent = React.lazy(importFn);
   return (
@@ -22,7 +34,61 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/exercise-demo" element={<ExerciseDemoPage />} />
         <Route path="/ai-tutor" element={<AiTutorPage />} />
-        <Route path="/lesson-v2/:lessonId?" element={lazy(() => import("./pages/LessonV2Page"), "الدرس")} />
+        <Route path="/lesson-v2/lesson47" element={<Lesson47Page />} />
+        <Route path="/lesson-v2/lesson47/exercises" element={<Lesson47ExercisesPage />} />
+
+        <Route
+          path="/lesson-v2/lesson48"
+          element={<Lesson48Page />}
+        />
+
+        <Route
+          path="/lesson-v2/lesson49"
+          element={<Lesson49Page />}
+        />
+
+        <Route
+          path="/lesson-v2/lesson50"
+          element={<Lesson50Page />}
+        />
+
+        <Route
+          path="/lesson-v2/lesson51"
+          element={<Lesson51Page />}
+        />
+
+        <Route
+          path="/lesson-v2/lesson48/exercises"
+          element={<Lesson48ExercisesPage />}
+        />
+
+        <Route
+          path="/lesson-v2/49/exercises"
+          element={<Lesson49ExercisesPage />}
+        />
+
+        <Route
+          path="/lesson-v2/50/exercises"
+          element={<Lesson50ExercisesPage />}
+        />
+
+        <Route
+          path="/lesson-v2/51/exercises"
+          element={<Lesson51ExercisesPage />}
+        />
+
+        <Route path="/lesson-v2/lesson52" element={<Lesson52Page />} />
+<Route path="/lesson-v2/:lessonId?" element={lazy(() => import("./pages/LessonV2Page"), "الدرس")} />
+        <Route path="/world2-lesson/52" element={<Lesson52Page />} />
+<Route path="/world2-lesson/:lessonId" element={lazy(() => import("./pages/World2LessonPage"), "درس عالم الألعاب")} />
+
+
+        <Route
+          path="/lesson-v2/48/exercises"
+          element={<Lesson48ExercisesPage />}
+        />
+
+        <Route path="/lesson-v2/52/exercises" element={<Lesson52ExercisesPage />} />
         <Route path="/lesson-v2/:lessonId/exercises" element={lazy(() => import("./pages/LessonExercisesPage"), "التمارين")} />
         <Route path="/lesson-exercises" element={lazy(() => import("./pages/LessonExercisesPage"), "التمارين")} />
         <Route path="/lesson2-exercises" element={lazy(() => import("./pages/Lesson2ExercisesPage"), "تمارين الدرس 2")} />
@@ -38,7 +104,15 @@ export default function App() {
         <Route path="/lesson12-exercises" element={lazy(() => import("./pages/Lesson12ExercisesPage"), "تمارين الدرس 12")} />
         <Route path="/lesson13-exercises" element={lazy(() => import("./pages/Lesson13ExercisesPage"), "تمارين الدرس 13")} />
         <Route path="/lesson14-exercises" element={lazy(() => import("./pages/Lesson14ExercisesPage"), "تمارين الدرس 14")} />
-        <Route path="/lesson5-exercises" element={lazy(() => import("./pages/Lesson5ExercisesPage"), "تمارين الدرس 5")} />
+        <Route path="/lesson15-exercises" element={lazy(() => import("./pages/Lesson15ExercisesPage"), "تمارين الدرس 15")} />
+        <Route path="/lesson16-exercises" element={lazy(() => import("./pages/Lesson16ExercisesPage"), "تمارين الدرس 16")} />
+        <Route path="/lesson17-exercises" element={lazy(() => import("./pages/Lesson17ExercisesPage"), "تمارين الدرس 17")} />
+        <Route path="/lesson18-exercises" element={lazy(() => import("./pages/Lesson18ExercisesPage"), "تمارين الدرس 18")} />
+        <Route path="/lesson19-exercises" element={lazy(() => import("./pages/Lesson19ExercisesPage"), "تمارين الدرس 19")} />
+        <Route path="/lesson20-exercises" element={lazy(() => import("./pages/Lesson20ExercisesPage"), "تمارين الدرس 20")} />
+        <Route path="/lesson21-exercises" element={lazy(() => import("./pages/Lesson21ExercisesPage"), "تمارين الدرس 21")} />
+        <Route path="/lesson22-exercises" element={lazy(() => import("./pages/Lesson22ExercisesPage"), "تمارين الدرس 22")} />
+
 
         {/* مسار المادة والأقسام - موحّد مع روابط الصفحات */}
         <Route path="/grade/:gradeId" element={lazy(() => import("./pages/GradePage"), "الأقسام")} />
@@ -68,8 +142,28 @@ export default function App() {
         <Route path="/favorites" element={lazy(() => import("./pages/FavoritesPage"), "المفضلة")} />
         <Route path="/notifications" element={lazy(() => import("./pages/NotificationsPage"), "الإشعارات")} />
 
+              <Route path="/lesson25-exercises" element={lazy(() => import("./pages/Lesson25ExercisesPage"), "تمارين الدرس 25")} />
+              <Route path="/lesson27-exercises" element={lazy(() => import("./pages/Lesson27ExercisesPage"), "تمارين الدرس 27")} />
+              <Route path="/lesson28-exercises" element={lazy(() => import("./pages/Lesson28ExercisesPage"), "تمارين الدرس 28")} />
+              <Route path="/lesson-v2/lesson25/exercises" element={lazy(() => import("./pages/Lesson25ExercisesPage"), "تمارين الدرس 25")} />
+              <Route path="/lesson-v2/lesson27/exercises" element={lazy(() => import("./pages/Lesson27ExercisesPage"), "تمارين الدرس 27")} />
+              <Route path="/lesson-v2/lesson28/exercises" element={lazy(() => import("./pages/Lesson28ExercisesPage"), "تمارين الدرس 28")} />
+        <Route path="/lesson26-exercises" element={lazy(() => import("./pages/Lesson26ExercisesPage"), "تمارين الدرس 26")} />
+          <Route path="/lesson-v2/lesson26/exercises" element={lazy(() => import("./pages/Lesson26ExercisesPage"), "تمارين الدرس 26")} />
+              <Route path="/lesson23-exercises" element={lazy(() => import("./pages/Lesson23ExercisesPage"), "تمارين الدرس 23")} />
+              <Route path="/lesson24-exercises" element={lazy(() => import("./pages/Lesson24ExercisesPage"), "تمارين الدرس 24")} />
+        <Route path="/lesson29-exercises" element={lazy(() => import("./pages/Lesson29ExercisesPage"), "تمارين الدرس 29")} />
+        <Route path="/lesson30-exercises" element={lazy(() => import("./pages/Lesson30ExercisesPage"), "تمارين الدرس 30")} />
+        <Route path="/lesson-v2/lesson29/exercises" element={lazy(() => import("./pages/Lesson29ExercisesPage"), "تمارين الدرس 29")} />
+        <Route path="/lesson-v2/lesson30/exercises" element={lazy(() => import("./pages/Lesson30ExercisesPage"), "تمارين الدرس 30")} />
+        <Route path="/lesson31-exercises" element={lazy(() => import("./pages/Lesson31ExercisesPage"), "تمارين الدرس 31")} />
+        <Route path="/lesson-v2/lesson31/exercises" element={lazy(() => import("./pages/Lesson31ExercisesPage"), "تمارين الدرس 31")} />
+        <Route path="/lesson32-exercises" element={lazy(() => import("./pages/Lesson32ExercisesPage"), "تمارين الدرس 32")} />
+        <Route path="/lesson-v2/lesson32/exercises" element={lazy(() => import("./pages/Lesson32ExercisesPage"), "تمارين الدرس 32")} />
+
         <Route path="*" element={<Home />} />
-      </Routes>
+
+</Routes>
       <BottomNav />
     </Router>
   );

@@ -1,0 +1,835 @@
+[
+  {
+    "lesson": 1,
+    "title_ar": "الأعداد من 1 إلى 5",
+    "audio_base": "/audio/lesson_1_numbers_1_5",
+    "audio_key": "l1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 1,
+    "title_ar": "الأعداد من 1 إلى 5",
+    "audio_base": "/audio/lesson_1_numbers_1_5",
+    "audio_key": "l1_num_1",
+    "text": "انظروا، تفاحة واحدة. هذا هو العدد واحد."
+  },
+  {
+    "lesson": 1,
+    "title_ar": "الأعداد من 1 إلى 5",
+    "audio_base": "/audio/lesson_1_numbers_1_5",
+    "audio_key": "l1_num_2",
+    "text": "تفاحة وتفاحة. صار عندنا اثنتان."
+  },
+  {
+    "lesson": 1,
+    "title_ar": "الأعداد من 1 إلى 5",
+    "audio_base": "/audio/lesson_1_numbers_1_5",
+    "audio_key": "l1_num_3",
+    "text": "هذه ثلاث تفاحات. نعد معًا: واحد، اثنان، ثلاثة."
+  },
+  {
+    "lesson": 1,
+    "title_ar": "الأعداد من 1 إلى 5",
+    "audio_base": "/audio/lesson_1_numbers_1_5",
+    "audio_key": "l1_num_4",
+    "text": "هذه أربع تفاحات. نعد معًا: واحد، اثنان، ثلاثة، أربعة."
+  },
+  {
+    "lesson": 1,
+    "title_ar": "الأعداد من 1 إلى 5",
+    "audio_base": "/audio/lesson_1_numbers_1_5",
+    "audio_key": "l1_num_5",
+    "text": "هذه خمس تفاحات. أحسنتم يا أبطال."
+  },
+  {
+    "lesson": 2,
+    "title_ar": "بَيْتُ تَالِينْ",
+    "audio_base": "/audio/lesson_2_house",
+    "audio_key": "l2_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 2,
+    "title_ar": "بَيْتُ تَالِينْ",
+    "audio_base": "/audio/lesson_2_house",
+    "audio_key": "l2_amam",
+    "text": "التلفاز أمام الأريكة. أمام تعني قدّام."
+  },
+  {
+    "lesson": 2,
+    "title_ar": "بَيْتُ تَالِينْ",
+    "audio_base": "/audio/lesson_2_house",
+    "audio_key": "l2_waraa",
+    "text": "النافذة وراء الأريكة. وراء تعني خلف."
+  },
+  {
+    "lesson": 2,
+    "title_ar": "بَيْتُ تَالِينْ",
+    "audio_base": "/audio/lesson_2_house",
+    "audio_key": "l2_bijanib",
+    "text": "الثلاجة بجانب الفرن. بجانب تعني قرب."
+  },
+  {
+    "lesson": 2,
+    "title_ar": "بَيْتُ تَالِينْ",
+    "audio_base": "/audio/lesson_2_house",
+    "audio_key": "l2_muqabil",
+    "text": "السرير مقابل النافذة. مقابل يعني وجهًا لوجه."
+  },
+  {
+    "lesson": 2,
+    "title_ar": "بَيْتُ تَالِينْ",
+    "audio_base": "/audio/lesson_2_house",
+    "audio_key": "l2_outro",
+    "text": "أحسنتم! تعلمنا أمام، وراء، بجانب، مقابل."
+  },
+  {
+    "lesson": 3,
+    "title_ar": "رِحْلَةُ الحَوَاسِّ",
+    "audio_base": "/audio/lesson_3_senses",
+    "audio_key": "l3_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 3,
+    "title_ar": "رِحْلَةُ الحَوَاسِّ",
+    "audio_base": "/audio/lesson_3_senses",
+    "audio_key": "l3_sight",
+    "text": "أرى بعيني. هذه حاسة الرؤية."
+  },
+  {
+    "lesson": 3,
+    "title_ar": "رِحْلَةُ الحَوَاسِّ",
+    "audio_base": "/audio/lesson_3_senses",
+    "audio_key": "l3_hearing",
+    "text": "أسمع بأذني. هذه حاسة السمع."
+  },
+  {
+    "lesson": 3,
+    "title_ar": "رِحْلَةُ الحَوَاسِّ",
+    "audio_base": "/audio/lesson_3_senses",
+    "audio_key": "l3_smell",
+    "text": "أشم بأنفي. هذه حاسة الشم."
+  },
+  {
+    "lesson": 3,
+    "title_ar": "رِحْلَةُ الحَوَاسِّ",
+    "audio_base": "/audio/lesson_3_senses",
+    "audio_key": "l3_taste",
+    "text": "أتذوق بلساني. هذه حاسة الذوق."
+  },
+  {
+    "lesson": 3,
+    "title_ar": "رِحْلَةُ الحَوَاسِّ",
+    "audio_base": "/audio/lesson_3_senses",
+    "audio_key": "l3_touch",
+    "text": "ألمس بيدي. هذه حاسة اللمس."
+  },
+  {
+    "lesson": 4,
+    "title_ar": "أَكْثَرُ وَأَقَلُّ",
+    "audio_base": "/audio/lesson_4_compare",
+    "audio_key": "l4_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 4,
+    "title_ar": "أَكْثَرُ وَأَقَلُّ",
+    "audio_base": "/audio/lesson_4_compare",
+    "audio_key": "l4_more",
+    "text": "التفاح أكثر من الموز."
+  },
+  {
+    "lesson": 4,
+    "title_ar": "أَكْثَرُ وَأَقَلُّ",
+    "audio_base": "/audio/lesson_4_compare",
+    "audio_key": "l4_less",
+    "text": "الفراولة أقل من البرتقال."
+  },
+  {
+    "lesson": 4,
+    "title_ar": "أَكْثَرُ وَأَقَلُّ",
+    "audio_base": "/audio/lesson_4_compare",
+    "audio_key": "l4_equal",
+    "text": "العنب يساوي الكرز. هما متساويان."
+  },
+  {
+    "lesson": 4,
+    "title_ar": "أَكْثَرُ وَأَقَلُّ",
+    "audio_base": "/audio/lesson_4_compare",
+    "audio_key": "l4_apply",
+    "text": "نقارن المجموعات: أكثر، أقل، يساوي."
+  },
+  {
+    "lesson": 4,
+    "title_ar": "أَكْثَرُ وَأَقَلُّ",
+    "audio_base": "/audio/lesson_4_compare",
+    "audio_key": "l4_outro",
+    "text": "أحسنتم! هيا نتدرب على المقارنة."
+  },
+  {
+    "lesson": 5,
+    "title_ar": "مَطْبَخُ تَالِين (سِتَّة إِلَى تِسْعَة)",
+    "audio_base": "/audio/lesson_5_counting",
+    "audio_key": "s1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 5,
+    "title_ar": "مَطْبَخُ تَالِين (سِتَّة إِلَى تِسْعَة)",
+    "audio_base": "/audio/lesson_5_counting",
+    "audio_key": "s2_six",
+    "text": "هذه ست ملاعق. نعد معًا إلى ستة."
+  },
+  {
+    "lesson": 5,
+    "title_ar": "مَطْبَخُ تَالِين (سِتَّة إِلَى تِسْعَة)",
+    "audio_base": "/audio/lesson_5_counting",
+    "audio_key": "s3_seven",
+    "text": "هذه سبعة فناجين. نعد معًا إلى سبعة."
+  },
+  {
+    "lesson": 5,
+    "title_ar": "مَطْبَخُ تَالِين (سِتَّة إِلَى تِسْعَة)",
+    "audio_base": "/audio/lesson_5_counting",
+    "audio_key": "s4_eight",
+    "text": "هذه ثمانية أطباق. نعد معًا إلى ثمانية."
+  },
+  {
+    "lesson": 5,
+    "title_ar": "مَطْبَخُ تَالِين (سِتَّة إِلَى تِسْعَة)",
+    "audio_base": "/audio/lesson_5_counting",
+    "audio_key": "s5_nine",
+    "text": "هذه تسعة أكواب. نعد معًا إلى تسعة."
+  },
+  {
+    "lesson": 5,
+    "title_ar": "مَطْبَخُ تَالِين (سِتَّة إِلَى تِسْعَة)",
+    "audio_base": "/audio/lesson_5_counting",
+    "audio_key": "s6_closing",
+    "text": "أحسنتم! تعلمنا الأعداد من ستة إلى تسعة."
+  },
+  {
+    "lesson": 6,
+    "title_ar": "سَاحَةُ خَلِيل (سِتَّة إِلَى تِسْعَة)",
+    "audio_base": "/audio/lesson_6_counting",
+    "audio_key": "s1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 6,
+    "title_ar": "سَاحَةُ خَلِيل (سِتَّة إِلَى تِسْعَة)",
+    "audio_base": "/audio/lesson_6_counting",
+    "audio_key": "s2_six",
+    "text": "هذه ست كرات. نعد معًا إلى ستة."
+  },
+  {
+    "lesson": 6,
+    "title_ar": "سَاحَةُ خَلِيل (سِتَّة إِلَى تِسْعَة)",
+    "audio_base": "/audio/lesson_6_counting",
+    "audio_key": "s3_seven",
+    "text": "هذه سبع كرات سلة. نعد معًا إلى سبعة."
+  },
+  {
+    "lesson": 6,
+    "title_ar": "سَاحَةُ خَلِيل (سِتَّة إِلَى تِسْعَة)",
+    "audio_base": "/audio/lesson_6_counting",
+    "audio_key": "s4_eight",
+    "text": "هذه ثماني بالونات. نعد معًا إلى ثمانية."
+  },
+  {
+    "lesson": 6,
+    "title_ar": "سَاحَةُ خَلِيل (سِتَّة إِلَى تِسْعَة)",
+    "audio_base": "/audio/lesson_6_counting",
+    "audio_key": "s5_nine",
+    "text": "هذه تسع طائرات ورقية. نعد معًا إلى تسعة."
+  },
+  {
+    "lesson": 6,
+    "title_ar": "سَاحَةُ خَلِيل (سِتَّة إِلَى تِسْعَة)",
+    "audio_base": "/audio/lesson_6_counting",
+    "audio_key": "s6_closing",
+    "text": "أحسنتم يا أبطال! هيا نتدرب."
+  },
+  {
+    "lesson": 7,
+    "title_ar": "حَوَاسِّي كُنُوزِي",
+    "audio_base": "/audio/lesson_7_senses",
+    "audio_key": "s1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 7,
+    "title_ar": "حَوَاسِّي كُنُوزِي",
+    "audio_base": "/audio/lesson_7_senses",
+    "audio_key": "s2_sight",
+    "text": "أحمي عيني من الضوء القوي."
+  },
+  {
+    "lesson": 7,
+    "title_ar": "حَوَاسِّي كُنُوزِي",
+    "audio_base": "/audio/lesson_7_senses",
+    "audio_key": "s3_hearing",
+    "text": "أحمي أذني من الصوت العالي."
+  },
+  {
+    "lesson": 7,
+    "title_ar": "حَوَاسِّي كُنُوزِي",
+    "audio_base": "/audio/lesson_7_senses",
+    "audio_key": "s4_protect",
+    "text": "النظارة تحمي العينين. الواقي يحمي الأذنين."
+  },
+  {
+    "lesson": 7,
+    "title_ar": "حَوَاسِّي كُنُوزِي",
+    "audio_base": "/audio/lesson_7_senses",
+    "audio_key": "s5_clean",
+    "text": "أغسل يدي وأنظف جسمي كل يوم."
+  },
+  {
+    "lesson": 7,
+    "title_ar": "حَوَاسِّي كُنُوزِي",
+    "audio_base": "/audio/lesson_7_senses",
+    "audio_key": "s6_closing",
+    "text": "حواسنا كنوز. نحافظ عليها دائمًا."
+  },
+  {
+    "lesson": 8,
+    "title_ar": "رِحْلَةُ الأَكْوَارِيُوم (الأعداد من 1 إلى 9)",
+    "audio_base": "/audio/lesson_8_aquarium",
+    "audio_key": "s1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 8,
+    "title_ar": "رِحْلَةُ الأَكْوَارِيُوم (الأعداد من 1 إلى 9)",
+    "audio_base": "/audio/lesson_8_aquarium",
+    "audio_key": "s2_fish",
+    "text": "انظروا إلى الأسماك. نعدها معًا إلى تسعة."
+  },
+  {
+    "lesson": 8,
+    "title_ar": "رِحْلَةُ الأَكْوَارِيُوم (الأعداد من 1 إلى 9)",
+    "audio_base": "/audio/lesson_8_aquarium",
+    "audio_key": "s3_stars",
+    "text": "هذه نجوم البحر. نعدها معًا."
+  },
+  {
+    "lesson": 8,
+    "title_ar": "رِحْلَةُ الأَكْوَارِيُوم (الأعداد من 1 إلى 9)",
+    "audio_base": "/audio/lesson_8_aquarium",
+    "audio_key": "s4_shells",
+    "text": "هذه أصداف جميلة. نعدها معًا."
+  },
+  {
+    "lesson": 8,
+    "title_ar": "رِحْلَةُ الأَكْوَارِيُوم (الأعداد من 1 إلى 9)",
+    "audio_base": "/audio/lesson_8_aquarium",
+    "audio_key": "s6_closing",
+    "text": "أحسنتم! تعلمنا العد من واحد إلى تسعة."
+  },
+  {
+    "lesson": 9,
+    "title_ar": "حَديقَةُ الأَلْعاب (فَوْقَ وَتَحْتَ)",
+    "audio_base": "/audio/lesson_9_playground",
+    "audio_key": "s1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 9,
+    "title_ar": "حَديقَةُ الأَلْعاب (فَوْقَ وَتَحْتَ)",
+    "audio_base": "/audio/lesson_9_playground",
+    "audio_key": "s2_fawq",
+    "text": "فاضل فوق الزحلوفة. رحمة تحتها."
+  },
+  {
+    "lesson": 9,
+    "title_ar": "حَديقَةُ الأَلْعاب (فَوْقَ وَتَحْتَ)",
+    "audio_base": "/audio/lesson_9_playground",
+    "audio_key": "s3_ala",
+    "text": "الكرة على المقعد."
+  },
+  {
+    "lesson": 9,
+    "title_ar": "حَديقَةُ الأَلْعاب (فَوْقَ وَتَحْتَ)",
+    "audio_base": "/audio/lesson_9_playground",
+    "audio_key": "s4_aala",
+    "text": "العصافير أعلى الشجرة."
+  },
+  {
+    "lesson": 9,
+    "title_ar": "حَديقَةُ الأَلْعاب (فَوْقَ وَتَحْتَ)",
+    "audio_base": "/audio/lesson_9_playground",
+    "audio_key": "s5_asfal",
+    "text": "العش أسفل الشجرة."
+  },
+  {
+    "lesson": 9,
+    "title_ar": "حَديقَةُ الأَلْعاب (فَوْقَ وَتَحْتَ)",
+    "audio_base": "/audio/lesson_9_playground",
+    "audio_key": "s6_closing",
+    "text": "أحسنتم! تعلمنا فوق، تحت، على، أعلى، أسفل."
+  },
+  {
+    "lesson": 10,
+    "title_ar": "رُكْنُ الأَدَواتِ (تَشْكيلُ الكَمِّيّاتِ)",
+    "audio_base": "/audio/lesson_10_tools",
+    "audio_key": "s1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 10,
+    "title_ar": "رُكْنُ الأَدَواتِ (تَشْكيلُ الكَمِّيّاتِ)",
+    "audio_base": "/audio/lesson_10_tools",
+    "audio_key": "s2_row",
+    "text": "هذه خمسة أقلام في صف واحد."
+  },
+  {
+    "lesson": 10,
+    "title_ar": "رُكْنُ الأَدَواتِ (تَشْكيلُ الكَمِّيّاتِ)",
+    "audio_base": "/audio/lesson_10_tools",
+    "audio_key": "s3_spread",
+    "text": "فرقنا الأقلام. لكنها ما زالت خمسة."
+  },
+  {
+    "lesson": 10,
+    "title_ar": "رُكْنُ الأَدَواتِ (تَشْكيلُ الكَمِّيّاتِ)",
+    "audio_base": "/audio/lesson_10_tools",
+    "audio_key": "s4_secret",
+    "text": "إذا غيرنا المكان، يبقى العدد نفسه."
+  },
+  {
+    "lesson": 10,
+    "title_ar": "رُكْنُ الأَدَواتِ (تَشْكيلُ الكَمِّيّاتِ)",
+    "audio_base": "/audio/lesson_10_tools",
+    "audio_key": "s5_books",
+    "text": "هذه كتب مرتبة. نعدها بهدوء."
+  },
+  {
+    "lesson": 10,
+    "title_ar": "رُكْنُ الأَدَواتِ (تَشْكيلُ الكَمِّيّاتِ)",
+    "audio_base": "/audio/lesson_10_tools",
+    "audio_key": "s6_closing",
+    "text": "أحسنتم! العدد لا يتغير بتغيير المكان."
+  },
+  {
+    "lesson": 11,
+    "title_ar": "ساحَتي مَلْعَبي (أَتَحَرَّكُ وَأَتَنَقَّل)",
+    "audio_base": "/audio/lesson_11_move",
+    "audio_key": "s1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 11,
+    "title_ar": "ساحَتي مَلْعَبي (أَتَحَرَّكُ وَأَتَنَقَّل)",
+    "audio_base": "/audio/lesson_11_move",
+    "audio_key": "s2_walk",
+    "text": "أمشي بهدوء في الساحة."
+  },
+  {
+    "lesson": 11,
+    "title_ar": "ساحَتي مَلْعَبي (أَتَحَرَّكُ وَأَتَنَقَّل)",
+    "audio_base": "/audio/lesson_11_move",
+    "audio_key": "s3_run",
+    "text": "أجري في المكان المناسب."
+  },
+  {
+    "lesson": 11,
+    "title_ar": "ساحَتي مَلْعَبي (أَتَحَرَّكُ وَأَتَنَقَّل)",
+    "audio_base": "/audio/lesson_11_move",
+    "audio_key": "s4_jump",
+    "text": "أقفز بفرح، وأنتبه إلى مكاني."
+  },
+  {
+    "lesson": 11,
+    "title_ar": "ساحَتي مَلْعَبي (أَتَحَرَّكُ وَأَتَنَقَّل)",
+    "audio_base": "/audio/lesson_11_move",
+    "audio_key": "s5_climb",
+    "text": "أتسلق بحذر، وأحافظ على سلامتي."
+  },
+  {
+    "lesson": 11,
+    "title_ar": "ساحَتي مَلْعَبي (أَتَحَرَّكُ وَأَتَنَقَّل)",
+    "audio_base": "/audio/lesson_11_move",
+    "audio_key": "s6_closing",
+    "text": "أحسنتم! تعلمنا المشي والجري والقفز والتسلق."
+  },
+  {
+    "lesson": 12,
+    "title_ar": "العَدَدُ 0",
+    "audio_base": "/audio/lesson_12_zero",
+    "audio_key": "s1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 12,
+    "title_ar": "العَدَدُ 0",
+    "audio_base": "/audio/lesson_12_zero",
+    "audio_key": "s2_three",
+    "text": "في الصندوق ثلاث كرات. نعدها معًا."
+  },
+  {
+    "lesson": 12,
+    "title_ar": "العَدَدُ 0",
+    "audio_base": "/audio/lesson_12_zero",
+    "audio_key": "s3_empty",
+    "text": "الصندوق فارغ. لا توجد كرات. هذا هو الصفر."
+  },
+  {
+    "lesson": 12,
+    "title_ar": "العَدَدُ 0",
+    "audio_base": "/audio/lesson_12_zero",
+    "audio_key": "s4_compare",
+    "text": "عندما لا يوجد شيء، نقول صفر."
+  },
+  {
+    "lesson": 12,
+    "title_ar": "العَدَدُ 0",
+    "audio_base": "/audio/lesson_12_zero",
+    "audio_key": "s5_birds",
+    "text": "الغصن فارغ. لا يوجد طائر فوقه."
+  },
+  {
+    "lesson": 12,
+    "title_ar": "العَدَدُ 0",
+    "audio_base": "/audio/lesson_12_zero",
+    "audio_key": "s6_closing",
+    "text": "أحسنتم! تعلمنا أن الفارغ يمثله العدد صفر."
+  },
+  {
+    "lesson": 13,
+    "title_ar": "أَعُدُّ الأَشْيَاءَ (الأَعْدَادُ 1-10)",
+    "audio_base": "/audio/lesson_13_counting",
+    "audio_key": "s1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 13,
+    "title_ar": "أَعُدُّ الأَشْيَاءَ (الأَعْدَادُ 1-10)",
+    "audio_base": "/audio/lesson_13_counting",
+    "audio_key": "s2_three",
+    "text": "هذه ثلاثة أشياء. نعد: واحد، اثنان، ثلاثة."
+  },
+  {
+    "lesson": 13,
+    "title_ar": "أَعُدُّ الأَشْيَاءَ (الأَعْدَادُ 1-10)",
+    "audio_base": "/audio/lesson_13_counting",
+    "audio_key": "s3_five",
+    "text": "هذه خمسة أشياء. نعدها بهدوء."
+  },
+  {
+    "lesson": 13,
+    "title_ar": "أَعُدُّ الأَشْيَاءَ (الأَعْدَادُ 1-10)",
+    "audio_base": "/audio/lesson_13_counting",
+    "audio_key": "s4_eight",
+    "text": "هذه ثمانية أشياء. نعد واحدًا واحدًا."
+  },
+  {
+    "lesson": 13,
+    "title_ar": "أَعُدُّ الأَشْيَاءَ (الأَعْدَادُ 1-10)",
+    "audio_base": "/audio/lesson_13_counting",
+    "audio_key": "s5_ten",
+    "text": "هذه عشرة أشياء. أحسنتم العد."
+  },
+  {
+    "lesson": 13,
+    "title_ar": "أَعُدُّ الأَشْيَاءَ (الأَعْدَادُ 1-10)",
+    "audio_base": "/audio/lesson_13_counting",
+    "audio_key": "s6_closing",
+    "text": "رائع! تعلمنا العد إلى عشرة."
+  },
+  {
+    "lesson": 14,
+    "title_ar": "أَتَذَكَّرُ الكَمِّيَّةَ بِالعَدَدِ",
+    "audio_base": "/audio/lesson_14_memory_quantity",
+    "audio_key": "s1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 14,
+    "title_ar": "أَتَذَكَّرُ الكَمِّيَّةَ بِالعَدَدِ",
+    "audio_base": "/audio/lesson_14_memory_quantity",
+    "audio_key": "s2_six_objects",
+    "text": "انظروا جيدًا. هذه ستة أشياء."
+  },
+  {
+    "lesson": 14,
+    "title_ar": "أَتَذَكَّرُ الكَمِّيَّةَ بِالعَدَدِ",
+    "audio_base": "/audio/lesson_14_memory_quantity",
+    "audio_key": "s3_seven_objects",
+    "text": "هذه سبعة أشياء. نحفظ العدد في ذاكرتنا."
+  },
+  {
+    "lesson": 14,
+    "title_ar": "أَتَذَكَّرُ الكَمِّيَّةَ بِالعَدَدِ",
+    "audio_base": "/audio/lesson_14_memory_quantity",
+    "audio_key": "s4_groups",
+    "text": "نقارن بين المجموعات بهدوء."
+  },
+  {
+    "lesson": 14,
+    "title_ar": "أَتَذَكَّرُ الكَمِّيَّةَ بِالعَدَدِ",
+    "audio_base": "/audio/lesson_14_memory_quantity",
+    "audio_key": "s5_use_number",
+    "text": "يساعدنا العدد على تذكر الكمية."
+  },
+  {
+    "lesson": 14,
+    "title_ar": "أَتَذَكَّرُ الكَمِّيَّةَ بِالعَدَدِ",
+    "audio_base": "/audio/lesson_14_memory_quantity",
+    "audio_key": "s6_closing",
+    "text": "أحسنتم! العدد يساعدنا على حفظ الكمية."
+  },
+  {
+    "lesson": 15,
+    "title_ar": "أُعَيِّنُ الرُّتْبَةَ بِالعَدَدِ",
+    "audio_base": "/audio/lesson_15_order_rank",
+    "audio_key": "s1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 15,
+    "title_ar": "أُعَيِّنُ الرُّتْبَةَ بِالعَدَدِ",
+    "audio_base": "/audio/lesson_15_order_rank",
+    "audio_key": "s2_train_fourth",
+    "text": "انظروا إلى القطار. نبحث عن المرتبة الرابعة."
+  },
+  {
+    "lesson": 15,
+    "title_ar": "أُعَيِّنُ الرُّتْبَةَ بِالعَدَدِ",
+    "audio_base": "/audio/lesson_15_order_rank",
+    "audio_key": "s3_cards_order",
+    "text": "نرتب البطاقات حسب الرتبة."
+  },
+  {
+    "lesson": 15,
+    "title_ar": "أُعَيِّنُ الرُّتْبَةَ بِالعَدَدِ",
+    "audio_base": "/audio/lesson_15_order_rank",
+    "audio_key": "s4_race_positions",
+    "text": "في السباق، لكل طفل رتبة."
+  },
+  {
+    "lesson": 15,
+    "title_ar": "أُعَيِّنُ الرُّتْبَةَ بِالعَدَدِ",
+    "audio_base": "/audio/lesson_15_order_rank",
+    "audio_key": "s5_sequence",
+    "text": "نقرأ الرتب بالترتيب: الأول، الثاني، الثالث."
+  },
+  {
+    "lesson": 15,
+    "title_ar": "أُعَيِّنُ الرُّتْبَةَ بِالعَدَدِ",
+    "audio_base": "/audio/lesson_15_order_rank",
+    "audio_key": "s6_closing",
+    "text": "أحسنتم! تعلمنا الرتبة والترتيب."
+  },
+  {
+    "lesson": 16,
+    "title_ar": "أَتَحَرَّكُ وَأُحَافِظُ عَلَى صِحَّتِي",
+    "audio_base": "/audio/lesson_16_health_movement",
+    "audio_key": "s1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 16,
+    "title_ar": "أَتَحَرَّكُ وَأُحَافِظُ عَلَى صِحَّتِي",
+    "audio_base": "/audio/lesson_16_health_movement",
+    "audio_key": "s2_running",
+    "text": "الجري مفيد عندما يكون في مكان آمن."
+  },
+  {
+    "lesson": 16,
+    "title_ar": "أَتَحَرَّكُ وَأُحَافِظُ عَلَى صِحَّتِي",
+    "audio_base": "/audio/lesson_16_health_movement",
+    "audio_key": "s3_body_movement",
+    "text": "أحرك جسمي لأبقى نشيطًا."
+  },
+  {
+    "lesson": 16,
+    "title_ar": "أَتَحَرَّكُ وَأُحَافِظُ عَلَى صِحَّتِي",
+    "audio_base": "/audio/lesson_16_health_movement",
+    "audio_key": "s4_safe_place",
+    "text": "ألعب في مكان آمن ومناسب."
+  },
+  {
+    "lesson": 16,
+    "title_ar": "أَتَحَرَّكُ وَأُحَافِظُ عَلَى صِحَّتِي",
+    "audio_base": "/audio/lesson_16_health_movement",
+    "audio_key": "s5_unsafe_behavior",
+    "text": "أتجنب السلوك الخطر حتى لا أتأذى."
+  },
+  {
+    "lesson": 16,
+    "title_ar": "أَتَحَرَّكُ وَأُحَافِظُ عَلَى صِحَّتِي",
+    "audio_base": "/audio/lesson_16_health_movement",
+    "audio_key": "s6_closing",
+    "text": "أحسنتم! الحركة والاحتياط يحافظان على صحتنا."
+  },
+  {
+    "lesson": 17,
+    "title_ar": "أَسْتَخْرِجُ مَعْلُومَةً",
+    "audio_base": "/audio/lesson_17_info",
+    "audio_key": "s1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 17,
+    "title_ar": "أَسْتَخْرِجُ مَعْلُومَةً",
+    "audio_base": "/audio/lesson_17_info",
+    "audio_key": "s2_picture",
+    "text": "أنظر إلى الصورة جيدًا."
+  },
+  {
+    "lesson": 17,
+    "title_ar": "أَسْتَخْرِجُ مَعْلُومَةً",
+    "audio_base": "/audio/lesson_17_info",
+    "audio_key": "s3_board",
+    "text": "أقرأ ما يظهر على اللوحة."
+  },
+  {
+    "lesson": 17,
+    "title_ar": "أَسْتَخْرِجُ مَعْلُومَةً",
+    "audio_base": "/audio/lesson_17_info",
+    "audio_key": "s4_colors",
+    "text": "ألاحظ الألوان والأشكال."
+  },
+  {
+    "lesson": 17,
+    "title_ar": "أَسْتَخْرِجُ مَعْلُومَةً",
+    "audio_base": "/audio/lesson_17_info",
+    "audio_key": "s5_no_guess",
+    "text": "لا أخمن. أبحث عن الدليل في الصورة."
+  },
+  {
+    "lesson": 17,
+    "title_ar": "أَسْتَخْرِجُ مَعْلُومَةً",
+    "audio_base": "/audio/lesson_17_info",
+    "audio_key": "s6_closing",
+    "text": "أحسنتم! تعلمنا كيف نستخرج المعلومة."
+  },
+  {
+    "lesson": 18,
+    "title_ar": "أُعَيِّنُ المَوْقِعَ فِي الفَضَاءِ",
+    "audio_base": "/audio/lesson_18_positions",
+    "audio_key": "s1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 18,
+    "title_ar": "أُعَيِّنُ المَوْقِعَ فِي الفَضَاءِ",
+    "audio_base": "/audio/lesson_18_positions",
+    "audio_key": "s2_right_left",
+    "text": "هذا يمين، وهذا يسار."
+  },
+  {
+    "lesson": 18,
+    "title_ar": "أُعَيِّنُ المَوْقِعَ فِي الفَضَاءِ",
+    "audio_base": "/audio/lesson_18_positions",
+    "audio_key": "s3_above_below",
+    "text": "هذا فوق، وهذا تحت."
+  },
+  {
+    "lesson": 18,
+    "title_ar": "أُعَيِّنُ المَوْقِعَ فِي الفَضَاءِ",
+    "audio_base": "/audio/lesson_18_positions",
+    "audio_key": "s4_front_behind",
+    "text": "هذا أمام، وهذا وراء."
+  },
+  {
+    "lesson": 18,
+    "title_ar": "أُعَيِّنُ المَوْقِعَ فِي الفَضَاءِ",
+    "audio_base": "/audio/lesson_18_positions",
+    "audio_key": "s5_inside_outside",
+    "text": "هذا داخل، وهذا خارج."
+  },
+  {
+    "lesson": 18,
+    "title_ar": "أُعَيِّنُ المَوْقِعَ فِي الفَضَاءِ",
+    "audio_base": "/audio/lesson_18_positions",
+    "audio_key": "s6_closing",
+    "text": "أحسنتم! تعلمنا يمين ويسار، فوق وتحت، داخل وخارج."
+  },
+  {
+    "lesson": 19,
+    "title_ar": "أُصَنِّفُ أَغْذِيَتِي",
+    "audio_base": "/audio/lesson_19_food_groups",
+    "audio_key": "s1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 19,
+    "title_ar": "أُصَنِّفُ أَغْذِيَتِي",
+    "audio_base": "/audio/lesson_19_food_groups",
+    "audio_key": "s2_fruits_vegetables",
+    "text": "نص مقترح يحتاج مراجعة حسب صورة المشهد."
+  },
+  {
+    "lesson": 19,
+    "title_ar": "أُصَنِّفُ أَغْذِيَتِي",
+    "audio_base": "/audio/lesson_19_food_groups",
+    "audio_key": "s3_meat_fish",
+    "text": "نص مقترح يحتاج مراجعة حسب صورة المشهد."
+  },
+  {
+    "lesson": 19,
+    "title_ar": "أُصَنِّفُ أَغْذِيَتِي",
+    "audio_base": "/audio/lesson_19_food_groups",
+    "audio_key": "s4_dairy",
+    "text": "نص مقترح يحتاج مراجعة حسب صورة المشهد."
+  },
+  {
+    "lesson": 19,
+    "title_ar": "أُصَنِّفُ أَغْذِيَتِي",
+    "audio_base": "/audio/lesson_19_food_groups",
+    "audio_key": "s5_grains",
+    "text": "نص مقترح يحتاج مراجعة حسب صورة المشهد."
+  },
+  {
+    "lesson": 19,
+    "title_ar": "أُصَنِّفُ أَغْذِيَتِي",
+    "audio_base": "/audio/lesson_19_food_groups",
+    "audio_key": "s6_closing",
+    "text": "أحسنتم! تعلمنا أصناف الأغذية."
+  },
+  {
+    "lesson": 20,
+    "title_ar": "مُتَتَالِيَةُ الأَعْدَادِ إِلَى 10",
+    "audio_base": "/audio/lesson_20_numbers",
+    "audio_key": "s1_intro",
+    "text": "مَرْحَبًا تَلَامِيذِي! هَيَّا نَبْدَأُ الدَّرْسَ."
+  },
+  {
+    "lesson": 20,
+    "title_ar": "مُتَتَالِيَةُ الأَعْدَادِ إِلَى 10",
+    "audio_base": "/audio/lesson_20_numbers",
+    "audio_key": "s2_sequence",
+    "text": "نرتب الأعداد من الأصغر إلى الأكبر."
+  },
+  {
+    "lesson": 20,
+    "title_ar": "مُتَتَالِيَةُ الأَعْدَادِ إِلَى 10",
+    "audio_base": "/audio/lesson_20_numbers",
+    "audio_key": "s3_next",
+    "text": "نص مقترح يحتاج مراجعة حسب صورة المشهد."
+  },
+  {
+    "lesson": 20,
+    "title_ar": "مُتَتَالِيَةُ الأَعْدَادِ إِلَى 10",
+    "audio_base": "/audio/lesson_20_numbers",
+    "audio_key": "s4_previous",
+    "text": "نص مقترح يحتاج مراجعة حسب صورة المشهد."
+  },
+  {
+    "lesson": 20,
+    "title_ar": "مُتَتَالِيَةُ الأَعْدَادِ إِلَى 10",
+    "audio_base": "/audio/lesson_20_numbers",
+    "audio_key": "s5_quantity",
+    "text": "نص مقترح يحتاج مراجعة حسب صورة المشهد."
+  },
+  {
+    "lesson": 20,
+    "title_ar": "مُتَتَالِيَةُ الأَعْدَادِ إِلَى 10",
+    "audio_base": "/audio/lesson_20_numbers",
+    "audio_key": "s6_closing",
+    "text": "أحسنتم يا أبطال! أنهيتم دروس الأعداد الأولى."
+  }
+]

@@ -1,0 +1,5 @@
+  batch-lessons-14-18                    4b95f19 [origin/batch-lessons-14-18] docs: plan unified premium lesson and exercise engines
+  dev                                    c2d9f6d [origin/dev: ahead 1] Complete lesson 14 memory quantity
+  handoff-premium-20260723_100341        4b95f19 docs: plan unified premium lesson and exercise engines
+* handoff-premium-secure-20260723_103324 4b95f19 docs: plan unified premium lesson and exercise engines
+  main                                   bc2fd40 [origin/main] feat(lesson3): 3 senses exercises + shared useKaraoke (audio race fix) + organs bg

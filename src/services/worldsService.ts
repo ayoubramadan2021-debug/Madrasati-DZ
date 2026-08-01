@@ -7,7 +7,7 @@ export async function getWorlds(subject: string, grade: number) {
     .select("*")
     .eq("subject", subject)
     .eq("grade", grade)
-    .eq("is_published", true)
+    .in("is_published", import.meta.env.DEV ? [true, false] : [true])
     .order("sort_order", { ascending: true });
   if (error) throw error;
   return data || [];
@@ -41,7 +41,7 @@ export async function getWorldQuiz(world_id: string) {
     .from("quizzes")
     .select("*")
     .eq("world_id", world_id)
-    .eq("is_published", true)
+    .in("is_published", import.meta.env.DEV ? [true, false] : [true])
     .order("created_at", { ascending: false })
     .limit(1)
     .maybeSingle();

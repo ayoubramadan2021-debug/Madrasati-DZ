@@ -1,0 +1,11 @@
+src/pages/LessonExercisesPage.tsx
+src/pages/Lesson6ExercisesPage.tsx
+src/pages/Lesson12ExercisesPage.tsx
+src/pages/Lesson13ExercisesPage.tsx
+src/pages/Lesson12ExercisesPage.tsx.bak_boxzero_094341
+src/pages/Lesson12ExercisesPage.tsx.bak_force_cartoon2_page_101418
+src/features/lesson-v2/content/lesson1_exercise5.ts
+src/features/lesson-v2/content/lesson6_exercise4.ts
+src/features/lesson-v2/content/lesson12_exercise4.ts
+src/features/lesson-v2/content/lesson14_exercise4.ts
+src/features/lesson-v2/content/lesson13_exercise4.ts

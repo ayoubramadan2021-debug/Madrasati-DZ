@@ -1,0 +1,13 @@
+{
+  "lessonId": 21,
+  "sceneId": "s5_practice",
+  "audio": "/audio/lesson21/s5_practice.mp3",
+  "image": "/images/lesson21/s5.webp",
+  "segments": [
+    { "id": 1, "text": "أَجِبْ مَعِي.", "start": 0.0, "end": 1.5 },
+    { "id": 2, "text": "أَيُّهُمَا أَقْصَرُ؟", "start": 1.6, "end": 3.6 },
+    { "id": 3, "text": "رَائِعٌ!", "start": 3.7, "end": 4.7 },
+    { "id": 4, "text": "وَأَيُّهُمَا أَطْوَلُ؟", "start": 4.8, "end": 7.0 },
+    { "id": 5, "text": "أَحْسَنْتُمْ جَمِيعًا.", "start": 7.1, "end": 9.0 }
+  ]
+}

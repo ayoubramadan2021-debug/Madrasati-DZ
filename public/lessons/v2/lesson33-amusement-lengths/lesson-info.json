@@ -1,0 +1,15 @@
+{
+  "lesson_number": 33,
+  "world_order": 1,
+  "title_ar": "أقارن أطوال أشياء عالم المرح",
+  "scene_start": 1,
+  "scene_end": 6,
+  "scenes": [
+    "s1.webp",
+    "s2.webp",
+    "s3.webp",
+    "s4.webp",
+    "s5.webp",
+    "s6.webp"
+  ]
+}

@@ -15,6 +15,7 @@ type AnswerOption = {
 type Slide = {
   scene_image: string;        // path to webp scene
   audio_key: string;          // e.g. "w1_intro_1"
+  text?: string;               // fallback caption when karaoke json/mp3 is missing
   options?: AnswerOption[];   // only on question slide
   audio_correct?: string;
   audio_retry?: string;
@@ -30,13 +31,12 @@ export interface WorldIntroSceneV2Props {
   audio_base: string;         // "/audio/world_1_intro"
   slides: Slide[];
   onDone?: () => void;
+  karaoke_lead_ms?: number;
 }
 
 // ═══════════════════════════════════════════════
 // Brand colors
 // ═══════════════════════════════════════════════
-const KARAOKE_LEAD_MS = 0;
-
 const C = {
   navy: "#1B3A6B",
   navyDeep: "#0F2447",
@@ -52,59 +52,170 @@ const C = {
 // ═══════════════════════════════════════════════
 // Karaoke hook
 // ═══════════════════════════════════════════════
-function useKaraoke(audioBase: string) {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const timersRef = useRef<number[]>([]);
-  const [activeKey, setActiveKey] = useState<string | null>(null);
-  const [currentIdx, setCurrentIdx] = useState(-1);
-  const [shown, setShown] = useState<Set<number>>(new Set());
+function useKaraoke(
+  audioBase: string,
+  karaokeLeadMs = 0,
+) {
+  const audioRef =
+    useRef<HTMLAudioElement | null>(null);
+
+  const animationRef =
+    useRef<number | null>(null);
+
+  const [activeKey, setActiveKey] =
+    useState<string | null>(null);
+
+  const [currentIdx, setCurrentIdx] =
+    useState(-1);
+
+  const [shown, setShown] =
+    useState<Set<number>>(new Set());
 
   const stop = useCallback(() => {
+    if (animationRef.current !== null) {
+      window.cancelAnimationFrame(
+        animationRef.current,
+      );
+
+      animationRef.current = null;
+    }
+
     if (audioRef.current) {
       audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      audioRef.current.src = "";
       audioRef.current = null;
     }
-    timersRef.current.forEach(clearTimeout);
-    timersRef.current = [];
+
     setActiveKey(null);
     setCurrentIdx(-1);
   }, []);
 
-  const play = useCallback(async (key: string, words: WordTiming[]) => {
-    stop();
-    setShown(new Set());
-    setActiveKey(key);
+  const play = useCallback(
+    async (
+      key: string,
+      words: WordTiming[],
+    ) => {
+      stop();
 
-    const audio = new Audio(`${audioBase}/${key}.mp3`);
-    audioRef.current = audio;
-    audio.addEventListener("ended", () => setCurrentIdx(-1));
+      setShown(new Set());
+      setCurrentIdx(-1);
+      setActiveKey(key);
 
-    try {
-      await audio.play();
-    } catch {
-      const all = new Set<number>();
-      words.forEach((_, i) => all.add(i));
-      setShown(all);
-      return;
-    }
+      const audio = new Audio(
+        `${audioBase}/${key}.mp3`,
+      );
 
-    words.forEach((w, i) => {
-      const t1 = window.setTimeout(() => {
-        setShown((prev) => new Set(prev).add(i));
-        setCurrentIdx(i);
-      }, Math.max(0, w.offset - KARAOKE_LEAD_MS));
-      const t2 = window.setTimeout(() => {
-        setCurrentIdx((cur) => (cur === i ? -1 : cur));
-      }, Math.max(0, w.offset - KARAOKE_LEAD_MS) + w.duration);
-      timersRef.current.push(t1, t2);
-    });
-  }, [audioBase, stop]);
+      audio.preload = "auto";
+      audioRef.current = audio;
 
-  useEffect(() => () => stop(), [stop]);
+      const synchronize = () => {
+        if (audioRef.current !== audio) {
+          return;
+        }
 
-  return { play, stop, activeKey, currentIdx, shown };
+        const currentTimeMs =
+          audio.currentTime * 1000;
+
+        const visibleWords =
+          new Set<number>();
+
+        let activeIndex = -1;
+
+        words.forEach((word, index) => {
+          const start = Math.max(
+            0,
+            word.offset - karaokeLeadMs,
+          );
+
+          const end =
+            start + word.duration;
+
+          if (currentTimeMs >= start) {
+            visibleWords.add(index);
+          }
+
+          if (
+            currentTimeMs >= start &&
+            currentTimeMs < end
+          ) {
+            activeIndex = index;
+          }
+        });
+
+        setShown(visibleWords);
+        setCurrentIdx(activeIndex);
+
+        if (
+          !audio.paused &&
+          !audio.ended
+        ) {
+          animationRef.current =
+            window.requestAnimationFrame(
+              synchronize,
+            );
+        }
+      };
+
+      audio.addEventListener(
+        "ended",
+        () => {
+          if (
+            animationRef.current !== null
+          ) {
+            window.cancelAnimationFrame(
+              animationRef.current,
+            );
+
+            animationRef.current = null;
+          }
+
+          setShown(
+            new Set(
+              words.map((_, index) => index),
+            ),
+          );
+
+          setCurrentIdx(-1);
+          setActiveKey(null);
+        },
+        { once: true },
+      );
+
+      try {
+        await audio.play();
+
+        animationRef.current =
+          window.requestAnimationFrame(
+            synchronize,
+          );
+      } catch {
+        setShown(
+          new Set(
+            words.map((_, index) => index),
+          ),
+        );
+
+        setCurrentIdx(-1);
+        setActiveKey(null);
+      }
+    },
+    [audioBase, karaokeLeadMs, stop],
+  );
+
+  useEffect(
+    () => () => stop(),
+    [stop],
+  );
+
+  return {
+    play,
+    stop,
+    activeKey,
+    currentIdx,
+    shown,
+  };
 }
-
 async function loadTimings(audioBase: string, key: string): Promise<WordTiming[] | null> {
   try {
     const r = await fetch(`${audioBase}/${key}.json`);
@@ -115,6 +226,26 @@ async function loadTimings(audioBase: string, key: string): Promise<WordTiming[]
   }
 }
 
+function makeFallbackTimings(text?: string): WordTiming[] {
+  const words = (text || "").trim().split(/\s+/).filter(Boolean);
+  return words.map((w, i) => ({
+    text: w,
+    offset: i * 520,
+    duration: 480,
+  }));
+}
+
+function speakArabic(text?: string) {
+  if (!text) return;
+  try {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = "ar-SA";
+    u.rate = 0.82;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(u);
+  } catch {}
+}
+
 
 // ═══════════════════════════════════════════════
 // Main Component
@@ -123,13 +254,17 @@ export default function WorldIntroSceneV2({
   audio_base,
   slides,
   onDone,
+  karaoke_lead_ms = 0,
 }: WorldIntroSceneV2Props) {
   const [slideIdx, setSlideIdx] = useState(0);
   const [timings, setTimings] = useState<Record<string, WordTiming[]>>({});
   const [answerState, setAnswerState] = useState<Record<string, "idle" | "correct" | "wrong">>({});
   const [questionAnswered, setQuestionAnswered] = useState(false);
 
-  const karaoke = useKaraoke(audio_base);
+  const karaoke = useKaraoke(
+    audio_base,
+    karaoke_lead_ms,
+  );
   const slide = slides[slideIdx];
 
   // Preload all timings
@@ -142,7 +277,13 @@ export default function WorldIntroSceneV2({
     });
     keys.forEach(async (k) => {
       const t = await loadTimings(audio_base, k);
-      if (t) setTimings((p) => ({ ...p, [k]: t }));
+      if (t) {
+        setTimings((p) => ({ ...p, [k]: t }));
+      } else {
+        const relatedSlide = slides.find((sl) => sl.audio_key === k);
+        const fallback = makeFallbackTimings(relatedSlide?.text);
+        if (fallback.length) setTimings((p) => ({ ...p, [k]: fallback }));
+      }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [audio_base]);
@@ -177,6 +318,8 @@ export default function WorldIntroSceneV2({
   const replayCurrent = () => {
     if (slide && timings[slide.audio_key]) {
       karaoke.play(slide.audio_key, timings[slide.audio_key]);
+    } else {
+      speakArabic(slide?.text);
     }
   };
 
@@ -201,7 +344,7 @@ export default function WorldIntroSceneV2({
 
   if (!slide) return <div>Loading...</div>;
 
-  const words = timings[slide.audio_key] || null;
+  const words = timings[slide.audio_key] || makeFallbackTimings(slide.text);
   const isActive = karaoke.activeKey === slide.audio_key;
 
   return (
@@ -214,6 +357,23 @@ export default function WorldIntroSceneV2({
       display: "flex",
       flexDirection: "column",
     }}>
+      <style>{`
+        @keyframes lessonTextIn {
+          0% { opacity: 0; transform: translateY(14px) scale(.97); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes lessonOptionEnter {
+          0% { opacity: 0; transform: translateY(14px) scale(.96); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes lessonCtaPulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.04); }
+        }
+      `}</style>
+
       {/* Full scene image */}
       <div style={{
         position: "absolute",
@@ -288,21 +448,57 @@ export default function WorldIntroSceneV2({
                 style={{
                   display: "inline-block",
                   opacity: 1,
-                  animation: `itemDrop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both`,
-                  animationDelay: `${i * 0.05}s`,
+                  animation: wordIdx === undefined
+                    ? `itemDrop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both`
+                    : "none",
+                  animationDelay: wordIdx === undefined ? `${i * 0.05}s` : "0s",
                   filter: isCounting
                     ? "drop-shadow(0 0 16px #E8A020) drop-shadow(0 0 8px #FFD700) brightness(1.15)"
                     : wasCounted
                     ? "drop-shadow(0 4px 8px rgba(0,0,0,0.25)) brightness(1.05)"
                     : "drop-shadow(0 4px 8px rgba(0,0,0,0.25))",
                   transform: isCounting ? "translateY(-16px) scale(1.25) rotate(-5deg)" : "translateY(0) scale(1)",
-                  transition: "all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                  transition: wordIdx !== undefined
+                    ? "transform .18s ease, filter .18s ease"
+                    : "all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)",
                 }}
               >
-                <EmojiIcon
-                  emoji={slide.items_emoji_list?.[i] || slide.items_emoji || "🍎"}
-                  size={isCounting ? baseSize + 14 : baseSize}
-                />
+                {["➕", "➖", "="].includes(
+                    slide.items_emoji_list?.[i] || slide.items_emoji || ""
+                  ) ? (
+                    <span
+                      aria-label={
+                        (slide.items_emoji_list?.[i] || slide.items_emoji) === "="
+                          ? "يساوي"
+                          : "زائد"
+                      }
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: isCounting ? 86 : 74,
+                        height: isCounting ? 86 : 74,
+                        borderRadius: 18,
+                        background: C.gold,
+                        color: C.navyDeep,
+                        border: "4px solid #FFFFFF",
+                        boxShadow:
+                          "0 0 0 4px rgba(232,160,32,.40), 0 8px 22px rgba(0,0,0,.28)",
+                        fontSize: isCounting ? 68 : 58,
+                        fontWeight: 900,
+                        fontFamily: "Arial, Tahoma, sans-serif",
+                        lineHeight: 1,
+                      }}
+                    >
+                      {slide.items_emoji_list?.[i] ||
+                        slide.items_emoji}
+                    </span>
+                  ) : (
+                    <EmojiIcon
+                      emoji={slide.items_emoji_list?.[i] || slide.items_emoji || "🍎"}
+                      size={isCounting ? baseSize + 14 : baseSize}
+                    />
+                  )}
               </span>
             );
           })}
@@ -334,20 +530,21 @@ export default function WorldIntroSceneV2({
           textAlign: "center",
           boxShadow: "0 6px 20px rgba(0,0,0,.15)",
           cursor: "pointer",
+          animation: "lessonTextIn .45s ease both",
         }}>
           {words ? (
             words.map((w, i) => {
               const sceneActiveTxt = karaoke.activeKey === slide.audio_key;
-              const isShown = sceneActiveTxt ? karaoke.shown.has(i) : false;
+              const isShown = sceneActiveTxt ? karaoke.shown.has(i) : true;
               const isCurrent = sceneActiveTxt && karaoke.currentIdx === i;
               return (
                 <span key={i} style={{
                   display: "inline-block",
-                  opacity: isShown ? 1 : 0,
+                  opacity: (isShown || questionAnswered || Object.keys(answerState).length > 0) ? 1 : 0,
                   transform: isCurrent ? "translateY(-3px) scale(1.1)" : "translateY(0)",
                   color: isCurrent ? C.gold : C.navyDeep,
                   fontWeight: isCurrent ? 900 : 700,
-                  transition: "all .25s ease",
+                  transition: "transform .18s ease",
                   margin: "0 2px",
                 }}>{w.text} </span>
               );
@@ -364,7 +561,7 @@ export default function WorldIntroSceneV2({
           display: "flex", flexDirection: "column", gap: 8,
           maxWidth: 480, margin: "0 auto", width: "100%",
         }}>
-          {slide.options.map((opt) => {
+          {slide.options.map((opt, optIndex) => {
             const state = answerState[opt.id] || "idle";
             const bg = state === "correct" ? C.greenSoft : state === "wrong" ? C.redSoft : "rgba(255,255,255,0.95)";
             const border = state === "correct" ? C.green : state === "wrong" ? C.red : C.gold;
@@ -379,7 +576,7 @@ export default function WorldIntroSceneV2({
                   border: `3px solid ${border}`,
                   borderRadius: 16,
                   padding: "12px 16px",
-                  fontSize: 15,
+                  fontSize: 17,
                   fontWeight: 700,
                   color: C.navyDeep,
                   fontFamily: "Tajawal, sans-serif",
@@ -414,7 +611,7 @@ export default function WorldIntroSceneV2({
       <div style={{
         position: "relative", zIndex: 2,
         display: "flex", justifyContent: "space-between", alignItems: "center",
-        padding: "12px 16px 100px",
+        padding: "10px 16px 110px",
       }}>
         <button onClick={goPrev} disabled={slideIdx === 0} style={{
           background: "rgba(255,255,255,0.95)",
@@ -438,13 +635,15 @@ export default function WorldIntroSceneV2({
             background: `linear-gradient(135deg, ${C.gold}, ${C.goldSoft})`,
             color: C.navyDeep,
             border: "none",
-            padding: "12px 24px",
+            padding: "15px 30px",
             borderRadius: 999,
             fontSize: 15,
             fontWeight: 900,
             cursor: "pointer",
             fontFamily: "Tajawal, sans-serif",
-            boxShadow: "0 6px 18px rgba(232,160,32,.5)",
+            boxShadow: "0 8px 22px rgba(232,160,32,.55)",
+            minWidth: 150,
+            animation: "lessonCtaPulse 1.6s ease-in-out infinite",
           }}>{slide.cta_text || "ابدأ ←"}</button>
         ) : slide.options && !questionAnswered ? (
           <div style={{ width: 52 }} />

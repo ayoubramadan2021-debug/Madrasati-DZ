@@ -1,0 +1,106 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="1024"
+  height="1536"
+  viewBox="0 0 1024 1536"
+>
+  <defs>
+    <linearGradient
+      id="wall"
+      x1="0"
+      y1="0"
+      x2="0"
+      y2="1"
+    >
+      <stop
+        offset="0"
+        stop-color="#dff4fa"
+      />
+      <stop
+        offset="1"
+        stop-color="#f5e6c8"
+      />
+    </linearGradient>
+
+    <pattern
+      id="tiles"
+      width="128"
+      height="96"
+      patternUnits="userSpaceOnUse"
+    >
+      <rect
+        width="128"
+        height="96"
+        fill="#dcb98a"
+      />
+      <path
+        d="M0 0H128V96H0Z"
+        fill="none"
+        stroke="#c99f6d"
+        stroke-width="3"
+      />
+    </pattern>
+  </defs>
+
+  <rect
+    width="1024"
+    height="950"
+    fill="url(#wall)"
+  />
+
+  <rect
+    y="950"
+    width="1024"
+    height="586"
+    fill="url(#tiles)"
+  />
+
+  <rect
+    x="160"
+    y="180"
+    width="704"
+    height="704"
+    rx="32"
+    fill="#ffffff"
+    stroke="#315a7f"
+    stroke-width="10"
+  />
+
+  <g
+    stroke="#77a2c4"
+    stroke-width="6"
+  >
+    <path d="M300 180V884"/>
+    <path d="M440 180V884"/>
+    <path d="M580 180V884"/>
+    <path d="M720 180V884"/>
+
+    <path d="M160 320H864"/>
+    <path d="M160 460H864"/>
+    <path d="M160 600H864"/>
+    <path d="M160 740H864"/>
+  </g>
+
+  <circle
+    cx="215"
+    cy="235"
+    r="22"
+    fill="#dc3d3d"
+  />
+
+  <circle
+    cx="809"
+    cy="829"
+    r="22"
+    fill="#34a853"
+  />
+
+
+      <g
+        fill="#efb638"
+      >
+        <path d="M420 690V470H365L460 320L555 470H500V690Z"/>
+        <path d="M650 365V585H595L690 735L785 585H730V365Z"/>
+      </g>
+
+</svg>

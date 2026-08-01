@@ -1,0 +1,1192 @@
+[
+  {
+    "lesson": 1,
+    "title": "الأعداد من 1 إلى 5",
+    "key": "l1_intro",
+    "jsonFile": "public/audio/lesson_1_numbers_1_5/l1_intro.json",
+    "words": 18,
+    "karaokeEndMs": 11624,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 1,
+    "title": "الأعداد من 1 إلى 5",
+    "key": "l1_num_1",
+    "jsonFile": "public/audio/lesson_1_numbers_1_5/l1_num_1.json",
+    "words": 9,
+    "karaokeEndMs": 7039,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 1,
+    "title": "الأعداد من 1 إلى 5",
+    "key": "l1_num_2",
+    "jsonFile": "public/audio/lesson_1_numbers_1_5/l1_num_2.json",
+    "words": 9,
+    "karaokeEndMs": 7134,
+    "maxGap": 955,
+    "issues": []
+  },
+  {
+    "lesson": 1,
+    "title": "الأعداد من 1 إلى 5",
+    "key": "l1_num_3",
+    "jsonFile": "public/audio/lesson_1_numbers_1_5/l1_num_3.json",
+    "words": 11,
+    "karaokeEndMs": 7934,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 1,
+    "title": "الأعداد من 1 إلى 5",
+    "key": "l1_num_4",
+    "jsonFile": "public/audio/lesson_1_numbers_1_5/l1_num_4.json",
+    "words": 10,
+    "karaokeEndMs": 7961,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 1,
+    "title": "الأعداد من 1 إلى 5",
+    "key": "l1_num_5",
+    "jsonFile": "public/audio/lesson_1_numbers_1_5/l1_num_5.json",
+    "words": 13,
+    "karaokeEndMs": 11489,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 2,
+    "title": "بَيْتُ تَالِينْ",
+    "key": "l2_intro",
+    "jsonFile": "public/audio/lesson_2_house/l2_intro.json",
+    "words": 11,
+    "karaokeEndMs": 7392,
+    "maxGap": 940,
+    "issues": []
+  },
+  {
+    "lesson": 2,
+    "title": "بَيْتُ تَالِينْ",
+    "key": "l2_amam",
+    "jsonFile": "public/audio/lesson_2_house/l2_amam.json",
+    "words": 8,
+    "karaokeEndMs": 5940,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 2,
+    "title": "بَيْتُ تَالِينْ",
+    "key": "l2_waraa",
+    "jsonFile": "public/audio/lesson_2_house/l2_waraa.json",
+    "words": 8,
+    "karaokeEndMs": 6035,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 2,
+    "title": "بَيْتُ تَالِينْ",
+    "key": "l2_bijanib",
+    "jsonFile": "public/audio/lesson_2_house/l2_bijanib.json",
+    "words": 10,
+    "karaokeEndMs": 7460,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 2,
+    "title": "بَيْتُ تَالِينْ",
+    "key": "l2_muqabil",
+    "jsonFile": "public/audio/lesson_2_house/l2_muqabil.json",
+    "words": 11,
+    "karaokeEndMs": 8504,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 2,
+    "title": "بَيْتُ تَالِينْ",
+    "key": "l2_outro",
+    "jsonFile": "public/audio/lesson_2_house/l2_outro.json",
+    "words": 12,
+    "karaokeEndMs": 10037,
+    "maxGap": 950,
+    "issues": []
+  },
+  {
+    "lesson": 3,
+    "title": "رِحْلَةُ الحَوَاسِّ",
+    "key": "l3_intro",
+    "jsonFile": "public/audio/lesson_3_senses/l3_intro.json",
+    "words": 7,
+    "karaokeEndMs": 3725,
+    "maxGap": 15,
+    "issues": []
+  },
+  {
+    "lesson": 3,
+    "title": "رِحْلَةُ الحَوَاسِّ",
+    "key": "l3_sight",
+    "jsonFile": "public/audio/lesson_3_senses/l3_sight.json",
+    "words": 6,
+    "karaokeEndMs": 3535,
+    "maxGap": 232,
+    "issues": []
+  },
+  {
+    "lesson": 3,
+    "title": "رِحْلَةُ الحَوَاسِّ",
+    "key": "l3_hearing",
+    "jsonFile": "public/audio/lesson_3_senses/l3_hearing.json",
+    "words": 7,
+    "karaokeEndMs": 4268,
+    "maxGap": 231,
+    "issues": []
+  },
+  {
+    "lesson": 3,
+    "title": "رِحْلَةُ الحَوَاسِّ",
+    "key": "l3_smell",
+    "jsonFile": "public/audio/lesson_3_senses/l3_smell.json",
+    "words": 7,
+    "karaokeEndMs": 4268,
+    "maxGap": 231,
+    "issues": []
+  },
+  {
+    "lesson": 3,
+    "title": "رِحْلَةُ الحَوَاسِّ",
+    "key": "l3_taste",
+    "jsonFile": "public/audio/lesson_3_senses/l3_taste.json",
+    "words": 6,
+    "karaokeEndMs": 4024,
+    "maxGap": 203,
+    "issues": []
+  },
+  {
+    "lesson": 3,
+    "title": "رِحْلَةُ الحَوَاسِّ",
+    "key": "l3_touch",
+    "jsonFile": "public/audio/lesson_3_senses/l3_touch.json",
+    "words": 7,
+    "karaokeEndMs": 4146,
+    "maxGap": 218,
+    "issues": []
+  },
+  {
+    "lesson": 4,
+    "title": "أَكْثَرُ وَأَقَلُّ",
+    "key": "l4_intro",
+    "jsonFile": "public/audio/lesson_4_compare/l4_intro.json",
+    "words": 10,
+    "karaokeEndMs": 6085,
+    "maxGap": 218,
+    "issues": []
+  },
+  {
+    "lesson": 4,
+    "title": "أَكْثَرُ وَأَقَلُّ",
+    "key": "l4_more",
+    "jsonFile": "public/audio/lesson_4_compare/l4_more.json",
+    "words": 4,
+    "karaokeEndMs": 2233,
+    "maxGap": 14,
+    "issues": []
+  },
+  {
+    "lesson": 4,
+    "title": "أَكْثَرُ وَأَقَلُّ",
+    "key": "l4_less",
+    "jsonFile": "public/audio/lesson_4_compare/l4_less.json",
+    "words": 4,
+    "karaokeEndMs": 2789,
+    "maxGap": 14,
+    "issues": []
+  },
+  {
+    "lesson": 4,
+    "title": "أَكْثَرُ وَأَقَلُّ",
+    "key": "l4_equal",
+    "jsonFile": "public/audio/lesson_4_compare/l4_equal.json",
+    "words": 5,
+    "karaokeEndMs": 3739,
+    "maxGap": 191,
+    "issues": []
+  },
+  {
+    "lesson": 4,
+    "title": "أَكْثَرُ وَأَقَلُّ",
+    "key": "l4_apply",
+    "jsonFile": "public/audio/lesson_4_compare/l4_apply.json",
+    "words": 7,
+    "karaokeEndMs": 4797,
+    "maxGap": 231,
+    "issues": []
+  },
+  {
+    "lesson": 4,
+    "title": "أَكْثَرُ وَأَقَلُّ",
+    "key": "l4_outro",
+    "jsonFile": "public/audio/lesson_4_compare/l4_outro.json",
+    "words": 5,
+    "karaokeEndMs": 3919,
+    "maxGap": 940,
+    "issues": []
+  },
+  {
+    "lesson": 5,
+    "title": "مَطْبَخُ تَالِين (سِتَّة إِلَى تِسْعَة)",
+    "key": "s1_intro",
+    "jsonFile": "public/audio/lesson_5_counting/s1_intro.json",
+    "words": 14,
+    "karaokeEndMs": 8871,
+    "maxGap": 941,
+    "issues": []
+  },
+  {
+    "lesson": 5,
+    "title": "مَطْبَخُ تَالِين (سِتَّة إِلَى تِسْعَة)",
+    "key": "s2_six",
+    "jsonFile": "public/audio/lesson_5_counting/s2_six.json",
+    "words": 11,
+    "karaokeEndMs": 8188,
+    "maxGap": 218,
+    "issues": []
+  },
+  {
+    "lesson": 5,
+    "title": "مَطْبَخُ تَالِين (سِتَّة إِلَى تِسْعَة)",
+    "key": "s3_seven",
+    "jsonFile": "public/audio/lesson_5_counting/s3_seven.json",
+    "words": 12,
+    "karaokeEndMs": 9178,
+    "maxGap": 231,
+    "issues": []
+  },
+  {
+    "lesson": 5,
+    "title": "مَطْبَخُ تَالِين (سِتَّة إِلَى تِسْعَة)",
+    "key": "s4_eight",
+    "jsonFile": "public/audio/lesson_5_counting/s4_eight.json",
+    "words": 13,
+    "karaokeEndMs": 10222,
+    "maxGap": 218,
+    "issues": []
+  },
+  {
+    "lesson": 5,
+    "title": "مَطْبَخُ تَالِين (سِتَّة إِلَى تِسْعَة)",
+    "key": "s5_nine",
+    "jsonFile": "public/audio/lesson_5_counting/s5_nine.json",
+    "words": 14,
+    "karaokeEndMs": 10779,
+    "maxGap": 217,
+    "issues": []
+  },
+  {
+    "lesson": 5,
+    "title": "مَطْبَخُ تَالِين (سِتَّة إِلَى تِسْعَة)",
+    "key": "s6_closing",
+    "jsonFile": "public/audio/lesson_5_counting/s6_closing.json",
+    "words": 10,
+    "karaokeEndMs": 6673,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 6,
+    "title": "سَاحَةُ خَلِيل (سِتَّة إِلَى تِسْعَة)",
+    "key": "s1_intro",
+    "jsonFile": "public/audio/lesson_6_counting/s1_intro.json",
+    "words": 14,
+    "karaokeEndMs": 7269,
+    "maxGap": 941,
+    "issues": []
+  },
+  {
+    "lesson": 6,
+    "title": "سَاحَةُ خَلِيل (سِتَّة إِلَى تِسْعَة)",
+    "key": "s2_six",
+    "jsonFile": "public/audio/lesson_6_counting/s2_six.json",
+    "words": 11,
+    "karaokeEndMs": 8337,
+    "maxGap": 245,
+    "issues": []
+  },
+  {
+    "lesson": 6,
+    "title": "سَاحَةُ خَلِيل (سِتَّة إِلَى تِسْعَة)",
+    "key": "s3_seven",
+    "jsonFile": "public/audio/lesson_6_counting/s3_seven.json",
+    "words": 13,
+    "karaokeEndMs": 9531,
+    "maxGap": 258,
+    "issues": []
+  },
+  {
+    "lesson": 6,
+    "title": "سَاحَةُ خَلِيل (سِتَّة إِلَى تِسْعَة)",
+    "key": "s4_eight",
+    "jsonFile": "public/audio/lesson_6_counting/s4_eight.json",
+    "words": 13,
+    "karaokeEndMs": 10698,
+    "maxGap": 286,
+    "issues": []
+  },
+  {
+    "lesson": 6,
+    "title": "سَاحَةُ خَلِيل (سِتَّة إِلَى تِسْعَة)",
+    "key": "s5_nine",
+    "jsonFile": "public/audio/lesson_6_counting/s5_nine.json",
+    "words": 15,
+    "karaokeEndMs": 12041,
+    "maxGap": 258,
+    "issues": []
+  },
+  {
+    "lesson": 6,
+    "title": "سَاحَةُ خَلِيل (سِتَّة إِلَى تِسْعَة)",
+    "key": "s6_closing",
+    "jsonFile": "public/audio/lesson_6_counting/s6_closing.json",
+    "words": 12,
+    "karaokeEndMs": 7432,
+    "maxGap": 940,
+    "issues": []
+  },
+  {
+    "lesson": 7,
+    "title": "حَوَاسِّي كُنُوزِي",
+    "key": "s1_intro",
+    "jsonFile": "public/audio/lesson_7_senses/s1_intro.json",
+    "words": 13,
+    "karaokeEndMs": 8437.332999999999,
+    "maxGap": 953.8330000000001,
+    "issues": []
+  },
+  {
+    "lesson": 7,
+    "title": "حَوَاسِّي كُنُوزِي",
+    "key": "s2_sight",
+    "jsonFile": "public/audio/lesson_7_senses/s2_sight.json",
+    "words": 11,
+    "karaokeEndMs": 5909.999,
+    "maxGap": 271.3330000000001,
+    "issues": []
+  },
+  {
+    "lesson": 7,
+    "title": "حَوَاسِّي كُنُوزِي",
+    "key": "s3_hearing",
+    "jsonFile": "public/audio/lesson_7_senses/s3_hearing.json",
+    "words": 9,
+    "karaokeEndMs": 5353.875,
+    "maxGap": 230.5840000000003,
+    "issues": []
+  },
+  {
+    "lesson": 7,
+    "title": "حَوَاسِّي كُنُوزِي",
+    "key": "s4_protect",
+    "jsonFile": "public/audio/lesson_7_senses/s4_protect.json",
+    "words": 12,
+    "karaokeEndMs": 6588.249,
+    "maxGap": 257.7510000000002,
+    "issues": []
+  },
+  {
+    "lesson": 7,
+    "title": "حَوَاسِّي كُنُوزِي",
+    "key": "s5_clean",
+    "jsonFile": "public/audio/lesson_7_senses/s5_clean.json",
+    "words": 9,
+    "karaokeEndMs": 5313.165999999999,
+    "maxGap": 257.70899999999983,
+    "issues": []
+  },
+  {
+    "lesson": 7,
+    "title": "حَوَاسِّي كُنُوزِي",
+    "key": "s6_closing",
+    "jsonFile": "public/audio/lesson_7_senses/s6_closing.json",
+    "words": 12,
+    "karaokeEndMs": 7419.957,
+    "maxGap": 953.833,
+    "issues": []
+  },
+  {
+    "lesson": 8,
+    "title": "رِحْلَةُ الأَكْوَارِيُوم (الأعداد من 1 إلى 9)",
+    "key": "s1_intro",
+    "jsonFile": "public/audio/lesson_8_aquarium/s1_intro.json",
+    "words": 13,
+    "karaokeEndMs": 8058,
+    "maxGap": 950,
+    "issues": []
+  },
+  {
+    "lesson": 8,
+    "title": "رِحْلَةُ الأَكْوَارِيُوم (الأعداد من 1 إلى 9)",
+    "key": "s2_fish",
+    "jsonFile": "public/audio/lesson_8_aquarium/s2_fish.json",
+    "words": 17,
+    "karaokeEndMs": 12358,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 8,
+    "title": "رِحْلَةُ الأَكْوَارِيُوم (الأعداد من 1 إلى 9)",
+    "key": "s3_stars",
+    "jsonFile": "public/audio/lesson_8_aquarium/s3_stars.json",
+    "words": 16,
+    "karaokeEndMs": 12372,
+    "maxGap": 953,
+    "issues": []
+  },
+  {
+    "lesson": 8,
+    "title": "رِحْلَةُ الأَكْوَارِيُوم (الأعداد من 1 إلى 9)",
+    "key": "s4_shells",
+    "jsonFile": "public/audio/lesson_8_aquarium/s4_shells.json",
+    "words": 17,
+    "karaokeEndMs": 12643,
+    "maxGap": 953,
+    "issues": []
+  },
+  {
+    "lesson": 8,
+    "title": "رِحْلَةُ الأَكْوَارِيُوم (الأعداد من 1 إلى 9)",
+    "key": "s6_closing",
+    "jsonFile": "public/audio/lesson_8_aquarium/s6_closing.json",
+    "words": 16,
+    "karaokeEndMs": 9753,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 9,
+    "title": "حَديقَةُ الأَلْعاب (فَوْقَ وَتَحْتَ)",
+    "key": "s1_intro",
+    "jsonFile": "public/audio/lesson_9_playground/s1_intro.json",
+    "words": 13,
+    "karaokeEndMs": 8546,
+    "maxGap": 953,
+    "issues": []
+  },
+  {
+    "lesson": 9,
+    "title": "حَديقَةُ الأَلْعاب (فَوْقَ وَتَحْتَ)",
+    "key": "s2_fawq",
+    "jsonFile": "public/audio/lesson_9_playground/s2_fawq.json",
+    "words": 7,
+    "karaokeEndMs": 5630,
+    "maxGap": 940,
+    "issues": []
+  },
+  {
+    "lesson": 9,
+    "title": "حَديقَةُ الأَلْعاب (فَوْقَ وَتَحْتَ)",
+    "key": "s3_ala",
+    "jsonFile": "public/audio/lesson_9_playground/s3_ala.json",
+    "words": 6,
+    "karaokeEndMs": 4476,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 9,
+    "title": "حَديقَةُ الأَلْعاب (فَوْقَ وَتَحْتَ)",
+    "key": "s4_aala",
+    "jsonFile": "public/audio/lesson_9_playground/s4_aala.json",
+    "words": 6,
+    "karaokeEndMs": 4367,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 9,
+    "title": "حَديقَةُ الأَلْعاب (فَوْقَ وَتَحْتَ)",
+    "key": "s5_asfal",
+    "jsonFile": "public/audio/lesson_9_playground/s5_asfal.json",
+    "words": 5,
+    "karaokeEndMs": 2817,
+    "maxGap": 14,
+    "issues": []
+  },
+  {
+    "lesson": 9,
+    "title": "حَديقَةُ الأَلْعاب (فَوْقَ وَتَحْتَ)",
+    "key": "s6_closing",
+    "jsonFile": "public/audio/lesson_9_playground/s6_closing.json",
+    "words": 11,
+    "karaokeEndMs": 9767,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 10,
+    "title": "رُكْنُ الأَدَواتِ (تَشْكيلُ الكَمِّيّاتِ)",
+    "key": "s1_intro",
+    "jsonFile": "public/audio/lesson_10_tools/s1_intro.json",
+    "words": 10,
+    "karaokeEndMs": 7203,
+    "maxGap": 940,
+    "issues": []
+  },
+  {
+    "lesson": 10,
+    "title": "رُكْنُ الأَدَواتِ (تَشْكيلُ الكَمِّيّاتِ)",
+    "key": "s2_row",
+    "jsonFile": "public/audio/lesson_10_tools/s2_row.json",
+    "words": 13,
+    "karaokeEndMs": 10485,
+    "maxGap": 941,
+    "issues": []
+  },
+  {
+    "lesson": 10,
+    "title": "رُكْنُ الأَدَواتِ (تَشْكيلُ الكَمِّيّاتِ)",
+    "key": "s3_spread",
+    "jsonFile": "public/audio/lesson_10_tools/s3_spread.json",
+    "words": 17,
+    "karaokeEndMs": 12154,
+    "maxGap": 953,
+    "issues": []
+  },
+  {
+    "lesson": 10,
+    "title": "رُكْنُ الأَدَواتِ (تَشْكيلُ الكَمِّيّاتِ)",
+    "key": "s4_secret",
+    "jsonFile": "public/audio/lesson_10_tools/s4_secret.json",
+    "words": 11,
+    "karaokeEndMs": 8668,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 10,
+    "title": "رُكْنُ الأَدَواتِ (تَشْكيلُ الكَمِّيّاتِ)",
+    "key": "s5_books",
+    "jsonFile": "public/audio/lesson_10_tools/s5_books.json",
+    "words": 12,
+    "karaokeEndMs": 11598,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 10,
+    "title": "رُكْنُ الأَدَواتِ (تَشْكيلُ الكَمِّيّاتِ)",
+    "key": "s6_closing",
+    "jsonFile": "public/audio/lesson_10_tools/s6_closing.json",
+    "words": 13,
+    "karaokeEndMs": 8681,
+    "maxGap": 950,
+    "issues": []
+  },
+  {
+    "lesson": 11,
+    "title": "ساحَتي مَلْعَبي (أَتَحَرَّكُ وَأَتَنَقَّل)",
+    "key": "s1_intro",
+    "jsonFile": "public/audio/lesson_11_move/s1_intro.json",
+    "words": 12,
+    "karaokeEndMs": 8627,
+    "maxGap": 953,
+    "issues": []
+  },
+  {
+    "lesson": 11,
+    "title": "ساحَتي مَلْعَبي (أَتَحَرَّكُ وَأَتَنَقَّل)",
+    "key": "s2_walk",
+    "jsonFile": "public/audio/lesson_11_move/s2_walk.json",
+    "words": 7,
+    "karaokeEndMs": 4978,
+    "maxGap": 953,
+    "issues": []
+  },
+  {
+    "lesson": 11,
+    "title": "ساحَتي مَلْعَبي (أَتَحَرَّكُ وَأَتَنَقَّل)",
+    "key": "s3_run",
+    "jsonFile": "public/audio/lesson_11_move/s3_run.json",
+    "words": 6,
+    "karaokeEndMs": 4585,
+    "maxGap": 940,
+    "issues": []
+  },
+  {
+    "lesson": 11,
+    "title": "ساحَتي مَلْعَبي (أَتَحَرَّكُ وَأَتَنَقَّل)",
+    "key": "s4_jump",
+    "jsonFile": "public/audio/lesson_11_move/s4_jump.json",
+    "words": 8,
+    "karaokeEndMs": 5005,
+    "maxGap": 941,
+    "issues": []
+  },
+  {
+    "lesson": 11,
+    "title": "ساحَتي مَلْعَبي (أَتَحَرَّكُ وَأَتَنَقَّل)",
+    "key": "s5_climb",
+    "jsonFile": "public/audio/lesson_11_move/s5_climb.json",
+    "words": 4,
+    "karaokeEndMs": 2790,
+    "maxGap": 14,
+    "issues": []
+  },
+  {
+    "lesson": 11,
+    "title": "ساحَتي مَلْعَبي (أَتَحَرَّكُ وَأَتَنَقَّل)",
+    "key": "s6_closing",
+    "jsonFile": "public/audio/lesson_11_move/s6_closing.json",
+    "words": 10,
+    "karaokeEndMs": 9916,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 12,
+    "title": "صُندوقُ المُفاجَآتِ (العَدَدُ 0)",
+    "key": "s1_intro",
+    "jsonFile": "public/audio/lesson_12_zero/s1_intro.json",
+    "words": 11,
+    "karaokeEndMs": 8424,
+    "maxGap": 950,
+    "issues": []
+  },
+  {
+    "lesson": 12,
+    "title": "صُندوقُ المُفاجَآتِ (العَدَدُ 0)",
+    "key": "s2_three",
+    "jsonFile": "public/audio/lesson_12_zero/s2_three.json",
+    "words": 12,
+    "karaokeEndMs": 9265,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 12,
+    "title": "صُندوقُ المُفاجَآتِ (العَدَدُ 0)",
+    "key": "s3_empty",
+    "jsonFile": "public/audio/lesson_12_zero/s3_empty.json",
+    "words": 12,
+    "karaokeEndMs": 9468,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 12,
+    "title": "صُندوقُ المُفاجَآتِ (العَدَدُ 0)",
+    "key": "s4_compare",
+    "jsonFile": "public/audio/lesson_12_zero/s4_compare.json",
+    "words": 9,
+    "karaokeEndMs": 5408,
+    "maxGap": 122,
+    "issues": []
+  },
+  {
+    "lesson": 12,
+    "title": "صُندوقُ المُفاجَآتِ (العَدَدُ 0)",
+    "key": "s5_birds",
+    "jsonFile": "public/audio/lesson_12_zero/s5_birds.json",
+    "words": 13,
+    "karaokeEndMs": 8708,
+    "maxGap": 953,
+    "issues": []
+  },
+  {
+    "lesson": 12,
+    "title": "صُندوقُ المُفاجَآتِ (العَدَدُ 0)",
+    "key": "s6_closing",
+    "jsonFile": "public/audio/lesson_12_zero/s6_closing.json",
+    "words": 12,
+    "karaokeEndMs": 9604,
+    "maxGap": 950,
+    "issues": []
+  },
+  {
+    "lesson": 13,
+    "title": "أَعُدُّ الأَشْيَاءَ (الأَعْدَادُ 1-10)",
+    "key": "s1_intro",
+    "jsonFile": "public/audio/lesson_13_counting/s1_intro.json",
+    "words": 12,
+    "karaokeEndMs": 6715,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 13,
+    "title": "أَعُدُّ الأَشْيَاءَ (الأَعْدَادُ 1-10)",
+    "key": "s2_three",
+    "jsonFile": "public/audio/lesson_13_counting/s2_three.json",
+    "words": 13,
+    "karaokeEndMs": 11272,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 13,
+    "title": "أَعُدُّ الأَشْيَاءَ (الأَعْدَادُ 1-10)",
+    "key": "s3_five",
+    "jsonFile": "public/audio/lesson_13_counting/s3_five.json",
+    "words": 13,
+    "karaokeEndMs": 11341,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 13,
+    "title": "أَعُدُّ الأَشْيَاءَ (الأَعْدَادُ 1-10)",
+    "key": "s4_eight",
+    "jsonFile": "public/audio/lesson_13_counting/s4_eight.json",
+    "words": 18,
+    "karaokeEndMs": 15165,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 13,
+    "title": "أَعُدُّ الأَشْيَاءَ (الأَعْدَادُ 1-10)",
+    "key": "s5_ten",
+    "jsonFile": "public/audio/lesson_13_counting/s5_ten.json",
+    "words": 16,
+    "karaokeEndMs": 14691,
+    "maxGap": 950,
+    "issues": []
+  },
+  {
+    "lesson": 13,
+    "title": "أَعُدُّ الأَشْيَاءَ (الأَعْدَادُ 1-10)",
+    "key": "s6_closing",
+    "jsonFile": "public/audio/lesson_13_counting/s6_closing.json",
+    "words": 14,
+    "karaokeEndMs": 8152,
+    "maxGap": 954,
+    "issues": []
+  },
+  {
+    "lesson": 14,
+    "title": "أَتَذَكَّرُ الكَمِّيَّةَ بِالعَدَدِ",
+    "key": "s1_intro",
+    "jsonFile": "public/audio/lesson_14_memory_quantity/s1_intro.json",
+    "words": 10,
+    "karaokeEndMs": 7407,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 14,
+    "title": "أَتَذَكَّرُ الكَمِّيَّةَ بِالعَدَدِ",
+    "key": "s2_six_objects",
+    "jsonFile": "public/audio/lesson_14_memory_quantity/s2_six_objects.json",
+    "words": 15,
+    "karaokeEndMs": 12242,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 14,
+    "title": "أَتَذَكَّرُ الكَمِّيَّةَ بِالعَدَدِ",
+    "key": "s3_seven_objects",
+    "jsonFile": "public/audio/lesson_14_memory_quantity/s3_seven_objects.json",
+    "words": 16,
+    "karaokeEndMs": 13039,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 14,
+    "title": "أَتَذَكَّرُ الكَمِّيَّةَ بِالعَدَدِ",
+    "key": "s4_groups",
+    "jsonFile": "public/audio/lesson_14_memory_quantity/s4_groups.json",
+    "words": 11,
+    "karaokeEndMs": 7655,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 14,
+    "title": "أَتَذَكَّرُ الكَمِّيَّةَ بِالعَدَدِ",
+    "key": "s5_use_number",
+    "jsonFile": "public/audio/lesson_14_memory_quantity/s5_use_number.json",
+    "words": 9,
+    "karaokeEndMs": 7114,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 14,
+    "title": "أَتَذَكَّرُ الكَمِّيَّةَ بِالعَدَدِ",
+    "key": "s6_closing",
+    "jsonFile": "public/audio/lesson_14_memory_quantity/s6_closing.json",
+    "words": 10,
+    "karaokeEndMs": 7477,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 15,
+    "title": "أُعَيِّنُ الرُّتْبَةَ بِالعَدَدِ",
+    "key": "s1_intro",
+    "jsonFile": "public/audio/lesson_15_order_rank/s1_intro.json",
+    "words": 10,
+    "karaokeEndMs": 7208,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 15,
+    "title": "أُعَيِّنُ الرُّتْبَةَ بِالعَدَدِ",
+    "key": "s2_train_fourth",
+    "jsonFile": "public/audio/lesson_15_order_rank/s2_train_fourth.json",
+    "words": 12,
+    "karaokeEndMs": 7253,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 15,
+    "title": "أُعَيِّنُ الرُّتْبَةَ بِالعَدَدِ",
+    "key": "s3_cards_order",
+    "jsonFile": "public/audio/lesson_15_order_rank/s3_cards_order.json",
+    "words": 12,
+    "karaokeEndMs": 7583,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 15,
+    "title": "أُعَيِّنُ الرُّتْبَةَ بِالعَدَدِ",
+    "key": "s4_race_positions",
+    "jsonFile": "public/audio/lesson_15_order_rank/s4_race_positions.json",
+    "words": 10,
+    "karaokeEndMs": 6833,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 15,
+    "title": "أُعَيِّنُ الرُّتْبَةَ بِالعَدَدِ",
+    "key": "s5_sequence",
+    "jsonFile": "public/audio/lesson_15_order_rank/s5_sequence.json",
+    "words": 9,
+    "karaokeEndMs": 5894,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 15,
+    "title": "أُعَيِّنُ الرُّتْبَةَ بِالعَدَدِ",
+    "key": "s6_closing",
+    "jsonFile": "public/audio/lesson_15_order_rank/s6_closing.json",
+    "words": 11,
+    "karaokeEndMs": 7680,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 16,
+    "title": "أَتَحَرَّكُ وَأُحَافِظُ عَلَى صِحَّتِي",
+    "key": "s1_intro",
+    "jsonFile": "public/audio/lesson_16_health_movement/s1_intro.json",
+    "words": 10,
+    "karaokeEndMs": 7739,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 16,
+    "title": "أَتَحَرَّكُ وَأُحَافِظُ عَلَى صِحَّتِي",
+    "key": "s2_running",
+    "jsonFile": "public/audio/lesson_16_health_movement/s2_running.json",
+    "words": 10,
+    "karaokeEndMs": 5774,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 16,
+    "title": "أَتَحَرَّكُ وَأُحَافِظُ عَلَى صِحَّتِي",
+    "key": "s3_body_movement",
+    "jsonFile": "public/audio/lesson_16_health_movement/s3_body_movement.json",
+    "words": 9,
+    "karaokeEndMs": 5844,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 16,
+    "title": "أَتَحَرَّكُ وَأُحَافِظُ عَلَى صِحَّتِي",
+    "key": "s4_safe_place",
+    "jsonFile": "public/audio/lesson_16_health_movement/s4_safe_place.json",
+    "words": 11,
+    "karaokeEndMs": 6173,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 16,
+    "title": "أَتَحَرَّكُ وَأُحَافِظُ عَلَى صِحَّتِي",
+    "key": "s5_unsafe_behavior",
+    "jsonFile": "public/audio/lesson_16_health_movement/s5_unsafe_behavior.json",
+    "words": 11,
+    "karaokeEndMs": 7944,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 16,
+    "title": "أَتَحَرَّكُ وَأُحَافِظُ عَلَى صِحَّتِي",
+    "key": "s6_closing",
+    "jsonFile": "public/audio/lesson_16_health_movement/s6_closing.json",
+    "words": 10,
+    "karaokeEndMs": 8095,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 17,
+    "title": "أَسْتَخْرِجُ مَعْلُومَةً",
+    "key": "s1_intro",
+    "jsonFile": "public/audio/lesson_17_info/s1_intro.json",
+    "words": 13,
+    "karaokeEndMs": 9129,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 17,
+    "title": "أَسْتَخْرِجُ مَعْلُومَةً",
+    "key": "s2_picture",
+    "jsonFile": "public/audio/lesson_17_info/s2_picture.json",
+    "words": 13,
+    "karaokeEndMs": 8774,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 17,
+    "title": "أَسْتَخْرِجُ مَعْلُومَةً",
+    "key": "s3_board",
+    "jsonFile": "public/audio/lesson_17_info/s3_board.json",
+    "words": 14,
+    "karaokeEndMs": 8658,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 17,
+    "title": "أَسْتَخْرِجُ مَعْلُومَةً",
+    "key": "s4_colors",
+    "jsonFile": "public/audio/lesson_17_info/s4_colors.json",
+    "words": 15,
+    "karaokeEndMs": 8680,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 17,
+    "title": "أَسْتَخْرِجُ مَعْلُومَةً",
+    "key": "s5_no_guess",
+    "jsonFile": "public/audio/lesson_17_info/s5_no_guess.json",
+    "words": 14,
+    "karaokeEndMs": 8391,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 17,
+    "title": "أَسْتَخْرِجُ مَعْلُومَةً",
+    "key": "s6_closing",
+    "jsonFile": "public/audio/lesson_17_info/s6_closing.json",
+    "words": 12,
+    "karaokeEndMs": 7871,
+    "maxGap": 30,
+    "issues": []
+  },
+  {
+    "lesson": 18,
+    "title": "أُعَيِّنُ المَوْقِعَ فِي الفَضَاءِ",
+    "key": "s1_intro",
+    "jsonFile": "public/audio/lesson_18_positions/s1_intro.json",
+    "words": 10,
+    "karaokeEndMs": 7485,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 18,
+    "title": "أُعَيِّنُ المَوْقِعَ فِي الفَضَاءِ",
+    "key": "s2_right_left",
+    "jsonFile": "public/audio/lesson_18_positions/s2_right_left.json",
+    "words": 9,
+    "karaokeEndMs": 6260,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 18,
+    "title": "أُعَيِّنُ المَوْقِعَ فِي الفَضَاءِ",
+    "key": "s3_above_below",
+    "jsonFile": "public/audio/lesson_18_positions/s3_above_below.json",
+    "words": 9,
+    "karaokeEndMs": 6795,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 18,
+    "title": "أُعَيِّنُ المَوْقِعَ فِي الفَضَاءِ",
+    "key": "s4_front_behind",
+    "jsonFile": "public/audio/lesson_18_positions/s4_front_behind.json",
+    "words": 9,
+    "karaokeEndMs": 6890,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 18,
+    "title": "أُعَيِّنُ المَوْقِعَ فِي الفَضَاءِ",
+    "key": "s5_inside_outside",
+    "jsonFile": "public/audio/lesson_18_positions/s5_inside_outside.json",
+    "words": 9,
+    "karaokeEndMs": 6925,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 18,
+    "title": "أُعَيِّنُ المَوْقِعَ فِي الفَضَاءِ",
+    "key": "s6_closing",
+    "jsonFile": "public/audio/lesson_18_positions/s6_closing.json",
+    "words": 12,
+    "karaokeEndMs": 8555,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 19,
+    "title": "أُصَنِّفُ أَغْذِيَتِي",
+    "key": "s1_intro",
+    "jsonFile": "public/audio/lesson_19_food_groups/s1_intro.json",
+    "words": 9,
+    "karaokeEndMs": 6442,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 19,
+    "title": "أُصَنِّفُ أَغْذِيَتِي",
+    "key": "s2_fruits_vegetables",
+    "jsonFile": "public/audio/lesson_19_food_groups/s2_fruits_vegetables.json",
+    "words": 12,
+    "karaokeEndMs": 7890,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 19,
+    "title": "أُصَنِّفُ أَغْذِيَتِي",
+    "key": "s3_meat_fish",
+    "jsonFile": "public/audio/lesson_19_food_groups/s3_meat_fish.json",
+    "words": 10,
+    "karaokeEndMs": 6599,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 19,
+    "title": "أُصَنِّفُ أَغْذِيَتِي",
+    "key": "s4_dairy",
+    "jsonFile": "public/audio/lesson_19_food_groups/s4_dairy.json",
+    "words": 7,
+    "karaokeEndMs": 4738,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 19,
+    "title": "أُصَنِّفُ أَغْذِيَتِي",
+    "key": "s5_grains",
+    "jsonFile": "public/audio/lesson_19_food_groups/s5_grains.json",
+    "words": 7,
+    "karaokeEndMs": 4747,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 19,
+    "title": "أُصَنِّفُ أَغْذِيَتِي",
+    "key": "s6_closing",
+    "jsonFile": "public/audio/lesson_19_food_groups/s6_closing.json",
+    "words": 8,
+    "karaokeEndMs": 5631,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 20,
+    "title": "مُتَتَالِيَةُ الأَعْدَادِ إِلَى 10",
+    "key": "s1_intro",
+    "jsonFile": "public/audio/lesson_20_numbers/s1_intro.json",
+    "words": 10,
+    "karaokeEndMs": 6548,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 20,
+    "title": "مُتَتَالِيَةُ الأَعْدَادِ إِلَى 10",
+    "key": "s2_sequence",
+    "jsonFile": "public/audio/lesson_20_numbers/s2_sequence.json",
+    "words": 15,
+    "karaokeEndMs": 11219,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 20,
+    "title": "مُتَتَالِيَةُ الأَعْدَادِ إِلَى 10",
+    "key": "s3_next",
+    "jsonFile": "public/audio/lesson_20_numbers/s3_next.json",
+    "words": 10,
+    "karaokeEndMs": 5944,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 20,
+    "title": "مُتَتَالِيَةُ الأَعْدَادِ إِلَى 10",
+    "key": "s4_previous",
+    "jsonFile": "public/audio/lesson_20_numbers/s4_previous.json",
+    "words": 10,
+    "karaokeEndMs": 5997,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 20,
+    "title": "مُتَتَالِيَةُ الأَعْدَادِ إِلَى 10",
+    "key": "s5_quantity",
+    "jsonFile": "public/audio/lesson_20_numbers/s5_quantity.json",
+    "words": 11,
+    "karaokeEndMs": 6798,
+    "maxGap": 25,
+    "issues": []
+  },
+  {
+    "lesson": 20,
+    "title": "مُتَتَالِيَةُ الأَعْدَادِ إِلَى 10",
+    "key": "s6_closing",
+    "jsonFile": "public/audio/lesson_20_numbers/s6_closing.json",
+    "words": 11,
+    "karaokeEndMs": 7515,
+    "maxGap": 25,
+    "issues": []
+  }
+]

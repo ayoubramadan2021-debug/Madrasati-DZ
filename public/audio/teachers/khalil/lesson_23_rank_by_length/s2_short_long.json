@@ -1,0 +1,32 @@
+[
+  {
+    "text": "هَذَا",
+    "offset": 450,
+    "duration": 620
+  },
+  {
+    "text": "قَلَمٌ",
+    "offset": 950,
+    "duration": 620
+  },
+  {
+    "text": "قَصِيرٌ",
+    "offset": 1450,
+    "duration": 620
+  },
+  {
+    "text": "وَهَذَا",
+    "offset": 1950,
+    "duration": 620
+  },
+  {
+    "text": "قَلَمٌ",
+    "offset": 2450,
+    "duration": 620
+  },
+  {
+    "text": "طَوِيلٌ",
+    "offset": 2950,
+    "duration": 620
+  }
+]

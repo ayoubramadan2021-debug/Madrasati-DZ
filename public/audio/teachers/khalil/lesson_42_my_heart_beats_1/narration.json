@@ -1,0 +1,44 @@
+[
+  {
+    "scene": 1,
+    "key": "lesson42_s1",
+    "speaker": "khalil",
+    "image": "/lessons/v2/lesson42/s1.webp",
+    "text": "نَلْعَبُ لُعْبَةً مُسَلِّيَةً فِي عَالَمِ الْأَلْعَابِ وَالتَّرْفِيهِ."
+  },
+  {
+    "scene": 2,
+    "key": "lesson42_s2",
+    "speaker": "khalil",
+    "image": "/lessons/v2/lesson42/s2.webp",
+    "text": "نَرْكُضُ وَنَتَحَرَّكُ وَنَسْتَمْتِعُ بِاللَّعِبِ مَعَ أَصْدِقَائِنَا."
+  },
+  {
+    "scene": 3,
+    "key": "lesson42_s3",
+    "speaker": "khalil",
+    "image": "/lessons/v2/lesson42/s3.webp",
+    "text": "بَعْدَ اللَّعِبِ، شَعَرَ فَاضِلٌ بِشَيْءٍ يَنْبِضُ فِي صَدْرِهِ."
+  },
+  {
+    "scene": 4,
+    "key": "lesson42_s4",
+    "speaker": "khalil",
+    "image": "/lessons/v2/lesson42/s4.webp",
+    "text": "هَذَا هُوَ نَبْضُ الْقَلْبِ، فَالْقَلْبُ يَنْبِضُ بِاسْتِمْرَارٍ."
+  },
+  {
+    "scene": 5,
+    "key": "lesson42_s5",
+    "speaker": "khalil",
+    "image": "/lessons/v2/lesson42/s5.webp",
+    "text": "نَضَعُ أَيْدِيَنَا عَلَى الْجِهَةِ الْيُسْرَى مِنَ الصَّدْرِ فَنَشْعُرُ بِالنَّبْضِ."
+  },
+  {
+    "scene": 6,
+    "key": "lesson42_s6",
+    "speaker": "khalil",
+    "image": "/lessons/v2/lesson42/s6.webp",
+    "text": "قَلْبِي يَنْبِضُ، وَأَشْعُرُ بِنَبْضِهِ بَعْدَ الْحَرَكَةِ وَاللَّعِبِ."
+  }
+]

@@ -1,58 +1,282 @@
+import { useEffect, type CSSProperties } from "react";
 import { useNavigate } from "react-router-dom";
+import { markLessonCompleted } from "../progress/lessonProgress";
 
-const C = { navy: "#1B3A6B", gold: "#E8A020", green: "#1FA463", purple: "#7C3AED" };
-const WORLD_ID = "b0a43712-8b45-428d-bea2-55ff3de52d3a";
+const C = {
+  navy: "#1B3A6B",
+  navyDeep: "#0F2447",
+  gold: "#E8A020",
+  green: "#1FA463",
+  purple: "#7C3AED",
+  cream: "#FFF8EC",
+};
+
+const SCHOOL_WORLD_ID =
+  "b0a43712-8b45-428d-bea2-55ff3de52d3a";
 
 interface LessonCompleteV2Props {
-  message: string;              // رسالة التهنئة
-  onReplay: () => void;         // إعادة التمارين
-  nextLessonKey?: string;       // مثل "lesson11" → يظهر زرّ الدرس التالي
+  message: string;
+  onReplay: () => void;
+  lessonKey?: string;
+  stars?: number;
+  nextLessonKey?: string;
+  nextPath?: string;
+  nextLabel?: string;
+  quizPath?: string | null;
+  returnPath?: string;
+  returnLabel?: string;
 }
 
-export default function LessonCompleteV2({ message, onReplay, nextLessonKey }: LessonCompleteV2Props) {
+export default function LessonCompleteV2({
+  message,
+  onReplay,
+  lessonKey,
+  stars = 3,
+  nextLessonKey,
+  nextPath,
+  nextLabel = "الدرس التالي",
+  quizPath = `/world/${SCHOOL_WORLD_ID}/quiz`,
+  returnPath,
+  returnLabel = "العودة إلى العالم",
+}: LessonCompleteV2Props) {
   const navigate = useNavigate();
 
-  const btn = (bg: string, fontSize = 17, pad = "15px 20px") => ({
-    background: bg, color: "#fff", border: "none", borderRadius: 16,
-    padding: pad, fontSize, fontWeight: 800 as const, fontFamily: "Tajawal,sans-serif",
-    cursor: "pointer", boxShadow: `0 4px 12px ${bg}40`,
+  useEffect(() => {
+    if (lessonKey) {
+      markLessonCompleted(lessonKey, stars);
+    }
+  }, [lessonKey, stars]);
+
+  const resolvedNextPath =
+    nextPath ??
+    (nextLessonKey
+      ? `/lesson-v2/${nextLessonKey}`
+      : undefined);
+
+  const buttonStyle = (
+    background: string,
+    shadow: string,
+    fontSize = 18,
+  ): CSSProperties => ({
+    width: "100%",
+    minHeight: 58,
+    border: 0,
+    borderRadius: 19,
+    padding: "14px 18px",
+    background,
+    color: "#FFFFFF",
+    fontFamily: "Tajawal, sans-serif",
+    fontSize,
+    fontWeight: 950,
+    cursor: "pointer",
+    boxShadow: shadow,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
   });
 
   return (
-    <div style={{
-      minHeight: "100dvh", background: "linear-gradient(180deg,#FFF8EC 0%,#F5E3B0 100%)",
-      fontFamily: "Tajawal,sans-serif", direction: "rtl", display: "flex",
-      flexDirection: "column", alignItems: "center", justifyContent: "center",
-      padding: "32px 20px", gap: 14, maxWidth: 480, margin: "0 auto",
-    }}>
-      {/* النجمة */}
-      <div style={{ fontSize: 88, lineHeight: 1 }}>🌟</div>
+    <main dir="rtl" style={styles.page}>
+      <style>{`
+        @keyframes completePop {
+          0% { opacity: 0; transform: translateY(18px) scale(.94); }
+          70% { opacity: 1; transform: translateY(-3px) scale(1.02); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
 
-      {/* زرّ الإعادة الصغير أعلى — ثانوي */}
-      <button onClick={onReplay} style={{
-        background: "#fff", color: C.gold, border: `2px solid ${C.gold}`,
-        borderRadius: 999, padding: "8px 20px", fontSize: 14, fontWeight: 700,
-        fontFamily: "Tajawal,sans-serif", cursor: "pointer",
-        boxShadow: "0 2px 8px rgba(232,160,32,.25)",
-      }}>إِعَادَة 🔁</button>
+        @keyframes trophyPulse {
+          0%, 100% { transform: scale(1) rotate(0deg); }
+          50% { transform: scale(1.08) rotate(4deg); }
+        }
 
-      <h1 style={{ fontSize: 30, color: C.navy, fontWeight: 900, margin: "6px 0 0", textAlign: "center" }}>أَحْسَنْتَ يَا بَطَل!</h1>
-      <p style={{ fontSize: 17, color: C.navy, margin: 0, textAlign: "center", maxWidth: 320, lineHeight: 1.6 }}>{message}</p>
+        @keyframes floatStar {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-7px); }
+        }
 
-      {/* الأزرار الرئيسية متقاربة للتنقّل */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 12, width: "100%", maxWidth: 340, marginTop: 14 }}>
-        {nextLessonKey && (
-          <button onClick={() => navigate(`/lesson-v2/${nextLessonKey}`)} style={btn(C.green, 18, "16px 24px")}>
-            الدَّرْسُ التَّالي ←
+        @keyframes shineMove {
+          0% { transform: translateX(130%) rotate(18deg); opacity: 0; }
+          35% { opacity: .55; }
+          100% { transform: translateX(-150%) rotate(18deg); opacity: 0; }
+        }
+      `}</style>
+
+      <section style={styles.card}>
+        <div style={styles.shine} />
+
+        <div style={styles.trophyWrap}>
+          <div style={styles.glow} />
+          <div style={styles.trophy}>🏆</div>
+          <div style={styles.starLeft}>✨</div>
+          <div style={styles.starRight}>🌟</div>
+        </div>
+
+        <h1 style={styles.title}>أَحْسَنْتَ يَا بَطَل!</h1>
+        <p style={styles.message}>{message}</p>
+
+        <div style={styles.actions}>
+          {resolvedNextPath && (
+            <button
+              type="button"
+              onClick={() => navigate(resolvedNextPath)}
+              style={buttonStyle(
+                C.green,
+                "0 11px 22px rgba(31,164,99,.28)",
+                19,
+              )}
+            >
+              {nextLabel}
+            </button>
+          )}
+
+          <button
+            type="button"
+            onClick={onReplay}
+            style={buttonStyle(
+              C.gold,
+              "0 11px 22px rgba(232,160,32,.28)",
+            )}
+          >
+            إعادة التمارين
           </button>
-        )}
-        <button onClick={() => navigate(`/world/${WORLD_ID}/quiz`)} style={btn(C.purple, 18, "16px 24px")}>
-          اِخْتِبَارُ العَالَم 🎯
-        </button>
-        <button onClick={() => navigate("/")} style={btn(C.navy, 16, "14px 20px")}>
-          الرَّئِيسِيَّة 🏠
-        </button>
-      </div>
-    </div>
+
+          {!resolvedNextPath && returnPath && (
+            <button
+              type="button"
+              onClick={() => navigate(returnPath)}
+              style={buttonStyle(
+                C.navy,
+                "0 11px 22px rgba(27,58,107,.25)",
+                17,
+              )}
+            >
+              {returnLabel}
+            </button>
+          )}
+
+          {quizPath && (
+            <button
+              type="button"
+              onClick={() => navigate(quizPath)}
+              style={buttonStyle(
+                C.purple,
+                "0 11px 22px rgba(124,58,237,.27)",
+                17,
+              )}
+            >
+              اختبار العالم
+            </button>
+          )}
+        </div>
+      </section>
+    </main>
   );
 }
+
+const styles: Record<string, CSSProperties> = {
+  page: {
+    minHeight: "100dvh",
+    width: "100%",
+    background: C.cream,
+    fontFamily: "Tajawal, sans-serif",
+    direction: "rtl",
+    display: "flex",
+    alignItems: "stretch",
+    justifyContent: "stretch",
+    padding: 0,
+    boxSizing: "border-box",
+    overflow: "hidden",
+  },
+  card: {
+    width: "100%",
+    minHeight: "100dvh",
+    position: "relative",
+    padding: "22px 18px 112px",
+    background: C.cream,
+    textAlign: "center",
+    overflow: "hidden",
+    boxSizing: "border-box",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    animation:
+      "completePop .55s cubic-bezier(.22,1,.36,1) both",
+  },
+  shine: {
+    position: "absolute",
+    top: -90,
+    right: -20,
+    width: 86,
+    height: 430,
+    background:
+      "linear-gradient(90deg,transparent,rgba(255,255,255,.88),transparent)",
+    animation: "shineMove 2.8s ease-in-out infinite",
+    pointerEvents: "none",
+  },
+  trophyWrap: {
+    position: "relative",
+    width: 160,
+    height: 145,
+    marginBottom: 3,
+    display: "grid",
+    placeItems: "center",
+  },
+  glow: {
+    position: "absolute",
+    width: 132,
+    height: 132,
+    borderRadius: "50%",
+    background:
+      "radial-gradient(circle,rgba(232,160,32,.34),rgba(232,160,32,.08),transparent 70%)",
+  },
+  trophy: {
+    position: "relative",
+    zIndex: 2,
+    fontSize: 88,
+    lineHeight: 1,
+    animation: "trophyPulse 1.8s ease-in-out infinite",
+    filter:
+      "drop-shadow(0 10px 13px rgba(232,160,32,.28))",
+  },
+  starLeft: {
+    position: "absolute",
+    left: 8,
+    top: 25,
+    fontSize: 27,
+    animation: "floatStar 1.6s ease-in-out infinite",
+  },
+  starRight: {
+    position: "absolute",
+    right: 7,
+    bottom: 18,
+    fontSize: 29,
+    animation: "floatStar 1.9s ease-in-out infinite",
+  },
+  title: {
+    margin: "2px 0 8px",
+    color: C.navyDeep,
+    fontSize: "clamp(30px,8vw,42px)",
+    lineHeight: 1.25,
+    fontWeight: 950,
+  },
+  message: {
+    maxWidth: 390,
+    margin: "0 auto 14px",
+    color: C.navy,
+    fontSize: "clamp(17px,4.7vw,23px)",
+    lineHeight: 1.7,
+    fontWeight: 850,
+  },
+  actions: {
+    width: "100%",
+    maxWidth: 360,
+    margin: "0 auto",
+    display: "flex",
+    flexDirection: "column",
+    gap: 11,
+    position: "relative",
+    zIndex: 2,
+  },
+};

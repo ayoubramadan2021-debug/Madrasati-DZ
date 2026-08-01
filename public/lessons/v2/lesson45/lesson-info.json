@@ -1,0 +1,18 @@
+{
+  "lesson_number": 45,
+  "sort_order": 13,
+  "title_ar": "إِتْمَامُ الْجَدْوَلِ",
+  "title_fr": "Compléter un tableau",
+  "subject": "math",
+  "grade": 1,
+  "speaker": "taline",
+  "audio_base": "/audio/teachers/taline/lesson_45_complete_table",
+  "scene_count": 6,
+  "estimated_duration_seconds": 300,
+  "objectives": [
+    "قراءة جدول بسيط.",
+    "التعرف على السطر والعمود.",
+    "تعيين خانة من خلال تقاطع السطر والعمود.",
+    "إكمال الخانات الناقصة انطلاقًا من المعطيات."
+  ]
+}
