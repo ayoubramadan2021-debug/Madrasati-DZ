@@ -16,6 +16,8 @@ import Lesson48ExercisesPage from "./pages/Lesson48ExercisesPage";
 import Lesson49ExercisesPage from "./pages/Lesson49ExercisesPage";
 import Lesson50ExercisesPage from "./pages/Lesson50ExercisesPage";
 import Lesson51ExercisesPage from "./pages/Lesson51ExercisesPage";
+import Lesson52Page from "./pages/Lesson52Page";
+import Lesson52ExercisesPage from "./pages/Lesson52ExercisesPage";
 const lazy = (importFn: () => Promise<any>, title: string) => {
   const LazyComponent = React.lazy(importFn);
   return (
@@ -74,7 +76,10 @@ export default function App() {
           path="/lesson-v2/51/exercises"
           element={<Lesson51ExercisesPage />}
         />
+
+        <Route path="/lesson-v2/lesson52" element={<Lesson52Page />} />
 <Route path="/lesson-v2/:lessonId?" element={lazy(() => import("./pages/LessonV2Page"), "الدرس")} />
+        <Route path="/world2-lesson/52" element={<Lesson52Page />} />
 <Route path="/world2-lesson/:lessonId" element={lazy(() => import("./pages/World2LessonPage"), "درس عالم الألعاب")} />
 
 
@@ -83,6 +88,7 @@ export default function App() {
           element={<Lesson48ExercisesPage />}
         />
 
+        <Route path="/lesson-v2/52/exercises" element={<Lesson52ExercisesPage />} />
         <Route path="/lesson-v2/:lessonId/exercises" element={lazy(() => import("./pages/LessonExercisesPage"), "التمارين")} />
         <Route path="/lesson-exercises" element={lazy(() => import("./pages/LessonExercisesPage"), "التمارين")} />
         <Route path="/lesson2-exercises" element={lazy(() => import("./pages/Lesson2ExercisesPage"), "تمارين الدرس 2")} />

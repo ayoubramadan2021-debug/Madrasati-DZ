@@ -122,6 +122,20 @@ const LESSON_ALIASES: Record<
     audioToken: "lesson_51_bilan_1",
   },
 
+  "52": {
+
+    exercise: "/lesson-v2/52/exercises",
+
+    title:
+
+      "الْحَصِيلَةُ 2 — أَخْتَارُ مَكَانًا صِحِّيًّا وَأُرَاقِبُ جِسْمِي بَعْدَ الْجُهْدِ",
+
+    exercisePath: "/lesson-v2/52/exercises",
+
+    audioToken: "lesson_52_bilan_2",
+
+  },
+
 };
 
 type UnknownRecord =

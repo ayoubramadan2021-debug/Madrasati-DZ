@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback,
+  type ReactNode,
+} from "react";
 import { isKeyword } from "../keywords";
 
 // ═══════════════════════════════════════════════════════════════
@@ -14,10 +16,37 @@ export type TapSelectImageItem = {
   image_fit?: "cover" | "contain";
 };
 
+
+// LESSON52_CUSTOM_RENDER_EXTENSION
+export type TapSelectImagesCustomContext = {
+  item: TapSelectImageItem;
+  itemIndex: number;
+  total: number;
+  locked: boolean;
+  feedbackState:
+    | "idle"
+    | "correct"
+    | "wrong";
+  showCorrect: (
+    after?: () => void,
+  ) => void;
+  showWrong: (
+    after?: () => void,
+  ) => void;
+  completeRound: (
+    after?: () => void,
+  ) => void;
+};
+
 export interface TapSelectImagesV2Props {
   items: TapSelectImageItem[];
   audio_base: string;
   background_image?: string;
+  progress_emoji?: string;
+  mission_prefix?: string;
+  render_custom?: (
+    context: TapSelectImagesCustomContext,
+  ) => ReactNode;
   onComplete?: (score: number, total: number) => void;
 }
 
@@ -102,6 +131,9 @@ export default function TapSelectImagesV2({
   items,
   audio_base,
   background_image = "/lessons/v2/lesson1-numbers-1-5/scene-1-intro.webp",
+  progress_emoji = "🖼️",
+  mission_prefix = "مهمة الصور",
+  render_custom,
   onComplete,
 }: TapSelectImagesV2Props) {
   const [itemIdx, setItemIdx] = useState(0);
@@ -180,12 +212,81 @@ export default function TapSelectImagesV2({
     }
   };
 
+
+  const showCustomCorrect = (
+    after?: () => void,
+  ) => {
+    if (locked) return;
+
+    karaoke.stop();
+    setLocked(true);
+    setFeedbackState("correct");
+    playFeedback(true);
+
+    window.setTimeout(() => {
+      setFeedbackState("idle");
+      setLocked(false);
+      after?.();
+    }, 620);
+  };
+
+  const showCustomWrong = (
+    after?: () => void,
+  ) => {
+    if (locked) return;
+
+    karaoke.stop();
+    setLocked(true);
+    setFeedbackState("wrong");
+    playFeedback(false);
+
+    window.setTimeout(() => {
+      setFeedbackState("idle");
+      setLocked(false);
+      after?.();
+    }, 650);
+  };
+
+  const completeCustomRound = (
+    after?: () => void,
+  ) => {
+    if (
+      locked ||
+      feedbackState === "correct"
+    ) {
+      return;
+    }
+
+    karaoke.stop();
+    setLocked(true);
+    setFeedbackState("correct");
+    playFeedback(true);
+
+    window.setTimeout(() => {
+      after?.();
+
+      if (
+        itemIdx <
+        items.length - 1
+      ) {
+        setItemIdx(
+          current => current + 1,
+        );
+      } else {
+        onComplete?.(
+          items.length,
+          items.length,
+        );
+      }
+    }, 720);
+  };
+
   if (!item) return null;
   const words = timings[item.question_audio_key];
   const isActive = karaoke.activeKey === item.question_audio_key;
 
-  const progressEmoji = "🖼️";
-  const missionText = `مهمة الصور ${itemIdx + 1}`;
+  const progressEmoji = progress_emoji;
+  const missionText = `${mission_prefix} ${itemIdx + 1}`;
 
   const coachText =
     feedbackState === "correct"
@@ -353,7 +454,34 @@ export default function TapSelectImagesV2({
         flex: 1,
         alignContent: "center",
       }}>
-        {item.options.map((src, idx) => {
+        {render_custom
+            ? (
+              <div
+                data-lesson52-custom-full-width="true"
+                style={{
+                  gridColumn: "1 / -1",
+                  width: "100%",
+                  minWidth: 0,
+                  alignSelf: "stretch",
+                  justifySelf: "stretch",
+                }}
+              >
+                {render_custom({
+                item,
+                itemIndex: itemIdx,
+                total: items.length,
+                locked,
+                feedbackState,
+                showCorrect:
+                  showCustomCorrect,
+                showWrong:
+                  showCustomWrong,
+                completeRound:
+                  completeCustomRound,
+              })}
+              </div>
+            )
+            : item.options.map((src, idx) => {
           const isSelected = selectedIdx === idx;
           const isCorrectAnswer = idx === item.correct_index;
           const showAsCorrect = isSelected && feedbackState === "correct";

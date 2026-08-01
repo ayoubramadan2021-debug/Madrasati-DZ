@@ -159,3 +159,60 @@ Register lesson 50 in Supabase with world sort order `18`, then verify that it a
 
 البدء بتدقيق الدرس 52 من قاعدة البيانات والملفات قبل تحديد عنوانه أو محتواه.
 <!-- LESSON51_HANDOFF_END -->
+
+<!-- LESSON52_FINAL_START -->
+## الدرس 52 — الحصيلة الثانية
+
+**الحالة:** مكتمل وجاهز للنشر
+**آخر تحديث:** 2026-08-01
+**فرع العمل:** `handoff-premium-secure-20260723_103324`
+
+### التسجيل والمسارات
+
+- رقم الدرس: `52`
+- العالم: عالم الألعاب والترفيه
+- `world_id`: `5daed3bb-7e62-4a5a-93a1-f6dec60df810`
+- `sort_order`: `20`
+- مسار العالم: `/world2-lesson/52`
+- مسار الدرس: `/lesson-v2/lesson52`
+- مسار التمارين: `/lesson-v2/52/exercises`
+
+### محتوى الدرس
+
+- المشاهد التعليمية مكتملة.
+- الصوت والكلمات المتزامنة Karaoke مكتملة.
+- المشهد السادس ينتقل إلى التمارين عبر «هيا نتدرب».
+- صوت الأستاذ: `khalil`.
+- المسار الصوتي الأساسي:
+  `public/audio/teachers/khalil/lesson_52_bilan_2`
+
+### التمارين
+
+- البنية: `ex1 → ex2 → ex3 → ex4 → done`
+- العدد: 4 تمارين × 4 وضعيات = 16 وضعية.
+- التمرين الأول: اختيار المشهد أو المكان الصحيح بالصور.
+- التمرين الثاني: سحب وتصنيف الأماكن والأنشطة.
+- التمرين الثالث: المقارنة بين حالة الجسم قبل الجهد وبعده.
+- التمرين الرابع: اختيار مشاهد القلب والنبض والتعب بالصور.
+- التمارين تستعمل الهيكل المرجعي نفسه مع التشغيل التلقائي والصوت والكاريوكي.
+- التمرينان الثاني والثالث يعرضان الخيارات بعرض الشاشة.
+- التمرين الرابع يستعمل 8 صور WebP بدقة 1024×1024.
+
+### الملفات الأساسية
+
+- `src/pages/Lesson52Page.tsx`
+- `src/pages/Lesson52ExercisesPage.tsx`
+- `src/features/lesson-v2/exercises-v2/Lesson52PremiumHealthExercisesV2.tsx`
+- `src/features/lesson-v2/exercises-v2/TapSelectImagesV2.tsx`
+- `public/lessons/v2/lesson52`
+- `public/audio/teachers/khalil/lesson_52_bilan_2`
+
+### التحقق
+
+- `npm run build`: ناجح.
+- صور التمرين الرابع: 8/8.
+- أصوات وضعيات التمارين: 16/16.
+- ملفات Karaoke: 16/16.
+- صيغة Karaoke: `text + offset + duration`.
+
+<!-- LESSON52_FINAL_END -->
