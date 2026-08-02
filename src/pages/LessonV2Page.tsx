@@ -34,6 +34,18 @@ import { LESSON_31_CONTENT } from "../features/lesson-v2/content/lesson31";
 
 import { LESSON_32_CONTENT } from "../features/lesson-v2/content/lesson32";
 
+import { lesson53 as LESSON_53_CONTENT } from "../features/lesson-v2/content/lesson53";
+import { lesson54 as LESSON_54_CONTENT } from "../features/lesson-v2/content/lesson54";
+import { lesson55 as LESSON_55_CONTENT } from "../features/lesson-v2/content/lesson55";
+import { lesson56 as LESSON_56_CONTENT } from "../features/lesson-v2/content/lesson56";
+import { lesson57 as LESSON_57_CONTENT } from "../features/lesson-v2/content/lesson57";
+import { lesson58 as LESSON_58_CONTENT } from "../features/lesson-v2/content/lesson58";
+import { lesson59 as LESSON_59_CONTENT } from "../features/lesson-v2/content/lesson59";
+import { lesson60 as LESSON_60_CONTENT } from "../features/lesson-v2/content/lesson60";
+import { lesson61 as LESSON_61_CONTENT } from "../features/lesson-v2/content/lesson61";
+import { lesson62 as LESSON_62_CONTENT } from "../features/lesson-v2/content/lesson62";
+import { lesson63 as LESSON_63_CONTENT } from "../features/lesson-v2/content/lesson63";
+
 const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
   lesson1: LESSON_1_CONTENT,
   lesson2: LESSON_2_CONTENT,
@@ -67,6 +79,18 @@ const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
   lesson30: LESSON_30_CONTENT,
   lesson31: LESSON_31_CONTENT,
   lesson32: LESSON_32_CONTENT,
+
+  lesson53: LESSON_53_CONTENT,
+  lesson54: LESSON_54_CONTENT,
+  lesson55: LESSON_55_CONTENT,
+  lesson56: LESSON_56_CONTENT,
+  lesson57: LESSON_57_CONTENT,
+  lesson58: LESSON_58_CONTENT,
+  lesson59: LESSON_59_CONTENT,
+  lesson60: LESSON_60_CONTENT,
+  lesson61: LESSON_61_CONTENT,
+  lesson62: LESSON_62_CONTENT,
+  lesson63: LESSON_63_CONTENT,
 };
 
 export default function LessonV2Page() {
@@ -74,6 +98,11 @@ export default function LessonV2Page() {
   const { lessonId } = useParams();
 
   const lesson = (lessonId && LESSONS_MAP[lessonId]) || LESSON_1_CONTENT;
+
+  const lessonScenes =
+    (lesson as any).scenes ??
+    (lesson as any).slides ??
+    [];
 
   const handleDone = () => {
     lessonId === "lesson2" ? navigate("/lesson2-exercises")
@@ -108,7 +137,7 @@ export default function LessonV2Page() {
   return (
     <WorldIntroSceneV2
       audio_base={lesson.audio_base}
-      slides={lesson.scenes}
+      slides={lessonScenes}
       onDone={handleDone}
     />
   );

@@ -216,3 +216,71 @@ Register lesson 50 in Supabase with world sort order `18`, then verify that it a
 - صيغة Karaoke: `text + offset + duration`.
 
 <!-- LESSON52_FINAL_END -->
+## World 3 handoff — Lessons 53–63
+
+<!-- WORLD3_LESSONS_53_63_HANDOFF -->
+
+**Updated:** 2026-08-02
+**Branch:** `handoff-premium-secure-20260723_103324`
+**World:** عالم المحمية الطبيعية
+**World ID:** `827a3923-94f7-4b33-99e6-2d3c8d957e0c`
+
+### Completed lessons
+
+| App lesson | Book lesson | Title | Teacher |
+|---|---:|---|---|
+| 53 | 63 | التجميع والاستبدال | Taline |
+| 54 | 64 | المرور إلى العشرة | Khalil |
+| 55 | 65 | حيوانات تعيش معنا (1) | Taline |
+| 56 | 66 | الأعداد إلى 39 (2) | Khalil |
+| 57 | 67 | إضافة أو طرح أعداد صغيرة (1) | Taline |
+| 58 | 68 | حيوانات تعيش معنا (2) | Khalil |
+| 59 | 69 | أتعلم أوقاتًا في اليوم | Taline |
+| 60 | 70 | الاستقامية | Khalil |
+| 61 | 71 | نباتات تعيش معنا (1) | Taline |
+| 62 | 72 | الأعداد إلى 39 (3) | Khalil |
+| 63 | 73 | كتابة معلومات في جدول | Taline |
+
+### Assets and runtime status
+
+- `11` TypeScript lesson-content files.
+- `66` scene images in WebP format.
+- `66` MP3 narration files.
+- `66` karaoke JSON files using WordBoundary timing.
+- Taline voice: `ar-DZ-AminaNeural`.
+- Khalil voice: `ar-DZ-IsmaelNeural`.
+- Supabase lessons use `sort_order` from `1` through `11`.
+- Supabase `content.lessonKey` values use `lesson53` through `lesson63`.
+- First expected route: `/lesson-v2/lesson53`.
+- Last expected route: `/lesson-v2/lesson63`.
+
+### Integration changes
+
+- `getV2KeyByLesson()` now prioritizes `content.lessonKey` and `content.lesson_key`.
+- The old global `sort_order` map remains only as a fallback for earlier worlds.
+- `LessonV2Page.tsx` registers lessons 53–63.
+- `LessonV2Page.tsx` accepts either `lesson.scenes` or `lesson.slides`.
+- World 3 cards therefore no longer open World 1 lessons with the same local sort order.
+
+### Content and synchronization QA
+
+The 66 scene images were reviewed against their narration text.
+
+Corrections completed include:
+
+- Image/text/audio synchronization across lessons 53–63.
+- Correct ordering of lesson 59 meal scenes:
+  1. breakfast at 07:00;
+  2. lunch at 12:00;
+  3. snack at 17:00;
+  4. dinner at 20:00.
+- Lesson 55 scene 3 image includes both the cat and the dog.
+- Correct pronunciation and timing for `أَلْوَاحًا`.
+- Correct pronunciation and timing for `أَلِيفَانِ`.
+- Correct pronunciation of `الْكَتَاكِيتُ`.
+- Correct number references in lessons 53, 54, 56, 57 and 62.
+- Final production build completed successfully.
+
+### Important next step
+
+This milestone completes the lesson explanations and narration layer. The next implementation phase should build and connect the interactive exercises for lessons 53–63 and verify each closing CTA route.

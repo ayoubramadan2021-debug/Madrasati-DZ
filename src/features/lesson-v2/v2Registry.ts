@@ -65,12 +65,57 @@ export function getV2Key(lessonId: string): string | null {
   return V2_LESSON_MAP[lessonId] ?? null;
 }
 
-export function getV2KeyByLesson(lesson: any): string | null {
-  const byId = lesson?.id ? V2_LESSON_MAP[String(lesson.id)] : null;
-  if (byId) return byId;
+export function getV2KeyByLesson(
+  lesson: any
+): string | null {
+  let parsedContent: any = lesson?.content ?? null;
+
+  if (typeof parsedContent === "string") {
+    try {
+      parsedContent = JSON.parse(parsedContent);
+    } catch {
+      parsedContent = null;
+    }
+  }
+
+  const contentKey =
+    parsedContent?.lessonKey ??
+    parsedContent?.lesson_key ??
+    null;
+
+  if (
+    typeof contentKey === "string" &&
+    /^lesson\d+$/.test(contentKey.trim())
+  ) {
+    return contentKey.trim();
+  }
+
+  const directKey =
+    lesson?.lessonKey ??
+    lesson?.lesson_key ??
+    null;
+
+  if (
+    typeof directKey === "string" &&
+    /^lesson\d+$/.test(directKey.trim())
+  ) {
+    return directKey.trim();
+  }
+
+  const byId = lesson?.id
+    ? V2_LESSON_MAP[String(lesson.id)]
+    : null;
+
+  if (byId) {
+    return byId;
+  }
 
   const order = Number(lesson?.sort_order);
-  if (Number.isFinite(order) && V2_SORT_ORDER_MAP[order]) {
+
+  if (
+    Number.isFinite(order) &&
+    V2_SORT_ORDER_MAP[order]
+  ) {
     return V2_SORT_ORDER_MAP[order];
   }
 
