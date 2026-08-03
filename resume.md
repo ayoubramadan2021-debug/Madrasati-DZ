@@ -1196,3 +1196,36 @@ npm run build
 ### الحالة الحالية
 
 صفحات الشرح والمشاهد للدروس 53–63 جاهزة داخل التطبيق. المرحلة التالية هي بناء وربط التمارين التفاعلية الخاصة بكل درس، ثم اختبار الانتقال من أزرار «هيا نتدرب».
+
+<!-- EXERCISES_53_63_BEGIN -->
+
+## World 3 exercises: lessons 53-63
+
+Completed exercises for lesson53 through lesson63.
+
+Unified structure:
+- Four exercises per lesson.
+- Four variants per exercise.
+- Four choices per variant.
+- Correct indexes: 0, 1, 2, 3.
+- Flow: ex1 -> ex2 -> ex3 -> ex4 -> done.
+- Tap/click interaction only.
+- TapSelectImagesV2 with render_custom when needed.
+- LessonCompleteV2 for completion.
+- lesson52 is the structural and visual reference.
+
+Approved fixes:
+- Open directly on the question.
+- No oversized introductory card.
+- No answer-revealing text, color, image, border, or hidden cell.
+- Reference tables contain all information needed.
+- Exercise images are clear, large, and purpose-built.
+- Questions clearly identify the required observation or operation.
+- Audio and karaoke use the same WordBoundary stream.
+- The 600ms delay exists in the engine only.
+- lesson63 continues to lesson64.
+
+Build command:
+npm run build
+
+<!-- EXERCISES_53_63_END -->

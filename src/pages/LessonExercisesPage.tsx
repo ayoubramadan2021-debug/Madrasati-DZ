@@ -27,6 +27,17 @@ import { GENERATED_CURRICULUM_REGISTRY } from "../features/lesson-v2/generated/r
 import "../features/lesson-v2/exercises-v2/lesson35-neutral-theme.css";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import Lesson53ExercisesPage from "./Lesson53ExercisesPage";
+import Lesson54ExercisesPage from "./Lesson54ExercisesPage";
+import Lesson55ExercisesPage from "./Lesson55ExercisesPage";
+import Lesson56ExercisesPage from "./Lesson56ExercisesPage";
+import Lesson57ExercisesPage from "./Lesson57ExercisesPage";
+import Lesson58ExercisesPage from "./Lesson58ExercisesPage";
+import Lesson59ExercisesPage from "./Lesson59ExercisesPage";
+import Lesson60ExercisesPage from "./Lesson60ExercisesPage";
+import Lesson61ExercisesPage from "./Lesson61ExercisesPage";
+import Lesson62ExercisesPage from "./Lesson62ExercisesPage";
+import Lesson63ExercisesPage from "./Lesson63ExercisesPage";
 
 import ExerciseFullscreenShellV2 from "../features/lesson-v2/components/ExerciseFullscreenShellV2";
 import LessonCompleteV2 from "../features/lesson-v2/components/LessonCompleteV2";
@@ -802,6 +813,18 @@ function Lesson40Exercises() {
 export default function LessonExercisesPage() {
   const { lessonId } =
     useParams<{ lessonId?: string }>();
+  if (lessonId === "53") return <Lesson53ExercisesPage />;
+  if (lessonId === "54") return <Lesson54ExercisesPage />;
+  if (lessonId === "55") return <Lesson55ExercisesPage />;
+  if (lessonId === "56") return <Lesson56ExercisesPage />;
+  if (lessonId === "57") return <Lesson57ExercisesPage />;
+  if (lessonId === "58") return <Lesson58ExercisesPage />;
+  if (lessonId === "59") return <Lesson59ExercisesPage />;
+  if (lessonId === "60") return <Lesson60ExercisesPage />;
+  if (lessonId === "61") return <Lesson61ExercisesPage />;
+  if (lessonId === "62") return <Lesson62ExercisesPage />;
+  if (lessonId === "63") return <Lesson63ExercisesPage />;
+
   if (lessonId === "46") return <Lesson46HeartBeats2Exercises />;
 
   if (lessonId === "45") return <Lesson45CompleteTableExercises />;

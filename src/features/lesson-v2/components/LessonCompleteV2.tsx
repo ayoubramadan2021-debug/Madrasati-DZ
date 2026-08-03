@@ -34,11 +34,19 @@ export default function LessonCompleteV2({
   stars = 3,
   nextLessonKey,
   nextPath,
-  nextLabel = "الدرس التالي",
+  nextLabel = (nextLabel ?? (nextLabel ?? "الدرس التالي")),
   quizPath = `/world/${SCHOOL_WORLD_ID}/quiz`,
   returnPath,
   returnLabel = "العودة إلى العالم",
 }: LessonCompleteV2Props) {
+  const resolvedNextLabel =
+    nextLabel ??
+    (
+      nextPath && nextPath.startsWith("/world/")
+        ? "العودة إلى العالم"
+        : (nextLabel ?? (nextLabel ?? "الدرس التالي"))
+    );
+
   const navigate = useNavigate();
 
   useEffect(() => {

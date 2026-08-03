@@ -71,3 +71,35 @@ World2LessonPage
 ## قاعدة الدروس المقبلة
 
 لا يتم إنشاء ربط أو شاشة إتمام جديدة قبل فحص الدرس 36.
+
+<!-- HANDOFF_53_63_BEGIN -->
+
+## Handoff: lessons 53-63
+
+The first World 3 exercise batch is complete.
+
+Continue from lesson64.
+
+lesson63 is the end of the current batch only.
+It is not the final lesson of World 3.
+
+Mandatory template:
+- 4 exercises.
+- 4 variants per exercise.
+- 4 choices per variant.
+- Correct indexes: 0, 1, 2, 3.
+- ex1 -> ex2 -> ex3 -> ex4 -> done.
+- Tap/click only.
+- lesson52 is the reference.
+- TapSelectImagesV2 plus render_custom.
+- LessonCompleteV2.
+- No answer-revealing visual hints.
+- WordBoundary karaoke.
+- 600ms delay in the engine only.
+- Backups outside the repository.
+- Never use git add -A.
+
+Branch:
+handoff-premium-secure-20260723_103324
+
+<!-- HANDOFF_53_63_END -->
