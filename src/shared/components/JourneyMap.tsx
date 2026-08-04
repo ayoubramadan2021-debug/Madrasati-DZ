@@ -44,9 +44,9 @@ export default function JourneyMap({ worlds, progress, lang, onOpen, onLocked }:
       </svg>
       {worlds.map((w, i) => {
         const prog = progress.find((p: any) => p.world_id === w.id);
-        const unlocked = true; /* TEMP_SHOW_ALL_WORLDS */
+        const unlocked = true; /* TEMP_OPEN_ALL_WORLDS */
         const completed = prog?.status === "completed";
-        const locked = false; /* TEMP_SHOW_ALL_WORLDS */
+        const locked = false; /* TEMP_OPEN_ALL_WORLDS */
         const current = unlocked && !completed;
         return (
           <div key={w.id} onClick={() => (locked ? onLocked() : onOpen(w.id))} style={{ position: "absolute", left: pts[i].x, top: pts[i].y, transform: "translate(-50%, -50%)", zIndex: 3, display: "flex", flexDirection: "column", alignItems: "center", width: 130, cursor: locked ? "not-allowed" : "pointer", opacity: 0, animation: `jm-pop .5s ease forwards ${i * 0.1}s` }}>

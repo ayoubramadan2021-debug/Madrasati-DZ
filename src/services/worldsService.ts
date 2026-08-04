@@ -7,7 +7,8 @@ export async function getWorlds(subject: string, grade: number) {
     .select("*")
     .eq("subject", subject)
     .eq("grade", grade)
-    .in("is_published", [true, false]) /* TEMP_SHOW_ALL_WORLDS */
+
+    // TEMP_OPEN_ALL_WORLDS: publication filter disabled during testing
     .order("sort_order", { ascending: true });
   if (error) throw error;
   return data || [];
@@ -41,7 +42,7 @@ export async function getWorldQuiz(world_id: string) {
     .from("quizzes")
     .select("*")
     .eq("world_id", world_id)
-    .in("is_published", import.meta.env.DEV ? [true, false] : [true])
+    // TEMP_ALL_WORLDS_VISIBLE: is_published filter disabled during testing
     .order("created_at", { ascending: false })
     .limit(1)
     .maybeSingle();

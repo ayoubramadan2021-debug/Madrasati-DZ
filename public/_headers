@@ -1,0 +1,13 @@
+# NETLIFY_NO_CACHE_BEGIN
+/
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/service-worker.js
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/sw.js
+  Cache-Control: no-cache, no-store, must-revalidate
+# NETLIFY_NO_CACHE_END
