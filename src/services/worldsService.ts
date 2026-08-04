@@ -7,7 +7,7 @@ export async function getWorlds(subject: string, grade: number) {
     .select("*")
     .eq("subject", subject)
     .eq("grade", grade)
-    .in("is_published", import.meta.env.DEV ? [true, false] : [true])
+    .in("is_published", [true, false]) /* TEMP_SHOW_ALL_WORLDS */
     .order("sort_order", { ascending: true });
   if (error) throw error;
   return data || [];
