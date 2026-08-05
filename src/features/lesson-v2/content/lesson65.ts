@@ -1,0 +1,82 @@
+export const lesson65CanonicalText = {
+  lesson65_s1: "مَرْحَبًا يَا أَصْدِقَائِي! هَذَا جَدْوَلٌ فَارِغٌ يَتَكَوَّنُ مِنْ صُفُوفٍ وَأَعْمِدَةٍ وَخَانَاتٍ. سَنَسْتَعْمِلُهُ لِتَنْظِيمِ الْمَعْلُومَاتِ.",
+  lesson65_s2: "جَمَعْنَا مَعْلُومَاتٍ عَنِ الطُّيُورِ وَالْأَرَانِبِ وَالْفَرَاشَاتِ وَالْأَزْهَارِ فِي النَّهَارِ وَاللَّيْلِ.",
+  lesson65_s3: "نَضَعُ صُوَرَ الطَّائِرِ وَالْأَرْنَبِ وَالْفَرَاشَةِ وَالزَّهْرَةِ فِي رَأْسِ الْأَعْمِدَةِ، وَنَضَعُ الشَّمْسَ وَالْقَمَرَ فِي رَأْسِ الصُّفُوفِ.",
+  lesson65_s4: "نَمْلَأُ الْجَدْوَلَ بِالْأَعْدَادِ الْمُنَاسِبَةِ: فِي النَّهَارِ ثَلَاثَةُ طُيُورٍ، وَأَرْبَعَةُ أَرَانِبَ، وَخَمْسُ فَرَاشَاتٍ، وَسِتُّ أَزْهَارٍ.",
+  lesson65_s5: "نَضَعُ الْعَلَامَةَ ضَرْبْ فِي الْخَانَةِ الْمُنَاسِبَةِ لِنَرْبِطَ كُلَّ كَائِنٍ بِوَسَطِ عَيْشِهِ، مِثْلَ الْمَاءِ وَالشَّجَرَةِ وَالزَّهْرَةِ وَالْجُحْرِ.",
+  lesson65_s6: "أَحْسَنْتُمْ! نَقْرَأُ الْمَعْلُومَاتِ الْمُنَظَّمَةَ: خَمْسَةُ طُيُورٍ، وَأَرْبَعَةُ أَرَانِبَ، وَسِتُّ فَرَاشَاتٍ، وَسَبْعُ أَزْهَارٍ، وَثَلَاثُ أَشْجَارٍ.",
+} as const;
+
+export const lesson65 = {
+  id: "lesson65",
+  lessonKey: "lesson65",
+  num: 65,
+  world_id: "827a3923-94f7-4b33-99e6-2d3c8d957e0c",
+  sort_order: 13,
+  title: "وَضْعِيَّاتُ جَمْعٍ وَأَوْ طَرْحٍ (2)",
+  title_fr: "Situations d’addition et/ou de soustraction (2)",
+  teacher: "taline",
+  voice: "ar-DZ-AminaNeural",
+  audio_base: "/audio/teachers/taline/lesson_65_add_subtract_situations_2",
+  nextLessonKey: "lesson66",
+  exercisePath: "/lesson-v2/65/exercises",
+  objectives: [
+    "أَنْ يَتَعَرَّفَ الْمُتَعَلِّمُ إِلَى صُفُوفِ الْجَدْوَلِ وَأَعْمِدَتِهِ.",
+    "أَنْ يَنْقُلَ مَعْلُومَاتٍ إِلَى جَدْوَلٍ.",
+    "أَنْ يَقْرَأَ الْمَعْلُومَةَ مِنْ تَقَاطُعِ صَفٍّ وَعَمُودٍ.",
+    "أَنْ يَسْتَعْمِلَ الْعَلَامَةَ × فِي الْخَانَةِ الْمُنَاسِبَةِ.",
+  ],
+
+  slides: [
+    {
+          key: "lesson65",
+          audio_key: "lesson65_s1",
+          title: "وضعيات حسابية",
+          image: "/lessons/v2/lesson65-addition-or-subtraction-situations-2/s1.webp",
+          scene_image: "/lessons/v2/lesson65-addition-or-subtraction-situations-2/s1.webp",
+          text: "سَنَحُلُّ الْيَوْمَ وَضْعِيَّاتٍ جَدِيدَةً فِيهَا جَمْعٌ أَوْ طَرْحٌ نَقْرَأُ وَنُفَكِّرُ بِهُدُوءٍ",
+        },
+    {
+          key: "lesson65_s2",
+          audio_key: "lesson65_s2",
+          title: "أفهم الوضعية",
+          image: "/lessons/v2/lesson65-addition-or-subtraction-situations-2/s2.webp",
+          scene_image: "/lessons/v2/lesson65-addition-or-subtraction-situations-2/s2.webp",
+          text: "نَقْرَأُ الْوَضْعِيَّةَ وَنُحَدِّدُ الْمَعْطَيَاتِ ثُمَّ نَعْرِفُ مَا هُوَ الْمَطْلُوبُ",
+        },
+    {
+          key: "lesson65_s3",
+          audio_key: "lesson65_s3",
+          title: "أختار الجمع",
+          image: "/lessons/v2/lesson65-addition-or-subtraction-situations-2/s3.webp",
+          scene_image: "/lessons/v2/lesson65-addition-or-subtraction-situations-2/s3.webp",
+          text: "عِنْدَمَا نَأْخُذُ أَشْيَاءَ مِنَ الْمَجْمُوعَةِ أَوْ تَبْقَى مِنْهَا كَمِّيَّةٌ، نَسْتَعْمِلُ الطَّرْحَ.",
+        },
+    {
+          key: "lesson65_s4",
+          audio_key: "lesson65_s4",
+          title: "أختار الطرح",
+          image: "/lessons/v2/lesson65-addition-or-subtraction-situations-2/s4.webp",
+          scene_image: "/lessons/v2/lesson65-addition-or-subtraction-situations-2/s4.webp",
+          text: "عِنْدَمَا تَنْضَمُّ أَشْيَاءٌ جَدِيدَةٌ إِلَى الْمَجْمُوعَةِ، نَسْتَعْمِلُ عَمَلِيَّةَ الْجَمْعِ.",
+        },
+    {
+          key: "lesson65_s5",
+          audio_key: "lesson65_s5",
+          title: "أتحقق من الحل",
+          image: "/lessons/v2/lesson65-addition-or-subtraction-situations-2/s5.webp",
+          scene_image: "/lessons/v2/lesson65-addition-or-subtraction-situations-2/s5.webp",
+          text: "نُمَثِّلُ الْوَضْعِيَّةَ بِالرَّسْمِ أَوْ بِالْعَدِّ ثُمَّ نَتَحَقَّقُ مِنْ صِحَّةِ النَّتِيجَةِ",
+        },
+    {
+          key: "lesson65_s6",
+          audio_key: "lesson65_s6",
+          title: "هيا نتدرب",
+          image: "/lessons/v2/lesson65-addition-or-subtraction-situations-2/s6.webp",
+          scene_image: "/lessons/v2/lesson65-addition-or-subtraction-situations-2/s6.webp",
+          text: "أَحْسَنْتُمْ اقْرَؤُوا كُلَّ وَضْعِيَّةٍ وَاخْتَارُوا الْعَمَلِيَّةَ الْمُنَاسِبَةَ",
+          is_closing: true,
+          cta_text: "هَيَّا نَتَدَرَّبُ",
+        }
+  ],
+} as const;

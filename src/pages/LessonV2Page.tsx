@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import WorldIntroSceneV2 from "../features/exercises/templates/WorldIntroSceneV2";
 import { LESSON_1_CONTENT } from "../features/lesson-v2/content/lesson1";
@@ -45,6 +46,13 @@ import { lesson60 as LESSON_60_CONTENT } from "../features/lesson-v2/content/les
 import { lesson61 as LESSON_61_CONTENT } from "../features/lesson-v2/content/lesson61";
 import { lesson62 as LESSON_62_CONTENT } from "../features/lesson-v2/content/lesson62";
 import { lesson63 as LESSON_63_CONTENT } from "../features/lesson-v2/content/lesson63";
+import { lesson64 as LESSON_64_CONTENT } from "../features/lesson-v2/content/lesson64";
+import { lesson65 as LESSON_65_CONTENT } from "../features/lesson-v2/content/lesson65";
+import { lesson66 as LESSON_66_CONTENT } from "../features/lesson-v2/content/lesson66";
+import { lesson67 as LESSON_67_CONTENT } from "../features/lesson-v2/content/lesson67";
+import { lesson68 as LESSON_68_CONTENT } from "../features/lesson-v2/content/lesson68";
+import { lesson69 as LESSON_69_CONTENT } from "../features/lesson-v2/content/lesson69";
+
 
 const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
   lesson1: LESSON_1_CONTENT,
@@ -91,13 +99,34 @@ const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
   lesson61: LESSON_61_CONTENT,
   lesson62: LESSON_62_CONTENT,
   lesson63: LESSON_63_CONTENT,
+
+  lesson64: LESSON_64_CONTENT,
+  lesson65: LESSON_65_CONTENT,
+  lesson66: LESSON_66_CONTENT,
+  lesson67: LESSON_67_CONTENT,
+  lesson68: LESSON_68_CONTENT,
+  lesson69: LESSON_69_CONTENT,
 };
 
 export default function LessonV2Page() {
-  const navigate = useNavigate();
+const navigate = useNavigate();
   const { lessonId } = useParams();
 
-  const lesson = (lessonId && LESSONS_MAP[lessonId]) || LESSON_1_CONTENT;
+  const normalizedLessonKey =
+    lessonId && /^\d+$/.test(lessonId)
+      ? `lesson${lessonId}`
+      : lessonId;
+
+  const lesson =
+    ((normalizedLessonKey &&
+      LESSONS_MAP[normalizedLessonKey]) ||
+    LESSON_1_CONTENT);
+
+  const exerciseLessonId =
+    normalizedLessonKey?.replace(
+      /^lesson/,
+      "",
+    );
 
   const lessonScenes =
     (lesson as any).scenes ??
@@ -131,7 +160,7 @@ export default function LessonV2Page() {
       ? navigate("/lesson23-exercises")
       : lessonId === "lesson24"
       ? navigate("/lesson24-exercises")
-      : navigate(`/lesson-v2/${lessonId}/exercises`);
+      : navigate(`/lesson-v2/${exerciseLessonId}/exercises`);
   };
 
   return (

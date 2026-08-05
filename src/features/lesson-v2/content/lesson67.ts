@@ -1,0 +1,82 @@
+export const lesson67CanonicalText = {
+  lesson67_s1: "مَرْحَبًا يَا أَصْدِقَائِي! هَذَا جَدْوَلٌ فَارِغٌ يَتَكَوَّنُ مِنْ صُفُوفٍ وَأَعْمِدَةٍ وَخَانَاتٍ. سَنَسْتَعْمِلُهُ لِتَنْظِيمِ الْمَعْلُومَاتِ.",
+  lesson67_s2: "جَمَعْنَا مَعْلُومَاتٍ عَنِ الطُّيُورِ وَالْأَرَانِبِ وَالْفَرَاشَاتِ وَالْأَزْهَارِ فِي النَّهَارِ وَاللَّيْلِ.",
+  lesson67_s3: "نَضَعُ صُوَرَ الطَّائِرِ وَالْأَرْنَبِ وَالْفَرَاشَةِ وَالزَّهْرَةِ فِي رَأْسِ الْأَعْمِدَةِ، وَنَضَعُ الشَّمْسَ وَالْقَمَرَ فِي رَأْسِ الصُّفُوفِ.",
+  lesson67_s4: "نَمْلَأُ الْجَدْوَلَ بِالْأَعْدَادِ الْمُنَاسِبَةِ: فِي النَّهَارِ ثَلَاثَةُ طُيُورٍ، وَأَرْبَعَةُ أَرَانِبَ، وَخَمْسُ فَرَاشَاتٍ، وَسِتُّ أَزْهَارٍ.",
+  lesson67_s5: "نَضَعُ الْعَلَامَةَ ضَرْبْ فِي الْخَانَةِ الْمُنَاسِبَةِ لِنَرْبِطَ كُلَّ كَائِنٍ بِوَسَطِ عَيْشِهِ، مِثْلَ الْمَاءِ وَالشَّجَرَةِ وَالزَّهْرَةِ وَالْجُحْرِ.",
+  lesson67_s6: "أَحْسَنْتُمْ! نَقْرَأُ الْمَعْلُومَاتِ الْمُنَظَّمَةَ: خَمْسَةُ طُيُورٍ، وَأَرْبَعَةُ أَرَانِبَ، وَسِتُّ فَرَاشَاتٍ، وَسَبْعُ أَزْهَارٍ، وَثَلَاثُ أَشْجَارٍ.",
+} as const;
+
+export const lesson67 = {
+  id: "lesson67",
+  lessonKey: "lesson67",
+  num: 67,
+  world_id: "827a3923-94f7-4b33-99e6-2d3c8d957e0c",
+  sort_order: 15,
+  title: "الْحَصِيلَةُ 3 — لُغَةٌ عَرَبِيَّةٌ",
+  title_fr: "Bilan 3 — Langue arabe",
+  teacher: "taline",
+  voice: "ar-DZ-AminaNeural",
+  audio_base: "/audio/teachers/taline/lesson_67_assessment_3_arabic",
+  nextLessonKey: "lesson68",
+  exercisePath: "/lesson-v2/67/exercises",
+  objectives: [
+    "أَنْ يَتَعَرَّفَ الْمُتَعَلِّمُ إِلَى صُفُوفِ الْجَدْوَلِ وَأَعْمِدَتِهِ.",
+    "أَنْ يَنْقُلَ مَعْلُومَاتٍ إِلَى جَدْوَلٍ.",
+    "أَنْ يَقْرَأَ الْمَعْلُومَةَ مِنْ تَقَاطُعِ صَفٍّ وَعَمُودٍ.",
+    "أَنْ يَسْتَعْمِلَ الْعَلَامَةَ × فِي الْخَانَةِ الْمُنَاسِبَةِ.",
+  ],
+
+  slides: [
+    {
+          key: "lesson67",
+          audio_key: "lesson67_s1",
+          title: "حصيلة اللغة العربية",
+          image: "/lessons/v2/lesson67-mobilize-my-knowledge/s1.webp",
+          scene_image: "/lessons/v2/lesson67-mobilize-my-knowledge/s1.webp",
+          text: "نَبْدَأُ حَصِيلَةَ اللُّغَةِ الْعَرَبِيَّةِ سَنُرَاجِعُ الْقِرَاءَةَ وَالْفَهْمَ وَتَرْتِيبَ الْكَلِمَاتِ",
+        },
+    {
+          key: "lesson67_s2",
+          audio_key: "lesson67_s2",
+          title: "ألاحظ الصورة",
+          image: "/lessons/v2/lesson67-mobilize-my-knowledge/s2.webp",
+          scene_image: "/lessons/v2/lesson67-mobilize-my-knowledge/s2.webp",
+          text: "أُلَاحِظُ الصُّورَةَ جَيِّدًا ثُمَّ أُعَبِّرُ عَمَّا أَرَاهُ بِجُمْلَةٍ بَسِيطَةٍ وَوَاضِحَةٍ",
+        },
+    {
+          key: "lesson67_s3",
+          audio_key: "lesson67_s3",
+          title: "أكمل الجملة",
+          image: "/lessons/v2/lesson67-mobilize-my-knowledge/s3.webp",
+          scene_image: "/lessons/v2/lesson67-mobilize-my-knowledge/s3.webp",
+          text: "أَقْرَأُ الْجُمْلَةَ وَأَخْتَارُ الْكَلِمَةَ الْمُنَاسِبَةَ لِإِكْمَالِ الْمَعْنَى",
+        },
+    {
+          key: "lesson67_s4",
+          audio_key: "lesson67_s4",
+          title: "أرتب الكلمات",
+          image: "/lessons/v2/lesson67-mobilize-my-knowledge/s4.webp",
+          scene_image: "/lessons/v2/lesson67-mobilize-my-knowledge/s4.webp",
+          text: "أُرَتِّبُ الْكَلِمَاتِ لِأُكَوِّنَ جُمْلَةً صَحِيحَةً ثُمَّ أَقْرَؤُهَا بِصَوْتٍ وَاضِحٍ",
+        },
+    {
+          key: "lesson67_s5",
+          audio_key: "lesson67_s5",
+          title: "أقرأ وأجيب",
+          image: "/lessons/v2/lesson67-mobilize-my-knowledge/s5.webp",
+          scene_image: "/lessons/v2/lesson67-mobilize-my-knowledge/s5.webp",
+          text: "أَقْرَأُ التَّعْلِيمَةَ وَأُجِيبُ عَنِ السُّؤَالِ ثُمَّ أُرَاجِعُ كِتَابَتِي",
+        },
+    {
+          key: "lesson67_s6",
+          audio_key: "lesson67_s6",
+          title: "أحسنت",
+          image: "/lessons/v2/lesson67-mobilize-my-knowledge/s6.webp",
+          scene_image: "/lessons/v2/lesson67-mobilize-my-knowledge/s6.webp",
+          text: "أَحْسَنْتُمْ أَتْمَمْتُمْ حَصِيلَةَ اللُّغَةِ الْعَرَبِيَّةِ بِنَجَاحٍ",
+          is_closing: true,
+          cta_text: "هَيَّا نَتَدَرَّبُ",
+        }
+  ],
+} as const;

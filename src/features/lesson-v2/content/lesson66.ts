@@ -1,0 +1,82 @@
+export const lesson66CanonicalText = {
+  lesson66_s1: "مَرْحَبًا يَا أَصْدِقَائِي! هَذَا جَدْوَلٌ فَارِغٌ يَتَكَوَّنُ مِنْ صُفُوفٍ وَأَعْمِدَةٍ وَخَانَاتٍ. سَنَسْتَعْمِلُهُ لِتَنْظِيمِ الْمَعْلُومَاتِ.",
+  lesson66_s2: "جَمَعْنَا مَعْلُومَاتٍ عَنِ الطُّيُورِ وَالْأَرَانِبِ وَالْفَرَاشَاتِ وَالْأَزْهَارِ فِي النَّهَارِ وَاللَّيْلِ.",
+  lesson66_s3: "نَضَعُ صُوَرَ الطَّائِرِ وَالْأَرْنَبِ وَالْفَرَاشَةِ وَالزَّهْرَةِ فِي رَأْسِ الْأَعْمِدَةِ، وَنَضَعُ الشَّمْسَ وَالْقَمَرَ فِي رَأْسِ الصُّفُوفِ.",
+  lesson66_s4: "نَمْلَأُ الْجَدْوَلَ بِالْأَعْدَادِ الْمُنَاسِبَةِ: فِي النَّهَارِ ثَلَاثَةُ طُيُورٍ، وَأَرْبَعَةُ أَرَانِبَ، وَخَمْسُ فَرَاشَاتٍ، وَسِتُّ أَزْهَارٍ.",
+  lesson66_s5: "نَضَعُ الْعَلَامَةَ ضَرْبْ فِي الْخَانَةِ الْمُنَاسِبَةِ لِنَرْبِطَ كُلَّ كَائِنٍ بِوَسَطِ عَيْشِهِ، مِثْلَ الْمَاءِ وَالشَّجَرَةِ وَالزَّهْرَةِ وَالْجُحْرِ.",
+  lesson66_s6: "أَحْسَنْتُمْ! نَقْرَأُ الْمَعْلُومَاتِ الْمُنَظَّمَةَ: خَمْسَةُ طُيُورٍ، وَأَرْبَعَةُ أَرَانِبَ، وَسِتُّ فَرَاشَاتٍ، وَسَبْعُ أَزْهَارٍ، وَثَلَاثُ أَشْجَارٍ.",
+} as const;
+
+export const lesson66 = {
+  id: "lesson66",
+  lessonKey: "lesson66",
+  num: 66,
+  world_id: "827a3923-94f7-4b33-99e6-2d3c8d957e0c",
+  sort_order: 14,
+  title: "أُجَنِّدُ مَعَارِفِي (3)",
+  title_fr: "Je mobilise mes acquis (3)",
+  teacher: "khalil",
+  voice: "ar-DZ-IsmaelNeural",
+  audio_base: "/audio/teachers/khalil/lesson_66_mobilize_knowledge_3",
+  nextLessonKey: "lesson67",
+  exercisePath: "/lesson-v2/66/exercises",
+  objectives: [
+    "أَنْ يَتَعَرَّفَ الْمُتَعَلِّمُ إِلَى صُفُوفِ الْجَدْوَلِ وَأَعْمِدَتِهِ.",
+    "أَنْ يَنْقُلَ مَعْلُومَاتٍ إِلَى جَدْوَلٍ.",
+    "أَنْ يَقْرَأَ الْمَعْلُومَةَ مِنْ تَقَاطُعِ صَفٍّ وَعَمُودٍ.",
+    "أَنْ يَسْتَعْمِلَ الْعَلَامَةَ × فِي الْخَانَةِ الْمُنَاسِبَةِ.",
+  ],
+
+  slides: [
+    {
+          key: "lesson66",
+          audio_key: "lesson66_s1",
+          title: "أجند معارفي",
+          image: "/lessons/v2/lesson66-mobilize-my-knowledge/s1.webp",
+          scene_image: "/lessons/v2/lesson66-mobilize-my-knowledge/s1.webp",
+          text: "حَانَ وَقْتُ تَجْنِيدِ مَعَارِفِنَا سَنَسْتَعْمِلُ مَا تَعَلَّمْنَاهُ فِي الْمَحْمِيَّةِ الطَّبِيعِيَّةِ",
+        },
+    {
+          key: "lesson66_s2",
+          audio_key: "lesson66_s2",
+          title: "ألاحظ وأفهم",
+          image: "/lessons/v2/lesson66-mobilize-my-knowledge/s2.webp",
+          scene_image: "/lessons/v2/lesson66-mobilize-my-knowledge/s2.webp",
+          text: "أُلَاحِظُ الصُّوَرَ بِعِنَايَةٍ وَأُسَمِّي الْأَشْيَاءَ وَالْكَائِنَاتِ الَّتِي أَرَاهَا",
+        },
+    {
+          key: "lesson66_s3",
+          audio_key: "lesson66_s3",
+          title: "أقرأ التعليمة",
+          image: "/lessons/v2/lesson66-mobilize-my-knowledge/s3.webp",
+          scene_image: "/lessons/v2/lesson66-mobilize-my-knowledge/s3.webp",
+          text: "أَقْرَأُ التَّعْلِيمَةَ كَلِمَةً كَلِمَةً ثُمَّ أُحَدِّدُ الْعَمَلَ الَّذِي يَجِبُ أَنْ أَقُومَ بِهِ",
+        },
+    {
+          key: "lesson66_s4",
+          audio_key: "lesson66_s4",
+          title: "أرتب أفكاري",
+          image: "/lessons/v2/lesson66-mobilize-my-knowledge/s4.webp",
+          scene_image: "/lessons/v2/lesson66-mobilize-my-knowledge/s4.webp",
+          text: "أُرَتِّبُ أَفْكَارِي وَأَرْبِطُ كُلَّ مَعْلُومَةٍ بِالصُّورَةِ أَوِ الْإِجَابَةِ الْمُنَاسِبَةِ",
+        },
+    {
+          key: "lesson66_s5",
+          audio_key: "lesson66_s5",
+          title: "أراجع إجابتي",
+          image: "/lessons/v2/lesson66-mobilize-my-knowledge/s5.webp",
+          scene_image: "/lessons/v2/lesson66-mobilize-my-knowledge/s5.webp",
+          text: "أُرَاجِعُ إِجَابَتِي قَبْلَ أَنْ أُنْهِيَ وَأَتَأَكَّدُ أَنِّي لَمْ أَنْسَ أَيَّ خُطْوَةٍ",
+        },
+    {
+          key: "lesson66_s6",
+          audio_key: "lesson66_s6",
+          title: "أحسنت",
+          image: "/lessons/v2/lesson66-mobilize-my-knowledge/s6.webp",
+          scene_image: "/lessons/v2/lesson66-mobilize-my-knowledge/s6.webp",
+          text: "أَحْسَنْتُمْ اسْتَعْمَلْتُمْ مَعَارِفَكُمْ بِتَرْكِيزٍ وَنَجَاحٍ",
+          is_closing: true,
+          cta_text: "هَيَّا نَتَدَرَّبُ",
+        }
+  ],
+} as const;

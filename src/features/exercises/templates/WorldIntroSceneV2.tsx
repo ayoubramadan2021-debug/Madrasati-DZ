@@ -89,6 +89,7 @@ function useKaraoke(
 
     setActiveKey(null);
     setCurrentIdx(-1);
+    setShown(new Set());
   }, []);
 
   const play = useCallback(
@@ -535,7 +536,11 @@ export default function WorldIntroSceneV2({
           {words ? (
             words.map((w, i) => {
               const sceneActiveTxt = karaoke.activeKey === slide.audio_key;
-              const isShown = sceneActiveTxt ? karaoke.shown.has(i) : true;
+              const isShown = slide.is_closing
+                ? karaoke.shown.has(i)
+                : sceneActiveTxt
+                  ? karaoke.shown.has(i)
+                  : true;
               const isCurrent = sceneActiveTxt && karaoke.currentIdx === i;
               return (
                 <span key={i} style={{

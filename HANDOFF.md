@@ -276,3 +276,49 @@ Continue with lesson 47 using the same verified workflow.
 
 bash scripts/lesson48/verify_lesson48_release.sh
 <!-- LESSON48_HANDOFF_END -->
+
+<!-- LESSONS_64_69_START -->
+
+## تحديث الدروس 64 إلى 69
+
+آخر تحديث: 2026-08-05 15:28
+
+الفرع: handoff-premium-secure-20260723_103324
+
+الحالة: مكتملة، مفحوصة، وجاهزة على Git.
+
+### الدروس المكتملة
+
+- الدرس 64: نَبَاتَاتٌ تَعِيشُ مَعَنَا (2) — 6 مشاهد، audio_base: /audio/teachers/khalil/lesson_64_plants_with_us_2، exercisePath: /lesson-v2/64/exercises، nextLessonKey: lesson65.
+- الدرس 65: وَضْعِيَّاتُ جَمْعٍ وَأَوْ طَرْحٍ (2) — 6 مشاهد، audio_base: /audio/teachers/taline/lesson_65_add_subtract_situations_2، exercisePath: /lesson-v2/65/exercises، nextLessonKey: lesson66.
+- الدرس 66: أُجَنِّدُ مَعَارِفِي (3) — 6 مشاهد، audio_base: /audio/teachers/khalil/lesson_66_mobilize_knowledge_3، exercisePath: /lesson-v2/66/exercises، nextLessonKey: lesson67.
+- الدرس 67: الْحَصِيلَةُ 3 — لُغَةٌ عَرَبِيَّةٌ — 6 مشاهد، audio_base: /audio/teachers/taline/lesson_67_assessment_3_arabic، exercisePath: /lesson-v2/67/exercises، nextLessonKey: lesson68.
+- الدرس 68: الْحَصِيلَةُ 3 — رِيَاضِيَّاتٌ — 6 مشاهد، audio_base: /audio/teachers/khalil/lesson_68_assessment_3_math، exercisePath: /lesson-v2/68/exercises، nextLessonKey: lesson69.
+- الدرس 69: الْحَصِيلَةُ 3 — تَرْبِيَةٌ عِلْمِيَّةٌ — 6 مشاهد، audio_base: /audio/teachers/taline/lesson_69_assessment_3_science، exercisePath: /lesson-v2/69/exercises، nextLessonKey: نهاية العالم.
+
+### الإصلاحات المعتمدة
+
+- ربط الدروس 64 إلى 69 داخل LessonV2Page.tsx.
+- تثبيت التسلسل 63 ثم 64 ثم 65 ثم 66 ثم 67 ثم 68 ثم 69.
+- مطابقة الصور والنصوص والصوت والكاريوكي في المشاهد الستة.
+- تصحيح الدرس 64: المشهد 4 لفوائد النباتات والمشهد 5 لحماية النباتات.
+- تصحيح الدرس 65: المشهد s3 للطرح والمشهد s4 للجمع.
+- تحديث خاتمة الدرس 69 إلى: أحسنتم أتممتم عالم المحمية الطبيعية بنجاح، هيا نتدرب معًا.
+- إصلاح مدد كلمات كاريوكي المشهد السادس في الدرس 69.
+- إصلاح حالة shown داخل WorldIntroSceneV2 عند تغيير المشهد.
+- نجاح npm run build.
+
+### التشغيل المحلي
+
+cd ~/madrasati-dz
+npm run dev -- --host 0.0.0.0
+
+الرابط الأول: http://localhost:5173/lesson-v2/64
+الرابط الأخير: http://localhost:5173/lesson-v2/69
+
+### المرحلة التالية
+
+- إنشاء وتدقيق تمارين الدروس 64 إلى 69 بالاعتماد على هيكل الدرس 52.
+- الحفاظ على بنية WorldIntroSceneV2 والصوت والكاريوكي الحالية.
+
+<!-- LESSONS_64_69_END -->

@@ -1,0 +1,82 @@
+export const lesson64CanonicalText = {
+  lesson64_s1: "مَرْحَبًا يَا أَصْدِقَائِي! هَذَا جَدْوَلٌ فَارِغٌ يَتَكَوَّنُ مِنْ صُفُوفٍ وَأَعْمِدَةٍ وَخَانَاتٍ. سَنَسْتَعْمِلُهُ لِتَنْظِيمِ الْمَعْلُومَاتِ.",
+  lesson64_s2: "جَمَعْنَا مَعْلُومَاتٍ عَنِ الطُّيُورِ وَالْأَرَانِبِ وَالْفَرَاشَاتِ وَالْأَزْهَارِ فِي النَّهَارِ وَاللَّيْلِ.",
+  lesson64_s3: "نَضَعُ صُوَرَ الطَّائِرِ وَالْأَرْنَبِ وَالْفَرَاشَةِ وَالزَّهْرَةِ فِي رَأْسِ الْأَعْمِدَةِ، وَنَضَعُ الشَّمْسَ وَالْقَمَرَ فِي رَأْسِ الصُّفُوفِ.",
+  lesson64_s4: "نَمْلَأُ الْجَدْوَلَ بِالْأَعْدَادِ الْمُنَاسِبَةِ: فِي النَّهَارِ ثَلَاثَةُ طُيُورٍ، وَأَرْبَعَةُ أَرَانِبَ، وَخَمْسُ فَرَاشَاتٍ، وَسِتُّ أَزْهَارٍ.",
+  lesson64_s5: "نَضَعُ الْعَلَامَةَ ضَرْبْ فِي الْخَانَةِ الْمُنَاسِبَةِ لِنَرْبِطَ كُلَّ كَائِنٍ بِوَسَطِ عَيْشِهِ، مِثْلَ الْمَاءِ وَالشَّجَرَةِ وَالزَّهْرَةِ وَالْجُحْرِ.",
+  lesson64_s6: "أَحْسَنْتُمْ! نَقْرَأُ الْمَعْلُومَاتِ الْمُنَظَّمَةَ: خَمْسَةُ طُيُورٍ، وَأَرْبَعَةُ أَرَانِبَ، وَسِتُّ فَرَاشَاتٍ، وَسَبْعُ أَزْهَارٍ، وَثَلَاثُ أَشْجَارٍ.",
+} as const;
+
+export const lesson64 = {
+  id: "lesson64",
+  lessonKey: "lesson64",
+  num: 64,
+  world_id: "827a3923-94f7-4b33-99e6-2d3c8d957e0c",
+  sort_order: 12,
+  title: "نَبَاتَاتٌ تَعِيشُ مَعَنَا (2)",
+  title_fr: "Les plantes qui vivent avec nous (2)",
+  teacher: "khalil",
+  voice: "ar-DZ-IsmaelNeural",
+  audio_base: "/audio/teachers/khalil/lesson_64_plants_with_us_2",
+  nextLessonKey: "lesson65",
+  exercisePath: "/lesson-v2/64/exercises",
+  objectives: [
+    "أَنْ يَتَعَرَّفَ الْمُتَعَلِّمُ إِلَى صُفُوفِ الْجَدْوَلِ وَأَعْمِدَتِهِ.",
+    "أَنْ يَنْقُلَ مَعْلُومَاتٍ إِلَى جَدْوَلٍ.",
+    "أَنْ يَقْرَأَ الْمَعْلُومَةَ مِنْ تَقَاطُعِ صَفٍّ وَعَمُودٍ.",
+    "أَنْ يَسْتَعْمِلَ الْعَلَامَةَ × فِي الْخَانَةِ الْمُنَاسِبَةِ.",
+  ],
+
+  slides: [
+    {
+          key: "lesson64",
+          audio_key: "lesson64_s1",
+          title: "نباتات تعيش معنا",
+          image: "/lessons/v2/lesson64-plants-with-us-2/s1.webp",
+          scene_image: "/lessons/v2/lesson64-plants-with-us-2/s1.webp",
+          text: "فِي الْمَحْمِيَّةِ نَرَى نَبَاتَاتٍ كَثِيرَةً تَعِيشُ مَعَنَا هَيَّا نُرَاجِعُ مَا تَعَلَّمْنَاهُ",
+        },
+    {
+          key: "lesson64_s2",
+          audio_key: "lesson64_s2",
+          title: "أجزاء النبات",
+          image: "/lessons/v2/lesson64-plants-with-us-2/s2.webp",
+          scene_image: "/lessons/v2/lesson64-plants-with-us-2/s2.webp",
+          text: "لِلنَّبَاتِ أَجْزَاءٌ مُهِمَّةٌ جُذُورٌ وَسَاقٌ وَأَوْرَاقٌ لِكُلِّ جُزْءٍ دَوْرٌ",
+        },
+    {
+          key: "lesson64_s3",
+          audio_key: "lesson64_s3",
+          title: "حاجات النبات",
+          image: "/lessons/v2/lesson64-plants-with-us-2/s3.webp",
+          scene_image: "/lessons/v2/lesson64-plants-with-us-2/s3.webp",
+          text: "يَحْتَاجُ النَّبَاتُ إِلَى الْمَاءِ وَالْهَوَاءِ وَضَوْءِ الشَّمْسِ لِيَنْمُوَ",
+        },
+    {
+          key: "lesson64_s4",
+          audio_key: "lesson64_s4",
+          title: "العناية بالنبات",
+          image: "/lessons/v2/lesson64-plants-with-us-2/s4.webp",
+          scene_image: "/lessons/v2/lesson64-plants-with-us-2/s4.webp",
+          text: "تَمْنَحُنَا النَّبَاتَاتُ الظِّلَّ وَالْغِذَاءَ وَالْهَوَاءَ النَّقِيَّ، لِذَلِكَ نَحْمِيهَا.",
+        },
+    {
+          key: "lesson64_s5",
+          audio_key: "lesson64_s5",
+          title: "فوائد النباتات",
+          image: "/lessons/v2/lesson64-plants-with-us-2/s5.webp",
+          scene_image: "/lessons/v2/lesson64-plants-with-us-2/s5.webp",
+          text: "نَسْقِي النَّبَاتَ بِاعْتِدَالٍ، وَلَا نَقْطَعُ أَغْصَانَهُ، وَلَا نَدُوسُهُ.",
+        },
+    {
+          key: "lesson64_s6",
+          audio_key: "lesson64_s6",
+          title: "أحسنت",
+          image: "/lessons/v2/lesson64-plants-with-us-2/s6.webp",
+          scene_image: "/lessons/v2/lesson64-plants-with-us-2/s6.webp",
+          text: "أَحْسَنْتُمْ صِرْنَا نَعْرِفُ كَيْفَ تَعِيشُ النَّبَاتَاتُ مَعَنَا وَكَيْفَ نَعْتَنِي بِهَا",
+          is_closing: true,
+          cta_text: "هَيَّا نَتَدَرَّبُ",
+        }
+  ],
+} as const;
