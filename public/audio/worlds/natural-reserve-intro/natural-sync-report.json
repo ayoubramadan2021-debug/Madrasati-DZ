@@ -1,0 +1,612 @@
+{
+  "old_keys": [
+    "natural_reserve_intro_synced_v2_1",
+    "natural_reserve_intro_synced_v2_2",
+    "natural_reserve_intro_synced_v2_3",
+    "natural_reserve_intro_synced_v2_4",
+    "natural_reserve_intro_synced_v2_5",
+    "natural_reserve_intro_synced_v2_6"
+  ],
+  "new_keys": [
+    "natural_reserve_intro_natural_v4_1",
+    "natural_reserve_intro_natural_v4_2",
+    "natural_reserve_intro_natural_v4_3",
+    "natural_reserve_intro_natural_v4_4",
+    "natural_reserve_intro_natural_v4_5",
+    "natural_reserve_intro_natural_v4_6"
+  ],
+  "reports": [
+    {
+      "scene": 1,
+      "key": "natural_reserve_intro_natural_v4_1",
+      "text": "وَصَلْنَا إِلَى عَالَمِ الْمَحْمِيَّةِ الطَّبِيعِيَّةِ، هُنَا سَنَكْتَشِفُ الطَّبِيعَةَ، وَنَتَعَلَّمُ مَعًا كَيْفَ نُحَافِظُ عَلَيْهَا.",
+      "audio_duration_ms": 9384,
+      "speech_start_ms": 220,
+      "speech_end_ms": 8320,
+      "words": 13,
+      "detected_gaps": [
+        {
+          "start_ms": 380,
+          "end_ms": 480,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1720,
+          "end_ms": 1820,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2200,
+          "end_ms": 2300,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2940,
+          "end_ms": 3320,
+          "duration_ms": 380
+        },
+        {
+          "start_ms": 3880,
+          "end_ms": 4020,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 4420,
+          "end_ms": 4540,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 5000,
+          "end_ms": 5380,
+          "duration_ms": 380
+        },
+        {
+          "start_ms": 6620,
+          "end_ms": 6720,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 7400,
+          "end_ms": 7500,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "وَصَلْنَا",
+            "إِلَى",
+            "عَالَمِ",
+            "الْمَحْمِيَّةِ",
+            "الطَّبِيعِيَّةِ،"
+          ],
+          "start_ms": 220,
+          "end_ms": 3880,
+          "duration_ms": 3660
+        },
+        {
+          "words": [
+            "هُنَا",
+            "سَنَكْتَشِفُ",
+            "الطَّبِيعَةَ،"
+          ],
+          "start_ms": 4020,
+          "end_ms": 5000,
+          "duration_ms": 980
+        },
+        {
+          "words": [
+            "وَنَتَعَلَّمُ",
+            "مَعًا",
+            "كَيْفَ",
+            "نُحَافِظُ",
+            "عَلَيْهَا."
+          ],
+          "start_ms": 5380,
+          "end_ms": 8320,
+          "duration_ms": 2940
+        }
+      ],
+      "analysis": {
+        "threshold": 711.1196026880965,
+        "fallback": false,
+        "speech_runs": 10
+      }
+    },
+    {
+      "scene": 2,
+      "key": "natural_reserve_intro_natural_v4_2",
+      "text": "سَنَتَعَرَّفُ إِلَى نَبَاتَاتٍ وَحَيَوَانَاتٍ تَعِيشُ مَعَنَا، وَنُمَيِّزُ بَيْنَ أَنْوَاعِهَا، وَنَفْهَمُ كَيْفَ نَعْتَنِي بِهَا.",
+      "audio_duration_ms": 10008,
+      "speech_start_ms": 340,
+      "speech_end_ms": 8960,
+      "words": 13,
+      "detected_gaps": [
+        {
+          "start_ms": 4220,
+          "end_ms": 4620,
+          "duration_ms": 400
+        },
+        {
+          "start_ms": 6560,
+          "end_ms": 6980,
+          "duration_ms": 420
+        },
+        {
+          "start_ms": 7240,
+          "end_ms": 7340,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 7860,
+          "end_ms": 7960,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "سَنَتَعَرَّفُ",
+            "إِلَى",
+            "نَبَاتَاتٍ",
+            "وَحَيَوَانَاتٍ",
+            "تَعِيشُ",
+            "مَعَنَا،"
+          ],
+          "start_ms": 340,
+          "end_ms": 4220,
+          "duration_ms": 3880
+        },
+        {
+          "words": [
+            "وَنُمَيِّزُ",
+            "بَيْنَ",
+            "أَنْوَاعِهَا،"
+          ],
+          "start_ms": 4620,
+          "end_ms": 6560,
+          "duration_ms": 1940
+        },
+        {
+          "words": [
+            "وَنَفْهَمُ",
+            "كَيْفَ",
+            "نَعْتَنِي",
+            "بِهَا."
+          ],
+          "start_ms": 6980,
+          "end_ms": 8960,
+          "duration_ms": 1980
+        }
+      ],
+      "analysis": {
+        "threshold": 730.6549412475716,
+        "fallback": false,
+        "speech_runs": 5
+      }
+    },
+    {
+      "scene": 3,
+      "key": "natural_reserve_intro_natural_v4_3",
+      "text": "سَنَتَعَلَّمُ الْأَعْدَادَ، وَنُمَثِّلُ الْعَشَرَاتِ وَالْوَحَدَاتِ، وَنَعُدُّ الْأَشْيَاءَ فِي الطَّبِيعَةِ بِطَرِيقَةٍ مُبَسَّطَةٍ وَمُمْتِعَةٍ.",
+      "audio_duration_ms": 10368,
+      "speech_start_ms": 320,
+      "speech_end_ms": 9300,
+      "words": 12,
+      "detected_gaps": [
+        {
+          "start_ms": 1700,
+          "end_ms": 2120,
+          "duration_ms": 420
+        },
+        {
+          "start_ms": 2540,
+          "end_ms": 2660,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 4320,
+          "end_ms": 4960,
+          "duration_ms": 640
+        },
+        {
+          "start_ms": 6200,
+          "end_ms": 6300,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 7360,
+          "end_ms": 7460,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 8000,
+          "end_ms": 8120,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 8340,
+          "end_ms": 8440,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 8940,
+          "end_ms": 9040,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "سَنَتَعَلَّمُ",
+            "الْأَعْدَادَ،"
+          ],
+          "start_ms": 320,
+          "end_ms": 1700,
+          "duration_ms": 1380
+        },
+        {
+          "words": [
+            "وَنُمَثِّلُ",
+            "الْعَشَرَاتِ",
+            "وَالْوَحَدَاتِ،"
+          ],
+          "start_ms": 2120,
+          "end_ms": 4320,
+          "duration_ms": 2200
+        },
+        {
+          "words": [
+            "وَنَعُدُّ",
+            "الْأَشْيَاءَ",
+            "فِي",
+            "الطَّبِيعَةِ",
+            "بِطَرِيقَةٍ",
+            "مُبَسَّطَةٍ",
+            "وَمُمْتِعَةٍ."
+          ],
+          "start_ms": 4960,
+          "end_ms": 9300,
+          "duration_ms": 4340
+        }
+      ],
+      "analysis": {
+        "threshold": 683.3836466094428,
+        "fallback": false,
+        "speech_runs": 9
+      }
+    },
+    {
+      "scene": 4,
+      "key": "natural_reserve_intro_natural_v4_4",
+      "text": "سَنُضِيفُ وَنَطْرَحُ، وَنَحُلُّ وَضْعِيَّاتٍ بَسِيطَةً مِنْ حَيَاتِنَا الْيَوْمِيَّةِ، لِنَفْهَمَ الْحِسَابَ بِالْمُشَاهَدَةِ وَالتَّجْرِبَةِ.",
+      "audio_duration_ms": 10032,
+      "speech_start_ms": 320,
+      "speech_end_ms": 9000,
+      "words": 12,
+      "detected_gaps": [
+        {
+          "start_ms": 780,
+          "end_ms": 880,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1300,
+          "end_ms": 1400,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1560,
+          "end_ms": 2120,
+          "duration_ms": 560
+        },
+        {
+          "start_ms": 2380,
+          "end_ms": 2480,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 3520,
+          "end_ms": 3640,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 4300,
+          "end_ms": 4400,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 4640,
+          "end_ms": 4740,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 5600,
+          "end_ms": 6000,
+          "duration_ms": 400
+        },
+        {
+          "start_ms": 6280,
+          "end_ms": 6400,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 6640,
+          "end_ms": 6740,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 6820,
+          "end_ms": 6920,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 8400,
+          "end_ms": 8500,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "سَنُضِيفُ",
+            "وَنَطْرَحُ،"
+          ],
+          "start_ms": 320,
+          "end_ms": 1560,
+          "duration_ms": 1240
+        },
+        {
+          "words": [
+            "وَنَحُلُّ",
+            "وَضْعِيَّاتٍ",
+            "بَسِيطَةً",
+            "مِنْ",
+            "حَيَاتِنَا",
+            "الْيَوْمِيَّةِ،"
+          ],
+          "start_ms": 2120,
+          "end_ms": 5600,
+          "duration_ms": 3480
+        },
+        {
+          "words": [
+            "لِنَفْهَمَ",
+            "الْحِسَابَ",
+            "بِالْمُشَاهَدَةِ",
+            "وَالتَّجْرِبَةِ."
+          ],
+          "start_ms": 6000,
+          "end_ms": 9000,
+          "duration_ms": 3000
+        }
+      ],
+      "analysis": {
+        "threshold": 619.2157521397958,
+        "fallback": false,
+        "speech_runs": 13
+      }
+    },
+    {
+      "scene": 5,
+      "key": "natural_reserve_intro_natural_v4_5",
+      "text": "سَنَقْرَأُ الْمَعْلُومَاتِ، وَنُنَظِّمُهَا فِي جَدَاوِلَ، وَنُكْمِلُ الْجُمَلَ، وَنُرَتِّبُ الْكَلِمَاتِ، ثُمَّ نَقْرَأُ وَنُجِيبُ.",
+      "audio_duration_ms": 10464,
+      "speech_start_ms": 340,
+      "speech_end_ms": 9480,
+      "words": 12,
+      "detected_gaps": [
+        {
+          "start_ms": 560,
+          "end_ms": 660,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1600,
+          "end_ms": 2140,
+          "duration_ms": 540
+        },
+        {
+          "start_ms": 3960,
+          "end_ms": 4320,
+          "duration_ms": 360
+        },
+        {
+          "start_ms": 4600,
+          "end_ms": 4700,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 5500,
+          "end_ms": 5900,
+          "duration_ms": 400
+        },
+        {
+          "start_ms": 6320,
+          "end_ms": 6440,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 7220,
+          "end_ms": 7840,
+          "duration_ms": 620
+        },
+        {
+          "start_ms": 8240,
+          "end_ms": 8360,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "سَنَقْرَأُ",
+            "الْمَعْلُومَاتِ،"
+          ],
+          "start_ms": 340,
+          "end_ms": 1600,
+          "duration_ms": 1260
+        },
+        {
+          "words": [
+            "وَنُنَظِّمُهَا",
+            "فِي",
+            "جَدَاوِلَ،"
+          ],
+          "start_ms": 2140,
+          "end_ms": 4600,
+          "duration_ms": 2460
+        },
+        {
+          "words": [
+            "وَنُكْمِلُ",
+            "الْجُمَلَ،"
+          ],
+          "start_ms": 4700,
+          "end_ms": 5500,
+          "duration_ms": 800
+        },
+        {
+          "words": [
+            "وَنُرَتِّبُ",
+            "الْكَلِمَاتِ،"
+          ],
+          "start_ms": 5900,
+          "end_ms": 7220,
+          "duration_ms": 1320
+        },
+        {
+          "words": [
+            "ثُمَّ",
+            "نَقْرَأُ",
+            "وَنُجِيبُ."
+          ],
+          "start_ms": 7840,
+          "end_ms": 9480,
+          "duration_ms": 1640
+        }
+      ],
+      "analysis": {
+        "threshold": 639.9509287582723,
+        "fallback": false,
+        "speech_runs": 9
+      }
+    },
+    {
+      "scene": 6,
+      "key": "natural_reserve_intro_natural_v4_6",
+      "text": "وَسَنَتَعَلَّمُ أَهَمِّيَّةَ الْهَوَاءِ النَّقِيِّ وَالتَّهْوِيَةِ، وَنُرَاقِبُ نَبْضَ الْقَلْبِ، ثُمَّ نُنْجِزُ الْحَصِيلَةَ بِثِقَةٍ. هَيَّا نَبْدَأُ الْمُغَامَرَةَ!",
+      "audio_duration_ms": 11928,
+      "speech_start_ms": 220,
+      "speech_end_ms": 10860,
+      "words": 15,
+      "detected_gaps": [
+        {
+          "start_ms": 380,
+          "end_ms": 480,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2600,
+          "end_ms": 2700,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 3060,
+          "end_ms": 3180,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 3660,
+          "end_ms": 4040,
+          "duration_ms": 380
+        },
+        {
+          "start_ms": 4480,
+          "end_ms": 4580,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 5180,
+          "end_ms": 5280,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 5640,
+          "end_ms": 6120,
+          "duration_ms": 480
+        },
+        {
+          "start_ms": 6940,
+          "end_ms": 7040,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 7120,
+          "end_ms": 7220,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 7960,
+          "end_ms": 8080,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 8220,
+          "end_ms": 9420,
+          "duration_ms": 1200
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "وَسَنَتَعَلَّمُ",
+            "أَهَمِّيَّةَ",
+            "الْهَوَاءِ",
+            "النَّقِيِّ",
+            "وَالتَّهْوِيَةِ،"
+          ],
+          "start_ms": 220,
+          "end_ms": 4480,
+          "duration_ms": 4260
+        },
+        {
+          "words": [
+            "وَنُرَاقِبُ",
+            "نَبْضَ",
+            "الْقَلْبِ،"
+          ],
+          "start_ms": 4580,
+          "end_ms": 6940,
+          "duration_ms": 2360
+        },
+        {
+          "words": [
+            "ثُمَّ",
+            "نُنْجِزُ",
+            "الْحَصِيلَةَ",
+            "بِثِقَةٍ."
+          ],
+          "start_ms": 7040,
+          "end_ms": 8220,
+          "duration_ms": 1180
+        },
+        {
+          "words": [
+            "هَيَّا",
+            "نَبْدَأُ",
+            "الْمُغَامَرَةَ!"
+          ],
+          "start_ms": 9420,
+          "end_ms": 10860,
+          "duration_ms": 1440
+        }
+      ],
+      "analysis": {
+        "threshold": 588.1536046001263,
+        "fallback": false,
+        "speech_runs": 12
+      }
+    }
+  ]
+}

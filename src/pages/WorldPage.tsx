@@ -5,6 +5,8 @@ import { getWorldById, getWorldLessons } from "../services/worldsService";
 import { supabase } from "../lib/supabaseClient";
 import { getV2KeyByLesson } from "../features/lesson-v2/v2Registry";
 import WorldIntroSceneV2 from "../features/exercises/templates/WorldIntroSceneV2";
+import { NATURAL_RESERVE_WORLD_ID, naturalReserveIntroContent } from "../features/world-intro/naturalReserveIntro";
+import { SCHOOL_WORLD_ID, schoolWorldIntroContent } from "../features/world-intro/schoolWorldIntro";
 
 // نزع التشكيل + تحويل الكلمات الرقمية — للعرض في الفهرس فقط
 function cleanTitle(s: string): string {
@@ -13,6 +15,33 @@ function cleanTitle(s: string): string {
     .replace(/[\u064B-\u0652\u0670]/g, "")
     .replace(/ستة/g, "6")
     .replace(/تسعة/g, "9");
+}
+
+function resolveWorldIntroContent(
+  worldRecord: any,
+  currentWorldId?: string,
+) {
+  const resolvedWorldId = String(
+    worldRecord?.id
+      ?? currentWorldId
+      ?? "",
+  );
+
+  if (
+    resolvedWorldId
+    === SCHOOL_WORLD_ID
+  ) {
+    return schoolWorldIntroContent;
+  }
+
+  if (
+    resolvedWorldId
+    === NATURAL_RESERVE_WORLD_ID
+  ) {
+    return naturalReserveIntroContent;
+  }
+
+  return worldRecord?.intro_content ?? null;
 }
 
 export default function WorldPage() {
@@ -27,6 +56,12 @@ export default function WorldPage() {
   const [introChecked, setIntroChecked] = useState(false);
   const [mounted, setMounted] = useState(false);
 
+  const introContent =
+    resolveWorldIntroContent(
+      world,
+      worldId,
+    );
+
   useEffect(() => {
     const tm = setTimeout(() => setMounted(true), 80);
     return () => clearTimeout(tm);
@@ -40,6 +75,8 @@ export default function WorldPage() {
         setWorld(w);
         setLessons(ls);
         // check if user has seen the intro
+        // الفتح التلقائي خاص بمقدمات قاعدة البيانات فقط
+        // مقدمة المحمية تُفتح من زر شاهد المقدمة
         if (w?.intro_content) {
           const { data: userData } = await supabase.auth.getUser();
           if (userData?.user) {
@@ -81,11 +118,11 @@ export default function WorldPage() {
   };
 
   // Show intro scene if not viewed
-  if (showIntro && world?.intro_content) {
+  if (showIntro && introContent) {
     return (
       <WorldIntroSceneV2
-        audio_base={world.intro_content.audio_base}
-        slides={world.intro_content.slides}
+        audio_base={introContent.audio_base}
+        slides={introContent.slides}
         onDone={handleIntroDone}
       />
     );
@@ -96,7 +133,7 @@ export default function WorldPage() {
       <div style={{ padding: "18px 16px 34px", position: "relative", zIndex: 2, maxWidth: 760, margin: "0 auto" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18, gap: 8 }}>
           <button onClick={() => navigate(-1)} style={{ background: "var(--border-faint)", border: "1px solid var(--border)", color: "#fff", borderRadius: 12, padding: "8px 14px", fontSize: 13, fontWeight: 700, fontFamily: "Tajawal,sans-serif" }}>← {t("btn_back")}</button>
-          {world?.intro_content && (
+          {introContent && (
             <button onClick={handleReplayIntro} style={{ background: "linear-gradient(135deg,var(--gold),#FFB84D)", border: "none", color: "#fff", borderRadius: 12, padding: "8px 14px", fontSize: 13, fontWeight: 700, fontFamily: "Tajawal,sans-serif", cursor: "pointer", boxShadow: "0 4px 12px rgba(232,160,32,.35)" }}>🎬 شاهد المقدمة</button>
           )}
         </div>

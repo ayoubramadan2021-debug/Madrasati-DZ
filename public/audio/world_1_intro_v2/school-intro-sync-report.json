@@ -1,0 +1,170 @@
+[
+  {
+    "key": "school_intro_v2_1",
+    "voice": "ar-DZ-IsmaelNeural",
+    "text": "فِي صَبَاحٍ جَمِيلٍ، يَذْهَبُ فَاضِلٌ وَسِيرِينُ وَرَحْمَةُ إِلَى الْمَدْرَسَةِ لِأَوَّلِ مَرَّةٍ.",
+    "words": 11,
+    "audio_duration_ms": 7224,
+    "speech_start_ms": 300,
+    "speech_end_ms": 6200,
+    "detected_gaps": [
+      {
+        "start_ms": 1620,
+        "end_ms": 2020,
+        "duration_ms": 400
+      }
+    ]
+  },
+  {
+    "key": "school_intro_v2_2",
+    "voice": "ar-DZ-IsmaelNeural",
+    "text": "يَكْتَشِفُونَ سَاحَةَ الْمَدْرَسَةِ الْكَبِيرَةَ، وَيَلْتَقُونَ زُمَلَاءَهُمُ الْجُدُدَ.",
+    "words": 7,
+    "audio_duration_ms": 6456,
+    "speech_start_ms": 240,
+    "speech_end_ms": 5240,
+    "detected_gaps": [
+      {
+        "start_ms": 2840,
+        "end_ms": 3200,
+        "duration_ms": 360
+      },
+      {
+        "start_ms": 3520,
+        "end_ms": 3620,
+        "duration_ms": 100
+      }
+    ]
+  },
+  {
+    "key": "school_intro_v2_3",
+    "voice": "ar-DZ-IsmaelNeural",
+    "text": "مَرْحَبًا بِكُمْ يَا أَعِزَّائِي، هَذِهِ الْأُسْتَاذَةُ تَالِينُ، وَأَنَا الْأُسْتَاذُ خَلِيلٌ.",
+    "words": 10,
+    "audio_duration_ms": 7608,
+    "speech_start_ms": 220,
+    "speech_end_ms": 6460,
+    "detected_gaps": [
+      {
+        "start_ms": 2340,
+        "end_ms": 2720,
+        "duration_ms": 380
+      },
+      {
+        "start_ms": 4580,
+        "end_ms": 4940,
+        "duration_ms": 360
+      },
+      {
+        "start_ms": 5980,
+        "end_ms": 6080,
+        "duration_ms": 100
+      }
+    ]
+  },
+  {
+    "key": "school_intro_v2_4",
+    "voice": "ar-DZ-IsmaelNeural",
+    "text": "يَجْلِسُونَ فِي أَمَاكِنِهِمْ لِأَوَّلِ مَرَّةٍ، وَيَتَعَرَّفُونَ عَلَى أَدَوَاتِهِمُ الْمَدْرَسِيَّةِ.",
+    "words": 9,
+    "audio_duration_ms": 7248,
+    "speech_start_ms": 240,
+    "speech_end_ms": 6220,
+    "detected_gaps": [
+      {
+        "start_ms": 2840,
+        "end_ms": 3240,
+        "duration_ms": 400
+      }
+    ]
+  },
+  {
+    "key": "school_intro_v2_5_question",
+    "voice": "ar-DZ-IsmaelNeural",
+    "text": "يَا عَزِيزِي، مَاذَا يَفْعَلُ التِّلْمِيذُ الْجَدِيدُ عِنْدَ دُخُولِهِ الْقِسْمَ؟",
+    "words": 9,
+    "audio_duration_ms": 6144,
+    "speech_start_ms": 220,
+    "speech_end_ms": 5040,
+    "detected_gaps": [
+      {
+        "start_ms": 1280,
+        "end_ms": 1620,
+        "duration_ms": 340
+      },
+      {
+        "start_ms": 2540,
+        "end_ms": 2640,
+        "duration_ms": 100
+      },
+      {
+        "start_ms": 4120,
+        "end_ms": 4240,
+        "duration_ms": 120
+      },
+      {
+        "start_ms": 4620,
+        "end_ms": 4740,
+        "duration_ms": 120
+      }
+    ]
+  },
+  {
+    "key": "school_intro_v2_6",
+    "voice": "ar-DZ-IsmaelNeural",
+    "text": "رَائِعٌ! أَصْبَحْنَا مُسْتَعِدِّينَ لِبَدْءِ دُرُوسِ عَالَمِ الْمَدْرَسَةِ. هَيَّا نَتَعَلَّمُ وَنَجْمَعُ نُجُومَ النَّجَاحِ!",
+    "words": 12,
+    "audio_duration_ms": 10392,
+    "speech_start_ms": 220,
+    "speech_end_ms": 9120,
+    "detected_gaps": [
+      {
+        "start_ms": 760,
+        "end_ms": 1940,
+        "duration_ms": 1180
+      },
+      {
+        "start_ms": 5460,
+        "end_ms": 6620,
+        "duration_ms": 1160
+      }
+    ]
+  },
+  {
+    "key": "school_intro_v2_correct",
+    "voice": "ar-DZ-IsmaelNeural",
+    "text": "أَحْسَنْتَ، هَذَا سُلُوكُ تِلْمِيذٍ مُؤَدَّبٍ.",
+    "words": 5,
+    "audio_duration_ms": 4584,
+    "speech_start_ms": 240,
+    "speech_end_ms": 3320,
+    "detected_gaps": [
+      {
+        "start_ms": 780,
+        "end_ms": 1320,
+        "duration_ms": 540
+      }
+    ]
+  },
+  {
+    "key": "school_intro_v2_retry",
+    "voice": "ar-DZ-IsmaelNeural",
+    "text": "حَاوِلْ مَرَّةً أُخْرَى يَا صَدِيقِي.",
+    "words": 5,
+    "audio_duration_ms": 3576,
+    "speech_start_ms": 260,
+    "speech_end_ms": 2480,
+    "detected_gaps": [
+      {
+        "start_ms": 1340,
+        "end_ms": 1440,
+        "duration_ms": 100
+      },
+      {
+        "start_ms": 2280,
+        "end_ms": 2400,
+        "duration_ms": 120
+      }
+    ]
+  }
+]

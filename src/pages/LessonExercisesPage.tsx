@@ -1,4 +1,10 @@
 import Lesson46HeartBeats2Exercises from "../features/lesson-v2/exercises-v2/Lesson46HeartBeats2Exercises";
+import Lesson64PlantsWithUs2Exercises from "../features/lesson-v2/exercises-v2/Lesson64PlantsWithUs2Exercises";
+import Lesson65AddSubtractSituations2Exercises from "../features/lesson-v2/exercises-v2/Lesson65AddSubtractSituations2Exercises";
+import Lesson66MobilizeKnowledge3Exercises from "../features/lesson-v2/exercises-v2/Lesson66MobilizeKnowledge3Exercises";
+import Lesson67Assessment3ArabicExercises from "../features/lesson-v2/exercises-v2/Lesson67Assessment3ArabicExercises";
+import Lesson68Assessment3MathExercises from "../features/lesson-v2/exercises-v2/Lesson68Assessment3MathExercises";
+import Lesson69Assessment3ScienceExercises from "../features/lesson-v2/exercises-v2/Lesson69Assessment3ScienceExercises";
 import Lesson45CompleteTableExercises from "../features/lesson-v2/exercises-v2/Lesson45CompleteTableExercises";
 import Lesson44HalfExercises from "../features/lesson-v2/exercises-v2/Lesson44HalfExercises";
 import Lesson43DoubleExercises from "../features/lesson-v2/exercises-v2/Lesson43DoubleExercises";
@@ -210,6 +216,9 @@ import {
   LESSON_38_EXERCISE_4_AUDIO_BASE,
 } from "../features/lesson-v2/content/lesson38_exercise4";
 
+
+import { useEffect } from "react";
+import "../features/lesson-v2/components/lesson53-69-typography.css";
 const WORLD2_HOME =
   `/world/${WORLD2_ID}`;
 
@@ -811,6 +820,50 @@ function Lesson40Exercises() {
 }
 
 export default function LessonExercisesPage() {
+
+  const mdzExercisePathname =
+    typeof window !== "undefined"
+      ? window.location.pathname
+      : "";
+
+  useEffect(() => {
+    const lessonMatch =
+      mdzExercisePathname.match(
+        /\/lesson-v2\/(\d+)\/exercises\/?$/,
+      );
+
+    const lessonNumber =
+      Number(lessonMatch?.[1]);
+
+    const useCurrentTypography =
+      Number.isInteger(lessonNumber) &&
+      lessonNumber >= 53 &&
+      lessonNumber <= 69;
+
+    if (useCurrentTypography) {
+      document.documentElement.setAttribute(
+        "data-madrasati-exercise-typography",
+        "lesson64",
+      );
+    } else {
+      document.documentElement.removeAttribute(
+        "data-madrasati-exercise-typography",
+      );
+    }
+
+    return () => {
+      if (
+        document.documentElement.getAttribute(
+          "data-madrasati-exercise-typography",
+        ) === "lesson64"
+      ) {
+        document.documentElement.removeAttribute(
+          "data-madrasati-exercise-typography",
+        );
+      }
+    };
+  }, [mdzExercisePathname]);
+
   const { lessonId } =
     useParams<{ lessonId?: string }>();
   if (lessonId === "53") return <Lesson53ExercisesPage />;
@@ -824,7 +877,13 @@ export default function LessonExercisesPage() {
   if (lessonId === "61") return <Lesson61ExercisesPage />;
   if (lessonId === "62") return <Lesson62ExercisesPage />;
   if (lessonId === "63") return <Lesson63ExercisesPage />;
+  if (lessonId === "64") return <Lesson64PlantsWithUs2Exercises />;
 
+  if (lessonId === "65") return <Lesson65AddSubtractSituations2Exercises />;
+  if (lessonId === "66") return <Lesson66MobilizeKnowledge3Exercises />;
+  if (lessonId === "67") return <Lesson67Assessment3ArabicExercises />;
+  if (lessonId === "68") return <Lesson68Assessment3MathExercises />;
+  if (lessonId === "69") return <Lesson69Assessment3ScienceExercises />;
   if (lessonId === "46") return <Lesson46HeartBeats2Exercises />;
 
   if (lessonId === "45") return <Lesson45CompleteTableExercises />;

@@ -1,0 +1,260 @@
+{
+  "old_keys": [
+    "natural_reserve_intro_1",
+    "natural_reserve_intro_2",
+    "natural_reserve_intro_3",
+    "natural_reserve_intro_4",
+    "natural_reserve_intro_5",
+    "natural_reserve_intro_6"
+  ],
+  "new_keys": [
+    "natural_reserve_intro_synced_v2_1",
+    "natural_reserve_intro_synced_v2_2",
+    "natural_reserve_intro_synced_v2_3",
+    "natural_reserve_intro_synced_v2_4",
+    "natural_reserve_intro_synced_v2_5",
+    "natural_reserve_intro_synced_v2_6"
+  ],
+  "reports": [
+    {
+      "scene": 1,
+      "key": "natural_reserve_intro_synced_v2_1",
+      "original_text": "وَصَلْنَا إِلَى عَالَمِ الْمَحْمِيَّةِ الطَّبِيعِيَّةِ، هُنَا سَنَكْتَشِفُ الطَّبِيعَةَ، وَنَتَعَلَّمُ مَعًا كَيْفَ نُحَافِظُ عَلَيْهَا.",
+      "units": [
+        {
+          "text": "وَصَلْنَا إِلَى عَالَمِ",
+          "audio_duration_ms": 1540,
+          "pause_after_ms": 35,
+          "offset_ms": 125
+        },
+        {
+          "text": "الْمَحْمِيَّةِ الطَّبِيعِيَّةِ،",
+          "audio_duration_ms": 1640,
+          "pause_after_ms": 330,
+          "offset_ms": 1700
+        },
+        {
+          "text": "هُنَا سَنَكْتَشِفُ الطَّبِيعَةَ،",
+          "audio_duration_ms": 1780,
+          "pause_after_ms": 330,
+          "offset_ms": 3670
+        },
+        {
+          "text": "وَنَتَعَلَّمُ مَعًا كَيْفَ",
+          "audio_duration_ms": 1650,
+          "pause_after_ms": 35,
+          "offset_ms": 5780
+        },
+        {
+          "text": "نُحَافِظُ عَلَيْهَا.",
+          "audio_duration_ms": 1500,
+          "pause_after_ms": 560,
+          "offset_ms": 7465
+        }
+      ],
+      "wav_duration_ms": 9680,
+      "mp3_duration_ms": 9680
+    },
+    {
+      "scene": 2,
+      "key": "natural_reserve_intro_synced_v2_2",
+      "original_text": "سَنَتَعَرَّفُ إِلَى نَبَاتَاتٍ وَحَيَوَانَاتٍ تَعِيشُ مَعَنَا، وَنُمَيِّزُ بَيْنَ أَنْوَاعِهَا، وَنَفْهَمُ كَيْفَ نَعْتَنِي بِهَا.",
+      "units": [
+        {
+          "text": "سَنَتَعَرَّفُ إِلَى نَبَاتَاتٍ",
+          "audio_duration_ms": 1980,
+          "pause_after_ms": 35,
+          "offset_ms": 125
+        },
+        {
+          "text": "وَحَيَوَانَاتٍ تَعِيشُ مَعَنَا،",
+          "audio_duration_ms": 2250,
+          "pause_after_ms": 330,
+          "offset_ms": 2140
+        },
+        {
+          "text": "وَنُمَيِّزُ بَيْنَ أَنْوَاعِهَا،",
+          "audio_duration_ms": 2000,
+          "pause_after_ms": 330,
+          "offset_ms": 4720
+        },
+        {
+          "text": "وَنَفْهَمُ كَيْفَ نَعْتَنِي",
+          "audio_duration_ms": 1860,
+          "pause_after_ms": 35,
+          "offset_ms": 7050
+        },
+        {
+          "text": "بِهَا.",
+          "audio_duration_ms": 640,
+          "pause_after_ms": 560,
+          "offset_ms": 8945
+        }
+      ],
+      "wav_duration_ms": 10300,
+      "mp3_duration_ms": 10300
+    },
+    {
+      "scene": 3,
+      "key": "natural_reserve_intro_synced_v2_3",
+      "original_text": "سَنَتَعَلَّمُ الْأَعْدَادَ، وَنُمَثِّلُ الْعَشَرَاتِ وَالْوَحَدَاتِ، وَنَعُدُّ الْأَشْيَاءَ فِي الطَّبِيعَةِ بِطَرِيقَةٍ مُبَسَّطَةٍ وَمُمْتِعَةٍ.",
+      "units": [
+        {
+          "text": "سَنَتَعَلَّمُ الْأَعْدَادَ،",
+          "audio_duration_ms": 1700,
+          "pause_after_ms": 330,
+          "offset_ms": 125
+        },
+        {
+          "text": "وَنُمَثِّلُ الْعَشَرَاتِ وَالْوَحَدَاتِ،",
+          "audio_duration_ms": 2560,
+          "pause_after_ms": 330,
+          "offset_ms": 2155
+        },
+        {
+          "text": "وَنَعُدُّ الْأَشْيَاءَ فِي",
+          "audio_duration_ms": 1520,
+          "pause_after_ms": 35,
+          "offset_ms": 5045
+        },
+        {
+          "text": "الطَّبِيعَةِ بِطَرِيقَةٍ مُبَسَّطَةٍ",
+          "audio_duration_ms": 2460,
+          "pause_after_ms": 35,
+          "offset_ms": 6600
+        },
+        {
+          "text": "وَمُمْتِعَةٍ.",
+          "audio_duration_ms": 930,
+          "pause_after_ms": 560,
+          "offset_ms": 9095
+        }
+      ],
+      "wav_duration_ms": 10740,
+      "mp3_duration_ms": 10740
+    },
+    {
+      "scene": 4,
+      "key": "natural_reserve_intro_synced_v2_4",
+      "original_text": "سَنُضِيفُ وَنَطْرَحُ، وَنَحُلُّ وَضْعِيَّاتٍ بَسِيطَةً مِنْ حَيَاتِنَا الْيَوْمِيَّةِ، لِنَفْهَمَ الْحِسَابَ بِالْمُشَاهَدَةِ وَالتَّجْرِبَةِ.",
+      "units": [
+        {
+          "text": "سَنُضِيفُ وَنَطْرَحُ،",
+          "audio_duration_ms": 1460,
+          "pause_after_ms": 330,
+          "offset_ms": 125
+        },
+        {
+          "text": "وَنَحُلُّ وَضْعِيَّاتٍ بَسِيطَةً",
+          "audio_duration_ms": 2060,
+          "pause_after_ms": 35,
+          "offset_ms": 1915
+        },
+        {
+          "text": "مِنْ حَيَاتِنَا الْيَوْمِيَّةِ،",
+          "audio_duration_ms": 1620,
+          "pause_after_ms": 330,
+          "offset_ms": 4010
+        },
+        {
+          "text": "لِنَفْهَمَ الْحِسَابَ بِالْمُشَاهَدَةِ",
+          "audio_duration_ms": 2150,
+          "pause_after_ms": 35,
+          "offset_ms": 5960
+        },
+        {
+          "text": "وَالتَّجْرِبَةِ.",
+          "audio_duration_ms": 930,
+          "pause_after_ms": 560,
+          "offset_ms": 8145
+        }
+      ],
+      "wav_duration_ms": 9790,
+      "mp3_duration_ms": 9790
+    },
+    {
+      "scene": 5,
+      "key": "natural_reserve_intro_synced_v2_5",
+      "original_text": "سَنَقْرَأُ الْمَعْلُومَاتِ، وَنُنَظِّمُهَا فِي جَدَاوِلَ، وَنُكْمِلُ الْجُمَلَ، وَنُرَتِّبُ الْكَلِمَاتِ، ثُمَّ نَقْرَأُ وَنُجِيبُ.",
+      "units": [
+        {
+          "text": "سَنَقْرَأُ الْمَعْلُومَاتِ،",
+          "audio_duration_ms": 1700,
+          "pause_after_ms": 330,
+          "offset_ms": 125
+        },
+        {
+          "text": "وَنُنَظِّمُهَا فِي جَدَاوِلَ،",
+          "audio_duration_ms": 1940,
+          "pause_after_ms": 330,
+          "offset_ms": 2155
+        },
+        {
+          "text": "وَنُكْمِلُ الْجُمَلَ،",
+          "audio_duration_ms": 1340,
+          "pause_after_ms": 330,
+          "offset_ms": 4425
+        },
+        {
+          "text": "وَنُرَتِّبُ الْكَلِمَاتِ،",
+          "audio_duration_ms": 1670,
+          "pause_after_ms": 330,
+          "offset_ms": 6095
+        },
+        {
+          "text": "ثُمَّ نَقْرَأُ وَنُجِيبُ.",
+          "audio_duration_ms": 1730,
+          "pause_after_ms": 560,
+          "offset_ms": 8095
+        }
+      ],
+      "wav_duration_ms": 10540,
+      "mp3_duration_ms": 10540
+    },
+    {
+      "scene": 6,
+      "key": "natural_reserve_intro_synced_v2_6",
+      "original_text": "وَسَنَتَعَلَّمُ أَهَمِّيَّةَ الْهَوَاءِ النَّقِيِّ وَالتَّهْوِيَةِ، وَنُرَاقِبُ نَبْضَ الْقَلْبِ، ثُمَّ نُنْجِزُ الْحَصِيلَةَ بِثِقَةٍ. هَيَّا نَبْدَأُ الْمُغَامَرَةَ!",
+      "units": [
+        {
+          "text": "وَسَنَتَعَلَّمُ أَهَمِّيَّةَ الْهَوَاءِ",
+          "audio_duration_ms": 2300,
+          "pause_after_ms": 35,
+          "offset_ms": 125
+        },
+        {
+          "text": "النَّقِيِّ وَالتَّهْوِيَةِ،",
+          "audio_duration_ms": 1400,
+          "pause_after_ms": 330,
+          "offset_ms": 2460
+        },
+        {
+          "text": "وَنُرَاقِبُ نَبْضَ الْقَلْبِ،",
+          "audio_duration_ms": 1830,
+          "pause_after_ms": 330,
+          "offset_ms": 4190
+        },
+        {
+          "text": "ثُمَّ نُنْجِزُ الْحَصِيلَةَ",
+          "audio_duration_ms": 1560,
+          "pause_after_ms": 35,
+          "offset_ms": 6350
+        },
+        {
+          "text": "بِثِقَةٍ.",
+          "audio_duration_ms": 680,
+          "pause_after_ms": 560,
+          "offset_ms": 7945
+        },
+        {
+          "text": "هَيَّا نَبْدَأُ الْمُغَامَرَةَ!",
+          "audio_duration_ms": 1570,
+          "pause_after_ms": 620,
+          "offset_ms": 9185
+        }
+      ],
+      "wav_duration_ms": 11530,
+      "mp3_duration_ms": 11530
+    }
+  ]
+}
