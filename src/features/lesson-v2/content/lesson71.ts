@@ -1,0 +1,82 @@
+export const lesson71CanonicalText = {
+  lesson71_s1: "مَرْحَبًا أَحِبَّائِي! نَقُومُ فِي يَوْمِنَا بِأَنْشِطَةٍ كَثِيرَةٍ، وَكُلُّ نَشَاطٍ يَحْتَاجُ إِلَى مُدَّةٍ زَمَنِيَّةٍ. فَبَعْضُ الْأَعْمَالِ يَنْتَهِي سَرِيعًا، وَبَعْضُهَا يَحْتَاجُ إِلَى وَقْتٍ أَطْوَلَ.",
+  lesson71_s2: "لِنَنْظُرْ إِلَى الْأَنْشِطَةِ الْمُخْتَلِفَةِ. قَدْ يَسْتَغْرِقُ أَحَدُهَا وَقْتًا قَصِيرًا، بَيْنَمَا يَسْتَغْرِقُ نَشَاطٌ آخَرُ وَقْتًا أَطْوَلَ. نَسْتَعْمِلُ الْمُلَاحَظَةَ وَتَجْرِبَتَنَا لِنُقَارِنَ بَيْنَهَا.",
+  lesson71_s3: "عِنْدَمَا نُقَارِنُ نَشَاطَيْنِ، نَسْأَلُ: أَيُّهُمَا يَنْتَهِي أَوَّلًا؟ وَأَيُّهُمَا يَسْتَغْرِقُ وَقْتًا أَكْثَرَ؟ هَكَذَا نَفْهَمُ مَعْنَى الْمُدَّةِ الزَّمَنِيَّةِ.",
+  lesson71_s4: "غَسْلُ الْيَدَيْنِ، وَشُرْبُ كَأْسٍ مِنَ الْمَاءِ، وَإِنْجَازُ عَمَلٍ دِرَاسِيٍّ أَنْشِطَةٌ مُخْتَلِفَةٌ، وَلَا تَسْتَغْرِقُ كُلُّهَا الْمُدَّةَ نَفْسَهَا.",
+  lesson71_s5: "نَسْتَطِيعُ أَنْ نُرَتِّبَ الْأَنْشِطَةَ مِنَ الْأَقْصَرِ مُدَّةً إِلَى الْأَطْوَلِ مُدَّةً، أَوْ نُقَارِنَ بَيْنَ نَشَاطَيْنِ وَنُحَدِّدَ أَيَّهُمَا يَحْتَاجُ إِلَى وَقْتٍ أَكْثَرَ.",
+  lesson71_s6: "أَحْسَنْتُمْ! تَعَلَّمْنَا أَنَّ لِكُلِّ نَشَاطٍ مُدَّةً زَمَنِيَّةً، وَأَنَّ الْمُدَدَ قَدْ تَكُونُ قَصِيرَةً أَوْ أَطْوَلَ. وَأَصْبَحْنَا نُقَارِنُ بَيْنَ مُدَدِ أَنْشِطَتِنَا. هَيَّا نَتَدَرَّبُ!",
+} as const;
+
+export const lesson71 = {
+  id: "lesson71",
+  lessonKey: "lesson71",
+  num: 71,
+  world_id: "b2c0405e-4559-4813-9a73-82b4f0ab4f4c",
+  sort_order: 2,
+  title: "الْمُدَّةُ الزَّمَنِيَّةُ",
+  title_fr: "La durée",
+  teacher: "taline",
+  voice: "ar-DZ-AminaNeural",
+  audio_base: "/audio/teachers/taline/lesson_71_duration",
+  exercisePath: "/lesson-v2/71/exercises",
+  objectives: [
+    "أَنْ يَتَعَرَّفَ الْمُتَعَلِّمُ إِلَى مَعْنَى الْمُدَّةِ الزَّمَنِيَّةِ.",
+    "أَنْ يُقَارِنَ بَيْنَ أَنْشِطَةٍ مِنْ حَيْثُ الْمُدَّةُ.",
+    "أَنْ يُمَيِّزَ بَيْنَ نَشَاطٍ يَسْتَغْرِقُ وَقْتًا قَصِيرًا وَنَشَاطٍ يَسْتَغْرِقُ وَقْتًا أَطْوَلَ.",
+    "أَنْ يَرْبِطَ الْمُدَّةَ الزَّمَنِيَّةَ بِأَنْشِطَةٍ مِنْ حَيَاتِهِ الْيَوْمِيَّةِ.",
+  ],
+  slides: [
+    {
+      key: "lesson71_s1",
+      audio_key: "lesson71_s1",
+      title: "أَنْشِطَةٌ فِي يَوْمِنَا",
+      image: "/lessons/v2/lesson71/s1.webp",
+      scene_image: "/lessons/v2/lesson71/s1.webp",
+      text: lesson71CanonicalText.lesson71_s1,
+    },
+    {
+      key: "lesson71_s2",
+      audio_key: "lesson71_s2",
+      title: "أُقَارِنُ الْمُدَدَ",
+      image: "/lessons/v2/lesson71/s2.webp",
+      scene_image: "/lessons/v2/lesson71/s2.webp",
+      text: lesson71CanonicalText.lesson71_s2,
+    },
+    {
+      key: "lesson71_s3",
+      audio_key: "lesson71_s3",
+      title: "وَقْتٌ قَصِيرٌ وَوَقْتٌ أَطْوَلُ",
+      image: "/lessons/v2/lesson71/s3.webp",
+      scene_image: "/lessons/v2/lesson71/s3.webp",
+      text: lesson71CanonicalText.lesson71_s3,
+    },
+    {
+      key: "lesson71_s4",
+      audio_key: "lesson71_s4",
+      title: "أَنْشِطَةٌ مُخْتَلِفَةُ الْمُدَّةِ",
+      image: "/lessons/v2/lesson71/s4.webp",
+      scene_image: "/lessons/v2/lesson71/s4.webp",
+      text: lesson71CanonicalText.lesson71_s4,
+    },
+    {
+      key: "lesson71_s5",
+      audio_key: "lesson71_s5",
+      title: "أُرَتِّبُ حَسَبَ الْمُدَّةِ",
+      image: "/lessons/v2/lesson71/s5.webp",
+      scene_image: "/lessons/v2/lesson71/s5.webp",
+      text: lesson71CanonicalText.lesson71_s5,
+    },
+    {
+      key: "lesson71_s6",
+      audio_key: "lesson71_s6",
+      title: "أَفْهَمُ الْمُدَّةَ الزَّمَنِيَّةَ",
+      image: "/lessons/v2/lesson71/s6.webp",
+      scene_image: "/lessons/v2/lesson71/s6.webp",
+      text: lesson71CanonicalText.lesson71_s6,
+      is_closing: true,
+      cta_text: "هَيَّا نَتَدَرَّبُ",
+    },
+  ],
+} as const;
+
+export default lesson71;

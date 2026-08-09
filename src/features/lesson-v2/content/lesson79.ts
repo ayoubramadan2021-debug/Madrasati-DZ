@@ -1,0 +1,82 @@
+export const lesson79CanonicalText = {
+  lesson79_s1: "مَرْحَبًا أَحِبَّائِي! نَسْتَعْمِلُ السَّاعَةَ لِنَعْرِفَ الْوَقْتَ. وَتُسَاعِدُنَا عَلَى مَعْرِفَةِ مَوَاعِيدِ الدِّرَاسَةِ وَاللَّعِبِ وَالرَّاحَةِ.",
+  lesson79_s2: "لِلسَّاعَةِ عَقْرَبَانِ مُهِمَّانِ. الْعَقْرَبُ الْقَصِيرُ يُشِيرُ إِلَى السَّاعَاتِ، وَالْعَقْرَبُ الطَّوِيلُ يُسَاعِدُنَا عَلَى قِرَاءَةِ الدَّقَائِقِ.",
+  lesson79_s3: "عِنْدَمَا يَكُونُ عَقْرَبُ الدَّقَائِقِ عِنْدَ الْعَدَدِ اثْنَيْ عَشَرَ، نَقْرَأُ سَاعَةً كَامِلَةً، وَنَنْظُرُ إِلَى الْعَقْرَبِ الْقَصِيرِ لِنَعْرِفَ السَّاعَةَ.",
+  lesson79_s4: "نَرْبِطُ أَنْشِطَتَنَا بِأَوْقَاتِهَا. فَلِلِاسْتِيقَاظِ وَالدِّرَاسَةِ وَاللَّعِبِ وَالنَّوْمِ أَوْقَاتٌ مُخْتَلِفَةٌ.",
+  lesson79_s5: "نَنْظُرُ إِلَى مَوْضِعِ الْعَقْرَبَيْنِ بِانْتِبَاهٍ، ثُمَّ نَقْرَأُ الْوَقْتَ وَنَرْبِطُهُ بِالنَّشَاطِ الْمُنَاسِبِ.",
+  lesson79_s6: "رَائِعٌ! تَعَرَّفْنَا إِلَى عَقْرَبَيِ السَّاعَةِ، وَقَرَأْنَا سَاعَاتٍ كَامِلَةً، وَرَبَطْنَا الْوَقْتَ بِأَنْشِطَتِنَا الْيَوْمِيَّةِ. هَيَّا نَتَدَرَّبُ!",
+} as const;
+
+export const lesson79 = {
+  id: "lesson79",
+  lessonKey: "lesson79",
+  num: 79,
+  world_id: "b2c0405e-4559-4813-9a73-82b4f0ab4f4c",
+  sort_order: 10,
+  title: "قِرَاءَةُ السَّاعَةِ (1)",
+  title_fr: "Lire l'heure (1)",
+  teacher: "taline",
+  voice: "ar-DZ-AminaNeural",
+  audio_base: "/audio/teachers/taline/lesson_79_read_clock_1",
+  exercisePath: "/lesson-v2/79/exercises",
+  objectives: [
+    "أَنْ يَتَعَرَّفَ الْمُتَعَلِّمُ إِلَى عَقْرَبَيِ السَّاعَةِ.",
+    "أَنْ يَقْرَأَ السَّاعَاتِ الْكَامِلَةَ.",
+    "أَنْ يَرْبِطَ بَيْنَ وَقْتٍ وَنَشَاطٍ يَوْمِيٍّ.",
+    "أَنْ يُمَيِّزَ بَيْنَ أَوْقَاتٍ مُخْتَلِفَةٍ عَلَى السَّاعَةِ.",
+  ],
+  slides: [
+    {
+      key: "lesson79_s1",
+      audio_key: "lesson79_s1",
+      title: "أَتَعَرَّفُ إِلَى السَّاعَةِ",
+      image: "/lessons/v2/lesson79/s1.webp",
+      scene_image: "/lessons/v2/lesson79/s1.webp",
+      text: lesson79CanonicalText.lesson79_s1,
+    },
+    {
+      key: "lesson79_s2",
+      audio_key: "lesson79_s2",
+      title: "عَقْرَبُ السَّاعَاتِ وَعَقْرَبُ الدَّقَائِقِ",
+      image: "/lessons/v2/lesson79/s2.webp",
+      scene_image: "/lessons/v2/lesson79/s2.webp",
+      text: lesson79CanonicalText.lesson79_s2,
+    },
+    {
+      key: "lesson79_s3",
+      audio_key: "lesson79_s3",
+      title: "أَقْرَأُ سَاعَاتٍ مُخْتَلِفَةً",
+      image: "/lessons/v2/lesson79/s3.webp",
+      scene_image: "/lessons/v2/lesson79/s3.webp",
+      text: lesson79CanonicalText.lesson79_s3,
+    },
+    {
+      key: "lesson79_s4",
+      audio_key: "lesson79_s4",
+      title: "أَرْبِطُ النَّشَاطَ بِالسَّاعَةِ",
+      image: "/lessons/v2/lesson79/s4.webp",
+      scene_image: "/lessons/v2/lesson79/s4.webp",
+      text: lesson79CanonicalText.lesson79_s4,
+    },
+    {
+      key: "lesson79_s5",
+      audio_key: "lesson79_s5",
+      title: "أَقْرَأُ الْوَقْتَ",
+      image: "/lessons/v2/lesson79/s5.webp",
+      scene_image: "/lessons/v2/lesson79/s5.webp",
+      text: lesson79CanonicalText.lesson79_s5,
+    },
+    {
+      key: "lesson79_s6",
+      audio_key: "lesson79_s6",
+      title: "السَّاعَةُ تُنَظِّمُ يَوْمَنَا",
+      image: "/lessons/v2/lesson79/s6.webp",
+      scene_image: "/lessons/v2/lesson79/s6.webp",
+      text: lesson79CanonicalText.lesson79_s6,
+      is_closing: true,
+      cta_text: "هَيَّا نَتَدَرَّبُ",
+    },
+  ],
+} as const;
+
+export default lesson79;

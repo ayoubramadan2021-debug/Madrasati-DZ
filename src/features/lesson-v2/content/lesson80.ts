@@ -1,0 +1,82 @@
+export const lesson80CanonicalText = {
+  lesson80_s1: "فِي يَوْمِنَا وَقْتٌ لِلدِّرَاسَةِ، وَوَقْتٌ لِلَّعِبِ، وَوَقْتٌ لِلرَّاحَةِ. وَحُسْنُ تَنْظِيمِ الْوَقْتِ يُسَاعِدُنَا عَلَى إِنْجَازِ أَعْمَالِنَا.",
+  lesson80_s2: "نَنْظُرُ إِلَى أَنْشِطَتِنَا الْيَوْمِيَّةِ وَنَتَذَكَّرُ أَنَّ كُلَّ نَشَاطٍ لَهُ وَقْتٌ مُنَاسِبٌ.",
+  lesson80_s3: "نَسْتَطِيعُ أَنْ نُرَتِّبَ أَنْشِطَتَنَا: نَدْرُسُ فِي وَقْتِ الدِّرَاسَةِ، وَنَلْعَبُ فِي وَقْتِ اللَّعِبِ، وَنَسْتَرِيحُ عِنْدَ الْحَاجَةِ.",
+  lesson80_s4: "مِنْ حُسْنِ تَنْظِيمِ وَقْتِنَا أَنْ نُحَافِظَ عَلَى أَدَوَاتِنَا وَنُعِيدَهَا إِلَى مَكَانِهَا بَعْدَ اسْتِعْمَالِهَا، حَتَّى لَا نُضَيِّعَ الْوَقْتَ فِي الْبَحْثِ عَنْهَا.",
+  lesson80_s5: "لَا نَقْضِي الْيَوْمَ كُلَّهُ فِي نَشَاطٍ وَاحِدٍ. بَلْ نُوَازِنُ بَيْنَ التَّعَلُّمِ وَاللَّعِبِ وَالرَّاحَةِ.",
+  lesson80_s6: "أَحْسَنْتُمْ! عِنْدَمَا نُنَظِّمُ وَقْتَنَا نَسْتَطِيعُ أَنْ نَدْرُسَ وَنَلْعَبَ وَنَرْتَاحَ دُونَ أَنْ نُضَيِّعَ يَوْمَنَا. هَيَّا نَتَدَرَّبُ!",
+} as const;
+
+export const lesson80 = {
+  id: "lesson80",
+  lessonKey: "lesson80",
+  num: 80,
+  world_id: "b2c0405e-4559-4813-9a73-82b4f0ab4f4c",
+  sort_order: 11,
+  title: "أُنَظِّمُ وَقْتِي",
+  title_fr: "J'organise mon temps",
+  teacher: "taline",
+  voice: "ar-DZ-AminaNeural",
+  audio_base: "/audio/teachers/taline/lesson_80_organize_time",
+  exercisePath: "/lesson-v2/80/exercises",
+  objectives: [
+    "أَنْ يُمَيِّزَ الْمُتَعَلِّمُ بَيْنَ أَنْشِطَةٍ يَوْمِيَّةٍ مُخْتَلِفَةٍ.",
+    "أَنْ يُرَتِّبَ أَنْشِطَتَهُ خِلَالَ الْيَوْمِ.",
+    "أَنْ يُوَازِنَ بَيْنَ الدِّرَاسَةِ وَاللَّعِبِ وَالرَّاحَةِ.",
+    "أَنْ يَفْهَمَ أَهَمِّيَّةَ حُسْنِ اسْتِغْلَالِ الْوَقْتِ.",
+  ],
+  slides: [
+    {
+      key: "lesson80_s1",
+      audio_key: "lesson80_s1",
+      title: "لِكُلِّ نَشَاطٍ وَقْتٌ",
+      image: "/lessons/v2/lesson80/s1.webp",
+      scene_image: "/lessons/v2/lesson80/s1.webp",
+      text: lesson80CanonicalText.lesson80_s1,
+    },
+    {
+      key: "lesson80_s2",
+      audio_key: "lesson80_s2",
+      title: "أَنْشِطَةُ يَوْمِي",
+      image: "/lessons/v2/lesson80/s2.webp",
+      scene_image: "/lessons/v2/lesson80/s2.webp",
+      text: lesson80CanonicalText.lesson80_s2,
+    },
+    {
+      key: "lesson80_s3",
+      audio_key: "lesson80_s3",
+      title: "أُرَتِّبُ أَنْشِطَتِي",
+      image: "/lessons/v2/lesson80/s3.webp",
+      scene_image: "/lessons/v2/lesson80/s3.webp",
+      text: lesson80CanonicalText.lesson80_s3,
+    },
+    {
+      key: "lesson80_s4",
+      audio_key: "lesson80_s4",
+      title: "أَحْفَظُ أَدَوَاتِي وَوَقْتِي",
+      image: "/lessons/v2/lesson80/s4.webp",
+      scene_image: "/lessons/v2/lesson80/s4.webp",
+      text: lesson80CanonicalText.lesson80_s4,
+    },
+    {
+      key: "lesson80_s5",
+      audio_key: "lesson80_s5",
+      title: "أُوَازِنُ بَيْنَ أَنْشِطَتِي",
+      image: "/lessons/v2/lesson80/s5.webp",
+      scene_image: "/lessons/v2/lesson80/s5.webp",
+      text: lesson80CanonicalText.lesson80_s5,
+    },
+    {
+      key: "lesson80_s6",
+      audio_key: "lesson80_s6",
+      title: "يَوْمِي الْمُنَظَّمُ",
+      image: "/lessons/v2/lesson80/s6.webp",
+      scene_image: "/lessons/v2/lesson80/s6.webp",
+      text: lesson80CanonicalText.lesson80_s6,
+      is_closing: true,
+      cta_text: "هَيَّا نَتَدَرَّبُ",
+    },
+  ],
+} as const;
+
+export default lesson80;

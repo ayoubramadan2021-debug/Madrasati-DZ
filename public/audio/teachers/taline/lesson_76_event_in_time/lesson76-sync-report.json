@@ -1,0 +1,635 @@
+{
+  "old_keys": [
+    "lesson76_s1",
+    "lesson76_s2",
+    "lesson76_s3",
+    "lesson76_s4",
+    "lesson76_s5",
+    "lesson76_s6"
+  ],
+  "new_keys": [
+    "lesson76_s1",
+    "lesson76_s2",
+    "lesson76_s3",
+    "lesson76_s4",
+    "lesson76_s5",
+    "lesson76_s6"
+  ],
+  "reports": [
+    {
+      "scene": 1,
+      "key": "lesson76_s1",
+      "text": "تَقَعُ الْأَحْدَاثُ فِي أَوْقَاتٍ مُخْتَلِفَةٍ. فَنَسْتَيْقِظُ فِي وَقْتٍ، وَنَذْهَبُ إِلَى الْمَدْرَسَةِ فِي وَقْتٍ آخَرَ، وَنَنَامُ لَيْلًا.",
+      "audio_duration_ms": 11208,
+      "speech_start_ms": 240,
+      "speech_end_ms": 10140,
+      "words": 16,
+      "detected_gaps": [
+        {
+          "start_ms": 1540,
+          "end_ms": 1640,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2140,
+          "end_ms": 2280,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 2720,
+          "end_ms": 3940,
+          "duration_ms": 1220
+        },
+        {
+          "start_ms": 4160,
+          "end_ms": 4300,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 4460,
+          "end_ms": 4560,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 5140,
+          "end_ms": 5320,
+          "duration_ms": 180
+        },
+        {
+          "start_ms": 5380,
+          "end_ms": 5820,
+          "duration_ms": 440
+        },
+        {
+          "start_ms": 7100,
+          "end_ms": 7200,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 7780,
+          "end_ms": 7940,
+          "duration_ms": 160
+        },
+        {
+          "start_ms": 8260,
+          "end_ms": 8380,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 8620,
+          "end_ms": 9020,
+          "duration_ms": 400
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "تَقَعُ",
+            "الْأَحْدَاثُ",
+            "فِي",
+            "أَوْقَاتٍ",
+            "مُخْتَلِفَةٍ."
+          ],
+          "start_ms": 240,
+          "end_ms": 2720,
+          "duration_ms": 2480
+        },
+        {
+          "words": [
+            "فَنَسْتَيْقِظُ",
+            "فِي",
+            "وَقْتٍ،"
+          ],
+          "start_ms": 3940,
+          "end_ms": 5140,
+          "duration_ms": 1200
+        },
+        {
+          "words": [
+            "وَنَذْهَبُ",
+            "إِلَى",
+            "الْمَدْرَسَةِ",
+            "فِي",
+            "وَقْتٍ",
+            "آخَرَ،"
+          ],
+          "start_ms": 5320,
+          "end_ms": 8620,
+          "duration_ms": 3300
+        },
+        {
+          "words": [
+            "وَنَنَامُ",
+            "لَيْلًا."
+          ],
+          "start_ms": 9020,
+          "end_ms": 10140,
+          "duration_ms": 1120
+        }
+      ],
+      "analysis": {
+        "threshold": 576.0216805539097,
+        "fallback": false,
+        "speech_runs": 12
+      }
+    },
+    {
+      "scene": 2,
+      "key": "lesson76_s2",
+      "text": "نَقُولُ عَنْ حَدَثٍ إِنَّهُ وَقَعَ قَبْلَ حَدَثٍ آخَرَ، أَوْ بَعْدَهُ. وَهَذِهِ الْكَلِمَاتُ تُسَاعِدُنَا عَلَى تَحْدِيدِ مَوْقِعِ الْحَدَثِ فِي الزَّمَنِ.",
+      "audio_duration_ms": 11640,
+      "speech_start_ms": 200,
+      "speech_end_ms": 10620,
+      "words": 19,
+      "detected_gaps": [
+        {
+          "start_ms": 400,
+          "end_ms": 500,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2060,
+          "end_ms": 2160,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2400,
+          "end_ms": 2500,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 3460,
+          "end_ms": 3560,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 3800,
+          "end_ms": 4200,
+          "duration_ms": 400
+        },
+        {
+          "start_ms": 4800,
+          "end_ms": 5980,
+          "duration_ms": 1180
+        },
+        {
+          "start_ms": 9100,
+          "end_ms": 9220,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "نَقُولُ",
+            "عَنْ",
+            "حَدَثٍ",
+            "إِنَّهُ",
+            "وَقَعَ",
+            "قَبْلَ",
+            "حَدَثٍ",
+            "آخَرَ،"
+          ],
+          "start_ms": 200,
+          "end_ms": 3460,
+          "duration_ms": 3260
+        },
+        {
+          "words": [
+            "أَوْ",
+            "بَعْدَهُ."
+          ],
+          "start_ms": 3560,
+          "end_ms": 3800,
+          "duration_ms": 240
+        },
+        {
+          "words": [
+            "وَهَذِهِ",
+            "الْكَلِمَاتُ",
+            "تُسَاعِدُنَا",
+            "عَلَى",
+            "تَحْدِيدِ",
+            "مَوْقِعِ",
+            "الْحَدَثِ",
+            "فِي",
+            "الزَّمَنِ."
+          ],
+          "start_ms": 4200,
+          "end_ms": 10620,
+          "duration_ms": 6420
+        }
+      ],
+      "analysis": {
+        "threshold": 625.7873262124233,
+        "fallback": false,
+        "speech_runs": 8
+      }
+    },
+    {
+      "scene": 3,
+      "key": "lesson76_s3",
+      "text": "لِنَنْظُرْ إِلَى أَنْشِطَةِ يَوْمِنَا. نَرْتِبُهَا مِنَ الْأَوَّلِ إِلَى الْأَخِيرِ، وَنَصِفُ مَوْقِعَ كُلِّ نَشَاطٍ بِالنِّسْبَةِ إِلَى الْآخَرِ.",
+      "audio_duration_ms": 11088,
+      "speech_start_ms": 220,
+      "speech_end_ms": 10040,
+      "words": 16,
+      "detected_gaps": [
+        {
+          "start_ms": 2420,
+          "end_ms": 3540,
+          "duration_ms": 1120
+        },
+        {
+          "start_ms": 3780,
+          "end_ms": 3880,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 5480,
+          "end_ms": 5580,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 5880,
+          "end_ms": 6320,
+          "duration_ms": 440
+        },
+        {
+          "start_ms": 7200,
+          "end_ms": 7320,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 7560,
+          "end_ms": 7660,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 8780,
+          "end_ms": 8900,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 9720,
+          "end_ms": 9820,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "لِنَنْظُرْ",
+            "إِلَى",
+            "أَنْشِطَةِ",
+            "يَوْمِنَا."
+          ],
+          "start_ms": 220,
+          "end_ms": 2420,
+          "duration_ms": 2200
+        },
+        {
+          "words": [
+            "نَرْتِبُهَا",
+            "مِنَ",
+            "الْأَوَّلِ",
+            "إِلَى",
+            "الْأَخِيرِ،"
+          ],
+          "start_ms": 3540,
+          "end_ms": 5880,
+          "duration_ms": 2340
+        },
+        {
+          "words": [
+            "وَنَصِفُ",
+            "مَوْقِعَ",
+            "كُلِّ",
+            "نَشَاطٍ",
+            "بِالنِّسْبَةِ",
+            "إِلَى",
+            "الْآخَرِ."
+          ],
+          "start_ms": 6320,
+          "end_ms": 10040,
+          "duration_ms": 3720
+        }
+      ],
+      "analysis": {
+        "threshold": 617.6048864844005,
+        "fallback": false,
+        "speech_runs": 9
+      }
+    },
+    {
+      "scene": 4,
+      "key": "lesson76_s4",
+      "text": "وَفِي حَيَاتِنَا أَيْضًا أَحْدَاثٌ كَبِيرَةٌ تَتَعَاقَبُ، مِثْلُ الْوِلَادَةِ، وَأَعْيَادِ الْمِيلَادِ، وَالدُّخُولِ إِلَى الْمَدْرَسَةِ.",
+      "audio_duration_ms": 9792,
+      "speech_start_ms": 220,
+      "speech_end_ms": 8760,
+      "words": 13,
+      "detected_gaps": [
+        {
+          "start_ms": 3540,
+          "end_ms": 3640,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 3900,
+          "end_ms": 4320,
+          "duration_ms": 420
+        },
+        {
+          "start_ms": 4460,
+          "end_ms": 4580,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 5240,
+          "end_ms": 5660,
+          "duration_ms": 420
+        },
+        {
+          "start_ms": 6860,
+          "end_ms": 7260,
+          "duration_ms": 400
+        },
+        {
+          "start_ms": 8540,
+          "end_ms": 8640,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "وَفِي",
+            "حَيَاتِنَا",
+            "أَيْضًا",
+            "أَحْدَاثٌ",
+            "كَبِيرَةٌ",
+            "تَتَعَاقَبُ،"
+          ],
+          "start_ms": 220,
+          "end_ms": 3540,
+          "duration_ms": 3320
+        },
+        {
+          "words": [
+            "مِثْلُ",
+            "الْوِلَادَةِ،"
+          ],
+          "start_ms": 3640,
+          "end_ms": 5240,
+          "duration_ms": 1600
+        },
+        {
+          "words": [
+            "وَأَعْيَادِ",
+            "الْمِيلَادِ،"
+          ],
+          "start_ms": 5660,
+          "end_ms": 6860,
+          "duration_ms": 1200
+        },
+        {
+          "words": [
+            "وَالدُّخُولِ",
+            "إِلَى",
+            "الْمَدْرَسَةِ."
+          ],
+          "start_ms": 7260,
+          "end_ms": 8760,
+          "duration_ms": 1500
+        }
+      ],
+      "analysis": {
+        "threshold": 622.4442718370876,
+        "fallback": false,
+        "speech_runs": 7
+      }
+    },
+    {
+      "scene": 5,
+      "key": "lesson76_s5",
+      "text": "إِذَا عَرَفْنَا تَرْتِيبَ الْأَحْدَاثِ، نَسْتَطِيعُ أَنْ نُجِيبَ عَنْ أَسْئِلَةٍ مِثْلَ: مَا الَّذِي حَدَثَ قَبْلَ؟ وَمَا الَّذِي حَدَثَ بَعْدَ؟",
+      "audio_duration_ms": 11016,
+      "speech_start_ms": 220,
+      "speech_end_ms": 9980,
+      "words": 18,
+      "detected_gaps": [
+        {
+          "start_ms": 780,
+          "end_ms": 880,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1280,
+          "end_ms": 1400,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 2160,
+          "end_ms": 2740,
+          "duration_ms": 580
+        },
+        {
+          "start_ms": 2900,
+          "end_ms": 3020,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 4440,
+          "end_ms": 4580,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 5140,
+          "end_ms": 5260,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 5460,
+          "end_ms": 5800,
+          "duration_ms": 340
+        },
+        {
+          "start_ms": 6800,
+          "end_ms": 6920,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 7260,
+          "end_ms": 8440,
+          "duration_ms": 1180
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "إِذَا",
+            "عَرَفْنَا",
+            "تَرْتِيبَ",
+            "الْأَحْدَاثِ،"
+          ],
+          "start_ms": 220,
+          "end_ms": 2900,
+          "duration_ms": 2680
+        },
+        {
+          "words": [
+            "نَسْتَطِيعُ",
+            "أَنْ",
+            "نُجِيبَ",
+            "عَنْ",
+            "أَسْئِلَةٍ",
+            "مِثْلَ:"
+          ],
+          "start_ms": 3020,
+          "end_ms": 6800,
+          "duration_ms": 3780
+        },
+        {
+          "words": [
+            "مَا",
+            "الَّذِي",
+            "حَدَثَ",
+            "قَبْلَ؟"
+          ],
+          "start_ms": 6920,
+          "end_ms": 7260,
+          "duration_ms": 340
+        },
+        {
+          "words": [
+            "وَمَا",
+            "الَّذِي",
+            "حَدَثَ",
+            "بَعْدَ؟"
+          ],
+          "start_ms": 8440,
+          "end_ms": 9980,
+          "duration_ms": 1540
+        }
+      ],
+      "analysis": {
+        "threshold": 591.707654374207,
+        "fallback": false,
+        "speech_runs": 10
+      }
+    },
+    {
+      "scene": 6,
+      "key": "lesson76_s6",
+      "text": "أَحْسَنْتُمْ! تَعَلَّمْنَا كَيْفَ نُحَدِّدُ مَوْقِعَ الْحَدَثِ فِي الزَّمَنِ، وَنَسْتَعْمِلُ قَبْلَ وَبَعْدَ لِوَصْفِ تَسَلْسُلِ الْأَحْدَاثِ. هَيَّا نَتَدَرَّبُ!",
+      "audio_duration_ms": 12912,
+      "speech_start_ms": 220,
+      "speech_end_ms": 11780,
+      "words": 16,
+      "detected_gaps": [
+        {
+          "start_ms": 380,
+          "end_ms": 520,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 1040,
+          "end_ms": 2180,
+          "duration_ms": 1140
+        },
+        {
+          "start_ms": 4080,
+          "end_ms": 4180,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 5580,
+          "end_ms": 5980,
+          "duration_ms": 400
+        },
+        {
+          "start_ms": 6240,
+          "end_ms": 6360,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 6780,
+          "end_ms": 6880,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 8020,
+          "end_ms": 8180,
+          "duration_ms": 160
+        },
+        {
+          "start_ms": 8640,
+          "end_ms": 8740,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 9460,
+          "end_ms": 9580,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 9640,
+          "end_ms": 10840,
+          "duration_ms": 1200
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَحْسَنْتُمْ!"
+          ],
+          "start_ms": 220,
+          "end_ms": 1040,
+          "duration_ms": 820
+        },
+        {
+          "words": [
+            "تَعَلَّمْنَا",
+            "كَيْفَ",
+            "نُحَدِّدُ",
+            "مَوْقِعَ",
+            "الْحَدَثِ",
+            "فِي",
+            "الزَّمَنِ،"
+          ],
+          "start_ms": 2180,
+          "end_ms": 5580,
+          "duration_ms": 3400
+        },
+        {
+          "words": [
+            "وَنَسْتَعْمِلُ",
+            "قَبْلَ",
+            "وَبَعْدَ",
+            "لِوَصْفِ",
+            "تَسَلْسُلِ",
+            "الْأَحْدَاثِ."
+          ],
+          "start_ms": 5980,
+          "end_ms": 9640,
+          "duration_ms": 3660
+        },
+        {
+          "words": [
+            "هَيَّا",
+            "نَتَدَرَّبُ!"
+          ],
+          "start_ms": 10840,
+          "end_ms": 11780,
+          "duration_ms": 940
+        }
+      ],
+      "analysis": {
+        "threshold": 583.2119171814027,
+        "fallback": false,
+        "speech_runs": 11
+      }
+    }
+  ]
+}

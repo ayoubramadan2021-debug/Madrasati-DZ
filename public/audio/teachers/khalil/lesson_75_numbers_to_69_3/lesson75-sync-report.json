@@ -1,0 +1,762 @@
+{
+  "old_keys": [
+    "lesson75_s1",
+    "lesson75_s2",
+    "lesson75_s3",
+    "lesson75_s4",
+    "lesson75_s5",
+    "lesson75_s6"
+  ],
+  "new_keys": [
+    "lesson75_s1",
+    "lesson75_s2",
+    "lesson75_s3",
+    "lesson75_s4",
+    "lesson75_s5",
+    "lesson75_s6"
+  ],
+  "reports": [
+    {
+      "scene": 1,
+      "key": "lesson75_s1",
+      "text": "نُكْمِلُ الْأَعْدَادَ النَّاقِصَةَ. نَرَى: تِسْعَةً وَثَلَاثِينَ، أَرْبَعِينَ، وَاحِدًا وَأَرْبَعِينَ، اثْنَيْنِ وَأَرْبَعِينَ، ثَلَاثَةً وَأَرْبَعِينَ.",
+      "audio_duration_ms": 13440,
+      "speech_start_ms": 240,
+      "speech_end_ms": 12320,
+      "words": 13,
+      "detected_gaps": [
+        {
+          "start_ms": 1580,
+          "end_ms": 1680,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1980,
+          "end_ms": 3140,
+          "duration_ms": 1160
+        },
+        {
+          "start_ms": 3500,
+          "end_ms": 3860,
+          "duration_ms": 360
+        },
+        {
+          "start_ms": 5400,
+          "end_ms": 5740,
+          "duration_ms": 340
+        },
+        {
+          "start_ms": 6580,
+          "end_ms": 6920,
+          "duration_ms": 340
+        },
+        {
+          "start_ms": 8520,
+          "end_ms": 8880,
+          "duration_ms": 360
+        },
+        {
+          "start_ms": 10420,
+          "end_ms": 10880,
+          "duration_ms": 460
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "نُكْمِلُ",
+            "الْأَعْدَادَ",
+            "النَّاقِصَةَ."
+          ],
+          "start_ms": 240,
+          "end_ms": 1980,
+          "duration_ms": 1740
+        },
+        {
+          "words": [
+            "نَرَى:"
+          ],
+          "start_ms": 3140,
+          "end_ms": 3500,
+          "duration_ms": 360
+        },
+        {
+          "words": [
+            "تِسْعَةً",
+            "وَثَلَاثِينَ،"
+          ],
+          "start_ms": 3860,
+          "end_ms": 5400,
+          "duration_ms": 1540
+        },
+        {
+          "words": [
+            "أَرْبَعِينَ،"
+          ],
+          "start_ms": 5740,
+          "end_ms": 6580,
+          "duration_ms": 840
+        },
+        {
+          "words": [
+            "وَاحِدًا",
+            "وَأَرْبَعِينَ،"
+          ],
+          "start_ms": 6920,
+          "end_ms": 8520,
+          "duration_ms": 1600
+        },
+        {
+          "words": [
+            "اثْنَيْنِ",
+            "وَأَرْبَعِينَ،"
+          ],
+          "start_ms": 8880,
+          "end_ms": 10420,
+          "duration_ms": 1540
+        },
+        {
+          "words": [
+            "ثَلَاثَةً",
+            "وَأَرْبَعِينَ."
+          ],
+          "start_ms": 10880,
+          "end_ms": 12320,
+          "duration_ms": 1440
+        }
+      ],
+      "analysis": {
+        "threshold": 604.0660278852603,
+        "fallback": false,
+        "speech_runs": 8
+      }
+    },
+    {
+      "scene": 2,
+      "key": "lesson75_s2",
+      "text": "نُفَكِّكُ الْعَدَدَيْنِ 62 وَ56. اثْنَانِ وَسِتُّونَ تُسَاوِي سِتِّينَ زَائِدَ اثْنَيْنِ، وَسِتَّةٌ وَخَمْسُونَ تُسَاوِي خَمْسِينَ زَائِدَ سِتَّةٍ.",
+      "audio_duration_ms": 13224,
+      "speech_start_ms": 220,
+      "speech_end_ms": 12220,
+      "words": 16,
+      "detected_gaps": [
+        {
+          "start_ms": 540,
+          "end_ms": 640,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1600,
+          "end_ms": 1700,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2280,
+          "end_ms": 2400,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 2980,
+          "end_ms": 3100,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 3340,
+          "end_ms": 3440,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 4000,
+          "end_ms": 5220,
+          "duration_ms": 1220
+        },
+        {
+          "start_ms": 7060,
+          "end_ms": 7180,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 8420,
+          "end_ms": 8780,
+          "duration_ms": 360
+        },
+        {
+          "start_ms": 11920,
+          "end_ms": 12080,
+          "duration_ms": 160
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "نُفَكِّكُ",
+            "الْعَدَدَيْنِ",
+            "62",
+            "وَ56."
+          ],
+          "start_ms": 220,
+          "end_ms": 2980,
+          "duration_ms": 2760
+        },
+        {
+          "words": [
+            "اثْنَانِ",
+            "وَسِتُّونَ",
+            "تُسَاوِي",
+            "سِتِّينَ",
+            "زَائِدَ",
+            "اثْنَيْنِ،"
+          ],
+          "start_ms": 3100,
+          "end_ms": 7060,
+          "duration_ms": 3960
+        },
+        {
+          "words": [
+            "وَسِتَّةٌ",
+            "وَخَمْسُونَ",
+            "تُسَاوِي",
+            "خَمْسِينَ",
+            "زَائِدَ",
+            "سِتَّةٍ."
+          ],
+          "start_ms": 7180,
+          "end_ms": 12220,
+          "duration_ms": 5040
+        }
+      ],
+      "analysis": {
+        "threshold": 563.9969926945522,
+        "fallback": false,
+        "speech_runs": 10
+      }
+    },
+    {
+      "scene": 3,
+      "key": "lesson75_s3",
+      "text": "نُقَارِنُ 62 وَ56. نَنْظُرُ إِلَى الْعَشَرَاتِ أَوَّلًا: سِتُّ عَشَرَاتٍ أَكْبَرُ مِنْ خَمْسِ عَشَرَاتٍ، إِذَنْ 62 أَكْبَرُ مِنْ 56.",
+      "audio_duration_ms": 14640,
+      "speech_start_ms": 220,
+      "speech_end_ms": 13480,
+      "words": 18,
+      "detected_gaps": [
+        {
+          "start_ms": 1640,
+          "end_ms": 1740,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2320,
+          "end_ms": 2420,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 3320,
+          "end_ms": 4560,
+          "duration_ms": 1240
+        },
+        {
+          "start_ms": 6640,
+          "end_ms": 7020,
+          "duration_ms": 380
+        },
+        {
+          "start_ms": 7220,
+          "end_ms": 7320,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 9700,
+          "end_ms": 10180,
+          "duration_ms": 480
+        },
+        {
+          "start_ms": 10580,
+          "end_ms": 10680,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 11300,
+          "end_ms": 11420,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 12480,
+          "end_ms": 12580,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "نُقَارِنُ",
+            "62",
+            "وَ56."
+          ],
+          "start_ms": 220,
+          "end_ms": 2320,
+          "duration_ms": 2100
+        },
+        {
+          "words": [
+            "نَنْظُرُ",
+            "إِلَى",
+            "الْعَشَرَاتِ",
+            "أَوَّلًا:"
+          ],
+          "start_ms": 2420,
+          "end_ms": 6640,
+          "duration_ms": 4220
+        },
+        {
+          "words": [
+            "سِتُّ",
+            "عَشَرَاتٍ",
+            "أَكْبَرُ",
+            "مِنْ",
+            "خَمْسِ",
+            "عَشَرَاتٍ،"
+          ],
+          "start_ms": 7020,
+          "end_ms": 10580,
+          "duration_ms": 3560
+        },
+        {
+          "words": [
+            "إِذَنْ",
+            "62",
+            "أَكْبَرُ",
+            "مِنْ",
+            "56."
+          ],
+          "start_ms": 10680,
+          "end_ms": 13480,
+          "duration_ms": 2800
+        }
+      ],
+      "analysis": {
+        "threshold": 539.1092297314615,
+        "fallback": false,
+        "speech_runs": 10
+      }
+    },
+    {
+      "scene": 4,
+      "key": "lesson75_s4",
+      "text": "نَخْتَارُ الْعَلَامَةَ الْمُنَاسِبَةَ: 6 أَصْغَرُ مِنْ 18، وَ56 أَصْغَرُ مِنْ 65، وَ64 تُسَاوِي 20 + 30 + 10 + 4، وَ59 أَصْغَرُ مِنْ 69، وَ40 تُسَاوِي 10 + 10 + 10 + 10.",
+      "audio_duration_ms": 23208,
+      "speech_start_ms": 240,
+      "speech_end_ms": 22120,
+      "words": 33,
+      "detected_gaps": [
+        {
+          "start_ms": 380,
+          "end_ms": 560,
+          "duration_ms": 180
+        },
+        {
+          "start_ms": 2140,
+          "end_ms": 2560,
+          "duration_ms": 420
+        },
+        {
+          "start_ms": 2700,
+          "end_ms": 2840,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 4560,
+          "end_ms": 5000,
+          "duration_ms": 440
+        },
+        {
+          "start_ms": 5320,
+          "end_ms": 5440,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 6900,
+          "end_ms": 7000,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 7580,
+          "end_ms": 7740,
+          "duration_ms": 160
+        },
+        {
+          "start_ms": 8160,
+          "end_ms": 8540,
+          "duration_ms": 380
+        },
+        {
+          "start_ms": 9460,
+          "end_ms": 9580,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 11300,
+          "end_ms": 11420,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 11660,
+          "end_ms": 11780,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 13820,
+          "end_ms": 14200,
+          "duration_ms": 380
+        },
+        {
+          "start_ms": 14900,
+          "end_ms": 15000,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 16760,
+          "end_ms": 16920,
+          "duration_ms": 160
+        },
+        {
+          "start_ms": 17260,
+          "end_ms": 17700,
+          "duration_ms": 440
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "نَخْتَارُ",
+            "الْعَلَامَةَ",
+            "الْمُنَاسِبَةَ:"
+          ],
+          "start_ms": 240,
+          "end_ms": 4560,
+          "duration_ms": 4320
+        },
+        {
+          "words": [
+            "6",
+            "أَصْغَرُ",
+            "مِنْ",
+            "18،"
+          ],
+          "start_ms": 5000,
+          "end_ms": 6900,
+          "duration_ms": 1900
+        },
+        {
+          "words": [
+            "وَ56",
+            "أَصْغَرُ",
+            "مِنْ",
+            "65،"
+          ],
+          "start_ms": 7000,
+          "end_ms": 9460,
+          "duration_ms": 2460
+        },
+        {
+          "words": [
+            "وَ64",
+            "تُسَاوِي",
+            "20",
+            "+",
+            "30",
+            "+",
+            "10",
+            "+",
+            "4،"
+          ],
+          "start_ms": 9580,
+          "end_ms": 14900,
+          "duration_ms": 5320
+        },
+        {
+          "words": [
+            "وَ59",
+            "أَصْغَرُ",
+            "مِنْ",
+            "69،"
+          ],
+          "start_ms": 15000,
+          "end_ms": 16760,
+          "duration_ms": 1760
+        },
+        {
+          "words": [
+            "وَ40",
+            "تُسَاوِي",
+            "10",
+            "+",
+            "10",
+            "+",
+            "10",
+            "+",
+            "10."
+          ],
+          "start_ms": 16920,
+          "end_ms": 22120,
+          "duration_ms": 5200
+        }
+      ],
+      "analysis": {
+        "threshold": 919.0114838194756,
+        "fallback": false,
+        "speech_runs": 16
+      }
+    },
+    {
+      "scene": 5,
+      "key": "lesson75_s5",
+      "text": "نُقَارِنُ بَيْنَ تَمْثِيلَيْنِ. فِي اللَّوْحَةِ الْأُولَى 62: سِتُّ عَشَرَاتٍ وَوَحْدَتَانِ، وَفِي اللَّوْحَةِ الثَّانِيَةِ 56: خَمْسُ عَشَرَاتٍ وَسِتُّ وَحَدَاتٍ. إِذَنْ 62 أَكْبَرُ مِنْ 56.",
+      "audio_duration_ms": 19512,
+      "speech_start_ms": 220,
+      "speech_end_ms": 18420,
+      "words": 23,
+      "detected_gaps": [
+        {
+          "start_ms": 2000,
+          "end_ms": 3320,
+          "duration_ms": 1320
+        },
+        {
+          "start_ms": 5060,
+          "end_ms": 5180,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 5640,
+          "end_ms": 6020,
+          "duration_ms": 380
+        },
+        {
+          "start_ms": 6200,
+          "end_ms": 6320,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 8060,
+          "end_ms": 8440,
+          "duration_ms": 380
+        },
+        {
+          "start_ms": 9360,
+          "end_ms": 9480,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 10120,
+          "end_ms": 10260,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 11220,
+          "end_ms": 11640,
+          "duration_ms": 420
+        },
+        {
+          "start_ms": 12940,
+          "end_ms": 13040,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 13300,
+          "end_ms": 13400,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 13720,
+          "end_ms": 15120,
+          "duration_ms": 1400
+        },
+        {
+          "start_ms": 16200,
+          "end_ms": 16300,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 17400,
+          "end_ms": 17500,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 17780,
+          "end_ms": 17880,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "نُقَارِنُ",
+            "بَيْنَ",
+            "تَمْثِيلَيْنِ."
+          ],
+          "start_ms": 220,
+          "end_ms": 2000,
+          "duration_ms": 1780
+        },
+        {
+          "words": [
+            "فِي",
+            "اللَّوْحَةِ",
+            "الْأُولَى",
+            "62:"
+          ],
+          "start_ms": 3320,
+          "end_ms": 6200,
+          "duration_ms": 2880
+        },
+        {
+          "words": [
+            "سِتُّ",
+            "عَشَرَاتٍ",
+            "وَوَحْدَتَانِ،"
+          ],
+          "start_ms": 6320,
+          "end_ms": 9360,
+          "duration_ms": 3040
+        },
+        {
+          "words": [
+            "وَفِي",
+            "اللَّوْحَةِ",
+            "الثَّانِيَةِ",
+            "56:"
+          ],
+          "start_ms": 9480,
+          "end_ms": 12940,
+          "duration_ms": 3460
+        },
+        {
+          "words": [
+            "خَمْسُ",
+            "عَشَرَاتٍ",
+            "وَسِتُّ",
+            "وَحَدَاتٍ."
+          ],
+          "start_ms": 13040,
+          "end_ms": 16200,
+          "duration_ms": 3160
+        },
+        {
+          "words": [
+            "إِذَنْ",
+            "62",
+            "أَكْبَرُ",
+            "مِنْ",
+            "56."
+          ],
+          "start_ms": 16300,
+          "end_ms": 18420,
+          "duration_ms": 2120
+        }
+      ],
+      "analysis": {
+        "threshold": 551.6808269120359,
+        "fallback": false,
+        "speech_runs": 15
+      }
+    },
+    {
+      "scene": 6,
+      "key": "lesson75_s6",
+      "text": "أَحْسَنْتُمْ! أَصْبَحْنَا نُكْمِلُ الْأَعْدَادَ النَّاقِصَةَ، وَنُفَكِّكُ الْأَعْدَادَ إِلَى عَشَرَاتٍ وَوَحَدَاتٍ، وَنُقَارِنُ بَيْنَهَا. هَيَّا نَتَدَرَّبُ!",
+      "audio_duration_ms": 13056,
+      "speech_start_ms": 220,
+      "speech_end_ms": 11920,
+      "words": 14,
+      "detected_gaps": [
+        {
+          "start_ms": 960,
+          "end_ms": 2160,
+          "duration_ms": 1200
+        },
+        {
+          "start_ms": 4540,
+          "end_ms": 4940,
+          "duration_ms": 400
+        },
+        {
+          "start_ms": 5360,
+          "end_ms": 5460,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 8100,
+          "end_ms": 8520,
+          "duration_ms": 420
+        },
+        {
+          "start_ms": 8820,
+          "end_ms": 8920,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 9840,
+          "end_ms": 11000,
+          "duration_ms": 1160
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَحْسَنْتُمْ!"
+          ],
+          "start_ms": 220,
+          "end_ms": 960,
+          "duration_ms": 740
+        },
+        {
+          "words": [
+            "أَصْبَحْنَا",
+            "نُكْمِلُ",
+            "الْأَعْدَادَ",
+            "النَّاقِصَةَ،"
+          ],
+          "start_ms": 2160,
+          "end_ms": 4540,
+          "duration_ms": 2380
+        },
+        {
+          "words": [
+            "وَنُفَكِّكُ",
+            "الْأَعْدَادَ",
+            "إِلَى",
+            "عَشَرَاتٍ",
+            "وَوَحَدَاتٍ،"
+          ],
+          "start_ms": 4940,
+          "end_ms": 8820,
+          "duration_ms": 3880
+        },
+        {
+          "words": [
+            "وَنُقَارِنُ",
+            "بَيْنَهَا."
+          ],
+          "start_ms": 8920,
+          "end_ms": 9840,
+          "duration_ms": 920
+        },
+        {
+          "words": [
+            "هَيَّا",
+            "نَتَدَرَّبُ!"
+          ],
+          "start_ms": 11000,
+          "end_ms": 11920,
+          "duration_ms": 920
+        }
+      ],
+      "analysis": {
+        "threshold": 553.1493255201275,
+        "fallback": false,
+        "speech_runs": 7
+      }
+    }
+  ]
+}

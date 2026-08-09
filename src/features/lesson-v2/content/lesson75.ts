@@ -1,0 +1,82 @@
+export const lesson75CanonicalText = {
+  lesson75_s1: "نُكْمِلُ الْأَعْدَادَ النَّاقِصَةَ. نَعُدُّ: تِسْعَةً وَثَلَاثِينَ، أَرْبَعِينَ، وَاحِدًا وَأَرْبَعِينَ، اثْنَيْنِ وَأَرْبَعِينَ، ثَلَاثَةً وَأَرْبَعِينَ.",
+  lesson75_s2: "نَرَى خَمْسَ عَشَرَاتٍ، وَثَمَانِيَ وَحَدَاتٍ فِي قَالِبٍ، وَوَحْدَتَيْنِ مُنْفَرِدَتَيْنِ.",
+  lesson75_s3: "نُقَارِنُ 62 وَ56. نَنْظُرُ إِلَى الْعَشَرَاتِ أَوَّلًا: سِتُّ عَشَرَاتٍ أَكْبَرُ مِنْ خَمْسِ عَشَرَاتٍ، إِذَنْ 62 أَكْبَرُ مِنْ 56.",
+  lesson75_s4: "نُقَارِنُ الْأَعْدَادَ أَوَّلًا. ثُمَّ نَخْتَارُ الْعَلَامَةَ الْمُنَاسِبَةَ.",
+  lesson75_s5: "نُقَارِنُ التَّمْثِيلَيْنِ جَيِّدًا. ثُمَّ نُحَدِّدُ الْعَدَدَ الْأَكْبَرَ.",
+  lesson75_s6: "أَحْسَنْتُمْ! أَصْبَحْنَا نُكْمِلُ الْأَعْدَادَ النَّاقِصَةَ، وَنُفَكِّكُ الْأَعْدَادَ إِلَى عَشَرَاتٍ وَوَحَدَاتٍ، وَنُقَارِنُ بَيْنَهَا. هَيَّا نَتَدَرَّبُ!",
+} as const;
+
+export const lesson75 = {
+  id: "lesson75",
+  lessonKey: "lesson75",
+  num: 75,
+  world_id: "b2c0405e-4559-4813-9a73-82b4f0ab4f4c",
+  sort_order: 6,
+  title: "الْأَعْدَادُ إِلَى 69 (3)",
+  title_fr: "Les nombres jusqu'à 69 (3)",
+  teacher: "khalil",
+  voice: "ar-DZ-IsmaelNeural",
+  audio_base: "/audio/teachers/khalil/lesson_75_numbers_to_69_3",
+  exercisePath: "/lesson-v2/75/exercises",
+  objectives: [
+    "أَنْ يُكْمِلَ الْمُتَعَلِّمُ أَعْدَادًا نَاقِصَةً إِلَى 69.",
+    "أَنْ يُفَكِّكَ الْمُتَعَلِّمُ أَعْدَادًا إِلَى عَشَرَاتٍ وَوَحَدَاتٍ.",
+    "أَنْ يُقَارِنَ الْمُتَعَلِّمُ بَيْنَ أَعْدَادٍ إِلَى 69.",
+    "أَنْ يَخْتَارَ الْعَلَامَةَ الْمُنَاسِبَةَ وَيَقْرَأَ التَّمْثِيلَاتِ الْعَدَدِيَّةَ.",
+  ],
+  slides: [
+    {
+      key: "lesson75_s1",
+      audio_key: "lesson75_s1",
+      title: "أُكْمِلُ الْأَعْدَادَ النَّاقِصَةَ",
+      image: "/lessons/v2/lesson75/s1.webp",
+      scene_image: "/lessons/v2/lesson75/s1.webp",
+      text: lesson75CanonicalText.lesson75_s1,
+    },
+    {
+      key: "lesson75_s2",
+      audio_key: "lesson75_s2",
+      title: "أَقْرَأُ التَّمْثِيلَ",
+      image: "/lessons/v2/lesson75/s2.webp",
+      scene_image: "/lessons/v2/lesson75/s2.webp",
+      text: lesson75CanonicalText.lesson75_s2,
+    },
+    {
+      key: "lesson75_s3",
+      audio_key: "lesson75_s3",
+      title: "أُقَارِنُ 62 وَ56",
+      image: "/lessons/v2/lesson75/s3.webp",
+      scene_image: "/lessons/v2/lesson75/s3.webp",
+      text: lesson75CanonicalText.lesson75_s3,
+    },
+    {
+      key: "lesson75_s4",
+      audio_key: "lesson75_s4",
+      title: "أَخْتَارُ الْعَلَامَةَ",
+      image: "/lessons/v2/lesson75/s4.webp",
+      scene_image: "/lessons/v2/lesson75/s4.webp",
+      text: lesson75CanonicalText.lesson75_s4,
+    },
+    {
+      key: "lesson75_s5",
+      audio_key: "lesson75_s5",
+      title: "أُقَارِنُ التَّمْثِيلَيْنِ",
+      image: "/lessons/v2/lesson75/s5.webp",
+      scene_image: "/lessons/v2/lesson75/s5.webp",
+      text: lesson75CanonicalText.lesson75_s5,
+    },
+    {
+      key: "lesson75_s6",
+      audio_key: "lesson75_s6",
+      title: "أُثَبِّتُ مُكْتَسَبَاتِي",
+      image: "/lessons/v2/lesson75/s6.webp",
+      scene_image: "/lessons/v2/lesson75/s6.webp",
+      text: lesson75CanonicalText.lesson75_s6,
+      is_closing: true,
+      cta_text: "هَيَّا نَتَدَرَّبُ",
+    },
+  ],
+} as const;
+
+export default lesson75;

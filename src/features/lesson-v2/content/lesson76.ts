@@ -1,0 +1,82 @@
+export const lesson76CanonicalText = {
+  lesson76_s1: "تَقَعُ الْأَحْدَاثُ فِي أَوْقَاتٍ مُخْتَلِفَةٍ. فَنَسْتَيْقِظُ فِي وَقْتٍ، وَنَذْهَبُ إِلَى الْمَدْرَسَةِ فِي وَقْتٍ آخَرَ، وَنَنَامُ لَيْلًا.",
+  lesson76_s2: "نَقُولُ عَنْ حَدَثٍ إِنَّهُ وَقَعَ قَبْلَ حَدَثٍ آخَرَ، أَوْ بَعْدَهُ. وَهَذِهِ الْكَلِمَاتُ تُسَاعِدُنَا عَلَى تَحْدِيدِ مَوْقِعِ الْحَدَثِ فِي الزَّمَنِ.",
+  lesson76_s3: "لِنَنْظُرْ إِلَى أَنْشِطَةِ يَوْمِنَا. نُرَتِّبُهَا مِنَ الْأَوَّلِ إِلَى الْأَخِيرِ، وَنَصِفُ مَوْقِعَ كُلِّ نَشَاطٍ بِالنِّسْبَةِ إِلَى الْآخَرِ.",
+  lesson76_s4: "وَفِي حَيَاتِنَا أَيْضًا أَحْدَاثٌ كَبِيرَةٌ تَتَعَاقَبُ، مِثْلُ الْوِلَادَةِ، وَأَعْيَادِ الْمِيلَادِ، وَالدُّخُولِ إِلَى الْمَدْرَسَةِ.",
+  lesson76_s5: "إِذَا عَرَفْنَا تَرْتِيبَ الْأَحْدَاثِ، نَسْتَطِيعُ أَنْ نُجِيبَ عَنْ أَسْئِلَةٍ مِثْلَ: مَا الَّذِي حَدَثَ قَبْلَ؟ وَمَا الَّذِي حَدَثَ بَعْدَ؟",
+  lesson76_s6: "أَحْسَنْتُمْ! تَعَلَّمْنَا كَيْفَ نُحَدِّدُ مَوْقِعَ الْحَدَثِ فِي الزَّمَنِ، وَنَسْتَعْمِلُ قَبْلَ وَبَعْدَ لِوَصْفِ تَسَلْسُلِ الْأَحْدَاثِ. هَيَّا نَتَدَرَّبُ!",
+} as const;
+
+export const lesson76 = {
+  id: "lesson76",
+  lessonKey: "lesson76",
+  num: 76,
+  world_id: "b2c0405e-4559-4813-9a73-82b4f0ab4f4c",
+  sort_order: 7,
+  title: "أُحَدِّدُ مَوْقِعَ حَدَثٍ فِي الزَّمَنِ",
+  title_fr: "Situer un événement dans le temps",
+  teacher: "taline",
+  voice: "ar-DZ-AminaNeural",
+  audio_base: "/audio/teachers/taline/lesson_76_event_in_time",
+  exercisePath: "/lesson-v2/76/exercises",
+  objectives: [
+    "أَنْ يُحَدِّدَ الْمُتَعَلِّمُ مَوْقِعَ حَدَثٍ فِي الزَّمَنِ.",
+    "أَنْ يَسْتَعْمِلَ قَبْلَ وَبَعْدَ وَأَثْنَاءَ.",
+    "أَنْ يَرْتِبَ أَحْدَاثًا مِنْ حَيَاتِهِ.",
+    "أَنْ يَرْبِطَ الْحَدَثَ بِالْمَرْحَلَةِ الزَّمَنِيَّةِ الْمُنَاسِبَةِ.",
+  ],
+  slides: [
+    {
+      key: "lesson76_s1",
+      audio_key: "lesson76_s1",
+      title: "أَحْدَاثٌ فِي أَوْقَاتٍ مُخْتَلِفَةٍ",
+      image: "/lessons/v2/lesson76/s1.webp",
+      scene_image: "/lessons/v2/lesson76/s1.webp",
+      text: lesson76CanonicalText.lesson76_s1,
+    },
+    {
+      key: "lesson76_s2",
+      audio_key: "lesson76_s2",
+      title: "قَبْلَ وَبَعْدَ",
+      image: "/lessons/v2/lesson76/s2.webp",
+      scene_image: "/lessons/v2/lesson76/s2.webp",
+      text: lesson76CanonicalText.lesson76_s2,
+    },
+    {
+      key: "lesson76_s3",
+      audio_key: "lesson76_s3",
+      title: "أُرَتِّبُ يَوْمِي",
+      image: "/lessons/v2/lesson76/s3.webp",
+      scene_image: "/lessons/v2/lesson76/s3.webp",
+      text: lesson76CanonicalText.lesson76_s3,
+    },
+    {
+      key: "lesson76_s4",
+      audio_key: "lesson76_s4",
+      title: "أَحْدَاثٌ مِنْ حَيَاتِي",
+      image: "/lessons/v2/lesson76/s4.webp",
+      scene_image: "/lessons/v2/lesson76/s4.webp",
+      text: lesson76CanonicalText.lesson76_s4,
+    },
+    {
+      key: "lesson76_s5",
+      audio_key: "lesson76_s5",
+      title: "مَا الَّذِي حَدَثَ قَبْلَ؟",
+      image: "/lessons/v2/lesson76/s5.webp",
+      scene_image: "/lessons/v2/lesson76/s5.webp",
+      text: lesson76CanonicalText.lesson76_s5,
+    },
+    {
+      key: "lesson76_s6",
+      audio_key: "lesson76_s6",
+      title: "أُحَدِّدُ مَوْقِعَ الْحَدَثِ",
+      image: "/lessons/v2/lesson76/s6.webp",
+      scene_image: "/lessons/v2/lesson76/s6.webp",
+      text: lesson76CanonicalText.lesson76_s6,
+      is_closing: true,
+      cta_text: "هَيَّا نَتَدَرَّبُ",
+    },
+  ],
+} as const;
+
+export default lesson76;

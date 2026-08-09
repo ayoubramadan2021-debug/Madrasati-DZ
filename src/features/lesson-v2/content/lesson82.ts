@@ -1,0 +1,82 @@
+export const lesson82CanonicalText = {
+  lesson82_s1: "مَرْحَبًا أَحِبَّائِي! نَسْتَعِدُّ لِعِيدِ الْأُمِّ، وَسَنَسْتَعْمِلُ مَا تَعَلَّمْنَاهُ مِنَ الْأَعْدَادِ وَالْأَشْكَالِ وَالنُّقُودِ فِي تَحْضِيرِ هَدِيَّةٍ جَمِيلَةٍ.",
+  lesson82_s2: "لَدَيْنَا عِقْدَانِ مِنَ الْخَرَزِ. نَعُدُّ الْخَرَزَاتِ فِي كُلِّ عِقْدٍ، ثُمَّ نُقَارِنُ الْعَدَدَيْنِ لِنَعْرِفَ أَيُّهُمَا أَكْبَرُ وَأَيُّهُمَا أَصْغَرُ.",
+  lesson82_s3: "الْهَدَايَا لَهَا أَشْكَالٌ مُخْتَلِفَةٌ. بَعْضُ الْعُلَبِ يُشْبِهُ الْمُكَعَّبَ، وَبَعْضُهَا يُشْبِهُ مُتَوَازِيَ الْمُسْتَطِيلَاتِ، وَقَدْ نَجِدُ أَشْكَالًا مُجَسَّمَةً أُخْرَى.",
+  lesson82_s4: "نَعُدُّ عَنَاصِرَ كُلِّ مَجْمُوعَةٍ وَنَقْرَأُ الْأَعْدَادَ الْمَكْتُوبَةَ. ثُمَّ نُقَارِنُ بَيْنَ الْكَمِّيَّاتِ لِنُحَدِّدَ الْأَكْبَرَ وَالْأَصْغَرَ.",
+  lesson82_s5: "لِكُلِّ هَدِيَّةٍ ثَمَنٌ. نَقْرَأُ الْأَسْعَارَ، وَنُقَارِنُ بَيْنَهَا، وَنَخْتَارُ مَا يُنَاسِبُ الْمَبْلَغَ الَّذِي مَعَنَا.",
+  lesson82_s6: "أَحْسَنْتُمْ! اسْتَعْمَلْنَا الْعَدَّ وَالْمُقَارَنَةَ وَالْمُجَسَّمَاتِ وَالنُّقُودَ فِي وَضْعِيَّةٍ جَمِيلَةٍ لِعِيدِ الْأُمِّ. هَيَّا نَتَدَرَّبُ!",
+} as const;
+
+export const lesson82 = {
+  id: "lesson82",
+  lessonKey: "lesson82",
+  num: 82,
+  world_id: "b2c0405e-4559-4813-9a73-82b4f0ab4f4c",
+  sort_order: 13,
+  title: "أُجَنِّدُ مَعَارِفِي – عِيدُ الْأُمِّ",
+  title_fr: "Je mobilise mes acquis — Fête des mères",
+  teacher: "taline",
+  voice: "ar-DZ-AminaNeural",
+  audio_base: "/audio/teachers/taline/lesson_82_mothers_day",
+  exercisePath: "/lesson-v2/82/exercises",
+  objectives: [
+    "أَنْ يُوَظِّفَ الْمُتَعَلِّمُ مَعَارِفَهُ الْعَدَدِيَّةَ فِي وَضْعِيَّةٍ حَيَاتِيَّةٍ.",
+    "أَنْ يُقَارِنَ بَيْنَ أَعْدَادٍ وَكَمِّيَّاتٍ.",
+    "أَنْ يَتَعَرَّفَ إِلَى مُجَسَّمَاتٍ وَأَشْكَالٍ فِي أَشْيَاءَ مَأْلُوفَةٍ.",
+    "أَنْ يَسْتَعْمِلَ الْأَعْدَادَ وَالنُّقُودَ فِي تَخْطِيطِ هَدِيَّةٍ.",
+  ],
+  slides: [
+    {
+      key: "lesson82_s1",
+      audio_key: "lesson82_s1",
+      title: "نَسْتَعِدُّ لِعِيدِ الْأُمِّ",
+      image: "/lessons/v2/lesson82-mothers-day/s1.webp",
+      scene_image: "/lessons/v2/lesson82-mothers-day/s1.webp",
+      text: lesson82CanonicalText.lesson82_s1,
+    },
+    {
+      key: "lesson82_s2",
+      audio_key: "lesson82_s2",
+      title: "أُقَارِنُ عَدَدَ الْخَرَزَاتِ",
+      image: "/lessons/v2/lesson82-mothers-day/s2.webp",
+      scene_image: "/lessons/v2/lesson82-mothers-day/s2.webp",
+      text: lesson82CanonicalText.lesson82_s2,
+    },
+    {
+      key: "lesson82_s3",
+      audio_key: "lesson82_s3",
+      title: "أَتَعَرَّفُ إِلَى أَشْكَالِ الْهَدَايَا",
+      image: "/lessons/v2/lesson82-mothers-day/s3.webp",
+      scene_image: "/lessons/v2/lesson82-mothers-day/s3.webp",
+      text: lesson82CanonicalText.lesson82_s3,
+    },
+    {
+      key: "lesson82_s4",
+      audio_key: "lesson82_s4",
+      title: "أَعُدُّ وَأُقَارِنُ",
+      image: "/lessons/v2/lesson82-mothers-day/s4.webp",
+      scene_image: "/lessons/v2/lesson82-mothers-day/s4.webp",
+      text: lesson82CanonicalText.lesson82_s4,
+    },
+    {
+      key: "lesson82_s5",
+      audio_key: "lesson82_s5",
+      title: "أَخْتَارُ حَسَبَ الثَّمَنِ",
+      image: "/lessons/v2/lesson82-mothers-day/s5.webp",
+      scene_image: "/lessons/v2/lesson82-mothers-day/s5.webp",
+      text: lesson82CanonicalText.lesson82_s5,
+    },
+    {
+      key: "lesson82_s6",
+      audio_key: "lesson82_s6",
+      title: "أُجَنِّدُ مَعَارِفِي",
+      image: "/lessons/v2/lesson82-mothers-day/s6.webp",
+      scene_image: "/lessons/v2/lesson82-mothers-day/s6.webp",
+      text: lesson82CanonicalText.lesson82_s6,
+      is_closing: true,
+      cta_text: "هَيَّا نَتَدَرَّبُ",
+    },
+  ],
+} as const;
+
+export default lesson82;

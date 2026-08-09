@@ -1,0 +1,713 @@
+{
+  "old_keys": [
+    "lesson83_s1",
+    "lesson83_s2",
+    "lesson83_s3",
+    "lesson83_s4",
+    "lesson83_s5",
+    "lesson83_s6"
+  ],
+  "new_keys": [
+    "lesson83_s1",
+    "lesson83_s2",
+    "lesson83_s3",
+    "lesson83_s4",
+    "lesson83_s5",
+    "lesson83_s6"
+  ],
+  "reports": [
+    {
+      "scene": 1,
+      "key": "lesson83_s1",
+      "text": "مَرْحَبًا أَحِبَّائِي! يَنْقَسِمُ يَوْمُنَا إِلَى أَوْقَاتٍ مُخْتَلِفَةٍ. فَهُنَاكَ الصَّبَاحُ، وَالْمَسَاءُ، وَاللَّيْلُ، وَنَقُومُ فِي كُلِّ وَقْتٍ بِأَنْشِطَةٍ مُنَاسِبَةٍ.",
+      "audio_duration_ms": 14568,
+      "speech_start_ms": 200,
+      "speech_end_ms": 13540,
+      "words": 17,
+      "detected_gaps": [
+        {
+          "start_ms": 1520,
+          "end_ms": 2620,
+          "duration_ms": 1100
+        },
+        {
+          "start_ms": 2860,
+          "end_ms": 2960,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 3060,
+          "end_ms": 3160,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 4360,
+          "end_ms": 4480,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 4600,
+          "end_ms": 4700,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 4940,
+          "end_ms": 5100,
+          "duration_ms": 160
+        },
+        {
+          "start_ms": 5500,
+          "end_ms": 6700,
+          "duration_ms": 1200
+        },
+        {
+          "start_ms": 7280,
+          "end_ms": 7400,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 7740,
+          "end_ms": 8240,
+          "duration_ms": 500
+        },
+        {
+          "start_ms": 8600,
+          "end_ms": 8700,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 8900,
+          "end_ms": 9340,
+          "duration_ms": 440
+        },
+        {
+          "start_ms": 9920,
+          "end_ms": 10340,
+          "duration_ms": 420
+        },
+        {
+          "start_ms": 10620,
+          "end_ms": 10720,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 11200,
+          "end_ms": 11300,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 11660,
+          "end_ms": 11820,
+          "duration_ms": 160
+        },
+        {
+          "start_ms": 13180,
+          "end_ms": 13280,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "مَرْحَبًا",
+            "أَحِبَّائِي!"
+          ],
+          "start_ms": 200,
+          "end_ms": 1520,
+          "duration_ms": 1320
+        },
+        {
+          "words": [
+            "يَنْقَسِمُ",
+            "يَوْمُنَا",
+            "إِلَى",
+            "أَوْقَاتٍ",
+            "مُخْتَلِفَةٍ."
+          ],
+          "start_ms": 2620,
+          "end_ms": 5500,
+          "duration_ms": 2880
+        },
+        {
+          "words": [
+            "فَهُنَاكَ",
+            "الصَّبَاحُ،"
+          ],
+          "start_ms": 6700,
+          "end_ms": 7280,
+          "duration_ms": 580
+        },
+        {
+          "words": [
+            "وَالْمَسَاءُ،"
+          ],
+          "start_ms": 7400,
+          "end_ms": 8600,
+          "duration_ms": 1200
+        },
+        {
+          "words": [
+            "وَاللَّيْلُ،"
+          ],
+          "start_ms": 8700,
+          "end_ms": 9920,
+          "duration_ms": 1220
+        },
+        {
+          "words": [
+            "وَنَقُومُ",
+            "فِي",
+            "كُلِّ",
+            "وَقْتٍ",
+            "بِأَنْشِطَةٍ",
+            "مُنَاسِبَةٍ."
+          ],
+          "start_ms": 10340,
+          "end_ms": 13540,
+          "duration_ms": 3200
+        }
+      ],
+      "analysis": {
+        "threshold": 609.4478564105513,
+        "fallback": false,
+        "speech_runs": 17
+      }
+    },
+    {
+      "scene": 2,
+      "key": "lesson83_s2",
+      "text": "نَذْهَبُ إِلَى الْمَدْرَسَةِ صَبَاحًا، وَنَقُومُ بِأَنْشِطَةٍ أُخْرَى مَسَاءً، وَنَنَامُ لَيْلًا. نُصَنِّفُ كُلَّ نَشَاطٍ حَسَبَ وَقْتِهِ.",
+      "audio_duration_ms": 11808,
+      "speech_start_ms": 220,
+      "speech_end_ms": 10760,
+      "words": 15,
+      "detected_gaps": [
+        {
+          "start_ms": 2100,
+          "end_ms": 2200,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2440,
+          "end_ms": 2880,
+          "duration_ms": 440
+        },
+        {
+          "start_ms": 3140,
+          "end_ms": 3260,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 4520,
+          "end_ms": 4620,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 5460,
+          "end_ms": 5840,
+          "duration_ms": 380
+        },
+        {
+          "start_ms": 7020,
+          "end_ms": 8240,
+          "duration_ms": 1220
+        },
+        {
+          "start_ms": 8940,
+          "end_ms": 9040,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 9840,
+          "end_ms": 9940,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 10420,
+          "end_ms": 10600,
+          "duration_ms": 180
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "نَذْهَبُ",
+            "إِلَى",
+            "الْمَدْرَسَةِ",
+            "صَبَاحًا،"
+          ],
+          "start_ms": 220,
+          "end_ms": 3140,
+          "duration_ms": 2920
+        },
+        {
+          "words": [
+            "وَنَقُومُ",
+            "بِأَنْشِطَةٍ",
+            "أُخْرَى",
+            "مَسَاءً،"
+          ],
+          "start_ms": 3260,
+          "end_ms": 5460,
+          "duration_ms": 2200
+        },
+        {
+          "words": [
+            "وَنَنَامُ",
+            "لَيْلًا."
+          ],
+          "start_ms": 5840,
+          "end_ms": 7020,
+          "duration_ms": 1180
+        },
+        {
+          "words": [
+            "نُصَنِّفُ",
+            "كُلَّ",
+            "نَشَاطٍ",
+            "حَسَبَ",
+            "وَقْتِهِ."
+          ],
+          "start_ms": 8240,
+          "end_ms": 10760,
+          "duration_ms": 2520
+        }
+      ],
+      "analysis": {
+        "threshold": 603.8995443347404,
+        "fallback": false,
+        "speech_runs": 10
+      }
+    },
+    {
+      "scene": 3,
+      "key": "lesson83_s3",
+      "text": "عِنْدَمَا نُنَظِّمُ وَقْتَنَا، نَدْرُسُ وَنَلْعَبُ وَنَرْتَاحُ فِي الْأَوْقَاتِ الْمُنَاسِبَةِ، وَنُحْسِنُ اسْتِغْلَالَ يَوْمِنَا.",
+      "audio_duration_ms": 9072,
+      "speech_start_ms": 220,
+      "speech_end_ms": 8020,
+      "words": 12,
+      "detected_gaps": [
+        {
+          "start_ms": 1480,
+          "end_ms": 1660,
+          "duration_ms": 180
+        },
+        {
+          "start_ms": 2040,
+          "end_ms": 2420,
+          "duration_ms": 380
+        },
+        {
+          "start_ms": 2820,
+          "end_ms": 2920,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 3940,
+          "end_ms": 4040,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 4660,
+          "end_ms": 4760,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 5360,
+          "end_ms": 5460,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 5720,
+          "end_ms": 6120,
+          "duration_ms": 400
+        },
+        {
+          "start_ms": 6420,
+          "end_ms": 6580,
+          "duration_ms": 160
+        },
+        {
+          "start_ms": 6800,
+          "end_ms": 6920,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "عِنْدَمَا",
+            "نُنَظِّمُ",
+            "وَقْتَنَا،"
+          ],
+          "start_ms": 220,
+          "end_ms": 2040,
+          "duration_ms": 1820
+        },
+        {
+          "words": [
+            "نَدْرُسُ",
+            "وَنَلْعَبُ",
+            "وَنَرْتَاحُ",
+            "فِي",
+            "الْأَوْقَاتِ",
+            "الْمُنَاسِبَةِ،"
+          ],
+          "start_ms": 2420,
+          "end_ms": 5720,
+          "duration_ms": 3300
+        },
+        {
+          "words": [
+            "وَنُحْسِنُ",
+            "اسْتِغْلَالَ",
+            "يَوْمِنَا."
+          ],
+          "start_ms": 6120,
+          "end_ms": 8020,
+          "duration_ms": 1900
+        }
+      ],
+      "analysis": {
+        "threshold": 658.4764692297845,
+        "fallback": false,
+        "speech_runs": 10
+      }
+    },
+    {
+      "scene": 4,
+      "key": "lesson83_s4",
+      "text": "نَسْتَعْمِلُ السَّاعَةَ لِمَعْرِفَةِ الْوَقْتِ بِدِقَّةٍ. نَنْظُرُ إِلَى عَقْرَبِ السَّاعَاتِ وَعَقْرَبِ الدَّقَائِقِ، ثُمَّ نَقْرَأُ الْوَقْتَ.",
+      "audio_duration_ms": 10440,
+      "speech_start_ms": 220,
+      "speech_end_ms": 9440,
+      "words": 14,
+      "detected_gaps": [
+        {
+          "start_ms": 400,
+          "end_ms": 540,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 960,
+          "end_ms": 1080,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 2420,
+          "end_ms": 2600,
+          "duration_ms": 180
+        },
+        {
+          "start_ms": 2980,
+          "end_ms": 3120,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 3260,
+          "end_ms": 4400,
+          "duration_ms": 1140
+        },
+        {
+          "start_ms": 5740,
+          "end_ms": 5860,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 6180,
+          "end_ms": 6280,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 6660,
+          "end_ms": 6760,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 7180,
+          "end_ms": 7280,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 7580,
+          "end_ms": 8220,
+          "duration_ms": 640
+        },
+        {
+          "start_ms": 8560,
+          "end_ms": 8660,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 9120,
+          "end_ms": 9300,
+          "duration_ms": 180
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "نَسْتَعْمِلُ",
+            "السَّاعَةَ",
+            "لِمَعْرِفَةِ",
+            "الْوَقْتِ",
+            "بِدِقَّةٍ."
+          ],
+          "start_ms": 220,
+          "end_ms": 3260,
+          "duration_ms": 3040
+        },
+        {
+          "words": [
+            "نَنْظُرُ",
+            "إِلَى",
+            "عَقْرَبِ",
+            "السَّاعَاتِ",
+            "وَعَقْرَبِ",
+            "الدَّقَائِقِ،"
+          ],
+          "start_ms": 4400,
+          "end_ms": 7580,
+          "duration_ms": 3180
+        },
+        {
+          "words": [
+            "ثُمَّ",
+            "نَقْرَأُ",
+            "الْوَقْتَ."
+          ],
+          "start_ms": 8220,
+          "end_ms": 9440,
+          "duration_ms": 1220
+        }
+      ],
+      "analysis": {
+        "threshold": 645.0461666538333,
+        "fallback": false,
+        "speech_runs": 13
+      }
+    },
+    {
+      "scene": 5,
+      "key": "lesson83_s5",
+      "text": "تُظْهِرُ السَّاعَاتُ أَوْقَاتًا مُخْتَلِفَةً خِلَالَ يَوْمِنَا. نَقْرَأُ كُلَّ سَاعَةٍ، ثُمَّ نُحَدِّدُ هَلْ هِيَ فِي الصَّبَاحِ أَوِ الْمَسَاءِ أَوِ اللَّيْلِ.",
+      "audio_duration_ms": 11040,
+      "speech_start_ms": 280,
+      "speech_end_ms": 10020,
+      "words": 19,
+      "detected_gaps": [
+        {
+          "start_ms": 720,
+          "end_ms": 840,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 1460,
+          "end_ms": 1580,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 2040,
+          "end_ms": 2180,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 3840,
+          "end_ms": 4960,
+          "duration_ms": 1120
+        },
+        {
+          "start_ms": 5160,
+          "end_ms": 5280,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 5540,
+          "end_ms": 5640,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 5860,
+          "end_ms": 5960,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 6260,
+          "end_ms": 6680,
+          "duration_ms": 420
+        },
+        {
+          "start_ms": 8040,
+          "end_ms": 8160,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 8980,
+          "end_ms": 9080,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "تُظْهِرُ",
+            "السَّاعَاتُ",
+            "أَوْقَاتًا",
+            "مُخْتَلِفَةً",
+            "خِلَالَ",
+            "يَوْمِنَا."
+          ],
+          "start_ms": 280,
+          "end_ms": 3840,
+          "duration_ms": 3560
+        },
+        {
+          "words": [
+            "نَقْرَأُ",
+            "كُلَّ",
+            "سَاعَةٍ،"
+          ],
+          "start_ms": 4960,
+          "end_ms": 5540,
+          "duration_ms": 580
+        },
+        {
+          "words": [
+            "ثُمَّ",
+            "نُحَدِّدُ",
+            "هَلْ",
+            "هِيَ",
+            "فِي",
+            "الصَّبَاحِ",
+            "أَوِ",
+            "الْمَسَاءِ",
+            "أَوِ",
+            "اللَّيْلِ."
+          ],
+          "start_ms": 5640,
+          "end_ms": 10020,
+          "duration_ms": 4380
+        }
+      ],
+      "analysis": {
+        "threshold": 630.7336735562217,
+        "fallback": false,
+        "speech_runs": 11
+      }
+    },
+    {
+      "scene": 6,
+      "key": "lesson83_s6",
+      "text": "أَحْسَنْتُمْ! رَبَطْنَا أَنْشِطَةَ يَوْمِنَا بِالصَّبَاحِ وَالْمَسَاءِ وَاللَّيْلِ، وَقَرَأْنَا السَّاعَةَ، وَتَعَلَّمْنَا أَهَمِّيَّةَ تَنْظِيمِ وَقْتِنَا. هَيَّا نَتَدَرَّبُ!",
+      "audio_duration_ms": 13848,
+      "speech_start_ms": 220,
+      "speech_end_ms": 12720,
+      "words": 15,
+      "detected_gaps": [
+        {
+          "start_ms": 380,
+          "end_ms": 520,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 1040,
+          "end_ms": 2140,
+          "duration_ms": 1100
+        },
+        {
+          "start_ms": 4060,
+          "end_ms": 4180,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 5900,
+          "end_ms": 6320,
+          "duration_ms": 420
+        },
+        {
+          "start_ms": 6460,
+          "end_ms": 6560,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 6980,
+          "end_ms": 7100,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 7400,
+          "end_ms": 7780,
+          "duration_ms": 380
+        },
+        {
+          "start_ms": 10080,
+          "end_ms": 10240,
+          "duration_ms": 160
+        },
+        {
+          "start_ms": 10600,
+          "end_ms": 11780,
+          "duration_ms": 1180
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَحْسَنْتُمْ!"
+          ],
+          "start_ms": 220,
+          "end_ms": 1040,
+          "duration_ms": 820
+        },
+        {
+          "words": [
+            "رَبَطْنَا",
+            "أَنْشِطَةَ",
+            "يَوْمِنَا",
+            "بِالصَّبَاحِ",
+            "وَالْمَسَاءِ",
+            "وَاللَّيْلِ،"
+          ],
+          "start_ms": 2140,
+          "end_ms": 6460,
+          "duration_ms": 4320
+        },
+        {
+          "words": [
+            "وَقَرَأْنَا",
+            "السَّاعَةَ،"
+          ],
+          "start_ms": 6560,
+          "end_ms": 7400,
+          "duration_ms": 840
+        },
+        {
+          "words": [
+            "وَتَعَلَّمْنَا",
+            "أَهَمِّيَّةَ",
+            "تَنْظِيمِ",
+            "وَقْتِنَا."
+          ],
+          "start_ms": 7780,
+          "end_ms": 10600,
+          "duration_ms": 2820
+        },
+        {
+          "words": [
+            "هَيَّا",
+            "نَتَدَرَّبُ!"
+          ],
+          "start_ms": 11780,
+          "end_ms": 12720,
+          "duration_ms": 940
+        }
+      ],
+      "analysis": {
+        "threshold": 596.0219410267587,
+        "fallback": false,
+        "speech_runs": 10
+      }
+    }
+  ]
+}

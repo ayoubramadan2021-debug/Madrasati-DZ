@@ -1,0 +1,82 @@
+export const lesson81CanonicalText = {
+  lesson81_s1: "مَرْحَبًا يَا أَصْدِقَائِي! سَنَسْتَعْمِلُ الْعَشَرَاتِ لِنَحْسُبَ بِسُرْعَةٍ. نَعُدُّ عَشَرَةً، عِشْرِينَ، ثَلَاثِينَ، وَنُوَاصِلُ بِالنَّمَطِ نَفْسِهِ.",
+  lesson81_s2: "إِذَا عَرَفْنَا عَدَدَ الْعَشَرَاتِ وَالْوَحَدَاتِ، نَسْتَطِيعُ تَكْوِينَ الْعَدَدِ بِسُهُولَةٍ دُونَ أَنْ نَعُدَّ كُلَّ عُنْصُرٍ مِنَ الْبِدَايَةِ.",
+  lesson81_s3: "نَضُمُّ الْعَشَرَاتِ إِلَى بَعْضِهَا، ثُمَّ نَنْظُرُ إِلَى الْوَحَدَاتِ. هَذِهِ الطَّرِيقَةُ تُسَاعِدُنَا عَلَى الْحِسَابِ الذِّهْنِيِّ.",
+  lesson81_s4: "فِي الْحِسَابِ الذِّهْنِيِّ نَحَاوِلُ الْوُصُولَ إِلَى النَّتِيجَةِ بِاسْتِعْمَالِ مَا نَعْرِفُهُ عَنِ الْعَشَرَاتِ وَتَفْكِيكِ الْأَعْدَادِ.",
+  lesson81_s5: "نَتَذَكَّرُ الْعَشَرَاتِ الْكَامِلَةَ: ثَلَاثُونَ، أَرْبَعُونَ، خَمْسُونَ، سِتُّونَ، سَبْعُونَ، وَثَمَانُونَ. وَنَسْتَعْمِلُهَا فِي حِسَابَاتِنَا.",
+  lesson81_s6: "أَحْسَنْتُمْ! أَصْبَحْنَا نَسْتَعْمِلُ الْعَشَرَاتِ وَتَفْكِيكَ الْأَعْدَادِ لِنَحْسُبَ ذِهْنِيًّا بِسُرْعَةٍ وَدِقَّةٍ. هَيَّا نَتَدَرَّبُ!",
+} as const;
+
+export const lesson81 = {
+  id: "lesson81",
+  lessonKey: "lesson81",
+  num: 81,
+  world_id: "b2c0405e-4559-4813-9a73-82b4f0ab4f4c",
+  sort_order: 12,
+  title: "الْحِسَابُ الذِّهْنِيُّ (1)",
+  title_fr: "Calcul mental (1)",
+  teacher: "khalil",
+  voice: "ar-DZ-IsmaelNeural",
+  audio_base: "/audio/teachers/khalil/lesson_81_mental_calculation_1",
+  exercisePath: "/lesson-v2/81/exercises",
+  objectives: [
+    "أَنْ يَتَعَرَّفَ الْمُتَعَلِّمُ إِلَى الْعَشَرَاتِ الْكَامِلَةِ.",
+    "أَنْ يُجْرِيَ حِسَابَاتٍ ذِهْنِيَّةً بَسِيطَةً.",
+    "أَنْ يُرَكِّبَ عَدَدًا مِنْ عَشَرَاتٍ وَوَحَدَاتٍ.",
+    "أَنْ يَسْتَعْمِلَ التَّمْثِيلَ الْعَشَرِيَّ لِتَسْهِيلِ الْحِسَابِ.",
+  ],
+  slides: [
+    {
+      key: "lesson81_s1",
+      audio_key: "lesson81_s1",
+      title: "أَعُدُّ بِالْعَشَرَاتِ",
+      image: "/lessons/v2/lesson81/s1.webp",
+      scene_image: "/lessons/v2/lesson81/s1.webp",
+      text: lesson81CanonicalText.lesson81_s1,
+    },
+    {
+      key: "lesson81_s2",
+      audio_key: "lesson81_s2",
+      title: "أُكْمِلُ الْعَدَدَ",
+      image: "/lessons/v2/lesson81/s2.webp",
+      scene_image: "/lessons/v2/lesson81/s2.webp",
+      text: lesson81CanonicalText.lesson81_s2,
+    },
+    {
+      key: "lesson81_s3",
+      audio_key: "lesson81_s3",
+      title: "أُجَمِّعُ الْعَشَرَاتِ",
+      image: "/lessons/v2/lesson81/s3.webp",
+      scene_image: "/lessons/v2/lesson81/s3.webp",
+      text: lesson81CanonicalText.lesson81_s3,
+    },
+    {
+      key: "lesson81_s4",
+      audio_key: "lesson81_s4",
+      title: "أَحْسُبُ بِذِهْنِي",
+      image: "/lessons/v2/lesson81/s4.webp",
+      scene_image: "/lessons/v2/lesson81/s4.webp",
+      text: lesson81CanonicalText.lesson81_s4,
+    },
+    {
+      key: "lesson81_s5",
+      audio_key: "lesson81_s5",
+      title: "الْعَشَرَاتُ الْكَامِلَةُ",
+      image: "/lessons/v2/lesson81/s5.webp",
+      scene_image: "/lessons/v2/lesson81/s5.webp",
+      text: lesson81CanonicalText.lesson81_s5,
+    },
+    {
+      key: "lesson81_s6",
+      audio_key: "lesson81_s6",
+      title: "أَسْتَعْمِلُ الْعَشَرَاتِ لِلْحِسَابِ",
+      image: "/lessons/v2/lesson81/s6.webp",
+      scene_image: "/lessons/v2/lesson81/s6.webp",
+      text: lesson81CanonicalText.lesson81_s6,
+      is_closing: true,
+      cta_text: "هَيَّا نَتَدَرَّبُ",
+    },
+  ],
+} as const;
+
+export default lesson81;

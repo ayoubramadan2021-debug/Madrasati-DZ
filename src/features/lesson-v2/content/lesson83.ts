@@ -1,0 +1,82 @@
+export const lesson83CanonicalText = {
+  lesson83_s1: "مَرْحَبًا أَحِبَّائِي! يَنْقَسِمُ يَوْمُنَا إِلَى أَوْقَاتٍ مُخْتَلِفَةٍ. فَهُنَاكَ الصَّبَاحُ، وَالْمَسَاءُ، وَاللَّيْلُ، وَنَقُومُ فِي كُلِّ وَقْتٍ بِأَنْشِطَةٍ مُنَاسِبَةٍ.",
+  lesson83_s2: "نَذْهَبُ إِلَى الْمَدْرَسَةِ صَبَاحًا، وَنَقُومُ بِأَنْشِطَةٍ أُخْرَى مَسَاءً، وَنَنَامُ لَيْلًا. نُصَنِّفُ كُلَّ نَشَاطٍ حَسَبَ وَقْتِهِ.",
+  lesson83_s3: "عِنْدَمَا نُنَظِّمُ وَقْتَنَا، نَدْرُسُ وَنَلْعَبُ وَنَرْتَاحُ فِي الْأَوْقَاتِ الْمُنَاسِبَةِ، وَنُحْسِنُ اسْتِغْلَالَ يَوْمِنَا.",
+  lesson83_s4: "نَسْتَعْمِلُ السَّاعَةَ لِمَعْرِفَةِ الْوَقْتِ بِدِقَّةٍ. نَنْظُرُ إِلَى عَقْرَبِ السَّاعَاتِ وَعَقْرَبِ الدَّقَائِقِ، ثُمَّ نَقْرَأُ الْوَقْتَ.",
+  lesson83_s5: "تُظْهِرُ السَّاعَاتُ أَوْقَاتًا مُخْتَلِفَةً خِلَالَ يَوْمِنَا. نَقْرَأُ كُلَّ سَاعَةٍ، ثُمَّ نُحَدِّدُ هَلْ هِيَ فِي الصَّبَاحِ أَوِ الْمَسَاءِ أَوِ اللَّيْلِ.",
+  lesson83_s6: "أَحْسَنْتُمْ! رَبَطْنَا أَنْشِطَةَ يَوْمِنَا بِالصَّبَاحِ وَالْمَسَاءِ وَاللَّيْلِ، وَقَرَأْنَا السَّاعَةَ، وَتَعَلَّمْنَا أَهَمِّيَّةَ تَنْظِيمِ وَقْتِنَا. هَيَّا نَتَدَرَّبُ!",
+} as const;
+
+export const lesson83 = {
+  id: "lesson83",
+  lessonKey: "lesson83",
+  num: 83,
+  world_id: "b2c0405e-4559-4813-9a73-82b4f0ab4f4c",
+  sort_order: 14,
+  title: "أُجَنِّدُ مَعَارِفِي – يَوْمِي وَوَقْتِي",
+  title_fr: "Je mobilise mes acquis — Ma journée et mon temps",
+  teacher: "taline",
+  voice: "ar-DZ-AminaNeural",
+  audio_base: "/audio/teachers/taline/lesson_83_my_day_and_time",
+  exercisePath: "/lesson-v2/83/exercises",
+  objectives: [
+    "أَنْ يُمَيِّزَ الْمُتَعَلِّمُ بَيْنَ الصَّبَاحِ وَالْمَسَاءِ وَاللَّيْلِ.",
+    "أَنْ يَرْبِطَ أَنْشِطَةً يَوْمِيَّةً بِأَوْقَاتِهَا.",
+    "أَنْ يَقْرَأَ أَوْقَاتًا عَلَى السَّاعَةِ.",
+    "أَنْ يُنَظِّمَ أَنْشِطَةَ يَوْمِهِ فِي تَسَلْسُلٍ زَمَنِيٍّ.",
+  ],
+  slides: [
+    {
+      key: "lesson83_s1",
+      audio_key: "lesson83_s1",
+      title: "الصَّبَاحُ وَالْمَسَاءُ وَاللَّيْلُ",
+      image: "/lessons/v2/lesson83-my-day-and-time/s1.webp",
+      scene_image: "/lessons/v2/lesson83-my-day-and-time/s1.webp",
+      text: lesson83CanonicalText.lesson83_s1,
+    },
+    {
+      key: "lesson83_s2",
+      audio_key: "lesson83_s2",
+      title: "أُصَنِّفُ أَنْشِطَةَ يَوْمِي",
+      image: "/lessons/v2/lesson83-my-day-and-time/s2.webp",
+      scene_image: "/lessons/v2/lesson83-my-day-and-time/s2.webp",
+      text: lesson83CanonicalText.lesson83_s2,
+    },
+    {
+      key: "lesson83_s3",
+      audio_key: "lesson83_s3",
+      title: "أُحْسِنُ اسْتِغْلَالَ وَقْتِي",
+      image: "/lessons/v2/lesson83-my-day-and-time/s3.webp",
+      scene_image: "/lessons/v2/lesson83-my-day-and-time/s3.webp",
+      text: lesson83CanonicalText.lesson83_s3,
+    },
+    {
+      key: "lesson83_s4",
+      audio_key: "lesson83_s4",
+      title: "أَقْرَأُ السَّاعَةَ",
+      image: "/lessons/v2/lesson83-my-day-and-time/s4.webp",
+      scene_image: "/lessons/v2/lesson83-my-day-and-time/s4.webp",
+      text: lesson83CanonicalText.lesson83_s4,
+    },
+    {
+      key: "lesson83_s5",
+      audio_key: "lesson83_s5",
+      title: "أَوْقَاتٌ مُخْتَلِفَةٌ",
+      image: "/lessons/v2/lesson83-my-day-and-time/s5.webp",
+      scene_image: "/lessons/v2/lesson83-my-day-and-time/s5.webp",
+      text: lesson83CanonicalText.lesson83_s5,
+    },
+    {
+      key: "lesson83_s6",
+      audio_key: "lesson83_s6",
+      title: "أُنَظِّمُ وَقْتِي",
+      image: "/lessons/v2/lesson83-my-day-and-time/s6.webp",
+      scene_image: "/lessons/v2/lesson83-my-day-and-time/s6.webp",
+      text: lesson83CanonicalText.lesson83_s6,
+      is_closing: true,
+      cta_text: "هَيَّا نَتَدَرَّبُ",
+    },
+  ],
+} as const;
+
+export default lesson83;

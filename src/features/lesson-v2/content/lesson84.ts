@@ -1,0 +1,82 @@
+export const lesson84CanonicalText = {
+  lesson84_s1: "مَرْحَبًا أَحِبَّائِي! سَنُرَاجِعُ بَعْضَ مَا تَعَلَّمْنَاهُ. نَبْدَأُ بِالْأَشْكَالِ الْهَنْدَسِيَّةِ، وَنُحَدِّدُ الْمُرَبَّعَ وَالْمُسْتَطِيلَ وَالْمُثَلَّثَ فِي الرَّسْمِ.",
+  lesson84_s2: "وَالْآنَ نُرَاجِعُ الْعَشَرَاتِ وَالْوَحَدَاتِ. نَقْرَأُ كُلَّ تَمْثِيلٍ بِانْتِبَاهٍ، وَنُحَدِّدُ الْعَدَدَ الَّذِي يَتَكَوَّنُ مِنْ عَشَرَاتٍ وَوَحَدَاتٍ.",
+  lesson84_s3: "لِنُرَاجِعْ قِرَاءَةَ السَّاعَةِ. السَّاعَةُ السَّادِسَةُ مَسَاءً تُكْتَبُ رَقْمِيًّا ثَمَانِيَةَ عَشَرَ صِفْرًا صِفْرًا. نَنْظُرُ إِلَى الْعَقْرَبَيْنِ وَنَخْتَارُ السَّاعَةَ الصَّحِيحَةَ.",
+  lesson84_s4: "وَالْآنَ نَسْتَعْمِلُ النُّقُودَ. نَنْظُرُ إِلَى قِيَمِ الْقِطَعِ، وَنَخْتَارُ مِنْهَا مَا يُكَوِّنُ مَبْلَغَ خَمْسَةٍ وَسِتِّينَ دِينَارًا.",
+  lesson84_s5: "نُرَاجِعُ الْجَمْعَ أَيْضًا. نُفَكِّكُ الْأَعْدَادَ إِلَى عَشَرَاتٍ وَوَحَدَاتٍ، ثُمَّ نَجْمَعُ الْعَشَرَاتِ مَعًا وَالْوَحَدَاتِ مَعًا لِنَصِلَ إِلَى النَّتِيجَةِ.",
+  lesson84_s6: "أَحْسَنْتُمْ! وَفِي الْأَخِيرِ نُكْمِلُ السِّلْسِلَةَ الْعَدَدِيَّةَ بِتَرْتِيبِ الْأَعْدَادِ مِنَ الْأَصْغَرِ إِلَى الْأَكْبَرِ. هَيَّا نَتَدَرَّبُ!",
+} as const;
+
+export const lesson84 = {
+  id: "lesson84",
+  lessonKey: "lesson84",
+  num: 84,
+  world_id: "b2c0405e-4559-4813-9a73-82b4f0ab4f4c",
+  sort_order: 15,
+  title: "الْحَصِيلَةُ 4 – أُرَاجِعُ مُكْتَسَبَاتِي",
+  title_fr: "Bilan 4 — Je révise mes acquis",
+  teacher: "khalil",
+  voice: "ar-DZ-IsmaelNeural",
+  audio_base: "/audio/teachers/khalil/lesson_84_assessment_4",
+  exercisePath: "/lesson-v2/84/exercises",
+  objectives: [
+    "أَنْ يُرَاجِعَ الْمُتَعَلِّمُ الْأَشْكَالَ وَالْمُجَسَّمَاتِ.",
+    "أَنْ يُوَظِّفَ الْعَشَرَاتِ وَالْوَحَدَاتِ فِي قِرَاءَةِ الْأَعْدَادِ.",
+    "أَنْ يُرَاجِعَ قِرَاءَةَ السَّاعَةِ وَاسْتِعْمَالَ النُّقُودِ.",
+    "أَنْ يُوَظِّفَ الْجَمْعَ وَتَرْتِيبَ الْأَعْدَادِ.",
+  ],
+  slides: [
+    {
+      key: "lesson84_s1",
+      audio_key: "lesson84_s1",
+      title: "أُرَاجِعُ الْأَشْكَالَ",
+      image: "/lessons/v2/lesson84-assessment-4/s1.webp",
+      scene_image: "/lessons/v2/lesson84-assessment-4/s1.webp",
+      text: lesson84CanonicalText.lesson84_s1,
+    },
+    {
+      key: "lesson84_s2",
+      audio_key: "lesson84_s2",
+      title: "الْعَشَرَاتُ وَالْوَحَدَاتُ",
+      image: "/lessons/v2/lesson84-assessment-4/s2.webp",
+      scene_image: "/lessons/v2/lesson84-assessment-4/s2.webp",
+      text: lesson84CanonicalText.lesson84_s2,
+    },
+    {
+      key: "lesson84_s3",
+      audio_key: "lesson84_s3",
+      title: "السَّاعَةُ السَّادِسَةُ مَسَاءً",
+      image: "/lessons/v2/lesson84-assessment-4/s3.webp",
+      scene_image: "/lessons/v2/lesson84-assessment-4/s3.webp",
+      text: lesson84CanonicalText.lesson84_s3,
+    },
+    {
+      key: "lesson84_s4",
+      audio_key: "lesson84_s4",
+      title: "أُكَوِّنُ 65 دِينَارًا",
+      image: "/lessons/v2/lesson84-assessment-4/s4.webp",
+      scene_image: "/lessons/v2/lesson84-assessment-4/s4.webp",
+      text: lesson84CanonicalText.lesson84_s4,
+    },
+    {
+      key: "lesson84_s5",
+      audio_key: "lesson84_s5",
+      title: "أُرَاجِعُ الْجَمْعَ",
+      image: "/lessons/v2/lesson84-assessment-4/s5.webp",
+      scene_image: "/lessons/v2/lesson84-assessment-4/s5.webp",
+      text: lesson84CanonicalText.lesson84_s5,
+    },
+    {
+      key: "lesson84_s6",
+      audio_key: "lesson84_s6",
+      title: "أُكْمِلُ السِّلْسِلَةَ الْعَدَدِيَّةَ",
+      image: "/lessons/v2/lesson84-assessment-4/s6.webp",
+      scene_image: "/lessons/v2/lesson84-assessment-4/s6.webp",
+      text: lesson84CanonicalText.lesson84_s6,
+      is_closing: true,
+      cta_text: "هَيَّا نَتَدَرَّبُ",
+    },
+  ],
+} as const;
+
+export default lesson84;

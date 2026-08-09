@@ -1,0 +1,592 @@
+{
+  "old_keys": [
+    "lesson70_s1",
+    "lesson70_s2",
+    "lesson70_s3",
+    "lesson70_s4",
+    "lesson70_s5",
+    "lesson70_s6"
+  ],
+  "new_keys": [
+    "lesson70_s1",
+    "lesson70_s2",
+    "lesson70_s3",
+    "lesson70_s4",
+    "lesson70_s5",
+    "lesson70_s6"
+  ],
+  "reports": [
+    {
+      "scene": 1,
+      "key": "lesson70_s1",
+      "text": "مَرْحَبًا يَا أَصْدِقَائِي! فِي عَالَمِ الْمَدِينَةِ الصَّغِيرَةِ نَرَى خُطُوطًا مُسْتَقِيمَةً فِي أَمَاكِنَ كَثِيرَةٍ، مِثْلَ حَوَافِّ الطَّرِيقِ وَإِطَارَاتِ النَّوَافِذِ. هَيَّا نَكْتَشِفُهَا مَعًا.",
+      "audio_duration_ms": 15696,
+      "speech_start_ms": 220,
+      "speech_end_ms": 14640,
+      "words": 21,
+      "detected_gaps": [
+        {
+          "start_ms": 1960,
+          "end_ms": 3240,
+          "duration_ms": 1280
+        },
+        {
+          "start_ms": 5540,
+          "end_ms": 5640,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 8420,
+          "end_ms": 8840,
+          "duration_ms": 420
+        },
+        {
+          "start_ms": 9520,
+          "end_ms": 9640,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 11460,
+          "end_ms": 11560,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 11660,
+          "end_ms": 13000,
+          "duration_ms": 1340
+        },
+        {
+          "start_ms": 13420,
+          "end_ms": 13520,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "مَرْحَبًا",
+            "يَا",
+            "أَصْدِقَائِي!"
+          ],
+          "start_ms": 220,
+          "end_ms": 1960,
+          "duration_ms": 1740
+        },
+        {
+          "words": [
+            "فِي",
+            "عَالَمِ",
+            "الْمَدِينَةِ",
+            "الصَّغِيرَةِ",
+            "نَرَى",
+            "خُطُوطًا",
+            "مُسْتَقِيمَةً",
+            "فِي",
+            "أَمَاكِنَ",
+            "كَثِيرَةٍ،"
+          ],
+          "start_ms": 3240,
+          "end_ms": 8420,
+          "duration_ms": 5180
+        },
+        {
+          "words": [
+            "مِثْلَ",
+            "حَوَافِّ",
+            "الطَّرِيقِ",
+            "وَإِطَارَاتِ",
+            "النَّوَافِذِ."
+          ],
+          "start_ms": 8840,
+          "end_ms": 11660,
+          "duration_ms": 2820
+        },
+        {
+          "words": [
+            "هَيَّا",
+            "نَكْتَشِفُهَا",
+            "مَعًا."
+          ],
+          "start_ms": 13000,
+          "end_ms": 14640,
+          "duration_ms": 1640
+        }
+      ],
+      "analysis": {
+        "threshold": 507.93036295026,
+        "fallback": false,
+        "speech_runs": 8
+      }
+    },
+    {
+      "scene": 2,
+      "key": "lesson70_s2",
+      "text": "نُلَاحِظُ هَذَيْنِ الْخَطَّيْنِ. أَحَدُهُمَا مُسْتَقِيمٌ، وَالْآخَرُ غَيْرُ مُسْتَقِيمٍ. الْخَطُّ الْمُسْتَقِيمُ لَا يَنْحَنِي وَلَا يَتَعَرَّجُ.",
+      "audio_duration_ms": 12528,
+      "speech_start_ms": 220,
+      "speech_end_ms": 11340,
+      "words": 14,
+      "detected_gaps": [
+        {
+          "start_ms": 1720,
+          "end_ms": 1860,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 2160,
+          "end_ms": 3380,
+          "duration_ms": 1220
+        },
+        {
+          "start_ms": 4940,
+          "end_ms": 5360,
+          "duration_ms": 420
+        },
+        {
+          "start_ms": 6860,
+          "end_ms": 6960,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 7280,
+          "end_ms": 8460,
+          "duration_ms": 1180
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "نُلَاحِظُ",
+            "هَذَيْنِ",
+            "الْخَطَّيْنِ."
+          ],
+          "start_ms": 220,
+          "end_ms": 2160,
+          "duration_ms": 1940
+        },
+        {
+          "words": [
+            "أَحَدُهُمَا",
+            "مُسْتَقِيمٌ،"
+          ],
+          "start_ms": 3380,
+          "end_ms": 4940,
+          "duration_ms": 1560
+        },
+        {
+          "words": [
+            "وَالْآخَرُ",
+            "غَيْرُ",
+            "مُسْتَقِيمٍ."
+          ],
+          "start_ms": 5360,
+          "end_ms": 6860,
+          "duration_ms": 1500
+        },
+        {
+          "words": [
+            "الْخَطُّ",
+            "الْمُسْتَقِيمُ",
+            "لَا",
+            "يَنْحَنِي",
+            "وَلَا",
+            "يَتَعَرَّجُ."
+          ],
+          "start_ms": 6960,
+          "end_ms": 11340,
+          "duration_ms": 4380
+        }
+      ],
+      "analysis": {
+        "threshold": 522.0898861525931,
+        "fallback": false,
+        "speech_runs": 6
+      }
+    },
+    {
+      "scene": 3,
+      "key": "lesson70_s3",
+      "text": "لِرَسْمِ خَطٍّ مُسْتَقِيمٍ بِدِقَّةٍ، نَسْتَعْمِلُ الْمِسْطَرَةَ. نُثَبِّتُهَا جَيِّدًا، ثُمَّ نَمُرُّ بِالْقَلَمِ عَلَى حَافَّتِهَا.",
+      "audio_duration_ms": 10848,
+      "speech_start_ms": 220,
+      "speech_end_ms": 9800,
+      "words": 13,
+      "detected_gaps": [
+        {
+          "start_ms": 960,
+          "end_ms": 1060,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2240,
+          "end_ms": 2380,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 2520,
+          "end_ms": 2860,
+          "duration_ms": 340
+        },
+        {
+          "start_ms": 4160,
+          "end_ms": 5320,
+          "duration_ms": 1160
+        },
+        {
+          "start_ms": 6920,
+          "end_ms": 7360,
+          "duration_ms": 440
+        },
+        {
+          "start_ms": 8240,
+          "end_ms": 8340,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 9180,
+          "end_ms": 9320,
+          "duration_ms": 140
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "لِرَسْمِ",
+            "خَطٍّ",
+            "مُسْتَقِيمٍ",
+            "بِدِقَّةٍ،"
+          ],
+          "start_ms": 220,
+          "end_ms": 2520,
+          "duration_ms": 2300
+        },
+        {
+          "words": [
+            "نَسْتَعْمِلُ",
+            "الْمِسْطَرَةَ."
+          ],
+          "start_ms": 2860,
+          "end_ms": 4160,
+          "duration_ms": 1300
+        },
+        {
+          "words": [
+            "نُثَبِّتُهَا",
+            "جَيِّدًا،"
+          ],
+          "start_ms": 5320,
+          "end_ms": 6920,
+          "duration_ms": 1600
+        },
+        {
+          "words": [
+            "ثُمَّ",
+            "نَمُرُّ",
+            "بِالْقَلَمِ",
+            "عَلَى",
+            "حَافَّتِهَا."
+          ],
+          "start_ms": 7360,
+          "end_ms": 9800,
+          "duration_ms": 2440
+        }
+      ],
+      "analysis": {
+        "threshold": 538.9255156148095,
+        "fallback": false,
+        "speech_runs": 8
+      }
+    },
+    {
+      "scene": 4,
+      "key": "lesson70_s4",
+      "text": "نَسْتَطِيعُ أَنْ نَسْتَعْمِلَ الْخُطُوطَ الْمُسْتَقِيمَةَ فِي رُسُومٍ كَثِيرَةٍ. نَرْسُمُ بِهَا بَيْتًا، وَسُلَّمًا، وَأَشْكَالًا مُخْتَلِفَةً.",
+      "audio_duration_ms": 11208,
+      "speech_start_ms": 220,
+      "speech_end_ms": 10200,
+      "words": 14,
+      "detected_gaps": [
+        {
+          "start_ms": 1840,
+          "end_ms": 1940,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 4180,
+          "end_ms": 4300,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 4640,
+          "end_ms": 5740,
+          "duration_ms": 1100
+        },
+        {
+          "start_ms": 7140,
+          "end_ms": 7520,
+          "duration_ms": 380
+        },
+        {
+          "start_ms": 8420,
+          "end_ms": 8760,
+          "duration_ms": 340
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "نَسْتَطِيعُ",
+            "أَنْ",
+            "نَسْتَعْمِلَ",
+            "الْخُطُوطَ",
+            "الْمُسْتَقِيمَةَ",
+            "فِي",
+            "رُسُومٍ",
+            "كَثِيرَةٍ."
+          ],
+          "start_ms": 220,
+          "end_ms": 4640,
+          "duration_ms": 4420
+        },
+        {
+          "words": [
+            "نَرْسُمُ",
+            "بِهَا",
+            "بَيْتًا،"
+          ],
+          "start_ms": 5740,
+          "end_ms": 7140,
+          "duration_ms": 1400
+        },
+        {
+          "words": [
+            "وَسُلَّمًا،"
+          ],
+          "start_ms": 7520,
+          "end_ms": 8420,
+          "duration_ms": 900
+        },
+        {
+          "words": [
+            "وَأَشْكَالًا",
+            "مُخْتَلِفَةً."
+          ],
+          "start_ms": 8760,
+          "end_ms": 10200,
+          "duration_ms": 1440
+        }
+      ],
+      "analysis": {
+        "threshold": 509.79165633350607,
+        "fallback": false,
+        "speech_runs": 6
+      }
+    },
+    {
+      "scene": 5,
+      "key": "lesson70_s5",
+      "text": "إِذَا أَرَدْنَا رَبْطَ نُقْطَتَيْنِ بِخَطٍّ مُسْتَقِيمٍ، نَضَعُ الْمِسْطَرَةَ بَيْنَهُمَا، ثُمَّ نَرْسُمُ الْخَطَّ مِنَ النُّقْطَةِ الْأُولَى إِلَى النُّقْطَةِ الثَّانِيَةِ.",
+      "audio_duration_ms": 10824,
+      "speech_start_ms": 220,
+      "speech_end_ms": 9780,
+      "words": 18,
+      "detected_gaps": [
+        {
+          "start_ms": 1160,
+          "end_ms": 1300,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 2360,
+          "end_ms": 2460,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 3480,
+          "end_ms": 3880,
+          "duration_ms": 400
+        },
+        {
+          "start_ms": 5640,
+          "end_ms": 6060,
+          "duration_ms": 420
+        },
+        {
+          "start_ms": 6820,
+          "end_ms": 6920,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 6980,
+          "end_ms": 7100,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 8820,
+          "end_ms": 9000,
+          "duration_ms": 180
+        },
+        {
+          "start_ms": 9220,
+          "end_ms": 9340,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "إِذَا",
+            "أَرَدْنَا",
+            "رَبْطَ",
+            "نُقْطَتَيْنِ",
+            "بِخَطٍّ",
+            "مُسْتَقِيمٍ،"
+          ],
+          "start_ms": 220,
+          "end_ms": 3480,
+          "duration_ms": 3260
+        },
+        {
+          "words": [
+            "نَضَعُ",
+            "الْمِسْطَرَةَ",
+            "بَيْنَهُمَا،"
+          ],
+          "start_ms": 3880,
+          "end_ms": 5640,
+          "duration_ms": 1760
+        },
+        {
+          "words": [
+            "ثُمَّ",
+            "نَرْسُمُ",
+            "الْخَطَّ",
+            "مِنَ",
+            "النُّقْطَةِ",
+            "الْأُولَى",
+            "إِلَى",
+            "النُّقْطَةِ",
+            "الثَّانِيَةِ."
+          ],
+          "start_ms": 6060,
+          "end_ms": 9780,
+          "duration_ms": 3720
+        }
+      ],
+      "analysis": {
+        "threshold": 577.3248411442574,
+        "fallback": false,
+        "speech_runs": 9
+      }
+    },
+    {
+      "scene": 6,
+      "key": "lesson70_s6",
+      "text": "أَحْسَنْتُمْ! تَعَرَّفْنَا إِلَى الْخَطِّ الْمُسْتَقِيمِ، وَمَيَّزْنَاهُ مِنَ الْخَطِّ غَيْرِ الْمُسْتَقِيمِ، وَتَعَلَّمْنَا كَيْفَ نَرْسُمُهُ بِالْمِسْطَرَةِ. هَيَّا نَتَدَرَّبُ!",
+      "audio_duration_ms": 13848,
+      "speech_start_ms": 220,
+      "speech_end_ms": 12720,
+      "words": 16,
+      "detected_gaps": [
+        {
+          "start_ms": 960,
+          "end_ms": 2160,
+          "duration_ms": 1200
+        },
+        {
+          "start_ms": 2500,
+          "end_ms": 2620,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 3120,
+          "end_ms": 3220,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 3280,
+          "end_ms": 3380,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 4320,
+          "end_ms": 4740,
+          "duration_ms": 420
+        },
+        {
+          "start_ms": 6100,
+          "end_ms": 6220,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 7640,
+          "end_ms": 8000,
+          "duration_ms": 360
+        },
+        {
+          "start_ms": 10580,
+          "end_ms": 11780,
+          "duration_ms": 1200
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَحْسَنْتُمْ!"
+          ],
+          "start_ms": 220,
+          "end_ms": 960,
+          "duration_ms": 740
+        },
+        {
+          "words": [
+            "تَعَرَّفْنَا",
+            "إِلَى",
+            "الْخَطِّ",
+            "الْمُسْتَقِيمِ،"
+          ],
+          "start_ms": 2160,
+          "end_ms": 4320,
+          "duration_ms": 2160
+        },
+        {
+          "words": [
+            "وَمَيَّزْنَاهُ",
+            "مِنَ",
+            "الْخَطِّ",
+            "غَيْرِ",
+            "الْمُسْتَقِيمِ،"
+          ],
+          "start_ms": 4740,
+          "end_ms": 7640,
+          "duration_ms": 2900
+        },
+        {
+          "words": [
+            "وَتَعَلَّمْنَا",
+            "كَيْفَ",
+            "نَرْسُمُهُ",
+            "بِالْمِسْطَرَةِ."
+          ],
+          "start_ms": 8000,
+          "end_ms": 10580,
+          "duration_ms": 2580
+        },
+        {
+          "words": [
+            "هَيَّا",
+            "نَتَدَرَّبُ!"
+          ],
+          "start_ms": 11780,
+          "end_ms": 12720,
+          "duration_ms": 940
+        }
+      ],
+      "analysis": {
+        "threshold": 518.3045977914296,
+        "fallback": false,
+        "speech_runs": 9
+      }
+    }
+  ]
+}

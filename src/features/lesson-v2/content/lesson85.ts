@@ -1,0 +1,82 @@
+export const lesson85CanonicalText = {
+  lesson85_s1: "مَرْحَبًا أَحِبَّائِي. وَقْتُنَا ثَمِينٌ فَلْنُنَظِّمْهُ جَيِّدًا.",
+  lesson85_s2: "بَعْضُ التَّصَرُّفَاتِ تُضَيِّعُ وَقْتَنَا. لِنَتَجَنَّبْهَا وَنَخْتَرْ مَا يَنْفَعُنَا.",
+  lesson85_s3: "نَسْتَعْمِلُ وَقْتَنَا فِيمَا يَنْفَعُنَا. وَنُخَصِّصُ وَقْتًا لِلدِّرَاسَةِ وَاللَّعِبِ وَالرَّاحَةِ.",
+  lesson85_s4: "فِي حَيَاتِنَا أَحْدَاثٌ مُتَتَالِيَةٌ. نَتَذَكَّرُ مَا حَدَثَ أَوَّلًا وَمَا جَاءَ بَعْدَهُ.",
+  lesson85_s5: "نَنْظُرُ إِلَى الْأَحْدَاثِ بِانْتِبَاهٍ. ثُمَّ نُرَتِّبُهَا مِنَ الْأَوَّلِ إِلَى الْأَخِيرِ.",
+  lesson85_s6: "أَحْسَنْتُمْ فِي تَنْظِيمِ الْوَقْتِ وَتَرْتِيبِ الْأَحْدَاثِ. هَيَّا نَتَدَرَّبُ لِنُثَبِّتَ مَا تَعَلَّمْنَاهُ.",
+} as const;
+
+export const lesson85 = {
+  id: "lesson85",
+  lessonKey: "lesson85",
+  num: 85,
+  world_id: "b2c0405e-4559-4813-9a73-82b4f0ab4f4c",
+  sort_order: 16,
+  title: "الْحَصِيلَةُ 4 – أُنَظِّمُ وَقْتِي وَأُرَتِّبُ أَحْدَاثِي",
+  title_fr: "Bilan 4 — J’organise mon temps et j’ordonne mes événements",
+  teacher: "khalil",
+  voice: "ar-DZ-IsmaelNeural",
+  audio_base: "/audio/teachers/khalil/lesson_85_organize_time_events",
+  exercisePath: "/lesson-v2/85/exercises",
+  objectives: [
+    "أَنْ يُمَيِّزَ الْمُتَعَلِّمُ بَيْنَ الِاسْتِعْمَالِ الْجَيِّدِ وَغَيْرِ الْجَيِّدِ لِلْوَقْتِ.",
+    "أَنْ يُنَظِّمَ الْمُتَعَلِّمُ أَنْشِطَتَهُ الْيَوْمِيَّةَ.",
+    "أَنْ يُرَتِّبَ أَحْدَاثًا مِنَ الْأَقْدَمِ إِلَى الْأَحْدَثِ.",
+    "أَنْ يَرْبِطَ بَيْنَ الْحَدَثِ وَمَوْقِعِهِ فِي التَّسَلْسُلِ الزَّمَنِيِّ.",
+  ],
+  slides: [
+    {
+      key: "lesson85_s1",
+      audio_key: "lesson85_s1",
+      title: "وَقْتِي ثَمِينٌ",
+      image: "/lessons/v2/lesson85-organize-time-events/s1.webp",
+      scene_image: "/lessons/v2/lesson85-organize-time-events/s1.webp",
+      text: lesson85CanonicalText.lesson85_s1,
+    },
+    {
+      key: "lesson85_s2",
+      audio_key: "lesson85_s2",
+      title: "عَادَاتٌ تُضَيِّعُ الْوَقْتَ",
+      image: "/lessons/v2/lesson85-organize-time-events/s2.webp",
+      scene_image: "/lessons/v2/lesson85-organize-time-events/s2.webp",
+      text: lesson85CanonicalText.lesson85_s2,
+    },
+    {
+      key: "lesson85_s3",
+      audio_key: "lesson85_s3",
+      title: "أَسْتَعْمِلُ وَقْتِي فِيمَا يَنْفَعُنِي",
+      image: "/lessons/v2/lesson85-organize-time-events/s3.webp",
+      scene_image: "/lessons/v2/lesson85-organize-time-events/s3.webp",
+      text: lesson85CanonicalText.lesson85_s3,
+    },
+    {
+      key: "lesson85_s4",
+      audio_key: "lesson85_s4",
+      title: "أَحْدَاثٌ مِنْ حَيَاتِي",
+      image: "/lessons/v2/lesson85-organize-time-events/s4.webp",
+      scene_image: "/lessons/v2/lesson85-organize-time-events/s4.webp",
+      text: lesson85CanonicalText.lesson85_s4,
+    },
+    {
+      key: "lesson85_s5",
+      audio_key: "lesson85_s5",
+      title: "أُرَتِّبُ الْأَحْدَاثَ",
+      image: "/lessons/v2/lesson85-organize-time-events/s5.webp",
+      scene_image: "/lessons/v2/lesson85-organize-time-events/s5.webp",
+      text: lesson85CanonicalText.lesson85_s5,
+    },
+    {
+      key: "lesson85_s6",
+      audio_key: "lesson85_s6",
+      title: "أُنَظِّمُ وَقْتِي وَأُرَتِّبُ أَحْدَاثِي",
+      image: "/lessons/v2/lesson85-organize-time-events/s6.webp",
+      scene_image: "/lessons/v2/lesson85-organize-time-events/s6.webp",
+      text: lesson85CanonicalText.lesson85_s6,
+      is_closing: true,
+      cta_text: "هَيَّا نَتَدَرَّبُ",
+    },
+  ],
+} as const;
+
+export default lesson85;

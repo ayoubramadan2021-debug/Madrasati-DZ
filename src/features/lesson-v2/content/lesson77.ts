@@ -1,0 +1,82 @@
+export const lesson77CanonicalText = {
+  lesson77_s1: "مِنْ حَوْلِنَا أَشْيَاءُ لَهَا أَشْكَالٌ مُجَسَّمَةٌ مُخْتَلِفَةٌ. مِنْهَا مَا يُشْبِهُ الْكُرَةَ، وَمِنْهَا مَا يُشْبِهُ الْمُكَعَّبَ أَوِ الْأُسْطُوَانَةَ.",
+  lesson77_s2: "نَتَعَرَّفُ إِلَى بَعْضِ الْمُجَسَّمَاتِ الْمَأْلُوفَةِ: الْكُرَةُ، وَالْمُكَعَّبُ، وَالْأُسْطُوَانَةُ، وَمُتَوَازِي الْمُسْتَطِيلَاتِ، وَالْهَرَمُ.",
+  lesson77_s3: "نُلَاحِظُ أَنَّ الْمُجَسَّمَاتِ لَيْسَتْ مُتَشَابِهَةً. بَعْضُهَا لَهُ أَوْجُهٌ مُسَطَّحَةٌ، وَبَعْضُهَا لَهُ سَطْحٌ مُنْحَنٍ.",
+  lesson77_s4: "عِنْدَمَا نَضَعُ الْمُجَسَّمَاتِ عَلَى سَطْحٍ مَائِلٍ، نُلَاحِظُ أَنَّ بَعْضَهَا يَتَدَحْرَجُ، وَبَعْضَهَا يَنْزَلِقُ، وَقَدْ يَفْعَلُ بَعْضُهَا الْأَمْرَيْنِ.",
+  lesson77_s5: "نُصَنِّفُ الْمُجَسَّمَاتِ حَسَبَ خَصَائِصِهَا وَشَكْلِهَا، وَنَرْبِطُهَا بِأَشْيَاءَ نَرَاهَا فِي حَيَاتِنَا الْيَوْمِيَّةِ.",
+  lesson77_s6: "أَحْسَنْتُمْ! تَعَرَّفْنَا إِلَى مُجَسَّمَاتٍ مَأْلُوفَةٍ، وَمَيَّزْنَا أَشْكَالَهَا وَبَعْضَ خَصَائِصِهَا. هَيَّا نَتَدَرَّبُ!",
+} as const;
+
+export const lesson77 = {
+  id: "lesson77",
+  lessonKey: "lesson77",
+  num: 77,
+  world_id: "b2c0405e-4559-4813-9a73-82b4f0ab4f4c",
+  sort_order: 8,
+  title: "مُجَسَّمَاتٌ مَأْلُوفَةٌ",
+  title_fr: "Les solides usuels",
+  teacher: "khalil",
+  voice: "ar-DZ-IsmaelNeural",
+  audio_base: "/audio/teachers/khalil/lesson_77_familiar_solids",
+  exercisePath: "/lesson-v2/77/exercises",
+  objectives: [
+    "أَنْ يَتَعَرَّفَ الْمُتَعَلِّمُ إِلَى مُجَسَّمَاتٍ مَأْلُوفَةٍ.",
+    "أَنْ يُمَيِّزَ بَيْنَ الْمُكَعَّبِ وَالْكُرَةِ وَالْأُسْطُوَانَةِ وَمُتَوَازِي الْمُسْتَطِيلَاتِ.",
+    "أَنْ يُصَنِّفَ الْمُجَسَّمَاتِ حَسَبَ شَكْلِهَا.",
+    "أَنْ يُلَاحِظَ سُلُوكَ الْمُجَسَّمَاتِ عِنْدَ الدَّحْرَجَةِ وَالِانْزِلَاقِ.",
+  ],
+  slides: [
+    {
+      key: "lesson77_s1",
+      audio_key: "lesson77_s1",
+      title: "مُجَسَّمَاتٌ مِنْ حَوْلِنَا",
+      image: "/lessons/v2/lesson77/s1.webp",
+      scene_image: "/lessons/v2/lesson77/s1.webp",
+      text: lesson77CanonicalText.lesson77_s1,
+    },
+    {
+      key: "lesson77_s2",
+      audio_key: "lesson77_s2",
+      title: "أُسَمِّي الْمُجَسَّمَاتِ",
+      image: "/lessons/v2/lesson77/s2.webp",
+      scene_image: "/lessons/v2/lesson77/s2.webp",
+      text: lesson77CanonicalText.lesson77_s2,
+    },
+    {
+      key: "lesson77_s3",
+      audio_key: "lesson77_s3",
+      title: "أُقَارِنُ أَشْكَالَهَا",
+      image: "/lessons/v2/lesson77/s3.webp",
+      scene_image: "/lessons/v2/lesson77/s3.webp",
+      text: lesson77CanonicalText.lesson77_s3,
+    },
+    {
+      key: "lesson77_s4",
+      audio_key: "lesson77_s4",
+      title: "يَتَدَحْرَجُ أَمْ يَنْزَلِقُ؟",
+      image: "/lessons/v2/lesson77/s4.webp",
+      scene_image: "/lessons/v2/lesson77/s4.webp",
+      text: lesson77CanonicalText.lesson77_s4,
+    },
+    {
+      key: "lesson77_s5",
+      audio_key: "lesson77_s5",
+      title: "أُصَنِّفُ الْمُجَسَّمَاتِ",
+      image: "/lessons/v2/lesson77/s5.webp",
+      scene_image: "/lessons/v2/lesson77/s5.webp",
+      text: lesson77CanonicalText.lesson77_s5,
+    },
+    {
+      key: "lesson77_s6",
+      audio_key: "lesson77_s6",
+      title: "أَتَعَرَّفُ إِلَى الْمُجَسَّمَاتِ",
+      image: "/lessons/v2/lesson77/s6.webp",
+      scene_image: "/lessons/v2/lesson77/s6.webp",
+      text: lesson77CanonicalText.lesson77_s6,
+      is_closing: true,
+      cta_text: "هَيَّا نَتَدَرَّبُ",
+    },
+  ],
+} as const;
+
+export default lesson77;

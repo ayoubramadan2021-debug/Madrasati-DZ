@@ -1,0 +1,479 @@
+{
+  "old_keys": [
+    "lesson78_s1",
+    "lesson78_s2",
+    "lesson78_s3",
+    "lesson78_s4",
+    "lesson78_s5",
+    "lesson78_s6"
+  ],
+  "new_keys": [
+    "lesson78_s1",
+    "lesson78_s2",
+    "lesson78_s3",
+    "lesson78_s4",
+    "lesson78_s5",
+    "lesson78_s6"
+  ],
+  "reports": [
+    {
+      "scene": 1,
+      "key": "lesson78_s1",
+      "text": "مَرْحَبًا يَا أَصْدِقَائِي! عِنْدَمَا نَضُمُّ مَجْمُوعَةً إِلَى مَجْمُوعَةٍ أُخْرَى نَسْتَعْمِلُ الْجَمْعَ، وَنَسْتَطِيعُ تَمْثِيلَ ذَلِكَ بِالْأَقْرَاصِ.",
+      "audio_duration_ms": 11808,
+      "speech_start_ms": 220,
+      "speech_end_ms": 10780,
+      "words": 15,
+      "detected_gaps": [
+        {
+          "start_ms": 1960,
+          "end_ms": 3160,
+          "duration_ms": 1200
+        },
+        {
+          "start_ms": 6000,
+          "end_ms": 6100,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 7480,
+          "end_ms": 7920,
+          "duration_ms": 440
+        },
+        {
+          "start_ms": 10060,
+          "end_ms": 10160,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "مَرْحَبًا",
+            "يَا",
+            "أَصْدِقَائِي!"
+          ],
+          "start_ms": 220,
+          "end_ms": 1960,
+          "duration_ms": 1740
+        },
+        {
+          "words": [
+            "عِنْدَمَا",
+            "نَضُمُّ",
+            "مَجْمُوعَةً",
+            "إِلَى",
+            "مَجْمُوعَةٍ",
+            "أُخْرَى",
+            "نَسْتَعْمِلُ",
+            "الْجَمْعَ،"
+          ],
+          "start_ms": 3160,
+          "end_ms": 7480,
+          "duration_ms": 4320
+        },
+        {
+          "words": [
+            "وَنَسْتَطِيعُ",
+            "تَمْثِيلَ",
+            "ذَلِكَ",
+            "بِالْأَقْرَاصِ."
+          ],
+          "start_ms": 7920,
+          "end_ms": 10780,
+          "duration_ms": 2860
+        }
+      ],
+      "analysis": {
+        "threshold": 494.69797687139993,
+        "fallback": false,
+        "speech_runs": 5
+      }
+    },
+    {
+      "scene": 2,
+      "key": "lesson78_s2",
+      "text": "نَعُدُّ الْمَجْمُوعَةَ الْأُولَى، ثُمَّ الْمَجْمُوعَةَ الثَّانِيَةَ، ثُمَّ نَعُدُّ الْعَنَاصِرَ كُلَّهَا لِنَجِدَ نَاتِجَ الْجَمْعِ.",
+      "audio_duration_ms": 8616,
+      "speech_start_ms": 220,
+      "speech_end_ms": 7540,
+      "words": 13,
+      "detected_gaps": [
+        {
+          "start_ms": 1940,
+          "end_ms": 2320,
+          "duration_ms": 380
+        },
+        {
+          "start_ms": 3300,
+          "end_ms": 3400,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 3880,
+          "end_ms": 4300,
+          "duration_ms": 420
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "نَعُدُّ",
+            "الْمَجْمُوعَةَ",
+            "الْأُولَى،"
+          ],
+          "start_ms": 220,
+          "end_ms": 1940,
+          "duration_ms": 1720
+        },
+        {
+          "words": [
+            "ثُمَّ",
+            "الْمَجْمُوعَةَ",
+            "الثَّانِيَةَ،"
+          ],
+          "start_ms": 2320,
+          "end_ms": 3880,
+          "duration_ms": 1560
+        },
+        {
+          "words": [
+            "ثُمَّ",
+            "نَعُدُّ",
+            "الْعَنَاصِرَ",
+            "كُلَّهَا",
+            "لِنَجِدَ",
+            "نَاتِجَ",
+            "الْجَمْعِ."
+          ],
+          "start_ms": 4300,
+          "end_ms": 7540,
+          "duration_ms": 3240
+        }
+      ],
+      "analysis": {
+        "threshold": 574.4835585490309,
+        "fallback": false,
+        "speech_runs": 4
+      }
+    },
+    {
+      "scene": 3,
+      "key": "lesson78_s3",
+      "text": "أَمَّا عِنْدَمَا نُزِيلُ بَعْضَ الْعَنَاصِرِ مِنْ مَجْمُوعَةٍ، فَنَحْنُ نَسْتَعْمِلُ الطَّرْحَ. نَبْدَأُ بِالْكَمِّيَّةِ الْكُلِّيَّةِ ثُمَّ نُنْقِصُ مِنْهَا.",
+      "audio_duration_ms": 10800,
+      "speech_start_ms": 220,
+      "speech_end_ms": 9760,
+      "words": 16,
+      "detected_gaps": [
+        {
+          "start_ms": 3280,
+          "end_ms": 3660,
+          "duration_ms": 380
+        },
+        {
+          "start_ms": 4800,
+          "end_ms": 4940,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 5080,
+          "end_ms": 6440,
+          "duration_ms": 1360
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَمَّا",
+            "عِنْدَمَا",
+            "نُزِيلُ",
+            "بَعْضَ",
+            "الْعَنَاصِرِ",
+            "مِنْ",
+            "مَجْمُوعَةٍ،"
+          ],
+          "start_ms": 220,
+          "end_ms": 4800,
+          "duration_ms": 4580
+        },
+        {
+          "words": [
+            "فَنَحْنُ",
+            "نَسْتَعْمِلُ",
+            "الطَّرْحَ."
+          ],
+          "start_ms": 4940,
+          "end_ms": 5080,
+          "duration_ms": 140
+        },
+        {
+          "words": [
+            "نَبْدَأُ",
+            "بِالْكَمِّيَّةِ",
+            "الْكُلِّيَّةِ",
+            "ثُمَّ",
+            "نُنْقِصُ",
+            "مِنْهَا."
+          ],
+          "start_ms": 6440,
+          "end_ms": 9760,
+          "duration_ms": 3320
+        }
+      ],
+      "analysis": {
+        "threshold": 529.9681916222526,
+        "fallback": false,
+        "speech_runs": 4
+      }
+    },
+    {
+      "scene": 4,
+      "key": "lesson78_s4",
+      "text": "نُمَثِّلُ الطَّرْحَ بِالْأَقْرَاصِ أَيْضًا. نُحَدِّدُ عَدَدَ الْعَنَاصِرِ فِي الْبِدَايَةِ، ثُمَّ نُزِيلُ الْعَدَدَ الْمَطْلُوبَ وَنَعُدُّ مَا بَقِيَ.",
+      "audio_duration_ms": 10488,
+      "speech_start_ms": 220,
+      "speech_end_ms": 9360,
+      "words": 16,
+      "detected_gaps": [
+        {
+          "start_ms": 500,
+          "end_ms": 620,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 780,
+          "end_ms": 900,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 1480,
+          "end_ms": 1580,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2500,
+          "end_ms": 3680,
+          "duration_ms": 1180
+        },
+        {
+          "start_ms": 6040,
+          "end_ms": 6500,
+          "duration_ms": 460
+        },
+        {
+          "start_ms": 7820,
+          "end_ms": 7920,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 9180,
+          "end_ms": 9280,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "نُمَثِّلُ",
+            "الطَّرْحَ",
+            "بِالْأَقْرَاصِ",
+            "أَيْضًا."
+          ],
+          "start_ms": 220,
+          "end_ms": 2500,
+          "duration_ms": 2280
+        },
+        {
+          "words": [
+            "نُحَدِّدُ",
+            "عَدَدَ",
+            "الْعَنَاصِرِ",
+            "فِي",
+            "الْبِدَايَةِ،"
+          ],
+          "start_ms": 3680,
+          "end_ms": 6040,
+          "duration_ms": 2360
+        },
+        {
+          "words": [
+            "ثُمَّ",
+            "نُزِيلُ",
+            "الْعَدَدَ",
+            "الْمَطْلُوبَ",
+            "وَنَعُدُّ",
+            "مَا",
+            "بَقِيَ."
+          ],
+          "start_ms": 6500,
+          "end_ms": 9360,
+          "duration_ms": 2860
+        }
+      ],
+      "analysis": {
+        "threshold": 521.2597572146026,
+        "fallback": false,
+        "speech_runs": 8
+      }
+    },
+    {
+      "scene": 5,
+      "key": "lesson78_s5",
+      "text": "تُسَاعِدُنَا الْمَجْمُوعَاتُ وَالْإِطَارَاتُ عَلَى تَرْكِيبِ الْأَعْدَادِ وَتَفْكِيكِهَا، وَعَلَى فَهْمِ الْعَلَاقَةِ بَيْنَ الْجَمْعِ وَالطَّرْحِ.",
+      "audio_duration_ms": 9528,
+      "speech_start_ms": 260,
+      "speech_end_ms": 8220,
+      "words": 13,
+      "detected_gaps": [
+        {
+          "start_ms": 3280,
+          "end_ms": 3380,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 4520,
+          "end_ms": 4660,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 5200,
+          "end_ms": 5540,
+          "duration_ms": 340
+        },
+        {
+          "start_ms": 7920,
+          "end_ms": 8060,
+          "duration_ms": 140
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "تُسَاعِدُنَا",
+            "الْمَجْمُوعَاتُ",
+            "وَالْإِطَارَاتُ",
+            "عَلَى",
+            "تَرْكِيبِ",
+            "الْأَعْدَادِ",
+            "وَتَفْكِيكِهَا،"
+          ],
+          "start_ms": 260,
+          "end_ms": 5200,
+          "duration_ms": 4940
+        },
+        {
+          "words": [
+            "وَعَلَى",
+            "فَهْمِ",
+            "الْعَلَاقَةِ",
+            "بَيْنَ",
+            "الْجَمْعِ",
+            "وَالطَّرْحِ."
+          ],
+          "start_ms": 5540,
+          "end_ms": 8220,
+          "duration_ms": 2680
+        }
+      ],
+      "analysis": {
+        "threshold": 526.5890133115705,
+        "fallback": false,
+        "speech_runs": 5
+      }
+    },
+    {
+      "scene": 6,
+      "key": "lesson78_s6",
+      "text": "أَحْسَنْتُمْ! أَصْبَحْنَا نُمَثِّلُ الْجَمْعَ وَالطَّرْحَ، وَنَجِدُ النَّتَائِجَ بِاسْتِعْمَالِ الْعَدِّ وَالتَّمْثِيلِ. هَيَّا نَتَدَرَّبُ!",
+      "audio_duration_ms": 11208,
+      "speech_start_ms": 220,
+      "speech_end_ms": 10080,
+      "words": 12,
+      "detected_gaps": [
+        {
+          "start_ms": 960,
+          "end_ms": 2140,
+          "duration_ms": 1180
+        },
+        {
+          "start_ms": 3100,
+          "end_ms": 3220,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 3960,
+          "end_ms": 4080,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 4460,
+          "end_ms": 4760,
+          "duration_ms": 300
+        },
+        {
+          "start_ms": 7260,
+          "end_ms": 7360,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 7500,
+          "end_ms": 7640,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 7900,
+          "end_ms": 9160,
+          "duration_ms": 1260
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَحْسَنْتُمْ!"
+          ],
+          "start_ms": 220,
+          "end_ms": 960,
+          "duration_ms": 740
+        },
+        {
+          "words": [
+            "أَصْبَحْنَا",
+            "نُمَثِّلُ",
+            "الْجَمْعَ",
+            "وَالطَّرْحَ،"
+          ],
+          "start_ms": 2140,
+          "end_ms": 3960,
+          "duration_ms": 1820
+        },
+        {
+          "words": [
+            "وَنَجِدُ",
+            "النَّتَائِجَ",
+            "بِاسْتِعْمَالِ",
+            "الْعَدِّ",
+            "وَالتَّمْثِيلِ."
+          ],
+          "start_ms": 4080,
+          "end_ms": 7900,
+          "duration_ms": 3820
+        },
+        {
+          "words": [
+            "هَيَّا",
+            "نَتَدَرَّبُ!"
+          ],
+          "start_ms": 9160,
+          "end_ms": 10080,
+          "duration_ms": 920
+        }
+      ],
+      "analysis": {
+        "threshold": 515.9618386503381,
+        "fallback": false,
+        "speech_runs": 8
+      }
+    }
+  ]
+}

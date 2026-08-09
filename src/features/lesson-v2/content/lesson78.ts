@@ -1,0 +1,82 @@
+export const lesson78CanonicalText = {
+  lesson78_s1: "مَرْحَبًا يَا أَصْدِقَائِي! عِنْدَمَا نَضُمُّ مَجْمُوعَةً إِلَى مَجْمُوعَةٍ أُخْرَى نَسْتَعْمِلُ الْجَمْعَ، وَنَسْتَطِيعُ تَمْثِيلَ ذَلِكَ بِالْأَقْرَاصِ.",
+  lesson78_s2: "نَعُدُّ الْمَجْمُوعَةَ الْأُولَى، ثُمَّ الْمَجْمُوعَةَ الثَّانِيَةَ، ثُمَّ نَعُدُّ الْعَنَاصِرَ كُلَّهَا لِنَجِدَ نَاتِجَ الْجَمْعِ.",
+  lesson78_s3: "أَمَّا عِنْدَمَا نُزِيلُ بَعْضَ الْعَنَاصِرِ مِنْ مَجْمُوعَةٍ، فَنَحْنُ نَسْتَعْمِلُ الطَّرْحَ. نَبْدَأُ بِالْكَمِّيَّةِ الْكُلِّيَّةِ ثُمَّ نُنْقِصُ مِنْهَا.",
+  lesson78_s4: "نُمَثِّلُ الطَّرْحَ بِالْأَقْرَاصِ أَيْضًا. نُحَدِّدُ عَدَدَ الْعَنَاصِرِ فِي الْبِدَايَةِ، ثُمَّ نُزِيلُ الْعَدَدَ الْمَطْلُوبَ وَنَعُدُّ مَا بَقِيَ.",
+  lesson78_s5: "تُسَاعِدُنَا الْمَجْمُوعَاتُ وَالْإِطَارَاتُ عَلَى تَرْكِيبِ الْأَعْدَادِ وَتَفْكِيكِهَا، وَعَلَى فَهْمِ الْعَلَاقَةِ بَيْنَ الْجَمْعِ وَالطَّرْحِ.",
+  lesson78_s6: "أَحْسَنْتُمْ! أَصْبَحْنَا نُمَثِّلُ الْجَمْعَ وَالطَّرْحَ، وَنَجِدُ النَّتَائِجَ بِاسْتِعْمَالِ الْعَدِّ وَالتَّمْثِيلِ. هَيَّا نَتَدَرَّبُ!",
+} as const;
+
+export const lesson78 = {
+  id: "lesson78",
+  lessonKey: "lesson78",
+  num: 78,
+  world_id: "b2c0405e-4559-4813-9a73-82b4f0ab4f4c",
+  sort_order: 9,
+  title: "الْجَمْعُ وَالطَّرْحُ لِلْأَعْدَادِ الصَّغِيرَةِ (2)",
+  title_fr: "Addition et soustraction des petits nombres (2)",
+  teacher: "khalil",
+  voice: "ar-DZ-IsmaelNeural",
+  audio_base: "/audio/teachers/khalil/lesson_78_addition_subtraction_2",
+  exercisePath: "/lesson-v2/78/exercises",
+  objectives: [
+    "أَنْ يُمَثِّلَ الْمُتَعَلِّمُ عَمَلِيَّةَ الْجَمْعِ.",
+    "أَنْ يُمَثِّلَ عَمَلِيَّةَ الطَّرْحِ.",
+    "أَنْ يُرَكِّبَ وَيُفَكِّكَ كَمِّيَّاتٍ صَغِيرَةً.",
+    "أَنْ يَسْتَعْمِلَ تَمْثِيلًا بَصَرِيًّا لِإِيجَادِ النَّتِيجَةِ.",
+  ],
+  slides: [
+    {
+      key: "lesson78_s1",
+      audio_key: "lesson78_s1",
+      title: "أَجْمَعُ مَجْمُوعَتَيْنِ",
+      image: "/lessons/v2/lesson78/s1.webp",
+      scene_image: "/lessons/v2/lesson78/s1.webp",
+      text: lesson78CanonicalText.lesson78_s1,
+    },
+    {
+      key: "lesson78_s2",
+      audio_key: "lesson78_s2",
+      title: "أُمَثِّلُ الْجَمْعَ",
+      image: "/lessons/v2/lesson78/s2.webp",
+      scene_image: "/lessons/v2/lesson78/s2.webp",
+      text: lesson78CanonicalText.lesson78_s2,
+    },
+    {
+      key: "lesson78_s3",
+      audio_key: "lesson78_s3",
+      title: "أَنْقُصُ مِنَ الْمَجْمُوعَةِ",
+      image: "/lessons/v2/lesson78/s3.webp",
+      scene_image: "/lessons/v2/lesson78/s3.webp",
+      text: lesson78CanonicalText.lesson78_s3,
+    },
+    {
+      key: "lesson78_s4",
+      audio_key: "lesson78_s4",
+      title: "أُمَثِّلُ الطَّرْحَ",
+      image: "/lessons/v2/lesson78/s4.webp",
+      scene_image: "/lessons/v2/lesson78/s4.webp",
+      text: lesson78CanonicalText.lesson78_s4,
+    },
+    {
+      key: "lesson78_s5",
+      audio_key: "lesson78_s5",
+      title: "أُرَتِّبُ الْأَعْدَادَ",
+      image: "/lessons/v2/lesson78/s5.webp",
+      scene_image: "/lessons/v2/lesson78/s5.webp",
+      text: lesson78CanonicalText.lesson78_s5,
+    },
+    {
+      key: "lesson78_s6",
+      audio_key: "lesson78_s6",
+      title: "أَحْسُبُ بِدِقَّةٍ",
+      image: "/lessons/v2/lesson78/s6.webp",
+      scene_image: "/lessons/v2/lesson78/s6.webp",
+      text: lesson78CanonicalText.lesson78_s6,
+      is_closing: true,
+      cta_text: "هَيَّا نَتَدَرَّبُ",
+    },
+  ],
+} as const;
+
+export default lesson78;

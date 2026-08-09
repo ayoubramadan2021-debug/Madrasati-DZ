@@ -1,0 +1,82 @@
+export const lesson73CanonicalText = {
+  lesson73_s1: "فِي يَوْمِنَا أَحْدَاثٌ تَقَعُ وَاحِدَةً بَعْدَ الْأُخْرَى. نَسْتَيْقِظُ، وَنَسْتَعِدُّ، وَنَذْهَبُ إِلَى الْمَدْرَسَةِ، وَنَقُومُ بِأَنْشِطَةٍ مُخْتَلِفَةٍ.",
+  lesson73_s2: "لِكَيْ نَرْوِي مَا حَدَثَ بِشَكْلٍ صَحِيحٍ، نَسْتَعْمِلُ كَلِمَتَيْ قَبْلَ وَبَعْدَ. فَنَقُولُ: هَذَا حَدَثَ قَبْلَ ذَاكَ، وَذَاكَ حَدَثَ بَعْدَهُ.",
+  lesson73_s3: "نَنْظُرُ إِلَى الصُّوَرِ وَنَسْأَلُ: مَا الَّذِي حَدَثَ أَوَّلًا؟ وَمَا الَّذِي حَدَثَ بَعْدَهُ؟ ثُمَّ نَضَعُ الصُّوَرَ فِي تَرْتِيبِهَا الصَّحِيحِ.",
+  lesson73_s4: "تُسَاعِدُنَا السَّاعَةُ أَيْضًا عَلَى مَعْرِفَةِ تَرْتِيبِ الْأَحْدَاثِ. فَالْحَدَثُ الَّذِي وَقَعَ فِي وَقْتٍ أَبْكَرَ يَسْبِقُ الْحَدَثَ الَّذِي وَقَعَ بَعْدَهُ.",
+  lesson73_s5: "نَرْبِطُ كُلَّ نَشَاطٍ بِوَقْتِهِ، ثُمَّ نُرَتِّبُ الْأَنْشِطَةَ حَسَبَ تَعَاقُبِهَا خِلَالَ الْيَوْمِ.",
+  lesson73_s6: "أَحْسَنْتُمْ! أَصْبَحْنَا نَرْتِبُ الْأَحْدَاثَ، وَنَسْتَعْمِلُ قَبْلَ وَبَعْدَ، وَنَرْبِطُ بَيْنَ الْحَدَثِ وَوَقْتِهِ. هَيَّا نَتَدَرَّبُ!",
+} as const;
+
+export const lesson73 = {
+  id: "lesson73",
+  lessonKey: "lesson73",
+  num: 73,
+  world_id: "b2c0405e-4559-4813-9a73-82b4f0ab4f4c",
+  sort_order: 4,
+  title: "تَرْتِيبُ الْأَحْدَاثِ",
+  title_fr: "Ordonner les événements",
+  teacher: "taline",
+  voice: "ar-DZ-AminaNeural",
+  audio_base: "/audio/teachers/taline/lesson_73_order_events",
+  exercisePath: "/lesson-v2/73/exercises",
+  objectives: [
+    "أَنْ يَرْتِبَ الْمُتَعَلِّمُ أَحْدَاثًا زَمَنِيَّةً.",
+    "أَنْ يَسْتَعْمِلَ قَبْلَ وَبَعْدَ فِي وَصْفِ الْأَحْدَاثِ.",
+    "أَنْ يَرْبِطَ بَيْنَ أَنْشِطَةِ الْيَوْمِ وَتَسَلْسُلِهَا.",
+    "أَنْ يَقْرَأَ تَسَلْسُلًا بَصَرِيًّا لِأَحْدَاثٍ مُتَعَاقِبَةٍ.",
+  ],
+  slides: [
+    {
+      key: "lesson73_s1",
+      audio_key: "lesson73_s1",
+      title: "أَحْدَاثُ يَوْمِي",
+      image: "/lessons/v2/lesson73/s1.webp",
+      scene_image: "/lessons/v2/lesson73/s1.webp",
+      text: lesson73CanonicalText.lesson73_s1,
+    },
+    {
+      key: "lesson73_s2",
+      audio_key: "lesson73_s2",
+      title: "قَبْلَ وَبَعْدَ",
+      image: "/lessons/v2/lesson73/s2.webp",
+      scene_image: "/lessons/v2/lesson73/s2.webp",
+      text: lesson73CanonicalText.lesson73_s2,
+    },
+    {
+      key: "lesson73_s3",
+      audio_key: "lesson73_s3",
+      title: "أُرَتِّبُ الصُّوَرَ",
+      image: "/lessons/v2/lesson73/s3.webp",
+      scene_image: "/lessons/v2/lesson73/s3.webp",
+      text: lesson73CanonicalText.lesson73_s3,
+    },
+    {
+      key: "lesson73_s4",
+      audio_key: "lesson73_s4",
+      title: "الزَّمَنُ وَالسَّاعَةُ",
+      image: "/lessons/v2/lesson73/s4.webp",
+      scene_image: "/lessons/v2/lesson73/s4.webp",
+      text: lesson73CanonicalText.lesson73_s4,
+    },
+    {
+      key: "lesson73_s5",
+      audio_key: "lesson73_s5",
+      title: "أَرْبِطُ الْحَدَثَ بِوَقْتِهِ",
+      image: "/lessons/v2/lesson73/s5.webp",
+      scene_image: "/lessons/v2/lesson73/s5.webp",
+      text: lesson73CanonicalText.lesson73_s5,
+    },
+    {
+      key: "lesson73_s6",
+      audio_key: "lesson73_s6",
+      title: "أَرْوِي الْأَحْدَاثَ بِالتَّرْتِيبِ",
+      image: "/lessons/v2/lesson73/s6.webp",
+      scene_image: "/lessons/v2/lesson73/s6.webp",
+      text: lesson73CanonicalText.lesson73_s6,
+      is_closing: true,
+      cta_text: "هَيَّا نَتَدَرَّبُ",
+    },
+  ],
+} as const;
+
+export default lesson73;

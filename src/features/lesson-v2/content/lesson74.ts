@@ -1,0 +1,82 @@
+export const lesson74CanonicalText = {
+  lesson74_s1: "لِنُوَاصِلْ عَمَلَنَا مَعَ الْأَعْدَادِ إِلَى تِسْعَةٍ وَسِتِّينَ. نُنَظِّمُ الْعَنَاصِرَ فِي مَجْمُوعَاتٍ مِنْ عَشَرَةٍ لِيَسْهُلَ عَلَيْنَا الْعَدُّ.",
+  lesson74_s2: "عِنْدَمَا نَجْمَعُ عَشَرَةَ عَنَاصِرَ نَحْصُلُ عَلَى عَشْرَةٍ وَاحِدَةٍ. وَبِعَدِّ الْمَجْمُوعَاتِ نَعْرِفُ عَدَدَ الْعَشَرَاتِ.",
+  lesson74_s3: "الْعَنَاصِرُ الَّتِي لَا تُكَوِّنُ عَشْرَةً كَامِلَةً نُسَمِّيهَا وَحَدَاتٍ. فَنَقْرَأُ الْعَدَدَ مِنْ عَدَدِ الْعَشَرَاتِ وَعَدَدِ الْوَحَدَاتِ.",
+  lesson74_s4: "قَدْ نَرَى الْعَدَدَ مُمَثَّلًا بِبَيْضٍ، أَوْ بِأَقْرَاصٍ مُلَوَّنَةٍ، أَوْ بِبِطَاقَاتٍ. نَبْدَأُ دَائِمًا بِعَدِّ الْعَشَرَاتِ ثُمَّ الْوَحَدَاتِ.",
+  lesson74_s5: "نَسْتَطِيعُ أَيْضًا أَنْ نَبْنِيَ عَدَدًا مُعَيَّنًا. نَخْتَارُ الْعَشَرَاتِ الْمُنَاسِبَةَ، ثُمَّ نُضِيفُ الْوَحَدَاتِ حَتَّى نَصِلَ إِلَى الْعَدَدِ الْمَطْلُوبِ.",
+  lesson74_s6: "مُمْتَازٌ! أَصْبَحْنَا نُكَوِّنُ الْأَعْدَادَ إِلَى تِسْعَةٍ وَسِتِّينَ، وَنُفَكِّكُهَا وَنَقْرَأُ تَمْثِيلَاتِهَا بِسُهُولَةٍ. هَيَّا نَتَدَرَّبُ!",
+} as const;
+
+export const lesson74 = {
+  id: "lesson74",
+  lessonKey: "lesson74",
+  num: 74,
+  world_id: "b2c0405e-4559-4813-9a73-82b4f0ab4f4c",
+  sort_order: 5,
+  title: "الْأَعْدَادُ إِلَى 69 (2)",
+  title_fr: "Les nombres jusqu'à 69 (2)",
+  teacher: "khalil",
+  voice: "ar-DZ-IsmaelNeural",
+  audio_base: "/audio/teachers/khalil/lesson_74_numbers_to_69_2",
+  exercisePath: "/lesson-v2/74/exercises",
+  objectives: [
+    "أَنْ يُكَوِّنَ الْمُتَعَلِّمُ أَعْدَادًا مِنْ عَشَرَاتٍ وَوَحَدَاتٍ.",
+    "أَنْ يُفَكِّكَ الْعَدَدَ إِلَى عَشَرَاتٍ وَوَحَدَاتٍ.",
+    "أَنْ يَقْرَأَ تَمْثِيلَاتٍ مُخْتَلِفَةً لِلْعَدَدِ.",
+    "أَنْ يُقَارِنَ بَيْنَ كَمِّيَّاتٍ إِلَى 69.",
+  ],
+  slides: [
+    {
+      key: "lesson74_s1",
+      audio_key: "lesson74_s1",
+      title: "مَجْمُوعَاتٌ مِنْ عَشَرَةٍ",
+      image: "/lessons/v2/lesson74/s1.webp",
+      scene_image: "/lessons/v2/lesson74/s1.webp",
+      text: lesson74CanonicalText.lesson74_s1,
+    },
+    {
+      key: "lesson74_s2",
+      audio_key: "lesson74_s2",
+      title: "أَجْمَعُ الْعَشَرَاتِ",
+      image: "/lessons/v2/lesson74/s2.webp",
+      scene_image: "/lessons/v2/lesson74/s2.webp",
+      text: lesson74CanonicalText.lesson74_s2,
+    },
+    {
+      key: "lesson74_s3",
+      audio_key: "lesson74_s3",
+      title: "عَشَرَاتٌ وَوَحَدَاتٌ",
+      image: "/lessons/v2/lesson74/s3.webp",
+      scene_image: "/lessons/v2/lesson74/s3.webp",
+      text: lesson74CanonicalText.lesson74_s3,
+    },
+    {
+      key: "lesson74_s4",
+      audio_key: "lesson74_s4",
+      title: "أُقَارِنُ 62 وَ56",
+      image: "/lessons/v2/lesson74/s4.webp",
+      scene_image: "/lessons/v2/lesson74/s4.webp",
+      text: lesson74CanonicalText.lesson74_s4,
+    },
+    {
+      key: "lesson74_s5",
+      audio_key: "lesson74_s5",
+      title: "أُكَوِّنُ الْعَدَدَ",
+      image: "/lessons/v2/lesson74/s5.webp",
+      scene_image: "/lessons/v2/lesson74/s5.webp",
+      text: lesson74CanonicalText.lesson74_s5,
+    },
+    {
+      key: "lesson74_s6",
+      audio_key: "lesson74_s6",
+      title: "أُثَبِّتُ مَعْرِفَتِي",
+      image: "/lessons/v2/lesson74/s6.webp",
+      scene_image: "/lessons/v2/lesson74/s6.webp",
+      text: lesson74CanonicalText.lesson74_s6,
+      is_closing: true,
+      cta_text: "هَيَّا نَتَدَرَّبُ",
+    },
+  ],
+} as const;
+
+export default lesson74;
