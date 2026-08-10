@@ -5,6 +5,7 @@ import Lesson66MobilizeKnowledge3Exercises from "../features/lesson-v2/exercises
 import Lesson67Assessment3ArabicExercises from "../features/lesson-v2/exercises-v2/Lesson67Assessment3ArabicExercises";
 import Lesson68Assessment3MathExercises from "../features/lesson-v2/exercises-v2/Lesson68Assessment3MathExercises";
 import Lesson69Assessment3ScienceExercises from "../features/lesson-v2/exercises-v2/Lesson69Assessment3ScienceExercises";
+import Lesson70StraightLinesExercises from "../features/lesson-v2/exercises-v2/Lesson70StraightLinesExercises";
 import Lesson45CompleteTableExercises from "../features/lesson-v2/exercises-v2/Lesson45CompleteTableExercises";
 import Lesson44HalfExercises from "../features/lesson-v2/exercises-v2/Lesson44HalfExercises";
 import Lesson43DoubleExercises from "../features/lesson-v2/exercises-v2/Lesson43DoubleExercises";
@@ -884,6 +885,7 @@ export default function LessonExercisesPage() {
   if (lessonId === "67") return <Lesson67Assessment3ArabicExercises />;
   if (lessonId === "68") return <Lesson68Assessment3MathExercises />;
   if (lessonId === "69") return <Lesson69Assessment3ScienceExercises />;
+  if (lessonId === "70") return <Lesson70StraightLinesExercises />;
   if (lessonId === "46") return <Lesson46HeartBeats2Exercises />;
 
   if (lessonId === "45") return <Lesson45CompleteTableExercises />;

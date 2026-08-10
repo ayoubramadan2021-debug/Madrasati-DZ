@@ -1,0 +1,589 @@
+{
+  "voice": "ar-DZ-IsmaelNeural",
+  "rate": "-6%",
+  "questions": 16,
+  "reports": [
+    {
+      "key": "l70_ex1_q1",
+      "text": "اِخْتَرِ الْخَطَّ الْمُسْتَقِيمَ.",
+      "audio_duration_ms": 2952,
+      "speech_start_ms": 240,
+      "speech_end_ms": 1840,
+      "words": 3,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "اِخْتَرِ",
+            "الْخَطَّ",
+            "الْمُسْتَقِيمَ."
+          ],
+          "start_ms": 240,
+          "end_ms": 1840,
+          "duration_ms": 1600
+        }
+      ],
+      "analysis": {
+        "threshold": 522.4693086467496,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l70_ex1_q2",
+      "text": "أَيُّ خَطٍّ لَا يَنْحَنِي وَلَا يَتَعَرَّجُ؟",
+      "audio_duration_ms": 3696,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2560,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 600,
+          "end_ms": 700,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "خَطٍّ",
+            "لَا",
+            "يَنْحَنِي",
+            "وَلَا",
+            "يَتَعَرَّجُ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2560,
+          "duration_ms": 2340
+        }
+      ],
+      "analysis": {
+        "threshold": 548.88904803077,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l70_ex1_q3",
+      "text": "جِدِ الْخَطَّ الْمُسْتَقِيمَ الْعَمُودِيَّ.",
+      "audio_duration_ms": 3408,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2280,
+      "words": 4,
+      "detected_gaps": [
+        {
+          "start_ms": 760,
+          "end_ms": 860,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "جِدِ",
+            "الْخَطَّ",
+            "الْمُسْتَقِيمَ",
+            "الْعَمُودِيَّ."
+          ],
+          "start_ms": 220,
+          "end_ms": 2280,
+          "duration_ms": 2060
+        }
+      ],
+      "analysis": {
+        "threshold": 433.4134129485958,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l70_ex1_q4",
+      "text": "أَيُّ خَطٍّ مِنْ هَذِهِ الْخُطُوطِ مُسْتَقِيمٌ؟",
+      "audio_duration_ms": 3912,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2860,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 640,
+          "end_ms": 740,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1740,
+          "end_ms": 1840,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "خَطٍّ",
+            "مِنْ",
+            "هَذِهِ",
+            "الْخُطُوطِ",
+            "مُسْتَقِيمٌ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2860,
+          "duration_ms": 2640
+        }
+      ],
+      "analysis": {
+        "threshold": 497.8051370506963,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l70_ex2_q1",
+      "text": "أَيُّ خَطٍّ غَيْرُ مُسْتَقِيمٍ؟",
+      "audio_duration_ms": 3264,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2200,
+      "words": 4,
+      "detected_gaps": [
+        {
+          "start_ms": 680,
+          "end_ms": 800,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "خَطٍّ",
+            "غَيْرُ",
+            "مُسْتَقِيمٍ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2200,
+          "duration_ms": 1980
+        }
+      ],
+      "analysis": {
+        "threshold": 501.1260022748146,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l70_ex2_q2",
+      "text": "اِخْتَرِ الْخَطَّ الْمَائِلَ الْمُسْتَقِيمَ.",
+      "audio_duration_ms": 3480,
+      "speech_start_ms": 260,
+      "speech_end_ms": 2360,
+      "words": 4,
+      "detected_gaps": [
+        {
+          "start_ms": 920,
+          "end_ms": 1020,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "اِخْتَرِ",
+            "الْخَطَّ",
+            "الْمَائِلَ",
+            "الْمُسْتَقِيمَ."
+          ],
+          "start_ms": 260,
+          "end_ms": 2360,
+          "duration_ms": 2100
+        }
+      ],
+      "analysis": {
+        "threshold": 522.9496553852006,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l70_ex2_q3",
+      "text": "أَيُّ خَطٍّ مُتَعَرِّجٌ وَلَيْسَ مُسْتَقِيمًا؟",
+      "audio_duration_ms": 4128,
+      "speech_start_ms": 220,
+      "speech_end_ms": 3040,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 640,
+          "end_ms": 740,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "خَطٍّ",
+            "مُتَعَرِّجٌ",
+            "وَلَيْسَ",
+            "مُسْتَقِيمًا؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 3040,
+          "duration_ms": 2820
+        }
+      ],
+      "analysis": {
+        "threshold": 518.2891947322943,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l70_ex2_q4",
+      "text": "أَيُّ خَطٍّ مُنْحَنٍ وَلَيْسَ مُسْتَقِيمًا؟",
+      "audio_duration_ms": 3744,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2680,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 620,
+          "end_ms": 720,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "خَطٍّ",
+            "مُنْحَنٍ",
+            "وَلَيْسَ",
+            "مُسْتَقِيمًا؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2680,
+          "duration_ms": 2460
+        }
+      ],
+      "analysis": {
+        "threshold": 501.80072367175796,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l70_ex3_q1",
+      "text": "مَا الْأَدَاةُ الَّتِي نَسْتَعْمِلُهَا لِرَسْمِ خَطٍّ مُسْتَقِيمٍ؟",
+      "audio_duration_ms": 4872,
+      "speech_start_ms": 240,
+      "speech_end_ms": 3760,
+      "words": 7,
+      "detected_gaps": [
+        {
+          "start_ms": 2620,
+          "end_ms": 2720,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2780,
+          "end_ms": 2880,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 3360,
+          "end_ms": 3460,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "مَا",
+            "الْأَدَاةُ",
+            "الَّتِي",
+            "نَسْتَعْمِلُهَا",
+            "لِرَسْمِ",
+            "خَطٍّ",
+            "مُسْتَقِيمٍ؟"
+          ],
+          "start_ms": 240,
+          "end_ms": 3760,
+          "duration_ms": 3520
+        }
+      ],
+      "analysis": {
+        "threshold": 546.6228708113126,
+        "fallback": false,
+        "speech_runs": 4
+      }
+    },
+    {
+      "key": "l70_ex3_q2",
+      "text": "مَاذَا نَفْعَلُ بِالْمِسْطَرَةِ قَبْلَ الرَّسْمِ؟",
+      "audio_duration_ms": 3840,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2760,
+      "words": 5,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "مَاذَا",
+            "نَفْعَلُ",
+            "بِالْمِسْطَرَةِ",
+            "قَبْلَ",
+            "الرَّسْمِ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2760,
+          "duration_ms": 2540
+        }
+      ],
+      "analysis": {
+        "threshold": 556.2408755557816,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l70_ex3_q3",
+      "text": "أَيْنَ نُمَرِّرُ الْقَلَمَ عِنْدَ الرَّسْمِ بِالْمِسْطَرَةِ؟",
+      "audio_duration_ms": 3960,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2940,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 1080,
+          "end_ms": 1180,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيْنَ",
+            "نُمَرِّرُ",
+            "الْقَلَمَ",
+            "عِنْدَ",
+            "الرَّسْمِ",
+            "بِالْمِسْطَرَةِ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2940,
+          "duration_ms": 2720
+        }
+      ],
+      "analysis": {
+        "threshold": 571.7520599462782,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l70_ex3_q4",
+      "text": "اِخْتَرِ الطَّرِيقَةَ الصَّحِيحَةَ لِرَسْمِ خَطٍّ مُسْتَقِيمٍ.",
+      "audio_duration_ms": 4824,
+      "speech_start_ms": 260,
+      "speech_end_ms": 3760,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 700,
+          "end_ms": 820,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 2580,
+          "end_ms": 2680,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2760,
+          "end_ms": 2860,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "اِخْتَرِ",
+            "الطَّرِيقَةَ",
+            "الصَّحِيحَةَ",
+            "لِرَسْمِ",
+            "خَطٍّ",
+            "مُسْتَقِيمٍ."
+          ],
+          "start_ms": 260,
+          "end_ms": 3760,
+          "duration_ms": 3500
+        }
+      ],
+      "analysis": {
+        "threshold": 487.8581889943369,
+        "fallback": false,
+        "speech_runs": 4
+      }
+    },
+    {
+      "key": "l70_ex4_q1",
+      "text": "اِرْبِطْ بَيْنَ النُّقْطَتَيْنِ بِخَطٍّ مُسْتَقِيمٍ.",
+      "audio_duration_ms": 4152,
+      "speech_start_ms": 240,
+      "speech_end_ms": 3080,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 2080,
+          "end_ms": 2180,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "اِرْبِطْ",
+            "بَيْنَ",
+            "النُّقْطَتَيْنِ",
+            "بِخَطٍّ",
+            "مُسْتَقِيمٍ."
+          ],
+          "start_ms": 240,
+          "end_ms": 3080,
+          "duration_ms": 2840
+        }
+      ],
+      "analysis": {
+        "threshold": 491.78284869156175,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l70_ex4_q2",
+      "text": "اِرْسُمْ خَطًّا مُسْتَقِيمًا مِنَ النُّقْطَةِ الْأُولَى إِلَى الثَّانِيَةِ.",
+      "audio_duration_ms": 4968,
+      "speech_start_ms": 240,
+      "speech_end_ms": 3940,
+      "words": 8,
+      "detected_gaps": [
+        {
+          "start_ms": 3360,
+          "end_ms": 3480,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "اِرْسُمْ",
+            "خَطًّا",
+            "مُسْتَقِيمًا",
+            "مِنَ",
+            "النُّقْطَةِ",
+            "الْأُولَى",
+            "إِلَى",
+            "الثَّانِيَةِ."
+          ],
+          "start_ms": 240,
+          "end_ms": 3940,
+          "duration_ms": 3700
+        }
+      ],
+      "analysis": {
+        "threshold": 518.5905451588781,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l70_ex4_q3",
+      "text": "صِلْ بَيْنَ النُّقْطَتَيْنِ بِخَطٍّ مُسْتَقِيمٍ مَائِلٍ.",
+      "audio_duration_ms": 4464,
+      "speech_start_ms": 240,
+      "speech_end_ms": 3380,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 1900,
+          "end_ms": 2000,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "صِلْ",
+            "بَيْنَ",
+            "النُّقْطَتَيْنِ",
+            "بِخَطٍّ",
+            "مُسْتَقِيمٍ",
+            "مَائِلٍ."
+          ],
+          "start_ms": 240,
+          "end_ms": 3380,
+          "duration_ms": 3140
+        }
+      ],
+      "analysis": {
+        "threshold": 510.1355842389159,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l70_ex4_q4",
+      "text": "أَكْمِلْ رَبْطَ النُّقْطَتَيْنِ بِخَطٍّ مُسْتَقِيمٍ.",
+      "audio_duration_ms": 3984,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2900,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 280,
+          "end_ms": 380,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 700,
+          "end_ms": 800,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1040,
+          "end_ms": 1180,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 1920,
+          "end_ms": 2040,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 2500,
+          "end_ms": 2600,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَكْمِلْ",
+            "رَبْطَ",
+            "النُّقْطَتَيْنِ",
+            "بِخَطٍّ",
+            "مُسْتَقِيمٍ."
+          ],
+          "start_ms": 220,
+          "end_ms": 2900,
+          "duration_ms": 2680
+        }
+      ],
+      "analysis": {
+        "threshold": 527.8973529366292,
+        "fallback": false,
+        "speech_runs": 6
+      }
+    }
+  ]
+}
