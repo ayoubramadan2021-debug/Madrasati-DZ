@@ -12,7 +12,7 @@ const KEYWORDS_RAW = [
 
 // يزيل التشكيل + يوحّد الهمزات/الألفات + التطويل والمسافات
 function normalize(s) {
-  return s
+  return String(s ?? "")
     .replace(/[\u064B-\u0652\u0670\u0640]/g, "")
     .replace(/[أإآا]/g, "ا")
     .replace(/[ةه]/g, "ه")

@@ -1,0 +1,24 @@
+{
+  "lesson": 75,
+  "reference_generator": "generate_lesson71_exercises_audio.py",
+  "reference_sha256": "a7cb90304dd39c4e7f0e3202a78750834c30a2b09b41a81bfdb0384f9246f56e",
+  "rate": "-6%",
+  "hashes": {
+    "l75_ex1_q2": "9b509f7facd51ed7624ec5728750f85046e253a2d6e135dc0998f93906a9e79f",
+    "l75_ex1_q1": "489d08ddfca1288e972700dce9e2e1a27b19fde1ba4d2be3f1b0a48254dba30a",
+    "l75_ex1_q3": "f126dfb3b88f133c77420a4aefe37087e95ef80c1e37cd257cdbc347451dcb0d",
+    "l75_ex2_q2": "8cb16107554317989078ffd924a34fbca4c020e5e4365ca0f9f8ebe3dbbfed1f",
+    "l75_ex1_q4": "10007c70cf47b96bfd4aabc1817eee19a42fd768a1b93a8c5b4a226aef8138c8",
+    "l75_ex2_q1": "074e2809dde9dea081caafa8a261590a901c90e49d522e9820b2d5c36fe3ada5",
+    "l75_ex2_q3": "0b127a6eaeaed680c8b91896c41d7a331355a758ff29afa5cde650ca7aac7c69",
+    "l75_ex3_q1": "dc3e809df0e8d386936d578bc638067b7efcd13afde4546fd14f875f18a5fe47",
+    "l75_ex2_q4": "d09cd4514ec42ffa01e3fa1e1afe1fdf0ec3eb27e860852e7653491dfa3ae0cb",
+    "l75_ex3_q3": "486c77e961dec241fa00f18407f3aa6321f35d17d699fd36c9d92d234bb7e1da",
+    "l75_ex3_q2": "2d90bd5f2372a9c62c4b4c28fb0bc87873b5241a00c9550bdfbec6353c494825",
+    "l75_ex3_q4": "26567db9208542721671e4e553c326ae9cccf7dfd32c5187fa2200c5def8ca98",
+    "l75_ex4_q1": "7813156cca071b25cdf96b2e8b990cd4a7209c573122c027ccbfac24aecef013",
+    "l75_ex4_q3": "7813156cca071b25cdf96b2e8b990cd4a7209c573122c027ccbfac24aecef013",
+    "l75_ex4_q2": "7813156cca071b25cdf96b2e8b990cd4a7209c573122c027ccbfac24aecef013",
+    "l75_ex4_q4": "7813156cca071b25cdf96b2e8b990cd4a7209c573122c027ccbfac24aecef013"
+  }
+}

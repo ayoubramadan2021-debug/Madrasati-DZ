@@ -75,7 +75,7 @@ Lesson51ExercisesPage() {
 
   if (!mission) {
     const nextPath =
-      `/world/${WORLD_ID}`;
+      "/world2-lesson/52";
 
     const quizPath =
       `/world/${WORLD_ID}/quiz`;

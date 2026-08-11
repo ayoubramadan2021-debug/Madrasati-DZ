@@ -1,0 +1,684 @@
+{
+  "lesson": 76,
+  "teacher": "taline",
+  "voice": "ar-DZ-AminaNeural",
+  "rate": "-6%",
+  "reference_generator": "generate_lesson71_exercises_audio.py",
+  "reference_sha256": "a7cb90304dd39c4e7f0e3202a78750834c30a2b09b41a81bfdb0384f9246f56e",
+  "questions": 16,
+  "reused": 0,
+  "generated_or_repaired": 16,
+  "reports": [
+    {
+      "key": "l76_ex1_q1",
+      "text": "أَيُّ حَدَثٍ يَقَعُ فِي بِدَايَةِ يَوْمِنَا؟",
+      "status": "generated",
+      "audio_duration_ms": 3912,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2900,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 1160,
+          "end_ms": 1260,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "حَدَثٍ",
+            "يَقَعُ",
+            "فِي",
+            "بِدَايَةِ",
+            "يَوْمِنَا؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2900,
+          "duration_ms": 2680
+        }
+      ],
+      "analysis": {
+        "threshold": 598.1891296300025,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l76_ex1_q2",
+      "text": "أَيُّ حَدَثٍ يَقَعُ عَادَةً فِي نِهَايَةِ الْيَوْمِ؟",
+      "status": "generated",
+      "audio_duration_ms": 4320,
+      "speech_start_ms": 220,
+      "speech_end_ms": 3300,
+      "words": 7,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "حَدَثٍ",
+            "يَقَعُ",
+            "عَادَةً",
+            "فِي",
+            "نِهَايَةِ",
+            "الْيَوْمِ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 3300,
+          "duration_ms": 3080
+        }
+      ],
+      "analysis": {
+        "threshold": 608.480530347418,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l76_ex1_q3",
+      "text": "مَا الَّذِي يَأْتِي قَبْلَ الْعَوْدَةِ مِنَ الْمَدْرَسَةِ؟",
+      "status": "generated",
+      "audio_duration_ms": 4032,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2980,
+      "words": 7,
+      "detected_gaps": [
+        {
+          "start_ms": 920,
+          "end_ms": 1020,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2740,
+          "end_ms": 2840,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "مَا",
+            "الَّذِي",
+            "يَأْتِي",
+            "قَبْلَ",
+            "الْعَوْدَةِ",
+            "مِنَ",
+            "الْمَدْرَسَةِ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2980,
+          "duration_ms": 2760
+        }
+      ],
+      "analysis": {
+        "threshold": 562.34741712058,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l76_ex1_q4",
+      "text": "مَا الَّذِي يَأْتِي بَعْدَ الِاسْتِيقَاظِ؟",
+      "status": "generated",
+      "audio_duration_ms": 3336,
+      "speech_start_ms": 200,
+      "speech_end_ms": 2340,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 940,
+          "end_ms": 1040,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1600,
+          "end_ms": 1740,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 1820,
+          "end_ms": 1940,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "مَا",
+            "الَّذِي",
+            "يَأْتِي",
+            "بَعْدَ",
+            "الِاسْتِيقَاظِ؟"
+          ],
+          "start_ms": 200,
+          "end_ms": 2340,
+          "duration_ms": 2140
+        }
+      ],
+      "analysis": {
+        "threshold": 679.8925182786246,
+        "fallback": false,
+        "speech_runs": 4
+      }
+    },
+    {
+      "key": "l76_ex2_q1",
+      "text": "الْوِلَادَةُ تَحْدُثُ ... الدُّخُولِ إِلَى الْمَدْرَسَةِ.",
+      "status": "generated",
+      "audio_duration_ms": 5184,
+      "speech_start_ms": 220,
+      "speech_end_ms": 4140,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 1380,
+          "end_ms": 2660,
+          "duration_ms": 1280
+        },
+        {
+          "start_ms": 2920,
+          "end_ms": 3020,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 3900,
+          "end_ms": 4000,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "الْوِلَادَةُ",
+            "تَحْدُثُ",
+            "..."
+          ],
+          "start_ms": 220,
+          "end_ms": 1380,
+          "duration_ms": 1160
+        },
+        {
+          "words": [
+            "الدُّخُولِ",
+            "إِلَى",
+            "الْمَدْرَسَةِ."
+          ],
+          "start_ms": 2660,
+          "end_ms": 4140,
+          "duration_ms": 1480
+        }
+      ],
+      "analysis": {
+        "threshold": 563.8651441249606,
+        "fallback": false,
+        "speech_runs": 4
+      }
+    },
+    {
+      "key": "l76_ex2_q2",
+      "text": "الدُّخُولُ إِلَى الْمَدْرَسَةِ يَحْدُثُ ... الْوِلَادَةِ.",
+      "status": "generated",
+      "audio_duration_ms": 5232,
+      "speech_start_ms": 220,
+      "speech_end_ms": 4200,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 1940,
+          "end_ms": 2040,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2200,
+          "end_ms": 3500,
+          "duration_ms": 1300
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "الدُّخُولُ",
+            "إِلَى",
+            "الْمَدْرَسَةِ",
+            "يَحْدُثُ",
+            "..."
+          ],
+          "start_ms": 220,
+          "end_ms": 2200,
+          "duration_ms": 1980
+        },
+        {
+          "words": [
+            "الْوِلَادَةِ."
+          ],
+          "start_ms": 3500,
+          "end_ms": 4200,
+          "duration_ms": 700
+        }
+      ],
+      "analysis": {
+        "threshold": 568.4704833146573,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l76_ex2_q3",
+      "text": "إِذَا أَكَلْتُ ثُمَّ غَسَلْتُ أَسْنَانِي، فَغَسْلُ الْأَسْنَانِ حَدَثَ...",
+      "status": "generated",
+      "audio_duration_ms": 5448,
+      "speech_start_ms": 200,
+      "speech_end_ms": 4260,
+      "words": 8,
+      "detected_gaps": [
+        {
+          "start_ms": 1480,
+          "end_ms": 1580,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1960,
+          "end_ms": 2060,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2520,
+          "end_ms": 2860,
+          "duration_ms": 340
+        },
+        {
+          "start_ms": 3100,
+          "end_ms": 3220,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 3500,
+          "end_ms": 3620,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "إِذَا",
+            "أَكَلْتُ",
+            "ثُمَّ",
+            "غَسَلْتُ",
+            "أَسْنَانِي،"
+          ],
+          "start_ms": 200,
+          "end_ms": 2520,
+          "duration_ms": 2320
+        },
+        {
+          "words": [
+            "فَغَسْلُ",
+            "الْأَسْنَانِ",
+            "حَدَثَ..."
+          ],
+          "start_ms": 2860,
+          "end_ms": 4260,
+          "duration_ms": 1400
+        }
+      ],
+      "analysis": {
+        "threshold": 561.8052876084316,
+        "fallback": false,
+        "speech_runs": 6
+      }
+    },
+    {
+      "key": "l76_ex2_q4",
+      "text": "إِذَا لَعِبْتُ بَعْدَ إِنْجَازِ الْوَاجِبِ، فَالْوَاجِبُ حَدَثَ...",
+      "status": "generated",
+      "audio_duration_ms": 5040,
+      "speech_start_ms": 220,
+      "speech_end_ms": 3860,
+      "words": 7,
+      "detected_gaps": [
+        {
+          "start_ms": 780,
+          "end_ms": 900,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 2420,
+          "end_ms": 2840,
+          "duration_ms": 420
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "إِذَا",
+            "لَعِبْتُ",
+            "بَعْدَ",
+            "إِنْجَازِ",
+            "الْوَاجِبِ،"
+          ],
+          "start_ms": 220,
+          "end_ms": 2420,
+          "duration_ms": 2200
+        },
+        {
+          "words": [
+            "فَالْوَاجِبُ",
+            "حَدَثَ..."
+          ],
+          "start_ms": 2840,
+          "end_ms": 3860,
+          "duration_ms": 1020
+        }
+      ],
+      "analysis": {
+        "threshold": 548.3639395924513,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l76_ex3_q1",
+      "text": "أَيُّ وَقْتٍ نَرْبِطُهُ بِالِاسْتِيقَاظِ؟",
+      "status": "generated",
+      "audio_duration_ms": 3600,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2600,
+      "words": 4,
+      "detected_gaps": [
+        {
+          "start_ms": 640,
+          "end_ms": 780,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 1860,
+          "end_ms": 2000,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 2100,
+          "end_ms": 2200,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "وَقْتٍ",
+            "نَرْبِطُهُ",
+            "بِالِاسْتِيقَاظِ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2600,
+          "duration_ms": 2380
+        }
+      ],
+      "analysis": {
+        "threshold": 575.4871265325468,
+        "fallback": false,
+        "speech_runs": 4
+      }
+    },
+    {
+      "key": "l76_ex3_q2",
+      "text": "أَيُّ وَقْتٍ نَرْبِطُهُ بِالنَّوْمِ؟",
+      "status": "generated",
+      "audio_duration_ms": 3312,
+      "speech_start_ms": 200,
+      "speech_end_ms": 2280,
+      "words": 4,
+      "detected_gaps": [
+        {
+          "start_ms": 620,
+          "end_ms": 780,
+          "duration_ms": 160
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "وَقْتٍ",
+            "نَرْبِطُهُ",
+            "بِالنَّوْمِ؟"
+          ],
+          "start_ms": 200,
+          "end_ms": 2280,
+          "duration_ms": 2080
+        }
+      ],
+      "analysis": {
+        "threshold": 543.3024355035255,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l76_ex3_q3",
+      "text": "مَا الَّذِي يُسَاعِدُنَا عَلَى تَحْدِيدِ وَقْتِ الْحَدَثِ؟",
+      "status": "generated",
+      "audio_duration_ms": 4320,
+      "speech_start_ms": 200,
+      "speech_end_ms": 3100,
+      "words": 7,
+      "detected_gaps": [
+        {
+          "start_ms": 2480,
+          "end_ms": 2640,
+          "duration_ms": 160
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "مَا",
+            "الَّذِي",
+            "يُسَاعِدُنَا",
+            "عَلَى",
+            "تَحْدِيدِ",
+            "وَقْتِ",
+            "الْحَدَثِ؟"
+          ],
+          "start_ms": 200,
+          "end_ms": 3100,
+          "duration_ms": 2900
+        }
+      ],
+      "analysis": {
+        "threshold": 546.1351788167926,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l76_ex3_q4",
+      "text": "لِوَصْفِ تَسَلْسُلِ الْأَحْدَاثِ نَسْتَعْمِلُ...",
+      "status": "generated",
+      "audio_duration_ms": 3816,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2760,
+      "words": 4,
+      "detected_gaps": [
+        {
+          "start_ms": 560,
+          "end_ms": 720,
+          "duration_ms": 160
+        },
+        {
+          "start_ms": 2160,
+          "end_ms": 2280,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "لِوَصْفِ",
+            "تَسَلْسُلِ",
+            "الْأَحْدَاثِ",
+            "نَسْتَعْمِلُ..."
+          ],
+          "start_ms": 220,
+          "end_ms": 2760,
+          "duration_ms": 2540
+        }
+      ],
+      "analysis": {
+        "threshold": 584.2808042978457,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l76_ex4_q1",
+      "text": "رَتِّبْ أَحْدَاثَ يَوْمٍ دِرَاسِيٍّ.",
+      "status": "generated",
+      "audio_duration_ms": 3360,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2340,
+      "words": 4,
+      "detected_gaps": [
+        {
+          "start_ms": 400,
+          "end_ms": 500,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1940,
+          "end_ms": 2060,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "رَتِّبْ",
+            "أَحْدَاثَ",
+            "يَوْمٍ",
+            "دِرَاسِيٍّ."
+          ],
+          "start_ms": 220,
+          "end_ms": 2340,
+          "duration_ms": 2120
+        }
+      ],
+      "analysis": {
+        "threshold": 602.1267798580193,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l76_ex4_q2",
+      "text": "رَتِّبْ هَذِهِ الْأَحْدَاثَ فِي الْحَيَاةِ.",
+      "status": "generated",
+      "audio_duration_ms": 3528,
+      "speech_start_ms": 200,
+      "speech_end_ms": 2260,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 400,
+          "end_ms": 500,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "رَتِّبْ",
+            "هَذِهِ",
+            "الْأَحْدَاثَ",
+            "فِي",
+            "الْحَيَاةِ."
+          ],
+          "start_ms": 200,
+          "end_ms": 2260,
+          "duration_ms": 2060
+        }
+      ],
+      "analysis": {
+        "threshold": 531.8447579113782,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l76_ex4_q3",
+      "text": "رَتِّبْ أَنْشِطَةَ الْمَسَاءِ.",
+      "status": "generated",
+      "audio_duration_ms": 3048,
+      "speech_start_ms": 200,
+      "speech_end_ms": 1860,
+      "words": 3,
+      "detected_gaps": [
+        {
+          "start_ms": 400,
+          "end_ms": 520,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 1540,
+          "end_ms": 1640,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "رَتِّبْ",
+            "أَنْشِطَةَ",
+            "الْمَسَاءِ."
+          ],
+          "start_ms": 200,
+          "end_ms": 1860,
+          "duration_ms": 1660
+        }
+      ],
+      "analysis": {
+        "threshold": 530.0078236633635,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l76_ex4_q4",
+      "text": "رَتِّبْ مِنْ بِدَايَةِ الْيَوْمِ إِلَى نِهَايَتِهِ.",
+      "status": "generated",
+      "audio_duration_ms": 4032,
+      "speech_start_ms": 200,
+      "speech_end_ms": 2960,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 400,
+          "end_ms": 520,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "رَتِّبْ",
+            "مِنْ",
+            "بِدَايَةِ",
+            "الْيَوْمِ",
+            "إِلَى",
+            "نِهَايَتِهِ."
+          ],
+          "start_ms": 200,
+          "end_ms": 2960,
+          "duration_ms": 2760
+        }
+      ],
+      "analysis": {
+        "threshold": 611.93839968553,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    }
+  ]
+}

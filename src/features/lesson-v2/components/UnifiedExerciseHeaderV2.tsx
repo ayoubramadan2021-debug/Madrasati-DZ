@@ -28,6 +28,7 @@ export default function UnifiedExerciseHeaderV2({
     <>
       <div style={styles.topBar}>
         <button
+      className="unified-exercise-header-v2__sound"
           type="button"
           onClick={onReplay}
           aria-label="إعادة سماع السؤال"
@@ -37,12 +38,14 @@ export default function UnifiedExerciseHeaderV2({
           🔊
         </button>
 
-        <div style={styles.counter} dir="ltr">
+        <div
+      className="unified-exercise-header-v2__counter" style={styles.counter} dir="ltr">
           {index + 1} / {total}
         </div>
       </div>
 
-      <div style={styles.progressDots}>
+      <div
+      className="unified-exercise-header-v2__progress" style={styles.progressDots}>
         {Array.from({ length: total }).map((_, i) => (
           <span
             key={i}
@@ -60,7 +63,8 @@ export default function UnifiedExerciseHeaderV2({
         ))}
       </div>
 
-      <div style={styles.missionPill}>
+      <div
+      className="unified-exercise-header-v2__mission" style={styles.missionPill}>
         <strong>{missionTitle}</strong>
       </div>
     </>
@@ -93,13 +97,13 @@ const styles: Record<string, CSSProperties> = {
   },
 
   soundBtn: {
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
     borderRadius: "50%",
     border: "5px solid #fff",
     background: COLORS.gold,
     color: "#fff",
-    fontSize: 23,
+    fontSize: 30,
     boxShadow: "0 6px 14px rgba(0,0,0,.14)",
     cursor: "pointer",
     display: "grid",

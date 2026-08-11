@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { isKeyword } from "../keywords";
+import UnifiedExerciseKaraokeV2 from "../components/UnifiedExerciseKaraokeV2";
 
 // ═══════════════════════════════════════════════════════════════
 // TapSelectWordsV2 — انقر الكلمة الصحيحة
@@ -53,6 +53,7 @@ function useKaraoke(audioBase: string) {
     timersRef.current = [];
     setActiveKey(null);
     setCurrentIdx(-1);
+    setShown(new Set());
   }, []);
 
   const play = useCallback(async (key: string, words: WordTiming[]) => {
@@ -184,7 +185,22 @@ export default function TapSelectWordsV2({
 
   if (!item) return null;
   const words = timings[item.question_audio_key];
-  const isActive = karaoke.activeKey === item.question_audio_key;
+
+  const karaokeWords =
+    words?.length
+      ? words.map((word) => word.text)
+      : item.question
+          .split(/\s+/)
+          .map((word) => word.trim())
+          .filter(Boolean);
+
+  const isActive =
+    karaoke.activeKey === item.question_audio_key;
+
+  const shownWordCount =
+    karaoke.shown.size > 0
+      ? Math.max(...karaoke.shown) + 1
+      : 0;
 
   const progressEmoji = "⭐";
   const missionText = `مهمة الاختيار ${itemIdx + 1}`;
@@ -222,14 +238,14 @@ export default function TapSelectWordsV2({
         backgroundSize: "240% auto",
         backgroundPosition: "center 45%",
         backgroundRepeat: "no-repeat",
-        
-        
-        
-         
-        
+
+
+
+
+
         filter: "brightness(0.97)",
-        
-        
+
+
       }} />
 
       {/* Bottom gradient for readability */}
@@ -362,37 +378,30 @@ export default function TapSelectWordsV2({
       </div>
 
       {/* Question bubble */}
-      <div style={{
-        position: "relative", zIndex: 2,
-        padding: "0 16px 12px",
-      }}>
-        <div onClick={replayQuestion} style={{
-          background: "rgba(255,255,255,0.96)",
-          border: `2px solid ${C.gold}`,
-          borderRadius: 18,
-          padding: "12px 16px",
-          maxWidth: 760, margin: "0 auto",
-          minHeight: 50,
-          fontSize: 16, lineHeight: 1.6,
-          textAlign: "center",
-          boxShadow: "0 6px 20px rgba(0,0,0,.15)",
-          cursor: "pointer",
-        }}>
-          {words ? words.map((w, i) => {
-            const isShown = karaoke.activeKey ? karaoke.shown.has(i) : false;
-            const isCurrent = isActive && karaoke.currentIdx === i;
-            return (
-              <span key={i} style={{
-                display: "inline-block",
-                opacity: isShown ? 1 : 0,
-                transform: isCurrent ? "translateY(-3px) scale(1.1)" : "translateY(0)",
-                color: isCurrent ? C.gold : (isKeyword(w.text) ? "#16a34a" : C.navyDeep),
-                fontWeight: isCurrent ? 900 : 700,
-                transition: "all .25s ease",
-                margin: "0 2px",
-              }}>{w.text} </span>
-            );
-          }) : <span style={{ opacity: 0.5 }}>...</span>}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 2,
+          padding: "0 16px 12px",
+        }}
+      >
+        <div
+          onClick={replayQuestion}
+          style={{
+            cursor: "pointer",
+          }}
+        >
+          <UnifiedExerciseKaraokeV2
+            words={karaokeWords}
+            activeIndex={
+              isActive
+                ? karaoke.currentIdx
+                : -1
+            }
+            shownWordCount={
+              shownWordCount
+            }
+          />
         </div>
       </div>
 

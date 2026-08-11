@@ -389,3 +389,21 @@ npm run dev -- --host 0.0.0.0
 - Production build مطلوب قبل نشر هذا milestone.
 
 <!-- LESSONS_70_85_END -->
+
+## ✅ MILESTONE — SMALL CITY WORLD COMPLETE — 2026-08-11
+
+- عالم «المدينة الصغيرة» مكتمل بالدروس والتمارين حتى Lesson 85.
+- تمارين 71→85 خضعت لمراجعة Premium بيداغوجية وبصرية.
+- المحرك المركزي المعتمد: UnifiedLessonExercisesV2.
+- Custom Activity Engines مسؤولة عن Interaction + Evaluation فقط.
+- تم اعتماد وتحسين محركات Premium القابلة لإعادة الاستعمال.
+- Audio / Karaoke / Feedback / Navigation / Completion بقيت مركزية.
+- Lesson85 هو آخر درس في العالم.
+- SMALL_CITY_WORLD_ID: b2c0405e-4559-4813-9a73-82b4f0ab4f4c
+- Lesson85: nextPath = SMALL_CITY_HOME
+- Lesson85: nextLabel = "العودة إلى العالم"
+- quizPath = SMALL_CITY_QUIZ
+- صفحة النهاية تعمل: العودة إلى العالم + إعادة التمارين + اختبار العالم.
+- Production build مكتمل بنجاح.
+- الدروس والتمارين 70→85 أصبحت PROTECTED BASELINE.
+- الخطوة التالية: بدء عالم جديد بـ READ-ONLY AUDIT.

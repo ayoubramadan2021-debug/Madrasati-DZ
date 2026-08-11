@@ -1,0 +1,684 @@
+{
+  "lesson": 81,
+  "teacher": "khalil",
+  "voice": "ar-DZ-IsmaelNeural",
+  "rate": "-6%",
+  "reference_generator": "generate_lesson71_exercises_audio.py",
+  "reference_sha256": "a7cb90304dd39c4e7f0e3202a78750834c30a2b09b41a81bfdb0384f9246f56e",
+  "questions": 16,
+  "reused": 0,
+  "generated_or_repaired": 16,
+  "reports": [
+    {
+      "key": "l81_ex1_q1",
+      "text": "مَا الْعَشْرَةُ الَّتِي تَأْتِي بَعْدَ 20؟",
+      "status": "generated",
+      "audio_duration_ms": 3720,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2700,
+      "words": 6,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "مَا",
+            "الْعَشْرَةُ",
+            "الَّتِي",
+            "تَأْتِي",
+            "بَعْدَ",
+            "20؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2700,
+          "duration_ms": 2480
+        }
+      ],
+      "analysis": {
+        "threshold": 499.93975903290084,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l81_ex1_q2",
+      "text": "مَا الْعَشْرَةُ الَّتِي تَأْتِي بَعْدَ 40؟",
+      "status": "generated",
+      "audio_duration_ms": 3888,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2840,
+      "words": 6,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "مَا",
+            "الْعَشْرَةُ",
+            "الَّتِي",
+            "تَأْتِي",
+            "بَعْدَ",
+            "40؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2840,
+          "duration_ms": 2620
+        }
+      ],
+      "analysis": {
+        "threshold": 524.4535663139064,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l81_ex1_q3",
+      "text": "أَكْمِلْ: 30، 40، 50، ...",
+      "status": "generated",
+      "audio_duration_ms": 5136,
+      "speech_start_ms": 220,
+      "speech_end_ms": 4040,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 300,
+          "end_ms": 400,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 680,
+          "end_ms": 1080,
+          "duration_ms": 400
+        },
+        {
+          "start_ms": 1360,
+          "end_ms": 1460,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1860,
+          "end_ms": 2160,
+          "duration_ms": 300
+        },
+        {
+          "start_ms": 3000,
+          "end_ms": 3380,
+          "duration_ms": 380
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَكْمِلْ:"
+          ],
+          "start_ms": 220,
+          "end_ms": 680,
+          "duration_ms": 460
+        },
+        {
+          "words": [
+            "30،"
+          ],
+          "start_ms": 1080,
+          "end_ms": 1360,
+          "duration_ms": 280
+        },
+        {
+          "words": [
+            "40،"
+          ],
+          "start_ms": 1460,
+          "end_ms": 1860,
+          "duration_ms": 400
+        },
+        {
+          "words": [
+            "50،"
+          ],
+          "start_ms": 2160,
+          "end_ms": 3000,
+          "duration_ms": 840
+        },
+        {
+          "words": [
+            "..."
+          ],
+          "start_ms": 3380,
+          "end_ms": 4040,
+          "duration_ms": 660
+        }
+      ],
+      "analysis": {
+        "threshold": 556.1781732806211,
+        "fallback": false,
+        "speech_runs": 6
+      }
+    },
+    {
+      "key": "l81_ex1_q4",
+      "text": "أَكْمِلْ: 50، 60، 70، ...",
+      "status": "generated",
+      "audio_duration_ms": 4896,
+      "speech_start_ms": 240,
+      "speech_end_ms": 3840,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 340,
+          "end_ms": 460,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 680,
+          "end_ms": 1060,
+          "duration_ms": 380
+        },
+        {
+          "start_ms": 1760,
+          "end_ms": 2060,
+          "duration_ms": 300
+        },
+        {
+          "start_ms": 2260,
+          "end_ms": 2400,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 2840,
+          "end_ms": 3140,
+          "duration_ms": 300
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَكْمِلْ:"
+          ],
+          "start_ms": 240,
+          "end_ms": 680,
+          "duration_ms": 440
+        },
+        {
+          "words": [
+            "50،"
+          ],
+          "start_ms": 1060,
+          "end_ms": 1760,
+          "duration_ms": 700
+        },
+        {
+          "words": [
+            "60،"
+          ],
+          "start_ms": 2060,
+          "end_ms": 2260,
+          "duration_ms": 200
+        },
+        {
+          "words": [
+            "70،"
+          ],
+          "start_ms": 2400,
+          "end_ms": 2840,
+          "duration_ms": 440
+        },
+        {
+          "words": [
+            "..."
+          ],
+          "start_ms": 3140,
+          "end_ms": 3840,
+          "duration_ms": 700
+        }
+      ],
+      "analysis": {
+        "threshold": 576.1524774821588,
+        "fallback": false,
+        "speech_runs": 6
+      }
+    },
+    {
+      "key": "l81_ex2_q1",
+      "text": "47 يُمْكِنُ تَفْكِيكُهُ إِلَى...",
+      "status": "generated",
+      "audio_duration_ms": 4080,
+      "speech_start_ms": 220,
+      "speech_end_ms": 3020,
+      "words": 4,
+      "detected_gaps": [
+        {
+          "start_ms": 2160,
+          "end_ms": 2320,
+          "duration_ms": 160
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "47",
+            "يُمْكِنُ",
+            "تَفْكِيكُهُ",
+            "إِلَى..."
+          ],
+          "start_ms": 220,
+          "end_ms": 3020,
+          "duration_ms": 2800
+        }
+      ],
+      "analysis": {
+        "threshold": 549.5423183178775,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l81_ex2_q2",
+      "text": "63 يُمْكِنُ تَفْكِيكُهُ إِلَى...",
+      "status": "generated",
+      "audio_duration_ms": 4152,
+      "speech_start_ms": 300,
+      "speech_end_ms": 3020,
+      "words": 4,
+      "detected_gaps": [
+        {
+          "start_ms": 1060,
+          "end_ms": 1180,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 1720,
+          "end_ms": 1820,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2160,
+          "end_ms": 2320,
+          "duration_ms": 160
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "63",
+            "يُمْكِنُ",
+            "تَفْكِيكُهُ",
+            "إِلَى..."
+          ],
+          "start_ms": 300,
+          "end_ms": 3020,
+          "duration_ms": 2720
+        }
+      ],
+      "analysis": {
+        "threshold": 574.1691200639408,
+        "fallback": false,
+        "speech_runs": 4
+      }
+    },
+    {
+      "key": "l81_ex2_q3",
+      "text": "50 + 6 = ؟",
+      "status": "generated",
+      "audio_duration_ms": 3288,
+      "speech_start_ms": 300,
+      "speech_end_ms": 2200,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 1360,
+          "end_ms": 1500,
+          "duration_ms": 140
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "50",
+            "+",
+            "6",
+            "=",
+            "؟"
+          ],
+          "start_ms": 300,
+          "end_ms": 2200,
+          "duration_ms": 1900
+        }
+      ],
+      "analysis": {
+        "threshold": 550.9145258681241,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l81_ex2_q4",
+      "text": "30 + 9 = ؟",
+      "status": "generated",
+      "audio_duration_ms": 3336,
+      "speech_start_ms": 300,
+      "speech_end_ms": 2220,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 1220,
+          "end_ms": 1340,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "30",
+            "+",
+            "9",
+            "=",
+            "؟"
+          ],
+          "start_ms": 300,
+          "end_ms": 2220,
+          "duration_ms": 1920
+        }
+      ],
+      "analysis": {
+        "threshold": 580.9111968136244,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l81_ex3_q1",
+      "text": "20 + 30 = ؟",
+      "status": "generated",
+      "audio_duration_ms": 3552,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2460,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 1180,
+          "end_ms": 1280,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "20",
+            "+",
+            "30",
+            "=",
+            "؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2460,
+          "duration_ms": 2240
+        }
+      ],
+      "analysis": {
+        "threshold": 477.68743124721476,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l81_ex3_q2",
+      "text": "40 + 20 = ؟",
+      "status": "generated",
+      "audio_duration_ms": 3504,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2440,
+      "words": 5,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "40",
+            "+",
+            "20",
+            "=",
+            "؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2440,
+          "duration_ms": 2220
+        }
+      ],
+      "analysis": {
+        "threshold": 521.5349221172179,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l81_ex3_q3",
+      "text": "70 - 20 = ؟",
+      "status": "generated",
+      "audio_duration_ms": 3456,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2360,
+      "words": 5,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "70",
+            "-",
+            "20",
+            "=",
+            "؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2360,
+          "duration_ms": 2140
+        }
+      ],
+      "analysis": {
+        "threshold": 502.41084816736395,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l81_ex3_q4",
+      "text": "60 - 30 = ؟",
+      "status": "generated",
+      "audio_duration_ms": 3552,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2460,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 580,
+          "end_ms": 700,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 1520,
+          "end_ms": 1620,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "60",
+            "-",
+            "30",
+            "=",
+            "؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2460,
+          "duration_ms": 2240
+        }
+      ],
+      "analysis": {
+        "threshold": 512.5151794755084,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l81_ex4_q1",
+      "text": "رَتِّبِ الْعَشَرَاتِ مِنَ الْأَصْغَرِ إِلَى الْأَكْبَرِ.",
+      "status": "generated",
+      "audio_duration_ms": 4032,
+      "speech_start_ms": 240,
+      "speech_end_ms": 2940,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 400,
+          "end_ms": 500,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2620,
+          "end_ms": 2820,
+          "duration_ms": 200
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "رَتِّبِ",
+            "الْعَشَرَاتِ",
+            "مِنَ",
+            "الْأَصْغَرِ",
+            "إِلَى",
+            "الْأَكْبَرِ."
+          ],
+          "start_ms": 240,
+          "end_ms": 2940,
+          "duration_ms": 2700
+        }
+      ],
+      "analysis": {
+        "threshold": 548.5302172627435,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l81_ex4_q2",
+      "text": "رَتِّبِ الْعَشَرَاتِ مِنَ الْأَصْغَرِ إِلَى الْأَكْبَرِ.",
+      "status": "generated",
+      "audio_duration_ms": 4032,
+      "speech_start_ms": 240,
+      "speech_end_ms": 2940,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 400,
+          "end_ms": 500,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2620,
+          "end_ms": 2820,
+          "duration_ms": 200
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "رَتِّبِ",
+            "الْعَشَرَاتِ",
+            "مِنَ",
+            "الْأَصْغَرِ",
+            "إِلَى",
+            "الْأَكْبَرِ."
+          ],
+          "start_ms": 240,
+          "end_ms": 2940,
+          "duration_ms": 2700
+        }
+      ],
+      "analysis": {
+        "threshold": 543.9888924911518,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l81_ex4_q3",
+      "text": "رَتِّبِ النَّتَائِجَ مِنَ الْأَصْغَرِ إِلَى الْأَكْبَرِ.",
+      "status": "generated",
+      "audio_duration_ms": 4032,
+      "speech_start_ms": 240,
+      "speech_end_ms": 2940,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 400,
+          "end_ms": 520,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 2680,
+          "end_ms": 2780,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "رَتِّبِ",
+            "النَّتَائِجَ",
+            "مِنَ",
+            "الْأَصْغَرِ",
+            "إِلَى",
+            "الْأَكْبَرِ."
+          ],
+          "start_ms": 240,
+          "end_ms": 2940,
+          "duration_ms": 2700
+        }
+      ],
+      "analysis": {
+        "threshold": 568.6609192059777,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l81_ex4_q4",
+      "text": "رَتِّبِ الْأَعْدَادَ مِنَ الْأَصْغَرِ إِلَى الْأَكْبَرِ.",
+      "status": "generated",
+      "audio_duration_ms": 3960,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2860,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 400,
+          "end_ms": 500,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2540,
+          "end_ms": 2720,
+          "duration_ms": 180
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "رَتِّبِ",
+            "الْأَعْدَادَ",
+            "مِنَ",
+            "الْأَصْغَرِ",
+            "إِلَى",
+            "الْأَكْبَرِ."
+          ],
+          "start_ms": 220,
+          "end_ms": 2860,
+          "duration_ms": 2640
+        }
+      ],
+      "analysis": {
+        "threshold": 572.5848253987133,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    }
+  ]
+}

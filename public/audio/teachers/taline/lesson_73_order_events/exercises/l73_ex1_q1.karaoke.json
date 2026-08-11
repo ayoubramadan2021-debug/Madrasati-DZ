@@ -1,0 +1,37 @@
+[
+  {
+    "text": "مَا",
+    "offset": 200,
+    "duration": 220
+  },
+  {
+    "text": "الَّذِي",
+    "offset": 420,
+    "duration": 440
+  },
+  {
+    "text": "يَحْدُثُ",
+    "offset": 860,
+    "duration": 440
+  },
+  {
+    "text": "أَوَّلًا",
+    "offset": 1300,
+    "duration": 440
+  },
+  {
+    "text": "فِي",
+    "offset": 1740,
+    "duration": 220
+  },
+  {
+    "text": "بِدَايَةِ",
+    "offset": 1960,
+    "duration": 550
+  },
+  {
+    "text": "الْيَوْمِ؟",
+    "offset": 2510,
+    "duration": 550
+  }
+]

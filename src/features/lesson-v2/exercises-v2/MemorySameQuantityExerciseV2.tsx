@@ -1,3 +1,4 @@
+import UnifiedExerciseKaraokeV2 from "../components/UnifiedExerciseKaraokeV2";
 import { useEffect, useRef, useState } from "react";
 import { useKaraoke, loadTimings, type WordTiming } from "../useKaraoke";
 import EmojiIcon from "../components/EmojiIcon";
@@ -350,26 +351,27 @@ export default function MemorySameQuantityExerciseV2({
         {phase === "show" ? (
           "اُنْظُرْ وَاحْفَظِ الكَمِّيَّةَ"
         ) : words.length ? (
-          words.map((w, i) => {
-            const isShown = sceneActiveTxt ? karaoke.shown.has(i) : true;
-            const isCurrent = sceneActiveTxt && karaoke.currentIdx === i;
-
-            return (
-              <span
-                key={`${w.text}-${i}`}
-                style={{
-                  opacity: isShown ? 1 : 0.14,
-                  color: isCurrent ? C.gold : C.navy,
-                  fontWeight: isCurrent ? 1000 : 900,
-                  display: "inline-block",
-                  marginInline: 3,
-                  transition: "all .16s ease",
-                }}
-              >
-                {w.text}
-              </span>
-            );
-          })
+          (
+              <UnifiedExerciseKaraokeV2
+                words={words.map((word) => word.text)}
+                activeIndex={
+                  karaoke.activeKey ===
+                  item.question_audio_key
+                    ? karaoke.currentIdx
+                    : -1
+                }
+                shownWordCount={
+                  karaoke.shown.size > 0
+                  ? Math.min(
+                      words.length,
+                      Math.max(
+                        ...karaoke.shown,
+                      ) + 1,
+                    )
+                  : 0
+                }
+              />
+            )
         ) : (
           item.question
         )}

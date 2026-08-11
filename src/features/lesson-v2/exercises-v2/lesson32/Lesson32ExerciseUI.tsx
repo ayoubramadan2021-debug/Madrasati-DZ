@@ -5,7 +5,7 @@ import {
   useState,
 } from "react";
 
-import { isKeyword } from "../../keywords";
+import UnifiedExerciseKaraokeV2 from "../../components/UnifiedExerciseKaraokeV2";
 
 import type {
   CSSProperties,
@@ -120,6 +120,8 @@ function useQuestionKaraoke(
 
     setPlaying(false);
     setCurrentIdx(-1);
+    setShown(new Set());
+    setWords([]);
   }, []);
 
   const loadTimings =
@@ -270,6 +272,19 @@ export function Lesson32ExerciseFrame({
     question,
   );
 
+  const karaokeWords =
+    words.length > 0
+      ? words.map((word) => word.text)
+      : question
+          .trim()
+          .split(/\s+/)
+          .filter(Boolean);
+
+  const shownWordCount =
+    shown.size > 0
+      ? Math.max(...shown) + 1
+      : 0;
+
   const previousFeedback =
     useRef<Lesson32FeedbackState>(
       null,
@@ -397,60 +412,20 @@ export function Lesson32ExerciseFrame({
           tabIndex={0}
           aria-label="إعادة صوت السؤال"
           style={{
-            background: "rgba(255,255,255,0.95)",
-            border: "2px solid #E8A020",
-            borderRadius: 18,
-            padding: "12px 16px",
-            maxWidth: 400,
-            margin: "0 auto 10px",
-            minHeight: 50,
-            fontSize: 16,
-            lineHeight: 1.6,
-            textAlign: "center",
-            boxShadow:
-              "0 6px 20px rgba(0,0,0,.15)",
             cursor: "pointer",
           }}
         >
-          {words.length > 0 ? (
-            words.map((word, wordIndex) => {
-              const isShown =
-                shown.has(wordIndex);
-
-              const isCurrent =
-                playing &&
-                currentIdx === wordIndex;
-
-              return (
-                <span
-                  key={`${audioKey}-${wordIndex}`}
-                  style={{
-                    display: "inline-block",
-                    opacity: isShown ? 1 : 0,
-                    transform: isCurrent
-                      ? "translateY(-3px) scale(1.1)"
-                      : "translateY(0)",
-                    color: isCurrent
-                      ? "#E8A020"
-                      : isKeyword(word.text)
-                        ? "#16a34a"
-                        : "#0F2447",
-                    fontWeight: isCurrent
-                      ? 900
-                      : 700,
-                    transition: "all .25s ease",
-                    margin: "0 2px",
-                  }}
-                >
-                  {word.text}{" "}
-                </span>
-              );
-            })
-          ) : (
-            <span style={{ opacity: 0.5 }}>
-              ...
-            </span>
-          )}
+          <UnifiedExerciseKaraokeV2
+            words={karaokeWords}
+            activeIndex={
+              playing
+                ? currentIdx
+                : -1
+            }
+            shownWordCount={
+              shownWordCount
+            }
+          />
         </div>
 
         {children}

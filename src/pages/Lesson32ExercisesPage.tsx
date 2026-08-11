@@ -86,6 +86,7 @@ export default function Lesson32ExercisesPage() {
     content = (
       <LessonCompleteV2
         lessonKey="lesson32"
+      nextLabel="العودة إلى العالم"
         nextLessonKey="lesson33"
         onReplay={() =>
           setStage("exercise1")

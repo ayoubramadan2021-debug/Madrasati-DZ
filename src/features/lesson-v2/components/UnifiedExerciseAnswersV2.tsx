@@ -66,6 +66,8 @@ export default function UnifiedExerciseAnswersV2({
 
   return (
     <div
+      className="unified-exercise-answers-v2"
+      data-variant={variant}
       role="group"
       aria-label="خيارات الإجابة"
       dir={direction}

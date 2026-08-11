@@ -223,6 +223,9 @@ export default function PremiumExerciseEngineV2({
   const [activeWordIndex, setActiveWordIndex] =
     useState(-1);
 
+  const [shownWordCount, setShownWordCount] =
+    useState(0);
+
   const [isPlaying, setIsPlaying] =
     useState(false);
 
@@ -305,6 +308,7 @@ export default function PremiumExerciseEngineV2({
   const loadKaraoke = useCallback(async () => {
     setKaraokeWords([]);
     setActiveWordIndex(-1);
+    setShownWordCount(0);
 
     if (!karaokeUrl) {
       return;
@@ -346,6 +350,16 @@ export default function PremiumExerciseEngineV2({
       );
 
       setActiveWordIndex(index);
+
+      if (index >= 0) {
+        setShownWordCount(
+          (previous) =>
+            Math.max(
+              previous,
+              index + 1,
+            ),
+        );
+      }
     },
     [karaokeWords],
   );
@@ -356,6 +370,9 @@ export default function PremiumExerciseEngineV2({
     if (!audioUrl) {
       return;
     }
+
+    setShownWordCount(0);
+    setActiveWordIndex(-1);
 
     const audio = new Audio(
       `${audioUrl}${
@@ -729,11 +746,18 @@ export default function PremiumExerciseEngineV2({
 
           <UnifiedExerciseKaraokeV2
             words={visibleWords}
-            activeIndex={activeWordIndex}
+            activeIndex={
+              isPlaying
+                ? activeWordIndex
+                : -1
+            }
             activeWord={
               activeWordIndex >= 0
                 ? visibleWords[activeWordIndex]
                 : undefined
+            }
+            shownWordCount={
+              shownWordCount
             }
           />
 

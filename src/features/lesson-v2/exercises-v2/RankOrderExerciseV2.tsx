@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import UnifiedExerciseKaraokeV2 from "../components/UnifiedExerciseKaraokeV2";
 
 export type RankVisualItem = {
   id: string;
@@ -59,6 +60,7 @@ function useExerciseAudio(audioBase: string) {
     timersRef.current.forEach(clearTimeout);
     timersRef.current = [];
     setCurrentIdx(-1);
+    setShown(new Set());
   }, []);
 
   const play = useCallback(
@@ -192,7 +194,23 @@ export default function RankOrderExerciseV2({
     }
   };
 
-  const questionWords = item.question.split(/\s+/);
+  const questionWords =
+    item.question
+      .split(/\s+/)
+      .map((word) => word.trim())
+      .filter(Boolean);
+
+  const shownWordCount =
+    audio.shown.size > 0
+      ? Math.max(...audio.shown) + 1
+      : 0;
+
+  const effectiveShownWordCount =
+    feedback !== "idle"
+    || locked
+    || selected !== null
+      ? questionWords.length
+      : shownWordCount;
 
   const progressEmoji = "🏆";
   const missionText = `مهمة الترتيب ${itemIdx + 1}`;
@@ -325,21 +343,25 @@ export default function RankOrderExerciseV2({
         </div>
 
         <div style={styles.questionBox}>
-          <div style={styles.instruction}>{item.instruction}</div>
-          <div style={styles.questionText}>
-            {questionWords.map((w, i) => (
-              <span
-                key={`${w}-${i}`}
-                style={{
-                  ...styles.word,
-                  color: audio.currentIdx === i ? "#E8A020" : "#1B3A6B",
-                  opacity: (audio.shown.has(i) || feedback !== "idle" || locked || selected !== null) ? 1 : 0.42,
-                  transform: audio.currentIdx === i ? "scale(1.08)" : "scale(1)",
-                }}
-              >
-                {w}
-              </span>
-            ))}
+          <div style={styles.instruction}>
+            {item.instruction}
+          </div>
+
+          <div
+            onClick={replayQuestion}
+            style={{
+              cursor: "pointer",
+            }}
+          >
+            <UnifiedExerciseKaraokeV2
+              words={questionWords}
+              activeIndex={
+                audio.currentIdx
+              }
+              shownWordCount={
+                effectiveShownWordCount
+              }
+            />
           </div>
         </div>
 

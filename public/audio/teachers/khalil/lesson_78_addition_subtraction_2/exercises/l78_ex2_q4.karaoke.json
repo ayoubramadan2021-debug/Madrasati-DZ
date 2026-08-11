@@ -1,0 +1,27 @@
+[
+  {
+    "text": "10",
+    "offset": 240,
+    "duration": 380
+  },
+  {
+    "text": "+",
+    "offset": 620,
+    "duration": 380
+  },
+  {
+    "text": "7",
+    "offset": 1000,
+    "duration": 380
+  },
+  {
+    "text": "=",
+    "offset": 1380,
+    "duration": 380
+  },
+  {
+    "text": "؟",
+    "offset": 1760,
+    "duration": 380
+  }
+]

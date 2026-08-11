@@ -1,3 +1,4 @@
+import UnifiedExerciseKaraokeV2 from "../components/UnifiedExerciseKaraokeV2";
 import { useEffect, useState } from "react";
 import { useKaraoke, loadTimings, type WordTiming } from "../useKaraoke";
 
@@ -179,25 +180,27 @@ export default function LengthMasteryExerciseV2({
 
         <div style={styles.questionBox}>
           <div style={styles.question}>
-            {words.map((w, i) => {
-              const shown = karaoke.activeKey ? karaoke.shown.has(i) : true;
-              const current = active && karaoke.currentIdx === i;
-              return (
-                <span
-                  key={i}
-                  style={{
-                    opacity: shown ? 1 : .28,
-                    color: current ? C.gold : C.navy,
-                    transform: current ? "scale(1.09)" : "scale(1)",
-                    display: "inline-block",
-                    marginInline: 3,
-                    transition: "all .16s ease",
-                  }}
-                >
-                  {w}
-                </span>
-              );
-            })}
+            {(
+              <UnifiedExerciseKaraokeV2
+                words={words}
+                activeIndex={
+                  karaoke.activeKey ===
+                  item.question_audio_key
+                    ? karaoke.currentIdx
+                    : -1
+                }
+                shownWordCount={
+                  karaoke.shown.size > 0
+                  ? Math.min(
+                      words.length,
+                      Math.max(
+                        ...karaoke.shown,
+                      ) + 1,
+                    )
+                  : 0
+                }
+              />
+            )}
           </div>
           {item.hint && <div style={styles.hint}>💡 {item.hint}</div>}
         </div>

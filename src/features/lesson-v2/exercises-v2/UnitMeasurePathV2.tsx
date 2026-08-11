@@ -1,3 +1,4 @@
+import UnifiedExerciseKaraokeV2 from "../components/UnifiedExerciseKaraokeV2";
 import {
   useEffect,
   useMemo,
@@ -555,34 +556,27 @@ export default function UnitMeasurePathV2({
           onClick={replayQuestion}
         >
           {words
-            ? words.map((word, index) => {
-                const shown = karaoke.activeKey
-                  ? karaoke.shown.has(index)
-                  : true;
-                const current =
-                  active &&
-                  karaoke.currentIdx === index;
-
-                return (
-                  <span
-                    key={`${word.text}-${index}`}
-                    style={{
-                      ...styles.word,
-                      opacity: shown ? 1 : 0,
-                      color: current
-                        ? C.gold
-                        : isKeyword(word.text)
-                        ? C.green
-                        : C.navyDeep,
-                      transform: current
-                        ? "translateY(-2px) scale(1.07)"
-                        : "none",
-                    }}
-                  >
-                    {word.text}{" "}
-                  </span>
-                );
-              })
+            ? (
+              <UnifiedExerciseKaraokeV2
+                words={words.map((word) => word.text)}
+                activeIndex={
+                  karaoke.activeKey ===
+                  item.question_audio_key
+                    ? karaoke.currentIdx
+                    : -1
+                }
+                shownWordCount={
+                  karaoke.shown.size > 0
+                  ? Math.min(
+                      words.length,
+                      Math.max(
+                        ...karaoke.shown,
+                      ) + 1,
+                    )
+                  : 0
+                }
+              />
+            )
             : item.question}
         </section>
 

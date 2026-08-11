@@ -1,3 +1,4 @@
+import UnifiedExerciseKaraokeV2 from "../components/UnifiedExerciseKaraokeV2";
 import { useState, useEffect } from "react";
 import { useKaraoke, loadTimings, type WordTiming } from "../useKaraoke";
 import EmojiIcon from "../components/EmojiIcon";
@@ -181,18 +182,27 @@ export default function ConservationV2({ items, audio_base, onComplete }: Conser
             padding: "12px 16px", margin: "8px 16px", textAlign: "center",
             fontSize: 18, fontWeight: 700, lineHeight: 1.7, boxShadow: "0 4px 14px rgba(0,0,0,.12)",
           }}>
-            {words ? words.map((w, i) => {
-              const isShown = karaoke.activeKey ? karaoke.shown.has(i) : false;
-              const isCurrent = isActive && karaoke.currentIdx === i;
-              return (
-                <span key={i} style={{
-                  display: "inline-block", opacity: isShown ? 1 : 0,
-                  transform: isCurrent ? "translateY(-3px) scale(1.1)" : "translateY(0)",
-                  color: isCurrent ? C.gold : C.navyDeep, fontWeight: isCurrent ? 900 : 700,
-                  transition: "all .25s ease", margin: "0 2px",
-                }}>{w.text} </span>
-              );
-            }) : <span style={{ opacity: 0.5 }}>{item.question}</span>}
+            {words ? (
+              <UnifiedExerciseKaraokeV2
+                words={words.map((word) => word.text)}
+                activeIndex={
+                  karaoke.activeKey ===
+                  item.question_audio_key
+                    ? karaoke.currentIdx
+                    : -1
+                }
+                shownWordCount={
+                  karaoke.shown.size > 0
+                  ? Math.min(
+                      words.length,
+                      Math.max(
+                        ...karaoke.shown,
+                      ) + 1,
+                    )
+                  : 0
+                }
+              />
+            ) : <span style={{ opacity: 0.5 }}>{item.question}</span>}
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 12, padding: "8px 16px 90px", maxWidth: 380, margin: "0 auto", width: "100%" }}>

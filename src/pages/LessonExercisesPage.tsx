@@ -6,6 +6,23 @@ import Lesson67Assessment3ArabicExercises from "../features/lesson-v2/exercises-
 import Lesson68Assessment3MathExercises from "../features/lesson-v2/exercises-v2/Lesson68Assessment3MathExercises";
 import Lesson69Assessment3ScienceExercises from "../features/lesson-v2/exercises-v2/Lesson69Assessment3ScienceExercises";
 import Lesson70StraightLinesExercises from "../features/lesson-v2/exercises-v2/Lesson70StraightLinesExercises";
+import Lesson71DurationExercises from "../features/lesson-v2/exercises-v2/Lesson71DurationExercises";
+import {
+  Lesson72Exercises,
+  Lesson73Exercises,
+  Lesson74Exercises,
+  Lesson75Exercises,
+  Lesson76Exercises,
+  Lesson77Exercises,
+  Lesson78Exercises,
+  Lesson79Exercises,
+  Lesson80Exercises,
+  Lesson81Exercises,
+  Lesson82Exercises,
+  Lesson83Exercises,
+  Lesson84Exercises,
+  Lesson85Exercises,
+} from "../features/lesson-v2/exercises-v2/SmallCityExercises72To85";
 import Lesson45CompleteTableExercises from "../features/lesson-v2/exercises-v2/Lesson45CompleteTableExercises";
 import Lesson44HalfExercises from "../features/lesson-v2/exercises-v2/Lesson44HalfExercises";
 import Lesson43DoubleExercises from "../features/lesson-v2/exercises-v2/Lesson43DoubleExercises";
@@ -886,6 +903,22 @@ export default function LessonExercisesPage() {
   if (lessonId === "68") return <Lesson68Assessment3MathExercises />;
   if (lessonId === "69") return <Lesson69Assessment3ScienceExercises />;
   if (lessonId === "70") return <Lesson70StraightLinesExercises />;
+
+  if (lessonId === "71") return <Lesson71DurationExercises />;
+  if (lessonId === "72") return <Lesson72Exercises />;
+  if (lessonId === "73") return <Lesson73Exercises />;
+  if (lessonId === "74") return <Lesson74Exercises />;
+  if (lessonId === "75") return <Lesson75Exercises />;
+  if (lessonId === "76") return <Lesson76Exercises />;
+  if (lessonId === "77") return <Lesson77Exercises />;
+  if (lessonId === "78") return <Lesson78Exercises />;
+  if (lessonId === "79") return <Lesson79Exercises />;
+  if (lessonId === "80") return <Lesson80Exercises />;
+  if (lessonId === "81") return <Lesson81Exercises />;
+  if (lessonId === "82") return <Lesson82Exercises />;
+  if (lessonId === "83") return <Lesson83Exercises />;
+  if (lessonId === "84") return <Lesson84Exercises />;
+  if (lessonId === "85") return <Lesson85Exercises />;
   if (lessonId === "46") return <Lesson46HeartBeats2Exercises />;
 
   if (lessonId === "45") return <Lesson45CompleteTableExercises />;

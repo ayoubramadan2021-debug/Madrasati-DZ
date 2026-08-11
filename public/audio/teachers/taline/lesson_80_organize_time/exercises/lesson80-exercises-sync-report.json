@@ -1,0 +1,593 @@
+{
+  "lesson": 80,
+  "teacher": "taline",
+  "voice": "ar-DZ-AminaNeural",
+  "rate": "-6%",
+  "reference_generator": "generate_lesson71_exercises_audio.py",
+  "reference_sha256": "a7cb90304dd39c4e7f0e3202a78750834c30a2b09b41a81bfdb0384f9246f56e",
+  "questions": 16,
+  "reused": 0,
+  "generated_or_repaired": 16,
+  "reports": [
+    {
+      "key": "l80_ex1_q1",
+      "text": "مَا الَّذِي يُسَاعِدُنَا عَلَى إِنْجَازِ أَعْمَالِنَا؟",
+      "status": "generated",
+      "audio_duration_ms": 4152,
+      "speech_start_ms": 200,
+      "speech_end_ms": 3140,
+      "words": 6,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "مَا",
+            "الَّذِي",
+            "يُسَاعِدُنَا",
+            "عَلَى",
+            "إِنْجَازِ",
+            "أَعْمَالِنَا؟"
+          ],
+          "start_ms": 200,
+          "end_ms": 3140,
+          "duration_ms": 2940
+        }
+      ],
+      "analysis": {
+        "threshold": 614.9232761814171,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l80_ex1_q2",
+      "text": "فِي وَقْتِ الدِّرَاسَةِ مِنَ الْأَفْضَلِ أَنْ...",
+      "status": "generated",
+      "audio_duration_ms": 3600,
+      "speech_start_ms": 320,
+      "speech_end_ms": 2600,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 580,
+          "end_ms": 740,
+          "duration_ms": 160
+        },
+        {
+          "start_ms": 1880,
+          "end_ms": 2000,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "فِي",
+            "وَقْتِ",
+            "الدِّرَاسَةِ",
+            "مِنَ",
+            "الْأَفْضَلِ",
+            "أَنْ..."
+          ],
+          "start_ms": 320,
+          "end_ms": 2600,
+          "duration_ms": 2280
+        }
+      ],
+      "analysis": {
+        "threshold": 568.7816426983425,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l80_ex1_q3",
+      "text": "فِي وَقْتِ الرَّاحَةِ مِنَ الْمُنَاسِبِ أَنْ...",
+      "status": "generated",
+      "audio_duration_ms": 3648,
+      "speech_start_ms": 340,
+      "speech_end_ms": 2640,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 580,
+          "end_ms": 760,
+          "duration_ms": 180
+        },
+        {
+          "start_ms": 1980,
+          "end_ms": 2080,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "فِي",
+            "وَقْتِ",
+            "الرَّاحَةِ",
+            "مِنَ",
+            "الْمُنَاسِبِ",
+            "أَنْ..."
+          ],
+          "start_ms": 340,
+          "end_ms": 2640,
+          "duration_ms": 2300
+        }
+      ],
+      "analysis": {
+        "threshold": 550.9984616700962,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l80_ex1_q4",
+      "text": "بَعْدَ اسْتِعْمَالِ الْأَدَوَاتِ نُعِيدُهَا إِلَى...",
+      "status": "generated",
+      "audio_duration_ms": 3864,
+      "speech_start_ms": 200,
+      "speech_end_ms": 2860,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 580,
+          "end_ms": 680,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "بَعْدَ",
+            "اسْتِعْمَالِ",
+            "الْأَدَوَاتِ",
+            "نُعِيدُهَا",
+            "إِلَى..."
+          ],
+          "start_ms": 200,
+          "end_ms": 2860,
+          "duration_ms": 2660
+        }
+      ],
+      "analysis": {
+        "threshold": 603.7753502936233,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l80_ex2_q1",
+      "text": "أَيُّ خِيَارٍ يُمَثِّلُ يَوْمًا مُنَظَّمًا؟",
+      "status": "generated",
+      "audio_duration_ms": 3984,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2960,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 1340,
+          "end_ms": 1480,
+          "duration_ms": 140
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "خِيَارٍ",
+            "يُمَثِّلُ",
+            "يَوْمًا",
+            "مُنَظَّمًا؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2960,
+          "duration_ms": 2740
+        }
+      ],
+      "analysis": {
+        "threshold": 537.7003240990747,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l80_ex2_q2",
+      "text": "لِمَاذَا نُرَتِّبُ أَدَوَاتِنَا؟",
+      "status": "generated",
+      "audio_duration_ms": 3264,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2220,
+      "words": 3,
+      "detected_gaps": [
+        {
+          "start_ms": 1060,
+          "end_ms": 1160,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1780,
+          "end_ms": 1880,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "لِمَاذَا",
+            "نُرَتِّبُ",
+            "أَدَوَاتِنَا؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2220,
+          "duration_ms": 2000
+        }
+      ],
+      "analysis": {
+        "threshold": 618.0410109885509,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l80_ex2_q3",
+      "text": "إِنْجَازُ الْوَاجِبِ قَبْلَ اللَّعِبِ يُسَاعِدُنَا عَلَى...",
+      "status": "generated",
+      "audio_duration_ms": 4296,
+      "speech_start_ms": 220,
+      "speech_end_ms": 3300,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 1260,
+          "end_ms": 1360,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "إِنْجَازُ",
+            "الْوَاجِبِ",
+            "قَبْلَ",
+            "اللَّعِبِ",
+            "يُسَاعِدُنَا",
+            "عَلَى..."
+          ],
+          "start_ms": 220,
+          "end_ms": 3300,
+          "duration_ms": 3080
+        }
+      ],
+      "analysis": {
+        "threshold": 607.4130906503724,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l80_ex2_q4",
+      "text": "أَيُّ نَشَاطٍ نَحْتَاجُ إِلَيْهِ كُلَّ يَوْمٍ؟",
+      "status": "generated",
+      "audio_duration_ms": 3960,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2960,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 1260,
+          "end_ms": 1360,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2160,
+          "end_ms": 2260,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "نَشَاطٍ",
+            "نَحْتَاجُ",
+            "إِلَيْهِ",
+            "كُلَّ",
+            "يَوْمٍ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2960,
+          "duration_ms": 2740
+        }
+      ],
+      "analysis": {
+        "threshold": 529.0355462085582,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l80_ex3_q1",
+      "text": "الْيَوْمُ الْمُنَظَّمُ يَحْتَوِي عَلَى...",
+      "status": "generated",
+      "audio_duration_ms": 3384,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2380,
+      "words": 4,
+      "detected_gaps": [
+        {
+          "start_ms": 1540,
+          "end_ms": 1680,
+          "duration_ms": 140
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "الْيَوْمُ",
+            "الْمُنَظَّمُ",
+            "يَحْتَوِي",
+            "عَلَى..."
+          ],
+          "start_ms": 220,
+          "end_ms": 2380,
+          "duration_ms": 2160
+        }
+      ],
+      "analysis": {
+        "threshold": 619.2270747679117,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l80_ex3_q2",
+      "text": "اللَّعِبُ طَوَالَ الْيَوْمِ دُونَ دِرَاسَةٍ يُعَدُّ...",
+      "status": "generated",
+      "audio_duration_ms": 4344,
+      "speech_start_ms": 220,
+      "speech_end_ms": 3320,
+      "words": 6,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "اللَّعِبُ",
+            "طَوَالَ",
+            "الْيَوْمِ",
+            "دُونَ",
+            "دِرَاسَةٍ",
+            "يُعَدُّ..."
+          ],
+          "start_ms": 220,
+          "end_ms": 3320,
+          "duration_ms": 3100
+        }
+      ],
+      "analysis": {
+        "threshold": 640.6190508667671,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l80_ex3_q3",
+      "text": "الدِّرَاسَةُ دُونَ رَاحَةٍ أَبَدًا...",
+      "status": "generated",
+      "audio_duration_ms": 3336,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2320,
+      "words": 4,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "الدِّرَاسَةُ",
+            "دُونَ",
+            "رَاحَةٍ",
+            "أَبَدًا..."
+          ],
+          "start_ms": 220,
+          "end_ms": 2320,
+          "duration_ms": 2100
+        }
+      ],
+      "analysis": {
+        "threshold": 602.584252869464,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l80_ex3_q4",
+      "text": "مَا الْخِيَارُ الْأَفْضَلُ؟",
+      "status": "generated",
+      "audio_duration_ms": 2520,
+      "speech_start_ms": 200,
+      "speech_end_ms": 1500,
+      "words": 3,
+      "detected_gaps": [
+        {
+          "start_ms": 480,
+          "end_ms": 580,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1080,
+          "end_ms": 1180,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "مَا",
+            "الْخِيَارُ",
+            "الْأَفْضَلُ؟"
+          ],
+          "start_ms": 200,
+          "end_ms": 1500,
+          "duration_ms": 1300
+        }
+      ],
+      "analysis": {
+        "threshold": 619.4044986698917,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l80_ex4_q1",
+      "text": "رَتِّبْ يَوْمًا دِرَاسِيًّا بَسِيطًا.",
+      "status": "generated",
+      "audio_duration_ms": 3528,
+      "speech_start_ms": 200,
+      "speech_end_ms": 2460,
+      "words": 4,
+      "detected_gaps": [
+        {
+          "start_ms": 360,
+          "end_ms": 460,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1380,
+          "end_ms": 1480,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1900,
+          "end_ms": 2000,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "رَتِّبْ",
+            "يَوْمًا",
+            "دِرَاسِيًّا",
+            "بَسِيطًا."
+          ],
+          "start_ms": 200,
+          "end_ms": 2460,
+          "duration_ms": 2260
+        }
+      ],
+      "analysis": {
+        "threshold": 569.2090801605219,
+        "fallback": false,
+        "speech_runs": 4
+      }
+    },
+    {
+      "key": "l80_ex4_q2",
+      "text": "رَتِّبْ هَذِهِ الْأَنْشِطَةَ.",
+      "status": "generated",
+      "audio_duration_ms": 2784,
+      "speech_start_ms": 200,
+      "speech_end_ms": 1760,
+      "words": 3,
+      "detected_gaps": [
+        {
+          "start_ms": 400,
+          "end_ms": 520,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "رَتِّبْ",
+            "هَذِهِ",
+            "الْأَنْشِطَةَ."
+          ],
+          "start_ms": 200,
+          "end_ms": 1760,
+          "duration_ms": 1560
+        }
+      ],
+      "analysis": {
+        "threshold": 543.3672076865354,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l80_ex4_q3",
+      "text": "رَتِّبْ أَنْشِطَةَ مَا بَعْدَ الْمَدْرَسَةِ.",
+      "status": "generated",
+      "audio_duration_ms": 3552,
+      "speech_start_ms": 200,
+      "speech_end_ms": 2540,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 360,
+          "end_ms": 480,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 2300,
+          "end_ms": 2400,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "رَتِّبْ",
+            "أَنْشِطَةَ",
+            "مَا",
+            "بَعْدَ",
+            "الْمَدْرَسَةِ."
+          ],
+          "start_ms": 200,
+          "end_ms": 2540,
+          "duration_ms": 2340
+        }
+      ],
+      "analysis": {
+        "threshold": 551.5408219776779,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l80_ex4_q4",
+      "text": "رَتِّبْ مِنْ بِدَايَةِ الْيَوْمِ إِلَى نِهَايَتِهِ.",
+      "status": "generated",
+      "audio_duration_ms": 4032,
+      "speech_start_ms": 200,
+      "speech_end_ms": 2960,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 400,
+          "end_ms": 520,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "رَتِّبْ",
+            "مِنْ",
+            "بِدَايَةِ",
+            "الْيَوْمِ",
+            "إِلَى",
+            "نِهَايَتِهِ."
+          ],
+          "start_ms": 200,
+          "end_ms": 2960,
+          "duration_ms": 2760
+        }
+      ],
+      "analysis": {
+        "threshold": 610.9721619489407,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    }
+  ]
+}

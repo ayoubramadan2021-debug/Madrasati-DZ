@@ -1,3 +1,4 @@
+import UnifiedExerciseKaraokeV2 from "../components/UnifiedExerciseKaraokeV2";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import LessonCompleteV2 from "../components/LessonCompleteV2";
@@ -95,6 +96,9 @@ export default function HealthyFoodExerciseV2({
   const [selected, setSelected] = useState<string[]>([]);
   const [feedback, setFeedback] = useState<"idle" | "correct" | "wrong">("idle");
   const [activeWord, setActiveWord] = useState("");
+  const [activeWordIndex, setActiveWordIndex] = useState(-1);
+  const [shownWordCount, setShownWordCount] = useState(0);
+
   const [timings, setTimings] = useState<Array<{ text: string; offset: number; duration: number }>>([]);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -122,6 +126,7 @@ export default function HealthyFoodExerciseV2({
   const stopQuestionAudioAndKaraoke = () => {
     clearTimers();
     setActiveWord("");
+    setActiveWordIndex(-1);
 
     try {
       if (audioRef.current) {
@@ -162,25 +167,55 @@ export default function HealthyFoodExerciseV2({
   ) => {
     stopQuestionAudioAndKaraoke();
 
+    setShownWordCount(0);
+    setActiveWordIndex(-1);
+
     const list = customTimings ?? timings;
 
     try {
       const a = new Audio(`${audio_base}/${item.question_audio_key}.mp3`);
       audioRef.current = a;
 
-      list.forEach((w) => {
+      list.forEach((w, wordIndex) => {
         const start = window.setTimeout(() => {
           if (!mountedRef.current) return;
+
           setActiveWord(cleanText(w.text));
+          setActiveWordIndex(wordIndex);
+          setShownWordCount(
+            wordIndex + 1,
+          );
         }, Math.max(0, Number(w.offset || 0)));
 
         const end = window.setTimeout(() => {
           if (!mountedRef.current) return;
+
           setActiveWord("");
+          setActiveWordIndex(-1);
         }, Math.max(0, Number(w.offset || 0) + Number(w.duration || 600)));
 
         timersRef.current.push(start, end);
       });
+
+      a.onended = () => {
+        if (!mountedRef.current) return;
+
+        setActiveWord("");
+        setActiveWordIndex(-1);
+
+        const finalCount =
+          list.length > 0
+            ? list.length
+            : item.question
+                .trim()
+                .split(/\s+/)
+                .filter(Boolean)
+                .length;
+
+        setShownWordCount(
+          finalCount,
+        );
+      };
 
       a.play().catch(() => {});
     } catch {
@@ -206,6 +241,8 @@ export default function HealthyFoodExerciseV2({
     setSelected([]);
     setFeedback("idle");
     setActiveWord("");
+    setActiveWordIndex(-1);
+    setShownWordCount(0);
 
     const jsonUrl = `${audio_base}/${item.question_audio_key}.json`;
     let cancelled = false;
@@ -306,16 +343,38 @@ export default function HealthyFoodExerciseV2({
     }, ok ? 1050 : 1250);
   };
 
-  const wordNodes = item.question.split(" ").map((w, i) => {
-    const clean = cleanText(w);
-    const on = activeWord && clean === activeWord;
+  const questionWords =
+    timings.length > 0
+      ? timings.map(
+          timing => timing.text,
+        )
+      : item.question
+          .trim()
+          .split(/\s+/)
+          .filter(Boolean);
 
-    return (
-      <span key={`${w}-${i}`} style={on ? styles.wordActive : styles.word}>
-        {w}{" "}
-      </span>
-    );
-  });
+  const resolvedActiveIndex =
+    activeWordIndex >= 0
+      ? activeWordIndex
+      : activeWord
+        ? questionWords.findIndex(
+            word =>
+              cleanText(word) ===
+              activeWord,
+          )
+        : -1;
+
+  const wordNodes = (
+    <UnifiedExerciseKaraokeV2
+      words={questionWords}
+      activeIndex={
+        resolvedActiveIndex
+      }
+      shownWordCount={
+        shownWordCount
+      }
+    />
+  );
 
   return (
     <section dir="rtl" style={styles.page}>

@@ -358,6 +358,9 @@ export default function AddSubStoryLabV2({
           activeIndex={
             isPlaying ? currentIdx : -1
           }
+          shownWordCount={
+            shown.size
+          }
         />
 
         <div

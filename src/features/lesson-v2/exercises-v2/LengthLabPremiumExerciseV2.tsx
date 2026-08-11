@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import { useKaraoke, loadTimings, type WordTiming } from "../useKaraoke";
+import UnifiedExerciseKaraokeV2 from "../components/UnifiedExerciseKaraokeV2";
 
 export type PremiumLengthMode = "discover" | "judge" | "arrange";
 
@@ -192,8 +193,26 @@ export default function LengthLabPremiumExerciseV2({
   if (!question) return null;
 
   const isArrange = question.mode === "arrange";
-  const words = timings[question.question_audio_key] || fallbackWords(question.question);
-  const isActive = karaoke.activeKey === question.question_audio_key;
+
+  const words =
+    timings[question.question_audio_key]
+    || fallbackWords(question.question);
+
+  const karaokeWords =
+    words.map((word) => word.text);
+
+  const isActive =
+    karaoke.activeKey === question.question_audio_key;
+
+  const shownWordCount =
+    karaoke.shown.size > 0
+      ? Math.max(...karaoke.shown) + 1
+      : 0;
+
+  const effectiveShownWordCount =
+    feedbackState !== "idle"
+      ? karaokeWords.length
+      : shownWordCount;
 
   return (
     <main dir="rtl" style={styles.page}>
@@ -203,25 +222,17 @@ export default function LengthLabPremiumExerciseV2({
       </header>
 
       <section style={styles.questionBox}>
-        <div style={styles.questionLine}>
-          {words.map((word, i) => {
-            const active = isActive && karaoke.currentIdx === i;
-            const shown = karaoke.shown.has(i);
-
-            return (
-              <span
-                key={`${word.text}-${i}`}
-                style={{
-                  ...styles.questionWord,
-                  opacity: isActive && !shown && !active ? 0.42 : 1,
-                  transform: active ? "scale(1.08)" : "scale(1)",
-                }}
-              >
-                {word.text}
-              </span>
-            );
-          })}
-        </div>
+        <UnifiedExerciseKaraokeV2
+          words={karaokeWords}
+          activeIndex={
+            isActive
+              ? karaoke.currentIdx
+              : -1
+          }
+          shownWordCount={
+            effectiveShownWordCount
+          }
+        />
       </section>
 
       <section

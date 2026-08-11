@@ -1,3 +1,4 @@
+import UnifiedExerciseKaraokeV2 from "../components/UnifiedExerciseKaraokeV2";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { isKeyword } from "../keywords";
 import {
@@ -468,21 +469,34 @@ export default function DragMatchExerciseV2({
           boxShadow: "0 6px 20px rgba(0,0,0,.15)",
           cursor: "pointer",
         }}>
-          {words ? words.map((w, i) => {
-            const isShown = karaoke.activeKey ? karaoke.shown.has(i) : true;
-            const isCurrent = isActive && karaoke.currentIdx === i;
-            return (
-              <span key={i} style={{
-                display: "inline-block",
-                opacity: (isShown || questionRevealed || wrongMatchId !== null || feedbackState !== "idle" || matchedIds.size > 0) ? 1 : 0,
-                transform: isCurrent ? "translateY(-3px) scale(1.1)" : "translateY(0)",
-                color: isCurrent ? C.gold : (isKeyword(w.text) ? "#16a34a" : C.navyDeep),
-                fontWeight: isCurrent ? 900 : 700,
-                transition: "all .25s ease",
-                margin: "0 2px",
-              }}>{w.text} </span>
-            );
-          }) : <span style={{ opacity: 0.5 }}>...</span>}
+          {words ? (
+              <UnifiedExerciseKaraokeV2
+                words={words.map((word) => word.text)}
+                activeIndex={
+                  karaoke.activeKey ===
+                  item.question_audio_key
+                    ? karaoke.currentIdx
+                    : -1
+                }
+                shownWordCount={
+                  (
+                  questionRevealed ||
+                  wrongMatchId !== null ||
+                  feedbackState !== "idle" ||
+                  matchedIds.size > 0
+                )
+                  ? words.length
+                  : karaoke.shown.size > 0
+                    ? Math.min(
+                        words.length,
+                        Math.max(
+                          ...karaoke.shown,
+                        ) + 1,
+                      )
+                    : 0
+                }
+              />
+            ) : <span style={{ opacity: 0.5 }}>...</span>}
         </div>
       </div>
 

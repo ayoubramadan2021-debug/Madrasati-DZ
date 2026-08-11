@@ -1,0 +1,779 @@
+{
+  "voice": "ar-DZ-AminaNeural",
+  "rate": "-6%",
+  "questions": 16,
+  "reports": [
+    {
+      "key": "l71_ex1_q1",
+      "text": "مَاذَا نَقْصِدُ بِالْمُدَّةِ الزَّمَنِيَّةِ؟",
+      "audio_duration_ms": 3624,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2600,
+      "words": 4,
+      "detected_gaps": [
+        {
+          "start_ms": 860,
+          "end_ms": 1060,
+          "duration_ms": 200
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "مَاذَا",
+            "نَقْصِدُ",
+            "بِالْمُدَّةِ",
+            "الزَّمَنِيَّةِ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2600,
+          "duration_ms": 2380
+        }
+      ],
+      "analysis": {
+        "threshold": 614.6769780344998,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l71_ex1_q2",
+      "text": "أَيُّ نَشَاطٍ يَسْتَغْرِقُ مُدَّةً قَصِيرَةً؟",
+      "audio_duration_ms": 4032,
+      "speech_start_ms": 240,
+      "speech_end_ms": 3000,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 1240,
+          "end_ms": 1380,
+          "duration_ms": 140
+        },
+        {
+          "start_ms": 2400,
+          "end_ms": 2500,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2580,
+          "end_ms": 2680,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "نَشَاطٍ",
+            "يَسْتَغْرِقُ",
+            "مُدَّةً",
+            "قَصِيرَةً؟"
+          ],
+          "start_ms": 240,
+          "end_ms": 3000,
+          "duration_ms": 2760
+        }
+      ],
+      "analysis": {
+        "threshold": 545.0248563468804,
+        "fallback": false,
+        "speech_runs": 4
+      }
+    },
+    {
+      "key": "l71_ex1_q3",
+      "text": "أَيُّ نَشَاطٍ يَسْتَغْرِقُ وَقْتًا أَطْوَلَ؟",
+      "audio_duration_ms": 3864,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2820,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 1240,
+          "end_ms": 1360,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 1940,
+          "end_ms": 2100,
+          "duration_ms": 160
+        },
+        {
+          "start_ms": 2380,
+          "end_ms": 2480,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "نَشَاطٍ",
+            "يَسْتَغْرِقُ",
+            "وَقْتًا",
+            "أَطْوَلَ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2820,
+          "duration_ms": 2600
+        }
+      ],
+      "analysis": {
+        "threshold": 599.777465948309,
+        "fallback": false,
+        "speech_runs": 4
+      }
+    },
+    {
+      "key": "l71_ex1_q4",
+      "text": "عِنْدَ مُقَارَنَةِ مُدَّتَيْنِ، مَا السُّؤَالُ الْمُنَاسِبُ؟",
+      "audio_duration_ms": 4824,
+      "speech_start_ms": 200,
+      "speech_end_ms": 3700,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 680,
+          "end_ms": 780,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2080,
+          "end_ms": 2440,
+          "duration_ms": 360
+        },
+        {
+          "start_ms": 2600,
+          "end_ms": 2720,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 3440,
+          "end_ms": 3540,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "عِنْدَ",
+            "مُقَارَنَةِ",
+            "مُدَّتَيْنِ،"
+          ],
+          "start_ms": 200,
+          "end_ms": 2080,
+          "duration_ms": 1880
+        },
+        {
+          "words": [
+            "مَا",
+            "السُّؤَالُ",
+            "الْمُنَاسِبُ؟"
+          ],
+          "start_ms": 2440,
+          "end_ms": 3700,
+          "duration_ms": 1260
+        }
+      ],
+      "analysis": {
+        "threshold": 609.53038870961,
+        "fallback": false,
+        "speech_runs": 5
+      }
+    },
+    {
+      "key": "l71_ex2_q1",
+      "text": "أَيُّهُمَا أَقْصَرُ مُدَّةً: غَسْلُ الْيَدَيْنِ أَمْ قَضَاءُ يَوْمٍ دِرَاسِيٍّ؟",
+      "audio_duration_ms": 5976,
+      "speech_start_ms": 200,
+      "speech_end_ms": 4960,
+      "words": 9,
+      "detected_gaps": [
+        {
+          "start_ms": 960,
+          "end_ms": 1180,
+          "duration_ms": 220
+        },
+        {
+          "start_ms": 1760,
+          "end_ms": 2140,
+          "duration_ms": 380
+        },
+        {
+          "start_ms": 2300,
+          "end_ms": 2420,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 3320,
+          "end_ms": 3420,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 4580,
+          "end_ms": 4680,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّهُمَا",
+            "أَقْصَرُ",
+            "مُدَّةً:"
+          ],
+          "start_ms": 200,
+          "end_ms": 1760,
+          "duration_ms": 1560
+        },
+        {
+          "words": [
+            "غَسْلُ",
+            "الْيَدَيْنِ",
+            "أَمْ",
+            "قَضَاءُ",
+            "يَوْمٍ",
+            "دِرَاسِيٍّ؟"
+          ],
+          "start_ms": 2140,
+          "end_ms": 4960,
+          "duration_ms": 2820
+        }
+      ],
+      "analysis": {
+        "threshold": 635.1457470931175,
+        "fallback": false,
+        "speech_runs": 6
+      }
+    },
+    {
+      "key": "l71_ex2_q2",
+      "text": "أَيُّهُمَا أَطْوَلُ مُدَّةً: شُرْبُ كَأْسٍ مِنَ الْمَاءِ أَمِ النَّوْمُ لَيْلًا؟",
+      "audio_duration_ms": 5976,
+      "speech_start_ms": 220,
+      "speech_end_ms": 4920,
+      "words": 10,
+      "detected_gaps": [
+        {
+          "start_ms": 980,
+          "end_ms": 1100,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 1740,
+          "end_ms": 2160,
+          "duration_ms": 420
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّهُمَا",
+            "أَطْوَلُ",
+            "مُدَّةً:"
+          ],
+          "start_ms": 220,
+          "end_ms": 1740,
+          "duration_ms": 1520
+        },
+        {
+          "words": [
+            "شُرْبُ",
+            "كَأْسٍ",
+            "مِنَ",
+            "الْمَاءِ",
+            "أَمِ",
+            "النَّوْمُ",
+            "لَيْلًا؟"
+          ],
+          "start_ms": 2160,
+          "end_ms": 4920,
+          "duration_ms": 2760
+        }
+      ],
+      "analysis": {
+        "threshold": 604.4828341929577,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l71_ex2_q3",
+      "text": "أَيُّهُمَا يَنْتَهِي أَوَّلًا: رَبْطُ الْحِذَاءِ أَمْ مُشَاهَدَةُ فِيلْمٍ؟",
+      "audio_duration_ms": 5736,
+      "speech_start_ms": 200,
+      "speech_end_ms": 4700,
+      "words": 8,
+      "detected_gaps": [
+        {
+          "start_ms": 2020,
+          "end_ms": 2360,
+          "duration_ms": 340
+        },
+        {
+          "start_ms": 2540,
+          "end_ms": 2640,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّهُمَا",
+            "يَنْتَهِي",
+            "أَوَّلًا:"
+          ],
+          "start_ms": 200,
+          "end_ms": 2020,
+          "duration_ms": 1820
+        },
+        {
+          "words": [
+            "رَبْطُ",
+            "الْحِذَاءِ",
+            "أَمْ",
+            "مُشَاهَدَةُ",
+            "فِيلْمٍ؟"
+          ],
+          "start_ms": 2360,
+          "end_ms": 4700,
+          "duration_ms": 2340
+        }
+      ],
+      "analysis": {
+        "threshold": 595.6224984185383,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l71_ex2_q4",
+      "text": "أَيُّهُمَا يَحْتَاجُ إِلَى وَقْتٍ أَكْثَرَ: كِتَابَةُ الِاسْمِ أَمْ قَضَاءُ يَوْمٍ فِي الْمَدْرَسَةِ؟",
+      "audio_duration_ms": 6936,
+      "speech_start_ms": 220,
+      "speech_end_ms": 5920,
+      "words": 12,
+      "detected_gaps": [
+        {
+          "start_ms": 1000,
+          "end_ms": 1160,
+          "duration_ms": 160
+        },
+        {
+          "start_ms": 1860,
+          "end_ms": 2020,
+          "duration_ms": 160
+        },
+        {
+          "start_ms": 2260,
+          "end_ms": 2440,
+          "duration_ms": 180
+        },
+        {
+          "start_ms": 2660,
+          "end_ms": 3080,
+          "duration_ms": 420
+        },
+        {
+          "start_ms": 3800,
+          "end_ms": 3900,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 4240,
+          "end_ms": 4340,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 5700,
+          "end_ms": 5800,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّهُمَا",
+            "يَحْتَاجُ",
+            "إِلَى",
+            "وَقْتٍ",
+            "أَكْثَرَ:"
+          ],
+          "start_ms": 220,
+          "end_ms": 2260,
+          "duration_ms": 2040
+        },
+        {
+          "words": [
+            "كِتَابَةُ",
+            "الِاسْمِ",
+            "أَمْ",
+            "قَضَاءُ",
+            "يَوْمٍ",
+            "فِي",
+            "الْمَدْرَسَةِ؟"
+          ],
+          "start_ms": 2440,
+          "end_ms": 5920,
+          "duration_ms": 3480
+        }
+      ],
+      "analysis": {
+        "threshold": 652.1796156613913,
+        "fallback": false,
+        "speech_runs": 8
+      }
+    },
+    {
+      "key": "l71_ex3_q1",
+      "text": "إِذَا أَرَدْنَا نَشَاطًا يَنْتَهِي سَرِيعًا، فَأَيَّهُمَا نَخْتَارُ؟",
+      "audio_duration_ms": 5640,
+      "speech_start_ms": 220,
+      "speech_end_ms": 4540,
+      "words": 7,
+      "detected_gaps": [
+        {
+          "start_ms": 2180,
+          "end_ms": 2280,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2860,
+          "end_ms": 3260,
+          "duration_ms": 400
+        },
+        {
+          "start_ms": 4080,
+          "end_ms": 4220,
+          "duration_ms": 140
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "إِذَا",
+            "أَرَدْنَا",
+            "نَشَاطًا",
+            "يَنْتَهِي",
+            "سَرِيعًا،"
+          ],
+          "start_ms": 220,
+          "end_ms": 2860,
+          "duration_ms": 2640
+        },
+        {
+          "words": [
+            "فَأَيَّهُمَا",
+            "نَخْتَارُ؟"
+          ],
+          "start_ms": 3260,
+          "end_ms": 4540,
+          "duration_ms": 1280
+        }
+      ],
+      "analysis": {
+        "threshold": 612.0614733568036,
+        "fallback": false,
+        "speech_runs": 4
+      }
+    },
+    {
+      "key": "l71_ex3_q2",
+      "text": "أَيُّ نَشَاطٍ يَحْتَاجُ إِلَى وَقْتٍ أَكْثَرَ؟",
+      "audio_duration_ms": 3912,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2860,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 1260,
+          "end_ms": 1360,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2060,
+          "end_ms": 2220,
+          "duration_ms": 160
+        },
+        {
+          "start_ms": 2460,
+          "end_ms": 2640,
+          "duration_ms": 180
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "نَشَاطٍ",
+            "يَحْتَاجُ",
+            "إِلَى",
+            "وَقْتٍ",
+            "أَكْثَرَ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2860,
+          "duration_ms": 2640
+        }
+      ],
+      "analysis": {
+        "threshold": 563.2484712434867,
+        "fallback": false,
+        "speech_runs": 4
+      }
+    },
+    {
+      "key": "l71_ex3_q3",
+      "text": "أَيُّ نَشَاطٍ يَنْتَهِي أَوَّلًا؟",
+      "audio_duration_ms": 3312,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2280,
+      "words": 4,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "نَشَاطٍ",
+            "يَنْتَهِي",
+            "أَوَّلًا؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2280,
+          "duration_ms": 2060
+        }
+      ],
+      "analysis": {
+        "threshold": 592.4286223517247,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l71_ex3_q4",
+      "text": "أَيُّ نَشَاطٍ مُدَّتُهُ أَطْوَلُ؟",
+      "audio_duration_ms": 3360,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2300,
+      "words": 4,
+      "detected_gaps": [
+        {
+          "start_ms": 1840,
+          "end_ms": 1960,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "نَشَاطٍ",
+            "مُدَّتُهُ",
+            "أَطْوَلُ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2300,
+          "duration_ms": 2080
+        }
+      ],
+      "analysis": {
+        "threshold": 598.146959041526,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l71_ex4_q1",
+      "text": "رَتِّبِ الْأَنْشِطَةَ مِنَ الْأَقْصَرِ مُدَّةً إِلَى الْأَطْوَلِ مُدَّةً.",
+      "audio_duration_ms": 5064,
+      "speech_start_ms": 220,
+      "speech_end_ms": 4040,
+      "words": 8,
+      "detected_gaps": [
+        {
+          "start_ms": 380,
+          "end_ms": 480,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1800,
+          "end_ms": 2000,
+          "duration_ms": 200
+        },
+        {
+          "start_ms": 3220,
+          "end_ms": 3360,
+          "duration_ms": 140
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "رَتِّبِ",
+            "الْأَنْشِطَةَ",
+            "مِنَ",
+            "الْأَقْصَرِ",
+            "مُدَّةً",
+            "إِلَى",
+            "الْأَطْوَلِ",
+            "مُدَّةً."
+          ],
+          "start_ms": 220,
+          "end_ms": 4040,
+          "duration_ms": 3820
+        }
+      ],
+      "analysis": {
+        "threshold": 556.0690980022722,
+        "fallback": false,
+        "speech_runs": 4
+      }
+    },
+    {
+      "key": "l71_ex4_q2",
+      "text": "رَتِّبِ الْأَنْشِطَةَ مِنَ الْأَقْصَرِ مُدَّةً إِلَى الْأَطْوَلِ مُدَّةً.",
+      "audio_duration_ms": 5064,
+      "speech_start_ms": 220,
+      "speech_end_ms": 4040,
+      "words": 8,
+      "detected_gaps": [
+        {
+          "start_ms": 380,
+          "end_ms": 480,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1800,
+          "end_ms": 2000,
+          "duration_ms": 200
+        },
+        {
+          "start_ms": 3220,
+          "end_ms": 3360,
+          "duration_ms": 140
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "رَتِّبِ",
+            "الْأَنْشِطَةَ",
+            "مِنَ",
+            "الْأَقْصَرِ",
+            "مُدَّةً",
+            "إِلَى",
+            "الْأَطْوَلِ",
+            "مُدَّةً."
+          ],
+          "start_ms": 220,
+          "end_ms": 4040,
+          "duration_ms": 3820
+        }
+      ],
+      "analysis": {
+        "threshold": 556.0690980022722,
+        "fallback": false,
+        "speech_runs": 4
+      }
+    },
+    {
+      "key": "l71_ex4_q3",
+      "text": "رَتِّبِ الْأَنْشِطَةَ مِنَ الْأَقْصَرِ مُدَّةً إِلَى الْأَطْوَلِ مُدَّةً.",
+      "audio_duration_ms": 5064,
+      "speech_start_ms": 220,
+      "speech_end_ms": 4040,
+      "words": 8,
+      "detected_gaps": [
+        {
+          "start_ms": 380,
+          "end_ms": 480,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 1800,
+          "end_ms": 2000,
+          "duration_ms": 200
+        },
+        {
+          "start_ms": 3220,
+          "end_ms": 3360,
+          "duration_ms": 140
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "رَتِّبِ",
+            "الْأَنْشِطَةَ",
+            "مِنَ",
+            "الْأَقْصَرِ",
+            "مُدَّةً",
+            "إِلَى",
+            "الْأَطْوَلِ",
+            "مُدَّةً."
+          ],
+          "start_ms": 220,
+          "end_ms": 4040,
+          "duration_ms": 3820
+        }
+      ],
+      "analysis": {
+        "threshold": 556.0690980022722,
+        "fallback": false,
+        "speech_runs": 4
+      }
+    },
+    {
+      "key": "l71_ex4_q4",
+      "text": "أَكْمِلِ التَّرْتِيبَ مِنَ الْأَقْصَرِ مُدَّةً إِلَى الْأَطْوَلِ مُدَّةً.",
+      "audio_duration_ms": 4992,
+      "speech_start_ms": 240,
+      "speech_end_ms": 3980,
+      "words": 8,
+      "detected_gaps": [
+        {
+          "start_ms": 700,
+          "end_ms": 800,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 920,
+          "end_ms": 1040,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 1740,
+          "end_ms": 1940,
+          "duration_ms": 200
+        },
+        {
+          "start_ms": 3180,
+          "end_ms": 3300,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَكْمِلِ",
+            "التَّرْتِيبَ",
+            "مِنَ",
+            "الْأَقْصَرِ",
+            "مُدَّةً",
+            "إِلَى",
+            "الْأَطْوَلِ",
+            "مُدَّةً."
+          ],
+          "start_ms": 240,
+          "end_ms": 3980,
+          "duration_ms": 3740
+        }
+      ],
+      "analysis": {
+        "threshold": 570.0069639831277,
+        "fallback": false,
+        "speech_runs": 5
+      }
+    }
+  ]
+}

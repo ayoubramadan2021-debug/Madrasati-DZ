@@ -1,3 +1,4 @@
+import UnifiedExerciseKaraokeV2 from "../components/UnifiedExerciseKaraokeV2";
 import UnifiedExerciseFeedbackV2 from
   "../components/UnifiedExerciseFeedbackV2";
 
@@ -679,49 +680,30 @@ Lesson51VisualAdditionExerciseV2({
             }}
           >
             {words.length > 0
-              ? words.map(
-                  (word, index) => {
-                    const shown =
-                      active
-                        ? karaoke.shown
-                            .has(index)
-                        : true;
-
-                    const current =
-                      active &&
-                      karaoke.currentIdx ===
-                        index;
-
-                    return (
-                      <span
-                        key={
-                          `${word.text}-${index}`
-                        }
-                        style={{
-                          display:
-                            "inline-block",
-                          marginInline: 3,
-                          opacity:
-                            shown
-                              ? 1
-                              : 0.18,
-                          color:
-                            current
-                              ? COLORS.gold
-                              : COLORS.navy,
-                          transform:
-                            current
-                              ? "scale(1.08)"
-                              : "scale(1)",
-                          transition:
-                            "all .15s ease",
-                        }}
-                      >
-                        {word.text}
-                      </span>
-                    );
-                  },
-                )
+              ? (
+                    <UnifiedExerciseKaraokeV2
+                      words={
+                        words.map(
+                          word => word.text,
+                        )
+                      }
+                      activeIndex={
+                        active
+                          ? karaoke.currentIdx
+                          : -1
+                      }
+                      shownWordCount={
+                        karaoke.shown.size > 0
+                          ? Math.min(
+                              words.length,
+                              Math.max(
+                                ...karaoke.shown,
+                              ) + 1,
+                            )
+                          : 0
+                      }
+                    />
+                  )
               : item.question}
           </div>
         </section>

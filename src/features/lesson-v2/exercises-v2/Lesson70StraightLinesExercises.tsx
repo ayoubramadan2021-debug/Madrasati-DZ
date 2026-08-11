@@ -1,72 +1,73 @@
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type CSSProperties,
-  type ReactNode,
+import type {
+  CSSProperties,
 } from "react";
 
-import UnifiedExerciseScreenV2 from "../components/UnifiedExerciseScreenV2";
-import UnifiedExerciseAnswersV2 from "../components/UnifiedExerciseAnswersV2";
-import LessonCompleteV2 from "../components/LessonCompleteV2";
-import StraightLineLabV2 from "./StraightLineLabV2";
+import UnifiedLessonExercisesV2, {
+  type UnifiedLessonExerciseQuestionV2,
+  type UnifiedLessonExerciseRenderContextV2,
+} from "./UnifiedLessonExercisesV2";
 
-type Feedback =
-  | "idle"
-  | "correct"
-  | "wrong";
+import StraightLineLabV2 from "./StraightLineLabV2";
 
 type Mission = 1 | 2 | 3 | 4;
 
-type QuestionKind = "identify" | "classify" | "ruler" | "connect";
+type QuestionKind =
+  | "identify"
+  | "classify"
+  | "ruler"
+  | "connect";
 
-type VisualKind = "lines" | "compare" | "ruler" | "points";
+type VisualKind =
+  | "lines"
+  | "compare"
+  | "ruler"
+  | "points";
 
-type Choice = {
-  id: string;
-  label: string;
+type Point = {
+  x: number;
+  y: number;
 };
 
-type Question = {
-  id: string;
-  mission: Mission;
-  kind: QuestionKind;
-  visual: VisualKind;
+type Question =
+  UnifiedLessonExerciseQuestionV2 & {
+    mission: Mission;
+    kind: QuestionKind;
+    visual: VisualKind;
 
-  prompt: string;
-  audioKey: string;
+    revealText?: string;
 
-  choices: Choice[];
-  answer: string;
-
-
-  revealText?: string;
-  start?: { x: number; y: number };
-  end?: { x: number; y: number };
-};
-
-type WordTiming = {
-  text: string;
-  offset: number;
-  duration: number;
-};
+    start?: Point;
+    end?: Point;
+  };
 
 const AUDIO_BASE =
   "/audio/teachers/khalil/"
   + "lesson_70_straight_lines/exercises";
 
-const NEXT_LESSON = "/lesson-v2/71";
+const NEXT_LESSON =
+  "/lesson-v2/71";
 
-const FEEDBACK_DELAY = 1450;
+const SMALL_CITY_QUIZ =
+  "/world/"
+  + "b2c0405e-4559-4813-9a73-82b4f0ab4f4c"
+  + "/quiz";
+
+const MISSION_TITLES: Record<
+  Mission,
+  string
+> = {
+  1: "أَتَعَرَّفُ عَلَى الْخَطِّ الْمُسْتَقِيمِ",
+  2: "أُمَيِّزُ بَيْنَ الْخُطُوطِ",
+  3: "أَسْتَعْمِلُ الْمِسْطَرَةَ",
+  4: "أَرْسُمُ خَطًّا مُسْتَقِيمًا",
+};
 
 const choice = (
   id: string,
   label: string,
-): Choice => ({
+) => ({
   id,
-  label,
+  content: label,
 });
 
 const QUESTIONS: Question[] = [
@@ -147,7 +148,6 @@ const QUESTIONS: Question[] = [
 
 ];
 
-
 function Lesson70Visual({
   kind,
 }: {
@@ -173,8 +173,13 @@ function Lesson70Visual({
 
   return (
     <div style={styles.activityVisual}>
-      <div style={styles.visualSymbol}>{symbol}</div>
-      <div style={styles.visualLabel}>{label}</div>
+      <div style={styles.visualSymbol}>
+        {symbol}
+      </div>
+
+      <div style={styles.visualLabel}>
+        {label}
+      </div>
     </div>
   );
 }
@@ -188,27 +193,35 @@ function PromptActivity({
 }) {
   return (
     <div style={styles.activityCard}>
-      <Lesson70Visual kind={question.visual} />
+      <Lesson70Visual
+        kind={question.visual}
+      />
 
-      <div style={styles.lesson70PromptBox}>
+      <div
+        style={
+          styles.lesson70PromptBox
+        }
+      >
         {question.prompt}
       </div>
 
-      {showResult && question.revealText && (
-        <div style={styles.reveal}>
-          ✅ {question.revealText}
-        </div>
-      )}
+      {showResult
+        && question.revealText
+        && (
+          <div style={styles.reveal}>
+            ✅ {question.revealText}
+          </div>
+        )}
     </div>
   );
 }
 
-function renderActivity(
-  question: Question,
-  showResult: boolean,
-  onDrawResult: (correct: boolean) => void,
-  locked: boolean,
-): ReactNode {
+function renderLesson70Activity({
+  question,
+  showResult,
+  submitResult,
+  locked,
+}: UnifiedLessonExerciseRenderContextV2<Question>) {
   if (
     question.kind === "connect"
     && question.start
@@ -216,9 +229,15 @@ function renderActivity(
   ) {
     return (
       <div style={styles.activityCard}>
-        <Lesson70Visual kind="points" />
+        <Lesson70Visual
+          kind="points"
+        />
 
-        <div style={styles.lesson70PromptBox}>
+        <div
+          style={
+            styles.lesson70PromptBox
+          }
+        >
           {question.prompt}
         </div>
 
@@ -228,14 +247,16 @@ function renderActivity(
           end={question.end}
           locked={locked}
           showResult={showResult}
-          onResult={onDrawResult}
+          onResult={submitResult}
         />
 
-        {showResult && question.revealText && (
-          <div style={styles.reveal}>
-            ✅ {question.revealText}
-          </div>
-        )}
+        {showResult
+          && question.revealText
+          && (
+            <div style={styles.reveal}>
+              ✅ {question.revealText}
+            </div>
+          )}
       </div>
     );
   }
@@ -248,422 +269,37 @@ function renderActivity(
   );
 }
 
-function fallbackTimings(
-  text: string,
-): WordTiming[] {
-  return text
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean)
-    .map((word, index) => ({
-      text: word,
-      offset: index * 500,
-      duration: 450,
-    }));
-}
-
 export default function
 Lesson70StraightLinesExercises() {
-  const [
-    questionIndex,
-    setQuestionIndex,
-  ] = useState(0);
-
-  const [
-    selectedId,
-    setSelectedId,
-  ] = useState<string | null>(null);
-
-  const [
-    feedback,
-    setFeedback,
-  ] = useState<Feedback>("idle");
-
-  const [
-    locked,
-    setLocked,
-  ] = useState(false);
-
-  const [
-    complete,
-    setComplete,
-  ] = useState(false);
-
-  const [
-    timings,
-    setTimings,
-  ] = useState<WordTiming[]>([]);
-
-  const [
-    activeWordIndex,
-    setActiveWordIndex,
-  ] = useState(-1);
-
-  const [
-    isPlaying,
-    setIsPlaying,
-  ] = useState(false);
-
-  const audioRef =
-    useRef<HTMLAudioElement | null>(
-      null,
-    );
-
-  const animationRef =
-    useRef<number | null>(null);
-
-  const question =
-    QUESTIONS[questionIndex];
-
-  const missionIndex =
-    questionIndex % 4;
-
-  const stopAudio =
-    useCallback(() => {
-      if (animationRef.current) {
-        cancelAnimationFrame(
-          animationRef.current,
-        );
-
-        animationRef.current = null;
-      }
-
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
-
-      setIsPlaying(false);
-    }, []);
-
-  const updateKaraoke =
-    useCallback(() => {
-      const audio =
-        audioRef.current;
-
-      if (!audio) return;
-
-      const currentTime =
-        audio.currentTime * 1000;
-
-      let index = -1;
-
-      timings.forEach(
-        (timing, timingIndex) => {
-          if (
-            currentTime >= timing.offset
-          ) {
-            index = timingIndex;
-          }
-        },
-      );
-
-      setActiveWordIndex(index);
-
-      if (
-        !audio.paused
-        && !audio.ended
-      ) {
-        animationRef.current =
-          requestAnimationFrame(
-            updateKaraoke,
-          );
-      }
-    }, [timings]);
-
-  const replay =
-    useCallback(async () => {
-      stopAudio();
-
-      const audio =
-        new Audio(
-          `${AUDIO_BASE}/`
-          + `${question.audioKey}.mp3`,
-        );
-
-      audioRef.current = audio;
-      setActiveWordIndex(-1);
-      setIsPlaying(true);
-
-      audio.onended = () => {
-        setIsPlaying(false);
-        setActiveWordIndex(
-          Math.max(
-            0,
-            timings.length - 1,
-          ),
-        );
-      };
-
-      try {
-        await audio.play();
-
-        animationRef.current =
-          requestAnimationFrame(
-            updateKaraoke,
-          );
-      } catch {
-        setIsPlaying(false);
-      }
-    }, [
-      question.audioKey,
-      stopAudio,
-      timings.length,
-      updateKaraoke,
-    ]);
-
-  useEffect(() => {
-    let active = true;
-
-    stopAudio();
-    setSelectedId(null);
-    setFeedback("idle");
-    setLocked(false);
-    setActiveWordIndex(-1);
-
-    fetch(
-      `${AUDIO_BASE}/`
-      + `${question.audioKey}.json`,
-    )
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(
-            "timings unavailable",
-          );
-        }
-
-        return response.json();
-      })
-      .then(payload => {
-        if (!active) return;
-
-        const loaded =
-          Array.isArray(payload)
-            ? payload
-            : [];
-
-        setTimings(
-          loaded.length > 0
-            ? loaded
-            : fallbackTimings(
-                question.prompt,
-              ),
-        );
-      })
-      .catch(() => {
-        if (!active) return;
-
-        setTimings(
-          fallbackTimings(
-            question.prompt,
-          ),
-        );
-      });
-
-    return () => {
-      active = false;
-      stopAudio();
-    };
-  }, [
-    question.audioKey,
-    question.prompt,
-    stopAudio,
-  ]);
-
-  useEffect(() => {
-    if (timings.length === 0) {
-      return;
-    }
-
-    const timer =
-      window.setTimeout(
-        () => {
-          void replay();
-        },
-        500,
-      );
-
-    return () => {
-      window.clearTimeout(timer);
-    };
-  }, [
-    question.id,
-    replay,
-    timings.length,
-  ]);
-
-  const selectAnswer =
-    useCallback(
-      (answerId: string) => {
-        if (locked) return;
-
-        stopAudio();
-        setSelectedId(answerId);
-
-        const isCorrect =
-          answerId === question.answer;
-
-        if (!isCorrect) {
-          setFeedback("wrong");
-          setLocked(true);
-
-          window.setTimeout(() => {
-            setFeedback("idle");
-            setSelectedId(null);
-            setLocked(false);
-          }, 900);
-
-          return;
-        }
-
-        setFeedback("correct");
-        setLocked(true);
-
-        window.setTimeout(() => {
-          if (
-            questionIndex
-            < QUESTIONS.length - 1
-          ) {
-            setQuestionIndex(
-              current => current + 1,
-            );
-
-            return;
-          }
-
-          setComplete(true);
-        }, FEEDBACK_DELAY);
-      },
-      [
-        locked,
-        question.answer,
-        questionIndex,
-        stopAudio,
-      ],
-    );
-
-  const restart =
-    useCallback(() => {
-      stopAudio();
-      setQuestionIndex(0);
-      setSelectedId(null);
-      setFeedback("idle");
-      setLocked(false);
-      setComplete(false);
-      setTimings([]);
-      setActiveWordIndex(-1);
-    }, [stopAudio]);
-
-  const questionWords =
-    useMemo(
-      () =>
-        timings.length > 0
-          ? timings.map(
-              timing => timing.text,
-            )
-          : question.prompt
-              .trim()
-              .split(/\s+/),
-      [question.prompt, timings],
-    );
-
-  const safeActiveIndex =
-    activeWordIndex >= 0
-      ? Math.min(
-          activeWordIndex,
-          questionWords.length - 1,
-        )
-      : -1;
-
-  const displayedQuestionWords =
-    safeActiveIndex >= 0
-      ? questionWords.slice(
-          0,
-          safeActiveIndex + 1,
-        )
-      : [];
-
-  const displayedActiveWordIndex =
-    displayedQuestionWords.length > 0
-      ? displayedQuestionWords.length - 1
-      : -1;
-
-  const displayedActiveWord =
-    displayedActiveWordIndex >= 0
-      ? displayedQuestionWords[
-          displayedActiveWordIndex
-        ] ?? ""
-      : "";
-
-  const answerOptions =
-    question.choices.map(
-      option => ({
-        id: option.id,
-        ariaLabel: option.label,
-        content: (
-          <div style={styles.answer}>
-            {option.label}
-          </div>
-        ),
-      }),
-    );
-
-  if (complete) {
-    return (
-      <LessonCompleteV2
-        lessonKey="lesson70"
-        message={
-          "أَتْمَمْتَ تَمَارِينَ "
-          + "الْخُطُوطِ الْمُسْتَقِيمَةِ."
-        }
-        onReplay={restart}
-        nextPath={NEXT_LESSON}
-        nextLabel="الدرس التالي"
-        quizPath="/world/b2c0405e-4559-4813-9a73-82b4f0ab4f4c/quiz"
-      />
-    );
-  }
-
   return (
-    <UnifiedExerciseScreenV2
-      index={missionIndex}
-      total={4}
-      missionTitle=""
-      questionWords={
-        displayedQuestionWords
+    <UnifiedLessonExercisesV2
+      lessonKey="lesson70"
+
+      audioBase={AUDIO_BASE}
+
+      questions={QUESTIONS}
+
+      missionTitles={
+        MISSION_TITLES
       }
-      activeWordIndex={
-        displayedActiveWordIndex
+
+      missionCount={4}
+
+      completionMessage={
+        "أَتْمَمْتَ تَمَارِينَ "
+        + "الْخُطُوطِ الْمُسْتَقِيمَةِ."
       }
-      activeWord={
-        displayedActiveWord
+
+      nextPath={NEXT_LESSON}
+      nextLabel="الدرس التالي"
+
+      quizPath={
+        SMALL_CITY_QUIZ
       }
-      onReplay={replay}
-      isPlaying={isPlaying}
-      activity={renderActivity(
-        question,
-        feedback === "correct",
-        correct =>
-          selectAnswer(
-            correct
-              ? question.answer
-              : "__draw_wrong__",
-          ),
-        locked,
-      )}
-      answers={
-        <UnifiedExerciseAnswersV2
-          options={answerOptions}
-          selectedId={selectedId}
-          feedback={feedback}
-          correctId={question.answer}
-          showCorrect={false}
-          onSelect={selectAnswer}
-          variant="text"
-          columns={2}
-        />
+
+      renderActivity={
+        renderLesson70Activity
       }
-      feedback={feedback}
     />
   );
 }

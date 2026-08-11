@@ -37,8 +37,7 @@ export const lesson51 = {
   exercisePath:
     "/lesson-v2/51/exercises",
 
-  nextLessonKey:
-    "lesson52",
+  nextLessonKey: "lesson52",
 
   objectives: [
     "ترتيب الأشياء وتحديد الأول والثاني والثالث.",

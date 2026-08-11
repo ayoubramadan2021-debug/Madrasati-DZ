@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 
 import UnifiedExerciseFeedbackV2 from "./UnifiedExerciseFeedbackV2";
 import UnifiedExerciseHeaderV2 from "./UnifiedExerciseHeaderV2";
@@ -19,6 +19,7 @@ export type UnifiedExerciseScreenV2Props = {
   activeWordIndex?: number;
   activeWord?: string;
 
+  shownWordCount?: number;
   onReplay: () => void;
   isPlaying?: boolean;
 
@@ -44,6 +45,7 @@ export default function UnifiedExerciseScreenV2({
   activeWordIndex = -1,
   activeWord = "",
 
+  shownWordCount,
   onReplay,
   isPlaying = false,
 
@@ -59,6 +61,19 @@ export default function UnifiedExerciseScreenV2({
   activityLabel = "محتوى التمرين",
   answersLabel = "خيارات الإجابة",
 }: UnifiedExerciseScreenV2Props) {
+  const [
+    karaokeReplayKey,
+    setKaraokeReplayKey,
+  ] = useState(0);
+
+  const handleReplay = () => {
+    setKaraokeReplayKey(
+      value => value + 1,
+    );
+
+    onReplay();
+  };
+
   return (
     <main className="unified-exercise-screen-v2" dir="rtl">
       <style>{`
@@ -319,7 +334,7 @@ export default function UnifiedExerciseScreenV2({
           index={index}
           total={total}
           missionTitle={missionTitle}
-          onReplay={onReplay}
+          onReplay={handleReplay}
           isPlaying={isPlaying}
         />
 
@@ -332,9 +347,11 @@ export default function UnifiedExerciseScreenV2({
 
         <section className="unified-exercise-screen-v2__question">
           <UnifiedExerciseKaraokeV2
+            key={karaokeReplayKey}
             words={questionWords}
             activeIndex={activeWordIndex}
             activeWord={activeWord}
+            shownWordCount={shownWordCount}
           />
         </section>
 

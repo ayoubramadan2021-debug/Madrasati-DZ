@@ -1,3 +1,4 @@
+import UnifiedExerciseKaraokeV2 from "../components/UnifiedExerciseKaraokeV2";
 import { useEffect, useState } from "react";
 import { useKaraoke, loadTimings, type WordTiming } from "../useKaraoke";
 import EmojiIcon from "../components/EmojiIcon";
@@ -386,7 +387,7 @@ export default function BoxCountSelectV2({ items, audio_base, onComplete }: Prop
                     textShadow: "0 2px 5px rgba(0,0,0,.25)",
                   }}
                 >
-                  داخل الصندوق 
+                  داخل الصندوق
                 </div>
               </div>
             </div>
@@ -473,25 +474,27 @@ export default function BoxCountSelectV2({ items, audio_base, onComplete }: Prop
           }}
         >
           {words
-            ? words.map((w, i) => {
-                const isShown = karaoke.activeKey ? karaoke.shown.has(i) : true;
-                const isCurrent = isActive && karaoke.currentIdx === i;
-                return (
-                  <span
-                    key={i}
-                    style={{
-                      display: "inline-block",
-                      margin: "0 2px",
-                      opacity: isShown ? 1 : 0.35,
-                      color: isCurrent ? C.gold : C.navyDeep,
-                      transform: isCurrent ? "translateY(-2px) scale(1.08)" : "scale(1)",
-                      transition: "all .25s ease",
-                    }}
-                  >
-                    {w.text}{" "}
-                  </span>
-                );
-              })
+            ? (
+              <UnifiedExerciseKaraokeV2
+                words={words.map((word) => word.text)}
+                activeIndex={
+                  karaoke.activeKey ===
+                  item.question_audio_key
+                    ? karaoke.currentIdx
+                    : -1
+                }
+                shownWordCount={
+                  karaoke.shown.size > 0
+                  ? Math.min(
+                      words.length,
+                      Math.max(
+                        ...karaoke.shown,
+                      ) + 1,
+                    )
+                  : 0
+                }
+              />
+            )
             : item.question}
         </div>
       </div>

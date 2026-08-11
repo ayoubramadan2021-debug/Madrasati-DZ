@@ -1,0 +1,526 @@
+{
+  "lesson": 77,
+  "teacher": "khalil",
+  "voice": "ar-DZ-IsmaelNeural",
+  "rate": "-6%",
+  "reference_generator": "generate_lesson71_exercises_audio.py",
+  "reference_sha256": "a7cb90304dd39c4e7f0e3202a78750834c30a2b09b41a81bfdb0384f9246f56e",
+  "questions": 16,
+  "reused": 0,
+  "generated_or_repaired": 16,
+  "reports": [
+    {
+      "key": "l77_ex1_q1",
+      "text": "أَيُّ مُجَسَّمٍ يُشْبِهُ الْكُرَةَ الَّتِي نَلْعَبُ بِهَا؟",
+      "status": "generated",
+      "audio_duration_ms": 4368,
+      "speech_start_ms": 220,
+      "speech_end_ms": 3360,
+      "words": 7,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "مُجَسَّمٍ",
+            "يُشْبِهُ",
+            "الْكُرَةَ",
+            "الَّتِي",
+            "نَلْعَبُ",
+            "بِهَا؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 3360,
+          "duration_ms": 3140
+        }
+      ],
+      "analysis": {
+        "threshold": 548.3543129021942,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l77_ex1_q2",
+      "text": "أَيُّ مُجَسَّمٍ لَهُ شَكْلُ صُنْدُوقٍ مُتَسَاوِي الْأَوْجُهِ؟",
+      "status": "generated",
+      "audio_duration_ms": 4728,
+      "speech_start_ms": 220,
+      "speech_end_ms": 3700,
+      "words": 7,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "مُجَسَّمٍ",
+            "لَهُ",
+            "شَكْلُ",
+            "صُنْدُوقٍ",
+            "مُتَسَاوِي",
+            "الْأَوْجُهِ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 3700,
+          "duration_ms": 3480
+        }
+      ],
+      "analysis": {
+        "threshold": 534.9896049587204,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l77_ex1_q3",
+      "text": "عُلْبَةُ الْمَشْرُوبِ تُشْبِهُ...",
+      "status": "generated",
+      "audio_duration_ms": 2832,
+      "speech_start_ms": 240,
+      "speech_end_ms": 1800,
+      "words": 3,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "عُلْبَةُ",
+            "الْمَشْرُوبِ",
+            "تُشْبِهُ..."
+          ],
+          "start_ms": 240,
+          "end_ms": 1800,
+          "duration_ms": 1560
+        }
+      ],
+      "analysis": {
+        "threshold": 488.12337323768617,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l77_ex1_q4",
+      "text": "عُلْبَةُ الْأَحْذِيَةِ تُشْبِهُ...",
+      "status": "generated",
+      "audio_duration_ms": 3024,
+      "speech_start_ms": 240,
+      "speech_end_ms": 1980,
+      "words": 3,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "عُلْبَةُ",
+            "الْأَحْذِيَةِ",
+            "تُشْبِهُ..."
+          ],
+          "start_ms": 240,
+          "end_ms": 1980,
+          "duration_ms": 1740
+        }
+      ],
+      "analysis": {
+        "threshold": 571.5968418111121,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l77_ex2_q1",
+      "text": "أَيُّ مُجَسَّمٍ لَهُ سَطْحٌ مُنْحَنٍ مِنْ جَمِيعِ الْجِهَاتِ؟",
+      "status": "generated",
+      "audio_duration_ms": 4776,
+      "speech_start_ms": 220,
+      "speech_end_ms": 3560,
+      "words": 8,
+      "detected_gaps": [
+        {
+          "start_ms": 1640,
+          "end_ms": 1740,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "مُجَسَّمٍ",
+            "لَهُ",
+            "سَطْحٌ",
+            "مُنْحَنٍ",
+            "مِنْ",
+            "جَمِيعِ",
+            "الْجِهَاتِ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 3560,
+          "duration_ms": 3340
+        }
+      ],
+      "analysis": {
+        "threshold": 536.1149497041131,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l77_ex2_q2",
+      "text": "أَيُّ مُجَسَّمٍ لَهُ أَوْجُهٌ مُسَطَّحَةٌ؟",
+      "status": "generated",
+      "audio_duration_ms": 3816,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2820,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 2380,
+          "end_ms": 2520,
+          "duration_ms": 140
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "مُجَسَّمٍ",
+            "لَهُ",
+            "أَوْجُهٌ",
+            "مُسَطَّحَةٌ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2820,
+          "duration_ms": 2600
+        }
+      ],
+      "analysis": {
+        "threshold": 572.3318316031794,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l77_ex2_q3",
+      "text": "أَيُّ مُجَسَّمٍ لَهُ سَطْحٌ مُنْحَنٍ وَوَجْهَانِ مُسَطَّحَانِ؟",
+      "status": "generated",
+      "audio_duration_ms": 5304,
+      "speech_start_ms": 220,
+      "speech_end_ms": 4240,
+      "words": 7,
+      "detected_gaps": [
+        {
+          "start_ms": 1620,
+          "end_ms": 1800,
+          "duration_ms": 180
+        },
+        {
+          "start_ms": 3580,
+          "end_ms": 3700,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "مُجَسَّمٍ",
+            "لَهُ",
+            "سَطْحٌ",
+            "مُنْحَنٍ",
+            "وَوَجْهَانِ",
+            "مُسَطَّحَانِ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 4240,
+          "duration_ms": 4020
+        }
+      ],
+      "analysis": {
+        "threshold": 538.9553839002402,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l77_ex2_q4",
+      "text": "أَيُّ مُجَسَّمٍ يَنْتَهِي بِرَأْسٍ فِي الْأَعْلَى؟",
+      "status": "generated",
+      "audio_duration_ms": 3912,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2820,
+      "words": 6,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "مُجَسَّمٍ",
+            "يَنْتَهِي",
+            "بِرَأْسٍ",
+            "فِي",
+            "الْأَعْلَى؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2820,
+          "duration_ms": 2600
+        }
+      ],
+      "analysis": {
+        "threshold": 602.4820108621502,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l77_ex3_q1",
+      "text": "أَيُّ مُجَسَّمٍ يَتَدَحْرَجُ بِسُهُولَةٍ؟",
+      "status": "generated",
+      "audio_duration_ms": 3696,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2700,
+      "words": 4,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "مُجَسَّمٍ",
+            "يَتَدَحْرَجُ",
+            "بِسُهُولَةٍ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2700,
+          "duration_ms": 2480
+        }
+      ],
+      "analysis": {
+        "threshold": 517.0567061188743,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l77_ex3_q2",
+      "text": "أَيُّ مُجَسَّمٍ يَنْزَلِقُ عَلَى وَجْهٍ مُسَطَّحٍ؟",
+      "status": "generated",
+      "audio_duration_ms": 4224,
+      "speech_start_ms": 240,
+      "speech_end_ms": 3060,
+      "words": 6,
+      "detected_gaps": [
+        {
+          "start_ms": 1680,
+          "end_ms": 1780,
+          "duration_ms": 100
+        },
+        {
+          "start_ms": 2860,
+          "end_ms": 2980,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "مُجَسَّمٍ",
+            "يَنْزَلِقُ",
+            "عَلَى",
+            "وَجْهٍ",
+            "مُسَطَّحٍ؟"
+          ],
+          "start_ms": 240,
+          "end_ms": 3060,
+          "duration_ms": 2820
+        }
+      ],
+      "analysis": {
+        "threshold": 505.9728828251323,
+        "fallback": false,
+        "speech_runs": 3
+      }
+    },
+    {
+      "key": "l77_ex3_q3",
+      "text": "الْأُسْطُوَانَةُ يُمْكِنُ أَنْ...",
+      "status": "generated",
+      "audio_duration_ms": 2928,
+      "speech_start_ms": 220,
+      "speech_end_ms": 1900,
+      "words": 3,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "الْأُسْطُوَانَةُ",
+            "يُمْكِنُ",
+            "أَنْ..."
+          ],
+          "start_ms": 220,
+          "end_ms": 1900,
+          "duration_ms": 1680
+        }
+      ],
+      "analysis": {
+        "threshold": 498.1703456446274,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l77_ex3_q4",
+      "text": "سَبَبُ تَدَحْرُجِ الْكُرَةِ هُوَ...",
+      "status": "generated",
+      "audio_duration_ms": 3216,
+      "speech_start_ms": 240,
+      "speech_end_ms": 2160,
+      "words": 4,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "سَبَبُ",
+            "تَدَحْرُجِ",
+            "الْكُرَةِ",
+            "هُوَ..."
+          ],
+          "start_ms": 240,
+          "end_ms": 2160,
+          "duration_ms": 1920
+        }
+      ],
+      "analysis": {
+        "threshold": 507.4610117046555,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l77_ex4_q1",
+      "text": "أَيُّ شَيْءٍ نُصَنِّفُهُ مَعَ الْكُرَةِ؟",
+      "status": "generated",
+      "audio_duration_ms": 3408,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2400,
+      "words": 5,
+      "detected_gaps": [
+        {
+          "start_ms": 2020,
+          "end_ms": 2120,
+          "duration_ms": 100
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "شَيْءٍ",
+            "نُصَنِّفُهُ",
+            "مَعَ",
+            "الْكُرَةِ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2400,
+          "duration_ms": 2180
+        }
+      ],
+      "analysis": {
+        "threshold": 567.3685519189115,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    },
+    {
+      "key": "l77_ex4_q2",
+      "text": "أَيُّ شَيْءٍ نُصَنِّفُهُ مَعَ الْأُسْطُوَانَةِ؟",
+      "status": "generated",
+      "audio_duration_ms": 3888,
+      "speech_start_ms": 220,
+      "speech_end_ms": 2880,
+      "words": 5,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "شَيْءٍ",
+            "نُصَنِّفُهُ",
+            "مَعَ",
+            "الْأُسْطُوَانَةِ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 2880,
+          "duration_ms": 2660
+        }
+      ],
+      "analysis": {
+        "threshold": 592.6584754959533,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l77_ex4_q3",
+      "text": "أَيُّ شَيْءٍ نُصَنِّفُهُ مَعَ مُتَوَازِي الْمُسْتَطِيلَاتِ؟",
+      "status": "generated",
+      "audio_duration_ms": 4872,
+      "speech_start_ms": 220,
+      "speech_end_ms": 3640,
+      "words": 6,
+      "detected_gaps": [],
+      "clauses": [
+        {
+          "words": [
+            "أَيُّ",
+            "شَيْءٍ",
+            "نُصَنِّفُهُ",
+            "مَعَ",
+            "مُتَوَازِي",
+            "الْمُسْتَطِيلَاتِ؟"
+          ],
+          "start_ms": 220,
+          "end_ms": 3640,
+          "duration_ms": 3420
+        }
+      ],
+      "analysis": {
+        "threshold": 590.5741733696939,
+        "fallback": false,
+        "speech_runs": 1
+      }
+    },
+    {
+      "key": "l77_ex4_q4",
+      "text": "عِنْدَ التَّصْنِيفِ نَنْظُرُ إِلَى...",
+      "status": "generated",
+      "audio_duration_ms": 3048,
+      "speech_start_ms": 220,
+      "speech_end_ms": 1980,
+      "words": 4,
+      "detected_gaps": [
+        {
+          "start_ms": 560,
+          "end_ms": 680,
+          "duration_ms": 120
+        }
+      ],
+      "clauses": [
+        {
+          "words": [
+            "عِنْدَ",
+            "التَّصْنِيفِ",
+            "نَنْظُرُ",
+            "إِلَى..."
+          ],
+          "start_ms": 220,
+          "end_ms": 1980,
+          "duration_ms": 1760
+        }
+      ],
+      "analysis": {
+        "threshold": 507.9474495248008,
+        "fallback": false,
+        "speech_runs": 2
+      }
+    }
+  ]
+}

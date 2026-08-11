@@ -8,8 +8,6 @@ import {
   useState,
 } from "react";
 
-import { useNavigate } from "react-router-dom";
-
 import LessonCompleteV2 from "../components/LessonCompleteV2";
 import UnifiedExerciseAnswersV2 from "../components/UnifiedExerciseAnswersV2";
 import UnifiedExerciseScreenV2 from "../components/UnifiedExerciseScreenV2";
@@ -514,12 +512,7 @@ function PulseComparison() {
   );
 }
 
-const LessonCompleteAny =
-  LessonCompleteV2 as any;
-
 export default function Lesson46HeartBeats2Exercises() {
-  const navigate = useNavigate();
-
   const [mission, setMission] =
     useState<1 | 2 | 3 | 4>(1);
 
@@ -973,17 +966,19 @@ export default function Lesson46HeartBeats2Exercises() {
 
   if (complete) {
     return (
-      <LessonCompleteAny
+      <LessonCompleteV2
+        message="أَتْمَمْتَ تَمَارِينَ قَلْبِي يَنْبِضُ بِنَجَاحٍ."
         lessonKey="lesson46"
-        title="🌟 أَحْسَنْتَ!"
-        subtitle="أَتْقَنْتَ دَرْسَ قَلْبِي يَنْبِضُ."
+        stars={3}
+        nextLessonKey="lesson47"
         nextPath="/lesson-v2/lesson47"
-        onNext={() =>
-          navigate("/lesson-v2/lesson47")
-        }
-        onContinue={() =>
-          navigate("/lesson-v2/lesson47")
-        }
+        onReplay={() => {
+          setMission(1);
+          setQuestionIndex(0);
+          setSelectedId(null);
+          setFeedback("idle");
+          setComplete(false);
+        }}
       />
     );
   }

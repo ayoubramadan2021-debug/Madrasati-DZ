@@ -1,3 +1,4 @@
+import UnifiedExerciseKaraokeV2 from "../components/UnifiedExerciseKaraokeV2";
 import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import { useKaraoke, loadTimings, type WordTiming } from "../useKaraoke";
@@ -138,26 +139,27 @@ export default function LengthLabExerciseV2({
 
     return (
       <div style={styles.questionText}>
-        {words.map((w, i) => {
-          const shown = karaoke.activeKey ? karaoke.shown.has(i) : true;
-          const current = isActive && karaoke.currentIdx === i;
-
-          return (
-            <span
-              key={i}
-              style={{
-                display: "inline-block",
-                marginInline: 3,
-                opacity: shown ? 1 : 0.28,
-                color: current ? C.gold : C.navy,
-                transform: current ? "scale(1.06)" : "scale(1)",
-                transition: "all .16s ease",
-              }}
-            >
-              {w}
-            </span>
-          );
-        })}
+        {(
+              <UnifiedExerciseKaraokeV2
+                words={words}
+                activeIndex={
+                  karaoke.activeKey ===
+                  item.question_audio_key
+                    ? karaoke.currentIdx
+                    : -1
+                }
+                shownWordCount={
+                  karaoke.shown.size > 0
+                  ? Math.min(
+                      words.length,
+                      Math.max(
+                        ...karaoke.shown,
+                      ) + 1,
+                    )
+                  : 0
+                }
+              />
+            )}
       </div>
     );
   };

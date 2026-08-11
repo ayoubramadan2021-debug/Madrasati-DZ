@@ -1,0 +1,27 @@
+[
+  {
+    "text": "9",
+    "offset": 240,
+    "duration": 400
+  },
+  {
+    "text": "+",
+    "offset": 640,
+    "duration": 400
+  },
+  {
+    "text": "4",
+    "offset": 1040,
+    "duration": 400
+  },
+  {
+    "text": "=",
+    "offset": 1440,
+    "duration": 400
+  },
+  {
+    "text": "؟",
+    "offset": 1840,
+    "duration": 400
+  }
+]

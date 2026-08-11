@@ -101,6 +101,7 @@ Lesson52ExercisesPage() {
   return (
     <LessonCompleteV2
       lessonKey="lesson52"
+      nextLabel="العودة إلى العالم"
       message="أَكْمَلْتَ تَمَارِينَ الْحَصِيلَةِ الثَّانِيَةِ."
       onReplay={() => {
         setStage("ex1");

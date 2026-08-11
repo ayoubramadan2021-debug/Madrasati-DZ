@@ -86,6 +86,9 @@ function useQuestionKaraoke(
   const [activeIndex, setActiveIndex] =
     useState(-1);
 
+  const [shownWordCount, setShownWordCount] =
+    useState(0);
+
   const [playing, setPlaying] =
     useState(false);
 
@@ -116,6 +119,7 @@ function useQuestionKaraoke(
 
     setPlaying(false);
     setActiveIndex(-1);
+    setShownWordCount(0);
   }, []);
 
   const loadTimings =
@@ -172,6 +176,7 @@ function useQuestionKaraoke(
         audio.currentTime * 1000;
 
       let currentIndex = -1;
+      let revealedCount = 0;
 
       for (
         let index = 0;
@@ -179,6 +184,10 @@ function useQuestionKaraoke(
         index += 1
       ) {
         const timing = timings[index];
+
+        if (current >= timing.offset) {
+          revealedCount = index + 1;
+        }
 
         if (
           current >= timing.offset &&
@@ -195,6 +204,14 @@ function useQuestionKaraoke(
       }
 
       setActiveIndex(currentIndex);
+
+      setShownWordCount(
+        (previous) =>
+          Math.max(
+            previous,
+            revealedCount,
+          ),
+      );
     };
 
     audio.onplay = () => {
@@ -204,6 +221,7 @@ function useQuestionKaraoke(
     audio.onended = () => {
       setPlaying(false);
       setActiveIndex(-1);
+      setShownWordCount(timings.length);
     };
 
     audio.onerror = () => {
@@ -240,6 +258,7 @@ function useQuestionKaraoke(
 
   return {
     activeIndex,
+    shownWordCount,
     playing,
     play,
   };
@@ -258,6 +277,7 @@ export function Lesson30ExerciseFrame({
 }: FrameProps) {
   const {
     activeIndex,
+    shownWordCount,
     playing,
     play,
   } = useQuestionKaraoke(
@@ -403,6 +423,9 @@ export function Lesson30ExerciseFrame({
             playing
               ? activeIndex
               : -1
+          }
+          shownWordCount={
+            shownWordCount
           }
         />
 

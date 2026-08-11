@@ -598,6 +598,11 @@ NumbersTo39ExerciseV2({
   ] = useState(-1);
 
   const [
+    shownWordCount,
+    setShownWordCount,
+  ] = useState(0);
+
+  const [
     isPlaying,
     setIsPlaying,
   ] = useState(false);
@@ -675,6 +680,7 @@ NumbersTo39ExerciseV2({
     setFeedback("idle");
     setWords([]);
     setActiveWordIndex(-1);
+    setShownWordCount(0);
 
     const cacheToken =
       encodeURIComponent(
@@ -758,6 +764,7 @@ NumbersTo39ExerciseV2({
         boundariesRef.current;
 
       let nextIndex = -1;
+      let revealedCount = 0;
 
       for (
         let wordIndex = 0;
@@ -770,6 +777,11 @@ NumbersTo39ExerciseV2({
             boundaries[wordIndex]
               .offset,
           ) || 0;
+
+        if (currentMs >= start) {
+          revealedCount =
+            wordIndex + 1;
+        }
 
         const nextStart =
           wordIndex <
@@ -811,6 +823,10 @@ NumbersTo39ExerciseV2({
           break;
         }
       }
+
+      setShownWordCount(
+        revealedCount,
+      );
 
       setActiveWordIndex(
         nextIndex,
@@ -862,6 +878,19 @@ NumbersTo39ExerciseV2({
       if (!cancelled) {
         setIsPlaying(false);
         setActiveWordIndex(-1);
+
+        const finalWordCount =
+          boundariesRef.current.length > 0
+            ? boundariesRef.current.length
+            : item.question
+                .trim()
+                .split(/\s+/)
+                .filter(Boolean)
+                .length;
+
+        setShownWordCount(
+          finalWordCount,
+        );
       }
     };
 
@@ -974,6 +1003,9 @@ NumbersTo39ExerciseV2({
       return;
     }
 
+    setShownWordCount(0);
+    setActiveWordIndex(-1);
+
     audio.currentTime = 0;
 
     audio.play().catch(
@@ -1050,6 +1082,9 @@ NumbersTo39ExerciseV2({
               activeWordIndex
             ] ?? ""
           : ""
+      }
+      shownWordCount={
+        shownWordCount
       }
       onReplay={
         replayQuestion

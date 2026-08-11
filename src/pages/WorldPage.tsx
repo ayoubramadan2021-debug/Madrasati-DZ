@@ -6,6 +6,7 @@ import { supabase } from "../lib/supabaseClient";
 import { getV2KeyByLesson } from "../features/lesson-v2/v2Registry";
 import WorldIntroSceneV2 from "../features/exercises/templates/WorldIntroSceneV2";
 import { NATURAL_RESERVE_WORLD_ID, naturalReserveIntroContent } from "../features/world-intro/naturalReserveIntro";
+import { SMALL_CITY_WORLD_ID, smallCityWorldIntroContent } from "../features/world-intro/smallCityWorldIntro";
 import { SCHOOL_WORLD_ID, schoolWorldIntroContent } from "../features/world-intro/schoolWorldIntro";
 
 // نزع التشكيل + تحويل الكلمات الرقمية — للعرض في الفهرس فقط
@@ -40,6 +41,14 @@ function resolveWorldIntroContent(
   ) {
     return naturalReserveIntroContent;
   }
+
+  if (
+    resolvedWorldId
+    === SMALL_CITY_WORLD_ID
+  ) {
+    return smallCityWorldIntroContent;
+  }
+
 
   return worldRecord?.intro_content ?? null;
 }

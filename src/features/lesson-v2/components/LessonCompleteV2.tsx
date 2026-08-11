@@ -1,14 +1,25 @@
-import { useEffect, type CSSProperties } from "react";
+import {
+  useEffect,
+  type CSSProperties,
+} from "react";
+
 import { useNavigate } from "react-router-dom";
-import { markLessonCompleted } from "../progress/lessonProgress";
+
+import {
+  markLessonCompleted,
+} from "../progress/lessonProgress";
 
 const C = {
-  navy: "#1B3A6B",
-  navyDeep: "#0F2447",
+  navy: "#17365F",
+  navyDeep: "#102E55",
   gold: "#E8A020",
-  green: "#1FA463",
+  goldLight: "#F6B927",
+  green: "#20AA66",
+  greenLight: "#20C16A",
   purple: "#7C3AED",
-  cream: "#FFF8EC",
+  purpleLight: "#9146E8",
+  cream: "#FFF9ED",
+  white: "#FFFFFF",
 };
 
 const SCHOOL_WORLD_ID =
@@ -34,107 +45,192 @@ export default function LessonCompleteV2({
   stars = 3,
   nextLessonKey,
   nextPath,
-  nextLabel = (nextLabel ?? (nextLabel ?? "الدرس التالي")),
+  nextLabel,
   quizPath = `/world/${SCHOOL_WORLD_ID}/quiz`,
   returnPath,
   returnLabel = "العودة إلى العالم",
 }: LessonCompleteV2Props) {
-  const resolvedNextLabel =
-    nextLabel ??
-    (
-      nextPath && nextPath.startsWith("/world/")
-        ? "العودة إلى العالم"
-        : (nextLabel ?? (nextLabel ?? "الدرس التالي"))
-    );
-
   const navigate = useNavigate();
 
   useEffect(() => {
     if (lessonKey) {
-      markLessonCompleted(lessonKey, stars);
+      markLessonCompleted(
+        lessonKey,
+        stars,
+      );
     }
   }, [lessonKey, stars]);
 
   const resolvedNextPath =
     nextPath ??
-    (nextLessonKey
-      ? `/lesson-v2/${nextLessonKey}`
-      : undefined);
+    (
+      nextLessonKey
+        ? `/lesson-v2/${nextLessonKey}`
+        : undefined
+    );
+
+  const resolvedNextLabel =
+    nextLabel ??
+    (
+      resolvedNextPath?.startsWith("/world/")
+        ? "العودة إلى العالم"
+        : "الدرس التالي"
+    );
 
   const buttonStyle = (
     background: string,
     shadow: string,
-    fontSize = 18,
   ): CSSProperties => ({
     width: "100%",
-    minHeight: 58,
+    minHeight: 62,
     border: 0,
-    borderRadius: 19,
+    borderRadius: 22,
     padding: "14px 18px",
     background,
-    color: "#FFFFFF",
-    fontFamily: "Tajawal, sans-serif",
-    fontSize,
+    color: C.white,
+    fontFamily:
+      '"Tajawal", "Noto Kufi Arabic", Arial, sans-serif',
+    fontSize: "clamp(18px,5vw,25px)",
+    lineHeight: 1.35,
     fontWeight: 950,
     cursor: "pointer",
     boxShadow: shadow,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    gap: 8,
+    textAlign: "center",
+    WebkitTapHighlightColor:
+      "transparent",
   });
 
   return (
-    <main dir="rtl" style={styles.page}>
+    <main
+      dir="rtl"
+      style={styles.page}
+    >
       <style>{`
-        @keyframes completePop {
-          0% { opacity: 0; transform: translateY(18px) scale(.94); }
-          70% { opacity: 1; transform: translateY(-3px) scale(1.02); }
-          100% { opacity: 1; transform: translateY(0) scale(1); }
+        @keyframes completeCardPop {
+          0% {
+            opacity: 0;
+            transform:
+              translateY(22px)
+              scale(.95);
+          }
+
+          70% {
+            opacity: 1;
+            transform:
+              translateY(-3px)
+              scale(1.012);
+          }
+
+          100% {
+            opacity: 1;
+            transform:
+              translateY(0)
+              scale(1);
+          }
         }
 
-        @keyframes trophyPulse {
-          0%, 100% { transform: scale(1) rotate(0deg); }
-          50% { transform: scale(1.08) rotate(4deg); }
+        @keyframes trophyFloat {
+          0%, 100% {
+            transform:
+              translateY(0)
+              rotate(0deg);
+          }
+
+          50% {
+            transform:
+              translateY(-7px)
+              rotate(2deg);
+          }
         }
 
-        @keyframes floatStar {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-7px); }
+        @keyframes starFloat {
+          0%, 100% {
+            transform: translateY(0);
+          }
+
+          50% {
+            transform: translateY(-6px);
+          }
         }
 
-        @keyframes shineMove {
-          0% { transform: translateX(130%) rotate(18deg); opacity: 0; }
-          35% { opacity: .55; }
-          100% { transform: translateX(-150%) rotate(18deg); opacity: 0; }
+        @media (max-width: 520px) {
+          .lesson-complete-card {
+            width:
+              calc(100% - 34px) !important;
+            padding:
+              32px 20px 27px !important;
+            border-radius:
+              29px !important;
+          }
+
+          .lesson-complete-actions {
+            gap: 12px !important;
+          }
+        }
+
+        @media (max-height: 720px) {
+          .lesson-complete-card {
+            padding:
+              21px 18px 20px !important;
+          }
+
+          .lesson-complete-trophy {
+            font-size:
+              68px !important;
+          }
         }
       `}</style>
 
-      <section style={styles.card}>
-        <div style={styles.shine} />
-
+      <section
+        className="lesson-complete-card"
+        style={styles.card}
+      >
         <div style={styles.trophyWrap}>
-          <div style={styles.glow} />
-          <div style={styles.trophy}>🏆</div>
-          <div style={styles.starLeft}>✨</div>
-          <div style={styles.starRight}>🌟</div>
+          <div style={styles.trophyGlow} />
+
+          <div
+            className="lesson-complete-trophy"
+            style={styles.trophy}
+          >
+            🏆
+          </div>
+
+          <div style={styles.starLeft}>
+            ✨
+          </div>
+
+          <div style={styles.starRight}>
+            🌟
+          </div>
         </div>
 
-        <h1 style={styles.title}>أَحْسَنْتَ يَا بَطَل!</h1>
-        <p style={styles.message}>{message}</p>
+        <h1 style={styles.title}>
+          أَحْسَنْتَ يَا بَطَل!
+        </h1>
 
-        <div style={styles.actions}>
+        <p style={styles.message}>
+          {message}
+        </p>
+
+        <div
+          className="lesson-complete-actions"
+          style={styles.actions}
+        >
           {resolvedNextPath && (
             <button
               type="button"
-              onClick={() => navigate(resolvedNextPath)}
+              onClick={() =>
+                navigate(resolvedNextPath)
+              }
               style={buttonStyle(
-                C.green,
-                "0 11px 22px rgba(31,164,99,.28)",
-                19,
+                `linear-gradient(135deg,${C.green},${C.greenLight})`,
+                "0 12px 25px rgba(32,170,102,.27)",
               )}
             >
-              {nextLabel}
+              {resolvedNextLabel}
             </button>
           )}
 
@@ -142,38 +238,41 @@ export default function LessonCompleteV2({
             type="button"
             onClick={onReplay}
             style={buttonStyle(
-              C.gold,
-              "0 11px 22px rgba(232,160,32,.28)",
+              `linear-gradient(135deg,${C.gold},${C.goldLight})`,
+              "0 12px 25px rgba(232,160,32,.27)",
             )}
           >
-            إعادة التمارين
+            إِعَادَةُ التَّمَارِينِ
           </button>
 
-          {!resolvedNextPath && returnPath && (
-            <button
-              type="button"
-              onClick={() => navigate(returnPath)}
-              style={buttonStyle(
-                C.navy,
-                "0 11px 22px rgba(27,58,107,.25)",
-                17,
-              )}
-            >
-              {returnLabel}
-            </button>
-          )}
+          {!resolvedNextPath &&
+            returnPath && (
+              <button
+                type="button"
+                onClick={() =>
+                  navigate(returnPath)
+                }
+                style={buttonStyle(
+                  `linear-gradient(135deg,${C.navy},${C.navyDeep})`,
+                  "0 12px 25px rgba(23,54,95,.25)",
+                )}
+              >
+                {returnLabel}
+              </button>
+            )}
 
           {quizPath && (
             <button
               type="button"
-              onClick={() => navigate(quizPath)}
+              onClick={() =>
+                navigate(quizPath)
+              }
               style={buttonStyle(
-                C.purple,
-                "0 11px 22px rgba(124,58,237,.27)",
-                17,
+                `linear-gradient(135deg,${C.purple},${C.purpleLight})`,
+                "0 12px 25px rgba(124,58,237,.27)",
               )}
             >
-              اختبار العالم
+              اِخْتِبَارُ الْعَالَمِ
             </button>
           )}
         </div>
@@ -182,109 +281,121 @@ export default function LessonCompleteV2({
   );
 }
 
-const styles: Record<string, CSSProperties> = {
+const styles:
+  Record<string, CSSProperties> = {
   page: {
     minHeight: "100dvh",
     width: "100%",
-    background: C.cream,
-    fontFamily: "Tajawal, sans-serif",
+    padding:
+      "24px 0 112px",
+    boxSizing: "border-box",
+    background:
+      "linear-gradient(180deg,#FFF9ED 0%,#FFFDF7 72%,#EEF8FF 100%)",
+    fontFamily:
+      '"Tajawal", "Noto Kufi Arabic", Arial, sans-serif',
     direction: "rtl",
     display: "flex",
-    alignItems: "stretch",
-    justifyContent: "stretch",
-    padding: 0,
-    boxSizing: "border-box",
-    overflow: "hidden",
+    alignItems: "center",
+    justifyContent: "center",
+    overflowX: "hidden",
   },
+
   card: {
-    width: "100%",
-    minHeight: "100dvh",
-    position: "relative",
-    padding: "22px 18px 112px",
-    background: C.cream,
-    textAlign: "center",
-    overflow: "hidden",
+    width:
+      "min(620px,calc(100% - 44px))",
+    padding:
+      "38px 34px 31px",
+    border: "none",
+    borderRadius: 38,
+    background:
+      "rgba(255,255,255,.96)",
     boxSizing: "border-box",
+    textAlign: "center",
+    boxShadow:
+      "0 18px 40px rgba(23,54,95,.10)",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
     animation:
-      "completePop .55s cubic-bezier(.22,1,.36,1) both",
+      "completeCardPop .5s cubic-bezier(.22,1,.36,1) both",
   },
-  shine: {
-    position: "absolute",
-    top: -90,
-    right: -20,
-    width: 86,
-    height: 430,
-    background:
-      "linear-gradient(90deg,transparent,rgba(255,255,255,.88),transparent)",
-    animation: "shineMove 2.8s ease-in-out infinite",
-    pointerEvents: "none",
-  },
+
   trophyWrap: {
-    position: "relative",
-    width: 160,
+    width: 158,
     height: 145,
-    marginBottom: 3,
+    position: "relative",
     display: "grid",
     placeItems: "center",
+    marginBottom: 2,
   },
-  glow: {
+
+  trophyGlow: {
     position: "absolute",
     width: 132,
     height: 132,
     borderRadius: "50%",
     background:
-      "radial-gradient(circle,rgba(232,160,32,.34),rgba(232,160,32,.08),transparent 70%)",
+      "radial-gradient(circle,rgba(246,185,39,.35),rgba(246,185,39,.09),transparent 72%)",
   },
+
   trophy: {
     position: "relative",
     zIndex: 2,
     fontSize: 88,
     lineHeight: 1,
-    animation: "trophyPulse 1.8s ease-in-out infinite",
+    animation:
+      "trophyFloat 1.9s ease-in-out infinite",
     filter:
-      "drop-shadow(0 10px 13px rgba(232,160,32,.28))",
+      "drop-shadow(0 10px 12px rgba(232,160,32,.25))",
   },
+
   starLeft: {
     position: "absolute",
-    left: 8,
-    top: 25,
+    left: 9,
+    top: 27,
+    zIndex: 3,
     fontSize: 27,
-    animation: "floatStar 1.6s ease-in-out infinite",
+    animation:
+      "starFloat 1.5s ease-in-out infinite",
   },
+
   starRight: {
     position: "absolute",
-    right: 7,
-    bottom: 18,
+    right: 8,
+    bottom: 20,
+    zIndex: 3,
     fontSize: 29,
-    animation: "floatStar 1.9s ease-in-out infinite",
+    animation:
+      "starFloat 1.8s ease-in-out infinite",
   },
+
   title: {
-    margin: "2px 0 8px",
+    margin:
+      "3px 0 13px",
     color: C.navyDeep,
-    fontSize: "clamp(30px,8vw,42px)",
-    lineHeight: 1.25,
+    fontSize:
+      "clamp(30px,7.5vw,43px)",
+    lineHeight: 1.3,
     fontWeight: 950,
   },
+
   message: {
-    maxWidth: 390,
-    margin: "0 auto 14px",
+    width: "100%",
+    maxWidth: 480,
+    margin:
+      "0 auto 23px",
     color: C.navy,
-    fontSize: "clamp(17px,4.7vw,23px)",
-    lineHeight: 1.7,
+    fontSize:
+      "clamp(17px,4.7vw,23px)",
+    lineHeight: 1.75,
     fontWeight: 850,
   },
+
   actions: {
     width: "100%",
-    maxWidth: 360,
-    margin: "0 auto",
+    maxWidth: 510,
     display: "flex",
     flexDirection: "column",
-    gap: 11,
-    position: "relative",
-    zIndex: 2,
+    gap: 14,
   },
 };

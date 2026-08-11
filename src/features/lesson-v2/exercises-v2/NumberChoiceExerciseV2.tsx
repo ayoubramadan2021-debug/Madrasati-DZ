@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import UnifiedExerciseKaraokeV2 from "../components/UnifiedExerciseKaraokeV2";
 
 type WordTiming = { text: string; offset: number; duration: number };
 
@@ -55,6 +56,7 @@ export default function NumberChoiceExerciseV2({ items, audio_base, onComplete }
     timers.current.forEach(clearTimeout);
     timers.current = [];
     setActive(-1);
+    setShown(new Set());
   };
 
   const playQuestion = async () => {
@@ -114,7 +116,26 @@ export default function NumberChoiceExerciseV2({ items, audio_base, onComplete }
     }
   };
 
-  const words = item.question.split(/\s+/);
+  const timingWords =
+    timings[item.question_audio_key];
+
+  const karaokeWords =
+    timingWords?.length
+      ? timingWords.map((word) => word.text)
+      : item.question
+          .split(/\s+/)
+          .map((word) => word.trim())
+          .filter(Boolean);
+
+  const shownWordCount =
+    shown.size > 0
+      ? Math.max(...shown) + 1
+      : 0;
+
+  const effectiveShownWordCount =
+    feedback !== "idle" || locked
+      ? karaokeWords.length
+      : shownWordCount;
 
   const progressEmoji = "🔢";
   const missionText = `مهمة الرقم ${idx + 1}`;
@@ -294,16 +315,13 @@ export default function NumberChoiceExerciseV2({ items, audio_base, onComplete }
 
         <div style={styles.questionBox}>
           <div style={styles.instruction}>{item.instruction}</div>
-          <div style={styles.question}>
-            {words.map((w, i) => (
-              <span key={i} style={{
-                ...styles.word,
-                color: active === i ? C.gold : C.navy,
-                opacity: (shown.has(i) || feedback !== "idle") ? 1 : 0.42,
-                transform: active === i ? "scale(1.08)" : "scale(1)"
-              }}>{w}</span>
-            ))}
-          </div>
+          <UnifiedExerciseKaraokeV2
+            words={karaokeWords}
+            activeIndex={active}
+            shownWordCount={
+              effectiveShownWordCount
+            }
+          />
         </div>
 
         <div style={styles.options}>

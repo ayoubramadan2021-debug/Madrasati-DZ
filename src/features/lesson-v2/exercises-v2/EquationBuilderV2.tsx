@@ -326,6 +326,10 @@ export default function EquationBuilderV2({
   const [bank, setBank] = useState<BankToken[]>([]);
   const [timings, setTimings] = useState<Timing[]>([]);
   const [activeWord, setActiveWord] = useState("");
+  const [activeWordIndex, setActiveWordIndex] =
+    useState(-1);
+  const [shownWordCount, setShownWordCount] =
+    useState(0);
   const [audioPlaying, setAudioPlaying] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -353,6 +357,7 @@ export default function EquationBuilderV2({
 
     setAudioPlaying(false);
     setActiveWord("");
+    setActiveWordIndex(-1);
 
     try {
       if (audioRef.current) {
@@ -417,6 +422,8 @@ export default function EquationBuilderV2({
     resetRound();
     setTimings([]);
     setActiveWord("");
+    setActiveWordIndex(-1);
+    setShownWordCount(0);
 
     loadTimings(
       audio_base,
@@ -464,8 +471,10 @@ export default function EquationBuilderV2({
 
       setAudioPlaying(true);
       setActiveWord("");
+      setActiveWordIndex(-1);
+      setShownWordCount(0);
 
-      list.forEach((word) => {
+      list.forEach((word, wordIndex) => {
         const offset = Math.max(
           0,
           Number(word.offset || 0),
@@ -478,10 +487,26 @@ export default function EquationBuilderV2({
 
         const startTimer = window.setTimeout(() => {
           setActiveWord(cleanText(word.text));
+          setActiveWordIndex(wordIndex);
+
+          setShownWordCount(
+            (previous) =>
+              Math.max(
+                previous,
+                wordIndex + 1,
+              ),
+          );
         }, offset);
 
         const endTimer = window.setTimeout(() => {
           setActiveWord("");
+
+          setActiveWordIndex(
+            (current) =>
+              current === wordIndex
+                ? -1
+                : current,
+          );
         }, offset + duration);
 
         timersRef.current.push(
@@ -493,15 +518,18 @@ export default function EquationBuilderV2({
       audio.onended = () => {
         setAudioPlaying(false);
         setActiveWord("");
+        setActiveWordIndex(-1);
       };
 
       audio.play().catch(() => {
         setAudioPlaying(false);
         setActiveWord("");
+        setActiveWordIndex(-1);
       });
     } catch {
       setAudioPlaying(false);
       setActiveWord("");
+      setActiveWordIndex(-1);
     }
   };
 
@@ -686,7 +714,17 @@ export default function EquationBuilderV2({
 
             <UnifiedExerciseKaraokeV2
               words={questionWords}
-              activeWord={activeWord}
+              activeIndex={
+                audioPlaying
+                  ? activeWordIndex
+                  : -1
+              }
+              activeWord={
+                activeWord
+              }
+              shownWordCount={
+                shownWordCount
+              }
             />
 
             <div

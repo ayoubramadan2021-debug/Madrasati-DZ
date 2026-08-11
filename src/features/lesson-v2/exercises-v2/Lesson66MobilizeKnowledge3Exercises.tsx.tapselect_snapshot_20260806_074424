@@ -1,0 +1,972 @@
+import {
+  Fragment,
+  type CSSProperties,
+  useEffect,
+  useState,
+} from "react";
+
+import { useNavigate } from "react-router-dom";
+
+import LessonCompleteV2 from "../components/LessonCompleteV2";
+import TapSelectImagesV2 from "./TapSelectImagesV2";
+
+const AUDIO_BASE =
+  "/audio/teachers/khalil/lesson_66_mobilize_knowledge_3/exercises";
+
+const BACKGROUND_IMAGE =
+  "/lessons/v2/lesson66-mobilize-my-knowledge/s1.webp";
+
+type Lesson66Kind =
+  | "farm"
+  | "operation"
+  | "table"
+  | "behavior";
+
+type Lesson66Option = {
+  label: string;
+  icon?: string;
+};
+
+type Lesson66Item = {
+  id: string;
+  question_audio_key: string;
+  options: Lesson66Option[];
+  correct_index: number;
+
+  stimulus: {
+    kind: Lesson66Kind;
+
+    title?: string;
+    image?: string;
+
+    left?: number;
+    right?: number;
+    operator?: "+" | "-";
+
+    rows?: Array<{
+      name: string;
+      count: number;
+    }>;
+
+    sceneIcon?: string;
+    sceneText?: string;
+  };
+};
+
+const ITEMS: Lesson66Item[] = [
+  {
+    id: "l66_ex1_q1",
+    question_audio_key: "l66_ex1_q1",
+    correct_index: 2,
+    stimulus: {
+      kind: "farm",
+      title: "حَيَوَانَاتٌ فِي الْمَزْرَعَةِ",
+      image: BACKGROUND_IMAGE,
+    },
+    options: [
+      { label: "حُوتٌ", icon: "🐋" },
+      { label: "أَسَدٌ", icon: "🦁" },
+      { label: "بَقَرَةٌ", icon: "🐄" },
+      { label: "نَسْرٌ", icon: "🦅" },
+    ],
+  },
+  {
+    id: "l66_ex1_q2",
+    question_audio_key: "l66_ex1_q2",
+    correct_index: 1,
+    stimulus: {
+      kind: "farm",
+      title: "حَيَوَانَاتٌ حَوْلَ الْحَقْلِ",
+      image: BACKGROUND_IMAGE,
+    },
+    options: [
+      { label: "تِمْسَاحٌ", icon: "🐊" },
+      { label: "خَرُوفٌ", icon: "🐑" },
+      { label: "قِرْشٌ", icon: "🦈" },
+      { label: "نَمِرٌ", icon: "🐅" },
+    ],
+  },
+  {
+    id: "l66_ex1_q3",
+    question_audio_key: "l66_ex1_q3",
+    correct_index: 3,
+    stimulus: {
+      kind: "farm",
+      title: "حَيَوَانَاتٌ أَلِيفَةٌ",
+      image: BACKGROUND_IMAGE,
+    },
+    options: [
+      { label: "ذِئْبٌ", icon: "🐺" },
+      { label: "ثُعْبَانٌ", icon: "🐍" },
+      { label: "دُلْفِينٌ", icon: "🐬" },
+      { label: "دَجَاجَةٌ", icon: "🐔" },
+    ],
+  },
+  {
+    id: "l66_ex1_q4",
+    question_audio_key: "l66_ex1_q4",
+    correct_index: 0,
+    stimulus: {
+      kind: "farm",
+      title: "حَيَوَانَاتُ الْمَزْرَعَةِ",
+      image: BACKGROUND_IMAGE,
+    },
+    options: [
+      { label: "حِصَانٌ", icon: "🐎" },
+      { label: "دُبٌّ", icon: "🐻" },
+      { label: "صَقْرٌ", icon: "🦅" },
+      { label: "أُخْطُبُوطٌ", icon: "🐙" },
+    ],
+  },
+
+  {
+    id: "l66_ex2_q1",
+    question_audio_key: "l66_ex2_q1",
+    correct_index: 0,
+    stimulus: {
+      kind: "operation",
+      left: 18,
+      right: 4,
+      operator: "+",
+    },
+    options: [
+      { label: "22" },
+      { label: "21" },
+      { label: "20" },
+      { label: "23" },
+    ],
+  },
+  {
+    id: "l66_ex2_q2",
+    question_audio_key: "l66_ex2_q2",
+    correct_index: 3,
+    stimulus: {
+      kind: "operation",
+      left: 40,
+      right: 5,
+      operator: "-",
+    },
+    options: [
+      { label: "34" },
+      { label: "45" },
+      { label: "36" },
+      { label: "35" },
+    ],
+  },
+  {
+    id: "l66_ex2_q3",
+    question_audio_key: "l66_ex2_q3",
+    correct_index: 1,
+    stimulus: {
+      kind: "operation",
+      left: 16,
+      right: 7,
+      operator: "+",
+    },
+    options: [
+      { label: "22" },
+      { label: "23" },
+      { label: "24" },
+      { label: "21" },
+    ],
+  },
+  {
+    id: "l66_ex2_q4",
+    question_audio_key: "l66_ex2_q4",
+    correct_index: 2,
+    stimulus: {
+      kind: "operation",
+      left: 32,
+      right: 8,
+      operator: "-",
+    },
+    options: [
+      { label: "23" },
+      { label: "25" },
+      { label: "24" },
+      { label: "26" },
+    ],
+  },
+
+  {
+    id: "l66_ex3_q1",
+    question_audio_key: "l66_ex3_q1",
+    correct_index: 0,
+    stimulus: {
+      kind: "table",
+      rows: [
+        { name: "أَمِين", count: 6 },
+        { name: "يَاسَمِين", count: 5 },
+        { name: "سَامِي", count: 8 },
+        { name: "مُصْطَفَى", count: 6 },
+        { name: "أَنِيس", count: 2 },
+      ],
+    },
+    options: [
+      { label: "27" },
+      { label: "25" },
+      { label: "28" },
+      { label: "26" },
+    ],
+  },
+  {
+    id: "l66_ex3_q2",
+    question_audio_key: "l66_ex3_q2",
+    correct_index: 1,
+    stimulus: {
+      kind: "table",
+      rows: [
+        { name: "أَمِين", count: 4 },
+        { name: "يَاسَمِين", count: 7 },
+        { name: "سَامِي", count: 5 },
+        { name: "مُصْطَفَى", count: 3 },
+        { name: "أَنِيس", count: 6 },
+      ],
+    },
+    options: [
+      { label: "24" },
+      { label: "25" },
+      { label: "26" },
+      { label: "23" },
+    ],
+  },
+  {
+    id: "l66_ex3_q3",
+    question_audio_key: "l66_ex3_q3",
+    correct_index: 2,
+    stimulus: {
+      kind: "table",
+      rows: [
+        { name: "أَمِين", count: 8 },
+        { name: "يَاسَمِين", count: 4 },
+        { name: "سَامِي", count: 6 },
+        { name: "مُصْطَفَى", count: 5 },
+        { name: "أَنِيس", count: 7 },
+      ],
+    },
+    options: [
+      { label: "29" },
+      { label: "31" },
+      { label: "30" },
+      { label: "28" },
+    ],
+  },
+  {
+    id: "l66_ex3_q4",
+    question_audio_key: "l66_ex3_q4",
+    correct_index: 3,
+    stimulus: {
+      kind: "table",
+      rows: [
+        { name: "أَمِين", count: 3 },
+        { name: "يَاسَمِين", count: 6 },
+        { name: "سَامِي", count: 4 },
+        { name: "مُصْطَفَى", count: 8 },
+        { name: "أَنِيس", count: 5 },
+      ],
+    },
+    options: [
+      { label: "25" },
+      { label: "27" },
+      { label: "24" },
+      { label: "26" },
+    ],
+  },
+
+  {
+    id: "l66_ex4_q1",
+    question_audio_key: "l66_ex4_q1",
+    correct_index: 1,
+    stimulus: {
+      kind: "behavior",
+      sceneIcon: "🐄",
+      sceneText: "أَعْتَنِي بِحَيَوَانَاتِ الْمَزْرَعَةِ",
+    },
+    options: [
+      {
+        label: "أَرْمِي عَلَيْهَا الْحِجَارَةَ",
+        icon: "🪨",
+      },
+      {
+        label: "أُقَدِّمُ لَهَا الْمَاءَ",
+        icon: "💧",
+      },
+      {
+        label: "أُخِيفُهَا",
+        icon: "😨",
+      },
+      {
+        label: "أُؤْذِيهَا",
+        icon: "🚫",
+      },
+    ],
+  },
+  {
+    id: "l66_ex4_q2",
+    question_audio_key: "l66_ex4_q2",
+    correct_index: 2,
+    stimulus: {
+      kind: "behavior",
+      sceneIcon: "🐈",
+      sceneText: "أَعْتَنِي بِالْحَيَوَانِ الْأَلِيفِ",
+    },
+    options: [
+      {
+        label: "أَتْرُكُهُ جَائِعًا",
+        icon: "❌",
+      },
+      {
+        label: "أُطَارِدُهُ",
+        icon: "🏃",
+      },
+      {
+        label: "أُقَدِّمُ لَهُ الطَّعَامَ",
+        icon: "🥣",
+      },
+      {
+        label: "أُخِيفُهُ",
+        icon: "😱",
+      },
+    ],
+  },
+  {
+    id: "l66_ex4_q3",
+    question_audio_key: "l66_ex4_q3",
+    correct_index: 0,
+    stimulus: {
+      kind: "behavior",
+      sceneIcon: "🌳",
+      sceneText: "أُحَافِظُ عَلَى الطَّبِيعَةِ",
+    },
+    options: [
+      {
+        label: "أَزْرَعُ شَجَرَةً",
+        icon: "🌱",
+      },
+      {
+        label: "أَقْطَعُ الْأَشْجَارَ",
+        icon: "🪓",
+      },
+      {
+        label: "أُخَرِّبُ الْأَعْشَاشَ",
+        icon: "🪺",
+      },
+      {
+        label: "أَرْمِي النُّفَايَاتِ",
+        icon: "🗑️",
+      },
+    ],
+  },
+  {
+    id: "l66_ex4_q4",
+    question_audio_key: "l66_ex4_q4",
+    correct_index: 3,
+    stimulus: {
+      kind: "behavior",
+      sceneIcon: "🌊",
+      sceneText: "أُحَافِظُ عَلَى الْمَاءِ",
+    },
+    options: [
+      {
+        label: "أُلَوِّثُ الْمَاءَ",
+        icon: "⚠️",
+      },
+      {
+        label: "أُؤْذِي الْأَسْمَاكَ",
+        icon: "🐟",
+      },
+      {
+        label: "أَرْمِي الْأَوْسَاخَ",
+        icon: "🗑️",
+      },
+      {
+        label: "أَجْمَعُ النُّفَايَاتِ",
+        icon: "✅",
+      },
+    ],
+  },
+];
+
+function Cell({
+  children,
+  header = false,
+}: {
+  children: React.ReactNode;
+  header?: boolean;
+}) {
+  return (
+    <div
+      style={{
+        minHeight: 53,
+        padding: "5px 7px",
+        border: "1.5px solid #93A9C0",
+        background: header
+          ? "#FFF0B5"
+          : "#FFFFFF",
+        color: "#173E72",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        fontWeight: 900,
+        fontSize: "clamp(15px,3.8vw,20px)",
+        lineHeight: 1.25,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function FarmBoard({
+  item,
+}: {
+  item: Lesson66Item;
+}) {
+  return (
+    <div style={styles.activityCard}>
+      <div style={styles.farmImageFrame}>
+        <img
+          src={item.stimulus.image}
+          alt="مزرعة وحيوانات أليفة"
+          style={styles.farmImage}
+        />
+
+        <div style={styles.farmAnimals}>
+          <span>🐄</span>
+          <span>🐑</span>
+          <span>🐔</span>
+          <span>🐎</span>
+        </div>
+      </div>
+
+      <strong style={styles.activityTitle}>
+        {item.stimulus.title}
+      </strong>
+    </div>
+  );
+}
+
+function OperationBoard({
+  item,
+}: {
+  item: Lesson66Item;
+}) {
+  return (
+    <div style={styles.activityCard}>
+      <div
+        dir="rtl"
+        style={styles.equation}
+      >
+        <span style={styles.numberBox}>
+          {item.stimulus.left}
+        </span>
+
+        <span style={styles.signBox}>
+          {item.stimulus.operator}
+        </span>
+
+        <span style={styles.numberBox}>
+          {item.stimulus.right}
+        </span>
+
+        <span style={styles.equalsBox}>
+          =
+        </span>
+
+        <span style={styles.unknownBox}>
+          ؟
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function TableBoard({
+  item,
+}: {
+  item: Lesson66Item;
+}) {
+  const rows =
+    item.stimulus.rows ?? [];
+
+  return (
+    <div style={styles.activityCard}>
+      <strong style={styles.tableTitle}>
+        عَدَدُ السَّلَّاتِ
+      </strong>
+
+      <div
+        dir="rtl"
+        style={styles.tableGrid}
+      >
+        <Cell header>
+          الِاسْمُ
+        </Cell>
+
+        <Cell header>
+          الْعَدَدُ
+        </Cell>
+
+        {rows.map(row => (
+          <Fragment key={row.name}>
+            <Cell>
+              {row.name}
+            </Cell>
+
+            <Cell>
+              <span
+                dir="ltr"
+                style={styles.tableNumber}
+              >
+                {row.count}
+              </span>
+            </Cell>
+          </Fragment>
+        ))}
+      </div>
+
+      <div style={styles.totalBox}>
+        الْمَجْمُوعُ = ؟
+      </div>
+    </div>
+  );
+}
+
+function BehaviorBoard({
+  item,
+}: {
+  item: Lesson66Item;
+}) {
+  return (
+    <div style={styles.activityCard}>
+      <div style={styles.behaviorIcon}>
+        {item.stimulus.sceneIcon}
+      </div>
+
+      <strong style={styles.activityTitle}>
+        {item.stimulus.sceneText}
+      </strong>
+    </div>
+  );
+}
+
+function Activity({
+  item,
+}: {
+  item: Lesson66Item;
+}) {
+  switch (item.stimulus.kind) {
+    case "farm":
+      return <FarmBoard item={item} />;
+
+    case "operation":
+      return <OperationBoard item={item} />;
+
+    case "table":
+      return <TableBoard item={item} />;
+
+    default:
+      return <BehaviorBoard item={item} />;
+  }
+}
+
+function RoundRenderer({
+  context,
+}: {
+  context: any;
+}) {
+  const item =
+    context.item as Lesson66Item;
+
+  const [selectedIndex, setSelectedIndex] =
+    useState<number | null>(null);
+
+  useEffect(() => {
+    setSelectedIndex(null);
+  }, [item.id]);
+
+  const choose = (
+    optionIndex: number,
+  ) => {
+    if (context.locked) return;
+
+    setSelectedIndex(optionIndex);
+
+    if (
+      optionIndex ===
+      item.correct_index
+    ) {
+      context.completeRound();
+      return;
+    }
+
+    context.showWrong(() => {
+      setSelectedIndex(null);
+    });
+  };
+
+  return (
+    <div
+      dir="rtl"
+      style={styles.round}
+    >
+      <Activity item={item} />
+
+      <div style={styles.optionsGrid}>
+        {item.options.map(
+          (option, optionIndex) => {
+            const selected =
+              selectedIndex ===
+              optionIndex;
+
+            const correct =
+              optionIndex ===
+              item.correct_index;
+
+            const correctState =
+              selected &&
+              correct &&
+              context.feedbackState ===
+                "correct";
+
+            const wrongState =
+              selected &&
+              !correct &&
+              context.feedbackState ===
+                "wrong";
+
+            return (
+              <button
+                key={`${item.id}-${optionIndex}`}
+                type="button"
+                disabled={context.locked}
+                onClick={() =>
+                  choose(optionIndex)
+                }
+                style={{
+                  ...styles.option,
+                  borderColor: correctState
+                    ? "#20A66A"
+                    : wrongState
+                      ? "#D64545"
+                      : "#E0A225",
+                  background: correctState
+                    ? "#E9FFF3"
+                    : wrongState
+                      ? "#FFF0F0"
+                      : "#FFFFFF",
+                  transform: selected
+                    ? "translateY(-2px)"
+                    : "none",
+                }}
+              >
+                {option.icon && (
+                  <span
+                    style={styles.optionIcon}
+                    aria-hidden="true"
+                  >
+                    {option.icon}
+                  </span>
+                )}
+
+                <strong
+                  dir={
+                    /^[0-9]+$/.test(
+                      option.label,
+                    )
+                      ? "ltr"
+                      : "rtl"
+                  }
+                  style={
+                    /^[0-9]+$/.test(
+                      option.label,
+                    )
+                      ? styles.numericOption
+                      : styles.textOption
+                  }
+                >
+                  {option.label}
+                </strong>
+              </button>
+            );
+          },
+        )}
+      </div>
+    </div>
+  );
+}
+
+const TapSelectImagesAny =
+  TapSelectImagesV2 as any;
+
+const LessonCompleteAny =
+  LessonCompleteV2 as any;
+
+export default function
+Lesson66MobilizeKnowledge3Exercises() {
+  const navigate = useNavigate();
+
+  const [complete, setComplete] =
+    useState(false);
+
+  if (complete) {
+    return (
+      <LessonCompleteAny
+        lessonKey="lesson66"
+        title="أَحْسَنْتَ يَا بَطَلُ!"
+        subtitle="أَتْقَنْتَ تَمَارِينَ أُجَنِّدُ مَعَارِفِي (3)."
+        nextPath="/lesson-v2/67"
+        nextLabel="الدَّرْسُ التَّالِي"
+        onNext={() =>
+          navigate("/lesson-v2/67")
+        }
+        onContinue={() =>
+          navigate("/lesson-v2/67")
+        }
+        onRetry={() =>
+          setComplete(false)
+        }
+        onRestart={() =>
+          setComplete(false)
+        }
+      />
+    );
+  }
+
+  return (
+    <TapSelectImagesAny
+      items={ITEMS}
+      audio_base={AUDIO_BASE}
+      background_image={
+        BACKGROUND_IMAGE
+      }
+      progress_emoji="⭐"
+      mission_prefix="مَهَمَّة"
+      render_custom={(
+        context: any,
+      ) => (
+        <RoundRenderer
+          key={
+            context.item
+              .question_audio_key
+          }
+          context={context}
+        />
+      )}
+      onComplete={() =>
+        setComplete(true)
+      }
+    />
+  );
+}
+
+const styles: Record<
+  string,
+  CSSProperties
+> = {
+  round: {
+    width: "100%",
+    maxWidth: 670,
+    margin: "0 auto",
+    display: "grid",
+    gap: 15,
+  },
+
+  activityCard: {
+    width: "100%",
+    boxSizing: "border-box",
+    padding: 14,
+    border: "3px solid #E0A225",
+    borderRadius: 24,
+    background: "rgba(255,255,255,.97)",
+    boxShadow:
+      "0 8px 20px rgba(23,62,114,.12)",
+  },
+
+  activityTitle: {
+    display: "block",
+    marginTop: 10,
+    color: "#173E72",
+    textAlign: "center",
+    fontSize: "clamp(20px,5vw,29px)",
+    lineHeight: 1.5,
+  },
+
+  farmImageFrame: {
+    position: "relative",
+    width: "100%",
+    height: "clamp(205px,49vw,310px)",
+    overflow: "hidden",
+    borderRadius: 19,
+    background: "#EAF7E7",
+  },
+
+  farmImage: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    display: "block",
+  },
+
+  farmAnimals: {
+    position: "absolute",
+    left: 12,
+    right: 12,
+    bottom: 10,
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "center",
+    padding: "7px 10px",
+    borderRadius: 18,
+    background: "rgba(255,255,255,.88)",
+    fontSize: "clamp(35px,9vw,57px)",
+  },
+
+  equation: {
+    minHeight: 220,
+    display: "grid",
+    gridTemplateColumns:
+      "1fr 67px 1fr 67px 1fr",
+    gap: 9,
+    alignItems: "center",
+    direction: "rtl",
+  },
+
+  numberBox: {
+    minHeight: 125,
+    border: "3px solid #A9CCEC",
+    borderRadius: 20,
+    background: "#EDF7FF",
+    display: "grid",
+    placeItems: "center",
+    direction: "ltr",
+    color: "#173E72",
+    fontSize: "clamp(38px,10vw,60px)",
+    fontWeight: 1000,
+  },
+
+  signBox: {
+    minHeight: 78,
+    border: "3px solid #A9CCEC",
+    borderRadius: 18,
+    background: "#F5FAFF",
+    display: "grid",
+    placeItems: "center",
+    direction: "ltr",
+    color: "#173E72",
+    fontSize: 42,
+    fontWeight: 1000,
+  },
+
+  equalsBox: {
+    minHeight: 78,
+    border: "3px solid #E0A225",
+    borderRadius: 18,
+    background: "#FFF0B5",
+    display: "grid",
+    placeItems: "center",
+    direction: "ltr",
+    color: "#7C4614",
+    fontSize: 40,
+    fontWeight: 1000,
+  },
+
+  unknownBox: {
+    minHeight: 125,
+    border: "3px solid #E0A225",
+    borderRadius: 20,
+    background: "#FFFFFF",
+    display: "grid",
+    placeItems: "center",
+    direction: "ltr",
+    color: "#173E72",
+    fontSize: 52,
+    fontWeight: 1000,
+  },
+
+  tableTitle: {
+    display: "block",
+    marginBottom: 10,
+    textAlign: "center",
+    color: "#173E72",
+    fontSize: "clamp(20px,5vw,28px)",
+  },
+
+  tableGrid: {
+    width: "100%",
+    display: "grid",
+    gridTemplateColumns:
+      "minmax(0,1fr) 105px",
+    border: "2px solid #6886A5",
+    borderRadius: 17,
+    overflow: "hidden",
+    direction: "rtl",
+  },
+
+  tableNumber: {
+    color: "#173E72",
+    fontSize: "clamp(21px,5vw,29px)",
+    fontWeight: 1000,
+  },
+
+  totalBox: {
+    width: "fit-content",
+    margin: "12px auto 0",
+    padding: "8px 22px",
+    border: "3px solid #E0A225",
+    borderRadius: 999,
+    background: "#FFFFFF",
+    color: "#173E72",
+    fontSize: "clamp(20px,5vw,27px)",
+    fontWeight: 1000,
+  },
+
+  behaviorIcon: {
+    minHeight: 145,
+    display: "grid",
+    placeItems: "center",
+    fontSize: "clamp(80px,20vw,125px)",
+  },
+
+  optionsGrid: {
+    width: "100%",
+    display: "grid",
+    gridTemplateColumns:
+      "repeat(2,minmax(0,1fr))",
+    gap: 11,
+  },
+
+  option: {
+    minHeight: 106,
+    padding: "9px 7px",
+    border: "3px solid #E0A225",
+    borderRadius: 20,
+    background: "#FFFFFF",
+    color: "#173E72",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 6,
+    cursor: "pointer",
+    transition:
+      "transform .18s ease, border-color .18s ease",
+  },
+
+  optionIcon: {
+    fontSize: "clamp(35px,9vw,53px)",
+    lineHeight: 1,
+  },
+
+  textOption: {
+    fontSize: "clamp(15px,3.8vw,21px)",
+    lineHeight: 1.45,
+    textAlign: "center",
+  },
+
+  numericOption: {
+    fontSize: "clamp(35px,9vw,53px)",
+    lineHeight: 1,
+  },
+};
