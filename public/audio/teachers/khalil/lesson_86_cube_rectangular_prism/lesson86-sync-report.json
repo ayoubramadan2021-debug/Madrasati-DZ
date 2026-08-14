@@ -1,0 +1,65 @@
+{
+  "lesson": 86,
+  "title_ar": "الْمُكَعَّبُ وَالْبِلَاطَةُ الْقَائِمَةُ",
+  "teacher": "khalil",
+  "voice": "ar-DZ-IsmaelNeural",
+  "rate": "-5%",
+  "pitch": "-2Hz",
+  "generated_at": "2026-08-12T14:12:45.407568",
+  "scenes": [
+    {
+      "scene": 1,
+      "key": "lesson86_s1",
+      "canonical_word_count": 15,
+      "edge_word_boundaries": 15,
+      "karaoke_word_count": 15,
+      "timeline_end_ms": 12118,
+      "mp3_bytes": 78624
+    },
+    {
+      "scene": 2,
+      "key": "lesson86_s2",
+      "canonical_word_count": 14,
+      "edge_word_boundaries": 14,
+      "karaoke_word_count": 14,
+      "timeline_end_ms": 10567,
+      "mp3_bytes": 69120
+    },
+    {
+      "scene": 3,
+      "key": "lesson86_s3",
+      "canonical_word_count": 15,
+      "edge_word_boundaries": 15,
+      "karaoke_word_count": 15,
+      "timeline_end_ms": 10096,
+      "mp3_bytes": 66384
+    },
+    {
+      "scene": 4,
+      "key": "lesson86_s4",
+      "canonical_word_count": 12,
+      "edge_word_boundaries": 12,
+      "karaoke_word_count": 12,
+      "timeline_end_ms": 10609,
+      "mp3_bytes": 69552
+    },
+    {
+      "scene": 5,
+      "key": "lesson86_s5",
+      "canonical_word_count": 14,
+      "edge_word_boundaries": 14,
+      "karaoke_word_count": 14,
+      "timeline_end_ms": 10456,
+      "mp3_bytes": 68544
+    },
+    {
+      "scene": 6,
+      "key": "lesson86_s6",
+      "canonical_word_count": 18,
+      "edge_word_boundaries": 18,
+      "karaoke_word_count": 18,
+      "timeline_end_ms": 12935,
+      "mp3_bytes": 83520
+    }
+  ]
+}

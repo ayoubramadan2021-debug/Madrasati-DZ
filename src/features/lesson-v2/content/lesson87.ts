@@ -1,0 +1,83 @@
+export const lesson87CanonicalText = {
+  lesson87_s1: "مَرْحَبًا يَا أَصْدِقَائِي! الْيَوْمَ سَنَتَعَلَّمُ كَيْفَ نُكْمِلُ عَدَدًا لِنَصِلَ إِلَى الْعَشَرَةِ الْمُوَالِيَةِ بِسُهُولَةٍ.",
+  lesson87_s2: "لِنَنْظُرْ إِلَى الْعَدَدِ ثَلَاثَةٍ وَأَرْبَعِينَ. رَقْمُ الْآحَادِ هُوَ ثَلَاثَةٌ، وَنَحْنُ نَعْرِفُ أَنَّ ثَلَاثَةً وَسَبْعَةً تُسَاوِي عَشَرَةً.",
+  lesson87_s3: "عِنْدَمَا نُضِيفُ سَبْعَةً إِلَى ثَلَاثَةٍ وَأَرْبَعِينَ، نَصِلُ إِلَى خَمْسِينَ. إِذَنْ سَبْعَةٌ هِيَ مُتَمِّمُ ثَلَاثَةٍ وَأَرْبَعِينَ إِلَى الْعَشَرَةِ الْمُوَالِيَةِ.",
+  lesson87_s4: "نَسْتَعْمِلُ الْقَاعِدَةَ نَفْسَهَا مَعَ أَعْدَادٍ أُخْرَى. نَنْظُرُ إِلَى رَقْمِ الْآحَادِ، ثُمَّ نَبْحَثُ عَنِ الْعَدَدِ الَّذِي يُكْمِلُهُ إِلَى عَشَرَةٍ.",
+  lesson87_s5: "نَتَذَكَّرُ أَزْوَاجَ الْأَعْدَادِ الَّتِي مَجْمُوعُهَا عَشَرَةٌ: وَاحِدٌ وَتِسْعَةٌ، وَاثْنَانِ وَثَمَانِيَةٌ، وَثَلَاثَةٌ وَسَبْعَةٌ، وَأَرْبَعَةٌ وَسِتَّةٌ، وَخَمْسَةٌ وَخَمْسَةٌ.",
+  lesson87_s6: "أَحْسَنْتُمْ! لِإِيجَادِ مُتَمِّمِ عَدَدٍ إِلَى الْعَشَرَةِ الْمُوَالِيَةِ، نَنْظُرُ إِلَى رَقْمِ الْآحَادِ، ثُمَّ نُكْمِلُهُ إِلَى عَشَرَةٍ. هَيَّا نَتَدَرَّبُ!",
+} as const;
+
+export const lesson87 = {
+  id: "lesson87",
+  lessonKey: "lesson87",
+  num: 87,
+  world_id: "b3187e1b-58da-441d-ae43-d4be486e7c12",
+  sort_order: 2,
+  title: "مُتَمِّمُ عَدَدٍ إِلَى الْعَشَرَةِ الْمُوَالِيَةِ",
+  title_fr: "Compléter un nombre jusqu’à la dizaine suivante",
+  teacher: "taline",
+  voice: "ar-DZ-AminaNeural",
+  audio_base: "/audio/teachers/taline/lesson_87_complement_next_ten",
+  exercisePath: "/lesson-v2/87/exercises",
+  nextLessonKey: "lesson88",
+  objectives: [
+    "أَنْ يَتَعَرَّفَ الْمُتَعَلِّمُ إِلَى الْعَشَرَةِ الْمُوَالِيَةِ لِعَدَدٍ.",
+    "أَنْ يُحَدِّدَ رَقْمَ الْآحَادِ فِي الْعَدَدِ.",
+    "أَنْ يَجِدَ مُتَمِّمَ رَقْمِ الْآحَادِ إِلَى عَشَرَةٍ.",
+    "أَنْ يَسْتَعْمِلَ أَزْوَاجَ الْأَعْدَادِ الَّتِي مَجْمُوعُهَا عَشَرَةٌ.",
+  ],
+  slides: [
+    {
+      key: "lesson87_s1",
+      audio_key: "lesson87_s1",
+      title: "الِاسْتِعْدَادُ لِلْعَشَرَةِ الْمُوَالِيَةِ",
+      image: "/lessons/v2/lesson87-complement-next-ten/s1.webp",
+      scene_image: "/lessons/v2/lesson87-complement-next-ten/s1.webp",
+      text: lesson87CanonicalText.lesson87_s1,
+    },
+    {
+      key: "lesson87_s2",
+      audio_key: "lesson87_s2",
+      title: "أَنْظُرُ إِلَى رَقْمِ الْآحَادِ",
+      image: "/lessons/v2/lesson87-complement-next-ten/s2.webp",
+      scene_image: "/lessons/v2/lesson87-complement-next-ten/s2.webp",
+      text: lesson87CanonicalText.lesson87_s2,
+    },
+    {
+      key: "lesson87_s3",
+      audio_key: "lesson87_s3",
+      title: "مِنْ 43 إِلَى 50",
+      image: "/lessons/v2/lesson87-complement-next-ten/s3.webp",
+      scene_image: "/lessons/v2/lesson87-complement-next-ten/s3.webp",
+      text: lesson87CanonicalText.lesson87_s3,
+    },
+    {
+      key: "lesson87_s4",
+      audio_key: "lesson87_s4",
+      title: "أُطَبِّقُ الْقَاعِدَةَ",
+      image: "/lessons/v2/lesson87-complement-next-ten/s4.webp",
+      scene_image: "/lessons/v2/lesson87-complement-next-ten/s4.webp",
+      text: lesson87CanonicalText.lesson87_s4,
+    },
+    {
+      key: "lesson87_s5",
+      audio_key: "lesson87_s5",
+      title: "أَزْوَاجُ الْأَعْدَادِ الَّتِي مَجْمُوعُهَا عَشَرَةٌ",
+      image: "/lessons/v2/lesson87-complement-next-ten/s5.webp",
+      scene_image: "/lessons/v2/lesson87-complement-next-ten/s5.webp",
+      text: lesson87CanonicalText.lesson87_s5,
+    },
+    {
+      key: "lesson87_s6",
+      audio_key: "lesson87_s6",
+      title: "هَيَّا نَتَدَرَّبُ",
+      image: "/lessons/v2/lesson87-complement-next-ten/s6.webp",
+      scene_image: "/lessons/v2/lesson87-complement-next-ten/s6.webp",
+      text: lesson87CanonicalText.lesson87_s6,
+      is_closing: true,
+      cta_text: "هَيَّا نَتَدَرَّبُ",
+    },
+  ],
+} as const;
+
+export default lesson87;

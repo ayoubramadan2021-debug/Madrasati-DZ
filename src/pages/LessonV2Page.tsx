@@ -68,7 +68,39 @@ import { lesson82 as LESSON_82_CONTENT } from "../features/lesson-v2/content/les
 import { lesson83 as LESSON_83_CONTENT } from "../features/lesson-v2/content/lesson83";
 import { lesson84 as LESSON_84_CONTENT } from "../features/lesson-v2/content/lesson84";
 import { lesson85 as LESSON_85_CONTENT } from "../features/lesson-v2/content/lesson85";
+import LESSON_86_CONTENT from "../features/lesson-v2/content/lesson86";
 
+
+import LESSON_87_CONTENT from "../features/lesson-v2/content/lesson87";
+import LESSON_88_CONTENT from "../features/lesson-v2/content/lesson88";
+import LESSON_89_CONTENT from "../features/lesson-v2/content/lesson89";
+import LESSON_90_CONTENT from "../features/lesson-v2/content/lesson90";
+import LESSON_91_CONTENT from "../features/lesson-v2/content/lesson91";
+import LESSON_92_CONTENT from "../features/lesson-v2/content/lesson92";
+import LESSON_93_CONTENT from "../features/lesson-v2/content/lesson93";
+import LESSON_94_CONTENT from "../features/lesson-v2/content/lesson94";
+import LESSON_95_CONTENT from "../features/lesson-v2/content/lesson95";
+import LESSON_96_CONTENT from "../features/lesson-v2/content/lesson96";
+import LESSON_97_CONTENT from "../features/lesson-v2/content/lesson97";
+import LESSON_98_CONTENT from "../features/lesson-v2/content/lesson98";
+import LESSON_99_CONTENT from "../features/lesson-v2/content/lesson99";
+import LESSON_100_CONTENT from "../features/lesson-v2/content/lesson100";
+import LESSON_101_CONTENT from "../features/lesson-v2/content/lesson101";
+import LESSON_102_CONTENT from "../features/lesson-v2/content/lesson102";
+import LESSON_103_CONTENT from "../features/lesson-v2/content/lesson103";
+import LESSON_104_CONTENT from "../features/lesson-v2/content/lesson104";
+import LESSON_105_CONTENT from "../features/lesson-v2/content/lesson105";
+import LESSON_106_CONTENT from "../features/lesson-v2/content/lesson106";
+import LESSON_107_CONTENT from "../features/lesson-v2/content/lesson107";
+import LESSON_108_CONTENT from "../features/lesson-v2/content/lesson108";
+import LESSON_109_CONTENT from "../features/lesson-v2/content/lesson109";
+import LESSON_110_CONTENT from "../features/lesson-v2/content/lesson110";
+import LESSON_111_CONTENT from "../features/lesson-v2/content/lesson111";
+import LESSON_112_CONTENT from "../features/lesson-v2/content/lesson112";
+import LESSON_113_CONTENT from "../features/lesson-v2/content/lesson113";
+import LESSON_114_CONTENT from "../features/lesson-v2/content/lesson114";
+import LESSON_115_CONTENT from "../features/lesson-v2/content/lesson115";
+import LESSON_116_CONTENT from "../features/lesson-v2/content/lesson116";
 
 const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
   lesson1: LESSON_1_CONTENT,
@@ -138,6 +170,37 @@ const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
   lesson83: LESSON_83_CONTENT,
   lesson84: LESSON_84_CONTENT,
   lesson85: LESSON_85_CONTENT,
+  lesson87: LESSON_87_CONTENT,
+  lesson88: LESSON_88_CONTENT,
+  lesson89: LESSON_89_CONTENT,
+  lesson90: LESSON_90_CONTENT,
+  lesson91: LESSON_91_CONTENT,
+  lesson92: LESSON_92_CONTENT,
+  lesson93: LESSON_93_CONTENT,
+  lesson94: LESSON_94_CONTENT,
+  lesson95: LESSON_95_CONTENT,
+  lesson96: LESSON_96_CONTENT,
+  lesson97: LESSON_97_CONTENT,
+  lesson98: LESSON_98_CONTENT,
+  lesson99: LESSON_99_CONTENT,
+  lesson100: LESSON_100_CONTENT,
+  lesson101: LESSON_101_CONTENT,
+  lesson102: LESSON_102_CONTENT,
+  lesson103: LESSON_103_CONTENT,
+  lesson104: LESSON_104_CONTENT,
+  lesson105: LESSON_105_CONTENT,
+  lesson106: LESSON_106_CONTENT,
+  lesson107: LESSON_107_CONTENT,
+  lesson108: LESSON_108_CONTENT,
+  lesson109: LESSON_109_CONTENT,
+  lesson110: LESSON_110_CONTENT,
+  lesson111: LESSON_111_CONTENT,
+  lesson112: LESSON_112_CONTENT,
+  lesson113: LESSON_113_CONTENT,
+  lesson114: LESSON_114_CONTENT,
+  lesson115: LESSON_115_CONTENT,
+  lesson116: LESSON_116_CONTENT,
+  lesson86: LESSON_86_CONTENT,
 };
 
 export default function LessonV2Page() {

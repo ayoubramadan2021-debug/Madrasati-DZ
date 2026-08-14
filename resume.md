@@ -1436,3 +1436,76 @@ npm run dev -- --host 0.0.0.0
 - Production build مكتمل بنجاح.
 - الدروس والتمارين 70→85 أصبحت PROTECTED BASELINE.
 - الخطوة التالية: بدء عالم جديد بـ READ-ONLY AUDIT.
+
+<!-- SKILLS_ACADEMY_86_116_START -->
+
+# ✅ عالم أكاديمية المهارات — مكتمل
+
+## الحالة
+
+COMPLETED PROTECTED BASELINE
+
+## World ID
+
+`b3187e1b-58da-441d-ae43-d4be486e7c12`
+
+## نطاق الدروس
+
+- Lesson 86 → Lesson 116
+- عدد الدروس: 31
+- sort_order: 1 → 31
+- آخر درس: Lesson 116
+- nextLessonKey: lesson117
+
+## الشخصيات الثابتة
+
+- الأستاذ خليل
+- الأستاذة تالين
+- فاضل
+- رحمة
+- سيرين
+
+## الأصوات
+
+- Khalil: ar-DZ-IsmaelNeural
+- Taline: ar-DZ-AminaNeural
+
+## الصور
+
+- 1024×1536
+- Vertical 2:3
+- Premium semi-realistic educational 3D
+- WebP quality = 95
+- WebP method = 6
+
+## Audio / Karaoke
+
+- MP3 لكل مشهد
+- REAL WordBoundary
+- JSON لكل مشهد
+- karaoke.json لكل مشهد
+- JSON == Karaoke
+
+## آخر الدروس
+
+- Lesson 114 — sort_order 29 — khalil
+- Lesson 115 — sort_order 30 — taline
+- Lesson 116 — sort_order 31 — khalil
+
+## Lesson 116
+
+العنوان: أُصَنِّفُ الْمَوَادَّ فِي الْمَتْجَرِ
+
+## Supabase
+
+تم رفع دروس عالم أكاديمية المهارات من Lesson 86 إلى Lesson 116.
+
+## Build
+
+`BUILD SUCCESS`
+
+## قاعدة الحماية
+
+Lessons 86 → 116 أصبحت Baseline مكتملة ولا تعدل إلا بطلب صريح أو Bugfix محدد.
+
+<!-- SKILLS_ACADEMY_86_116_END -->
