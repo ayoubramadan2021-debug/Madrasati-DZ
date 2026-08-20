@@ -1,0 +1,86 @@
+{
+  "batch": "science-88-116-batch01",
+  "version": 1,
+  "expected_count": 8,
+  "output_format": "PNG",
+  "master_size": [
+    1024,
+    1024
+  ],
+  "transparent_background_required": true,
+  "items": [
+    {
+      "id": "obj-water-glass-v01",
+      "filename": "obj-water-glass-v01.png",
+      "lessons": [
+        88,
+        113,
+        116
+      ],
+      "prompt_file": "prompts/01_obj-water-glass-v01.txt"
+    },
+    {
+      "id": "obj-oil-bottle-v01",
+      "filename": "obj-oil-bottle-v01.png",
+      "lessons": [
+        88
+      ],
+      "prompt_file": "prompts/02_obj-oil-bottle-v01.txt"
+    },
+    {
+      "id": "obj-juice-v01",
+      "filename": "obj-juice-v01.png",
+      "lessons": [
+        88,
+        116
+      ],
+      "prompt_file": "prompts/03_obj-juice-v01.txt"
+    },
+    {
+      "id": "obj-milk-v01",
+      "filename": "obj-milk-v01.png",
+      "lessons": [
+        116
+      ],
+      "prompt_file": "prompts/04_obj-milk-v01.txt"
+    },
+    {
+      "id": "obj-book-v01",
+      "filename": "obj-book-v01.png",
+      "lessons": [
+        88,
+        113,
+        116
+      ],
+      "prompt_file": "prompts/05_obj-book-v01.txt"
+    },
+    {
+      "id": "obj-wood-block-v01",
+      "filename": "obj-wood-block-v01.png",
+      "lessons": [
+        88,
+        113
+      ],
+      "prompt_file": "prompts/06_obj-wood-block-v01.txt"
+    },
+    {
+      "id": "obj-pencil-v01",
+      "filename": "obj-pencil-v01.png",
+      "lessons": [
+        88,
+        113,
+        116
+      ],
+      "prompt_file": "prompts/07_obj-pencil-v01.txt"
+    },
+    {
+      "id": "obj-pen-v01",
+      "filename": "obj-pen-v01.png",
+      "lessons": [
+        113,
+        116
+      ],
+      "prompt_file": "prompts/08_obj-pen-v01.txt"
+    }
+  ]
+}

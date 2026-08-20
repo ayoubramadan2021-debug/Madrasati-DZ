@@ -1,3 +1,7 @@
+import { Lesson94TimeExercises } from "../features/lesson-v2/exercises-v2/SmallCityExercises72To85";
+import { Lesson88SciencePremiumExercises, Lesson92SciencePremiumExercises,
+  Lesson104SciencePremiumExercises, Lesson107SciencePremiumExercises, Lesson111SciencePremiumExercises, Lesson113SciencePremiumExercises, Lesson116SciencePremiumExercises } from "../features/lesson-v2/exercises-v2/SkillsAcademySciencePremium88_116";
+
 import Lesson46HeartBeats2Exercises from "../features/lesson-v2/exercises-v2/Lesson46HeartBeats2Exercises";
 import Lesson64PlantsWithUs2Exercises from "../features/lesson-v2/exercises-v2/Lesson64PlantsWithUs2Exercises";
 import Lesson65AddSubtractSituations2Exercises from "../features/lesson-v2/exercises-v2/Lesson65AddSubtractSituations2Exercises";
@@ -23,6 +27,19 @@ import {
   Lesson84Exercises,
   Lesson85Exercises,
 } from "../features/lesson-v2/exercises-v2/SmallCityExercises72To85";
+import { Lesson87NumberExercises, Lesson89NumberExercises, Lesson90NumberExercises, Lesson91NumberExercises, Lesson99NumberExercises, Lesson102NumberExercises, Lesson105NumberExercises, Lesson112NumberExercises } from "../features/lesson-v2/exercises-v2/SkillsAcademyNumberExercises87To112";
+
+import { Lesson87NumberPremiumExercises, Lesson91NumberPremiumExercises, Lesson102NumberPremiumExercises } from "../features/lesson-v2/exercises-v2/SkillsAcademyNumberPremium87_91_102";
+import { Lesson86GeometryExercises, Lesson93GeometryExercises, Lesson100GeometryExercises, Lesson110GeometryExercises } from "../features/lesson-v2/exercises-v2/SkillsAcademyGeometryExercises86_100_110";
+import {
+  Lesson88ScienceExercises,
+  Lesson104ScienceExercises,
+  Lesson107ScienceExercises,
+  Lesson111ScienceExercises,
+  Lesson113ScienceExercises,
+  Lesson116ScienceExercises,
+} from "../features/lesson-v2/exercises-v2/SkillsAcademyScienceExercises88To116";
+
 import Lesson45CompleteTableExercises from "../features/lesson-v2/exercises-v2/Lesson45CompleteTableExercises";
 import Lesson44HalfExercises from "../features/lesson-v2/exercises-v2/Lesson44HalfExercises";
 import Lesson43DoubleExercises from "../features/lesson-v2/exercises-v2/Lesson43DoubleExercises";
@@ -237,6 +254,18 @@ import {
 
 import { useEffect } from "react";
 import "../features/lesson-v2/components/lesson53-69-typography.css";
+
+import { Lesson95SciencePremiumExercises } from "../features/lesson-v2/exercises-v2/SkillsAcademySciencePremium88_116";
+import { Lesson96CalculatorExercises } from "../features/lesson-v2/exercises-v2/Lesson96CalculatorExercises";
+import { Lesson97GridDrawingExercises } from "../features/lesson-v2/exercises-v2/Lesson97GridDrawingExercises";
+import { Lesson98WritingDrawingToolsExercises } from "../features/lesson-v2/exercises-v2/Lesson98WritingDrawingToolsExercises";
+import { Lesson101ToolsLeaveTracesExercises } from "../features/lesson-v2/exercises-v2/Lesson101ToolsLeaveTracesExercises";
+import { Lesson103NoCarryAdditionExercises } from "../features/lesson-v2/exercises-v2/Lesson103NoCarryAdditionExercises";
+import { Lesson106Calculator2Exercises } from "../features/lesson-v2/exercises-v2/Lesson106Calculator2Exercises";
+import { Lesson108DaysOfWeekExercises } from "../features/lesson-v2/exercises-v2/Lesson108DaysOfWeekExercises";
+import { Lesson109AdditionSubtractionSituations3Exercises } from "../features/lesson-v2/exercises-v2/Lesson109AdditionSubtractionSituations3Exercises";
+import { Lesson114SchoolCleanlinessExercises } from "../features/lesson-v2/exercises-v2/Lesson114SchoolCleanlinessExercises";
+import { Lesson115Bilan5Exercises } from "../features/lesson-v2/exercises-v2/Lesson115Bilan5Exercises";
 const WORLD2_HOME =
   `/world/${WORLD2_ID}`;
 
@@ -919,6 +948,37 @@ export default function LessonExercisesPage() {
   if (lessonId === "83") return <Lesson83Exercises />;
   if (lessonId === "84") return <Lesson84Exercises />;
   if (lessonId === "85") return <Lesson85Exercises />;
+  if (lessonId === "86") return <Lesson86GeometryExercises />;
+  if (lessonId === "93") return <Lesson93GeometryExercises />;
+  if (lessonId === "94") return <Lesson94TimeExercises />;
+  if (lessonId === "95") return <Lesson95SciencePremiumExercises />;
+  if (lessonId === "97") return <Lesson97GridDrawingExercises />;
+  if (lessonId === "98") return <Lesson98WritingDrawingToolsExercises />;
+  if (lessonId === "96") return <Lesson96CalculatorExercises />;
+  if (lessonId === "100") return <Lesson100GeometryExercises />;
+  if (lessonId === "101") return <Lesson101ToolsLeaveTracesExercises />;
+  if (lessonId === "110") return <Lesson110GeometryExercises />;
+  if (lessonId === "87") return <Lesson87NumberPremiumExercises />;
+  if (lessonId === "88") return <Lesson88SciencePremiumExercises />;
+  if (lessonId === "92") return <Lesson92SciencePremiumExercises />;
+  if (lessonId === "104") return <Lesson104SciencePremiumExercises />;
+  if (lessonId === "107") return <Lesson107SciencePremiumExercises />;
+  if (lessonId === "108") return <Lesson108DaysOfWeekExercises />;
+  if (lessonId === "109") return <Lesson109AdditionSubtractionSituations3Exercises />;
+  if (lessonId === "111") return <Lesson111SciencePremiumExercises />;
+  if (lessonId === "113") return <Lesson113SciencePremiumExercises />;
+  if (lessonId === "114") return <Lesson114SchoolCleanlinessExercises />;
+  if (lessonId === "115") return <Lesson115Bilan5Exercises />;
+  if (lessonId === "116") return <Lesson116SciencePremiumExercises />;
+  if (lessonId === "89") return <Lesson89NumberExercises />;
+  if (lessonId === "90") return <Lesson90NumberExercises />;
+  if (lessonId === "91") return <Lesson91NumberPremiumExercises />;
+  if (lessonId === "99") return <Lesson99NumberExercises />;
+  if (lessonId === "102") return <Lesson102NumberPremiumExercises />;
+  if (lessonId === "103") return <Lesson103NoCarryAdditionExercises />;
+  if (lessonId === "105") return <Lesson105NumberExercises />;
+  if (lessonId === "106") return <Lesson106Calculator2Exercises />;
+  if (lessonId === "112") return <Lesson112NumberExercises />;
   if (lessonId === "46") return <Lesson46HeartBeats2Exercises />;
 
   if (lessonId === "45") return <Lesson45CompleteTableExercises />;

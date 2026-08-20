@@ -1,0 +1,43 @@
+Create a premium educational 3D illustration asset for a high-quality children's learning app.
+
+STYLE
+- clean polished 3D educational illustration
+- modern premium mobile-learning aesthetic
+- child-friendly for a 6-year-old, but not babyish
+- softly rounded realistic proportions
+- soft studio lighting
+- subtle natural shadow under the object only
+- excellent material texture
+- clear silhouette
+- visually simple and instantly recognizable
+
+COMPOSITION
+- ONE isolated object only
+- centered
+- full object visible
+- front three-quarter view
+- generous transparent space around the object
+- no cropping
+
+STRICT REQUIREMENTS
+- transparent background
+- no colored square behind the object
+- no badge
+- no button
+- no frame
+- no card
+- no UI
+- no text
+- no letters
+- no numbers
+- no watermark
+- no decorative stars
+- no answer indicator
+- do not place multiple objects
+
+OUTPUT
+- 1024x1024 PNG
+- transparent background
+
+SUBJECT
+A small transparent bottle filled with white milk. The bottle must have a simple generic shape with a plain cap. No branding, no label, no writing.

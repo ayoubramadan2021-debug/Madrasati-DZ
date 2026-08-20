@@ -1,0 +1,16 @@
+{
+  "totalScenes": 10,
+  "existingScenes": [],
+  "remainingScenes": [
+    "scene-l104-cleaning-tools-v01",
+    "scene-l104-handwashing-v01",
+    "scene-l107-safe-storage-v01",
+    "scene-l107-safety-adult-v01",
+    "scene-l111-material-forms-v01",
+    "scene-l113-dissolve-v01",
+    "scene-l113-float-sink-v01",
+    "scene-l116-store-categories-v01",
+    "scene-l88-liquid-transfer-v01",
+    "scene-l88-material-table-v01"
+  ]
+}

@@ -4504,6 +4504,580 @@ const LESSONS: Record<
       },
     ],
   },
+  94: {
+  "lessonKey": "lesson94",
+  "audioBase": "/audio/teachers/khalil/lesson_94_reading_clock_2/exercises",
+  "missionTitles": {
+    "1": "أَقْرَأُ السَّاعَةَ",
+    "2": "أَكْتُبُ التَّوْقِيتَ بَعْدَ مُنْتَصَفِ النَّهَارِ",
+    "3": "أُمَيِّزُ أَوْقَاتَ الْيَوْمِ",
+    "4": "أَرْبِطُ السَّاعَةَ بِالتَّوْقِيتِ"
+  },
+  "completionMessage": "أَحْسَنْتَ! أَصْبَحْتَ تَقْرَأُ السَّاعَةَ وَتَكْتُبُ التَّوْقِيتَ قَبْلَ مُنْتَصَفِ النَّهَارِ وَبَعْدَهُ.",
+  "nextPath": "/lesson-v2/95",
+  "questions": [
+    {
+      "id": "l94_ex1_q1",
+      "mission": 1,
+      "visualSymbol": "🕗",
+      "visualLabel": "اِقْرَأِ السَّاعَةَ",
+      "prompt": "كَمِ السَّاعَةُ؟",
+      "audioKey": "l94_ex1_q1",
+      "premiumClock": {
+        "mode": "identify",
+        "hour": 8,
+        "correctId": "b",
+        "options": [
+          {
+            "id": "a",
+            "icon": "🕕",
+            "label": "06:00"
+          },
+          {
+            "id": "b",
+            "icon": "🕗",
+            "label": "08:00"
+          },
+          {
+            "id": "c",
+            "icon": "🕙",
+            "label": "10:00"
+          },
+          {
+            "id": "d",
+            "icon": "🕛",
+            "label": "12:00"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l94_ex1_q2",
+      "mission": 1,
+      "visualSymbol": "🕙",
+      "visualLabel": "اِقْرَأِ السَّاعَةَ",
+      "prompt": "كَمِ السَّاعَةُ؟",
+      "audioKey": "l94_ex1_q2",
+      "premiumClock": {
+        "mode": "identify",
+        "hour": 10,
+        "correctId": "c",
+        "options": [
+          {
+            "id": "a",
+            "icon": "🕖",
+            "label": "07:00"
+          },
+          {
+            "id": "b",
+            "icon": "🕘",
+            "label": "09:00"
+          },
+          {
+            "id": "c",
+            "icon": "🕙",
+            "label": "10:00"
+          },
+          {
+            "id": "d",
+            "icon": "🕚",
+            "label": "11:00"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l94_ex1_q3",
+      "mission": 1,
+      "visualSymbol": "🕕",
+      "visualLabel": "اِقْرَأِ السَّاعَةَ",
+      "prompt": "كَمِ السَّاعَةُ؟",
+      "audioKey": "l94_ex1_q3",
+      "premiumClock": {
+        "mode": "identify",
+        "hour": 6,
+        "correctId": "c",
+        "options": [
+          {
+            "id": "a",
+            "icon": "🕒",
+            "label": "03:00"
+          },
+          {
+            "id": "b",
+            "icon": "🕔",
+            "label": "05:00"
+          },
+          {
+            "id": "c",
+            "icon": "🕕",
+            "label": "06:00"
+          },
+          {
+            "id": "d",
+            "icon": "🕗",
+            "label": "08:00"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l94_ex1_q4",
+      "mission": 1,
+      "visualSymbol": "🕚",
+      "visualLabel": "اِقْرَأِ السَّاعَةَ",
+      "prompt": "كَمِ السَّاعَةُ؟",
+      "audioKey": "l94_ex1_q4",
+      "premiumClock": {
+        "mode": "identify",
+        "hour": 11,
+        "correctId": "d",
+        "options": [
+          {
+            "id": "a",
+            "icon": "🕗",
+            "label": "08:00"
+          },
+          {
+            "id": "b",
+            "icon": "🕘",
+            "label": "09:00"
+          },
+          {
+            "id": "c",
+            "icon": "🕙",
+            "label": "10:00"
+          },
+          {
+            "id": "d",
+            "icon": "🕚",
+            "label": "11:00"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l94_ex2_q1",
+      "mission": 2,
+      "visualSymbol": "🕐",
+      "visualLabel": "بَعْدَ مُنْتَصَفِ النَّهَارِ",
+      "prompt": "بَعْدَ مُنْتَصَفِ النَّهَارِ، مَا التَّوْقِيتُ الصَّحِيحُ؟",
+      "audioKey": "l94_ex2_q1",
+      "premiumClock": {
+        "mode": "identify",
+        "hour": 1,
+        "correctId": "c",
+        "options": [
+          {
+            "id": "a",
+            "icon": "🕐",
+            "label": "01:00"
+          },
+          {
+            "id": "b",
+            "icon": "🕚",
+            "label": "11:00"
+          },
+          {
+            "id": "c",
+            "icon": "🕐",
+            "label": "13:00"
+          },
+          {
+            "id": "d",
+            "icon": "🕘",
+            "label": "21:00"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l94_ex2_q2",
+      "mission": 2,
+      "visualSymbol": "🕒",
+      "visualLabel": "بَعْدَ مُنْتَصَفِ النَّهَارِ",
+      "prompt": "بَعْدَ مُنْتَصَفِ النَّهَارِ، مَا التَّوْقِيتُ الصَّحِيحُ؟",
+      "audioKey": "l94_ex2_q2",
+      "premiumClock": {
+        "mode": "identify",
+        "hour": 3,
+        "correctId": "c",
+        "options": [
+          {
+            "id": "a",
+            "icon": "🕒",
+            "label": "03:00"
+          },
+          {
+            "id": "b",
+            "icon": "🕐",
+            "label": "13:00"
+          },
+          {
+            "id": "c",
+            "icon": "🕒",
+            "label": "15:00"
+          },
+          {
+            "id": "d",
+            "icon": "🕚",
+            "label": "23:00"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l94_ex2_q3",
+      "mission": 2,
+      "visualSymbol": "🕔",
+      "visualLabel": "بَعْدَ مُنْتَصَفِ النَّهَارِ",
+      "prompt": "بَعْدَ مُنْتَصَفِ النَّهَارِ، مَا التَّوْقِيتُ الصَّحِيحُ؟",
+      "audioKey": "l94_ex2_q3",
+      "premiumClock": {
+        "mode": "identify",
+        "hour": 5,
+        "correctId": "c",
+        "options": [
+          {
+            "id": "a",
+            "icon": "🕔",
+            "label": "05:00"
+          },
+          {
+            "id": "b",
+            "icon": "🕒",
+            "label": "15:00"
+          },
+          {
+            "id": "c",
+            "icon": "🕔",
+            "label": "17:00"
+          },
+          {
+            "id": "d",
+            "icon": "🕘",
+            "label": "21:00"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l94_ex2_q4",
+      "mission": 2,
+      "visualSymbol": "🕚",
+      "visualLabel": "بَعْدَ مُنْتَصَفِ النَّهَارِ",
+      "prompt": "بَعْدَ مُنْتَصَفِ النَّهَارِ، مَا التَّوْقِيتُ الصَّحِيحُ؟",
+      "audioKey": "l94_ex2_q4",
+      "premiumClock": {
+        "mode": "identify",
+        "hour": 11,
+        "correctId": "d",
+        "options": [
+          {
+            "id": "a",
+            "icon": "🕚",
+            "label": "11:00"
+          },
+          {
+            "id": "b",
+            "icon": "🕘",
+            "label": "21:00"
+          },
+          {
+            "id": "c",
+            "icon": "🕙",
+            "label": "22:00"
+          },
+          {
+            "id": "d",
+            "icon": "🕚",
+            "label": "23:00"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l94_ex3_q1",
+      "mission": 3,
+      "visualSymbol": "🕗",
+      "visualLabel": "08:00",
+      "prompt": "التَّوْقِيتُ 08:00. هَلْ هُوَ قَبْلَ مُنْتَصَفِ النَّهَارِ أَمْ بَعْدَهُ؟",
+      "audioKey": "l94_ex3_q1",
+      "premiumClock": {
+        "mode": "identify",
+        "hour": 8,
+        "correctId": "a",
+        "options": [
+          {
+            "id": "a",
+            "icon": "🌅",
+            "label": "قَبْلَ مُنْتَصَفِ النَّهَارِ"
+          },
+          {
+            "id": "b",
+            "icon": "🌇",
+            "label": "بَعْدَ مُنْتَصَفِ النَّهَارِ"
+          },
+          {
+            "id": "c",
+            "icon": "☀️",
+            "label": "مُنْتَصَفُ النَّهَارِ"
+          },
+          {
+            "id": "d",
+            "icon": "🌙",
+            "label": "مُنْتَصَفُ اللَّيْلِ"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l94_ex3_q2",
+      "mission": 3,
+      "visualSymbol": "🕚",
+      "visualLabel": "11:00",
+      "prompt": "التَّوْقِيتُ 11:00. هَلْ هُوَ قَبْلَ مُنْتَصَفِ النَّهَارِ أَمْ بَعْدَهُ؟",
+      "audioKey": "l94_ex3_q2",
+      "premiumClock": {
+        "mode": "identify",
+        "hour": 11,
+        "correctId": "a",
+        "options": [
+          {
+            "id": "a",
+            "icon": "🌅",
+            "label": "قَبْلَ مُنْتَصَفِ النَّهَارِ"
+          },
+          {
+            "id": "b",
+            "icon": "🌇",
+            "label": "بَعْدَ مُنْتَصَفِ النَّهَارِ"
+          },
+          {
+            "id": "c",
+            "icon": "☀️",
+            "label": "مُنْتَصَفُ النَّهَارِ"
+          },
+          {
+            "id": "d",
+            "icon": "🌙",
+            "label": "مُنْتَصَفُ اللَّيْلِ"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l94_ex3_q3",
+      "mission": 3,
+      "visualSymbol": "🕒",
+      "visualLabel": "15:00",
+      "prompt": "التَّوْقِيتُ 15:00. هَلْ هُوَ قَبْلَ مُنْتَصَفِ النَّهَارِ أَمْ بَعْدَهُ؟",
+      "audioKey": "l94_ex3_q3",
+      "premiumClock": {
+        "mode": "identify",
+        "hour": 3,
+        "correctId": "b",
+        "options": [
+          {
+            "id": "a",
+            "icon": "🌅",
+            "label": "قَبْلَ مُنْتَصَفِ النَّهَارِ"
+          },
+          {
+            "id": "b",
+            "icon": "🌇",
+            "label": "بَعْدَ مُنْتَصَفِ النَّهَارِ"
+          },
+          {
+            "id": "c",
+            "icon": "☀️",
+            "label": "مُنْتَصَفُ النَّهَارِ"
+          },
+          {
+            "id": "d",
+            "icon": "🌙",
+            "label": "مُنْتَصَفُ اللَّيْلِ"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l94_ex3_q4",
+      "mission": 3,
+      "visualSymbol": "🕚",
+      "visualLabel": "23:00",
+      "prompt": "التَّوْقِيتُ 23:00. هَلْ هُوَ قَبْلَ مُنْتَصَفِ النَّهَارِ أَمْ بَعْدَهُ؟",
+      "audioKey": "l94_ex3_q4",
+      "premiumClock": {
+        "mode": "identify",
+        "hour": 11,
+        "correctId": "b",
+        "options": [
+          {
+            "id": "a",
+            "icon": "🌅",
+            "label": "قَبْلَ مُنْتَصَفِ النَّهَارِ"
+          },
+          {
+            "id": "b",
+            "icon": "🌇",
+            "label": "بَعْدَ مُنْتَصَفِ النَّهَارِ"
+          },
+          {
+            "id": "c",
+            "icon": "☀️",
+            "label": "مُنْتَصَفُ النَّهَارِ"
+          },
+          {
+            "id": "d",
+            "icon": "🌙",
+            "label": "مُنْتَصَفُ اللَّيْلِ"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l94_ex4_q1",
+      "mission": 4,
+      "visualSymbol": "🕗",
+      "visualLabel": "صَبَاحًا",
+      "prompt": "السَّاعَةُ الثَّامِنَةُ صَبَاحًا، مَا التَّوْقِيتُ الصَّحِيحُ؟",
+      "audioKey": "l94_ex4_q1",
+      "premiumClock": {
+        "mode": "identify",
+        "hour": 8,
+        "correctId": "b",
+        "options": [
+          {
+            "id": "a",
+            "icon": "🕕",
+            "label": "06:00"
+          },
+          {
+            "id": "b",
+            "icon": "🕗",
+            "label": "08:00"
+          },
+          {
+            "id": "c",
+            "icon": "🕕",
+            "label": "18:00"
+          },
+          {
+            "id": "d",
+            "icon": "🕗",
+            "label": "20:00"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l94_ex4_q2",
+      "mission": 4,
+      "visualSymbol": "🕐",
+      "visualLabel": "بَعْدَ مُنْتَصَفِ النَّهَارِ",
+      "prompt": "السَّاعَةُ الْوَاحِدَةُ بَعْدَ مُنْتَصَفِ النَّهَارِ، مَا التَّوْقِيتُ الصَّحِيحُ؟",
+      "audioKey": "l94_ex4_q2",
+      "premiumClock": {
+        "mode": "identify",
+        "hour": 1,
+        "correctId": "c",
+        "options": [
+          {
+            "id": "a",
+            "icon": "🕐",
+            "label": "01:00"
+          },
+          {
+            "id": "b",
+            "icon": "🕚",
+            "label": "11:00"
+          },
+          {
+            "id": "c",
+            "icon": "🕐",
+            "label": "13:00"
+          },
+          {
+            "id": "d",
+            "icon": "🕘",
+            "label": "21:00"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l94_ex4_q3",
+      "mission": 4,
+      "visualSymbol": "🕔",
+      "visualLabel": "بَعْدَ مُنْتَصَفِ النَّهَارِ",
+      "prompt": "السَّاعَةُ الْخَامِسَةُ بَعْدَ مُنْتَصَفِ النَّهَارِ، مَا التَّوْقِيتُ الصَّحِيحُ؟",
+      "audioKey": "l94_ex4_q3",
+      "premiumClock": {
+        "mode": "identify",
+        "hour": 5,
+        "correctId": "c",
+        "options": [
+          {
+            "id": "a",
+            "icon": "🕔",
+            "label": "05:00"
+          },
+          {
+            "id": "b",
+            "icon": "🕒",
+            "label": "15:00"
+          },
+          {
+            "id": "c",
+            "icon": "🕔",
+            "label": "17:00"
+          },
+          {
+            "id": "d",
+            "icon": "🕖",
+            "label": "19:00"
+          }
+        ]
+      }
+    },
+    {
+      "id": "l94_ex4_q4",
+      "mission": 4,
+      "visualSymbol": "🕚",
+      "visualLabel": "لَيْلًا",
+      "prompt": "السَّاعَةُ الْحَادِيَةَ عَشْرَةَ لَيْلًا، مَا التَّوْقِيتُ الصَّحِيحُ؟",
+      "audioKey": "l94_ex4_q4",
+      "premiumClock": {
+        "mode": "identify",
+        "hour": 11,
+        "correctId": "d",
+        "options": [
+          {
+            "id": "a",
+            "icon": "🕚",
+            "label": "11:00"
+          },
+          {
+            "id": "b",
+            "icon": "🕘",
+            "label": "21:00"
+          },
+          {
+            "id": "c",
+            "icon": "🕙",
+            "label": "22:00"
+          },
+          {
+            "id": "d",
+            "icon": "🕚",
+            "label": "23:00"
+          }
+        ]
+      }
+    }
+  ]
+},
   80: {
     lessonKey: "lesson80",
     audioBase: "/audio/teachers/taline/lesson_80_organize_time/exercises",
@@ -7263,6 +7837,13 @@ export const Lesson79Exercises =
   () => (
     <SmallCityLessonExercises72To85
       lessonNum={79}
+    />
+  );
+
+export const Lesson94TimeExercises =
+  () => (
+    <SmallCityLessonExercises72To85
+      lessonNum={94}
     />
   );
 

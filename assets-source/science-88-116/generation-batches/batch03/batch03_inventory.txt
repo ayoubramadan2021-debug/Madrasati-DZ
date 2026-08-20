@@ -1,0 +1,15 @@
+MADRASATI-DZ — SCIENCE ASSETS — BATCH 03
+==========================================
+
+Manifest Objects: 24
+Completed: 16
+Remaining: 8
+
+1. obj-bucket-v01.png
+2. obj-coin-v01.png
+3. obj-cookie-v01.png
+4. obj-cork-v01.png
+5. obj-empty-plastic-bottle-v01.png
+6. obj-locked-cabinet-v01.png
+7. obj-sugar-v01.png
+8. obj-warning-cleaner-v01.png

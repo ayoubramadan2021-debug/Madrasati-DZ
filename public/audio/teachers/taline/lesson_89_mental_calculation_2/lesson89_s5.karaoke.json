@@ -1,97 +1,117 @@
 [
   {
-    "text": "لِنُجَرِّبْ",
-    "offset": 105,
-    "duration": 747
+    "text": "لِنَحْسُبْ",
+    "offset": 103,
+    "duration": 592
   },
   {
-    "text": "مَعَ",
-    "offset": 867,
-    "duration": 235
+    "text": "سِتَّةً",
+    "offset": 708,
+    "duration": 526
   },
   {
-    "text": "أَعْدَادٍ",
-    "offset": 1116,
-    "duration": 540
+    "text": "زَائِدَ",
+    "offset": 1247,
+    "duration": 461
   },
   {
-    "text": "أُخْرَى:",
-    "offset": 1670,
-    "duration": 609
+    "text": "ثَمَانِيَةٍ",
+    "offset": 1721,
+    "duration": 724
+  },
+  {
+    "text": "نَأْخُذُ",
+    "offset": 3368,
+    "duration": 566
+  },
+  {
+    "text": "أَرْبَعَةً",
+    "offset": 3947,
+    "duration": 605
+  },
+  {
+    "text": "مِنَ",
+    "offset": 4566,
+    "duration": 184
+  },
+  {
+    "text": "الثَّمَانِيَةِ",
+    "offset": 4763,
+    "duration": 750
+  },
+  {
+    "text": "وَنُضِيفُهَا",
+    "offset": 5526,
+    "duration": 763
+  },
+  {
+    "text": "إِلَى",
+    "offset": 6303,
+    "duration": 211
+  },
+  {
+    "text": "السِّتَّةِ",
+    "offset": 6526,
+    "duration": 553
+  },
+  {
+    "text": "فَنَحْصُلُ",
+    "offset": 7303,
+    "duration": 658
+  },
+  {
+    "text": "عَلَى",
+    "offset": 7974,
+    "duration": 237
+  },
+  {
+    "text": "عَشَرَةٍ",
+    "offset": 8224,
+    "duration": 579
+  },
+  {
+    "text": "وَيَبْقَى",
+    "offset": 8961,
+    "duration": 566
+  },
+  {
+    "text": "أَرْبَعَةٌ",
+    "offset": 9539,
+    "duration": 645
+  },
+  {
+    "text": "إِذَنْ",
+    "offset": 11105,
+    "duration": 539
   },
   {
     "text": "سِتَّةٌ",
-    "offset": 2515,
-    "duration": 623
+    "offset": 11882,
+    "duration": 553
   },
   {
     "text": "زَائِدَ",
-    "offset": 3152,
-    "duration": 429
+    "offset": 12447,
+    "duration": 421
   },
   {
-    "text": "ثَمَانِيَةٍ،",
-    "offset": 3595,
-    "duration": 761
+    "text": "ثَمَانِيَةٍ",
+    "offset": 12882,
+    "duration": 750
   },
   {
-    "text": "وَسَبْعَةٌ",
-    "offset": 4592,
-    "duration": 775
+    "text": "تُسَاوِي",
+    "offset": 13645,
+    "duration": 539
   },
   {
-    "text": "زَائِدَ",
-    "offset": 5382,
-    "duration": 429
+    "text": "أَرْبَعَةَ",
+    "offset": 14197,
+    "duration": 579
   },
   {
-    "text": "ثَمَانِيَةٍ،",
-    "offset": 5825,
-    "duration": 761
-  },
-  {
-    "text": "وَسِتَّةٌ",
-    "offset": 6809,
-    "duration": 747
-  },
-  {
-    "text": "زَائِدَ",
-    "offset": 7570,
-    "duration": 429
-  },
-  {
-    "text": "سَبْعَةٍ.",
-    "offset": 8014,
-    "duration": 567
-  },
-  {
-    "text": "نَخْتَارُ",
-    "offset": 9556,
-    "duration": 637
-  },
-  {
-    "text": "فِي",
-    "offset": 10207,
-    "duration": 166
-  },
-  {
-    "text": "كُلِّ",
-    "offset": 10387,
-    "duration": 304
-  },
-  {
-    "text": "مَرَّةٍ",
-    "offset": 10706,
-    "duration": 484
-  },
-  {
-    "text": "الطَّرِيقَةَ",
-    "offset": 11205,
-    "duration": 678
-  },
-  {
-    "text": "الْأَسْهَلَ.",
-    "offset": 11897,
-    "duration": 734
+    "text": "عَشَرَ",
+    "offset": 14789,
+    "duration": 566
   }
 ]

@@ -1,0 +1,23 @@
+Create a premium educational scene for a high-quality children's science learning app.
+
+Style:
+polished modern 3D educational illustration, warm realistic classroom lighting, clean and elegant, child-friendly, premium mobile learning app quality, accurate objects, soft depth of field, visually uncluttered composition.
+
+The scene must communicate one clear science concept.
+
+CRITICAL:
+no text,
+no labels,
+no arrows,
+no answer hints,
+no UI,
+no frames,
+no buttons,
+no watermark.
+
+Leave clean visual space around the important objects so interactive overlays can be added later by the app.
+
+Landscape composition, 1536x1024.
+
+Scene:
+A bright clean mini supermarket scene with three visually distinct shelf areas: food products, household cleaning products, and school supplies. Include milk, cookies, cleaner, soap, pencils and books. Do not write category names anywhere.

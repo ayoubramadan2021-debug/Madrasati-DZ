@@ -1,0 +1,27 @@
+Create a premium educational 3D illustration asset for a high-quality children's learning app.
+
+Style:
+clean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.
+
+Composition:
+one isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.
+
+CRITICAL:
+transparent background,
+no colored square behind the object,
+no badge,
+no button,
+no frame,
+no card,
+no UI,
+no text,
+no letters,
+no numbers,
+no watermark,
+no decorative stars,
+no answer indicators.
+
+1024x1024 PNG with transparent background.
+
+Subject:
+A small wall-mounted household storage cabinet shown closed with a simple child-safety lock, no text.

@@ -1,0 +1,15 @@
+img[data-lesson95-asset="true"] {
+  width: 118px !important;
+  height: 118px !important;
+
+  min-width: 118px !important;
+  min-height: 118px !important;
+
+  max-width: 118px !important;
+  max-height: 118px !important;
+
+  object-fit: contain !important;
+
+  display: block !important;
+  margin-inline: auto !important;
+}

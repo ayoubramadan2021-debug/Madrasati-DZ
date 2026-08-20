@@ -1,0 +1,88 @@
+{
+  "batch": "science-88-116-batch02",
+  "version": 1,
+  "expected_count": 8,
+  "output_format": "PNG",
+  "master_size": [
+    1024,
+    1024
+  ],
+  "transparent_background_required": true,
+  "items": [
+    {
+      "id": "obj-eraser-v01",
+      "filename": "obj-eraser-v01.png",
+      "lessons": [
+        113,
+        116
+      ],
+      "prompt_file": "prompts/01_obj-eraser-v01.txt"
+    },
+    {
+      "id": "obj-glass-empty-v01",
+      "filename": "obj-glass-empty-v01.png",
+      "lessons": [
+        88
+      ],
+      "prompt_file": "prompts/02_obj-glass-empty-v01.txt"
+    },
+    {
+      "id": "obj-soap-bar-v01",
+      "filename": "obj-soap-bar-v01.png",
+      "lessons": [
+        104,
+        111,
+        116
+      ],
+      "prompt_file": "prompts/03_obj-soap-bar-v01.txt"
+    },
+    {
+      "id": "obj-cleaner-liquid-v01",
+      "filename": "obj-cleaner-liquid-v01.png",
+      "lessons": [
+        104,
+        107,
+        111,
+        116
+      ],
+      "prompt_file": "prompts/04_obj-cleaner-liquid-v01.txt"
+    },
+    {
+      "id": "obj-disinfectant-v01",
+      "filename": "obj-disinfectant-v01.png",
+      "lessons": [
+        104,
+        107,
+        111,
+        116
+      ],
+      "prompt_file": "prompts/05_obj-disinfectant-v01.txt"
+    },
+    {
+      "id": "obj-washing-powder-v01",
+      "filename": "obj-washing-powder-v01.png",
+      "lessons": [
+        104,
+        111
+      ],
+      "prompt_file": "prompts/06_obj-washing-powder-v01.txt"
+    },
+    {
+      "id": "obj-sponge-v01",
+      "filename": "obj-sponge-v01.png",
+      "lessons": [
+        104,
+        116
+      ],
+      "prompt_file": "prompts/07_obj-sponge-v01.txt"
+    },
+    {
+      "id": "obj-mop-v01",
+      "filename": "obj-mop-v01.png",
+      "lessons": [
+        104
+      ],
+      "prompt_file": "prompts/08_obj-mop-v01.txt"
+    }
+  ]
+}
