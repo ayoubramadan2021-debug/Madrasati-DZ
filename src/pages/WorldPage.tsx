@@ -1,5 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import ProgressTestNode from "../features/progress-tests/components/ProgressTestNode";
+import { getProgressTestStatus } from "../features/progress-tests/storage";
+import { isLessonCompleted } from "../features/lesson-v2/progress/lessonProgress";
 import { useLang } from "../i18n/LanguageContext";
 import { getWorldById, getWorldLessons } from "../services/worldsService";
 import { supabase } from "../lib/supabaseClient";
@@ -8,6 +11,7 @@ import WorldIntroSceneV2 from "../features/exercises/templates/WorldIntroSceneV2
 import { NATURAL_RESERVE_WORLD_ID, naturalReserveIntroContent } from "../features/world-intro/naturalReserveIntro";
 import { SMALL_CITY_WORLD_ID, smallCityWorldIntroContent } from "../features/world-intro/smallCityWorldIntro";
 import { SCHOOL_WORLD_ID, schoolWorldIntroContent } from "../features/world-intro/schoolWorldIntro";
+import { SKILLS_ACADEMY_WORLD_ID, skillsAcademyWorldIntroContent } from "../features/world-intro/skillsAcademyWorldIntro";
 
 // نزع التشكيل + تحويل الكلمات الرقمية — للعرض في الفهرس فقط
 function cleanTitle(s: string): string {
@@ -50,8 +54,21 @@ function resolveWorldIntroContent(
   }
 
 
+
+  if (
+    resolvedWorldId
+    === SKILLS_ACADEMY_WORLD_ID
+  ) {
+    return skillsAcademyWorldIntroContent;
+  }
+
   return worldRecord?.intro_content ?? null;
 }
+
+// TEMPORARY DEVELOPMENT SWITCH:
+// false = lessons remain open while all PT/MT checkpoints are being built.
+// Later, replace this broad switch with segmented checkpoint gates.
+const ENABLE_PROGRESS_GATING = false;
 
 export default function WorldPage() {
   const { t, lang } = useLang();
@@ -64,6 +81,39 @@ export default function WorldPage() {
   const [isReplay, setIsReplay] = useState(false);
   const [introChecked, setIntroChecked] = useState(false);
   const [mounted, setMounted] = useState(false);
+  type Pt01Status = Awaited<ReturnType<typeof getProgressTestStatus>>;
+  const [pt01Record, setPt01Record] = useState<Pt01Status>(null);
+
+  useEffect(() => {
+    let active = true;
+
+    const refreshPt01 = async () => {
+      const status = await getProgressTestStatus("pt-01");
+      if (active) setPt01Record(status);
+    };
+
+    void refreshPt01();
+
+    const refresh = () => {
+      void refreshPt01();
+    };
+
+    window.addEventListener("focus", refresh);
+    window.addEventListener("storage", refresh);
+    window.addEventListener("taalim-dz:progress-test-completed", refresh);
+
+    return () => {
+      active = false;
+      window.removeEventListener("focus", refresh);
+      window.removeEventListener("storage", refresh);
+      window.removeEventListener("taalim-dz:progress-test-completed", refresh);
+    };
+  }, [worldId]);
+
+  const lesson10Completed = isLessonCompleted("lesson10");
+  const pt01BestScore = Number(pt01Record?.bestScore ?? 0);
+  const pt01Passed = Boolean(pt01Record?.passed || pt01BestScore >= 70);
+
 
   const introContent =
     resolveWorldIntroContent(
@@ -158,38 +208,162 @@ export default function WorldPage() {
           <div style={{ textAlign: "center", color: "var(--text-faint)", padding: 40 }}>لا توجد دروس في هذا العالم بعد</div>
         ) : (
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-            {lessons.map((l, i) => (
-              <div
-                key={l.id}
-                onClick={() => {
-                  if (
-                    String(l.world_id ?? world?.id ?? worldId) === "5daed3bb-7e62-4a5a-93a1-f6dec60df810"
-                  ) {
+            {lessons.map((l, i) => {
+              const k = getV2KeyByLesson(l);
+
+              // PT-01 is the first global progression gate:
+              // - in School World, it blocks cards after lesson 10 (index >= 10)
+              // - in every later world, it blocks every lesson until PT-01 is passed
+              // This deliberately does NOT depend on getV2KeyByLesson, because some
+              // lessons (e.g. 33–42) are not resolved by the V2 registry.
+              const currentWorldId = String(world?.id ?? worldId ?? "");
+              const isSchoolWorld = currentWorldId === SCHOOL_WORLD_ID;
+
+              const isAfterPt01Locked =
+                ENABLE_PROGRESS_GATING
+                && !pt01Passed
+                && (
+                  (isSchoolWorld && i >= 10)
+                  || !isSchoolWorld
+                );
+
+              const lessonCard = (
+                <div
+                  key={l.id}
+                  onClick={() => {
+                    if (isAfterPt01Locked) {
+                      if (lesson10Completed) {
+                        navigate("/progress-test/pt-01");
+                      }
+                      return;
+                    }
+
+                    if (
+                      String(l.world_id ?? world?.id ?? worldId) === "5daed3bb-7e62-4a5a-93a1-f6dec60df810"
+                    ) {
+                      navigate(
+                        `/world2-lesson/${l.id}`
+                      );
+                      return;
+                    }
+
                     navigate(
-                      `/world2-lesson/${l.id}`
+                      k
+                        ? `/lesson-v2/${k}`
+                        : `/lesson/${l.id}`
                     );
-                    return;
-                  }
+                  }}
+                  style={{
+                    background: isAfterPt01Locked
+                      ? "linear-gradient(135deg,rgba(35,45,65,.92),rgba(24,33,50,.96))"
+                      : "var(--surface-2)",
+                    border: isAfterPt01Locked
+                      ? "1px solid rgba(148,163,184,.25)"
+                      : "1px solid var(--border-soft)",
+                    borderRadius: 16,
+                    padding: "16px 18px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 14,
+                    cursor: isAfterPt01Locked ? "not-allowed" : "pointer",
+                    boxShadow: "0 4px 16px rgba(0,0,0,.3)",
+                    opacity: mounted ? (isAfterPt01Locked ? .68 : 1) : 0,
+                    transform: mounted ? "translateY(0)" : "translateY(10px)",
+                    transition: `all .4s ease ${i * 0.08}s`,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 50,
+                      height: 50,
+                      borderRadius: 15,
+                      background: isAfterPt01Locked
+                        ? "linear-gradient(135deg,#64748b,#475569)"
+                        : "linear-gradient(135deg,var(--gold),#F4B942)",
+                      color: isAfterPt01Locked ? "#e2e8f0" : "#1B3A6B",
+                      display: "grid",
+                      placeItems: "center",
+                      fontSize: isAfterPt01Locked ? 23 : 26,
+                      fontWeight: 900,
+                      flexShrink: 0,
+                      boxShadow: isAfterPt01Locked
+                        ? "0 4px 12px rgba(15,23,42,.35)"
+                        : "0 4px 12px rgba(232,160,32,.35)",
+                    }}
+                  >
+                    {isAfterPt01Locked ? "🔒" : i + 1}
+                  </div>
 
-                  const k =
-                    getV2KeyByLesson(l);
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ color: "var(--text-muted)", fontSize: 11, fontWeight: 700, marginBottom: 3, letterSpacing: ".3px" }}>
+                      الدرس {i + 1}
+                    </div>
 
-                  navigate(
-                    k
-                      ? `/lesson-v2/${k}`
-                      : `/lesson/${l.id}`
-                  );
-                }}
-                style={{ background: "var(--surface-2)", border: "1px solid var(--border-soft)", borderRadius: 16, padding: "16px 18px", display: "flex", alignItems: "center", gap: 14, cursor: "pointer", boxShadow: "0 4px 16px rgba(0,0,0,.3)", opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(10px)", transition: `all .4s ease ${i * 0.08}s` }}
-              >
-                <div style={{ width: 50, height: 50, borderRadius: 15, background: "linear-gradient(135deg,var(--gold),#F4B942)", color: "#1B3A6B", display: "grid", placeItems: "center", fontSize: 26, fontWeight: 900, flexShrink: 0, boxShadow: "0 4px 12px rgba(232,160,32,.35)" }}>{i + 1}</div>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ color: "var(--text-muted)", fontSize: 11, fontWeight: 700, marginBottom: 3, letterSpacing: ".3px" }}>الدرس {i + 1}</div>
-                  <div style={{ fontWeight: 800, color: "#fff", fontSize: 16, lineHeight: 1.3 }}>{lang === "fr" && l.title_fr ? l.title_fr : cleanTitle(l.title)}</div>
+                    <div style={{ fontWeight: 800, color: "#fff", fontSize: 16, lineHeight: 1.3 }}>
+                      {lang === "fr" && l.title_fr ? l.title_fr : cleanTitle(l.title)}
+                    </div>
+
+                    {isAfterPt01Locked && (
+                      <div
+                        style={{
+                          marginTop: 5,
+                          color: lesson10Completed ? "#c4b5fd" : "#94a3b8",
+                          fontSize: 11,
+                          fontWeight: 800,
+                          lineHeight: 1.35,
+                        }}
+                      >
+                        {lesson10Completed
+                          ? "🔒 اجتز PT-01 لفتح هذا المسار"
+                          : "🔒 أكمل الدرس 10 ثم اجتز PT-01"}
+                      </div>
+                    )}
+                  </div>
+
+                  <div
+                    style={{
+                      width: 11,
+                      height: 11,
+                      borderLeft: isAfterPt01Locked
+                        ? "2.5px solid #64748b"
+                        : "2.5px solid var(--gold)",
+                      borderBottom: isAfterPt01Locked
+                        ? "2.5px solid #64748b"
+                        : "2.5px solid var(--gold)",
+                      transform: "rotate(45deg)",
+                      flexShrink: 0,
+                      marginLeft: 4,
+                    }}
+                  />
                 </div>
-                <div style={{ width: 11, height: 11, borderLeft: "2.5px solid var(--gold)", borderBottom: "2.5px solid var(--gold)", transform: "rotate(45deg)", flexShrink: 0, marginLeft: 4 }} />
-              </div>
-            ))}
+              );
+
+              if (
+                worldId === SCHOOL_WORLD_ID
+                && k === "lesson10"
+              ) {
+                return (
+                  <div
+                    key={`lesson10-pt01-${l.id}`}
+                    style={{ display: "contents" }}
+                  >
+                    {lessonCard}
+
+                    <ProgressTestNode
+                      unlocked={lesson10Completed}
+                      record={pt01Record}
+                      onOpen={() => {
+                        if (lesson10Completed) {
+                          navigate("/progress-test/pt-01");
+                        }
+                      }}
+                    />
+                  </div>
+                );
+              }
+
+              return lessonCard;
+            })}
           </div>
         )}
 

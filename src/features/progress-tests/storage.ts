@@ -73,6 +73,41 @@ async function getServerBest(testId: string): Promise<{
   }
 }
 
+
+export function getStoredProgressTest(testId: string): StoredProgressTest | null {
+  return readStore()[testId] ?? null;
+}
+
+export async function getProgressTestStatus(testId: string): Promise<StoredProgressTest | null> {
+  const local = getStoredProgressTest(testId);
+  const server = await getServerBest(testId);
+
+  if (!local && !server.userId) return null;
+
+  const bestScore = Math.max(local?.bestScore ?? 0, server.bestScore);
+  const passed = Boolean(local?.passed || server.passed || bestScore >= 70);
+  const stars = (
+    bestScore >= 90 ? 3 :
+    bestScore >= 70 ? 2 :
+    bestScore >= 50 ? 1 : 0
+  ) as 0 | 1 | 2 | 3;
+
+  return {
+    attempts: local?.attempts ?? 0,
+    bestScore,
+    lastScore: local?.lastScore ?? server.bestScore,
+    passed,
+    stars: Math.max(local?.stars ?? 0, stars) as 0 | 1 | 2 | 3,
+    rankingContribution: Math.max(local?.rankingContribution ?? 0, server.bestScore),
+    totalXpGranted: local?.totalXpGranted ?? 0,
+    completionXpGranted: local?.completionXpGranted ?? false,
+    passXpGranted: local?.passXpGranted ?? false,
+    threeStarXpGranted: local?.threeStarXpGranted ?? false,
+    serverSynced: Boolean(server.userId && (server.bestScore > 0 || server.passed)),
+    updatedAt: local?.updatedAt ?? new Date(0).toISOString(),
+  };
+}
+
 export async function recordProgressTestResult(result: ProgressTestResult) {
   const store = readStore();
   const previous = store[result.testId];
