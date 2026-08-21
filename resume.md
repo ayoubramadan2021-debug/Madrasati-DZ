@@ -1478,3 +1478,14 @@ npm run dev -- --host 0.0.0.0
 
 **Skills Academy 86 → 116: COMPLETE.**
 <!-- SKILLS_ACADEMY_86_116_END -->
+
+<!-- TAALIM_DZ_PROGRESS_TESTS_V1_PT01 -->
+## نظام اختبارات التقدم — PT-01
+
+- إنشاء محرك مستقل لاختبارات التقدم دون تعديل محرك تمارين الدروس.
+- PT-01 يغطي الدروس 1→10 في 10 مهام.
+- Route: `/progress-test/pt-01`
+- Mastery + XP + أفضل نتيجة للترتيب، مع محاولة مزامنة أفضل نتيجة عبر progressService.
+- صوت MP3 + WordBoundary JSON للتعليمات.
+- Build ناجح.
+<!-- /TAALIM_DZ_PROGRESS_TESTS_V1_PT01 -->

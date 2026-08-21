@@ -18,6 +18,7 @@ import Lesson50ExercisesPage from "./pages/Lesson50ExercisesPage";
 import Lesson51ExercisesPage from "./pages/Lesson51ExercisesPage";
 import Lesson52Page from "./pages/Lesson52Page";
 import Lesson52ExercisesPage from "./pages/Lesson52ExercisesPage";
+import ProgressTest01Page from "./pages/ProgressTest01Page";
 const lazy = (importFn: () => Promise<any>, title: string) => {
   const LazyComponent = React.lazy(importFn);
   return (
@@ -31,6 +32,8 @@ export default function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/lesson-v2/progress-test-pt-01" element={<ProgressTest01Page />} />
+        <Route path="/progress-test/pt-01" element={<ProgressTest01Page />} />
         <Route path="/" element={<Home />} />
         <Route path="/exercise-demo" element={<ExerciseDemoPage />} />
         <Route path="/ai-tutor" element={<AiTutorPage />} />

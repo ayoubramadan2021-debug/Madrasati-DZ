@@ -18,11 +18,11 @@ export default function Lesson10ExercisesPage() {
 
   return (
     <LessonCompleteV2
-      
+
       lessonKey="lesson10"
       message="أَحْسَنْتَ يَا بَطَل! 🎉 أَكْمَلْتَ تَمَارِينَ الدَّرْسِ. هَيَّا نُوَاصِلُ التَّعَلُّمَ!"
       onReplay={() => setStage("ex1")}
-      nextLessonKey="lesson11"
+      nextLessonKey="progress-test-pt-01"
     />
   );
 }
