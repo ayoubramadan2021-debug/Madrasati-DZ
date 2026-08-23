@@ -1,0 +1,2775 @@
+{
+  "generated_at": "2026-08-21T14:33:50",
+  "branch": "handoff-premium-secure-20260723_103324",
+  "lesson_range": [
+    1,
+    116
+  ],
+  "build_ok": true,
+  "shared_contract": {
+    "UnifiedLessonExercisesV2": true,
+    "UnifiedExerciseScreenV2": true,
+    "UnifiedExerciseKaraokeV2": true,
+    "UnifiedExerciseAnswersV2": true,
+    "LessonCompleteV2": true
+  },
+  "classification_counts": {
+    "NO_DEDICATED_PAGE": 68,
+    "DIRECT_CUSTOM_PAGE": 48
+  },
+  "risk_counts": {
+    "NOT_USING_UNIFIED_EXERCISE_PAGE": 48,
+    "NO_CANONICAL_LESSON_DATA": 14,
+    "WINDOW_LOCATION_NAVIGATION": 5
+  },
+  "lessons_with_risk_count": 62,
+  "missing_local_imports": [],
+  "custom_engine_findings": [
+    {
+      "file": "src/features/lesson-v2/exercises-v2/AddSubStoryLabV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/BoxCountSelectV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/CompareExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/ConservationV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/CountSelectV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/CountTapExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/DirectOperationExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/DragMatchExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/EquationBuilderV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/EquationChoiceExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/FoodSourcesExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/GridNavigationExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/HealthyFoodExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_COMPLETION"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/LengthCompareExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/LengthLabExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_SPLIT_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/LengthLabPremiumExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/LengthMasteryExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/LengthVarietyExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson35PremiumBreathingExercises.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson36PremiumNumbersExercises.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_COMPLETION",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson41GridExercises.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_COMPLETION",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO",
+        "CUSTOM_OWNS_NAVIGATION"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson42HeartExercises.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_COMPLETION",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO",
+        "CUSTOM_OWNS_NAVIGATION"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson43DoubleExercises.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_COMPLETION",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO",
+        "CUSTOM_OWNS_NAVIGATION"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson44HalfExercises.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_COMPLETION",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO",
+        "CUSTOM_OWNS_NAVIGATION"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson45CompleteTableExercises.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_COMPLETION",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO",
+        "CUSTOM_OWNS_NAVIGATION"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson46HeartBeats2Exercises.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_COMPLETION",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson50ReviewExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson51BilanExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson51VisualAdditionExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson52HealthPremiumExercises.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson52PulseHotspotExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson64PlantsWithUs2Exercises.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_COMPLETION",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson65AddSubtractSituations2Exercises.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_COMPLETION",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson66MobilizeKnowledge3Exercises.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_COMPLETION",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO",
+        "CUSTOM_OWNS_NAVIGATION"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson67Assessment3ArabicExercises.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_COMPLETION",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO",
+        "CUSTOM_OWNS_NAVIGATION"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson68Assessment3MathExercises.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_COMPLETION",
+        "CUSTOM_OWNS_NAVIGATION"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/Lesson69Assessment3ScienceExercises.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_COMPLETION"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/MemoryBuildQuantityExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/MemoryQuantityExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/MemorySameQuantityExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/NumberChoiceExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/NumberSortExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/NumbersTo39ExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/PathJourneyExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/PathTraceExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/PremiumExerciseEngineV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/PremiumFourByFourKaraokeV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/PremiumFourByFourV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/RankOrderExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/RegroupingExchangeExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/SortSequenceExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/TableReadingExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/TapSelectExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/TapSelectImagesV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/TapSelectWordsV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/TouchOrderLengthExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/TraceExerciseV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/UnitMeasurePathV2.tsx",
+      "risk_flags": [
+        "CUSTOM_LOCAL_KARAOKE",
+        "CUSTOM_OWNS_AUDIO",
+        "CUSTOM_OWNS_FEEDBACK_AUDIO"
+      ]
+    },
+    {
+      "file": "src/features/lesson-v2/exercises-v2/World3TapTextExercisesV2.tsx",
+      "risk_flags": [
+        "CUSTOM_OWNS_COMPLETION"
+      ]
+    }
+  ],
+  "lessons": [
+    {
+      "lesson": 1,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson1.ts",
+        "src/features/lesson-v2/content/lesson1_exercise1.ts",
+        "src/features/lesson-v2/content/lesson1_exercise2.ts",
+        "src/features/lesson-v2/content/lesson1_exercise3.ts",
+        "src/features/lesson-v2/content/lesson1_exercise4.ts",
+        "src/features/lesson-v2/content/lesson1_exercise5.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 2,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson2ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson2.ts",
+        "src/features/lesson-v2/content/lesson2_exercise1.ts",
+        "src/features/lesson-v2/content/lesson2_exercise2.ts",
+        "src/features/lesson-v2/content/lesson2_exercise3.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/TapSelectWordsV2",
+        "../features/lesson-v2/exercises-v2/TapSelectImagesV2",
+        "../features/lesson-v2/exercises-v2/DragMatchExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 3,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson3ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson3.ts",
+        "src/features/lesson-v2/content/lesson3_exercise1.ts",
+        "src/features/lesson-v2/content/lesson3_exercise2.ts",
+        "src/features/lesson-v2/content/lesson3_exercise3.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/TapSelectWordsV2",
+        "../features/lesson-v2/exercises-v2/DragMatchExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 4,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson4ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson4.ts",
+        "src/features/lesson-v2/content/lesson4_exercise1.ts",
+        "src/features/lesson-v2/content/lesson4_exercise2.ts",
+        "src/features/lesson-v2/content/lesson4_exercise3.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/CompareExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 5,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson5ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson5.ts",
+        "src/features/lesson-v2/content/lesson5_exercise1.ts",
+        "src/features/lesson-v2/content/lesson5_exercise2.ts",
+        "src/features/lesson-v2/content/lesson5_exercise3.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/CompareExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 6,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson6ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson6.ts",
+        "src/features/lesson-v2/content/lesson6_exercise1.ts",
+        "src/features/lesson-v2/content/lesson6_exercise2.ts",
+        "src/features/lesson-v2/content/lesson6_exercise3.ts",
+        "src/features/lesson-v2/content/lesson6_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/CountSelectV2",
+        "../features/lesson-v2/exercises-v2/CountTapExerciseV2",
+        "../features/lesson-v2/exercises-v2/DragMatchExerciseV2",
+        "../features/lesson-v2/exercises-v2/TraceExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 7,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson7ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson7.ts",
+        "src/features/lesson-v2/content/lesson7_exercise1.ts",
+        "src/features/lesson-v2/content/lesson7_exercise2.ts",
+        "src/features/lesson-v2/content/lesson7_exercise3.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/TapSelectWordsV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 8,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson8ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson8.ts",
+        "src/features/lesson-v2/content/lesson8_exercise1.ts",
+        "src/features/lesson-v2/content/lesson8_exercise2.ts",
+        "src/features/lesson-v2/content/lesson8_exercise3.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/CountSelectV2",
+        "../features/lesson-v2/exercises-v2/CountTapExerciseV2",
+        "../features/lesson-v2/exercises-v2/DragMatchExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 9,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson9ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson9.ts",
+        "src/features/lesson-v2/content/lesson9_exercise1.ts",
+        "src/features/lesson-v2/content/lesson9_exercise2.ts",
+        "src/features/lesson-v2/content/lesson9_exercise3.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/TapSelectWordsV2",
+        "../features/lesson-v2/exercises-v2/TapSelectImagesV2",
+        "../features/lesson-v2/exercises-v2/DragMatchExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 10,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson10ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson10.ts",
+        "src/features/lesson-v2/content/lesson10_exercise1.ts",
+        "src/features/lesson-v2/content/lesson10_exercise2.ts",
+        "src/features/lesson-v2/content/lesson10_exercise3.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/ConservationV2",
+        "../features/lesson-v2/exercises-v2/CountSelectV2",
+        "../features/lesson-v2/exercises-v2/DragMatchExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 11,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson11ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson11.ts",
+        "src/features/lesson-v2/content/lesson11_exercise1.ts",
+        "src/features/lesson-v2/content/lesson11_exercise2.ts",
+        "src/features/lesson-v2/content/lesson11_exercise3.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/TapSelectWordsV2",
+        "../features/lesson-v2/exercises-v2/TapSelectImagesV2",
+        "../features/lesson-v2/exercises-v2/DragMatchExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 12,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson12ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson12.ts",
+        "src/features/lesson-v2/content/lesson12_exercise1.ts",
+        "src/features/lesson-v2/content/lesson12_exercise2.ts",
+        "src/features/lesson-v2/content/lesson12_exercise3.ts",
+        "src/features/lesson-v2/content/lesson12_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/BoxCountSelectV2",
+        "../features/lesson-v2/exercises-v2/TapSelectImagesV2",
+        "../features/lesson-v2/exercises-v2/DragMatchExerciseV2",
+        "../features/lesson-v2/exercises-v2/TraceExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 13,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson13ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson13.ts",
+        "src/features/lesson-v2/content/lesson13_exercise1.ts",
+        "src/features/lesson-v2/content/lesson13_exercise2.ts",
+        "src/features/lesson-v2/content/lesson13_exercise3.ts",
+        "src/features/lesson-v2/content/lesson13_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/CountSelectV2",
+        "../features/lesson-v2/exercises-v2/TapSelectImagesV2",
+        "../features/lesson-v2/exercises-v2/DragMatchExerciseV2",
+        "../features/lesson-v2/exercises-v2/TraceExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 14,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson14ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson14.ts",
+        "src/features/lesson-v2/content/lesson14_exercise1.ts",
+        "src/features/lesson-v2/content/lesson14_exercise2.ts",
+        "src/features/lesson-v2/content/lesson14_exercise2_memory.ts",
+        "src/features/lesson-v2/content/lesson14_exercise3.ts",
+        "src/features/lesson-v2/content/lesson14_exercise3_memory_build.ts",
+        "src/features/lesson-v2/content/lesson14_exercise4.ts",
+        "src/features/lesson-v2/content/lesson14_exercise4_same_quantity.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/CountSelectV2",
+        "../features/lesson-v2/exercises-v2/MemoryQuantityExerciseV2",
+        "../features/lesson-v2/exercises-v2/MemoryBuildQuantityExerciseV2",
+        "../features/lesson-v2/exercises-v2/MemorySameQuantityExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 15,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson15ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson15.ts",
+        "src/features/lesson-v2/content/lesson15_exercise1.ts",
+        "src/features/lesson-v2/content/lesson15_exercise2.ts",
+        "src/features/lesson-v2/content/lesson15_exercise3.ts",
+        "src/features/lesson-v2/content/lesson15_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/RankOrderExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 16,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson16ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson16.ts",
+        "src/features/lesson-v2/content/lesson16_exercise1.ts",
+        "src/features/lesson-v2/content/lesson16_exercise2.ts",
+        "src/features/lesson-v2/content/lesson16_exercise3.ts",
+        "src/features/lesson-v2/content/lesson16_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/RankOrderExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 17,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson17ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson17.ts",
+        "src/features/lesson-v2/content/lesson17_exercise1.ts",
+        "src/features/lesson-v2/content/lesson17_exercise2.ts",
+        "src/features/lesson-v2/content/lesson17_exercise3.ts",
+        "src/features/lesson-v2/content/lesson17_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/RankOrderExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 18,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson18ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson18.ts",
+        "src/features/lesson-v2/content/lesson18_exercise1.ts",
+        "src/features/lesson-v2/content/lesson18_exercise2.ts",
+        "src/features/lesson-v2/content/lesson18_exercise3.ts",
+        "src/features/lesson-v2/content/lesson18_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/RankOrderExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 19,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson19ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson19.ts",
+        "src/features/lesson-v2/content/lesson19_exercise1.ts",
+        "src/features/lesson-v2/content/lesson19_exercise2.ts",
+        "src/features/lesson-v2/content/lesson19_exercise3.ts",
+        "src/features/lesson-v2/content/lesson19_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/RankOrderExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 20,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson20ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson20.ts",
+        "src/features/lesson-v2/content/lesson20_exercise1.ts",
+        "src/features/lesson-v2/content/lesson20_exercise2.ts",
+        "src/features/lesson-v2/content/lesson20_exercise3.ts",
+        "src/features/lesson-v2/content/lesson20_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/NumberChoiceExerciseV2",
+        "../features/lesson-v2/exercises-v2/NumberSortExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 21,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson21ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson21.ts",
+        "src/features/lesson-v2/content/lesson21_exercise1.ts",
+        "src/features/lesson-v2/content/lesson21_exercise2.ts",
+        "src/features/lesson-v2/content/lesson21_exercise3.ts",
+        "src/features/lesson-v2/content/lesson21_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/LengthLabExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 22,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson22ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson22.ts",
+        "src/features/lesson-v2/content/lesson22_exercise1.ts",
+        "src/features/lesson-v2/content/lesson22_exercise2.ts",
+        "src/features/lesson-v2/content/lesson22_exercise3.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/HealthyFoodExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 23,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson23ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson23.ts",
+        "src/features/lesson-v2/content/lesson23_exercise1.ts",
+        "src/features/lesson-v2/content/lesson23_exercise2.ts",
+        "src/features/lesson-v2/content/lesson23_exercise3.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/LengthLabPremiumExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 24,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson24ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson24.ts",
+        "src/features/lesson-v2/content/lesson24_exercise1.ts",
+        "src/features/lesson-v2/content/lesson24_exercise2.ts",
+        "src/features/lesson-v2/content/lesson24_exercise3.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/PathJourneyExerciseV2",
+        "../features/lesson-v2/exercises-v2/PathTraceExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 25,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson25ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson25.ts",
+        "src/features/lesson-v2/content/lesson25_exercise1.ts",
+        "src/features/lesson-v2/content/lesson25_exercise2.ts",
+        "src/features/lesson-v2/content/lesson25_exercise3.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/AddSubStoryLabV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 26,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson26ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson26.ts",
+        "src/features/lesson-v2/content/lesson26_exercise1.ts",
+        "src/features/lesson-v2/content/lesson26_exercise2.ts",
+        "src/features/lesson-v2/content/lesson26_exercise3.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/HealthyFoodExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 27,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson27ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson27.ts",
+        "src/features/lesson-v2/content/lesson27_exercise1.ts",
+        "src/features/lesson-v2/content/lesson27_exercise2.ts",
+        "src/features/lesson-v2/content/lesson27_exercise3.ts",
+        "src/features/lesson-v2/content/lesson27_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/AddSubStoryLabV2",
+        "../features/lesson-v2/exercises-v2/EquationBuilderV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 28,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson28ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson28.ts",
+        "src/features/lesson-v2/content/lesson28_exercise1.ts",
+        "src/features/lesson-v2/content/lesson28_exercise2.ts",
+        "src/features/lesson-v2/content/lesson28_exercise3.ts",
+        "src/features/lesson-v2/content/lesson28_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/AddSubStoryLabV2",
+        "../features/lesson-v2/exercises-v2/EquationBuilderV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 29,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson29ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson29.ts",
+        "src/features/lesson-v2/content/lesson29_exercise1.ts",
+        "src/features/lesson-v2/content/lesson29_exercise2.ts",
+        "src/features/lesson-v2/content/lesson29_exercise3.ts",
+        "src/features/lesson-v2/content/lesson29_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/AddSubStoryLabV2",
+        "../features/lesson-v2/exercises-v2/EquationBuilderV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 30,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson30ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson30.ts",
+        "src/features/lesson-v2/content/lesson30_exercise1.ts",
+        "src/features/lesson-v2/content/lesson30_exercise2.ts",
+        "src/features/lesson-v2/content/lesson30_exercise3.ts",
+        "src/features/lesson-v2/content/lesson30_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/lesson30/Lesson30CompositionCountEngineV2",
+        "../features/lesson-v2/exercises-v2/lesson30/Lesson30CompositionChoiceEngineV2",
+        "../features/lesson-v2/exercises-v2/lesson30/Lesson30CompositionBuilderEngineV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 31,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson31ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson31.ts",
+        "src/features/lesson-v2/content/lesson31_exercise1.ts",
+        "src/features/lesson-v2/content/lesson31_exercise2.ts",
+        "src/features/lesson-v2/content/lesson31_exercise3.ts",
+        "src/features/lesson-v2/content/lesson31_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/lesson31/Lesson31CompareEngineV2",
+        "../features/lesson-v2/exercises-v2/lesson31/Lesson31VisualChoiceEngineV2",
+        "../features/lesson-v2/exercises-v2/lesson31/Lesson31SubtractionEngineV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 32,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson32ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson32.ts",
+        "src/features/lesson-v2/content/lesson32_exercise1.ts",
+        "src/features/lesson-v2/content/lesson32_exercise2.ts",
+        "src/features/lesson-v2/content/lesson32_exercise3.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": true,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/lesson32/Lesson32CompareEngineV2",
+        "../features/lesson-v2/exercises-v2/lesson32/Lesson32VisualChoiceEngineV2",
+        "../features/lesson-v2/exercises-v2/lesson32/Lesson32SubtractionEngineV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 33,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson33_exercise1.ts",
+        "src/features/lesson-v2/content/lesson33_exercise2.ts",
+        "src/features/lesson-v2/content/lesson33_exercise3.ts",
+        "src/features/lesson-v2/content/lesson33_exercise4.ts"
+      ],
+      "canonical_lesson_data": false,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": [
+        "NO_CANONICAL_LESSON_DATA"
+      ]
+    },
+    {
+      "lesson": 34,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson34_exercise1.ts",
+        "src/features/lesson-v2/content/lesson34_exercise2.ts",
+        "src/features/lesson-v2/content/lesson34_exercise3.ts",
+        "src/features/lesson-v2/content/lesson34_exercise4.ts"
+      ],
+      "canonical_lesson_data": false,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": [
+        "NO_CANONICAL_LESSON_DATA"
+      ]
+    },
+    {
+      "lesson": 35,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson35_exercise1.ts",
+        "src/features/lesson-v2/content/lesson35_exercise2.ts",
+        "src/features/lesson-v2/content/lesson35_exercise3.ts",
+        "src/features/lesson-v2/content/lesson35_exercise4.ts"
+      ],
+      "canonical_lesson_data": false,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": [
+        "NO_CANONICAL_LESSON_DATA"
+      ]
+    },
+    {
+      "lesson": 36,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson36_exercise1.ts",
+        "src/features/lesson-v2/content/lesson36_exercise2.ts",
+        "src/features/lesson-v2/content/lesson36_exercise3.ts",
+        "src/features/lesson-v2/content/lesson36_exercise4.ts"
+      ],
+      "canonical_lesson_data": false,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": [
+        "NO_CANONICAL_LESSON_DATA"
+      ]
+    },
+    {
+      "lesson": 37,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson37_exercise1.ts",
+        "src/features/lesson-v2/content/lesson37_exercise2.ts",
+        "src/features/lesson-v2/content/lesson37_exercise3.ts",
+        "src/features/lesson-v2/content/lesson37_exercise4.ts"
+      ],
+      "canonical_lesson_data": false,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": [
+        "NO_CANONICAL_LESSON_DATA"
+      ]
+    },
+    {
+      "lesson": 38,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson38_exercise1.ts",
+        "src/features/lesson-v2/content/lesson38_exercise2.ts",
+        "src/features/lesson-v2/content/lesson38_exercise3.ts",
+        "src/features/lesson-v2/content/lesson38_exercise4.ts"
+      ],
+      "canonical_lesson_data": false,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": [
+        "NO_CANONICAL_LESSON_DATA"
+      ]
+    },
+    {
+      "lesson": 39,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson39_exercise1.ts",
+        "src/features/lesson-v2/content/lesson39_exercise2.ts",
+        "src/features/lesson-v2/content/lesson39_exercise3.ts",
+        "src/features/lesson-v2/content/lesson39_exercise4.ts"
+      ],
+      "canonical_lesson_data": false,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": [
+        "NO_CANONICAL_LESSON_DATA"
+      ]
+    },
+    {
+      "lesson": 40,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson40_exercise1.ts",
+        "src/features/lesson-v2/content/lesson40_exercise2.ts",
+        "src/features/lesson-v2/content/lesson40_exercise3.ts",
+        "src/features/lesson-v2/content/lesson40_exercise4.ts"
+      ],
+      "canonical_lesson_data": false,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": [
+        "NO_CANONICAL_LESSON_DATA"
+      ]
+    },
+    {
+      "lesson": 41,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [],
+      "canonical_lesson_data": false,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": [
+        "NO_CANONICAL_LESSON_DATA"
+      ]
+    },
+    {
+      "lesson": 42,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [],
+      "canonical_lesson_data": false,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": [
+        "NO_CANONICAL_LESSON_DATA"
+      ]
+    },
+    {
+      "lesson": 43,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [],
+      "canonical_lesson_data": false,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": [
+        "NO_CANONICAL_LESSON_DATA"
+      ]
+    },
+    {
+      "lesson": 44,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [],
+      "canonical_lesson_data": false,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": [
+        "NO_CANONICAL_LESSON_DATA"
+      ]
+    },
+    {
+      "lesson": 45,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [],
+      "canonical_lesson_data": false,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": [
+        "NO_CANONICAL_LESSON_DATA"
+      ]
+    },
+    {
+      "lesson": 46,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [],
+      "canonical_lesson_data": false,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": [
+        "NO_CANONICAL_LESSON_DATA"
+      ]
+    },
+    {
+      "lesson": 47,
+      "lesson_page": "src/pages/Lesson47Page.tsx",
+      "exercise_page": "src/pages/Lesson47ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson47.ts",
+        "src/features/lesson-v2/content/lesson47_exercise1.ts",
+        "src/features/lesson-v2/content/lesson47_exercise2.ts",
+        "src/features/lesson-v2/content/lesson47_exercise3.ts",
+        "src/features/lesson-v2/content/lesson47_exercise4.ts",
+        "src/features/lesson-v2/content/lesson47_types.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/GridNavigationExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE",
+        "WINDOW_LOCATION_NAVIGATION"
+      ]
+    },
+    {
+      "lesson": 48,
+      "lesson_page": "src/pages/Lesson48Page.tsx",
+      "exercise_page": "src/pages/Lesson48ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson48.ts",
+        "src/features/lesson-v2/content/lesson48_exercise1.ts",
+        "src/features/lesson-v2/content/lesson48_exercise2.ts",
+        "src/features/lesson-v2/content/lesson48_exercise3.ts",
+        "src/features/lesson-v2/content/lesson48_exercise4.ts",
+        "src/features/lesson-v2/content/lesson48_types.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/NumbersTo39ExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE",
+        "WINDOW_LOCATION_NAVIGATION"
+      ]
+    },
+    {
+      "lesson": 49,
+      "lesson_page": "src/pages/Lesson49Page.tsx",
+      "exercise_page": "src/pages/Lesson49ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson49.ts",
+        "src/features/lesson-v2/content/lesson49_exercise1.ts",
+        "src/features/lesson-v2/content/lesson49_exercise2.ts",
+        "src/features/lesson-v2/content/lesson49_exercise3.ts",
+        "src/features/lesson-v2/content/lesson49_exercise4.ts",
+        "src/features/lesson-v2/content/lesson49_types.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/FoodSourcesExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE",
+        "WINDOW_LOCATION_NAVIGATION"
+      ]
+    },
+    {
+      "lesson": 50,
+      "lesson_page": "src/pages/Lesson50Page.tsx",
+      "exercise_page": "src/pages/Lesson50ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson50.ts",
+        "src/features/lesson-v2/content/lesson50_exercise1.ts",
+        "src/features/lesson-v2/content/lesson50_exercise2.ts",
+        "src/features/lesson-v2/content/lesson50_exercise3.ts",
+        "src/features/lesson-v2/content/lesson50_exercise4.ts",
+        "src/features/lesson-v2/content/lesson50_types.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/Lesson50ReviewExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE",
+        "WINDOW_LOCATION_NAVIGATION"
+      ]
+    },
+    {
+      "lesson": 51,
+      "lesson_page": "src/pages/Lesson51Page.tsx",
+      "exercise_page": "src/pages/Lesson51ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson51.ts",
+        "src/features/lesson-v2/content/lesson51_exercise1.ts",
+        "src/features/lesson-v2/content/lesson51_exercise2.ts",
+        "src/features/lesson-v2/content/lesson51_exercise3.ts",
+        "src/features/lesson-v2/content/lesson51_exercise4.ts",
+        "src/features/lesson-v2/content/lesson51_types.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/Lesson51BilanExerciseV2",
+        "../features/lesson-v2/exercises-v2/Lesson51VisualAdditionExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE",
+        "WINDOW_LOCATION_NAVIGATION"
+      ]
+    },
+    {
+      "lesson": 52,
+      "lesson_page": "src/pages/Lesson52Page.tsx",
+      "exercise_page": "src/pages/Lesson52ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson52.ts",
+        "src/features/lesson-v2/content/lesson52_exercise1.ts",
+        "src/features/lesson-v2/content/lesson52_exercise2.ts",
+        "src/features/lesson-v2/content/lesson52_exercise3.ts",
+        "src/features/lesson-v2/content/lesson52_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": true,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/TapSelectImagesV2",
+        "../features/lesson-v2/exercises-v2/Lesson52PremiumHealthExercisesV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 53,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson53ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson53.ts",
+        "src/features/lesson-v2/content/lesson53_exercise1.ts",
+        "src/features/lesson-v2/content/lesson53_exercise2.ts",
+        "src/features/lesson-v2/content/lesson53_exercise3.ts",
+        "src/features/lesson-v2/content/lesson53_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/Lesson53PremiumRegroupingExercisesV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 54,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson54ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson54.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/Lesson54PremiumBridgeExercisesV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 55,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson55ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson55.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/Lesson55PremiumAnimalsExercisesV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 56,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson56ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson56.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/World3TapTextExercisesV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 57,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson57ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson57.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/World3TapTextExercisesV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 58,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson58ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson58.ts",
+        "src/features/lesson-v2/content/lesson58_exercise1.ts",
+        "src/features/lesson-v2/content/lesson58_exercise2.ts",
+        "src/features/lesson-v2/content/lesson58_exercise3.ts",
+        "src/features/lesson-v2/content/lesson58_exercise4.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/TapSelectImagesV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 59,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson59ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson59.ts",
+        "src/features/lesson-v2/content/lesson59_exercises.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/Lesson59TimesOfDayExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 60,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson60ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson60.ts",
+        "src/features/lesson-v2/content/lesson60_exercises.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/Lesson60AlignmentExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 61,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson61ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson61.ts",
+        "src/features/lesson-v2/content/lesson61_exercises.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/TapSelectImagesV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 62,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson62ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson62.ts",
+        "src/features/lesson-v2/content/lesson62_exercises.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/Lesson62NumbersExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 63,
+      "lesson_page": null,
+      "exercise_page": "src/pages/Lesson63ExercisesPage.tsx",
+      "content_files": [
+        "src/features/lesson-v2/content/lesson63.ts",
+        "src/features/lesson-v2/content/lesson63_exercises.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "DIRECT_CUSTOM_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": true,
+      "custom_components": [
+        "../features/lesson-v2/exercises-v2/Lesson63TablesExerciseV2"
+      ],
+      "risk_flags": [
+        "NOT_USING_UNIFIED_EXERCISE_PAGE"
+      ]
+    },
+    {
+      "lesson": 64,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson64.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 65,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson65.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 66,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson66.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 67,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson67.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 68,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson68.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 69,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson69.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 70,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson70.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 71,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson71.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 72,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson72.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 73,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson73.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 74,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson74.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 75,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson75.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 76,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson76.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 77,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson77.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 78,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson78.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 79,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson79.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 80,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson80.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 81,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson81.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 82,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson82.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 83,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson83.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 84,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson84.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 85,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson85.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 86,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson86.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 87,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson87.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 88,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson88.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 89,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson89.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 90,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson90.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 91,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson91.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 92,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson92.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 93,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson93.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 94,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson94.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 95,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson95.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 96,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson96.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 97,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson97.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 98,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson98.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 99,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson99.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 100,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson100.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 101,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson101.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 102,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson102.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 103,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson103.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 104,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson104.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 105,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson105.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 106,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson106.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 107,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson107.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 108,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson108.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 109,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson109.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 110,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson110.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 111,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson111.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 112,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson112.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 113,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson113.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 114,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson114.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 115,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson115.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    },
+    {
+      "lesson": 116,
+      "lesson_page": null,
+      "exercise_page": null,
+      "content_files": [
+        "src/features/lesson-v2/content/lesson116.ts"
+      ],
+      "canonical_lesson_data": true,
+      "registry_mention": false,
+      "app_mention": false,
+      "classification": "NO_DEDICATED_PAGE",
+      "uses_unified": false,
+      "uses_lesson_complete": false,
+      "custom_components": [],
+      "risk_flags": []
+    }
+  ]
+}

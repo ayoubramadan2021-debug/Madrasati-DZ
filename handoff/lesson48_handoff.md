@@ -1,0 +1,12 @@
+# Handoff — Lesson 48
+- العنوان: الأعداد إلى 39 (1)
+- المعلم: خليل
+- العالم: مدينة الألعاب
+- Supabase sort_order: 16
+- المسارات:
+  - /lesson-v2/lesson48
+  - /lesson-v2/lesson48/exercises
+- 6 مشاهد
+- 4 مهمات × 4 أسئلة = 16
+- UnifiedExerciseScreenV2 + UnifiedExerciseAnswersV2
+- صوت وكاريوكي عبر edge-tts + VTT

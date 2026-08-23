@@ -22,11 +22,6 @@ const LESSON_ALIASES: Record<
     exercisePath?: string;
     audioToken: string;
 
-  "37": {
-    title: "قراءة جدول",
-    exercisePath: "/lesson-v2/37/exercises",
-    audioToken: "lesson_37_amusement_picture_table",
-  },
 }
 > = {
   "33": {
@@ -51,6 +46,7 @@ const LESSON_ALIASES: Record<
   },
   "37": {
     title: "قِرَاءَةُ جَدْوَلٍ",
+      exercisePath: "/lesson-v2/37/exercises",
     audioToken: "lesson_37_amusement_picture_table",
   },
   "38": {
@@ -109,13 +105,11 @@ const LESSON_ALIASES: Record<
     audioToken: "lesson_49_food_sources",
   },
   "50": {
-    exercise: "/lesson-v2/50/exercises",
     title: "أُجَنِّدُ مَعَارِفِي فِي الْأَلْعَابِ الْمَدْرَسِيَّةِ",
     exercisePath: "/lesson-v2/50/exercises",
     audioToken: "lesson_50_games_review",
   },
   "51": {
-    exercise: "/lesson-v2/51/exercises",
     title:
       "الْحَصِيلَةُ 1 — أُجَنِّدُ مَعَارِفِي فِي مَدِينَةِ الْأَلْعَابِ وَالتَّرْفِيهِ",
     exercisePath: "/lesson-v2/51/exercises",
@@ -123,9 +117,6 @@ const LESSON_ALIASES: Record<
   },
 
   "52": {
-
-    exercise: "/lesson-v2/52/exercises",
-
     title:
 
       "الْحَصِيلَةُ 2 — أَخْتَارُ مَكَانًا صِحِّيًّا وَأُرَاقِبُ جِسْمِي بَعْدَ الْجُهْدِ",

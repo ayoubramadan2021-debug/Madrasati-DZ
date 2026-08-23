@@ -1,33 +1,25 @@
+import World3TapTextActivityAdapterV2 from "../features/lesson-v2/exercises-v2/World3TapTextActivityAdapterV2";
+import UnifiedLessonExercisesV2 from "../features/lesson-v2/exercises-v2/UnifiedLessonExercisesV2";
 import {
-  LESSON_57_EXERCISES,
-} from "../features/lesson-v2/content/lesson56_58_exercises";
+  LESSON_57_MISSION_TITLES,
+  LESSON_57_UNIFIED_AUDIO_BASE,
+  LESSON_57_UNIFIED_QUESTIONS,
+} from "../features/lesson-v2/content/lesson57_exercises_unified";
 
-import World3TapTextExercisesV2 from
-  "../features/lesson-v2/exercises-v2/World3TapTextExercisesV2";
-
-const WORLD_ID =
-  "827a3923-94f7-4b33-99e6-2d3c8d957e0c";
-
-export default function
-Lesson57ExercisesPage() {
+export default function Lesson57ExercisesPage() {
   return (
-    <World3TapTextExercisesV2
+    <UnifiedLessonExercisesV2
       lessonKey="lesson57"
-      exercises={
-        LESSON_57_EXERCISES
-      }
-      audioBase="/audio/teachers/taline/lesson_57_add_subtract_small_numbers_1/exercises"
-      backgrounds={[
-        "/lessons/v2/lesson57/s2.webp",
-        "/lessons/v2/lesson57/s3.webp",
-        "/lessons/v2/lesson57/s4.webp",
-        "/lessons/v2/lesson57/s5.webp",
-      ]}
-      message="أَكْمَلْتَ تَمَارِينَ إِضَافَةِ وَطَرْحِ أَعْدَادٍ صَغِيرَةٍ."
+      audioBase={LESSON_57_UNIFIED_AUDIO_BASE}
+      questions={LESSON_57_UNIFIED_QUESTIONS}
+      missionTitles={LESSON_57_MISSION_TITLES}
+      missionCount={4}
+      completionMessage="أَكْمَلْتَ تَمَارِينَ إِضَافَةِ وَطَرْحِ أَعْدَادٍ صَغِيرَةٍ."
       nextPath="/lesson-v2/lesson58"
-      quizPath={
-        `/world/${WORLD_ID}/quiz`
-      }
+      nextLabel="الدرس التالي"
+      renderActivity={(context) => (
+        <World3TapTextActivityAdapterV2 {...context} />
+      )}
     />
   );
 }

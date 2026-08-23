@@ -7,6 +7,7 @@ export default function ProgressTest01Page() {
   return (
     <ProgressTestEngine
       test={progressTest01}
+      continueLabel="🔓 الدرس 11"
       onContinue={() => navigate("/lesson-v2/lesson11")}
       onReview={() => navigate("/lesson-v2/lesson1")}
     />

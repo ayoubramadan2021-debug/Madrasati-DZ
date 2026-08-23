@@ -1,3 +1,60 @@
+function __revealPromptValue(
+  rawPrompt: string,
+  selected: any
+): string {
+  if (!selected) return rawPrompt;
+  const isCorrect =
+    selected?.isCorrect === true ||
+    selected?.correct === true ||
+    selected?.status === "correct";
+
+  if (!isCorrect) return rawPrompt;
+
+  const value =
+    selected?.value ??
+    selected?.label ??
+    selected?.text ??
+    selected?.title ??
+    "";
+
+  const answer = String(value).trim();
+  if (!answer) return rawPrompt;
+
+  return String(rawPrompt)
+    .replace("؟", answer)
+    .replace("?", answer);
+}
+
+function __premiumHash(input: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < input.length; i++) {
+    h ^= input.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return Math.abs(h >>> 0);
+}
+
+function __shufflePremiumChoices<T extends Record<string, any>>(
+  question: any,
+  raw: T[] | undefined | null
+): T[] {
+  const arr = Array.isArray(raw) ? [...raw] : [];
+  const seed = String(
+    question?.id ??
+    question?.audioKey ??
+    question?.key ??
+    question?.prompt ??
+    "premium"
+  );
+  let h = __premiumHash(seed);
+  for (let i = arr.length - 1; i > 0; i--) {
+    h = Math.imul(h ^ (i + 11), 1103515245) + 12345;
+    const j = Math.abs(h) % (i + 1);
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 import type {
   CSSProperties,
 } from "react";

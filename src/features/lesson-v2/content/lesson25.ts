@@ -8,6 +8,7 @@ export const LESSON_25_CONTENT = {
     template_version: 2,
   },
   audio_base: "/audio/teachers/taline/lesson_25_add_sub_situations",
+  exercisePath: "/lesson-v2/25/exercises",
   scenes: [
     {
       scene_image: "/lessons/v2/lesson25-add-sub-situations/s1.webp",

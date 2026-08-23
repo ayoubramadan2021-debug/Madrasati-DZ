@@ -33,7 +33,6 @@ interface LessonCompleteV2Props {
   nextLessonKey?: string;
   nextPath?: string;
   nextLabel?: string;
-  quizPath?: string | null;
   returnPath?: string;
   returnLabel?: string;
 }
@@ -46,7 +45,6 @@ export default function LessonCompleteV2({
   nextLessonKey,
   nextPath,
   nextLabel,
-  quizPath = `/world/${SCHOOL_WORLD_ID}/quiz`,
   returnPath,
   returnLabel = "العودة إلى العالم",
 }: LessonCompleteV2Props) {
@@ -261,20 +259,7 @@ export default function LessonCompleteV2({
               </button>
             )}
 
-          {quizPath && (
-            <button
-              type="button"
-              onClick={() =>
-                navigate(quizPath)
-              }
-              style={buttonStyle(
-                `linear-gradient(135deg,${C.purple},${C.purpleLight})`,
-                "0 12px 25px rgba(124,58,237,.27)",
-              )}
-            >
-              اِخْتِبَارُ الْعَالَمِ
-            </button>
-          )}
+
         </div>
       </section>
     </main>

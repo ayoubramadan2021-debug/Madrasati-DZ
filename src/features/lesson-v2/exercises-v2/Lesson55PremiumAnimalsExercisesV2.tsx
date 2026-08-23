@@ -926,3 +926,36 @@ const styles:
     lineHeight: 1.5,
   },
 };
+
+// TAALIM_DZ_UNIFIED_VISUAL_HELPERS_55
+const UNIFIED_EMOJIS_55 = ["🐄", "🏡", "🌍", "❤️"] as const;
+const UNIFIED_MISSIONS_55 = ["مهمة الفوائد", "مهمة التصنيف", "مهمة الوسط", "مهمة الرفق"] as const;
+
+export function getLesson55PremiumUnifiedItems(
+  groupIndex: number,
+): TapSelectImageItem[] {
+  const group = GROUPS[groupIndex];
+  return createShellItems(group.variants);
+}
+
+export function getLesson55PremiumUnifiedMeta(
+  groupIndex: number,
+) {
+  return {
+    backgroundImage: BACKGROUND,
+    missionTitle: `${UNIFIED_EMOJIS_55[groupIndex]} ${UNIFIED_MISSIONS_55[groupIndex]}`,
+  };
+}
+
+export function renderLesson55PremiumUnifiedVisual(
+  groupIndex: number,
+  context: TapSelectImagesCustomContext,
+) {
+  const group = GROUPS[groupIndex];
+  return (
+    <AnimalRoundView
+      context={context}
+      variants={group.variants}
+    />
+  );
+}

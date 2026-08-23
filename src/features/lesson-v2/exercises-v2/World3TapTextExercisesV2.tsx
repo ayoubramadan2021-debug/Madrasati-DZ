@@ -894,7 +894,7 @@ function SupplementalVisual({
   return null;
 }
 
-function TextChoiceGrid({
+export function TextChoiceGrid({
   lessonKey,
   stageIndex,
   context,

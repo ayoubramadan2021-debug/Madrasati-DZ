@@ -102,7 +102,13 @@ import LESSON_114_CONTENT from "../features/lesson-v2/content/lesson114";
 import LESSON_115_CONTENT from "../features/lesson-v2/content/lesson115";
 import LESSON_116_CONTENT from "../features/lesson-v2/content/lesson116";
 
-const LESSONS_MAP: Record<string, typeof LESSON_1_CONTENT> = {
+type LessonV2ContentEntry = {
+  audio_base: string;
+  scenes?: unknown;
+  slides?: unknown;
+};
+
+const LESSONS_MAP: Record<string, LessonV2ContentEntry> = {
   lesson1: LESSON_1_CONTENT,
   lesson2: LESSON_2_CONTENT,
   lesson3: LESSON_3_CONTENT,

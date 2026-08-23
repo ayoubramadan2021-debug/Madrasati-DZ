@@ -1,0 +1,98 @@
+[
+  {
+    "key": "m1_q1_right",
+    "text": "أَيُّ سَهْمٍ يَدُلُّ عَلَى الْيَمِينِ؟",
+    "mp3": "m1_q1_right.mp3",
+    "karaoke": "m1_q1_right.json"
+  },
+  {
+    "key": "m1_q2_up",
+    "text": "أَيُّ سَهْمٍ يَدُلُّ عَلَى الْأَعْلَى؟",
+    "mp3": "m1_q2_up.mp3",
+    "karaoke": "m1_q2_up.json"
+  },
+  {
+    "key": "m1_q3_path",
+    "text": "اِتَّبِعْ: يَمِينٌ، ثُمَّ أَعْلَى. مَا التَّرْتِيبُ الصَّحِيحُ؟",
+    "mp3": "m1_q3_path.mp3",
+    "karaoke": "m1_q3_path.json"
+  },
+  {
+    "key": "m1_q4_down",
+    "text": "أَيُّ سَهْمٍ يَدُلُّ عَلَى الْأَسْفَلِ؟",
+    "mp3": "m1_q4_down.mp3",
+    "karaoke": "m1_q4_down.json"
+  },
+  {
+    "key": "m2_q1_double_25",
+    "text": "مَا ضِعْفُ خَمْسَةٍ وَعِشْرِينَ؟",
+    "mp3": "m2_q1_double_25.mp3",
+    "karaoke": "m2_q1_double_25.json"
+  },
+  {
+    "key": "m2_q2_half_50",
+    "text": "مَا نِصْفُ خَمْسِينَ؟",
+    "mp3": "m2_q2_half_50.mp3",
+    "karaoke": "m2_q2_half_50.json"
+  },
+  {
+    "key": "m2_q3_double_12",
+    "text": "مَا ضِعْفُ اثْنَيْ عَشَرَ؟",
+    "mp3": "m2_q3_double_12.mp3",
+    "karaoke": "m2_q3_double_12.json"
+  },
+  {
+    "key": "m2_q4_half_30",
+    "text": "مَا نِصْفُ ثَلَاثِينَ؟",
+    "mp3": "m2_q4_half_30.mp3",
+    "karaoke": "m2_q4_half_30.json"
+  },
+  {
+    "key": "m3_q1_count_5",
+    "text": "اُعْدُدْ: ⚽ ⚽ ⚽ ⚽ ⚽. كَمْ كُرَةً؟",
+    "mp3": "m3_q1_count_5.mp3",
+    "karaoke": "m3_q1_count_5.json"
+  },
+  {
+    "key": "m3_q2_count_6",
+    "text": "اُعْدُدْ: 🏀 🏀 🏀 🏀 🏀 🏀. كَمْ كُرَةً؟",
+    "mp3": "m3_q2_count_6.mp3",
+    "karaoke": "m3_q2_count_6.json"
+  },
+  {
+    "key": "m3_q3_first",
+    "text": "مَنْ يَقِفُ فِي الْمَرْتَبَةِ الْأُولَى؟",
+    "mp3": "m3_q3_first.mp3",
+    "karaoke": "m3_q3_first.json"
+  },
+  {
+    "key": "m3_q4_second",
+    "text": "أَيُّ مَرْتَبَةٍ تَأْتِي بَعْدَ الْأُولَى؟",
+    "mp3": "m3_q4_second.mp3",
+    "karaoke": "m3_q4_second.json"
+  },
+  {
+    "key": "m4_q1_breath",
+    "text": "مَاذَا يَحْدُثُ لِلتَّنَفُّسِ بَعْدَ الْجَرْيِ؟",
+    "mp3": "m4_q1_breath.mp3",
+    "karaoke": "m4_q1_breath.json"
+  },
+  {
+    "key": "m4_q2_heartbeat",
+    "text": "مَاذَا يَحْدُثُ لِنَبْضِ الْقَلْبِ بَعْدَ الْجُهْدِ؟",
+    "mp3": "m4_q2_heartbeat.mp3",
+    "karaoke": "m4_q2_heartbeat.json"
+  },
+  {
+    "key": "m4_q3_rest",
+    "text": "مَاذَا نَفْعَلُ بَعْدَ النَّشَاطِ؟",
+    "mp3": "m4_q3_rest.mp3",
+    "karaoke": "m4_q3_rest.json"
+  },
+  {
+    "key": "m4_q4_hand",
+    "text": "أَيْنَ نَضَعُ الْيَدَ لِنَشْعُرَ بِنَبْضِ الْقَلْبِ؟",
+    "mp3": "m4_q4_hand.mp3",
+    "karaoke": "m4_q4_hand.json"
+  }
+]

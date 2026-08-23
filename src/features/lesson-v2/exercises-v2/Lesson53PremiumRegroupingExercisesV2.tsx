@@ -1023,3 +1023,34 @@ const styles:
       "all .25s ease",
   },
 };
+
+// TAALIM_DZ_UNIFIED_VISUAL_HELPERS_53
+export function getLesson53PremiumUnifiedItems(
+  exerciseIndex: number,
+): TapSelectImageItem[] {
+  const exercise = EXERCISES[exerciseIndex];
+  return createShellItems(exercise.rounds);
+}
+
+export function getLesson53PremiumUnifiedMeta(
+  exerciseIndex: number,
+) {
+  const exercise = EXERCISES[exerciseIndex];
+  return {
+    backgroundImage: BACKGROUND,
+    missionTitle: `${exercise.emoji} ${exercise.mission}`,
+  };
+}
+
+export function renderLesson53PremiumUnifiedVisual(
+  exerciseIndex: number,
+  context: TapSelectImagesCustomContext,
+) {
+  const exercise = EXERCISES[exerciseIndex];
+  return (
+    <ChoiceRoundView
+      context={context}
+      rounds={exercise.rounds}
+    />
+  );
+}

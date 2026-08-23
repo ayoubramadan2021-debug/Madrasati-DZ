@@ -8,6 +8,7 @@ export const LESSON_26_CONTENT = {
     template_version: 2,
   },
   audio_base: "/audio/teachers/khalil/lesson_26_my_health",
+  exercisePath: "/lesson-v2/26/exercises",
   scenes: [
     {
       scene_image: "/lessons/v2/lesson26-my-health/s1.webp",

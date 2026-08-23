@@ -235,7 +235,7 @@ function RouteStrip({
   );
 }
 
-function GridBoard({
+export function GridBoard({
   item,
   feedback,
 }: {
@@ -552,7 +552,7 @@ function RouteAnswer({
   );
 }
 
-function answerOptionsFor(
+export function answerOptionsFor(
   item: GridNavigationItem,
 ) {
   if (item.mode === "identify-direction") {
@@ -604,7 +604,7 @@ function answerOptionsFor(
   }));
 }
 
-function correctAnswerId(item: GridNavigationItem) {
+export function correctAnswerId(item: GridNavigationItem) {
   return item.answer;
 }
 

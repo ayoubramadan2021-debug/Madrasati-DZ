@@ -266,6 +266,22 @@ import { Lesson108DaysOfWeekExercises } from "../features/lesson-v2/exercises-v2
 import { Lesson109AdditionSubtractionSituations3Exercises } from "../features/lesson-v2/exercises-v2/Lesson109AdditionSubtractionSituations3Exercises";
 import { Lesson114SchoolCleanlinessExercises } from "../features/lesson-v2/exercises-v2/Lesson114SchoolCleanlinessExercises";
 import { Lesson115Bilan5Exercises } from "../features/lesson-v2/exercises-v2/Lesson115Bilan5Exercises";
+import Lesson25ExercisesPage from "./Lesson25ExercisesPage";
+
+import Lesson26ExercisesPage from "./Lesson26ExercisesPage";
+
+import Lesson27ExercisesPage from "./Lesson27ExercisesPage";
+
+import Lesson28ExercisesPage from "./Lesson28ExercisesPage";
+
+import Lesson29ExercisesPage from "./Lesson29ExercisesPage";
+
+import Lesson30ExercisesPage from "./Lesson30ExercisesPage";
+
+import Lesson31ExercisesPage from "./Lesson31ExercisesPage";
+
+import Lesson32ExercisesPage from "./Lesson32ExercisesPage";
+
 const WORLD2_HOME =
   `/world/${WORLD2_ID}`;
 
@@ -913,6 +929,15 @@ export default function LessonExercisesPage() {
 
   const { lessonId } =
     useParams<{ lessonId?: string }>();
+  if (lessonId === "25") return <Lesson25ExercisesPage />;
+  if (lessonId === "26") return <Lesson26ExercisesPage />;
+  if (lessonId === "27") return <Lesson27ExercisesPage />;
+  if (lessonId === "28") return <Lesson28ExercisesPage />;
+  if (lessonId === "29") return <Lesson29ExercisesPage />;
+  if (lessonId === "30") return <Lesson30ExercisesPage />;
+  if (lessonId === "31") return <Lesson31ExercisesPage />;
+  if (lessonId === "32") return <Lesson32ExercisesPage />;
+
   if (lessonId === "53") return <Lesson53ExercisesPage />;
   if (lessonId === "54") return <Lesson54ExercisesPage />;
   if (lessonId === "55") return <Lesson55ExercisesPage />;

@@ -19,6 +19,8 @@ import Lesson51ExercisesPage from "./pages/Lesson51ExercisesPage";
 import Lesson52Page from "./pages/Lesson52Page";
 import Lesson52ExercisesPage from "./pages/Lesson52ExercisesPage";
 import ProgressTest01Page from "./pages/ProgressTest01Page";
+import ProgressTest02Page from "./pages/ProgressTest02Page";
+import MasteryTest01Page from "./pages/MasteryTest01Page";
 const lazy = (importFn: () => Promise<any>, title: string) => {
   const LazyComponent = React.lazy(importFn);
   return (
@@ -33,7 +35,11 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/lesson-v2/progress-test-pt-01" element={<ProgressTest01Page />} />
+        <Route path="/lesson-v2/progress-test-pt-02" element={<ProgressTest02Page />} />
+        <Route path="/lesson-v2/progress-test-mt-01" element={<MasteryTest01Page />} />
         <Route path="/progress-test/pt-01" element={<ProgressTest01Page />} />
+        <Route path="/progress-test/pt-02" element={<ProgressTest02Page />} />
+        <Route path="/progress-test/mt-01" element={<MasteryTest01Page />} />
         <Route path="/" element={<Home />} />
         <Route path="/exercise-demo" element={<ExerciseDemoPage />} />
         <Route path="/ai-tutor" element={<AiTutorPage />} />

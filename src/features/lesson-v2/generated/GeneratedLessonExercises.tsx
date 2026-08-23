@@ -256,7 +256,7 @@ export default function GeneratedLessonExercises({
             🏆
           </div>
 
-          <h1>أحسنت يا بطل!</h1>
+          <h1>أَحْسَنْتَ يَا بَطَلُ!</h1>
 
           <p>
             أكملت تمارين:

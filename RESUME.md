@@ -51,3 +51,22 @@
 - نواصل تجميع الدروس على الفرع `batch-lessons-14-18`.
 - من الآن فصاعدًا دوال Supabase يجب أن تكون ديناميكية أو مبنية بعد التحقق من الأعمدة، ولا نضيف أعمدة غير مؤكدة مثل `slug` أو `is_published` أو `updated_at`.
 
+<!-- STABLE_RELEASE_2026_08_23 -->
+## Stable release checkpoint — 2026-08-23
+
+**Status:** stable and ready for Git + Netlify production deployment.
+
+- Lessons 1–116 are the complete Grade 1 lesson range currently in the project.
+- Lesson 116 remains the absolute final lesson; do not create Lesson 117.
+- Lessons and exercises are currently working correctly in runtime validation.
+- Lessons 25–32 exercise routing was repaired in `src/pages/LessonExercisesPage.tsx`; each lesson now reaches its dedicated `LessonNNExercisesPage`.
+- Canonical `exercisePath` was restored for lessons 25–32 as `/lesson-v2/NN/exercises`.
+- Lesson 52 unified-engine migration is complete and runtime-confirmed.
+- `UnifiedLessonExercisesV2.tsx` remains protected and should not be modified casually.
+- Custom interaction adapters may remain where needed; unified orchestration remains the architectural direction.
+- Do not resume broad migration/audit work unless a real runtime regression appears.
+- No Lesson 117.
+- Release checkpoint prepared at: 2026-08-23 14:11.
+
+### Recommended next action
+Treat this revision as the current stable baseline. Future work should start from a fresh branch/commit after verifying the deployed Netlify production build.

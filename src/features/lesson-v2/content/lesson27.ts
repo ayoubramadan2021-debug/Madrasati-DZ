@@ -5,6 +5,7 @@ export const LESSON_27_CONTENT = {
   teacher: "taline",
   audio_base: "/audio/teachers/taline/lesson_27_plus_equals",
 
+  exercisePath: "/lesson-v2/27/exercises",
   scenes: [
     {
       id: "s1_intro",

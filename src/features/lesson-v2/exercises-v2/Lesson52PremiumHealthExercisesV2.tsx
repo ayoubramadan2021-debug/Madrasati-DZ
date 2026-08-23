@@ -306,7 +306,7 @@ const DRAG_ROUNDS:
   },
 ];
 
-function DragRoundView({
+export function DragRoundView({
   context,
 }: {
   context:
@@ -720,7 +720,7 @@ const EFFORT_ROUNDS = [
   },
 ];
 
-function EffortRoundView({
+export function EffortRoundView({
   context,
 }: {
   context:
@@ -1052,7 +1052,7 @@ const PULSE_IMAGE_ROUNDS:
   },
 ];
 
-function PulseImageRoundView({
+export function PulseImageRoundView({
   context,
 }: {
   context:

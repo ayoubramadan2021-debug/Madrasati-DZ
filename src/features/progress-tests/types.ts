@@ -4,7 +4,16 @@ export type ProgressSkillId =
   | "numbers-quantity"
   | "comparison-order"
   | "spatial"
-  | "senses";
+  | "senses"
+  | "movement-health"
+  | "numbers-0-10"
+  | "ordinal-spatial"
+  | "food-sequence"
+  | "length-measurement"
+  | "paths-spatial"
+  | "add-subtract"
+  | "health-food-mastery"
+  | "number-compose";
 
 export interface ProgressSkillDefinition {
   id: ProgressSkillId;

@@ -6,6 +6,7 @@ import "../progress-tests.css";
 
 interface Props {
   test: ProgressTestDefinition;
+  continueLabel?: string;
   onContinue: () => void;
   onReview: () => void;
 }
@@ -16,7 +17,7 @@ function hasAnswer(activity: ProgressActivity, answer: ProgressAnswer | undefine
   return Array.isArray(answer) && answer.length > 0;
 }
 
-export default function ProgressTestEngine({ test, onContinue, onReview }: Props) {
+export default function ProgressTestEngine({ test, continueLabel = "🔓 المرحلة التالية", onContinue, onReview }: Props) {
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, ProgressAnswer>>({});
   const [result, setResult] = useState<ProgressTestResult | null>(null);
@@ -40,7 +41,7 @@ export default function ProgressTestEngine({ test, onContinue, onReview }: Props
 
   function playPrompt() {
     audioRef.current?.pause();
-    const audio = new Audio(`/audio/progress-tests/pt-01/${activity.audioKey}.mp3`);
+    const audio = new Audio(`/audio/progress-tests/${test.id}/${activity.audioKey}.mp3`);
     audioRef.current = audio;
     void audio.play();
   }
@@ -108,7 +109,7 @@ export default function ProgressTestEngine({ test, onContinue, onReview }: Props
 
           <div className="pt-result-actions">
             {result.passed
-              ? <button className="pt-primary" onClick={onContinue}>🔓 الدرس 11</button>
+              ? <button className="pt-primary" onClick={onContinue}>{continueLabel}</button>
               : <button className="pt-primary" onClick={onReview}>🎯 راجع مهاراتي</button>}
             <button className="pt-secondary" onClick={restart}>🔄 إعادة الاختبار</button>
           </div>

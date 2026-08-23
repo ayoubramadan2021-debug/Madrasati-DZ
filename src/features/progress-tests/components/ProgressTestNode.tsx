@@ -5,22 +5,29 @@ type ProgressTestRecord = {
 } | null;
 
 interface ProgressTestNodeProps {
+  code: string;
+  title: string;
+  lockedLabel: string;
   unlocked: boolean;
   record: ProgressTestRecord;
   onOpen: () => void;
 }
 
 export default function ProgressTestNode({
+  code,
+  title,
+  lockedLabel,
   unlocked,
   record,
   onOpen,
 }: ProgressTestNodeProps) {
   const bestScore = Number(record?.bestScore ?? 0);
   const passed = Boolean(record?.passed || bestScore >= 70);
+  const isMasteryTest = code.startsWith("MT");
   const stars = passed ? (bestScore >= 90 ? 3 : 2) : 0;
 
   const statusLabel = !unlocked
-    ? "أكمل الدرس 10 لفتح الاختبار"
+    ? lockedLabel
     : passed
       ? bestScore >= 90
         ? "إتقان ممتاز"
@@ -34,12 +41,10 @@ export default function ProgressTestNode({
       type="button"
       disabled={!unlocked}
       onClick={onOpen}
-      aria-label={`اختبار التقدم 1 — ${statusLabel}`}
+      aria-label={`${title} — ${statusLabel}`}
       style={{
         width: "100%",
-        border: unlocked
-          ? "2px solid rgba(196,181,253,.88)"
-          : "1px solid rgba(148,163,184,.28)",
+        border: "2px solid rgba(196,181,253,.88)",
         borderRadius: 22,
         padding: "17px 18px",
         display: "flex",
@@ -48,33 +53,27 @@ export default function ProgressTestNode({
         textAlign: "right",
         direction: "rtl",
         cursor: unlocked ? "pointer" : "not-allowed",
-        background: unlocked
-          ? "linear-gradient(135deg,rgba(91,33,182,.96),rgba(124,58,237,.93) 48%,rgba(76,29,149,.98))"
-          : "linear-gradient(135deg,rgba(51,65,85,.72),rgba(30,41,59,.82))",
-        boxShadow: unlocked
-          ? "0 10px 28px rgba(124,58,237,.30), inset 0 1px 0 rgba(255,255,255,.18)"
-          : "0 6px 16px rgba(0,0,0,.18)",
-        opacity: unlocked ? 1 : .82,
+        background: "linear-gradient(135deg,rgba(91,33,182,.96),rgba(124,58,237,.93) 48%,rgba(76,29,149,.98))",
+        boxShadow: "0 10px 28px rgba(124,58,237,.30), inset 0 1px 0 rgba(255,255,255,.18)",
+        opacity: 1,
         color: "#fff",
         fontFamily: "Tajawal,sans-serif",
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {unlocked && (
-        <span
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            width: 120,
-            height: 120,
-            borderRadius: "50%",
-            background: "rgba(255,255,255,.08)",
-            top: -55,
-            left: -30,
-          }}
-        />
-      )}
+      <span
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          width: 120,
+          height: 120,
+          borderRadius: "50%",
+          background: "rgba(255,255,255,.08)",
+          top: -55,
+          left: -30,
+        }}
+      />
 
       <div
         style={{
@@ -85,14 +84,18 @@ export default function ProgressTestNode({
           display: "grid",
           placeItems: "center",
           fontSize: 29,
-          background: unlocked
-            ? "linear-gradient(145deg,#a78bfa,#6d28d9)"
-            : "rgba(15,23,42,.55)",
-          border: "1px solid rgba(255,255,255,.22)",
-          boxShadow: unlocked ? "0 5px 16px rgba(30,10,80,.34)" : "none",
+          background: isMasteryTest
+            ? "linear-gradient(145deg,#fde68a,#f59e0b 55%,#b45309)"
+            : "linear-gradient(145deg,#a78bfa,#6d28d9)",
+          border: isMasteryTest
+            ? "1px solid rgba(253,230,138,.88)"
+            : "1px solid rgba(255,255,255,.22)",
+          boxShadow: isMasteryTest
+            ? "0 5px 18px rgba(245,158,11,.38)"
+            : (unlocked ? "0 5px 16px rgba(30,10,80,.34)" : "none"),
         }}
       >
-        {!unlocked ? "🔒" : "🟣"}
+        {!unlocked ? "🔒" : (isMasteryTest ? "🏆" : "🟣")}
       </div>
 
       <div style={{ flex: 1, minWidth: 0, position: "relative", zIndex: 1 }}>
@@ -101,11 +104,11 @@ export default function ProgressTestNode({
             fontSize: 11,
             fontWeight: 900,
             letterSpacing: ".3px",
-            color: unlocked ? "#ddd6fe" : "#cbd5e1",
+            color: "#ddd6fe",
             marginBottom: 3,
           }}
         >
-          محطة تقييم • PT-01
+          محطة تقييم • {code}
         </div>
 
         <div
@@ -116,7 +119,7 @@ export default function ProgressTestNode({
             marginBottom: 5,
           }}
         >
-          اختبار التقدم 1 — مغامرة الأعداد والحواس
+          {title}
         </div>
 
         <div
@@ -124,7 +127,7 @@ export default function ProgressTestNode({
             fontSize: 12,
             lineHeight: 1.45,
             fontWeight: 700,
-            color: unlocked ? "#ede9fe" : "#f1f5f9",
+            color: "#ede9fe",
           }}
         >
           {statusLabel}

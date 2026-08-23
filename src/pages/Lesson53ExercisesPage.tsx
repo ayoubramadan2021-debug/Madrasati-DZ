@@ -1,95 +1,28 @@
+import Lesson53_55PremiumActivityAdapterV2 from "../features/lesson-v2/exercises-v2/Lesson53_55PremiumActivityAdapterV2";
+import UnifiedLessonExercisesV2 from "../features/lesson-v2/exercises-v2/UnifiedLessonExercisesV2";
 
 import {
-  useState,
-} from "react";
+  LESSON_53_MISSION_TITLES,
+  LESSON_53_UNIFIED_AUDIO_BASE,
+  LESSON_53_UNIFIED_QUESTIONS,
+} from "../features/lesson-v2/content/lesson53_exercises_unified";
 
-import LessonCompleteV2 from
-  "../features/lesson-v2/components/LessonCompleteV2";
-
-import {
-  Lesson53PremiumExercise1V2,
-  Lesson53PremiumExercise2V2,
-  Lesson53PremiumExercise3V2,
-  Lesson53PremiumExercise4V2,
-} from "../features/lesson-v2/exercises-v2/Lesson53PremiumRegroupingExercisesV2";
-
-type Lesson53Stage =
-  | "ex1"
-  | "ex2"
-  | "ex3"
-  | "ex4"
-  | "done";
-
-const AUDIO_BASE =
-  "/audio/teachers/taline/lesson_53_regrouping_exchange/exercises";
-
-export default function
-Lesson53ExercisesPage() {
-  const [
-    stage,
-    setStage,
-  ] = useState<Lesson53Stage>(
-    "ex1",
-  );
-
-  if (stage === "ex1") {
-    return (
-      <Lesson53PremiumExercise1V2
-        key="lesson53-ex1"
-        audio_base={AUDIO_BASE}
-        onComplete={() => {
-          setStage("ex2");
-        }}
-      />
-    );
-  }
-
-  if (stage === "ex2") {
-    return (
-      <Lesson53PremiumExercise2V2
-        key="lesson53-ex2"
-        audio_base={AUDIO_BASE}
-        onComplete={() => {
-          setStage("ex3");
-        }}
-      />
-    );
-  }
-
-  if (stage === "ex3") {
-    return (
-      <Lesson53PremiumExercise3V2
-        key="lesson53-ex3"
-        audio_base={AUDIO_BASE}
-        onComplete={() => {
-          setStage("ex4");
-        }}
-      />
-    );
-  }
-
-  if (stage === "ex4") {
-    return (
-      <Lesson53PremiumExercise4V2
-        key="lesson53-ex4"
-        audio_base={AUDIO_BASE}
-        onComplete={() => {
-          setStage("done");
-        }}
-      />
-    );
-  }
-
+export default function Lesson53ExercisesPage() {
   return (
-    <LessonCompleteV2
+    <UnifiedLessonExercisesV2
       lessonKey="lesson53"
-      nextLabel="الدرس التالي"
-      message="أَكْمَلْتَ تَمَارِينَ التَّجْمِيعِ وَالِاسْتِبْدَالِ."
-      onReplay={() => {
-        setStage("ex1");
-      }}
+      audioBase={LESSON_53_UNIFIED_AUDIO_BASE}
+      questions={LESSON_53_UNIFIED_QUESTIONS}
+      missionTitles={LESSON_53_MISSION_TITLES}
+      missionCount={4}
+      completionMessage="أَكْمَلْتَ تَمَارِينَ التَّجْمِيعِ وَالِاسْتِبْدَالِ."
       nextPath="/lesson-v2/lesson54"
-      quizPath="/world/827a3923-94f7-4b33-99e6-2d3c8d957e0c/quiz"
+      nextLabel="الدرس التالي"
+      renderActivity={(context) => (
+        <Lesson53_55PremiumActivityAdapterV2
+          {...context}
+        />
+      )}
     />
   );
 }

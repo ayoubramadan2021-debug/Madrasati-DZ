@@ -1,0 +1,1447 @@
+// SCIENCE_PREMIUM_LESSON88_V4
+import {
+  useEffect,
+  useState,
+  type CSSProperties,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
+
+type AssetItem = {
+  label:string;
+  icon:string;
+};
+
+type BinItem = AssetItem;
+
+export type SciencePremiumSkillActivityV2 =
+  | {
+      mode:"choice";
+      options:AssetItem[];
+      answer:number;
+      visual?:AssetItem;
+    }
+  | {
+      mode:"dragBin";
+      item:AssetItem;
+      bins:BinItem[];
+      answer:number;
+    }
+  | {
+      mode:"multiPick";
+      items:AssetItem[];
+      answers:number[];
+    }
+  | {
+      mode:"transfer";
+      liquid:AssetItem;
+      containers:string[];
+      properties:string[];
+      answer:number;
+    }
+  | {
+      mode:"orderTap";
+      steps:string[];
+      displayOrder:number[];
+    }
+  | {
+      mode:"safeUnsafe";
+      scenario:AssetItem;
+      safe:boolean;
+    }
+  | {
+      mode:"floatSink";
+      item:AssetItem;
+      result:"float"|"sink";
+    }
+  | {
+      mode:"dissolve";
+      item:AssetItem;
+      dissolves:boolean;
+    }
+  | {
+      mode:"eraseTest";
+      tool:AssetItem;
+      erasable:boolean;
+    }
+  | {
+      mode:"batchSort";
+      bins:BinItem[];
+      items:Array<AssetItem & {bin:number}>;
+    };
+
+type Props = {
+  activity:SciencePremiumSkillActivityV2;
+  locked:boolean;
+  showResult:boolean;
+  onResult:(correct:boolean)=>void;
+  questionId?:string;
+};
+
+const navy="#173A63";
+const gold="#F0B72A";
+const paleGold="#FFF8DF";
+const blue="#4C9DD7";
+const green="#51A973";
+const ink="#284357";
+const border="#D8E6EF";
+const panel="#F7FBFE";
+const cream="#FFFCF1";
+const sky="#EEF7FF";
+const mint="#ECF9F1";
+const rose="#FFF1F3";
+
+const Scene88Path=(questionId?:string)=>{
+
+
+
+  if(questionId?.startsWith("l107_ex2_")) {
+    return "/lessons/v2/science-88-116/scenes/scene-l107-safe-storage-v01.webp";
+  }
+
+  if(questionId?.startsWith("l107_ex3_")) {
+    return "/lessons/v2/science-88-116/scenes/scene-l107-safety-adult-v01.webp";
+  }
+
+
+  if(questionId?.startsWith("l104_ex2_")) {
+    return "/lessons/v2/science-88-116/scenes/scene-l104-cleaning-tools-v01.webp";
+  }
+
+  if(questionId?.startsWith("l104_ex3_")) {
+    return "/lessons/v2/science-88-116/scenes/scene-l104-handwashing-v01.webp";
+  }
+
+
+  if(!questionId?.startsWith("l88_")) return null;
+
+  if(questionId.startsWith("l88_ex1_")) {
+    return "/lessons/v2/science-88-116/scenes/scene-l88-material-table-v01.webp";
+  }
+
+  if(questionId.startsWith("l88_ex3_")) {
+    return "/lessons/v2/science-88-116/scenes/scene-l88-liquid-transfer-v01.webp";
+  }
+
+  return null;
+};
+
+const card:CSSProperties={
+  minHeight:132,
+  borderRadius:24,
+  border:`3px solid ${gold}`,
+  background:"#fff",
+  boxShadow:"0 10px 24px rgba(23,58,99,.08)",
+  color:navy,
+  fontFamily:"inherit",
+  fontWeight:900,
+  fontSize:"clamp(16px,4.4vw,22px)",
+  textAlign:"center",
+  padding:10,
+};
+
+const SCIENCE_PREMIUM_ASSET_MAP: Record<string,string> = {
+  "soap-111": "/lessons/v2/science-88-116/objects/obj-soap-bar-v01.webp",
+  "cleaner-111": "/lessons/v2/science-88-116/objects/obj-cleaner-liquid-v01.webp",
+  "disinfectant-111": "/lessons/v2/science-88-116/objects/obj-disinfectant-v01.webp",
+  "powder-111": "/lessons/v2/science-88-116/objects/obj-washing-powder-v01.webp",
+  "warning-111": "/lessons/v2/science-88-116/objects/obj-warning-cleaner-v01.webp",
+  "book-111": "/lessons/v2/science-88-116/objects/obj-book-v01.webp",
+  "water-111": "/lessons/v2/science-88-116/objects/obj-water-glass-v01.webp",
+  "wood-111": "/lessons/v2/science-88-116/objects/obj-wood-block-v01.webp",
+  "juice-111": "/lessons/v2/science-88-116/objects/obj-juice-v01.webp",
+  "oil-111": "/lessons/v2/science-88-116/objects/obj-oil-bottle-v01.webp",
+  "eraser-111": "/lessons/v2/science-88-116/objects/obj-eraser-v01.webp",
+  "warning-cleaner": "/lessons/v2/science-88-116/objects/obj-warning-cleaner-v01.webp",
+  "locked-cabinet": "/lessons/v2/science-88-116/objects/obj-locked-cabinet-v01.webp",
+  "cleaner-107": "/lessons/v2/science-88-116/objects/obj-cleaner-liquid-v01.webp",
+  "disinfectant-107": "/lessons/v2/science-88-116/objects/obj-disinfectant-v01.webp",
+  soap: "/lessons/v2/science-88-116/objects/obj-soap-bar-v01.webp",
+  cleaner: "/lessons/v2/science-88-116/objects/obj-cleaner-liquid-v01.webp",
+  disinfectant: "/lessons/v2/science-88-116/objects/obj-disinfectant-v01.webp",
+  sponge: "/lessons/v2/science-88-116/objects/obj-sponge-v01.webp",
+  mop: "/lessons/v2/science-88-116/objects/obj-mop-v01.webp",
+  book: "/lessons/v2/science-88-116/objects/obj-book-v01.webp",
+  water: "/lessons/v2/science-88-116/objects/obj-water-glass-v01.webp",
+  oil: "/lessons/v2/science-88-116/objects/obj-oil-bottle-v01.webp",
+  juice: "/lessons/v2/science-88-116/objects/obj-juice-v01.webp",
+  wood: "/lessons/v2/science-88-116/objects/obj-wood-block-v01.webp",
+  pencil: "/lessons/v2/science-88-116/objects/obj-pencil-v01.webp",
+  pen: "/lessons/v2/science-88-116/objects/obj-pen-v01.webp",
+  eraser: "/lessons/v2/science-88-116/objects/obj-eraser-v01.webp",
+  cookie: "/lessons/v2/science-88-116/objects/obj-cookie-v01.webp",
+  "hero-liquid": "/lessons/v2/science-88-116/scenes/scene-l88-material-table-v01.webp",
+  "glass-empty": "/lessons/v2/science-88-116/objects/obj-glass-empty-v01.webp",
+  bucket: "/lessons/v2/science-88-116/objects/obj-bucket-v01.webp",
+};
+
+const A=(key:string)=>
+  SCIENCE_PREMIUM_ASSET_MAP[key] ??
+  `/lessons/v2/science-skilllab/${key}.webp`;
+
+function Asset({
+  icon,
+  size=84,
+}:{
+  icon:string;
+  size?:number;
+}) {
+  const keys=String(icon).split("+").slice(0,2);
+
+  return (
+    <div
+      style={{
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        gap:5,
+      }}
+    >
+      {keys.map(key=>(
+        <img
+          key={key}
+          src={A(key)}
+          alt=""
+          draggable={false}
+          style={{
+            width:keys.length>1?size*.68:size,
+            height:keys.length>1?size*.68:size,
+            objectFit:"contain",
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+function GoldPanel({
+  children,
+}:{
+  children:React.ReactNode;
+}) {
+  return (
+    <div
+      style={{
+        border:`3px solid ${gold}`,
+        borderRadius:28,
+        background:panel,
+        padding:14,
+        boxShadow:"0 12px 28px rgba(23,58,99,.08)",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+
+function Lesson88Scene({
+  questionId,
+  children,
+}:{
+  questionId?:string;
+  children?:React.ReactNode;
+}) {
+  const src=Scene88Path(questionId);
+
+  return (
+    <div
+      style={{
+        width:"100%",
+        display:"grid",
+        gap:12,
+      }}
+    >
+      {src ? (
+        <div
+          style={{
+            width:"100%",
+            aspectRatio:"16 / 9",
+            overflow:"hidden",
+            borderRadius:28,
+            border:`3px solid ${gold}`,
+            background:cream,
+            boxShadow:"0 12px 26px rgba(23,58,99,.09)",
+          }}
+        >
+          <img
+            src={src}
+            alt=""
+            draggable={false}
+            style={{
+              width:"100%",
+              height:"100%",
+              objectFit:"cover",
+              display:"block",
+            }}
+          />
+        </div>
+      ) : null}
+
+      {children}
+    </div>
+  );
+}
+
+function Lesson88HotspotGrid({
+  items,
+  disabled,
+  selected=[],
+  onPick,
+}:{
+  items:AssetItem[];
+  disabled:boolean;
+  selected?:number[];
+  onPick:(index:number)=>void;
+}) {
+  return (
+    <div
+      style={{
+        width:"100%",
+        display:"grid",
+        gridTemplateColumns:"repeat(2,minmax(0,1fr))",
+        gap:10,
+      }}
+    >
+      {items.map((item,i)=>{
+        const active=selected.includes(i);
+
+        return (
+          <button
+            key={`${item.label}-${i}`}
+            type="button"
+            disabled={disabled}
+            onClick={()=>onPick(i)}
+            aria-label={item.label}
+            style={{
+              minHeight:116,
+              border:active
+                ? `4px solid ${green}`
+                : `3px solid ${gold}`,
+              borderRadius:22,
+              background:active
+                ? "rgba(81,169,115,.10)"
+                : "#fff",
+              boxShadow:"0 7px 18px rgba(23,58,99,.07)",
+              padding:"8px 6px 10px",
+              display:"grid",
+              gridTemplateRows:item.icon && !item.label
+              ? "128px 0px"
+              : item.icon
+                ? "68px auto"
+                : "1fr",
+              alignItems:"center",
+              justifyItems:"center",
+              gap:5,
+              color:navy,
+              fontFamily:"inherit",
+              WebkitTapHighlightColor:"transparent",
+            }}
+          >
+            <div
+              style={{
+                width:"100%",
+              height:item.icon && !item.label ? 128 : 68,
+              display:"flex",
+                alignItems:"center",
+                justifyContent:"center",
+              }}
+            >
+              {item.icon ? (
+              <Asset
+                icon={item.icon}
+                size={item.icon && !item.label ? 118 : 64}
+              />
+            ) : null}
+            </div>
+
+            <span
+              style={{
+                display:item.icon && !item.label ? \"none\" : \"block\",
+              width:\"100%\",
+                textAlign:"center",
+                color:navy,
+                fontWeight:900,
+                fontSize:item.icon
+                  ? "clamp(14px,3.8vw,18px)"
+                  : "clamp(23px,6vw,32px)",
+                lineHeight:item.icon ? 1.35 : 1.55,
+              }}
+            >
+              {item.label}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+export default function SciencePremiumSkillLabV2({
+  activity,
+  locked,
+  onResult,
+  questionId,
+}:Props) {
+  const [solved,setSolved]=useState(false);
+  const [selected,setSelected]=useState<number[]>([]);
+  const [order,setOrder]=useState<string[]>([]);
+  const [activeItem,setActiveItem]=useState<number|null>(null);
+  const [assigned,setAssigned]=useState<number[]>([]);
+  const [dragging,setDragging]=useState(false);
+  const [dragPoint,setDragPoint]=useState<{x:number;y:number}|null>(null);
+  const [experimentStarted,setExperimentStarted]=useState(false);
+
+  useEffect(()=>{
+    setSolved(false);
+    setSelected([]);
+    setOrder([]);
+    setActiveItem(null);
+    setAssigned([]);
+    setDragging(false);
+    setDragPoint(null);
+    setExperimentStarted(false);
+  },[activity]);
+
+  const fail=()=>{
+    setSelected([]);
+    setOrder([]);
+    setActiveItem(null);
+    setDragging(false);
+    setDragPoint(null);
+    onResult(false);
+  };
+
+  const success=()=>{
+    if(locked||solved) return;
+    setSolved(true);
+    onResult(true);
+  };
+
+  if(activity.mode==="choice"){
+    const scene88=Scene88Path(questionId);
+
+    if(scene88){
+      return (
+        <div style={{display:"grid",gap:14}}>
+          <div
+            style={{
+              justifySelf:"center",
+              padding:"7px 17px",
+              borderRadius:999,
+              border:`3px solid ${gold}`,
+              background:"#fff",
+              color:navy,
+              fontWeight:950,
+              boxShadow:"0 7px 18px rgba(23,58,99,.08)",
+            }}
+          >
+            اُلْمَسِ الْعُنْصُرَ الصَّحِيحَ فِي الْمَشْهَدِ
+          </div>
+
+          <Lesson88Scene questionId={questionId}>
+            <Lesson88HotspotGrid
+              items={activity.options}
+              disabled={locked||solved}
+              onPick={(i)=>{
+                if(i===activity.answer) success();
+                else fail();
+              }}
+            />
+          </Lesson88Scene>
+        </div>
+      );
+    }
+
+    return (
+      <div style={{display:"grid",gap:14}}>
+        {activity.visual && (
+          <GoldPanel>
+            <div style={{display:"grid",placeItems:"center",gap:7}}>
+              <Asset icon={activity.visual.icon} size={112}/>
+              <div style={{fontWeight:900,color:ink}}>
+                {activity.visual.label}
+              </div>
+            </div>
+          </GoldPanel>
+        )}
+
+        <div
+          style={{
+            display:"grid",
+            gridTemplateColumns:"repeat(2,minmax(0,1fr))",
+            gap:10,
+          }}
+        >
+          {activity.options.map((item,i)=>(
+            <button
+              key={i}
+              disabled={locked||solved}
+              onClick={()=>{
+                if(i===activity.answer) success();
+                else fail();
+              }}
+              style={card}
+            >
+              {item.icon ? (
+                <>
+                  {!questionId?.startsWith("l88_ex3_") && (
+                  <Asset
+                  icon={item.icon}
+                  size={item.icon && !item.label ? 118 : 66}
+                />
+                )}
+                  <div
+                  style={
+                    questionId?.startsWith("l88_ex3_")
+                      ? {
+                          width:"100%",
+                          minHeight:128,
+                          display:"flex",
+                          alignItems:"center",
+                          justifyContent:"center",
+                          textAlign:"center",
+                          padding:"16px 12px",
+                          color:navy,
+                          fontFamily:"inherit",
+                          fontWeight:950,
+                          fontSize:"clamp(23px,6vw,32px)",
+                          lineHeight:1.5,
+                        }
+                      : undefined
+                  }
+                >
+                  {item.label}
+                </div>
+                </>
+              ) : (
+                <div
+                  style={{
+                    width:"100%",
+                    minHeight:112,
+                    display:"flex",
+                    alignItems:"center",
+                    justifyContent:"center",
+                    textAlign:"center",
+                    padding:"12px 10px",
+                    color:navy,
+                    fontFamily:"inherit",
+                    fontWeight:950,
+                    fontSize:"clamp(21px,5.6vw,30px)",
+                    lineHeight:1.55,
+                  }}
+                >
+                  {item.label}
+                </div>
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if(activity.mode==="dragBin"){
+    const scene88=Scene88Path(questionId);
+
+    if(scene88 || questionId?.startsWith("l88_ex2_")){
+      return (
+        <div style={{display:"grid",gap:15}}>
+          <div
+            style={{
+              justifySelf:"center",
+              padding:"7px 17px",
+              borderRadius:999,
+              border:`3px solid ${gold}`,
+              background:"#fff",
+              color:navy,
+              fontWeight:950,
+            }}
+          >
+            اِخْتَرِ الْفِئَةَ الْمُنَاسِبَةَ
+          </div>
+
+          {scene88 ? (
+            <Lesson88Scene questionId={questionId}/>
+          ) : (
+            <GoldPanel>
+              <div
+                style={{
+                  display:"grid",
+                  placeItems:"center",
+                  gap:8,
+                  padding:"8px 4px",
+                }}
+              >
+                <Asset
+                  icon={activity.item.icon}
+                  size={96}
+                />
+
+                <div
+                  style={{
+                    color:navy,
+                    fontWeight:950,
+                    fontSize:"clamp(20px,5vw,27px)",
+                    textAlign:"center",
+                  }}
+                >
+                  {activity.item.label}
+                </div>
+
+                <div
+                  style={{
+                    color:"#667085",
+                    fontWeight:800,
+                    fontSize:"clamp(14px,3.5vw,17px)",
+                    textAlign:"center",
+                  }}
+                >
+                  اِخْتَرِ الْفِئَةَ الصَّحِيحَةَ
+                </div>
+              </div>
+            </GoldPanel>
+          )}
+
+          <div
+            style={{
+              display:"grid",
+              gridTemplateColumns:
+                `repeat(${activity.bins.length},minmax(0,1fr))`,
+              gap:12,
+            }}
+          >
+            {activity.bins.map((bin,i)=>(
+              <button
+                key={i}
+                type="button"
+                disabled={locked||solved}
+                onClick={()=>{
+                  if(i===activity.answer) success();
+                  else fail();
+                }}
+                style={{
+                  minHeight:154,
+                  borderRadius:30,
+                  border:`3px solid ${gold}`,
+                  background:i%2===0?sky:cream,
+                  color:navy,
+                  fontFamily:"inherit",
+                  fontWeight:950,
+                  fontSize:"clamp(16px,4.2vw,21px)",
+                  display:"grid",
+                  placeItems:"center",
+                  gap:7,
+                  padding:10,
+                  boxShadow:"0 12px 24px rgba(23,58,99,.08)",
+                }}
+              >
+                <div
+                  style={{
+                    width:76,
+                    height:76,
+                    borderRadius:23,
+                    background:"#fff",
+                    border:`2px solid ${gold}`,
+                    display:"grid",
+                    placeItems:"center",
+                  }}
+                >
+                  <Asset icon={bin.icon} size={54}/>
+                </div>
+                <div>{bin.label}</div>
+              </button>
+            ))}
+          </div>
+
+        </div>
+      );
+    }
+
+    const startDrag=(
+      e:ReactPointerEvent<HTMLButtonElement>,
+    )=>{
+      if(locked||solved) return;
+      e.currentTarget.setPointerCapture(e.pointerId);
+      setDragging(true);
+      setDragPoint({x:e.clientX,y:e.clientY});
+    };
+
+    const moveDrag=(
+      e:ReactPointerEvent<HTMLButtonElement>,
+    )=>{
+      if(!dragging||locked||solved) return;
+      setDragPoint({x:e.clientX,y:e.clientY});
+    };
+
+    const endDrag=(
+      e:ReactPointerEvent<HTMLButtonElement>,
+    )=>{
+      if(!dragging||locked||solved) return;
+
+      setDragging(false);
+      setDragPoint(null);
+
+      const node=document
+        .elementFromPoint(e.clientX,e.clientY)
+        ?.closest("[data-science-bin]");
+
+      const index=node
+        ? Number(node.getAttribute("data-science-bin"))
+        : -1;
+
+      if(index===activity.answer) success();
+      else fail();
+    };
+
+    return (
+      <div style={{display:"grid",gap:16}}>
+        <GoldPanel>
+          <div style={{display:"grid",placeItems:"center"}}>
+            <button
+              type="button"
+              disabled={locked||solved}
+              onPointerDown={startDrag}
+              onPointerMove={moveDrag}
+              onPointerUp={endDrag}
+              onPointerCancel={()=>{
+                setDragging(false);
+                setDragPoint(null);
+              }}
+              style={{
+                ...card,
+                width:"min(240px,74vw)",
+                minHeight:150,
+                touchAction:"none",
+                cursor:"grab",
+                opacity:dragging ? 0.35 : 1,
+              }}
+            >
+              <Asset icon={activity.item.icon} size={86}/>
+              <div>{activity.item.label}</div>
+              <div style={{fontSize:13,color:"#708596"}}>
+                اِسْحَبْنِي إِلَى الْفِئَةِ.
+              </div>
+            </button>
+          </div>
+        </GoldPanel>
+
+        <div
+          style={{
+            display:"grid",
+            gridTemplateColumns:
+              `repeat(${activity.bins.length},minmax(0,1fr))`,
+            gap:9,
+          }}
+        >
+          {activity.bins.map((bin,i)=>(
+            <div
+              key={i}
+              data-science-bin={i}
+              style={{
+                minHeight:138,
+                border:`3px dashed ${gold}`,
+                borderRadius:24,
+                background:paleGold,
+                display:"grid",
+                placeItems:"center",
+                textAlign:"center",
+                padding:8,
+                color:navy,
+                fontWeight:900,
+              }}
+            >
+              <Asset icon={bin.icon} size={58}/>
+              <div>{bin.label}</div>
+            </div>
+          ))}
+        </div>
+
+        {dragging&&dragPoint&&(
+          <div
+            style={{
+              position:"fixed",
+              left:dragPoint.x,
+              top:dragPoint.y,
+              transform:"translate(-50%,-50%)",
+              zIndex:99999,
+              width:92,
+              height:92,
+              borderRadius:24,
+              border:`3px solid ${gold}`,
+              background:"#fff",
+              display:"grid",
+              placeItems:"center",
+              pointerEvents:"none",
+              boxShadow:"0 14px 30px rgba(23,58,99,.22)",
+            }}
+          >
+            <Asset icon={activity.item.icon} size={70}/>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  if(activity.mode==="multiPick"){
+    const scene88=Scene88Path(questionId);
+
+    const choose=(i:number)=>{
+      if(locked||solved) return;
+
+      const next=selected.includes(i)
+        ? selected.filter(x=>x!==i)
+        : [...selected,i];
+
+      if(next.length>activity.answers.length){
+        return;
+      }
+
+      setSelected(next);
+
+      if(next.length===activity.answers.length){
+        const a=[...next].sort((x,y)=>x-y).join(",");
+        const b=[...activity.answers].sort((x,y)=>x-y).join(",");
+
+        if(a===b) success();
+        else fail();
+      }
+    };
+
+    if(scene88){
+      return (
+        <div style={{display:"grid",gap:14}}>
+          <div
+            style={{
+              justifySelf:"center",
+              padding:"7px 17px",
+              borderRadius:999,
+              border:`3px solid ${gold}`,
+              background:"#fff",
+              color:navy,
+              fontWeight:950,
+            }}
+          >
+            اِخْتَرْ عُنْصُرَيْنِ صَحِيحَيْنِ مِنَ الْمَشْهَدِ
+          </div>
+
+          <Lesson88Scene questionId={questionId}>
+            <Lesson88HotspotGrid
+              items={activity.items}
+              disabled={locked||solved}
+              selected={selected}
+              onPick={choose}
+            />
+          </Lesson88Scene>
+
+          <div
+            style={{
+              display:"flex",
+              justifyContent:"center",
+              gap:8,
+            }}
+          >
+            {activity.answers.map((_,i)=>(
+              <div
+                key={i}
+                style={{
+                  width:48,
+                  height:12,
+                  borderRadius:999,
+                  background:i<selected.length?green:"#E8E0C6",
+                  boxShadow:i<selected.length
+                    ? "0 4px 10px rgba(81,169,115,.20)"
+                    : "none",
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div
+        style={{
+          display:"grid",
+          gridTemplateColumns:"repeat(2,minmax(0,1fr))",
+          gap:10,
+        }}
+      >
+        {activity.items.map((item,i)=>(
+          <button
+            key={i}
+            disabled={locked||solved}
+            onClick={()=>choose(i)}
+            style={{
+              ...card,
+              border:selected.includes(i)
+                ? `5px solid ${green}`
+                : `3px solid ${gold}`,
+            }}
+          >
+            <Asset icon={item.icon} size={70}/>
+            <div>{item.label}</div>
+          </button>
+        ))}
+      </div>
+    );
+  }
+
+  if(activity.mode==="transfer"){
+    const scene88=Scene88Path(questionId);
+
+    if(scene88){
+      return (
+        <div style={{display:"grid",gap:14}}>
+          <div
+            style={{
+              justifySelf:"center",
+              padding:"7px 17px",
+              borderRadius:999,
+              border:`3px solid ${gold}`,
+              background:"#fff",
+              color:navy,
+              fontWeight:950,
+            }}
+          >
+            تَجْرِبَةُ نَقْلِ السَّائِلِ
+          </div>
+
+          <Lesson88Scene questionId={questionId}/>
+
+          {!experimentStarted ? (
+            <button
+              type="button"
+              disabled={locked||solved}
+              onClick={()=>setExperimentStarted(true)}
+              style={{
+                minHeight:78,
+                borderRadius:26,
+                border:`3px solid ${gold}`,
+                background:"linear-gradient(180deg,#FFF8D8,#FFE9A2)",
+                color:navy,
+                fontFamily:"inherit",
+                fontWeight:950,
+                fontSize:"clamp(18px,5vw,24px)",
+                boxShadow:"0 12px 24px rgba(230,175,34,.18)",
+              }}
+            >
+              اِضْغَطْ لِتَنْفِيذِ التَّجْرِبَةِ
+            </button>
+          ) : (
+            <div
+              style={{
+                display:"grid",
+                gridTemplateColumns:"repeat(2,minmax(0,1fr))",
+                gap:10,
+                padding:12,
+                borderRadius:30,
+                border:`3px solid ${gold}`,
+                background:mint,
+              }}
+            >
+              {activity.properties.map((p,i)=>(
+                <button
+                  key={p}
+                  type="button"
+                  disabled={locked||solved}
+                  onClick={()=>{
+                    if(i===activity.answer) success();
+                    else fail();
+                  }}
+                  style={{
+                    minHeight:92,
+                    borderRadius:24,
+                    border:`3px solid ${gold}`,
+                    background:i%2===0?"#fff":cream,
+                    color:navy,
+                    fontFamily:"inherit",
+                    fontWeight:950,
+                    fontSize:"clamp(17px,4.5vw,22px)",
+                    padding:10,
+                  }}
+                >
+                  {p}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    return (
+      <div style={{display:"grid",gap:14}}>
+        <GoldPanel>
+          <div
+            style={{
+              display:"grid",
+              gridTemplateColumns:"1fr auto 1fr",
+              alignItems:"center",
+              gap:8,
+              direction:"ltr",
+            }}
+          >
+            <div style={{display:"grid",placeItems:"center"}}>
+              <Asset icon={activity.liquid.icon} size={100}/>
+            </div>
+
+            <div style={{fontSize:34,color:blue,fontWeight:950}}>
+              →
+            </div>
+
+            <div
+              style={{
+                display:"flex",
+                justifyContent:"center",
+                gap:4,
+              }}
+            >
+              {activity.containers.map(c=>(
+                <Asset key={c} icon={c} size={72}/>
+              ))}
+            </div>
+          </div>
+        </GoldPanel>
+
+        <div
+          style={{
+            display:"grid",
+            gridTemplateColumns:"repeat(2,minmax(0,1fr))",
+            gap:10,
+          }}
+        >
+          {activity.properties.map((p,i)=>(
+            <button
+              key={p}
+              disabled={locked||solved}
+              onClick={()=>{
+                if(i===activity.answer) success();
+                else fail();
+              }}
+              style={{
+                ...card,
+                minHeight:92,
+                fontSize:"clamp(17px,4.8vw,23px)",
+              }}
+            >
+              {p}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if(activity.mode==="orderTap"){
+    const shown=activity.displayOrder.map(i=>activity.steps[i]);
+
+    const choose=(step:string)=>{
+      if(locked||solved) return;
+
+      const expected=activity.steps[order.length];
+
+      if(step!==expected){
+        fail();
+        return;
+      }
+
+      const next=[...order,step];
+      setOrder(next);
+
+      if(next.length===activity.steps.length){
+        success();
+      }
+    };
+
+    return (
+      <div style={{display:"grid",gap:14}}>
+        <GoldPanel>
+          <div
+            style={{
+              display:"grid",
+              gridTemplateColumns:
+                `repeat(${activity.steps.length},1fr)`,
+              gap:8,
+            }}
+          >
+            {activity.steps.map((_,i)=>(
+              <div
+                key={i}
+                style={{
+                  minHeight:72,
+                  borderRadius:20,
+                  border:`2px dashed ${gold}`,
+                  background:"#fff",
+                  display:"grid",
+                  placeItems:"center",
+                  textAlign:"center",
+                  color:green,
+                  fontWeight:900,
+                  padding:6,
+                }}
+              >
+                {order[i]??`${i+1}`}
+              </div>
+            ))}
+          </div>
+        </GoldPanel>
+
+        <div style={{display:"grid",gap:9}}>
+          {shown.map(step=>(
+            <button
+              key={step}
+              disabled={locked||solved||order.includes(step)}
+              onClick={()=>choose(step)}
+              style={{
+                ...card,
+                minHeight:82,
+              }}
+            >
+              {step}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if(activity.mode==="safeUnsafe"){
+    return (
+      <div style={{display:"grid",gap:14}}>
+        <GoldPanel>
+          <div style={{display:"grid",placeItems:"center",gap:8}}>
+            <Asset icon={activity.scenario.icon} size={112}/>
+            <div
+              dir="rtl"
+              style={{
+                textAlign:"center",
+                color:navy,
+                fontWeight:900,
+              }}
+            >
+              {activity.scenario.label}
+            </div>
+          </div>
+        </GoldPanel>
+
+        <div
+          style={{
+            display:"grid",
+            gridTemplateColumns:"1fr 1fr",
+            gap:10,
+          }}
+        >
+          <button
+            disabled={locked||solved}
+            onClick={()=>{
+              if(activity.safe) success();
+              else fail();
+            }}
+            style={card}
+          >
+            <Asset icon="safe" size={66}/>
+            <div>آمِنٌ</div>
+          </button>
+
+          <button
+            disabled={locked||solved}
+            onClick={()=>{
+              if(!activity.safe) success();
+              else fail();
+            }}
+            style={card}
+          >
+            <Asset icon="warning" size={66}/>
+            <div>خَطِرٌ</div>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if(activity.mode==="floatSink"){
+    return (
+      <div style={{display:"grid",gap:14}}>
+        <GoldPanel>
+          <div style={{display:"grid",placeItems:"center",gap:4}}>
+            <Asset icon={activity.item.icon} size={90}/>
+            <div
+              style={{
+                width:180,
+                height:105,
+                border:`5px solid ${blue}`,
+                borderTop:"none",
+                borderRadius:"0 0 32px 32px",
+                background:"linear-gradient(to bottom,rgba(76,157,215,.08) 15%,rgba(76,157,215,.30) 16%)",
+              }}
+            />
+          </div>
+        </GoldPanel>
+
+        <div
+          style={{
+            display:"grid",
+            gridTemplateColumns:"1fr 1fr",
+            gap:10,
+          }}
+        >
+          <button
+            disabled={locked||solved}
+            onClick={()=>{
+              if(activity.result==="float") success();
+              else fail();
+            }}
+            style={card}
+          >
+            <Asset icon="float" size={64}/>
+            <div>يَطْفُو</div>
+          </button>
+
+          <button
+            disabled={locked||solved}
+            onClick={()=>{
+              if(activity.result==="sink") success();
+              else fail();
+            }}
+            style={card}
+          >
+            <Asset icon="sink" size={64}/>
+            <div>يَغُوصُ</div>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if(activity.mode==="dissolve"){
+    return (
+      <div style={{display:"grid",gap:14}}>
+        <GoldPanel>
+          <div
+            style={{
+              display:"grid",
+              gridTemplateColumns:"1fr auto 1fr",
+              alignItems:"center",
+              gap:8,
+              direction:"ltr",
+            }}
+          >
+            <Asset icon={activity.item.icon} size={92}/>
+            <div style={{fontSize:32,color:gold,fontWeight:950}}>+</div>
+            <Asset icon="glass+water" size={92}/>
+          </div>
+        </GoldPanel>
+
+        <div
+          style={{
+            display:"grid",
+            gridTemplateColumns:"1fr 1fr",
+            gap:10,
+          }}
+        >
+          <button
+            disabled={locked||solved}
+            onClick={()=>{
+              if(activity.dissolves) success();
+              else fail();
+            }}
+            style={card}
+          >
+            <Asset icon="dissolve" size={64}/>
+            <div>يَذُوبُ</div>
+          </button>
+
+          <button
+            disabled={locked||solved}
+            onClick={()=>{
+              if(!activity.dissolves) success();
+              else fail();
+            }}
+            style={card}
+          >
+            <Asset icon="no-dissolve" size={64}/>
+            <div>لَا يَذُوبُ</div>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if(activity.mode==="eraseTest"){
+    return (
+      <div style={{display:"grid",gap:14}}>
+        <GoldPanel>
+          <div
+            style={{
+              display:"grid",
+              gridTemplateColumns:"1fr auto 1fr",
+              alignItems:"center",
+              direction:"ltr",
+            }}
+          >
+            <Asset icon={activity.tool.icon} size={96}/>
+            <div
+              style={{
+                width:95,
+                height:9,
+                borderRadius:999,
+                background:activity.tool.icon==="pen"
+                  ? "#274A6C"
+                  : "#74818B",
+                transform:"rotate(-9deg)",
+              }}
+            />
+            <Asset icon="eraser" size={80}/>
+          </div>
+        </GoldPanel>
+
+        <div
+          style={{
+            display:"grid",
+            gridTemplateColumns:"1fr 1fr",
+            gap:10,
+          }}
+        >
+          <button
+            disabled={locked||solved}
+            onClick={()=>{
+              if(activity.erasable) success();
+              else fail();
+            }}
+            style={card}
+          >
+            يَزُولُ بِسُهُولَةٍ
+          </button>
+
+          <button
+            disabled={locked||solved}
+            onClick={()=>{
+              if(!activity.erasable) success();
+              else fail();
+            }}
+            style={card}
+          >
+            لَا يَزُولُ بِسُهُولَةٍ
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if(activity.mode==="batchSort"){
+    const chooseBin=(binIndex:number)=>{
+      if(
+        locked||
+        solved||
+        activeItem===null
+      ) return;
+
+      const item=activity.items[activeItem];
+
+      if(item.bin!==binIndex){
+        setActiveItem(null);
+        onResult(false);
+        return;
+      }
+
+      const next=[
+        ...assigned,
+        activeItem,
+      ];
+
+      setAssigned(next);
+      setActiveItem(null);
+
+      if(next.length===activity.items.length){
+        success();
+      }
+    };
+
+    return (
+      <div style={{display:"grid",gap:13}}>
+        <GoldPanel>
+          <div
+            style={{
+              display:"grid",
+              gridTemplateColumns:
+                `repeat(${activity.items.length},minmax(0,1fr))`,
+              gap:8,
+            }}
+          >
+            {activity.items.map((item,i)=>(
+              <button
+                key={i}
+                disabled={
+                  locked||
+                  solved||
+                  assigned.includes(i)
+                }
+                onClick={()=>setActiveItem(i)}
+                style={{
+                  ...card,
+                  minHeight:115,
+                  padding:6,
+                  opacity:assigned.includes(i)?.35:1,
+                  border:activeItem===i
+                    ? `5px solid ${green}`
+                    : `3px solid ${gold}`,
+                }}
+              >
+                <Asset icon={item.icon} size={55}/>
+                <div style={{fontSize:15}}>
+                  {item.label}
+                </div>
+              </button>
+            ))}
+          </div>
+        </GoldPanel>
+
+        <div
+          style={{
+            display:"grid",
+            gridTemplateColumns:
+              `repeat(${activity.bins.length},minmax(0,1fr))`,
+            gap:8,
+          }}
+        >
+          {activity.bins.map((bin,i)=>(
+            <button
+              key={i}
+              disabled={
+                locked||
+                solved||
+                activeItem===null
+              }
+              onClick={()=>chooseBin(i)}
+              style={{
+                ...card,
+                minHeight:120,
+                background:paleGold,
+              }}
+            >
+              <Asset icon={bin.icon} size={54}/>
+              <div style={{fontSize:15}}>
+                {bin.label}
+              </div>
+            </button>
+          ))}
+        </div>
+
+        <div
+          dir="rtl"
+          style={{
+            textAlign:"center",
+            color:"#667C8D",
+            fontWeight:900,
+            fontSize:14,
+          }}
+        >
+          اِخْتَرْ عُنْصُرًا ثُمَّ اِخْتَرْ فِئَتَهُ.
+        </div>
+      </div>
+    );
+  }
+
+  return null;
+}

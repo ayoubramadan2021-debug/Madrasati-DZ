@@ -1,0 +1,557 @@
+{
+  "version": 1,
+  "collection": "science-88-116",
+  "objects_expected": 24,
+  "scenes_expected": 10,
+  "assets": [
+    {
+      "id": "obj-water-glass-v01",
+      "type": "object",
+      "lessons": [
+        88,
+        113,
+        116
+      ],
+      "concepts": [
+        "liquid",
+        "pourable"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-water-glass-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-water-glass-v01.webp",
+      "prompt_file": "prompts/objects/obj-water-glass-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA transparent drinking glass filled with clean clear water, visible water surface and subtle refraction, simple premium educational 3D illustration.\n"
+    },
+    {
+      "id": "obj-oil-bottle-v01",
+      "type": "object",
+      "lessons": [
+        88
+      ],
+      "concepts": [
+        "liquid",
+        "pourable"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-oil-bottle-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-oil-bottle-v01.webp",
+      "prompt_file": "prompts/objects/obj-oil-bottle-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA small transparent kitchen bottle containing golden cooking oil, clearly showing a liquid inside, simple cap, no label or writing.\n"
+    },
+    {
+      "id": "obj-juice-v01",
+      "type": "object",
+      "lessons": [
+        88,
+        116
+      ],
+      "concepts": [
+        "liquid",
+        "food",
+        "pourable"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-juice-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-juice-v01.webp",
+      "prompt_file": "prompts/objects/obj-juice-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA small transparent glass containing fresh orange-colored fruit juice, clearly liquid, clean simple presentation, no text.\n"
+    },
+    {
+      "id": "obj-milk-v01",
+      "type": "object",
+      "lessons": [
+        116
+      ],
+      "concepts": [
+        "liquid",
+        "food",
+        "pourable"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-milk-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-milk-v01.webp",
+      "prompt_file": "prompts/objects/obj-milk-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA small transparent bottle or glass filled with white milk, clear simple shape, no branding, no text.\n"
+    },
+    {
+      "id": "obj-book-v01",
+      "type": "object",
+      "lessons": [
+        88,
+        113,
+        116
+      ],
+      "concepts": [
+        "solid",
+        "school"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-book-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-book-v01.webp",
+      "prompt_file": "prompts/objects/obj-book-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA closed blue school book with a slightly visible white page block, no writing or symbols on the cover.\n"
+    },
+    {
+      "id": "obj-wood-block-v01",
+      "type": "object",
+      "lessons": [
+        88,
+        113
+      ],
+      "concepts": [
+        "solid",
+        "non_dissolving"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-wood-block-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-wood-block-v01.webp",
+      "prompt_file": "prompts/objects/obj-wood-block-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA clean rectangular natural wood block showing realistic wood grain, simple solid object, rounded safe edges.\n"
+    },
+    {
+      "id": "obj-pencil-v01",
+      "type": "object",
+      "lessons": [
+        88,
+        113,
+        116
+      ],
+      "concepts": [
+        "solid",
+        "school",
+        "graphite"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-pencil-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-pencil-v01.webp",
+      "prompt_file": "prompts/objects/obj-pencil-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA classic yellow wooden graphite pencil, sharpened black graphite tip, small pink eraser, isolated and clearly recognizable.\n"
+    },
+    {
+      "id": "obj-pen-v01",
+      "type": "object",
+      "lessons": [
+        113,
+        116
+      ],
+      "concepts": [
+        "solid",
+        "school",
+        "ink"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-pen-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-pen-v01.webp",
+      "prompt_file": "prompts/objects/obj-pen-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA modern blue ink pen with a visible dark-blue writing tip, clean school stationery style, no branding.\n"
+    },
+    {
+      "id": "obj-eraser-v01",
+      "type": "object",
+      "lessons": [
+        113,
+        116
+      ],
+      "concepts": [
+        "solid",
+        "school",
+        "eraser"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-eraser-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-eraser-v01.webp",
+      "prompt_file": "prompts/objects/obj-eraser-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA soft rectangular school eraser, white with a subtle pastel edge, clean and clearly recognizable.\n"
+    },
+    {
+      "id": "obj-glass-empty-v01",
+      "type": "object",
+      "lessons": [
+        88
+      ],
+      "concepts": [
+        "container"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-glass-empty-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-glass-empty-v01.webp",
+      "prompt_file": "prompts/objects/obj-glass-empty-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nAn empty transparent drinking glass, clear rim and base, realistic transparent material, simple educational asset.\n"
+    },
+    {
+      "id": "obj-soap-bar-v01",
+      "type": "object",
+      "lessons": [
+        104,
+        111,
+        116
+      ],
+      "concepts": [
+        "cleaning",
+        "solid"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-soap-bar-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-soap-bar-v01.webp",
+      "prompt_file": "prompts/objects/obj-soap-bar-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA clean solid bar of soap, soft pale color, rounded rectangular shape, small subtle soap bubbles nearby, no text or logo.\n"
+    },
+    {
+      "id": "obj-cleaner-liquid-v01",
+      "type": "object",
+      "lessons": [
+        104,
+        107,
+        111,
+        116
+      ],
+      "concepts": [
+        "cleaning",
+        "liquid"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-cleaner-liquid-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-cleaner-liquid-v01.webp",
+      "prompt_file": "prompts/objects/obj-cleaner-liquid-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA household liquid cleaning bottle with a simple trigger or cap, visible colored liquid inside, completely generic packaging, no label, no text.\n"
+    },
+    {
+      "id": "obj-disinfectant-v01",
+      "type": "object",
+      "lessons": [
+        104,
+        107,
+        111,
+        116
+      ],
+      "concepts": [
+        "disinfection",
+        "liquid"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-disinfectant-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-disinfectant-v01.webp",
+      "prompt_file": "prompts/objects/obj-disinfectant-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA generic disinfectant bottle, clearly different in shape from the cleaning bottle, simple pump dispenser, no brand, no label, no writing.\n"
+    },
+    {
+      "id": "obj-washing-powder-v01",
+      "type": "object",
+      "lessons": [
+        104,
+        111
+      ],
+      "concepts": [
+        "cleaning",
+        "powder"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-washing-powder-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-washing-powder-v01.webp",
+      "prompt_file": "prompts/objects/obj-washing-powder-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA small open container or measuring scoop containing white granular cleaning powder, clearly showing powder texture, no text or branding.\n"
+    },
+    {
+      "id": "obj-sponge-v01",
+      "type": "object",
+      "lessons": [
+        104,
+        116
+      ],
+      "concepts": [
+        "cleaning",
+        "tool"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-sponge-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-sponge-v01.webp",
+      "prompt_file": "prompts/objects/obj-sponge-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA clean rectangular household cleaning sponge with soft porous texture, premium realistic 3D educational illustration.\n"
+    },
+    {
+      "id": "obj-mop-v01",
+      "type": "object",
+      "lessons": [
+        104
+      ],
+      "concepts": [
+        "cleaning",
+        "tool"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-mop-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-mop-v01.webp",
+      "prompt_file": "prompts/objects/obj-mop-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA modern floor mop with a long handle and clean microfiber mop head, full object visible, easy for a child to recognize.\n"
+    },
+    {
+      "id": "obj-sugar-v01",
+      "type": "object",
+      "lessons": [
+        113,
+        116
+      ],
+      "concepts": [
+        "solid",
+        "dissolving",
+        "food"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-sugar-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-sugar-v01.webp",
+      "prompt_file": "prompts/objects/obj-sugar-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA small transparent bowl containing white granulated sugar, clearly visible individual fine grains, simple educational asset.\n"
+    },
+    {
+      "id": "obj-warning-cleaner-v01",
+      "type": "object",
+      "lessons": [
+        107,
+        111,
+        116
+      ],
+      "concepts": [
+        "hazard",
+        "cleaning"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-warning-cleaner-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-warning-cleaner-v01.webp",
+      "prompt_file": "prompts/objects/obj-warning-cleaner-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA generic household cleaner bottle with a clear universal hazard warning pictogram only, no text, no brand, visually communicating caution without frightening imagery.\n"
+    },
+    {
+      "id": "obj-cork-v01",
+      "type": "object",
+      "lessons": [
+        113
+      ],
+      "concepts": [
+        "solid",
+        "floating"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-cork-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-cork-v01.webp",
+      "prompt_file": "prompts/objects/obj-cork-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA small natural cork stopper, realistic porous cork texture, simple cylindrical shape, isolated.\n"
+    },
+    {
+      "id": "obj-coin-v01",
+      "type": "object",
+      "lessons": [
+        113
+      ],
+      "concepts": [
+        "solid",
+        "sinking",
+        "metal"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-coin-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-coin-v01.webp",
+      "prompt_file": "prompts/objects/obj-coin-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA generic round metal coin with no real-world currency symbols, simple raised rim and neutral markings, isolated.\n"
+    },
+    {
+      "id": "obj-empty-plastic-bottle-v01",
+      "type": "object",
+      "lessons": [
+        113
+      ],
+      "concepts": [
+        "solid",
+        "floating",
+        "container"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-empty-plastic-bottle-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-empty-plastic-bottle-v01.webp",
+      "prompt_file": "prompts/objects/obj-empty-plastic-bottle-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA small empty transparent plastic bottle with cap, no label, clearly empty, lightweight appearance.\n"
+    },
+    {
+      "id": "obj-cookie-v01",
+      "type": "object",
+      "lessons": [
+        116
+      ],
+      "concepts": [
+        "food",
+        "solid"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-cookie-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-cookie-v01.webp",
+      "prompt_file": "prompts/objects/obj-cookie-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA simple round biscuit or cookie with a few small baked dots, no branding, isolated.\n"
+    },
+    {
+      "id": "obj-bucket-v01",
+      "type": "object",
+      "lessons": [
+        88,
+        104
+      ],
+      "concepts": [
+        "container",
+        "cleaning"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-bucket-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-bucket-v01.webp",
+      "prompt_file": "prompts/objects/obj-bucket-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA small clean household bucket with handle, simple rounded plastic shape, no text or branding.\n"
+    },
+    {
+      "id": "obj-locked-cabinet-v01",
+      "type": "object",
+      "lessons": [
+        107,
+        116
+      ],
+      "concepts": [
+        "safe_storage",
+        "cleaning"
+      ],
+      "source": "assets-source/science-88-116/objects/png/obj-locked-cabinet-v01.png",
+      "webp": "/lessons/v2/science-88-116/objects/obj-locked-cabinet-v01.webp",
+      "prompt_file": "prompts/objects/obj-locked-cabinet-v01.txt",
+      "prompt": "Create a premium educational 3D illustration asset for a high-quality children's learning app.\n\nStyle:\nclean polished 3D educational illustration, softly rounded realistic proportions, modern premium mobile app aesthetic, child-friendly but not babyish, soft studio lighting, subtle realistic shadows, excellent materials and textures, clear silhouette, visually simple and instantly recognizable by a 6-year-old child.\n\nComposition:\none isolated object only, centered, full object visible, generous transparent space around it, front three-quarter view, no cropping.\n\nCRITICAL:\ntransparent background,\nno colored square behind the object,\nno badge,\nno button,\nno frame,\nno card,\nno UI,\nno text,\nno letters,\nno numbers,\nno watermark,\nno decorative stars,\nno answer indicators.\n\n1024x1024 PNG with transparent background.\n\nSubject:\nA small wall-mounted household storage cabinet shown closed with a simple child-safety lock, no text.\n"
+    },
+    {
+      "id": "scene-l88-material-table-v01",
+      "type": "scene",
+      "lessons": [
+        88
+      ],
+      "concepts": [
+        "solid",
+        "liquid",
+        "classification"
+      ],
+      "source": "assets-source/science-88-116/scenes/png/scene-l88-material-table-v01.png",
+      "webp": "/lessons/v2/science-88-116/scenes/scene-l88-material-table-v01.webp",
+      "prompt_file": "prompts/scenes/scene-l88-material-table-v01.txt",
+      "prompt": "Create a premium educational scene for a high-quality children's science learning app.\n\nStyle:\npolished modern 3D educational illustration, warm realistic classroom lighting, clean and elegant, child-friendly, premium mobile learning app quality, accurate objects, soft depth of field, visually uncluttered composition.\n\nThe scene must communicate one clear science concept.\n\nCRITICAL:\nno text,\nno labels,\nno arrows,\nno answer hints,\nno UI,\nno frames,\nno buttons,\nno watermark.\n\nLeave clean visual space around the important objects so interactive overlays can be added later by the app.\n\nLandscape composition, 1536x1024.\n\nScene:\nA clean primary-school science table displaying several everyday materials: a glass of water, small bottle of oil, glass of juice, closed book, wooden block and pencil. Arrange the objects naturally on the table, with a warm bright classroom softly visible in the background. No child touching any object.\n"
+    },
+    {
+      "id": "scene-l88-liquid-transfer-v01",
+      "type": "scene",
+      "lessons": [
+        88
+      ],
+      "concepts": [
+        "liquid",
+        "container_shape",
+        "experiment"
+      ],
+      "source": "assets-source/science-88-116/scenes/png/scene-l88-liquid-transfer-v01.png",
+      "webp": "/lessons/v2/science-88-116/scenes/scene-l88-liquid-transfer-v01.webp",
+      "prompt_file": "prompts/scenes/scene-l88-liquid-transfer-v01.txt",
+      "prompt": "Create a premium educational scene for a high-quality children's science learning app.\n\nStyle:\npolished modern 3D educational illustration, warm realistic classroom lighting, clean and elegant, child-friendly, premium mobile learning app quality, accurate objects, soft depth of field, visually uncluttered composition.\n\nThe scene must communicate one clear science concept.\n\nCRITICAL:\nno text,\nno labels,\nno arrows,\nno answer hints,\nno UI,\nno frames,\nno buttons,\nno watermark.\n\nLeave clean visual space around the important objects so interactive overlays can be added later by the app.\n\nLandscape composition, 1536x1024.\n\nScene:\nA simple science experiment on a clean table: a transparent pitcher of water beside two containers with clearly different shapes, one tall narrow glass and one wide bowl. The liquid is about to be transferred, but do not show any answer labels or explanatory arrows.\n"
+    },
+    {
+      "id": "scene-l104-cleaning-tools-v01",
+      "type": "scene",
+      "lessons": [
+        104
+      ],
+      "concepts": [
+        "cleaning",
+        "tools"
+      ],
+      "source": "assets-source/science-88-116/scenes/png/scene-l104-cleaning-tools-v01.png",
+      "webp": "/lessons/v2/science-88-116/scenes/scene-l104-cleaning-tools-v01.webp",
+      "prompt_file": "prompts/scenes/scene-l104-cleaning-tools-v01.txt",
+      "prompt": "Create a premium educational scene for a high-quality children's science learning app.\n\nStyle:\npolished modern 3D educational illustration, warm realistic classroom lighting, clean and elegant, child-friendly, premium mobile learning app quality, accurate objects, soft depth of field, visually uncluttered composition.\n\nThe scene must communicate one clear science concept.\n\nCRITICAL:\nno text,\nno labels,\nno arrows,\nno answer hints,\nno UI,\nno frames,\nno buttons,\nno watermark.\n\nLeave clean visual space around the important objects so interactive overlays can be added later by the app.\n\nLandscape composition, 1536x1024.\n\nScene:\nA clean home or classroom cleaning station showing a sponge, mop, bucket, bar of soap and cleaning bottle arranged neatly. The scene should clearly communicate cleaning and hygiene.\n"
+    },
+    {
+      "id": "scene-l104-handwashing-v01",
+      "type": "scene",
+      "lessons": [
+        104
+      ],
+      "concepts": [
+        "hygiene",
+        "handwashing"
+      ],
+      "source": "assets-source/science-88-116/scenes/png/scene-l104-handwashing-v01.png",
+      "webp": "/lessons/v2/science-88-116/scenes/scene-l104-handwashing-v01.webp",
+      "prompt_file": "prompts/scenes/scene-l104-handwashing-v01.txt",
+      "prompt": "Create a premium educational scene for a high-quality children's science learning app.\n\nStyle:\npolished modern 3D educational illustration, warm realistic classroom lighting, clean and elegant, child-friendly, premium mobile learning app quality, accurate objects, soft depth of field, visually uncluttered composition.\n\nThe scene must communicate one clear science concept.\n\nCRITICAL:\nno text,\nno labels,\nno arrows,\nno answer hints,\nno UI,\nno frames,\nno buttons,\nno watermark.\n\nLeave clean visual space around the important objects so interactive overlays can be added later by the app.\n\nLandscape composition, 1536x1024.\n\nScene:\nA child-friendly handwashing scene at a clean sink: hands, running water and soap visible, hygienic and educational, no medical atmosphere, no text.\n"
+    },
+    {
+      "id": "scene-l107-safety-adult-v01",
+      "type": "scene",
+      "lessons": [
+        107
+      ],
+      "concepts": [
+        "safety",
+        "adult_supervision"
+      ],
+      "source": "assets-source/science-88-116/scenes/png/scene-l107-safety-adult-v01.png",
+      "webp": "/lessons/v2/science-88-116/scenes/scene-l107-safety-adult-v01.webp",
+      "prompt_file": "prompts/scenes/scene-l107-safety-adult-v01.txt",
+      "prompt": "Create a premium educational scene for a high-quality children's science learning app.\n\nStyle:\npolished modern 3D educational illustration, warm realistic classroom lighting, clean and elegant, child-friendly, premium mobile learning app quality, accurate objects, soft depth of field, visually uncluttered composition.\n\nThe scene must communicate one clear science concept.\n\nCRITICAL:\nno text,\nno labels,\nno arrows,\nno answer hints,\nno UI,\nno frames,\nno buttons,\nno watermark.\n\nLeave clean visual space around the important objects so interactive overlays can be added later by the app.\n\nLandscape composition, 1536x1024.\n\nScene:\nA young child notices a household cleaning bottle on a shelf while a responsible adult stands nearby supervising. The child does not touch the bottle. Calm educational safety scene, not frightening.\n"
+    },
+    {
+      "id": "scene-l107-safe-storage-v01",
+      "type": "scene",
+      "lessons": [
+        107
+      ],
+      "concepts": [
+        "safety",
+        "storage"
+      ],
+      "source": "assets-source/science-88-116/scenes/png/scene-l107-safe-storage-v01.png",
+      "webp": "/lessons/v2/science-88-116/scenes/scene-l107-safe-storage-v01.webp",
+      "prompt_file": "prompts/scenes/scene-l107-safe-storage-v01.txt",
+      "prompt": "Create a premium educational scene for a high-quality children's science learning app.\n\nStyle:\npolished modern 3D educational illustration, warm realistic classroom lighting, clean and elegant, child-friendly, premium mobile learning app quality, accurate objects, soft depth of field, visually uncluttered composition.\n\nThe scene must communicate one clear science concept.\n\nCRITICAL:\nno text,\nno labels,\nno arrows,\nno answer hints,\nno UI,\nno frames,\nno buttons,\nno watermark.\n\nLeave clean visual space around the important objects so interactive overlays can be added later by the app.\n\nLandscape composition, 1536x1024.\n\nScene:\nHousehold cleaning products stored safely inside a closed high cabinet, clearly separated from food items stored in a different area. Clean organized home environment.\n"
+    },
+    {
+      "id": "scene-l111-material-forms-v01",
+      "type": "scene",
+      "lessons": [
+        111
+      ],
+      "concepts": [
+        "liquid",
+        "solid",
+        "powder"
+      ],
+      "source": "assets-source/science-88-116/scenes/png/scene-l111-material-forms-v01.png",
+      "webp": "/lessons/v2/science-88-116/scenes/scene-l111-material-forms-v01.webp",
+      "prompt_file": "prompts/scenes/scene-l111-material-forms-v01.txt",
+      "prompt": "Create a premium educational scene for a high-quality children's science learning app.\n\nStyle:\npolished modern 3D educational illustration, warm realistic classroom lighting, clean and elegant, child-friendly, premium mobile learning app quality, accurate objects, soft depth of field, visually uncluttered composition.\n\nThe scene must communicate one clear science concept.\n\nCRITICAL:\nno text,\nno labels,\nno arrows,\nno answer hints,\nno UI,\nno frames,\nno buttons,\nno watermark.\n\nLeave clean visual space around the important objects so interactive overlays can be added later by the app.\n\nLandscape composition, 1536x1024.\n\nScene:\nThree cleaning materials displayed side by side on a clean science table: a bottle of liquid cleaner, a solid bar of soap, and a small container of cleaning powder. Make their different physical forms visually obvious without labels.\n"
+    },
+    {
+      "id": "scene-l113-float-sink-v01",
+      "type": "scene",
+      "lessons": [
+        113
+      ],
+      "concepts": [
+        "float",
+        "sink",
+        "experiment"
+      ],
+      "source": "assets-source/science-88-116/scenes/png/scene-l113-float-sink-v01.png",
+      "webp": "/lessons/v2/science-88-116/scenes/scene-l113-float-sink-v01.webp",
+      "prompt_file": "prompts/scenes/scene-l113-float-sink-v01.txt",
+      "prompt": "Create a premium educational scene for a high-quality children's science learning app.\n\nStyle:\npolished modern 3D educational illustration, warm realistic classroom lighting, clean and elegant, child-friendly, premium mobile learning app quality, accurate objects, soft depth of field, visually uncluttered composition.\n\nThe scene must communicate one clear science concept.\n\nCRITICAL:\nno text,\nno labels,\nno arrows,\nno answer hints,\nno UI,\nno frames,\nno buttons,\nno watermark.\n\nLeave clean visual space around the important objects so interactive overlays can be added later by the app.\n\nLandscape composition, 1536x1024.\n\nScene:\nA transparent water tank on a science table with a cork floating clearly at the water surface and a metal coin resting at the bottom. Premium educational experiment, physically clear and scientifically unambiguous.\n"
+    },
+    {
+      "id": "scene-l113-dissolve-v01",
+      "type": "scene",
+      "lessons": [
+        113
+      ],
+      "concepts": [
+        "dissolve",
+        "non_dissolve",
+        "experiment"
+      ],
+      "source": "assets-source/science-88-116/scenes/png/scene-l113-dissolve-v01.png",
+      "webp": "/lessons/v2/science-88-116/scenes/scene-l113-dissolve-v01.webp",
+      "prompt_file": "prompts/scenes/scene-l113-dissolve-v01.txt",
+      "prompt": "Create a premium educational scene for a high-quality children's science learning app.\n\nStyle:\npolished modern 3D educational illustration, warm realistic classroom lighting, clean and elegant, child-friendly, premium mobile learning app quality, accurate objects, soft depth of field, visually uncluttered composition.\n\nThe scene must communicate one clear science concept.\n\nCRITICAL:\nno text,\nno labels,\nno arrows,\nno answer hints,\nno UI,\nno frames,\nno buttons,\nno watermark.\n\nLeave clean visual space around the important objects so interactive overlays can be added later by the app.\n\nLandscape composition, 1536x1024.\n\nScene:\nTwo transparent glasses of water on a science table. Beside the first is a small bowl of sugar ready to dissolve; beside the second is a small wooden block that does not dissolve. No arrows, labels or answer indicators.\n"
+    },
+    {
+      "id": "scene-l116-store-categories-v01",
+      "type": "scene",
+      "lessons": [
+        116
+      ],
+      "concepts": [
+        "food",
+        "cleaning",
+        "school",
+        "classification"
+      ],
+      "source": "assets-source/science-88-116/scenes/png/scene-l116-store-categories-v01.png",
+      "webp": "/lessons/v2/science-88-116/scenes/scene-l116-store-categories-v01.webp",
+      "prompt_file": "prompts/scenes/scene-l116-store-categories-v01.txt",
+      "prompt": "Create a premium educational scene for a high-quality children's science learning app.\n\nStyle:\npolished modern 3D educational illustration, warm realistic classroom lighting, clean and elegant, child-friendly, premium mobile learning app quality, accurate objects, soft depth of field, visually uncluttered composition.\n\nThe scene must communicate one clear science concept.\n\nCRITICAL:\nno text,\nno labels,\nno arrows,\nno answer hints,\nno UI,\nno frames,\nno buttons,\nno watermark.\n\nLeave clean visual space around the important objects so interactive overlays can be added later by the app.\n\nLandscape composition, 1536x1024.\n\nScene:\nA bright clean mini supermarket scene with three visually distinct shelf areas: food products, household cleaning products, and school supplies. Include milk, cookies, cleaner, soap, pencils and books. Do not write category names anywhere.\n"
+    }
+  ]
+}

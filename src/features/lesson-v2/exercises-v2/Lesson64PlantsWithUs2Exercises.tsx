@@ -1023,7 +1023,8 @@ export default function Lesson64PlantsWithUs2Exercises() {
     return (
       <LessonCompleteV2
         lessonKey="lesson64"
-        message="أَتْمَمْتَ تَمَارِينَ نَبَاتَاتٍ تَعِيشُ مَعَنَا بِنَجَاحٍ، وَتَعَلَّمْتَ أَهَمِّيَّةَ النَّبَاتَاتِ وَكَيْفَ نُحَافِظُ عَلَيْهَا."
+        message="أَتْمَمْتَ هَذِهِ التَّمَارِينَ بِنَجَاحٍ، وَيُمْكِنُكَ الآنَ الِانْتِقَالُ إِلَى الدَّرْسِ التَّالِي أَوْ إِعَادَةُ التَّمَارِينِ."
+
         stars={3}
         nextLessonKey="lesson65"
         nextPath="/lesson-v2/lesson65"

@@ -1,0 +1,75 @@
+{
+  "world": "skills-academy",
+  "voice": "ar-DZ-AminaNeural",
+  "rate": "-5%",
+  "pitch": "+6Hz",
+  "canonical_source": "src/features/world-intro/skillsAcademyWorldIntro.ts",
+  "scenes": [
+    {
+      "scene": 1,
+      "audio_key": "skills_academy_intro_natural_v1_1",
+      "canonical_word_count": 17,
+      "edge_word_boundaries": 17,
+      "karaoke_word_count": 17,
+      "first_offset_ms": 105,
+      "last_end_ms": 11342,
+      "mp3_bytes": 73872,
+      "status": "OK"
+    },
+    {
+      "scene": 2,
+      "audio_key": "skills_academy_intro_natural_v1_2",
+      "canonical_word_count": 15,
+      "edge_word_boundaries": 15,
+      "karaoke_word_count": 15,
+      "first_offset_ms": 105,
+      "last_end_ms": 10478,
+      "mp3_bytes": 68832,
+      "status": "OK"
+    },
+    {
+      "scene": 3,
+      "audio_key": "skills_academy_intro_natural_v1_3",
+      "canonical_word_count": 15,
+      "edge_word_boundaries": 15,
+      "karaoke_word_count": 15,
+      "first_offset_ms": 105,
+      "last_end_ms": 10368,
+      "mp3_bytes": 68112,
+      "status": "OK"
+    },
+    {
+      "scene": 4,
+      "audio_key": "skills_academy_intro_natural_v1_4",
+      "canonical_word_count": 17,
+      "edge_word_boundaries": 17,
+      "karaoke_word_count": 17,
+      "first_offset_ms": 105,
+      "last_end_ms": 10977,
+      "mp3_bytes": 71712,
+      "status": "OK"
+    },
+    {
+      "scene": 5,
+      "audio_key": "skills_academy_intro_natural_v1_5",
+      "canonical_word_count": 17,
+      "edge_word_boundaries": 17,
+      "karaoke_word_count": 17,
+      "first_offset_ms": 105,
+      "last_end_ms": 12224,
+      "mp3_bytes": 79200,
+      "status": "OK"
+    },
+    {
+      "scene": 6,
+      "audio_key": "skills_academy_intro_natural_v1_6",
+      "canonical_word_count": 17,
+      "edge_word_boundaries": 17,
+      "karaoke_word_count": 17,
+      "first_offset_ms": 105,
+      "last_end_ms": 13849,
+      "mp3_bytes": 88848,
+      "status": "OK"
+    }
+  ]
+}

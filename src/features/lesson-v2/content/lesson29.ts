@@ -6,6 +6,7 @@ export const LESSON_29_CONTENT = {
   audio_base:
     "/audio/teachers/khalil/lesson_29_different_number_forms",
 
+  exercisePath: "/lesson-v2/29/exercises",
   scenes: [
     {
       id: "s1_intro",

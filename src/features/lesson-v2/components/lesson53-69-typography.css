@@ -1,0 +1,292 @@
+/*
+ * قياسات تمارين الدروس 53–69.
+ * القيم مستخرجة من المحرك الحالي للدرس 64.
+ */
+
+html[data-madrasati-exercise-typography="lesson64"] {
+  --mdz-question-font: clamp(20px,5.4vw,32px);
+  --mdz-question-line: 1.55px;
+
+  --mdz-answer-font: clamp(18px, 4.8vw, 25px);
+  --mdz-answer-line: 1.45px;
+
+  --mdz-number-font: clamp(27px, 8vw, 42px);
+  --mdz-number-line: 1px;
+
+  --mdz-image-answer-font: 18px;
+
+  --mdz-mission-font: 15px;
+  --mdz-mission-line: 1.3px;
+
+  --mdz-counter-font: 21px;
+  --mdz-sound-font: 23px;
+}
+
+/* السؤال في المحرك الموحّد */
+html[data-madrasati-exercise-typography="lesson64"]
+.unified-exercise-karaoke-v2__text {
+  font-size:
+    var(--mdz-question-font) !important;
+  line-height:
+    var(--mdz-question-line) !important;
+}
+
+/* الإجابات النصية */
+html[data-madrasati-exercise-typography="lesson64"]
+.unified-exercise-answers-v2[data-variant="text"]
+> button {
+  font-size:
+    var(--mdz-answer-font) !important;
+  line-height:
+    var(--mdz-answer-line) !important;
+}
+
+/* الإجابات العددية */
+html[data-madrasati-exercise-typography="lesson64"]
+.unified-exercise-answers-v2[data-variant="number"]
+> button {
+  font-size:
+    var(--mdz-number-font) !important;
+  line-height:
+    var(--mdz-number-line) !important;
+}
+
+/* الإجابات المصورة */
+html[data-madrasati-exercise-typography="lesson64"]
+.unified-exercise-answers-v2[data-variant="image"]
+> button {
+  font-size:
+    var(--mdz-image-answer-font) !important;
+}
+
+/* عنوان المهمة */
+html[data-madrasati-exercise-typography="lesson64"]
+.unified-exercise-header-v2__mission {
+  font-size:
+    var(--mdz-mission-font) !important;
+  line-height:
+    var(--mdz-mission-line) !important;
+}
+
+/* عداد الأسئلة */
+html[data-madrasati-exercise-typography="lesson64"]
+.unified-exercise-header-v2__counter {
+  font-size:
+    var(--mdz-counter-font) !important;
+}
+
+/* زر الصوت */
+html[data-madrasati-exercise-typography="lesson64"]
+.unified-exercise-header-v2__sound {
+  font-size:
+    var(--mdz-sound-font) !important;
+}
+
+/*
+ * توافق مع محركات الدروس الأخرى بين 53 و69.
+ * لا يغيّر الصور أو أبعاد البطاقات.
+ */
+html[data-madrasati-exercise-typography="lesson64"]
+:is(
+  [class*="questionText"],
+  [class*="question-text"],
+  [class*="QuestionText"],
+  [class*="promptText"],
+  [class*="prompt-text"],
+  [class*="PromptText"],
+  [class*="instructionText"],
+  [class*="instruction-text"],
+  [class*="karaokeText"],
+  [class*="karaoke-text"]
+) {
+  font-size:
+    var(--mdz-question-font) !important;
+  line-height:
+    var(--mdz-question-line) !important;
+}
+
+html[data-madrasati-exercise-typography="lesson64"]
+:is(
+  button[class*="answer"],
+  button[class*="Answer"],
+  button[class*="option"],
+  button[class*="Option"],
+  button[class*="choice"],
+  button[class*="Choice"],
+  [role="button"][class*="answer"],
+  [role="button"][class*="Answer"],
+  [role="button"][class*="option"],
+  [role="button"][class*="Option"],
+  [role="button"][class*="choice"],
+  [role="button"][class*="Choice"]
+) {
+  font-size:
+    var(--mdz-answer-font) !important;
+  line-height:
+    var(--mdz-answer-line) !important;
+}
+
+html[data-madrasati-exercise-typography="lesson64"]
+:is(
+  [class*="answers"],
+  [class*="Answers"],
+  [class*="options"],
+  [class*="Options"],
+  [class*="choices"],
+  [class*="Choices"]
+)
+> button {
+  font-size:
+    var(--mdz-answer-font) !important;
+  line-height:
+    var(--mdz-answer-line) !important;
+}
+
+html[data-madrasati-exercise-typography="lesson64"]
+:is(
+  button[class*="number"],
+  button[class*="Number"],
+  button[class*="digit"],
+  button[class*="Digit"],
+  [role="button"][class*="number"],
+  [role="button"][class*="Number"],
+  [role="button"][class*="digit"],
+  [role="button"][class*="Digit"]
+) {
+  font-size:
+    var(--mdz-number-font) !important;
+  line-height:
+    var(--mdz-number-line) !important;
+}
+
+html[data-madrasati-exercise-typography="lesson64"]
+:is(
+  [class*="missionTitle"],
+  [class*="mission-title"],
+  [class*="MissionTitle"],
+  [class*="missionPill"],
+  [class*="mission-pill"]
+) {
+  font-size:
+    var(--mdz-mission-font) !important;
+  line-height:
+    var(--mdz-mission-line) !important;
+}
+
+html[data-madrasati-exercise-typography="lesson64"]
+:is(
+  [class*="counter"],
+  [class*="Counter"],
+  [class*="questionCount"],
+  [class*="question-count"]
+) {
+  font-size:
+    var(--mdz-counter-font) !important;
+}
+
+/* LESSON64_REFERENCE_KARAOKE_BOX_START */
+
+/*
+ * تخطيط موحّد لكاريوكي تمارين الدروس 53–69.
+ * الجملة كاملة ثابتة، والكلمة النشطة فقط تتغير إلى الذهبي.
+ */
+
+html[data-madrasati-exercise-typography="lesson64"]
+.unified-exercise-karaoke-v2 {
+  width: calc(100% - 24px) !important;
+
+  min-height: 92px !important;
+  height: auto !important;
+
+  margin: 10px auto 12px !important;
+  padding: 12px 18px !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  overflow: visible !important;
+
+  border-radius: 24px !important;
+}
+
+html[data-madrasati-exercise-typography="lesson64"]
+.unified-exercise-karaoke-v2__text {
+  width: 100% !important;
+  min-height: 58px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  position: static !important;
+
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+
+  align-items: center !important;
+  align-content: center !important;
+  justify-content: center !important;
+
+  column-gap: 0.32em !important;
+  row-gap: 3px !important;
+
+  direction: rtl !important;
+  text-align: center !important;
+
+  white-space: normal !important;
+  word-break: keep-all !important;
+
+  font-size: clamp(19px, 4.7vw, 27px) !important;
+  line-height: 1.75 !important;
+}
+
+html[data-madrasati-exercise-typography="lesson64"]
+.unified-exercise-karaoke-v2__text > * {
+  position: static !important;
+
+  display: inline-block !important;
+
+  inset: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+
+  flex: 0 0 auto !important;
+
+  margin: 0 !important;
+
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+}
+
+/*
+ * الهواتف ذات العرض الصغير:
+ * مساحة أكبر لسطرين أو ثلاثة دون تداخل.
+ */
+@media (max-width: 430px) {
+  html[data-madrasati-exercise-typography="lesson64"]
+  .unified-exercise-karaoke-v2 {
+    width: calc(100% - 18px) !important;
+
+    min-height: 104px !important;
+
+    padding: 12px 12px !important;
+  }
+
+  html[data-madrasati-exercise-typography="lesson64"]
+  .unified-exercise-karaoke-v2__text {
+    min-height: 72px !important;
+
+    font-size: clamp(18px, 5vw, 23px) !important;
+    line-height: 1.8 !important;
+
+    column-gap: 0.26em !important;
+    row-gap: 2px !important;
+  }
+}
+
+/* LESSON64_REFERENCE_KARAOKE_BOX_END */

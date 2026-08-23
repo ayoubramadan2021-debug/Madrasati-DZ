@@ -6,6 +6,7 @@ export const LESSON_31_CONTENT = {
   audio_base:
     "/audio/teachers/khalil/lesson_31_integrated_review",
 
+  exercisePath: "/lesson-v2/31/exercises",
   scenes: [
     {
       id: "s1_intro",

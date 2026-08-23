@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ProgressTestNode from "../features/progress-tests/components/ProgressTestNode";
+import AssessmentPlaceholderNode from "../features/progress-tests/components/AssessmentPlaceholderNode";
 import { getProgressTestStatus } from "../features/progress-tests/storage";
 import { isLessonCompleted } from "../features/lesson-v2/progress/lessonProgress";
 import { useLang } from "../i18n/LanguageContext";
@@ -12,6 +13,58 @@ import { NATURAL_RESERVE_WORLD_ID, naturalReserveIntroContent } from "../feature
 import { SMALL_CITY_WORLD_ID, smallCityWorldIntroContent } from "../features/world-intro/smallCityWorldIntro";
 import { SCHOOL_WORLD_ID, schoolWorldIntroContent } from "../features/world-intro/schoolWorldIntro";
 import { SKILLS_ACADEMY_WORLD_ID, skillsAcademyWorldIntroContent } from "../features/world-intro/skillsAcademyWorldIntro";
+
+type AssessmentPlaceholderPlanItem = {
+  id: string;
+  code: string;
+  kind: "PT" | "MT";
+  afterLocalLesson: number;
+};
+
+function getAssessmentPlaceholderPlan(
+  worldLessonCount: number
+): AssessmentPlaceholderPlanItem[] {
+  const plans: Record<number, AssessmentPlaceholderPlanItem[]> = {
+    32: [
+      { id: "w1-pt-01", code: "PT-01", kind: "PT", afterLocalLesson: 5 },
+      { id: "w1-pt-02", code: "PT-02", kind: "PT", afterLocalLesson: 10 },
+      { id: "w1-pt-03", code: "PT-03", kind: "PT", afterLocalLesson: 15 },
+      { id: "w1-pt-04", code: "PT-04", kind: "PT", afterLocalLesson: 20 },
+      { id: "w1-pt-05", code: "PT-05", kind: "PT", afterLocalLesson: 25 },
+      { id: "w1-pt-06", code: "PT-06", kind: "PT", afterLocalLesson: 30 },
+      { id: "w1-mt-01", code: "MT-01", kind: "MT", afterLocalLesson: 32 },
+    ],
+    20: [
+      { id: "w2-pt-01", code: "PT-01", kind: "PT", afterLocalLesson: 5 },
+      { id: "w2-pt-02", code: "PT-02", kind: "PT", afterLocalLesson: 10 },
+      { id: "w2-pt-03", code: "PT-03", kind: "PT", afterLocalLesson: 15 },
+      { id: "w2-mt-01", code: "MT-01", kind: "MT", afterLocalLesson: 20 },
+    ],
+    17: [
+      { id: "w3-pt-01", code: "PT-01", kind: "PT", afterLocalLesson: 5 },
+      { id: "w3-pt-02", code: "PT-02", kind: "PT", afterLocalLesson: 10 },
+      { id: "w3-pt-03", code: "PT-03", kind: "PT", afterLocalLesson: 15 },
+      { id: "w3-mt-01", code: "MT-01", kind: "MT", afterLocalLesson: 17 },
+    ],
+    16: [
+      { id: "w4-pt-01", code: "PT-01", kind: "PT", afterLocalLesson: 5 },
+      { id: "w4-pt-02", code: "PT-02", kind: "PT", afterLocalLesson: 10 },
+      { id: "w4-pt-03", code: "PT-03", kind: "PT", afterLocalLesson: 15 },
+      { id: "w4-mt-01", code: "MT-01", kind: "MT", afterLocalLesson: 16 },
+    ],
+    31: [
+      { id: "w5-pt-01", code: "PT-01", kind: "PT", afterLocalLesson: 5 },
+      { id: "w5-pt-02", code: "PT-02", kind: "PT", afterLocalLesson: 10 },
+      { id: "w5-pt-03", code: "PT-03", kind: "PT", afterLocalLesson: 15 },
+      { id: "w5-pt-04", code: "PT-04", kind: "PT", afterLocalLesson: 20 },
+      { id: "w5-pt-05", code: "PT-05", kind: "PT", afterLocalLesson: 25 },
+      { id: "w5-pt-06", code: "PT-06", kind: "PT", afterLocalLesson: 30 },
+      { id: "w5-mt-01", code: "MT-01", kind: "MT", afterLocalLesson: 31 },
+    ],
+  };
+
+  return plans[worldLessonCount] ?? [];
+}
 
 // نزع التشكيل + تحويل الكلمات الرقمية — للعرض في الفهرس فقط
 function cleanTitle(s: string): string {
@@ -69,6 +122,8 @@ function resolveWorldIntroContent(
 // false = lessons remain open while all PT/MT checkpoints are being built.
 // Later, replace this broad switch with segmented checkpoint gates.
 const ENABLE_PROGRESS_GATING = false;
+// TEMPORARY: keep PT/MT nodes clickable while assessment content is being built.
+const ENABLE_PROGRESS_TEST_NODE_LOCKS = false;
 
 export default function WorldPage() {
   const { t, lang } = useLang();
@@ -111,8 +166,66 @@ export default function WorldPage() {
   }, [worldId]);
 
   const lesson10Completed = isLessonCompleted("lesson10");
+  const pt01NodeUnlocked = !ENABLE_PROGRESS_TEST_NODE_LOCKS || lesson10Completed;
   const pt01BestScore = Number(pt01Record?.bestScore ?? 0);
   const pt01Passed = Boolean(pt01Record?.passed || pt01BestScore >= 70);
+
+  type Pt02Status = Awaited<ReturnType<typeof getProgressTestStatus>>;
+  const [pt02Record, setPt02Record] = useState<Pt02Status>(null);
+
+  useEffect(() => {
+    let active = true;
+
+    const refreshPt02 = async () => {
+      const status = await getProgressTestStatus("pt-02");
+      if (active) setPt02Record(status);
+    };
+
+    void refreshPt02();
+
+    const refresh = () => {
+      void refreshPt02();
+    };
+
+    window.addEventListener("focus", refresh);
+    window.addEventListener("storage", refresh);
+    window.addEventListener("taalim-dz:progress-test-completed", refresh);
+
+    return () => {
+      active = false;
+      window.removeEventListener("focus", refresh);
+      window.removeEventListener("storage", refresh);
+      window.removeEventListener("taalim-dz:progress-test-completed", refresh);
+    };
+  }, [worldId]);
+
+  const lesson20Completed = isLessonCompleted("lesson20");
+  const pt02NodeUnlocked = !ENABLE_PROGRESS_TEST_NODE_LOCKS || lesson20Completed;
+
+  type Mt01Status = Awaited<ReturnType<typeof getProgressTestStatus>>;
+  const [mt01Record, setMt01Record] = useState<Mt01Status>(null);
+
+  useEffect(() => {
+    let active = true;
+    const refreshMt01 = async () => {
+      const status = await getProgressTestStatus("mt-01");
+      if (active) setMt01Record(status);
+    };
+    void refreshMt01();
+    const refresh = () => { void refreshMt01(); };
+    window.addEventListener("focus", refresh);
+    window.addEventListener("storage", refresh);
+    window.addEventListener("taalim-dz:progress-test-completed", refresh);
+    return () => {
+      active = false;
+      window.removeEventListener("focus", refresh);
+      window.removeEventListener("storage", refresh);
+      window.removeEventListener("taalim-dz:progress-test-completed", refresh);
+    };
+  }, [worldId]);
+
+  const lesson32Completed = isLessonCompleted("lesson32");
+  const mt01NodeUnlocked = !ENABLE_PROGRESS_TEST_NODE_LOCKS || lesson32Completed;
 
 
   const introContent =
@@ -338,6 +451,26 @@ export default function WorldPage() {
                 </div>
               );
 
+              const assessmentPlaceholder =
+                getAssessmentPlaceholderPlan(lessons.length).find(
+                  (node) => node.afterLocalLesson === i + 1
+                );
+
+              if (assessmentPlaceholder) {
+                return (
+                  <div
+                    key={`assessment-placeholder-${assessmentPlaceholder.id}-${l.id}`}
+                    style={{ display: "contents" }}
+                  >
+                    {lessonCard}
+                    <AssessmentPlaceholderNode
+                      code={assessmentPlaceholder.code}
+                      kind={assessmentPlaceholder.kind}
+                    />
+                  </div>
+                );
+              }
+
               if (
                 worldId === SCHOOL_WORLD_ID
                 && k === "lesson10"
@@ -350,11 +483,68 @@ export default function WorldPage() {
                     {lessonCard}
 
                     <ProgressTestNode
-                      unlocked={lesson10Completed}
+                      code="PT-01"
+                      title="اختبار التقدم 1 — مغامرة الأعداد والحواس"
+                      lockedLabel="أكمل الدرس 10 لفتح الاختبار"
+                      unlocked={pt01NodeUnlocked}
                       record={pt01Record}
                       onOpen={() => {
-                        if (lesson10Completed) {
+                        if (pt01NodeUnlocked) {
                           navigate("/progress-test/pt-01");
+                        }
+                      }}
+                    />
+                  </div>
+                );
+              }
+
+              if (
+                worldId === SCHOOL_WORLD_ID
+                && k === "lesson20"
+              ) {
+                return (
+                  <div
+                    key={`lesson20-pt02-${l.id}`}
+                    style={{ display: "contents" }}
+                  >
+                    {lessonCard}
+
+                    <ProgressTestNode
+                      code="PT-02"
+                      title="اختبار التقدم 2 — مغامرة الحركة والصحة والأعداد"
+                      lockedLabel="أكمل الدرس 20 لفتح الاختبار"
+                      unlocked={pt02NodeUnlocked}
+                      record={pt02Record}
+                      onOpen={() => {
+                        if (pt02NodeUnlocked) {
+                          navigate("/progress-test/pt-02");
+                        }
+                      }}
+                    />
+                  </div>
+                );
+              }
+
+              if (
+                worldId === SCHOOL_WORLD_ID
+                && k === "lesson32"
+              ) {
+                return (
+                  <div
+                    key={`lesson32-mt01-${l.id}`}
+                    style={{ display: "contents" }}
+                  >
+                    {lessonCard}
+
+                    <ProgressTestNode
+                      code="MT-01"
+                      title="اختبار الإتقان 1 — حصيلة الأعداد والصحة والمسارات"
+                      lockedLabel="أكمل الدرس 32 لفتح اختبار الإتقان"
+                      unlocked={mt01NodeUnlocked}
+                      record={mt01Record}
+                      onOpen={() => {
+                        if (mt01NodeUnlocked) {
+                          navigate("/progress-test/mt-01");
                         }
                       }}
                     />
@@ -367,19 +557,7 @@ export default function WorldPage() {
           </div>
         )}
 
-        {!loading && (
-          <div style={{ marginTop: 28, padding: "22px 18px", background: "linear-gradient(145deg,rgba(232,160,32,.14),rgba(27,58,107,.18))", border: "1px solid var(--gold)33", borderRadius: 28, textAlign: "center" }}>
-            <div style={{ width: 60, height: 60, margin: "0 auto 12px", borderRadius: 18, background: "linear-gradient(135deg,#1B3A6B,#264a7d)", border: "2px solid var(--gold)", display: "grid", placeItems: "center", fontSize: 30, boxShadow: "0 4px 16px rgba(0,0,0,.25)" }}>🏆</div>
-            <div style={{ fontSize: 18, fontWeight: 900, color: "#fff", marginBottom: 5 }}>اِخْتَبِرْ مَعْرِفَتَك!</div>
-            <div style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 16 }}>🔒 اجتَزِ الاختبارَ لتفتحَ العالمَ التالي</div>
-            <button
-              onClick={() => navigate(`/world/${worldId}/quiz`)}
-              style={{ width: "100%", padding: 15, border: "none", borderRadius: 16, background: "linear-gradient(135deg,var(--gold),#F4B942)", color: "#1B3A6B", fontFamily: "Tajawal,sans-serif", fontSize: 16, fontWeight: 900, cursor: "pointer", boxShadow: "0 6px 20px rgba(232,160,32,.4)" }}
-            >
-              ابدأ اختبار العالم 🏆
-            </button>
-          </div>
-        )}
+
       </div>
     </div>
   );

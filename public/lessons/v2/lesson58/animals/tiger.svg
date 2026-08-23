@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <rect x="6" y="6" width="148" height="148" rx="28" fill="#ffffff" stroke="#E2B24D" stroke-width="5"/>
+  <circle cx="80" cy="64" r="38" fill="#FFF7E7"/>
+  <text x="80" y="80" text-anchor="middle" font-size="44">🐯</text>
+  <text x="80" y="130" text-anchor="middle" font-size="18" font-family="Arial">نمر</text>
+</svg>

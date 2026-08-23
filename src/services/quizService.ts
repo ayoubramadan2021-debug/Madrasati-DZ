@@ -24,7 +24,6 @@ export async function submitQuiz(
   await saveProgress(
     profile_id,
     lesson_id,
-    quiz_id,
     points,
     correct
   );

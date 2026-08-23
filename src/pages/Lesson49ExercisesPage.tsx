@@ -1,115 +1,97 @@
-import {
-  useState,
-} from "react";
+import type { CSSProperties } from "react";
 
-import LessonCompleteV2 from
-  "../features/lesson-v2/components/LessonCompleteV2";
-
-import FoodSourcesExerciseV2 from
-  "../features/lesson-v2/exercises-v2/FoodSourcesExerciseV2";
+import UnifiedLessonExercisesV2 from "../features/lesson-v2/exercises-v2/UnifiedLessonExercisesV2";
 
 import {
-  lesson49Exercise1,
-} from "../features/lesson-v2/content/lesson49_exercise1";
-
-import {
-  lesson49Exercise2,
-} from "../features/lesson-v2/content/lesson49_exercise2";
-
-import {
-  lesson49Exercise3,
-} from "../features/lesson-v2/content/lesson49_exercise3";
-
-import {
-  lesson49Exercise4,
-} from "../features/lesson-v2/content/lesson49_exercise4";
-
-const AUDIO_BASE =
-  "/audio/teachers/taline/lesson_49_food_sources/exercises";
-
-const WORLD_ID =
-  "5daed3bb-7e62-4a5a-93a1-f6dec60df810";
-
-const missions = [
-  {
-    title:
-      "المَهَمَّةُ الأُولَى: أُحَدِّدُ مَصْدَرَ الْغِذَاءِ",
-    items: lesson49Exercise1,
-  },
-
-  {
-    title:
-      "المَهَمَّةُ الثَّانِيَةُ: أُصَنِّفُ الْأَغْذِيَةَ",
-    items: lesson49Exercise2,
-  },
-
-  {
-    title:
-      "المَهَمَّةُ الثَّالِثَةُ: أَخْتَارُ الْوَجْبَةَ الصِّحِّيَّةَ",
-    items: lesson49Exercise3,
-  },
-
-  {
-    title:
-      "المَهَمَّةُ الرَّابِعَةُ: أُكَوِّنُ وَجْبَةً مُتَوَازِنَةً",
-    items: lesson49Exercise4,
-  },
-] as const;
-
-const LessonComplete =
-  LessonCompleteV2 as any;
+  LESSON_49_MISSION_TITLES,
+  LESSON_49_UNIFIED_AUDIO_BASE,
+  LESSON_49_UNIFIED_QUESTIONS,
+} from "../features/lesson-v2/content/lesson49_exercises_unified";
 
 export default function Lesson49ExercisesPage() {
-  const [missionIndex, setMissionIndex] =
-    useState(0);
-
-  const mission =
-    missions[missionIndex];
-
-  if (!mission) {
-    const nextPath =
-      "/world2-lesson/50";
-
-    const quizPath =
-      `/world/${WORLD_ID}/quiz`;
-
-    return (
-      <LessonComplete
-        title="أَحْسَنْتَ يَا بَطَلُ!"
-        subtitle="أَتْمَمْتَ تَمَارِينَ مَصَادِرِ الْأَغْذِيَةِ وَالْوَجْبَةِ الصِّحِّيَّةِ."
-        nextLessonPath={nextPath}
-        nextPath={nextPath}
-        quizPath={quizPath}
-        worldQuizPath={quizPath}
-        onNext={() => {
-          window.location.href =
-            nextPath;
-        }}
-        onReplay={() => {
-          setMissionIndex(0);
-        }}
-        onRetry={() => {
-          setMissionIndex(0);
-        }}
-        onWorldQuiz={() => {
-          window.location.href =
-            quizPath;
-        }}
-      />
-    );
-  }
-
   return (
-    <FoodSourcesExerciseV2
-      key={missionIndex}
-      items={mission.items}
-      audio_base={AUDIO_BASE}
-      missionTitle={mission.title}
-      onComplete={() => {
-        setMissionIndex(
-          (current) => current + 1,
-        );
-      }}
+    <UnifiedLessonExercisesV2
+      lessonKey="lesson49"
+      audioBase={LESSON_49_UNIFIED_AUDIO_BASE}
+      questions={LESSON_49_UNIFIED_QUESTIONS}
+      missionTitles={LESSON_49_MISSION_TITLES}
+      missionCount={4}
+      completionMessage="أَتْمَمْتَ تَمَارِينَ مَصَادِرِ الْأَغْذِيَةِ وَالْوَجْبَةِ الصِّحِّيَّةِ."
+      nextPath="/world2-lesson/50"
+      nextLabel="الدرس التالي"
+      renderActivity={({ question }) => renderImageActivity({ question })}
     />
   );
 }
+
+
+function renderImageActivity({
+  question,
+}: {
+  question: {
+    backgroundImage?: string;
+    activityLabel?: string;
+    prompt: string;
+  };
+}) {
+  return (
+    <div style={styles.activityWrap}>
+      {question.backgroundImage ? (
+        <img
+          src={question.backgroundImage}
+          alt={question.activityLabel ?? question.prompt}
+          style={styles.activityImage}
+        />
+      ) : (
+        <div style={styles.activityFallback}>🖼️</div>
+      )}
+
+      {question.activityLabel ? (
+        <div style={styles.activityBadge}>{question.activityLabel}</div>
+      ) : null}
+    </div>
+  );
+}
+
+const styles: Record<string, CSSProperties> = {
+  activityWrap: {
+    width: "100%",
+    height: "100%",
+    display: "grid",
+    placeItems: "center",
+    gap: 12,
+    padding: 14,
+    boxSizing: "border-box",
+  },
+  activityImage: {
+    width: "100%",
+    height: "100%",
+    objectFit: "contain",
+    borderRadius: 22,
+    display: "block",
+  },
+  activityBadge: {
+    marginTop: -6,
+    background: "rgba(255,248,236,.96)",
+    color: "#1B3A6B",
+    border: "2px solid #E8A020",
+    borderRadius: 999,
+    padding: "6px 14px",
+    fontWeight: 800,
+    fontSize: 14,
+    lineHeight: 1.2,
+    textAlign: "center",
+    boxShadow: "0 6px 14px rgba(0,0,0,.08)",
+  },
+  activityFallback: {
+    width: "100%",
+    height: "100%",
+    minHeight: 180,
+    borderRadius: 22,
+    display: "grid",
+    placeItems: "center",
+    background: "linear-gradient(135deg,#FFF8EC,#F8FBFF)",
+    color: "#1B3A6B",
+    fontSize: 42,
+  },
+};
