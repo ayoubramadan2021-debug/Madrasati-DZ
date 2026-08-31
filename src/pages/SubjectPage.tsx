@@ -5,6 +5,38 @@ import { useLang } from "../i18n/LanguageContext";
 import { getWorlds, getMyWorldProgress } from "../services/worldsService";
 import JourneyMap from "../shared/components/JourneyMap";
 
+
+const LOCAL_ARABIC_FAMILY_WORLD_ID = "arabic-family-local";
+
+const LOCAL_ARABIC_FAMILY_WORLD = {
+  id: LOCAL_ARABIC_FAMILY_WORLD_ID,
+  title: "عائلتي",
+  title_ar: "عائلتي",
+  title_fr: "Ma famille",
+  name: "عائلتي",
+  name_ar: "عائلتي",
+  name_fr: "Ma famille",
+  slug: "family",
+  subject: "arabic",
+  grade: 1,
+  grade_id: 1,
+  sort_order: 0,
+  order_index: 0,
+  position: 0,
+  icon: "🏡",
+  locked: false,
+  is_locked: false,
+  unlocked: true,
+};
+
+function isArabicFamilyWorld(w: any) {
+  const text = [
+    w?.title, w?.title_ar, w?.name, w?.name_ar,
+    w?.slug, w?.key, w?.world_key
+  ].filter(Boolean).join(" ").toLowerCase();
+  return text.includes("عائلتي") || text.includes("family");
+}
+
 const SUBJECT_COLORS: Record<string, string> = {
   math: "#22C55E", arabic: "#EF4444", french: "#3B82F6",
   islamic: "#A855F7", civic: "#F97316", science: "#06B6D4",
@@ -59,7 +91,15 @@ export default function SubjectPage() {
   useEffect(() => {
     if (!subject || !gradeId) return;
     getWorlds(subject, Number(gradeId))
-      .then((data) => setWorlds(data));
+      .then((data) => {
+        const rows = Array.isArray(data) ? data : [];
+        if (subject === "arabic" && Number(gradeId) === 1) {
+          const hasFamily = rows.some(isArabicFamilyWorld);
+          setWorlds(hasFamily ? rows : [LOCAL_ARABIC_FAMILY_WORLD, ...rows]);
+        } else {
+          setWorlds(rows);
+        }
+      });
     getMyWorldProgress()
       .then((p) => setProgress(p))
       .catch(() => {})
@@ -88,7 +128,14 @@ export default function SubjectPage() {
             worlds={worlds}
             progress={progress}
             lang={lang}
-            onOpen={(id) => navigate(`/world/${id}`)}
+            onOpen={(id) => {
+              const w = worlds.find((x: any) => String(x?.id) === String(id));
+              if (subject === "arabic" && Number(gradeId) === 1 && (String(id) === LOCAL_ARABIC_FAMILY_WORLD_ID || isArabicFamilyWorld(w))) {
+                navigate("/world/arabic-family-local");
+              } else {
+                navigate(`/world/${id}`);
+              }
+            }}
             onLocked={() => {
               if (!import.meta.env.DEV) {
                 setLockedOpen(true);

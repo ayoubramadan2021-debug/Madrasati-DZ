@@ -1489,3 +1489,38 @@ npm run dev -- --host 0.0.0.0
 - صوت MP3 + WordBoundary JSON للتعليمات.
 - Build ناجح.
 <!-- /TAALIM_DZ_PROGRESS_TESTS_V1_PT01 -->
+
+<!-- MADRASATI_W01_FAMILY_RELEASE_START -->
+## Arabic Grade 1 — World 1 «عائلتي» — Release checkpoint
+
+**Status:** World 1 complete and ready for release.
+
+- World: **عائلتي**
+- Local world route: `/world/arabic-family-local`
+- Scope: lessons **1–11**
+- Lesson 11: **أَصِفُ مَشْرُوعِي وَأُدْمِجُ**
+- Lesson 11 activities: **16 = 4×4**
+- Runtime: `UnifiedLessonExercisesV2` + `ArabicLanguageActivityKitV1`
+- Lesson 11 runtime is aligned with the validated Lesson 10 installation pattern.
+- Final-world completion:
+  - no **الدَّرْسُ التَّالِي**
+  - keep **العودة إلى عالم عائلتي**
+  - restart label = **إِعَادَةُ التَّطْبِيقَاتِ**
+- Arabic subject journey card keeps the family house icon **🏡**.
+
+### Next checkpoint — World 2 «المدرسة»
+Lessons **12–20**:
+12 أَحْمَدُ فِي الْمَدْرَسَةِ — م / ب
+13 بِسْمِ اللهِ
+14 فِي سَاحَةِ الْمَدْرَسَةِ — ر / ل
+15 الْحَمْدُ لِلَّهِ
+16 أَدَوَاتِي الْمَدْرَسِيَّةُ — ت / د
+17 سُورَةُ النَّاسِ
+18 بِطَاقَتِي الْمَدْرَسِيَّةُ
+19 مَدْرَسَتِي
+20 أُنْجِزُ مِحْفَظَتِي وَأُدْمِجُ
+
+Arabic letter lessons 12/14/16 use:
+context → isolate letter → precise pronunciation → animated drawing →
+valid positional forms → textbook vocabulary → reading/writing reinforcement.
+<!-- MADRASATI_W01_FAMILY_RELEASE_END -->

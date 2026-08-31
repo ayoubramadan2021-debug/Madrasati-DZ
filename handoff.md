@@ -92,3 +92,31 @@
 ### تحذير
 
 لا تعِد تشغيل سكريبتات توليد الصوت القديمة أو سكريبتات `WordBoundary` السابقة. النسخ الحالية هي المرجع المعتمد.
+
+<!-- MADRASATI_W01_FAMILY_HANDOFF_START -->
+# Handoff — Arabic Grade 1 / World 1 «عائلتي»
+
+World 1 is complete through Lesson 11 and is the current production-release checkpoint.
+
+## Preserve
+- lessons 1–11
+- Lesson 11 = 16 activities / 4 missions
+- unified engine contract
+- Lesson 10/11 validated runtime shell
+- final Lesson 11 card has only world return + restart
+- restart text = إِعَادَةُ التَّطْبِيقَاتِ
+- family world icon = 🏡
+
+## Next work
+World 2 = **المدرسة**, lessons 12–20.
+
+Letter-intensive Arabic lessons:
+- 12: م / ب
+- 14: ر / ل
+- 16: ت / د
+
+For letter lessons, accuracy and visual clarity are mandatory:
+word/context → target-word zoom → isolate letter → pronounce →
+animate correct Arabic stroke → show only valid joining forms →
+reinforce with textbook words → reading/writing/discrimination.
+<!-- MADRASATI_W01_FAMILY_HANDOFF_END -->

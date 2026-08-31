@@ -21,6 +21,30 @@ import Lesson52ExercisesPage from "./pages/Lesson52ExercisesPage";
 import ProgressTest01Page from "./pages/ProgressTest01Page";
 import ProgressTest02Page from "./pages/ProgressTest02Page";
 import MasteryTest01Page from "./pages/MasteryTest01Page";
+import ArabicLesson01Page from "./pages/ArabicLesson01Page";
+import IslamicLesson02Page from "./pages/IslamicLesson02Page";
+import ArabicLesson03Page from "./pages/ArabicLesson03Page";
+import ArabicLesson05Page from "./pages/ArabicLesson05Page";
+import IslamicLesson06Page from "./pages/IslamicLesson06Page";
+import ArabicLesson07Page from "./pages/ArabicLesson07Page";
+import IslamicLesson08Page from "./pages/IslamicLesson08Page";
+import IslamicLesson04Page from "./pages/IslamicLesson04Page";
+import ArabicLesson01ExercisesPage from "./pages/ArabicLesson01ExercisesPage";
+import IslamicLesson02ExercisesPage from "./pages/IslamicLesson02ExercisesPage";
+import ArabicLesson03ExercisesPage from "./pages/ArabicLesson03ExercisesPage";
+import IslamicLesson04ExercisesPage from "./pages/IslamicLesson04ExercisesPage";
+import ArabicLesson05ExercisesPage from "./pages/ArabicLesson05ExercisesPage";
+import IslamicLesson06ExercisesPage from "./pages/IslamicLesson06ExercisesPage";
+import ArabicLesson07ExercisesPage from "./pages/ArabicLesson07ExercisesPage";
+import IslamicLesson08ExercisesPage from "./pages/IslamicLesson08ExercisesPage";
+import CivicsLesson09ExercisesPage from "./pages/CivicsLesson09ExercisesPage";
+import ArabicLesson10ExercisesPage from "./pages/ArabicLesson10ExercisesPage";
+
+import ArabicLesson11ExercisesPage from "./pages/ArabicLesson11ExercisesPage";
+import ArabicFamilyWorldPage from "./pages/ArabicFamilyWorldPage";
+import CivicsLesson09Page from "./pages/CivicsLesson09Page";
+import ArabicLesson10Page from "./pages/ArabicLesson10Page";
+import ArabicLesson11Page from "./pages/ArabicLesson11Page";
 const lazy = (importFn: () => Promise<any>, title: string) => {
   const LazyComponent = React.lazy(importFn);
   return (
@@ -87,7 +111,16 @@ export default function App() {
         />
 
         <Route path="/lesson-v2/lesson52" element={<Lesson52Page />} />
-<Route path="/lesson-v2/:lessonId?" element={lazy(() => import("./pages/LessonV2Page"), "الدرس")} />
+<Route path="/lesson-v2/islamic/lesson02" element={<IslamicLesson02Page />} />
+        <Route path="/lesson-v2/arabic/lesson03" element={<ArabicLesson03Page />} />
+        <Route path="/lesson-v2/arabic/lesson05" element={<ArabicLesson05Page />} />
+        <Route path="/lesson-v2/islamic/lesson06" element={<IslamicLesson06Page />} />
+        <Route path="/lesson-v2/arabic/lesson07" element={<ArabicLesson07Page />} />
+        <Route path="/lesson-v2/islamic/lesson08" element={<IslamicLesson08Page />} />
+        <Route path="/lesson-v2/islamic/lesson04" element={<IslamicLesson04Page />} />
+        <Route path="/dev/ar/first-grade/world-01/lesson-03" element={<ArabicLesson03Page />} />
+        <Route path="/dev/islamic/first-grade/world-01/lesson-02" element={<IslamicLesson02Page />} />
+        <Route path="/lesson-v2/:lessonId?" element={lazy(() => import("./pages/LessonV2Page"), "الدرس")} />
         <Route path="/world2-lesson/52" element={<Lesson52Page />} />
 <Route path="/world2-lesson/:lessonId" element={lazy(() => import("./pages/World2LessonPage"), "درس عالم الألعاب")} />
 
@@ -98,6 +131,17 @@ export default function App() {
         />
 
         <Route path="/lesson-v2/52/exercises" element={<Lesson52ExercisesPage />} />
+        <Route path="/lesson-v2/arabic/lesson01/exercises" element={<ArabicLesson01ExercisesPage />} />
+        <Route path="/lesson-v2/islamic/lesson02/exercises" element={<IslamicLesson02ExercisesPage />} />
+        <Route path="/lesson-v2/arabic/lesson03/exercises" element={<ArabicLesson03ExercisesPage />} />
+        <Route path="/lesson-v2/islamic/lesson04/exercises" element={<IslamicLesson04ExercisesPage />} />
+        <Route path="/lesson-v2/arabic/lesson05/exercises" element={<ArabicLesson05ExercisesPage />} />
+        <Route path="/lesson-v2/islamic/lesson06/exercises" element={<IslamicLesson06ExercisesPage />} />
+        <Route path="/lesson-v2/arabic/lesson07/exercises" element={<ArabicLesson07ExercisesPage />} />
+        <Route path="/lesson-v2/islamic/lesson08/exercises" element={<IslamicLesson08ExercisesPage />} />
+        <Route path="/lesson-v2/civics/lesson09/exercises" element={<CivicsLesson09ExercisesPage />} />
+        <Route path="/lesson-v2/arabic/lesson10/exercises" element={<ArabicLesson10ExercisesPage />} />
+        <Route path="/lesson-v2/arabic/lesson11/exercises" element={<ArabicLesson11ExercisesPage />} />
         <Route path="/lesson-v2/:lessonId/exercises" element={lazy(() => import("./pages/LessonExercisesPage"), "التمارين")} />
         <Route path="/lesson-exercises" element={lazy(() => import("./pages/LessonExercisesPage"), "التمارين")} />
         <Route path="/lesson2-exercises" element={lazy(() => import("./pages/Lesson2ExercisesPage"), "تمارين الدرس 2")} />
@@ -170,9 +214,17 @@ export default function App() {
         <Route path="/lesson32-exercises" element={lazy(() => import("./pages/Lesson32ExercisesPage"), "تمارين الدرس 32")} />
         <Route path="/lesson-v2/lesson32/exercises" element={lazy(() => import("./pages/Lesson32ExercisesPage"), "تمارين الدرس 32")} />
 
+        <Route path="/lesson-v2/arabic/lesson01" element={<ArabicLesson01Page />} />
+        <Route path="/dev/ar/first-grade/world-01/lesson-01" element={<ArabicLesson01Page />} />
         <Route path="*" element={<Home />} />
 
-</Routes>
+        <Route path="/world/arabic-family-local" element={<ArabicFamilyWorldPage />} />
+
+        <Route path="/lesson-v2/civics/lesson09" element={<CivicsLesson09Page />} />
+              <Route path="/lesson-v2/arabic/lesson10" element={<ArabicLesson10Page />} />
+
+        <Route path="/lesson-v2/arabic/lesson11" element={<ArabicLesson11Page />} />
+      </Routes>
       <BottomNav />
     </Router>
   );
