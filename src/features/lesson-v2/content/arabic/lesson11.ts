@@ -37,7 +37,7 @@ const lesson11 = {
   world_id: "family",
   worldTitle: "عائلتي",
   sort_order: 11,
-  title: "أَصِفُ مَشْرُوعِي وَأُدْمِجُ",
+  title: "أصف مشروعي وأدمج",
   title_fr: "Mon projet et intégration",
   teacher: "taline-khalil",
   voice: "mixed",

@@ -2,12 +2,12 @@
   {
     "text": "مَرْحَبًا",
     "offset": 100,
-    "duration": 1066
+    "duration": 1015
   },
   {
     "text": "يَا",
-    "offset": 1166,
-    "duration": 355
+    "offset": 1115,
+    "duration": 406
   },
   {
     "text": "أَصْدِقَائِي!",
@@ -17,36 +17,36 @@
   {
     "text": "الْيَوْمَ",
     "offset": 2894,
-    "duration": 806
+    "duration": 796
   },
   {
     "text": "سَنَسْتَمِعُ",
-    "offset": 3700,
-    "duration": 1075
+    "offset": 3690,
+    "duration": 1034
   },
   {
     "text": "إِلَى",
-    "offset": 4775,
-    "duration": 448
+    "offset": 4724,
+    "duration": 477
   },
   {
     "text": "سُورَةِ",
-    "offset": 5222,
-    "duration": 627
+    "offset": 5202,
+    "duration": 636
   },
   {
     "text": "الْفَاتِحَةِ،",
-    "offset": 5849,
-    "duration": 1075
+    "offset": 5839,
+    "duration": 1114
   },
   {
     "text": "وَنُرَدِّدُهَا",
-    "offset": 6924,
-    "duration": 1254
+    "offset": 6953,
+    "duration": 1194
   },
   {
     "text": "لِنَحْفَظَهَا.",
-    "offset": 8178,
-    "duration": 1164
+    "offset": 8147,
+    "duration": 1194
   }
 ]

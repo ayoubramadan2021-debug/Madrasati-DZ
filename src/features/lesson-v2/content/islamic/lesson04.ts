@@ -7,7 +7,7 @@ export type IslamicSemanticHighlight = {
 
 export const lesson04CanonicalText = {
   s1: "مَرْحَبًا يَا أَصْدِقَائِي! الْيَوْمَ سَنَسْتَمِعُ إِلَى سُورَةِ الْفَاتِحَةِ، وَنُرَدِّدُهَا لِنَحْفَظَهَا.",
-  s2: "بِسْمِ اللَّهِ الرَّحْمَانِ الرَّحِيمِ. الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ. الرَّحْمَانِ الرَّحِيمِ. مَالِكِ يَوْمِ الدِّينِ. إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ. اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ. صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ. صَدَقَ اللَّهُ الْعَظِيمُ.",
+  s2: "بِسْمِ اللَّهِ الرَّحْمَانِ الرَّحِيمِ. الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ. الرَّحْمَانِ الرَّحِيمِ. مَالِكِ يَوْمِ الدِّينِ. إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ. اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ. صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ. غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ. صَدَقَ اللَّهُ الْعَظِيمُ.",
   s3: "أَحْسَنْتَ يَا فَاضِلُ! لِنَسْتَمِعْ جَيِّدًا، وَلْنُرَدِّدْ سُورَةَ الْفَاتِحَةِ.",
   s4: "فِي سُورَةِ الْفَاتِحَةِ نَحْمَدُ اللَّهَ عَلَى نِعَمِهِ.",
   s5: "وَنَقُولُ: إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ، أَيْ نَعْبُدُ اللَّهَ وَنَطْلُبُ عَوْنَهُ.",
@@ -112,7 +112,12 @@ const lesson04 = {
   },
   slides: [
     { scene: 1, scene_image: "/lessons/v2/islamic/lesson04/s1.webp", image: "/lessons/v2/islamic/lesson04/s1.webp", audio_key: "lesson04_s1", audioKey: "lesson04_s1", text: lesson04CanonicalText.s1, semanticHighlights: lesson04SemanticHighlights.s1, },
-    { scene: 2, scene_image: "/lessons/v2/islamic/lesson04/s2.webp", quran_layout: true, image: "/lessons/v2/islamic/lesson04/s2.webp", audio_key: "lesson04_s2", audioKey: "lesson04_s2", text: lesson04CanonicalText.s2, semanticHighlights: lesson04SemanticHighlights.s2, },
+    {
+      scene: 2, scene_image: "/lessons/v2/islamic/lesson04/s2.webp",
+      audio_key: "lesson04_s2", speaker: "khalil",
+      is_quran_card: true, quran_title: "سُورَةُ الْفَاتِحَةِ",
+      text: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ. الرَّحْمَٰنِ الرَّحِيمِ. مَالِكِ يَوْمِ الدِّينِ. إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ. اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ. صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ. غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ. صَدَقَ اللَّهُ الْعَظِيمُ."
+    },
     { scene: 3, scene_image: "/lessons/v2/islamic/lesson04/s3.webp", image: "/lessons/v2/islamic/lesson04/s3.webp", audio_key: "lesson04_s3", audioKey: "lesson04_s3", text: lesson04CanonicalText.s3, semanticHighlights: lesson04SemanticHighlights.s3, },
     { scene: 4, scene_image: "/lessons/v2/islamic/lesson04/s4.webp", image: "/lessons/v2/islamic/lesson04/s4.webp", audio_key: "lesson04_s4", audioKey: "lesson04_s4", text: lesson04CanonicalText.s4, semanticHighlights: lesson04SemanticHighlights.s4, },
     { scene: 5, scene_image: "/lessons/v2/islamic/lesson04/s5.webp", image: "/lessons/v2/islamic/lesson04/s5.webp", audio_key: "lesson04_s5", audioKey: "lesson04_s5", text: lesson04CanonicalText.s5, semanticHighlights: lesson04SemanticHighlights.s5, },

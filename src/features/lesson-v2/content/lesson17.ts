@@ -7,9 +7,7 @@ export const LESSON_17_CONTENT = {
     sort_order: 17,
     template_version: 2,
   },
-
   audio_base: "/audio/lesson_17_info",
-
   scenes: [
     {
       scene_image: "/lessons/v2/lesson17-info/s1.webp",
@@ -45,3 +43,4 @@ export const LESSON_17_CONTENT = {
     },
   ],
 };
+export default LESSON_17_CONTENT;

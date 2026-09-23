@@ -1,47 +1,70 @@
 export const LESSON_15_CONTENT = {
-  metadata: {
-    title_ar: "أُعَيِّنُ الرُّتْبَةَ بِالعَدَدِ",
-    title_fr: "J’indique le rang avec le nombre",
-    subject: "math",
-    grade: 1,
-    sort_order: 15,
-    template_version: 2,
-  },
-
-  audio_base: "/audio/lesson_15_order_rank",
-
-  scenes: [
+  id: 15,
+  lesson: 15,
+  lessonKey: "islamic-w02-u04",
+  world_lesson: 4,
+  num: 4,
+  title: "أُحِبُّ دِينِي: الْحَمْدُ لِلَّهِ",
+  title_fr: "",
+  subject: "التربية الإسلامية",
+  subjectId: "islamic",
+  grade: 1,
+  world_id: "school",
+  world: "مدرستي",
+  teacher: "taline-khalil",
+  voice: "mixed",
+  audio_base: "/audio/v2/islamic/lesson15",
+  exercisePath: "/lesson-v2/islamic/lesson15/exercises",
+  objectives: ["أن يتعلم التلميذ قول الحمد لله.", "أن يشكر الله على نعمه."],
+  slides: [
     {
-      scene_image: "/lessons/v2/lesson15-order/s1.webp",
-      audio_key: "s1_intro",
-      text: "مَرْحَبًا أَطْفَالِي. اليَوْمَ سَنَتَعَلَّمُ كَيْفَ نَسْتَعْمِلُ العَدَّ لِمَعْرِفَةِ رُتْبَةِ الشَّيْءِ.",
+        "scene": 1,
+        "scene_image": "/lessons/v2/lesson15/s1.webp",
+        "audio_key": "lesson15_s1",
+        "text": "مَرْحَبًا يَا أَصْدِقَائِي، نَحْنُ الْيَوْمَ فِي سَاحَةِ الْمَدْرَسَةِ.",
+        "semantic": "[]"
     },
     {
-      scene_image: "/lessons/v2/lesson15-order/s2.webp",
-      audio_key: "s2_train_fourth",
-      text: "نَعُدُّ عَرَبَاتِ القِطَارِ مِنَ الأَوَّلِ إِلَى الأَخِيرِ. العَرَبَةُ الخَضْرَاءُ فِي الرُّتْبَةِ الرَّابِعَةِ.",
+        "scene": 2,
+        "scene_image": "/lessons/v2/lesson15/s2.webp",
+        "audio_key": "lesson15_s2",
+        "text": "هَلْ تَعْلَمُونَ أَنَّ اللَّهَ خَلَقَنَا وَأَعْطَانَا نِعَمًا كَثِيرَةً؟",
+        "semantic": "[]"
     },
     {
-      scene_image: "/lessons/v2/lesson15-order/s3.webp",
-      audio_key: "s3_cards_order",
-      text: "نُرَتِّبُ البِطَاقَاتِ مِنَ الأُولَى إِلَى الأَخِيرَةِ. نَسْتَعْمِلُ العَدَّ لِمَعْرِفَةِ رُتْبَةِ كُلِّ بِطَاقَةٍ.",
+        "scene": 3,
+        "scene_image": "/lessons/v2/lesson15/s3.webp",
+        "audio_key": "lesson15_s3",
+        "text": "لِذَلِكَ، يَجِبُ أَنْ نَشْكُرَ اللَّهَ دَائِمًا.",
+        "semantic": "[]"
     },
     {
-      scene_image: "/lessons/v2/lesson15-order/s4.webp",
-      audio_key: "s4_race_positions",
-      text: "فِي السِّبَاقِ نُرَتِّبُ السَّيَّارَاتِ. هَذِهِ السَّيَّارَةُ الحَمْرَاءُ فِي الرُّتْبَةِ الأُولَى.",
+        "scene": 4,
+        "scene_image": "/lessons/v2/lesson15/s4.webp",
+        "audio_key": "lesson15_s4",
+        "text": "نَقُولُ دَائِمًا: الْحَمْدُ لِلَّهِ.",
+        "semantic": "[]"
     },
     {
-      scene_image: "/lessons/v2/lesson15-order/s5.webp",
-      audio_key: "s5_sequence",
-      text: "عِنْدَمَا نَعْرِفُ التَّرْتِيبَ، نَسْتَطِيعُ إِكْمَالَ الأَمَاكِنِ النَّاقِصَةِ فِي السِّلْسِلَةِ.",
+        "scene": 5,
+        "scene_image": "/lessons/v2/lesson15/s5.webp",
+        "audio_key": "lesson15_s5",
+        "text": "الْحَمْدُ لِلَّهِ عَلَى نِعْمَةِ الصِّحَّةِ، وَالْحَمْدُ لِلَّهِ عَلَى نِعْمَةِ الْأُسْرَةِ.",
+        "semantic": "[]"
     },
     {
-      scene_image: "/lessons/v2/lesson15-order/s6.webp",
-      audio_key: "s6_closing",
-      text: "أَحْسَنْتُمْ. تَعَلَّمْنَا أَنَّنَا نَسْتَعْمِلُ العَدَّ لِمَعْرِفَةِ الرُّتْبَةِ فِي القِطَارِ وَالسِّبَاقِ وَالسِّلْسِلَةِ.",
-      is_closing: true,
-      cta_text: "هَيَّا نَتَدَرَّب ←",
+        "scene": 6,
+        "scene_image": "/lessons/v2/lesson15/s6.webp",
+        "audio_key": "lesson15_s6",
+        "text": "أَحْسَنْتُمْ يَا أَطْفَالُ! الْمُسْلِمُ يَحْمَدُ اللَّهَ فِي كُلِّ وَقْتٍ.",
+        "semantic": "[]"
     },
-  ],
+    {
+        "scene": 7,
+        "scene_image": "/lessons/v2/lesson15/s7.webp",
+        "audio_key": "lesson15_s7",
+        "text": "لَقَدْ تَعَلَّمْنَا الْيَوْمَ قَوْلَ الْحَمْدُ لِلَّهِ. هَيَّا إِلَى النَّشَاطَاتِ!",
+        "semantic": "[]"
+    }
+]
 };

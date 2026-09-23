@@ -1,4 +1,22 @@
+
+
+window.onerror = function(message, source, lineno, colno, error) {
+  document.body.innerHTML = `
+  <div style="padding:20px;color:red;direction:ltr;font-size:16px">
+  <h2>RUNTIME ERROR</h2>
+  <pre>${message}<br>${source}:${lineno}:${colno}<br>${error?.stack || ""}</pre>
+  </div>`;
+};
+
+window.onunhandledrejection = function(event) {
+  document.body.innerHTML = `
+  <div style="padding:20px;color:red;direction:ltr;font-size:16px">
+  <h2>PROMISE ERROR</h2>
+  <pre>${event.reason?.stack || event.reason}</pre>
+  </div>`;
+};
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ArabicLesson20Page from "./pages/ArabicLesson20Page";
 import React, { Suspense } from "react";
 import Home from "./pages/Home";
 import AiTutorPage from "./pages/AiTutorPage";
@@ -45,6 +63,15 @@ import ArabicFamilyWorldPage from "./pages/ArabicFamilyWorldPage";
 import CivicsLesson09Page from "./pages/CivicsLesson09Page";
 import ArabicLesson10Page from "./pages/ArabicLesson10Page";
 import ArabicLesson11Page from "./pages/ArabicLesson11Page";
+import ArabicSchoolWorldPage from "./pages/ArabicSchoolWorldPage";
+import ArabicLesson12Page from "./pages/ArabicLesson12Page";
+import ArabicLesson13Page from "./pages/ArabicLesson13Page";
+import IslamicLesson15Page from "./pages/IslamicLesson15Page";
+import IslamicLesson17Page from "./pages/IslamicLesson17Page";
+import ArabicLesson14Page from "./pages/ArabicLesson14Page";
+import ArabicLesson16Page from "./pages/ArabicLesson16Page";
+import ArabicLesson18Page from "./pages/ArabicLesson18Page";
+import ArabicLesson19Page from "./pages/ArabicLesson19Page";
 const lazy = (importFn: () => Promise<any>, title: string) => {
   const LazyComponent = React.lazy(importFn);
   return (
@@ -57,7 +84,8 @@ const lazy = (importFn: () => Promise<any>, title: string) => {
 export default function App() {
   return (
     <Router>
-      <Routes>
+
+        <Routes>
         <Route path="/lesson-v2/progress-test-pt-01" element={<ProgressTest01Page />} />
         <Route path="/lesson-v2/progress-test-pt-02" element={<ProgressTest02Page />} />
         <Route path="/lesson-v2/progress-test-mt-01" element={<MasteryTest01Page />} />
@@ -72,43 +100,35 @@ export default function App() {
 
         <Route
           path="/lesson-v2/lesson48"
-          element={<Lesson48Page />}
-        />
+          element={<Lesson48Page />} />
 
         <Route
           path="/lesson-v2/lesson49"
-          element={<Lesson49Page />}
-        />
+          element={<Lesson49Page />} />
 
         <Route
           path="/lesson-v2/lesson50"
-          element={<Lesson50Page />}
-        />
+          element={<Lesson50Page />} />
 
         <Route
           path="/lesson-v2/lesson51"
-          element={<Lesson51Page />}
-        />
+          element={<Lesson51Page />} />
 
         <Route
           path="/lesson-v2/lesson48/exercises"
-          element={<Lesson48ExercisesPage />}
-        />
+          element={<Lesson48ExercisesPage />} />
 
         <Route
           path="/lesson-v2/49/exercises"
-          element={<Lesson49ExercisesPage />}
-        />
+          element={<Lesson49ExercisesPage />} />
 
         <Route
           path="/lesson-v2/50/exercises"
-          element={<Lesson50ExercisesPage />}
-        />
+          element={<Lesson50ExercisesPage />} />
 
         <Route
           path="/lesson-v2/51/exercises"
-          element={<Lesson51ExercisesPage />}
-        />
+          element={<Lesson51ExercisesPage />} />
 
         <Route path="/lesson-v2/lesson52" element={<Lesson52Page />} />
 <Route path="/lesson-v2/islamic/lesson02" element={<IslamicLesson02Page />} />
@@ -127,8 +147,7 @@ export default function App() {
 
         <Route
           path="/lesson-v2/48/exercises"
-          element={<Lesson48ExercisesPage />}
-        />
+          element={<Lesson48ExercisesPage />} />
 
         <Route path="/lesson-v2/52/exercises" element={<Lesson52ExercisesPage />} />
         <Route path="/lesson-v2/arabic/lesson01/exercises" element={<ArabicLesson01ExercisesPage />} />
@@ -142,6 +161,14 @@ export default function App() {
         <Route path="/lesson-v2/civics/lesson09/exercises" element={<CivicsLesson09ExercisesPage />} />
         <Route path="/lesson-v2/arabic/lesson10/exercises" element={<ArabicLesson10ExercisesPage />} />
         <Route path="/lesson-v2/arabic/lesson11/exercises" element={<ArabicLesson11ExercisesPage />} />
+        <Route path="/lesson-v2/arabic/lesson12" element={<ArabicLesson12Page />} />
+        <Route path="/lesson-v2/arabic/lesson13" element={<ArabicLesson13Page />} />
+        <Route path="/lesson-v2/islamic/lesson15" element={<IslamicLesson15Page />} />
+        <Route path="/lesson-v2/islamic/lesson17" element={<IslamicLesson17Page />} />
+        <Route path="/lesson-v2/arabic/lesson14" element={<ArabicLesson14Page />} />
+        <Route path="/lesson-v2/arabic/lesson16" element={<ArabicLesson16Page />} />        <Route path="/lesson-v2/arabic/lesson18" element={<ArabicLesson18Page />} />
+        <Route path="/lesson-v2/arabic/lesson19" element={<ArabicLesson19Page />} />
+        <Route path="/lesson-v2/arabic/lesson20" element={<ArabicLesson20Page />} />
         <Route path="/lesson-v2/:lessonId/exercises" element={lazy(() => import("./pages/LessonExercisesPage"), "التمارين")} />
         <Route path="/lesson-exercises" element={lazy(() => import("./pages/LessonExercisesPage"), "التمارين")} />
         <Route path="/lesson2-exercises" element={lazy(() => import("./pages/Lesson2ExercisesPage"), "تمارين الدرس 2")} />
@@ -219,12 +246,13 @@ export default function App() {
         <Route path="*" element={<Home />} />
 
         <Route path="/world/arabic-family-local" element={<ArabicFamilyWorldPage />} />
+        <Route path="/world/arabic-school-local" element={<ArabicSchoolWorldPage />} />
 
         <Route path="/lesson-v2/civics/lesson09" element={<CivicsLesson09Page />} />
               <Route path="/lesson-v2/arabic/lesson10" element={<ArabicLesson10Page />} />
 
         <Route path="/lesson-v2/arabic/lesson11" element={<ArabicLesson11Page />} />
-      </Routes>
+</Routes>
       <BottomNav />
     </Router>
   );

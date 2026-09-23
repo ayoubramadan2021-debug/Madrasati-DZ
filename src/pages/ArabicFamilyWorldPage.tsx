@@ -749,7 +749,7 @@ export default function ArabicFamilyWorldPage() {
                 "0 1px 0 #17365F, 1px 0 0 #17365F, -1px 0 0 #17365F, 0 -1px 0 #17365F",
             }}
           >
-            قَسَمًا
+            قسما
           </div>
         </div>
 
@@ -815,7 +815,7 @@ export default function ArabicFamilyWorldPage() {
                 "0 1px 0 #17365F, 1px 0 0 #17365F, -1px 0 0 #17365F, 0 -1px 0 #17365F",
             }}
           >
-            أَصِفُ مَشْرُوعِي وَأُدْمِجُ
+            أصف مشروعي وأدمج
           </div>
         </div>
 

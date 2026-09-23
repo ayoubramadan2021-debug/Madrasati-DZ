@@ -37,6 +37,45 @@ function isArabicFamilyWorld(w: any) {
   return text.includes("عائلتي") || text.includes("family");
 }
 
+/* MADRASATI_W02_SCHOOL_LOCAL_START */
+const LOCAL_ARABIC_SCHOOL_WORLD_ID = "arabic-school-local";
+const LOCAL_ARABIC_SCHOOL_WORLD = {
+  id: LOCAL_ARABIC_SCHOOL_WORLD_ID,
+  title: "مدرستي",
+  title_ar: "مدرستي",
+  title_fr: "Mon école",
+  name: "مدرستي",
+  name_ar: "مدرستي",
+  name_fr: "Mon école",
+  slug: "school",
+  subject: "arabic",
+  grade: 1,
+  grade_id: 1,
+  sort_order: 1,
+  order_index: 1,
+  position: 1,
+  icon: "🏫",
+  locked: false,
+  is_locked: false,
+  unlocked: true,
+};
+
+function isArabicSchoolWorld(w: any) {
+  const text = [
+    w?.id, w?.title, w?.title_ar, w?.name, w?.name_ar,
+    w?.slug, w?.key, w?.world_key
+  ].filter(Boolean).join(" ").toLowerCase();
+
+  return (
+    text.includes("مدرستي") ||
+    text.includes("المدرسة") ||
+    text.includes("school") ||
+    text.includes("arabic-school-local")
+  );
+}
+/* MADRASATI_W02_SCHOOL_LOCAL_END */
+
+
 const SUBJECT_COLORS: Record<string, string> = {
   math: "#22C55E", arabic: "#EF4444", french: "#3B82F6",
   islamic: "#A855F7", civic: "#F97316", science: "#06B6D4",
@@ -94,8 +133,14 @@ export default function SubjectPage() {
       .then((data) => {
         const rows = Array.isArray(data) ? data : [];
         if (subject === "arabic" && Number(gradeId) === 1) {
-          const hasFamily = rows.some(isArabicFamilyWorld);
-          setWorlds(hasFamily ? rows : [LOCAL_ARABIC_FAMILY_WORLD, ...rows]);
+          /* MADRASATI_W02_SCHOOL_SETWORLDS_START */
+          const familyRow =
+            rows.find(isArabicFamilyWorld) || LOCAL_ARABIC_FAMILY_WORLD;
+          const otherRows = rows.filter(
+            (w: any) => !isArabicFamilyWorld(w) && !isArabicSchoolWorld(w)
+          );
+          setWorlds([familyRow, LOCAL_ARABIC_SCHOOL_WORLD, ...otherRows]);
+          /* MADRASATI_W02_SCHOOL_SETWORLDS_END */
         } else {
           setWorlds(rows);
         }

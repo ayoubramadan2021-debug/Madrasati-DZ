@@ -1,3 +1,5 @@
+import ARABIC_LESSON19_REPAIRED from "../features/lesson-v2/content/arabic/lesson19";
+import ARABIC_LESSON20 from "../features/lesson-v2/content/arabic/lesson20";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import WorldIntroSceneV2 from "../features/exercises/templates/WorldIntroSceneV2";
@@ -15,12 +17,10 @@ import { LESSON_11_CONTENT } from "../features/lesson-v2/content/lesson11";
 import { LESSON_12_CONTENT } from "../features/lesson-v2/content/lesson12";
 import { LESSON_13_CONTENT } from "../features/lesson-v2/content/lesson13";
 import { LESSON_14_CONTENT } from "../features/lesson-v2/content/lesson14";
-import { LESSON_15_CONTENT } from "../features/lesson-v2/content/lesson15";
 import { LESSON_16_CONTENT } from "../features/lesson-v2/content/lesson16";
 import { LESSON_17_CONTENT } from "../features/lesson-v2/content/lesson17";
 import { LESSON_18_CONTENT } from "../features/lesson-v2/content/lesson18";
-import { LESSON_19_CONTENT } from "../features/lesson-v2/content/lesson19";
-import { LESSON_20_CONTENT } from "../features/lesson-v2/content/lesson20";
+// LESSON_19_CONTENT removed - using arabic lesson19 module
 import { LESSON_21_CONTENT } from "../features/lesson-v2/content/lesson21";
 import { LESSON_22_CONTENT } from "../features/lesson-v2/content/lesson22";
 import { LESSON_23_CONTENT } from "../features/lesson-v2/content/lesson23";
@@ -108,6 +108,7 @@ type LessonV2ContentEntry = {
   slides?: unknown;
 };
 
+
 const LESSONS_MAP: Record<string, LessonV2ContentEntry> = {
   lesson1: LESSON_1_CONTENT,
   lesson2: LESSON_2_CONTENT,
@@ -123,12 +124,13 @@ const LESSONS_MAP: Record<string, LessonV2ContentEntry> = {
   lesson12: LESSON_12_CONTENT,
   lesson13: LESSON_13_CONTENT,
   lesson14: LESSON_14_CONTENT,
-  lesson15: LESSON_15_CONTENT,
   lesson16: LESSON_16_CONTENT,
   lesson17: LESSON_17_CONTENT,
   lesson18: LESSON_18_CONTENT,
-  lesson19: LESSON_19_CONTENT,
-  lesson20: LESSON_20_CONTENT,
+  lesson19: ARABIC_LESSON19_REPAIRED,
+  lesson20: ARABIC_LESSON20,
+
+
   lesson21: LESSON_21_CONTENT,
   lesson22: LESSON_22_CONTENT,
   lesson23: LESSON_23_CONTENT,
