@@ -38,7 +38,7 @@ function isArabicFamilyWorld(w: any) {
 }
 
 /* MADRASATI_W02_SCHOOL_LOCAL_START */
-const LOCAL_ARABIC_SCHOOL_WORLD_ID = "arabic-school-local";
+const LOCAL_ARABIC_SCHOOL_WORLD_ID = "83975f07-bdaf-4991-9f96-27d954519f06";
 const LOCAL_ARABIC_SCHOOL_WORLD = {
   id: LOCAL_ARABIC_SCHOOL_WORLD_ID,
   title: "مدرستي",
