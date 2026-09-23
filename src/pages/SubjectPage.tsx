@@ -70,7 +70,7 @@ function isArabicSchoolWorld(w: any) {
     text.includes("مدرستي") ||
     text.includes("المدرسة") ||
     text.includes("school") ||
-    text.includes("arabic-school-local")
+    text.includes("83975f07-bdaf-4991-9f96-27d954519f06")
   );
 }
 /* MADRASATI_W02_SCHOOL_LOCAL_END */
