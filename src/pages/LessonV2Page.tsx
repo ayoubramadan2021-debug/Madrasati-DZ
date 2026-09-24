@@ -1,5 +1,11 @@
-import ARABIC_LESSON19_REPAIRED from "../features/lesson-v2/content/arabic/lesson19";
+import ARABIC_LESSON12 from "../features/lesson-v2/content/arabic/lesson12";
+import ARABIC_LESSON13 from "../features/lesson-v2/content/arabic/lesson13";
+import ARABIC_LESSON14 from "../features/lesson-v2/content/arabic/lesson14";
+import ARABIC_LESSON16 from "../features/lesson-v2/content/arabic/lesson16";
+import ARABIC_LESSON18 from "../features/lesson-v2/content/arabic/lesson18";
+import ARABIC_LESSON19 from "../features/lesson-v2/content/arabic/lesson19";
 import ARABIC_LESSON20 from "../features/lesson-v2/content/arabic/lesson20";
+import ARABIC_LESSON19_REPAIRED from "../features/lesson-v2/content/arabic/lesson19";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import WorldIntroSceneV2 from "../features/exercises/templates/WorldIntroSceneV2";
@@ -121,14 +127,19 @@ const LESSONS_MAP: Record<string, LessonV2ContentEntry> = {
   lesson9: LESSON_9_CONTENT,
   lesson10: LESSON_10_CONTENT,
   lesson11: LESSON_11_CONTENT,
-  lesson12: LESSON_12_CONTENT,
+  lesson12: ARABIC_LESSON12,
+  lesson13: ARABIC_LESSON13,
+  lesson14: ARABIC_LESSON14,
+  lesson16: ARABIC_LESSON16,
+  lesson18: ARABIC_LESSON18,
+  lesson19: ARABIC_LESSON19,
+  lesson20: ARABIC_LESSON20,
   lesson13: LESSON_13_CONTENT,
   lesson14: LESSON_14_CONTENT,
   lesson16: LESSON_16_CONTENT,
   lesson17: LESSON_17_CONTENT,
   lesson18: LESSON_18_CONTENT,
   lesson19: ARABIC_LESSON19_REPAIRED,
-  lesson20: ARABIC_LESSON20,
 
 
   lesson21: LESSON_21_CONTENT,
