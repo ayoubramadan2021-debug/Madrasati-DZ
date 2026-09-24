@@ -134,11 +134,7 @@ const LESSONS_MAP: Record<string, LessonV2ContentEntry> = {
   lesson18: ARABIC_LESSON18,
   lesson19: ARABIC_LESSON19,
   lesson20: ARABIC_LESSON20,
-  lesson13: LESSON_13_CONTENT,
-  lesson14: LESSON_14_CONTENT,
-  lesson16: LESSON_16_CONTENT,
   lesson17: LESSON_17_CONTENT,
-  lesson18: LESSON_18_CONTENT,
   lesson19: ARABIC_LESSON19_REPAIRED,
 
 
