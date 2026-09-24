@@ -334,6 +334,8 @@ export default function WorldPage() {
               // lessons (e.g. 33–42) are not resolved by the V2 registry.
               const currentWorldId = String(world?.id ?? worldId ?? "");
               const isSchoolWorld = currentWorldId === SCHOOL_WORLD_ID;
+              const isArabicMadrasatiWorld =
+                currentWorldId === "83975f07-bdaf-4991-9f96-27d954519f06";
 
               const isAfterPt01Locked =
                 ENABLE_PROGRESS_GATING
