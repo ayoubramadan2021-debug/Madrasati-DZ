@@ -55,3 +55,4 @@ finalize_and_push_lesson46.sh
 
 # Local lesson repair files
 finish_lesson46_git_push.sh
+.backup-before-fix/

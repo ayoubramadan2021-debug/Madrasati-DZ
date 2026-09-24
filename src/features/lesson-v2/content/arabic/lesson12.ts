@@ -10,7 +10,7 @@ const arabicLesson12 = {
   title: "فَاضِلٌ فِي الْمَدْرَسَةِ",
   audio_base: "/audio/v2/arabic/lesson12",
   exercisePath: "/lesson-v2/arabic/lesson12/exercises",
-  returnPath: "/world/arabic-school-local",
+  returnPath: "/world/83975f07-bdaf-4991-9f96-27d954519f06",
   teacher_voice: "ar-DZ-AminaNeural",
   teacher_rate: "-10%",
 

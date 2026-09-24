@@ -22,8 +22,11 @@ type AssessmentPlaceholderPlanItem = {
 };
 
 function getAssessmentPlaceholderPlan(
-  worldLessonCount: number
+  worldLessonCount: number,
+  currentWorldId?: string
 ): AssessmentPlaceholderPlanItem[] {
+  // School world: sequential progress only — no PT/MT gates
+  if (currentWorldId === SCHOOL_WORLD_ID) return [];
   const plans: Record<number, AssessmentPlaceholderPlanItem[]> = {
     32: [
       { id: "w1-pt-01", code: "PT-01", kind: "PT", afterLocalLesson: 5 },
@@ -452,7 +455,7 @@ export default function WorldPage() {
               );
 
               const assessmentPlaceholder =
-                getAssessmentPlaceholderPlan(lessons.length).find(
+                getAssessmentPlaceholderPlan(lessons.length, currentWorldId).find(
                   (node) => node.afterLocalLesson === i + 1
                 );
 
@@ -472,7 +475,7 @@ export default function WorldPage() {
               }
 
               if (
-                worldId === SCHOOL_WORLD_ID
+                worldId === "SCHOOL-PT-DISABLED" /* PT/MT removed from school world */
                 && k === "lesson10"
               ) {
                 return (
@@ -499,7 +502,7 @@ export default function WorldPage() {
               }
 
               if (
-                worldId === SCHOOL_WORLD_ID
+                worldId === "SCHOOL-PT-DISABLED" /* PT/MT removed from school world */
                 && k === "lesson20"
               ) {
                 return (
@@ -526,7 +529,7 @@ export default function WorldPage() {
               }
 
               if (
-                worldId === SCHOOL_WORLD_ID
+                worldId === "SCHOOL-PT-DISABLED" /* PT/MT removed from school world */
                 && k === "lesson32"
               ) {
                 return (
