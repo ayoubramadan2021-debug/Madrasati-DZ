@@ -466,9 +466,11 @@ export default function WorldPage() {
               );
 
               const assessmentPlaceholder =
-                getAssessmentPlaceholderPlan(lessons.length, currentWorldId).find(
-                  (node) => node.afterLocalLesson === i + 1
-                );
+                currentWorldId === "83975f07-bdaf-4991-9f96-27d954519f06"
+                  ? null
+                  : getAssessmentPlaceholderPlan(lessons.length, currentWorldId).find(
+                      (node) => node.afterLocalLesson === i + 1
+                    );
 
               if (assessmentPlaceholder) {
                 return (

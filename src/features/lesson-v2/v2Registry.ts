@@ -68,6 +68,27 @@ export function getV2Key(lessonId: string): string | null {
 export function getV2KeyByLesson(
   lesson: any
 ): string | null {
+
+  // MADRASATI WORLD: Arabic + Islamic + Civic
+  // This world uses local ordering:
+  // 1->lesson12 ... 9->lesson20
+  if (
+    lesson?.world_id === "83975f07-bdaf-4991-9f96-27d954519f06"
+  ) {
+    const madrasatiLessons: Record<number, string> = {
+      1: "lesson12",
+      2: "lesson13",
+      3: "lesson14",
+      4: "lesson15",
+      5: "lesson16",
+      6: "lesson17",
+      7: "lesson18",
+      8: "lesson19",
+      9: "lesson20",
+    };
+
+    return madrasatiLessons[Number(lesson?.sort_order)] ?? null;
+  }
   let parsedContent: any = lesson?.content ?? null;
 
   if (typeof parsedContent === "string") {
@@ -108,6 +129,26 @@ export function getV2KeyByLesson(
 
   if (byId) {
     return byId;
+  }
+
+  // MADRASATI ARABIC WORLD ROUTING
+  // world_id: 83975f07-bdaf-4991-9f96-27d954519f06
+  if (
+    lesson?.world_id === "83975f07-bdaf-4991-9f96-27d954519f06"
+  ) {
+    const madrasatiMap: Record<number, string> = {
+      1: "lesson12",
+      2: "lesson13",
+      3: "lesson14",
+      4: "lesson15",
+      5: "lesson16",
+      6: "lesson17",
+      7: "lesson18",
+      8: "lesson19",
+      9: "lesson20",
+    };
+
+    return madrasatiMap[Number(lesson.sort_order)] ?? null;
   }
 
   const order = Number(lesson?.sort_order);
