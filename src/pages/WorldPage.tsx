@@ -334,6 +334,8 @@ export default function WorldPage() {
               // lessons (e.g. 33–42) are not resolved by the V2 registry.
               const currentWorldId = String(world?.id ?? worldId ?? "");
               const isSchoolWorld = currentWorldId === SCHOOL_WORLD_ID;
+              const isMadrasatiArabicWorld =
+                currentWorldId === "83975f07-bdaf-4991-9f96-27d954519f06";
               const isArabicMadrasatiWorld =
                 currentWorldId === "83975f07-bdaf-4991-9f96-27d954519f06";
 
@@ -484,7 +486,7 @@ export default function WorldPage() {
               }
 
               if (
-                worldId === "SCHOOL-PT-DISABLED" /* PT/MT removed from school world */
+                worldId === "SCHOOL-PT-DISABLED" || worldId === "83975f07-bdaf-4991-9f96-27d954519f06" /* PT/MT removed from school world */
                 && k === "lesson10"
               ) {
                 return (
@@ -511,7 +513,7 @@ export default function WorldPage() {
               }
 
               if (
-                worldId === "SCHOOL-PT-DISABLED" /* PT/MT removed from school world */
+                worldId === "SCHOOL-PT-DISABLED" || worldId === "83975f07-bdaf-4991-9f96-27d954519f06" /* PT/MT removed from school world */
                 && k === "lesson20"
               ) {
                 return (
@@ -538,7 +540,7 @@ export default function WorldPage() {
               }
 
               if (
-                worldId === "SCHOOL-PT-DISABLED" /* PT/MT removed from school world */
+                worldId === "SCHOOL-PT-DISABLED" || worldId === "83975f07-bdaf-4991-9f96-27d954519f06" /* PT/MT removed from school world */
                 && k === "lesson32"
               ) {
                 return (
