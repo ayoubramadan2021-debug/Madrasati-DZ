@@ -365,11 +365,18 @@ export default function WorldPage() {
                       return;
                     }
 
-                    navigate(
-                      k
-                        ? `/lesson-v2/${k}`
-                        : `/lesson/${l.id}`
-                    );
+                    const currentWorld = String(l.world_id ?? world?.id ?? worldId);
+
+                  if (currentWorld === "83975f07-bdaf-4991-9f96-27d954519f06") {
+                    navigate(`/lesson-v2/arabic/lesson${l.sort_order}`);
+                    return;
+                  }
+
+                  navigate(
+                    k
+                      ? `/lesson-v2/${k}`
+                      : `/lesson/${l.id}`
+                  );
                   }}
                   style={{
                     background: isAfterPt01Locked
