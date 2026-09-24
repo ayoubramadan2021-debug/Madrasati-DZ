@@ -218,6 +218,17 @@ const LESSONS_MAP: Record<string, LessonV2ContentEntry> = {
   lesson86: LESSON_86_CONTENT,
 };
 
+
+const MADRASATI_MAP: Record<string, any> = {
+  lesson12: ARABIC_LESSON12,
+  lesson13: ARABIC_LESSON13,
+  lesson14: ARABIC_LESSON14,
+  lesson16: ARABIC_LESSON16,
+  lesson18: ARABIC_LESSON18,
+  lesson19: ARABIC_LESSON19,
+  lesson20: ARABIC_LESSON20,
+};
+
 export default function LessonV2Page() {
 const navigate = useNavigate();
   const { lessonId } = useParams();
